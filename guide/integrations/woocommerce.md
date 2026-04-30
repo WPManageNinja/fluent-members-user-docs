@@ -46,11 +46,6 @@ Membership products typically don't need shipping. Tick **Virtual** so WooCommer
 6. Click **Save**.
 
 ![WooCommerce product linked](/images/integrations/woo-link.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Levels → [Level] → Edit
-State: Pricing Packages with WooCommerce product selected
-Highlight: The WooCommerce integration row
--->
 
 ---
 

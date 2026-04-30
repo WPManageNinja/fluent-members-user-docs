@@ -48,11 +48,6 @@ If you pick **Pages** but leave the specific-items field empty, **all pages on t
 :::
 
 ![Add page/post restriction rule](/images/content-protection/page-post-rule.png)
-<!-- SCREENSHOT-NEEDED
-Page: Access Group edit screen
-State: Rule with Type="Pages", multi-select with 3 pages chosen
-Highlight: The selected items in the dropdown
--->
 
 ---
 

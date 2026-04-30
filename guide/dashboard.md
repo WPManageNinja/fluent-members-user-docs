@@ -17,11 +17,6 @@ Click **Fluent Members** in your WordPress sidebar. You land on the Dashboard by
 On a brand-new install, most numbers will be `0` — that's expected. As members join and content is protected, the dashboard fills in.
 
 ![Fluent Members dashboard overview](/images/dashboard/dashboard-overview.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Dashboard
-State: Dashboard with sample data: 4 stat cards, chart, latest activity tables
-Highlight: The four stat cards at the top
--->
 
 ## The four key stats (top row)
 

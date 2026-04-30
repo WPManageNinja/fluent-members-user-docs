@@ -51,11 +51,6 @@ For a subscription plan, use FluentCart's Subscription product type and set:
 5. Click **Save**.
 
 ![FluentCart Linked Product](/images/integrations/fluentcart-link.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Levels → [Level] → Edit
-State: Pricing Packages section with FluentCart product linked
-Highlight: The FluentCart integration row
--->
 
 From now on, any purchase of that FluentCart product grants the linked Level.
 

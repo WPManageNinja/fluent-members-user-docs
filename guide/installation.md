@@ -28,12 +28,6 @@ This method works because Fluent Members is listed in the official WordPress.org
    *The plugin activates and sets up its database tables automatically. You'll see a new "Fluent Members" menu appear in your sidebar.*
 
 ![Install from WordPress plugin directory](/images/installation/install-from-directory.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Plugins → Add New → search "Fluent Members"
-State: Plugin card visible with "Install Now" button highlighted
-Highlight: The "Install Now" button with red arrow
-Size: 1440 × 900 viewport
--->
 
 ::: tip Small win
 See **Fluent Members** in your sidebar? You've nailed it. That's the plugin ready to use.
@@ -55,12 +49,6 @@ This approach is handy if your server has limited outbound internet access, or i
    *The plugin is now active.*
 
 ![Upload plugin ZIP](/images/installation/upload-plugin-zip.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Plugins → Add New → Upload Plugin area
-State: File picker visible with zip selected
-Highlight: "Upload Plugin" button and file field
-Size: 1440 × 900 viewport
--->
 
 ### Method 3 — Manual upload via FTP
 
@@ -91,12 +79,6 @@ Here's what happens behind the scenes:
 Nothing on your existing site changes. Your posts, pages, and theme are untouched.
 
 ![Fluent Members in the WordPress sidebar](/images/installation/sidebar-menu.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin dashboard after activation
-State: Sidebar with Fluent Members menu expanded, showing all sub-items
-Highlight: The Fluent Members menu group with red box
-Size: 1440 × 900 viewport, cropped to sidebar only
--->
 
 ## Confirming it works
 

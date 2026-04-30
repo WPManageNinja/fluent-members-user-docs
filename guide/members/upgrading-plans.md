@@ -42,11 +42,6 @@ Sometimes you need to move a member without a purchase — maybe you're comping 
 Fluent Members sets the old record to `upgraded` and creates a new `active` record on the chosen Level. Same as automatic — just triggered by you.
 
 ![Edit membership level](/images/members/edit-level.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Members → [Member] → Edit
-State: Edit form with Level dropdown open showing options
-Highlight: The Level dropdown
--->
 
 ---
 

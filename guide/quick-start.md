@@ -37,12 +37,7 @@ Here's how Sara does it:
    *The group is saved and appears in the list. We'll add the restriction rules in Step 3, once we have a Level to connect it to.*
 
 ![Create Access Group form](/images/quick-start/create-access-group.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Access Groups → Add New
-State: Form filled with "Pro Content" title
-Highlight: Title field and Create button
-Size: 1440 × 900 viewport
--->
+
 
 ::: tip 
 You've created your first Access Group. It doesn't protect anything yet — that's Step 3. But the group is ready.
@@ -66,12 +61,6 @@ Now let's create the plan Sara will sell. A [Membership Level](./core-concepts/m
    *The level is saved. You'll see it appear in the Levels list.*
 
 ![Create Membership Level form](/images/quick-start/create-membership-level.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Levels → Add New
-State: Form filled: title "Pro Plan", Access Groups "Pro Content" selected
-Highlight: The Access Groups field with "Pro Content" selected
-Size: 1440 × 900 viewport
--->
 
 ::: info What about pricing?
 Pricing is managed inside your payment plugin (FluentCart, WooCommerce, and so on), not inside Fluent Members itself. We'll link the payment product to this Level in a moment. For now, the Level is created.

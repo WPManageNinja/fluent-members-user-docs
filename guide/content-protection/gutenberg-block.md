@@ -27,11 +27,6 @@ To open it:
 4. Click **Update** to save the post.
 
 ![Fluent Members editor sidebar](/images/content-protection/editor-sidebar.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Posts → Edit Post (Gutenberg)
-State: Sidebar open, Fluent Members panel expanded with 2 Access Groups visible and one ticked
-Highlight: The access-groups list and the partial-content section
--->
 
 ::: tip Small win
 Saving a post with an Access Group ticked has the same effect as adding that specific post to the group's rule list — only without touching the Access Groups screen. Two paths, same result.
@@ -105,11 +100,6 @@ Sara writes a weekly blog post with both free and paid content in the same artic
 She uses the block-level Access Group selector to restrict only the video and the PDF button. Free visitors get the post with two placeholders where the restricted blocks would be; Pro members see everything.
 
 ![Mixed-access post frontend](/images/content-protection/mixed-access-frontend.png)
-<!-- SCREENSHOT-NEEDED
-Page: Frontend view of Sara's post
-State: As a free visitor — public blocks visible, restricted blocks replaced with "members only" messages
-Highlight: The replaced blocks
--->
 
 ---
 

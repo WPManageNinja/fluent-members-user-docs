@@ -48,11 +48,6 @@ Before any clicks: we're creating the top-level record that visitors will see on
    *The Level saves. You'll see it in the Levels list with its ID.*
 
 ![Create Membership Level](/images/membership-levels/create-level.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Levels → Add New
-State: Title "Pro Plan", Access Groups with "Pro Content" selected, Type Individual
-Highlight: Access Groups field
--->
 
 ::: tip Small win
 The Level's **ID** (visible in the list after saving) is what you'll paste into the `[fluent_membership_level id="X"]` shortcode when you build your pricing page. Jot it down.

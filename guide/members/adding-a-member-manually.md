@@ -43,11 +43,6 @@ Use this when the person already has a WordPress account on your site.
 The user now has the membership. Access is immediate.
 
 ![Add member form](/images/members/add-member-form.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Members → Add Member
-State: Form with user picked, level selected, start date today, expires blank
-Highlight: The user search field
--->
 
 ---
 

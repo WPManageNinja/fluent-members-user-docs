@@ -41,11 +41,6 @@ Entire-website protection is just another rule type, attached to a normal Access
 4. Click **Save Changes**.
 
 ![Entire website restriction rule](/images/content-protection/entire-website-rule.png)
-<!-- SCREENSHOT-NEEDED
-Page: Access Group edit screen
-State: Rule Type="Entire Website" added
-Highlight: The rule dropdown showing "Entire Website"
--->
 
 ::: warning Before saving
 Make sure you've added essential pages (Home, Pricing, Login, Contact) to your [Public Contents](../settings/public-contents.md) allow-list *before* you save this rule — otherwise they'll be blocked too, and new visitors won't be able to sign up.

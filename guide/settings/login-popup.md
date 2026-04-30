@@ -34,11 +34,6 @@ If your protected content isn't worth reading to non-members (e.g. behind-the-sc
 4. Click **Save Changes**.
 
 ![Login Popup settings](/images/settings/login-popup-settings.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Settings → Login Popup
-State: All fields filled, enabled=yes, auto_popup=yes
-Highlight: The Enable Login Popup toggle
--->
 
 ---
 

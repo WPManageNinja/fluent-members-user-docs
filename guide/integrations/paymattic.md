@@ -43,11 +43,6 @@ For a subscription, use Paymattic's recurring payment configuration. Paymattic s
 4. Save.
 
 ![Paymattic form linked as pricing](/images/integrations/paymattic-link.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Levels → [Level] → Edit
-State: Pricing Packages with Paymattic form linked
-Highlight: The Paymattic integration row
--->
 
 ---
 

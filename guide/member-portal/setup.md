@@ -43,11 +43,6 @@ The Member Portal = the "my account" page — but for memberships.
 5. Publish the page.
 
 ![Member portal page setup](/images/member-portal/portal-page-editor.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Pages → Add New (Gutenberg)
-State: Page titled "My Membership" with the shortcode block showing [fluent_member_portal]
-Highlight: The shortcode block
--->
 
 That's it — the portal is live. Visit the page in a logged-in browser to see it.
 

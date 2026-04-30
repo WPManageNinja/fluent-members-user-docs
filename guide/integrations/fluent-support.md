@@ -28,11 +28,6 @@ Each status has its own colour:
 - **Expired** — grey
 
 ![Membership widget in FluentSupport](/images/integrations/fluent-support-widget.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → FluentSupport → Ticket view
-State: Ticket open with sidebar showing Membership Levels widget
-Highlight: The widget
--->
 
 ---
 

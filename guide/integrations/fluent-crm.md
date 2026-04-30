@@ -39,11 +39,6 @@ The classic use case. When someone joins, they enter a 5-email educational seque
 4. Add action steps: email, delay, branch, tag, etc.
 
 ![FluentCRM trigger setup](/images/integrations/fluentcrm-trigger.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → FluentCRM → Automations → [New] → Trigger config
-State: Fluent Members trigger selected, Pro Plan level picked
-Highlight: The trigger selection
--->
 
 Example flow:
 ```

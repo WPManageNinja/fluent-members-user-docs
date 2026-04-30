@@ -47,11 +47,6 @@ The parent manages the roster from the [Member Portal](../member-portal/what-mem
 3. Click **Create**.
 
 ![Create corporate level with max members](/images/corporate-memberships/create-corporate-level.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Levels → Add New
-State: Form with Type=Corporate, Maximum Member=10, a title like "Team Plan"
-Highlight: Type dropdown and Maximum Member field
--->
 
 ::: tip Small win
 If you see the **Maximum Member** field appear when you pick Corporate, you're on the right track. Individual plans don't show that field.

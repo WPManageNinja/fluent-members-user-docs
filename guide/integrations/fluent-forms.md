@@ -42,11 +42,6 @@ If you need **recurring billing**, see [FluentCart](./fluent-cart.md) or [WooCom
 4. Save.
 
 ![Fluent Forms linked as pricing](/images/integrations/fluent-forms-link.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Levels → [Level] → Edit
-State: Pricing Packages with Fluent Forms form selected
-Highlight: The Fluent Forms integration row
--->
 
 ---
 

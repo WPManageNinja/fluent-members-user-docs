@@ -49,11 +49,6 @@ Partial content is switched on in one place: **Fluent Members → Settings → P
 5. Click **Save Changes**.
 
 ![Partial Content settings](/images/content-protection/partial-content-settings.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Settings → Partial Content
-State: All fields filled with branded defaults
-Highlight: Preview Length slider, Button URL field
--->
 
 ---
 
@@ -117,11 +112,6 @@ Jordan writes a paid weekly column. He wants non-subscribers to see the first 3 
 The result: every premium post has a consistent, branded paywall. Jordan only updates the message if he runs a seasonal sale.
 
 ![Partial content frontend example](/images/content-protection/partial-content-frontend.png)
-<!-- SCREENSHOT-NEEDED
-Page: Frontend view of a protected post
-State: First 180 words visible, overlay with button
-Highlight: The overlay + CTA button
--->
 
 ---
 

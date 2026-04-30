@@ -18,11 +18,6 @@ The Members screen is your roster — where you find, filter, inspect, and edit 
 Click **Fluent Members → Members** in the WordPress sidebar. You'll see a table listing every member on your site.
 
 ![Members list view](/images/members/members-list.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Members
-State: Table with 5-10 members, different statuses
-Highlight: The status column and filter row
--->
 
 ---
 

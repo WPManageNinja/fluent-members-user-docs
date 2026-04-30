@@ -35,11 +35,6 @@ If your content is best consumed on demand (like a podcast archive or reference 
 Enabling dripping unlocks a new panel where you schedule each item.
 
 ![Enable content dripping toggle](/images/content-protection/dripping-toggle.png)
-<!-- SCREENSHOT-NEEDED
-Page: Access Group edit screen
-State: Content Dripping toggle ON, reveals scheduling table
-Highlight: The toggle
--->
 
 ::: info Dripping works with all rule types
 Pages, posts, custom post types, categories — all driplable. The item list auto-populates from whatever your rules cover.

@@ -34,11 +34,6 @@ The payoff: **new content is protected automatically** the moment you publish it
 Every post currently in the chosen categories — plus every future post — is now protected. That's it.
 
 ![Category restriction rule](/images/content-protection/category-rule.png)
-<!-- SCREENSHOT-NEEDED
-Page: Access Group edit screen
-State: Rule Type="Categories" with two categories selected
-Highlight: The category multi-select
--->
 
 ::: tip About posts in multiple categories
 If a post is in both a restricted category and an unrestricted category, it's still restricted. Protection wins as long as *any* of its categories matches a rule.

@@ -59,11 +59,6 @@ Before we touch any buttons: we're creating an empty, named container. We'll fil
    *The group saves and opens so you can add rules.*
 
 ![Create Access Group](/images/access-groups/create-group.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Access Groups → Add New
-State: Form with title "Pro Content" filled in
-Highlight: Create button
--->
 
 ::: tip Small win
 A green success message means the group is saved. Your group now exists in the `fmem_access_groups` database table — but it doesn't protect anything yet.
@@ -166,11 +161,6 @@ Sara runs two tiers: **Free** and **Pro**. Here's how her Access Groups look:
 The result: Sara's three intro lessons are free for any logged-in user. Everything else is Pro-only. No duplication.
 
 ![Sara's access groups list](/images/access-groups/saras-setup.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Access Groups (list)
-State: Two groups visible: "Intro Videos" and "Full Library"
-Highlight: The groups and their "Levels" column
--->
 
 ---
 

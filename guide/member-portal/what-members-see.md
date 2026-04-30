@@ -21,11 +21,6 @@ When a logged-in member visits the portal page, they see a Vue-powered dashboard
 3. **Corporate parents only — Team panel** (sub-members, invitations, seats used)
 
 ![Member portal frontend](/images/member-portal/portal-frontend.png)
-<!-- SCREENSHOT-NEEDED
-Page: Member Portal frontend (logged-in member view)
-State: Active member with 1 active membership, corporate parent with 3 sub-members
-Highlight: Three zones labeled Profile, Memberships, Team
--->
 
 ---
 

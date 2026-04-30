@@ -25,11 +25,6 @@ From the member's perspective:
 6. The card updates to show a cancelled state, and a short message confirms.
 
 ![Cancel membership modal](/images/member-portal/cancel-modal.png)
-<!-- SCREENSHOT-NEEDED
-Page: Member Portal (frontend) with cancel modal open
-State: Modal asking "Are you sure?", Confirm/Cancel buttons
-Highlight: The modal
--->
 
 That's it from the member's side.
 

@@ -18,11 +18,6 @@ Tell Fluent Members who your outgoing emails come from. One-time setup that appl
 Go to **Fluent Members → Settings → Mailing**.
 
 ![Mailing settings screen](/images/settings/mailing-settings.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Settings → Mailing
-State: All fields filled with brand info
-Highlight: From Name and From Email fields
--->
 
 ---
 

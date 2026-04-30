@@ -47,11 +47,6 @@ These are the usual suspects every membership site keeps public:
 You'll see a multi-select field listing all your pages and posts.
 
 ![Public Contents settings](/images/settings/public-contents.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Settings → Public Contents
-State: Multi-select with 5-6 pages chosen (home, pricing, login, privacy, etc.)
-Highlight: The multi-select field
--->
 
 ---
 

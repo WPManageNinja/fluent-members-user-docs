@@ -17,11 +17,6 @@ The global defaults for every partial-content preview on your site. Set once, ap
 **Fluent Members → Settings → Partial Content**.
 
 ![Partial Content settings](/images/settings/partial-content-defaults.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Settings → Partial Content
-State: Fully filled fields with a preview
-Highlight: Enable toggle and Preview Length slider
--->
 
 ---
 

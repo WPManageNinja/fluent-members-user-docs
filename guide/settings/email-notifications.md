@@ -20,11 +20,6 @@ In the current version of Fluent Members, one notification ships out of the box:
 Go to **Fluent Members → Settings → Email Notifications**.
 
 ![Email Notifications settings](/images/settings/email-notifications.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Settings → Email Notifications
-State: Welcome Email row with toggle, subject, body editor
-Highlight: The Enabled toggle
--->
 
 ---
 

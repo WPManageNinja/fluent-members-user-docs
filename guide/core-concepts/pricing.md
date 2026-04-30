@@ -68,11 +68,6 @@ Now we tell Fluent Members, *"When someone buys this product, grant them this Le
 5. Click **Save** (or **Update Level**).
 
 ![Pricing Packages section](/images/pricing/pricing-packages-section.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Levels → [Level] → Edit
-State: Pricing Packages section with one provider linked
-Highlight: The Pricing Packages area
--->
 
 From now on, every purchase of that product auto-assigns the member to the Level.
 
