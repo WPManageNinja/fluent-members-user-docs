@@ -5,6 +5,7 @@ Fluent Members is a WordPress plugin that turns your site into a full membership
 This page gives you the big picture. By the end, you'll understand what Fluent Members does, whether it fits what you're building, and how the main pieces fit together.
 
 **Here's what you'll learn:**
+
 - What Fluent Members actually is (not marketing speak — plain English)
 - The three things every membership site needs, and how Fluent Members handles each one
 - Real types of sites you can build with it
@@ -48,7 +49,6 @@ Gate downloadable files, PDFs, or premium tools behind a recurring payment.
 
 Your case might not be on this list — that's fine. If you want to charge for access to content on a WordPress site, Fluent Members is designed for you.
 
----
 
 ## The three building blocks
 

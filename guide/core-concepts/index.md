@@ -1,6 +1,6 @@
 # Core Concepts — How Fluent Members Fits Together
 
-The three ideas that make the whole plugin click — once you get these, everything else makes sense.
+The three ideas that make the whole plugin click. Once you get these, everything else makes sense.
 
 If you've just installed Fluent Members and you're about to start building, please read this page first. Five minutes here will save you hours later.
 
@@ -12,9 +12,7 @@ We'll walk through the three building blocks of Fluent Members — **Access Grou
 - A real example that makes the model click
 - Where to go next to start building
 
----
-
-## The 30-second mental model
+## The 30-second Mental Model
 
 ```
         ┌──────────────────┐          ┌──────────────────┐
@@ -37,15 +35,15 @@ We'll walk through the three building blocks of Fluent Members — **Access Grou
 ```
 
 Read the diagram like this:
+
 - A **Member** is assigned a **Membership Level**.
 - A **Membership Level** grants access to one or more **Access Groups**.
 - An **Access Group** protects a set of content.
 
 When Sara buys the Pro Plan, Fluent Members checks her plan, sees that Pro Plan unlocks the *Pro Lessons* and *Pro Community* access groups, and lets her through.
 
----
 
-## 1. Access Groups — the content side
+## 1. Access Groups — The Content Side
 
 An [Access Group](./access-groups.md) is a labelled bundle of **rules about what to protect**. A rule might say:
 
@@ -54,7 +52,7 @@ An [Access Group](./access-groups.md) is a labelled bundle of **rules about what
 - "All content in the *Premium* category"
 - "The entire website"
 
-You can add as many rules as you want to a single group. You can also configure *what happens when a non-member lands on protected content* — redirect them, show a custom message, show a partial preview, or pop a login box.
+You can add as many rules as you want to a single group. You can also configure *what happens when a non-member lands on protected content*, redirect them, show a custom message, show a partial preview, or pop a login box.
 
 ::: tip Mental shortcut
 Groups are about **content**. They never mention people or plans.
@@ -67,11 +65,12 @@ Example groups Sara might build:
 
 ---
 
-## 2. Membership Levels — the plan side
+## 2. Membership Levels — The Plan Side
 
 A [Membership Level](./membership-levels.md) is what you **sell** (or give away). Think of it as the product.
 
 Every Level has:
+
 - A **title** (like *Free*, *Pro*, *Team*)
 - A **type** — either `Individual` (one person) or `Corporate` (multiple seats)
 - A **status** (`active` or `inactive`)
@@ -86,7 +85,7 @@ Levels are about **what you sell**. They unlock Access Groups, but they don't kn
 
 ---
 
-## 3. Members — the people side
+## 3. Members — The People Side
 
 A [Member](../members/managing-members.md) is a WordPress user who has been assigned a Membership Level. Every member record tracks:
 
