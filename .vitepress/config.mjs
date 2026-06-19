@@ -17,9 +17,9 @@ export default defineConfig({
 
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Website', link: 'https://fluentmembers.com' },
-      { text: 'Changelog', link: '/reference/changelog' },
-      { text: 'FAQ', link: '/reference/faq' }
+      { text: 'Guide', link: '/guide/introduction' },
+      { text: 'Reference', link: '/reference/glossary' },
+      { text: 'Website', link: 'https://fluentmembers.com' }
     ],
 
     sidebar: {
@@ -30,84 +30,84 @@ export default defineConfig({
           items: [
             { text: 'What is Fluent Members?', link: '/guide/introduction' },
             { text: 'Installation', link: '/guide/installation' },
-            { text: 'Quick Start', link: '/guide/quick-start' },
-            { text: 'The Dashboard', link: '/guide/dashboard' }
+            { text: 'Quick Start', link: '/guide/quick-start' }
           ]
         },
         {
-          text: 'Core Concepts',
+          text: 'Dashboard',
           collapsed: false,
           items: [
-            { text: 'How It Fits Together', link: '/guide/core-concepts/' },
-            { text: 'Access Groups', link: '/guide/core-concepts/access-groups' },
-            { text: 'Membership Levels', link: '/guide/core-concepts/membership-levels' },
-            { text: 'Pricing', link: '/guide/core-concepts/pricing' },
-            { text: 'Corporate Memberships', link: '/guide/core-concepts/corporate-memberships' }
+            { text: 'Reading the Dashboard', link: '/guide/dashboard' }
           ]
         },
         {
-          text: 'Content Protection',
+          text: 'Levels',
+          collapsed: false,
+          items: [
+            { text: 'Overview', link: '/guide/levels/' },
+            { text: 'Creating a Level', link: '/guide/levels/creating' },
+            { text: 'Pricing: Native Payment', link: '/guide/levels/pricing-native' },
+            { text: 'Pricing: Paywalls', link: '/guide/levels/pricing-paywalls' },
+            { text: 'Attaching Access Groups', link: '/guide/levels/attaching-access-groups' },
+            { text: 'Content Drip', link: '/guide/levels/content-drip' },
+            { text: 'Members on a Level', link: '/guide/levels/members-on-a-level' },
+            { text: '🔒 Pro · Corporate Memberships', link: '/guide/levels/corporate-memberships' }
+          ]
+        },
+        {
+          text: 'Access Groups',
           collapsed: true,
           items: [
-            { text: 'Overview', link: '/guide/content-protection/' },
-            { text: 'Pages & Posts', link: '/guide/content-protection/restricting-pages-posts' },
-            { text: 'Categories & Post Types', link: '/guide/content-protection/restricting-categories-post-types' },
-            { text: 'Entire Website', link: '/guide/content-protection/restricting-entire-website' },
-            { text: 'Partial Content Preview', link: '/guide/content-protection/partial-content-preview' },
-            { text: 'Content Dripping', link: '/guide/content-protection/content-dripping' },
-            { text: 'Gutenberg Block', link: '/guide/content-protection/gutenberg-block' },
-            { text: 'REST API Protection', link: '/guide/content-protection/rest-api-protection' }
+            { text: 'Overview', link: '/guide/access-groups/' },
+            { text: 'Protected Content: Restriction Types', link: '/guide/access-groups/protected-content' },
+            { text: 'Unauthorized Access', link: '/guide/access-groups/unauthorized-access' },
+            { text: 'Gutenberg Block: Inserting', link: '/guide/access-groups/gutenberg-block/inserting' },
+            { text: 'Gutenberg Block: Configuring', link: '/guide/access-groups/gutenberg-block/configuring' },
+            { text: 'Gutenberg Block: Nesting & Limits', link: '/guide/access-groups/gutenberg-block/nesting-and-limits' }
           ]
         },
         {
           text: 'Members',
           collapsed: true,
           items: [
-            { text: 'Managing Members', link: '/guide/members/managing-members' },
-            { text: 'Adding a Member Manually', link: '/guide/members/adding-a-member-manually' },
-            { text: 'Member Statuses Explained', link: '/guide/members/member-statuses-explained' },
-            { text: 'Upgrading Plans', link: '/guide/members/upgrading-plans' }
+            { text: 'Members List', link: '/guide/members/' },
+            { text: 'Member Detail', link: '/guide/members/detail' },
+            { text: 'Adding a Membership Manually', link: '/guide/members/adding-manually' },
+            { text: 'Status Reference', link: '/guide/members/statuses' },
+            { text: 'Suspending & Cancelling', link: '/guide/members/suspending-and-cancelling' },
+            { text: 'Portal: Setup', link: '/guide/members/portal/setup' },
+            { text: 'Portal: What Members See', link: '/guide/members/portal/what-members-see' },
+            { text: 'Portal: Cancelling', link: '/guide/members/portal/cancelling' },
+            { text: '🔒 Pro · Portal: Updating Payment Method', link: '/guide/members/portal/updating-payment-method' },
+            { text: '🔒 Pro · Portal: Renewing a Failed Subscription', link: '/guide/members/portal/renewing-a-failed-subscription' },
+            { text: '🔒 Pro · Portal: Corporate Seat Invites', link: '/guide/members/portal/corporate-seat-invites' }
           ]
         },
         {
-          text: 'Member Portal',
+          text: '🔒 Pro · Transactions',
           collapsed: true,
           items: [
-            { text: 'Setup', link: '/guide/member-portal/setup' },
-            { text: 'What Members See', link: '/guide/member-portal/what-members-see' },
-            { text: 'Cancelling Membership', link: '/guide/member-portal/cancelling-membership' }
+            { text: 'Transactions List', link: '/guide/transactions/' },
+            { text: 'Filters & Search', link: '/guide/transactions/filters-and-search' },
+            { text: 'Refunds', link: '/guide/transactions/refunds' },
+            { text: 'Subscription Cancellation Modes', link: '/guide/transactions/cancellation-modes' }
           ]
         },
         {
           text: 'Settings',
           collapsed: true,
           items: [
-            { text: 'Overview', link: '/guide/settings/general' },
-            { text: 'Public Contents', link: '/guide/settings/public-contents' },
+            { text: 'General Settings', link: '/guide/settings/general' },
+            { text: 'Partial Content Lock', link: '/guide/settings/partial-content-lock' },
             { text: 'Login Popup', link: '/guide/settings/login-popup' },
-            { text: 'Mailing', link: '/guide/settings/mailing' },
-            { text: 'Email Notifications', link: '/guide/settings/email-notifications' },
-            { text: 'Partial Content Defaults', link: '/guide/settings/partial-content-defaults' }
-          ]
-        },
-        {
-          text: 'Integrations',
-          collapsed: true,
-          items: [
-            { text: 'Overview', link: '/guide/integrations/' },
-            { text: 'FluentCart', link: '/guide/integrations/fluent-cart' },
-            { text: 'WooCommerce', link: '/guide/integrations/woocommerce' },
-            { text: 'Fluent Forms', link: '/guide/integrations/fluent-forms' },
-            { text: 'Paymattic', link: '/guide/integrations/paymattic' },
-            { text: 'FluentCRM', link: '/guide/integrations/fluent-crm' },
-            { text: 'FluentSupport', link: '/guide/integrations/fluent-support' }
-          ]
-        },
-        {
-          text: 'Shortcodes & Blocks',
-          collapsed: true,
-          items: [
-            { text: 'Cheat Sheet', link: '/guide/shortcodes-and-blocks' }
+            { text: 'Payment Settings', link: '/guide/settings/payment-settings/' },
+            { text: '🔒 Pro · Stripe Setup', link: '/guide/settings/payment-settings/stripe-setup' },
+            { text: 'Migration: Overview', link: '/guide/settings/migration/' },
+            { text: 'Migration: From Paid Memberships Pro', link: '/guide/settings/migration/from-paid-memberships-pro' },
+            { text: 'Migration: From MemberPress', link: '/guide/settings/migration/from-memberpress' },
+            { text: 'Migration: From Content Restriction Pro', link: '/guide/settings/migration/from-content-restriction-pro' },
+            { text: 'Email Configuration: Mailing Settings', link: '/guide/settings/email-configuration/mailing-settings' },
+            { text: 'Email Configuration: Email Notifications', link: '/guide/settings/email-configuration/email-notifications' }
           ]
         }
       ],
@@ -116,12 +116,14 @@ export default defineConfig({
         {
           text: 'Reference',
           items: [
+            { text: 'Chain Map', link: '/reference/chain-map' },
             { text: 'Glossary', link: '/reference/glossary' },
             { text: 'Membership Statuses', link: '/reference/membership-statuses' },
             { text: 'Shortcode Reference', link: '/reference/shortcode-reference' },
             { text: 'Email Merge Tags', link: '/reference/email-merge-tags' },
             { text: 'FAQ', link: '/reference/faq' },
             { text: 'Troubleshooting', link: '/reference/troubleshooting' },
+            { text: 'Developer Hooks', link: '/reference/developer-hooks' },
             { text: 'Changelog', link: '/reference/changelog' }
           ]
         }
