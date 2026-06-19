@@ -6,7 +6,7 @@ This page gives you the big picture. By the end, you'll understand what Fluent M
 
 **Here's what you'll learn:**
 
-- What Fluent Members actually is (not marketing speak, plain English)
+- What Fluent Members actually is
 - The three things every membership site needs, and how Fluent Members handles each one
 - Real types of sites you can build with it
 - How it fits into your existing WordPress setup

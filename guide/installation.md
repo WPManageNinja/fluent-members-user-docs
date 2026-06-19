@@ -35,8 +35,6 @@ This method works because Fluent Members is listed in the official WordPress.org
 4. Click **Activate**.
    *The plugin activates and sets up its database tables automatically. You'll see a new "Fluent Members" menu appear in your sidebar.*
 
-![Install from WordPress plugin directory](/images/installation/install-from-directory.png)
-
 ::: tip Small win
 See **Fluent Members** in your sidebar? You've nailed it. That's the plugin ready to use.
 :::
@@ -56,7 +54,6 @@ This approach is handy if your server has limited outbound internet access, or i
 5. Click **Activate Plugin** on the success screen.
    *The plugin is now active.*
 
-![Upload plugin ZIP](/images/installation/upload-plugin-zip.png)
 
 ### Method 3, Manual upload via FTP
 
@@ -86,8 +83,6 @@ Here's what happens behind the scenes:
 
 Nothing on your existing site changes. Your posts, pages, and theme are untouched.
 
-![Fluent Members in the WordPress sidebar](/images/installation/sidebar-menu.png)
-
 ## Confirming it works
 
 Let's make sure everything is set up correctly before you start configuring.
@@ -106,17 +101,6 @@ The Pro add-on installs the same way (Method 1 isn't available for Pro, use Meth
 ::: warning Plugin conflict check
 Some caching plugins and security plugins can interfere with Fluent Members' admin interface. If the dashboard looks broken (blank panels, missing menus), try temporarily disabling your caching plugin, clear your browser cache, and reload. If problems persist, see [Troubleshooting](../reference/troubleshooting.md).
 :::
-
-## Things that trip people up
-
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| "Fluent Members" menu doesn't appear after activating | You may not have the Administrator role | Log in with an Administrator account, only admins see the plugin menu |
-| The Dashboard loads but charts are empty | That's normal on a fresh install, no data yet | Start by [creating your first Membership Level](./levels/) |
-| White screen or fatal error after activation | PHP version conflict | Confirm your server is running PHP 7.4 or higher in **Tools → Site Health** |
-| Plugin won't install: "destination folder already exists" | A partial install is stuck | Delete the `fluent-members` folder in `/wp-content/plugins/` and try again |
-
-Still stuck? Jump to [Troubleshooting](../reference/troubleshooting.md) for a more detailed checklist.
 
 ## What's next?
 
