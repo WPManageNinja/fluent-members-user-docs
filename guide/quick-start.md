@@ -1,4 +1,4 @@
-# Quick Start, Build Your First Membership Site in 10 Minutes
+# Quick Start - Build Your Membership Site
 
 Follow Sara's story to set up a working membership site from scratch, Levels, Access Groups, protection, and a member portal.
 
@@ -16,7 +16,7 @@ By the end of this guide, Sara's site will have protected content, a pricing pag
 - A page with the membership pricing shortcode
 - A member portal page
 
-**Before we start:** Fluent Members can collect payments three ways, through a payment plugin like [FluentCart](./levels/pricing-paywalls), through [WooCommerce](./levels/pricing-paywalls) *(Pro)*, or via the built-in [Stripe checkout](./transactions/) *(Pro)*. For this Quick Start, we'll keep it simple and assume you have FluentCart installed, but the steps work the same way regardless. If you have nothing installed yet, you can still follow along. You just won't process real payments at the end.
+**Before we start:** Fluent Members can collect payments three ways, through a payment plugin like [FluentCart](./levels/pricing-paywalls), through [WooCommerce](./levels/pricing-paywalls) *(Pro)*, or via the built-in [Stripe checkout](./transactions/) *(Pro)* and Paypal. For this Quick Start, we'll keep it simple and assume you have FluentCart installed, but the steps work the same way regardless. If you have nothing installed yet, you can still follow along. You just won't process real payments at the end.
 
 
 ## Step 1: Create an Access Group
@@ -35,8 +35,6 @@ Here's how Sara does it:
    - **Status**: Leave it as **Active**
 4. Click **Create**.
    *The group is saved and appears in the list. We'll add the restriction rules in Step 3, once we have a Level to connect it to.*
-
-![Create Access Group form](/images/quick-start/create-access-group.png)
 
 
 ::: tip 
@@ -60,8 +58,6 @@ Now let's create the plan Sara will sell. A [Membership Level](./levels/) is the
 4. Click **Create**.
    *The level is saved. You'll see it appear in the Levels list.*
 
-![Create Membership Level form](/images/quick-start/create-membership-level.png)
-
 ::: info What about pricing?
 Pricing lives inside each **Pricing Plan** attached to your Level. You can configure plans that point at FluentCart products, WooCommerce products *(Pro)*, Fluent Forms, Paymattic forms, or native Stripe checkout *(Pro)*. We'll add a plan in the next step. For now, the Level is created.
 :::
@@ -84,14 +80,6 @@ This is where it gets real. We're now going to tell the *Pro Content* Access Gro
 7. Click **Save Changes**.
 
 The access group now protects all content of the type(s) you selected.
-
-![Access Group restriction rules](/images/quick-start/restriction-rules.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Access Groups → Pro Content → Edit
-State: Restriction Rules section with one rule added (Posts type)
-Highlight: The "Add Rule" area and the action dropdown
-Size: 1440 × 900 viewport
--->
 
 Go open one of the protected pages in a **new incognito window** (where you're not logged in). You should see Sara's custom message instead of the content. That means it's working.
 
@@ -123,14 +111,6 @@ First, you'll need a product in your payment provider (FluentCart or WooCommerce
 5. Publish the page.
 
 When you visit the page as a logged-out visitor, you'll see a pricing card with a **Subscribe Now** button. That button links to your payment provider's checkout.
-
-![Pricing shortcode frontend](/images/quick-start/pricing-page-frontend.png)
-<!-- SCREENSHOT-NEEDED
-Page: Frontend pricing page as a logged-out visitor
-State: Pricing card rendered with price, subscribe button visible
-Highlight: The pricing card
-Size: 1440 × 900 viewport
--->
 
 ---
 
