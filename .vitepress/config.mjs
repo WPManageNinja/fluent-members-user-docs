@@ -51,7 +51,7 @@ export default defineConfig({
             { text: 'Attaching Access Groups', link: '/guide/levels/attaching-access-groups' },
             { text: 'Content Drip', link: '/guide/levels/content-drip' },
             { text: 'Members on a Level', link: '/guide/levels/members-on-a-level' },
-            { text: '🔒 Pro · Corporate Memberships', link: '/guide/levels/corporate-memberships' }
+            { text: 'Corporate Memberships (Pro)', link: '/guide/levels/corporate-memberships' }
           ]
         },
         {
@@ -78,13 +78,13 @@ export default defineConfig({
             { text: 'Portal: Setup', link: '/guide/members/portal/setup' },
             { text: 'Portal: What Members See', link: '/guide/members/portal/what-members-see' },
             { text: 'Portal: Cancelling', link: '/guide/members/portal/cancelling' },
-            { text: '🔒 Pro · Portal: Updating Payment Method', link: '/guide/members/portal/updating-payment-method' },
-            { text: '🔒 Pro · Portal: Renewing a Failed Subscription', link: '/guide/members/portal/renewing-a-failed-subscription' },
-            { text: '🔒 Pro · Portal: Corporate Seat Invites', link: '/guide/members/portal/corporate-seat-invites' }
+            { text: 'Portal: Updating Payment Method (Pro)', link: '/guide/members/portal/updating-payment-method' },
+            { text: 'Portal: Renewing a Failed Subscription(Pro)', link: '/guide/members/portal/renewing-a-failed-subscription' },
+            { text: 'Portal: Corporate Seat Invites (Pro)', link: '/guide/members/portal/corporate-seat-invites' }
           ]
         },
         {
-          text: '🔒 Pro · Transactions',
+          text: 'Transactions (Pro)',
           collapsed: true,
           items: [
             { text: 'Transactions List', link: '/guide/transactions/' },
@@ -101,7 +101,7 @@ export default defineConfig({
             { text: 'Partial Content Lock', link: '/guide/settings/partial-content-lock' },
             { text: 'Login Popup', link: '/guide/settings/login-popup' },
             { text: 'Payment Settings', link: '/guide/settings/payment-settings/' },
-            { text: '🔒 Pro · Stripe Setup', link: '/guide/settings/payment-settings/stripe-setup' },
+            { text: 'Stripe Setup (Pro)', link: '/guide/settings/payment-settings/stripe-setup' },
             { text: 'Migration: Overview', link: '/guide/settings/migration/' },
             { text: 'Migration: From Paid Memberships Pro', link: '/guide/settings/migration/from-paid-memberships-pro' },
             { text: 'Migration: From MemberPress', link: '/guide/settings/migration/from-memberpress' },
