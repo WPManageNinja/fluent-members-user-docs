@@ -1,0 +1,13 @@
+{
+  "text": "<Doc Title — matches the H1, add (Pro) if Pro-only>",
+  "link": "/guide/<category>/<slug>"
+}
+
+// For reference pages:
+// { "text": "<Doc Title>", "link": "/reference/<slug>" }
+
+// Add to .vitepress/config.mjs inside the correct sidebar group, e.g.:
+// sidebar: {
+//   '/guide/': [ { text: 'Levels', items: [ <-- insert here --> ] } ]
+//   '/reference/': [ { text: 'Reference', items: [ <-- insert here --> ] } ]
+// }
