@@ -2,7 +2,7 @@
 
 Eleven end-to-end journeys that connect Fluent Members' features into something a real person walks through. Every guide page belongs to at least one of these chains; many belong to more than one.
 
-If you ever land on a page and think *"OK, but what comes next?"* — find the chain it's on here and follow the arrow.
+If you ever land on a page and think *"OK, but what comes next?"*, find the chain it's on here and follow the arrow.
 
 ## How to use this page
 
@@ -17,13 +17,13 @@ If you ever land on a page and think *"OK, but what comes next?"* — find the c
 The admin-onboarding chain. You just installed Fluent Members and want it doing something real.
 
 1. [Installation](/guide/getting-started/installation)
-2. [General Settings](/guide/settings/general) — pick currency, exclude public content, generate portal page
-3. [Mailing Settings](/guide/settings/email-configuration/mailing-settings) — From name, From email, footer
+2. [General Settings](/guide/settings/general), pick currency, exclude public content, generate portal page
+3. [Mailing Settings](/guide/settings/email-configuration/mailing-settings), From name, From email, footer
 4. *(Optional, Pro)* [Stripe Setup](/guide/settings/payment-settings/stripe-setup)
 5. [Levels Overview](/guide/levels/) → [Creating a Level](/guide/levels/creating)
 6. [Pricing: Native Payment](/guide/levels/pricing-native) *or* [Pricing: Paywalls](/guide/levels/pricing-paywalls)
 7. [Access Groups Overview](/guide/access-groups/) → [Protected Content](/guide/access-groups/protected-content)
-8. [Attach the Group to the Level](/guide/levels/attaching-access-groups) — either from the Group's Active Levels card or the Level's Access Group tab
+8. [Attach the Group to the Level](/guide/levels/attaching-access-groups), either from the Group's Active Levels card or the Level's Access Group tab
 9. Drop `[fluent_membership_level id="N"]` on a pricing page
 10. Test as a guest
 
@@ -47,7 +47,7 @@ What happens when a real visitor clicks Subscribe.
 8. Member visits protected content → sees it
 
 ::: tip Use this map when…
-You want to trace what happens from "checkout button clicked" to "member has access" — useful for debugging missing grants.
+You want to trace what happens from "checkout button clicked" to "member has access", useful for debugging missing grants.
 :::
 
 ---
@@ -85,7 +85,7 @@ How an admin manages a single member from a Dashboard signal.
 6. Member's [Portal view](/guide/members/portal/what-members-see) updates next time they visit
 
 ::: tip Use this map when…
-You need to act on a specific member's record — a chargeback, a refund request, a policy violation.
+You need to act on a specific member's record, a chargeback, a refund request, a policy violation.
 :::
 
 ---
@@ -105,7 +105,7 @@ What a logged-in member can do from the portal page.
 5. Status updates → UI re-renders
 
 ::: tip Use this map when…
-You want to understand the member-facing side of the plugin — what your customers actually interact with.
+You want to understand the member-facing side of the plugin, what your customers actually interact with.
 :::
 
 ---
@@ -191,13 +191,13 @@ Moving an existing membership site onto Fluent Members.
 
 1. Back up everything (DB, files)
 2. Install Fluent Members *(and Pro if you'll need Stripe-linked subscriptions)*
-3. [Stripe Setup](/guide/settings/payment-settings/stripe-setup) — only if Stripe data needs to come across
-4. [Migration Overview](/guide/settings/migration/) — confirm your source shows **Detected**
+3. [Stripe Setup](/guide/settings/payment-settings/stripe-setup), only if Stripe data needs to come across
+4. [Migration Overview](/guide/settings/migration/), confirm your source shows **Detected**
 5. Pick the wizard:
    - [From Paid Memberships Pro](/guide/settings/migration/from-paid-memberships-pro)
    - [From MemberPress](/guide/settings/migration/from-memberpress)
    - [From Content Restriction Pro](/guide/settings/migration/from-content-restriction-pro)
-6. Walk the wizard steps in order — verify after each
+6. Walk the wizard steps in order, verify after each
 7. Switch your members to the new [Portal](/guide/members/portal/setup) URL
 8. Deactivate (don't delete) the source plugin for a week
 9. Delete when confident
@@ -222,7 +222,7 @@ For everything Fluent Members doesn't send out of the box.
 4. Build a CRM funnel for each event you care about
 5. Send branded emails from the CRM
 
-Or — for developers — register an additional notification type via `fluent_members/default_notifications` filter.
+Or, for developers, register an additional notification type via `fluent_members/default_notifications` filter.
 
 ::: tip Use this map when…
 You need to send renewal reminders, "your card failed" notifications, "we miss you" emails, or any transactional message other than the Welcome Email.

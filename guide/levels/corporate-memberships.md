@@ -121,7 +121,7 @@ When the parent membership flips status, every sub-member mirrors it. The plugin
 | `active` (from `suspended`) | `active` | Admin unsuspends. |
 
 ::: warning Lifecycle hooks fire per child, not once for the parent
-The cascade is not a single bulk event. `cascadeStatusToChildren` fires the matching lifecycle action (`fluent_members/membership_cancelled`, `membership_expired`, `membership_suspended`, or `membership_level_assigned` on re-activation) **separately for every child**. So a 10-seat team that cancels triggers 10 `membership_cancelled` actions plus the parent's own. CRM funnels and Welcome-back automations subscribed to these events will fire N+1 times — usually fine, but worth knowing before you point an external system at the hook.
+The cascade is not a single bulk event. `cascadeStatusToChildren` fires the matching lifecycle action (`fluent_members/membership_cancelled`, `membership_expired`, `membership_suspended`, or `membership_level_assigned` on re-activation) **separately for every child**. So a 10-seat team that cancels triggers 10 `membership_cancelled` actions plus the parent's own. CRM funnels and Welcome-back automations subscribed to these events will fire N+1 times, usually fine, but worth knowing before you point an external system at the hook.
 :::
 
 ---

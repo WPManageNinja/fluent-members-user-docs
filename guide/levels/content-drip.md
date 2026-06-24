@@ -11,7 +11,7 @@
 **Before we start:** You've already created a [Level](./creating) and at least one [Access Group](/guide/access-groups/) with **Protected Content** configured. Drip rules pick from the Level's attached Groups, so without that wiring there's nothing to drip.
 
 ::: warning Drip rules live on the Level, not the Access Group
-Under the hood, drip rules are stored in the Level's `settings.drip_rules` and evaluated by `ContentDripHelper::checkDripAccess()` against the member's `start_date` on the Level. The Access Group decides *who* gets access; the Level's drip rules decide *when* — for the content that Level grants.
+Under the hood, drip rules are stored in the Level's `settings.drip_rules` and evaluated by `ContentDripHelper::checkDripAccess()` against the member's `start_date` on the Level. The Access Group decides *who* gets access; the Level's drip rules decide *when*, for the content that Level grants.
 :::
 
 ---
@@ -22,10 +22,10 @@ Under the hood, drip rules are stored in the Level's `settings.drip_rules` and e
 2. Click the Level you want to drip-feed.
 3. Find the **Content Drip** section on the Level edit page.
 
-[Screenshot needed: Content Drip section on the Level edit page — toggle and rule rows]
+[Screenshot needed: Content Drip section on the Level edit page, toggle and rule rows]
 
 ::: warning Verification needed
-If the Content Drip card isn't where this page describes — for example, it's on a different inner tab of the Level, or it sits inside the Pricing tab — send a screenshot. The memory I'm working from confirms drip is a Level setting (`level.settings.drip_rules`) but doesn't pin down which inner tab houses the UI.
+If the Content Drip card isn't where this page describes, for example, it's on a different inner tab of the Level, or it sits inside the Pricing tab, send a screenshot. The memory I'm working from confirms drip is a Level setting (`level.settings.drip_rules`) but doesn't pin down which inner tab houses the UI.
 :::
 
 ---
@@ -36,13 +36,13 @@ A drip rule has three parts:
 
 | Part                     | What it controls |
 |---------------------------|------------------|
-| **Show This Content**    | Which item(s) — within the content unlocked by this Level's attached Access Groups — this rule applies to. |
+| **Show This Content**    | Which item(s): within the content unlocked by this Level's attached Access Groups: this rule applies to. |
 | **Timeline**             | When the rule fires. The 1.0 default is **After duration**, a fixed delay from the member's start date on this Level. |
 | **Days / Hours / Minutes** | The delay length. All three default to `0`. |
 
 So a rule reads: *"Show **Lesson 3** **After duration** **14 days 0 hours 0 minutes** after the member joined this Level."*
 
-The drip rule's pickable items match what the Level can grant — posts, post types, taxonomies, WooCommerce products, FluentCart products. If you haven't [attached an Access Group with protected content](./attaching-access-groups) to this Level, the picker will be empty.
+The drip rule's pickable items match what the Level can grant, posts, post types, taxonomies, WooCommerce products, FluentCart products. If you haven't [attached an Access Group with protected content](./attaching-access-groups) to this Level, the picker will be empty.
 
 ---
 
@@ -99,7 +99,7 @@ On her *Pro Yoga* Level edit page, in the Content Drip section, she adds 6 rules
 | 5 | Lesson 5 | 28 days |
 | 6 | Lesson 6 | 35 days |
 
-A new member sees Lesson 1 immediately. Lesson 2 unlocks a week in. By week 5 they've gone through the full sequence — the value matches the time invested, and they're less likely to binge-and-cancel.
+A new member sees Lesson 1 immediately. Lesson 2 unlocks a week in. By week 5 they've gone through the full sequence, the value matches the time invested, and they're less likely to binge-and-cancel.
 
 ---
 
@@ -121,4 +121,4 @@ A new member sees Lesson 1 immediately. Lesson 2 unlocks a week in. By week 5 th
 
 **Recommended reading:**
 - [Protected Content](/guide/access-groups/protected-content): the picker that feeds Show This Content.
-- [Glossary — Content Dripping](/guide/getting-started/glossary).
+- [Glossary, Content Dripping](/guide/getting-started/glossary).

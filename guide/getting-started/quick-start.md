@@ -2,27 +2,27 @@
 
 When you first activate **Fluent Members**, a 3-step setup wizard walks you through the core configuration. This guide follows that wizard from start to finish, so you know exactly what each screen is asking and why.
 
-You can skip any step and come back later from the Settings menu — nothing in the wizard is permanent.
+You can skip any step and come back later from the Settings menu, nothing in the wizard is permanent.
 
 ## What you'll set up
 
 | Step | What it does |
 |---|---|
 | Step 1 | Create your first Membership Level and choose its type |
-| Step 2 | Create an Access Group — the content bundle members unlock |
+| Step 2 | Create an Access Group: the content bundle members unlock |
 | Step 3 | Connect a payment system so members can buy memberships |
 
 
-## Step 1 — Create a Membership
+## Step 1: Create a Membership
 
 The wizard opens on the **Welcome to FluentMembers** screen. This is where you define your first Membership Level.
 
 **Fill in the fields:**
 
-- **Membership Title** — the name members will see on pricing pages and in their portal. Example: `Pro Plan`, `Annual Member`, `Basic Access`.
-- **Type** — choose how this membership works:
-  - **Individual** — one person buys one seat. This is the standard option for most membership sites.
-  - **Corporate** *(upcoming)* — one purchaser buys a block of seats and invites team members to fill them.
+- **Membership Title**: the name members will see on pricing pages and in their portal. Example: `Pro Plan`, `Annual Member`, `Basic Access`.
+- **Type**: choose how this membership works:
+  - **Individual**: one person buys one seat. This is the standard option for most membership sites.
+  - **Corporate** *(upcoming)*, one purchaser buys a block of seats and invites team members to fill them.
 
 Once you've filled in the title and selected a type, click **Next Step**.
 
@@ -33,7 +33,7 @@ This step only creates the Level shell. You add pricing plans, content rules, an
 ![The Step 1 welcome screen showing the Membership Title field and type selector](/images/quick-start/starting-1.webp)
 
 
-## Step 2 — Grant Access
+## Step 2: Grant Access
 
 Step 2 asks **what this membership unlocks** that is, which Access Group members will be able to see.
 
@@ -56,7 +56,7 @@ The Access Group is created here, but which specific pages, posts, or post types
 
 ![The Step 2 Grant Access screen showing the Title and Description fields for a new Access Group](/images/quick-start/grant-access-2.webp)
 
-## Step 3 — Connect a Payment System
+## Step 3: Connect a Payment System
 
 Step 3 lets you choose how members will pay for memberships.
 
@@ -89,7 +89,7 @@ If you haven't decided on a payment plugin, click **Skip All** and set up paymen
 
 ## After the wizard
 
-When you click **Complete Installation**, the wizard closes and you land on the Fluent Members dashboard. Your first Membership Level and Access Group already exist — here's what to do next:
+When you click **Complete Installation**, the wizard closes and you land on the Fluent Members dashboard. Your first Membership Level and Access Group already exist, here's what to do next:
 
 **1. Protect some content**
 
@@ -111,6 +111,6 @@ See [Portal: Setup](/guide/members/portal/setup).
 
 **4. Test as a non-member**
 
-Open an incognito browser window, visit a protected page, and confirm you see the restriction message instead of the content. Admins always bypass protection — always test as a logged-out visitor.
+Open an incognito browser window, visit a protected page, and confirm you see the restriction message instead of the content. Admins always bypass protection, always test as a logged-out visitor.
 
 

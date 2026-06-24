@@ -23,10 +23,10 @@ See the full chain in the [Chain Map](/reference/chain-map).
 
 ## What ships out of the box
 
-A single notification: **Welcome Email**. Sent to the member whenever the `fluent_members/membership_level_assigned` event fires — that covers initial paywall purchases, manual admin grants, native Stripe checkouts, corporate join acceptances, **and** admin re-activations from Suspended status.
+A single notification: **Welcome Email**. Sent to the member whenever the `fluent_members/membership_level_assigned` event fires, that covers initial paywall purchases, manual admin grants, native Stripe checkouts, corporate join acceptances, **and** admin re-activations from Suspended status.
 
 ::: warning Welcome Email re-fires on re-activation from Suspended
-If you Suspend a member and later set their status back to Active, the Welcome Email fires again — because re-activation is implemented as a fresh `membership_level_assigned` event under the hood. To avoid surprising re-sends, either temporarily disable the Welcome Email before re-activating, or use a custom notification keyed on `start_date` to detect "this is a fresh grant" vs "this is a reactivation."
+If you Suspend a member and later set their status back to Active, the Welcome Email fires again, because re-activation is implemented as a fresh `membership_level_assigned` event under the hood. To avoid surprising re-sends, either temporarily disable the Welcome Email before re-activating, or use a custom notification keyed on `start_date` to detect "this is a fresh grant" vs "this is a reactivation."
 :::
 
 | Event              | Receiver | Default subject              |

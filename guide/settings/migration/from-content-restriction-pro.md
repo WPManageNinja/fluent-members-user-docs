@@ -61,10 +61,10 @@ Unlike the PMPro and MemberPress wizards (which expose a separate REST endpoint 
 | 8 | Cleanup                        | Wraps up. |
 
 ::: tip In plain language
-For a regular user, the wizard just feels like a sequence of click-and-wait steps. The single-endpoint design only matters if you're building custom tooling — you can call the same endpoint multiple times by changing the step name.
+For a regular user, the wizard just feels like a sequence of click-and-wait steps. The single-endpoint design only matters if you're building custom tooling, you can call the same endpoint multiple times by changing the step name.
 :::
 
-Step 6 ("Migrate Drip") is a first-class step here because RCP has explicit drip rules — same as PMPro, unlike MemberPress where drip data doesn't migrate.
+Step 6 ("Migrate Drip") is a first-class step here because RCP has explicit drip rules, same as PMPro, unlike MemberPress where drip data doesn't migrate.
 
 ---
 

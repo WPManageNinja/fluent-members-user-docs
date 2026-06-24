@@ -110,7 +110,7 @@ Cancelling a sub-member only ends *this specific membership*. Their WordPress ac
 
 ## What happens when the parent cancels
 
-See [Corporate Memberships → Cascade](../../levels/corporate-memberships#cascade). Short version: every sub-member's row mirrors the parent's new status (Cancelled / Expired / Suspended). The team plan ends as a single unit — but the underlying lifecycle hooks fire **once per child**, not once for the whole team, so CRMs and analytics subscribed to those hooks will see N+1 events on a 10-seat cancel.
+See [Corporate Memberships → Cascade](../../levels/corporate-memberships#cascade). Short version: every sub-member's row mirrors the parent's new status (Cancelled / Expired / Suspended). The team plan ends as a single unit, but the underlying lifecycle hooks fire **once per child**, not once for the whole team, so CRMs and analytics subscribed to those hooks will see N+1 events on a 10-seat cancel.
 
 ---
 

@@ -2,7 +2,7 @@
 
 The version history for Fluent Members and Fluent Members Pro. Most recent first.
 
-## 1.0.0: Initial release
+## Version 1.0.0: Initial release
 
 The first stable release of Fluent Members.
 

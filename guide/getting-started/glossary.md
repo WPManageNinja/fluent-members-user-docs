@@ -14,11 +14,11 @@ This glossary defines common terms used throughout the Fluent Members documentat
 
 ## B
 
-**Billing:** The collective term for all financial activity on a membership — charges, renewals, refunds, and payment method updates. Billing history is visible in the Transactions screen for Pro users. See [Transactions](/guide/transactions/).
+**Billing:** The collective term for all financial activity on a membership, charges, renewals, refunds, and payment method updates. Billing history is visible in the Transactions screen for Pro users. See [Transactions](/guide/transactions/).
 
 **Block Email Editor (Pro):** A visual editor that lets you design email notification templates using Gutenberg blocks instead of a plain text area. Build emails from paragraphs, images, and buttons, then preview them before saving. See [Email Notifications](/guide/settings/email-configuration/email-notifications).
 
-**Block-Level Protection:** Content restriction that targets a single Gutenberg block inside a post rather than the entire post. Blocked blocks are completely removed from the page — not just hidden — so non-members cannot see the content even in the page source. See [Gutenberg Block: Configuring](/guide/access-groups/gutenberg-block/configuring).
+**Block-Level Protection:** Content restriction that targets a single Gutenberg block inside a post rather than the entire post. Blocked blocks are completely removed from the page, not just hidden, so non-members cannot see the content even in the page source. See [Gutenberg Block: Configuring](/guide/access-groups/gutenberg-block/configuring).
 
 ## C
 
@@ -100,7 +100,7 @@ This glossary defines common terms used throughout the Fluent Members documentat
 
 **MembershipUser:** The internal record that ties a WordPress user to a Membership Level. When documentation or error messages refer to a "membership user," they mean this record, not the WordPress user account itself. See [Member Detail](/guide/members/detail).
 
-**Merge Tag:** A placeholder in email templates — for example `{{user_name}}` or `{{membership_level}}` — that Fluent Members replaces with real member data at the time of sending. See [Email Merge Tags](/reference/email-merge-tags).
+**Merge Tag:** A placeholder in email templates, for example `{{user_name}}` or `{{membership_level}}`, that Fluent Members replaces with real member data at the time of sending. See [Email Merge Tags](/reference/email-merge-tags).
 
 **Migration:** The process of importing members, levels, and subscriptions from another membership plugin (Paid Memberships Pro, MemberPress, or Restrict Content Pro) into Fluent Members using the built-in migration wizard. See [Migration: Overview](/guide/settings/migration/).
 
@@ -130,7 +130,7 @@ This glossary defines common terms used throughout the Fluent Members documentat
 
 **Pending:** A membership status that means a payment has been started but not yet confirmed. The member has no access while pending; access is granted once the payment provider confirms payment. See [Membership Statuses](/reference/membership-statuses).
 
-**Pricing Plan:** One purchasing option attached to a Membership Level — for example a monthly plan or an annual plan. Each plan specifies the payment provider, price, billing interval, and whether a free trial is offered. See [Pricing: Native Payment](/guide/levels/pricing-native).
+**Pricing Plan:** One purchasing option attached to a Membership Level, for example a monthly plan or an annual plan. Each plan specifies the payment provider, price, billing interval, and whether a free trial is offered. See [Pricing: Native Payment](/guide/levels/pricing-native).
 
 **Provider:** The system that created a membership record for example FluentCart, WooCommerce, Fluent Forms, Paymattic, native Stripe, or a manual admin assignment. See [Adding a Membership Manually](/guide/members/adding-manually).
 
@@ -138,9 +138,9 @@ This glossary defines common terms used throughout the Fluent Members documentat
 
 ## R
 
-**Recurring Billing:** A payment pattern where a member is automatically charged on a set schedule — monthly, annually, or otherwise for as long as their subscription is active. Requires WooCommerce Subscriptions or Fluent Members Pro with Stripe. See [Transactions](/guide/transactions/).
+**Recurring Billing:** A payment pattern where a member is automatically charged on a set schedule, monthly, annually, or otherwise for as long as their subscription is active. Requires WooCommerce Subscriptions or Fluent Members Pro with Stripe. See [Transactions](/guide/transactions/).
 
-**Redirect:** An Unauthorized Access action that silently sends non-members to a different page — such as a pricing page or login page instead of showing a restriction message on the current page. See [Unauthorized Access](/guide/access-groups/unauthorized-access).
+**Redirect:** An Unauthorized Access action that silently sends non-members to a different page, such as a pricing page or login page instead of showing a restriction message on the current page. See [Unauthorized Access](/guide/access-groups/unauthorized-access).
 
 **REST API Protection:** Automatic blocking of member-only content in WordPress REST API responses. Non-members who request a protected post through the API receive an error response instead of the content, preventing API-based content leaks. See [Protected Content](/guide/access-groups/protected-content).
 

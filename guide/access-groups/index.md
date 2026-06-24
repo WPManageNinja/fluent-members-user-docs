@@ -20,7 +20,7 @@ This page maps the **Access Groups** screen. The pages under it walk through eac
 **Before we start:** Read the [Levels Overview](/guide/levels/) so you understand what an Access Group attaches to.
 
 ::: tip Drip rules live on the Level, not the Group
-You might expect Content Drip to be configured here, since the drip rule decides *when* protected content appears. It isn't — drip rules are stored on the Level (`level.settings.drip_rules`) and evaluated against the member's `start_date` on that Level. See [Content Drip](/guide/levels/content-drip) for the configuration page.
+You might expect Content Drip to be configured here, since the drip rule decides *when* protected content appears. It isn't, drip rules are stored on the Level (`level.settings.drip_rules`) and evaluated against the member's `start_date` on that Level. See [Content Drip](/guide/levels/content-drip) for the configuration page.
 :::
 
 ---
@@ -49,7 +49,7 @@ When you create or open a Group, the edit page has these editable sections:
 | Section                    | What it does                                                                  |
 |----------------------------|--------------------------------------------------------------------------------|
 | **Basic Information**      | Title, description, status.                                                   |
-| **Protected Content**      | The *Apply Restriction To* dropdown — what content this Group covers.         |
+| **Protected Content**      | The *Apply Restriction To* dropdown: what content this Group covers.         |
 | **Unauthorized Access**    | What non-members see (redirect, message, partial, login, hide).               |
 | **Active Levels**          | Multi-select for which Levels grant access to this Group.                     |
 
@@ -59,7 +59,7 @@ When you create or open a Group, the edit page has these editable sections:
 There's no per-section Save. A single **Save** button appears in the top-right when you've made unsaved changes; it saves the whole page at once.
 :::
 
-The **Active Levels** multi-select is the UI for the `fmem_access_group_membership_levels` pivot table — the same join you can write from the Level side via the Level's *Access Group* tab. Either side works; pick whichever matches how you're thinking about the change. See [Attaching Access Groups](/guide/levels/attaching-access-groups) for the Level-side flow.
+The **Active Levels** multi-select is the UI for the `fmem_access_group_membership_levels` pivot table, the same join you can write from the Level side via the Level's *Access Group* tab. Either side works; pick whichever matches how you're thinking about the change. See [Attaching Access Groups](/guide/levels/attaching-access-groups) for the Level-side flow.
 
 ---
 
@@ -81,10 +81,10 @@ A Group is a bag of "things to protect" + a fallback action. Levels are the keys
 ## The order to set things up
 
 1. **Create the Group** with a title and Active status.
-2. **Protected Content** — pick what's inside the bag (all posts, all pages, a specific category, a FluentCart product…).
-3. **Unauthorized Access** — decide what non-members see.
-4. **Active Levels** — pick which Levels can unlock the bag (or do this from the Level side via [Attaching Access Groups](/guide/levels/attaching-access-groups)).
-5. *(Optional, configured on the Level)* **[Content Drip](/guide/levels/content-drip)** — schedule when each item appears for new members.
+2. **Protected Content**: pick what's inside the bag (all posts, all pages, a specific category, a FluentCart product…).
+3. **Unauthorized Access**: decide what non-members see.
+4. **Active Levels**: pick which Levels can unlock the bag (or do this from the Level side via [Attaching Access Groups](/guide/levels/attaching-access-groups)).
+5. *(Optional, configured on the Level)* **[Content Drip](/guide/levels/content-drip)**: schedule when each item appears for new members.
 
 You can do these in any order, but they're listed in the order most people find easiest.
 
