@@ -14,7 +14,7 @@ See the full chain in the [Chain Map](/reference/chain-map).
 - Where the Quick Actions, Latest Members, and Expiring Soon cards come from.
 - Which numbers are safe to check daily vs weekly.
 
-**Before we start:** This page assumes Fluent Members is installed. If it's not, see [Installation](./installation).
+**Before we start:** This page assumes Fluent Members is installed. If it's not, see [Installation](/guide/getting-started/installation).
 
 ![Dashboard, full view](/screenshots/dashboard.webp)
 
@@ -26,8 +26,8 @@ The top row of the Dashboard shows four cards. These are the numbers most worth 
 |---------------------|--------------------------------------------------------------------------------|
 | **Total Members**   | Distinct WordPress users who hold at least one membership row (any status).    |
 | **Active Members**  | Distinct WordPress users with at least one membership in `active` or `trial`.  |
-| **Access Groups**   | All [Access Groups](/guide/glossary) you've created, both active and inactive. |
-| **Active Levels**   | [Membership Levels](/guide/glossary) whose status is **Active**.           |
+| **Access Groups**   | All [Access Groups](/guide/getting-started/glossary) you've created, both active and inactive. |
+| **Active Levels**   | [Membership Levels](/guide/getting-started/glossary) whose status is **Active**.           |
 
 ::: tip In plain language
 *Total Members* counts people. *Active Members* counts people with live access. The gap between them is your churn pile, cancelled, expired, suspended.
@@ -117,9 +117,9 @@ With **Fluent Members Pro** installed, the Dashboard adds a **Transactions** ent
 
 ## What's next?
 
-- **→ [Levels, Overview](./levels/)**: start building your first paid (or free) plan.
-- **→ [Access Groups, Overview](./access-groups/)**: group the content you'll protect.
+- **→ [Levels, Overview](/guide/levels/)**: start building your first paid (or free) plan.
+- **→ [Access Groups, Overview](/guide/access-groups/)**: group the content you'll protect.
 
 **Recommended reading:**
 - [Membership Statuses](/reference/membership-statuses): what `active`, `trial`, etc. each mean.
-- [Glossary](/guide/glossary): the vocabulary.
+- [Glossary](/guide/getting-started/glossary): the vocabulary.

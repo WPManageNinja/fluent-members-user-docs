@@ -99,11 +99,11 @@ The Pro add-on installs the same way (Method 1 isn't available for Pro, use Meth
 :::
 
 ::: warning Plugin conflict check
-Some caching plugins and security plugins can interfere with Fluent Members' admin interface. If the dashboard looks broken (blank panels, missing menus), try temporarily disabling your caching plugin, clear your browser cache, and reload. If problems persist, see [Troubleshooting](../reference/troubleshooting.md).
+Some caching plugins and security plugins can interfere with Fluent Members' admin interface. If the dashboard looks broken (blank panels, missing menus), try temporarily disabling your caching plugin, clear your browser cache, and reload. If problems persist, see [Troubleshooting](/reference/troubleshooting).
 :::
 
 ## What's next?
 
 You've got Fluent Members installed. Nice work.
 
-The fastest way to understand how everything fits together is the **[Quick Start guide](./quick-start.md)**, it walks you through building a real membership site from scratch in about 10 minutes, using our example persona Sara the yoga coach.
+The fastest way to understand how everything fits together is the **[Quick Start guide](/guide/getting-started/quick-start)**, it walks you through building a real membership site from scratch in about 10 minutes, using our example persona Sara the yoga coach.

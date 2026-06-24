@@ -41,4 +41,4 @@ This page will fill out as releases ship. Refer to the plugin's `readme.txt` (un
 
 **What's next?**
 - [FAQ](/reference/faq): common questions.
-- [Quick Start](/guide/quick-start): get a site running in 10 minutes.
+- [Quick Start](/guide/getting-started/quick-start): get a site running in 10 minutes.

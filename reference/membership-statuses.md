@@ -87,5 +87,5 @@ The status vocabulary is also exposed to your code via `MembershipService::getSt
 
 **What's next?**
 - [Cancelling a Membership](/guide/members/portal/cancelling): the portal-side flow.
-- [Glossary](/guide/glossary): definitions for everything else.
+- [Glossary](/guide/getting-started/glossary): definitions for everything else.
 - [Member Portal, What Members See](/guide/members/portal/what-members-see): how statuses surface to the member.

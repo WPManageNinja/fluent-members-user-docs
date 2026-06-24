@@ -116,4 +116,4 @@ Then she opens the **Pricing** tab and adds two Pricing Plans (Monthly at $19, A
 
 **Recommended reading:**
 - [🔒 Pro · Corporate Memberships](./corporate-memberships): the full Corporate-only workflow.
-- [Glossary](/guide/glossary): terms used here.
+- [Glossary](/guide/getting-started/glossary): terms used here.

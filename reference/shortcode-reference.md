@@ -91,6 +91,6 @@ Fluent Members also ships **one** Gutenberg block, `fluent-members/access-group`
 ---
 
 **What's next?**
-- [Quick Start](/guide/quick-start): see both shortcodes in action.
+- [Quick Start](/guide/getting-started/quick-start): see both shortcodes in action.
 - [The Access Group Block](/guide/access-groups/gutenberg-block/inserting): the block-editor equivalent.
 - [Member Portal Setup](/guide/members/portal/setup): where `[fluent_member_portal]` belongs.

@@ -102,5 +102,5 @@ Always test in a default theme (Twenty Twenty-Five) with all other plugins deact
 
 **What's next?**
 - [FAQ](/reference/faq): quick yes/no answers.
-- [Glossary](/guide/glossary): terms.
+- [Glossary](/guide/getting-started/glossary): terms.
 - [Member Portal Setup](/guide/members/portal/setup): sanity-check your portal setup.

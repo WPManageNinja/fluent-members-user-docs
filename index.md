@@ -8,21 +8,21 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /guide/introduction
+      link: /guide/getting-started/introduction
     - theme: alt
       text: Reference
-      link: /guide/glossary
+      link: /guide/getting-started/glossary
 
 features:
   - icon: "🚀"
     title: Getting Started
     details: Install, configure, and ship your first Level in under 10 minutes, the Quick Start walks Sara through a real example.
-    link: /guide/introduction
+    link: /guide/getting-started/introduction
     linkText: Start here
   - icon: "📊"
     title: Dashboard
     details: Read the four headline stats, the activity charts, and the side cards at a glance.
-    link: /guide/dashboard
+    link: /guide/dashboard/dashboard
     linkText: Tour the dashboard
   - icon: "🎟️"
     title: Levels
@@ -52,6 +52,6 @@ features:
   - icon: "📘"
     title: Reference
     details: Glossary, statuses, shortcodes, merge tags, FAQ, troubleshooting, and developer hooks.
-    link: /guide/glossary
+    link: /guide/getting-started/glossary
     linkText: Look it up
 ---

@@ -101,4 +101,4 @@ Sara uses different Actions for different content:
 **Recommended reading:**
 - [Partial Content Lock](/guide/settings/partial-content-lock): the soft-paywall styling.
 - [Login Popup](/guide/settings/login-popup): the popup styling.
-- [Glossary](/guide/glossary): terms.
+- [Glossary](/guide/getting-started/glossary): terms.

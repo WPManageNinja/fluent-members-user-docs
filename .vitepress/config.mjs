@@ -17,7 +17,7 @@ export default defineConfig({
 
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Guide', link: '/guide/introduction' },
+      { text: 'Guide', link: '/guide/getting-started/introduction' },
       { text: 'Reference', link: '/reference/chain-map' },
       { text: 'Website', link: 'https://fluentmembers.com' }
     ],
@@ -28,17 +28,17 @@ export default defineConfig({
           text: 'Getting Started',
           collapsed: false,
           items: [
-            { text: 'What is Fluent Members?', link: '/guide/introduction' },
-            { text: 'Installation', link: '/guide/installation' },
-            { text: 'Quick Start', link: '/guide/quick-start' },
-            { text: 'Fluent Members Glossary', link: '/guide/glossary' }
+            { text: 'What is Fluent Members?', link: '/guide/getting-started/introduction' },
+            { text: 'Installation', link: '/guide/getting-started/installation' },
+            { text: 'Quick Start', link: '/guide/getting-started/quick-start' },
+            { text: 'Fluent Members Glossary', link: '/guide/getting-started/glossary' }
           ]
         },
         {
           text: 'Dashboard',
           collapsed: false,
           items: [
-            { text: 'Reading the Dashboard', link: '/guide/dashboard' }
+            { text: 'Reading the Dashboard', link: '/guide/dashboard/dashboard' }
           ]
         },
         {

@@ -86,7 +86,7 @@ Sara wants to email anyone whose membership lapsed last month:
 
 1. Opens **Members**.
 2. Clicks **Expired** tab.
-3. Sorts by Registered to roughly approximate sign-up date (1.0 doesn't filter by `expires_at` directly here, that view lives on the [Dashboard's Expiring Soon card](../dashboard)).
+3. Sorts by Registered to roughly approximate sign-up date (1.0 doesn't filter by `expires_at` directly here, that view lives on the [Dashboard's Expiring Soon card](/guide/dashboard/dashboard)).
 4. Notes the emails, drops a personal note to each.
 
 For a more automated approach she'd use [FluentCRM](https://fluentcrm.com) listening on the `fluent_members/membership_expired` action.

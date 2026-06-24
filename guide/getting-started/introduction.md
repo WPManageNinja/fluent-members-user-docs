@@ -56,19 +56,19 @@ Every Fluent Members site is built on three concepts. It's worth understanding t
 
 ### 1. Access Groups, "the locked rooms"
 
-An [Access Group](../guide/glossary.md#access-group) is a collection of content you want to protect. You might have an Access Group called *Premium Articles* that contains 50 posts. Or one called *Private Lessons* that contains a custom post type.
+An [Access Group](/guide/getting-started/glossary#access-group) is a collection of content you want to protect. You might have an Access Group called *Premium Articles* that contains 50 posts. Or one called *Private Lessons* that contains a custom post type.
 
 Think of an Access Group as the **room**. The Membership Level is the **key**.
 
 ### 2. Membership Levels, "the plans"
 
-A [Membership Level](../guide/glossary.md#membership-level) is a plan you offer your visitors. *Free*, *Pro*, *Annual*, *Team*, whatever makes sense for your business. Each Level unlocks one or more Access Groups.
+A [Membership Level](/guide/getting-started/glossary#membership-level) is a plan you offer your visitors. *Free*, *Pro*, *Annual*, *Team*, whatever makes sense for your business. Each Level unlocks one or more Access Groups.
 
 Levels can be individual (one person) or corporate (a team with multiple seats).
 
 ### 3. Members, "the people"
 
-A [Member](../guide/glossary.md#member) is a WordPress user who has been assigned a Membership Level. When someone buys your Pro plan, Fluent Members creates a member record, links them to the Pro Level, and immediately grants them access to everything that Level unlocks.
+A [Member](/guide/getting-started/glossary#member) is a WordPress user who has been assigned a Membership Level. When someone buys your Pro plan, Fluent Members creates a member record, links them to the Pro Level, and immediately grants them access to everything that Level unlocks.
 
 ## How it fits with your existing tools
 
@@ -119,10 +119,10 @@ It's helpful to know the limits:
 
 If you're ready to get started, the next step is installing the plugin.
 
-**→ [Installing Fluent Members](./installation.md)**, takes about 3 minutes.
+**→ [Installing Fluent Members](/guide/getting-started/installation)**, takes about 3 minutes.
 
-Once it's installed, we recommend the **[Quick Start guide](./quick-start.md)**, it walks you through building a complete basic membership site from scratch in about 10 minutes.
+Once it's installed, we recommend the **[Quick Start guide](/guide/getting-started/quick-start)**, it walks you through building a complete basic membership site from scratch in about 10 minutes.
 
 **Related reading:**
-- [Core Concepts explained](./levels/): a deeper look at Levels, Groups, and Members
-- [Glossary](../guide/glossary.md): plain-English definitions for every term in the docs
+- [Core Concepts explained](/guide/levels/): a deeper look at Levels, Groups, and Members
+- [Glossary](/guide/getting-started/glossary): plain-English definitions for every term in the docs

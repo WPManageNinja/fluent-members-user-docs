@@ -44,7 +44,7 @@ This glossary defines common terms used throughout the Fluent Members documentat
 
 ## D
 
-**Dashboard:** The overview screen in the Fluent Members admin area showing at-a-glance statistics: total members, active memberships, recent signups, revenue summary (Pro), and quick-access links to common tasks. See [Reading the Dashboard](/guide/dashboard).
+**Dashboard:** The overview screen in the Fluent Members admin area showing at-a-glance statistics: total members, active memberships, recent signups, revenue summary (Pro), and quick-access links to common tasks. See [Reading the Dashboard](/guide/dashboard/dashboard).
 
 **Drip Rule:** A single time-gate entry within a Membership Level's drip schedule. Each drip rule points at a specific piece of content (a post, a category, an Access Group) and defines how many days after the member's `start_date` that content becomes accessible. See [Content Drip](/guide/levels/content-drip).
 

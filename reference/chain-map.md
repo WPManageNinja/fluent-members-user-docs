@@ -16,7 +16,7 @@ If you ever land on a page and think *"OK, but what comes next?"* — find the c
 
 The admin-onboarding chain. You just installed Fluent Members and want it doing something real.
 
-1. [Installation](/guide/installation)
+1. [Installation](/guide/getting-started/installation)
 2. [General Settings](/guide/settings/general) — pick currency, exclude public content, generate portal page
 3. [Mailing Settings](/guide/settings/email-configuration/mailing-settings) — From name, From email, footer
 4. *(Optional, Pro)* [Stripe Setup](/guide/settings/payment-settings/stripe-setup)
@@ -77,7 +77,7 @@ You're trying to figure out why non-members see (or don't see) what you intended
 
 How an admin manages a single member from a Dashboard signal.
 
-1. [Dashboard](/guide/dashboard) shows a signal (Expiring Soon entry, cancellation spike, etc.)
+1. [Dashboard](/guide/dashboard/dashboard) shows a signal (Expiring Soon entry, cancellation spike, etc.)
 2. [Members list](/guide/members/) → search or filter
 3. [Member Detail](/guide/members/detail) → Memberships table
 4. Row kebab → [Suspend or Cancel](/guide/members/suspending-and-cancelling) *or* [Refund (Pro)](/guide/transactions/refunds)
@@ -236,7 +236,7 @@ If you want a page-by-chain index instead, every guide page lists its chain(s) i
 
 ## Reference reading
 
-- [Glossary](/guide/glossary)
+- [Glossary](/guide/getting-started/glossary)
 - [Membership Statuses](/reference/membership-statuses)
 - [Developer Hooks](/reference/developer-hooks)
 - [Troubleshooting](/reference/troubleshooting)

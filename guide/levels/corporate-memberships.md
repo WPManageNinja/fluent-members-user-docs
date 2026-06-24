@@ -160,4 +160,4 @@ That last step is the trade-off of Corporate: simplicity for the buyer, single p
 
 **Recommended reading:**
 - [Membership Statuses](/reference/membership-statuses): what each status does, especially cascade rules.
-- [Glossary, Corporate Membership](/guide/glossary): short definition.
+- [Glossary, Corporate Membership](/guide/getting-started/glossary): short definition.
