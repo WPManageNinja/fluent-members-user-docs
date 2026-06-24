@@ -1,107 +1,127 @@
-# The Fluent Members Dashboard
+# Reading the Dashboard
 
-Your membership control room — a bird's-eye view of every moving part in the plugin. Open it first each day.
+The first screen you see in **Fluent Members → Dashboard**. Four numbers up top, three charts in the middle, three side cards on the right, together they tell you how your membership business is doing right now.
 
-**Here's what you'll learn:**
-- What each Dashboard stat actually counts
-- How to read the growth chart
-- Which panels to check daily vs weekly
-- Where the Dashboard data comes from (so you trust it)
+::: info Part of Chain 4: Day-to-day admin · step 1 of 6
+**Next:** [Members List](/guide/members/)
 
-**Before we start:** This page assumes Fluent Members is installed and active. If it's not, start with [Installation](./installation.md).
-
-## Opening the Dashboard
-
-Click **Fluent Members** in your WordPress sidebar. You land on the Dashboard by default.
-
-On a brand-new install, most numbers will be `0` — that's expected. As members join and content is protected, the dashboard fills in.
-
-![Fluent Members dashboard overview](/images/dashboard/dashboard-overview.png)
-
-## The four key stats (top row)
-
-The dashboard's top row shows four cards. These are the vital signs of your membership business.
-
-### Total Members
-The count of distinct WordPress users who have at least one active membership. "Active" means their status is `active` or `trial`.
-
-A member with two plans is counted once, not twice.
-
-### Active Memberships
-The total number of individual membership records across the site with `active` or `trial` status. This number is usually higher than Total Members if people hold multiple plans.
-
-### Membership Levels
-How many Levels you've created, regardless of status. Click the card to jump to the Levels list.
-
-### Access Groups
-How many groups you've set up. Click to jump to Access Groups.
-
-::: tip Daily check
-If you're running a live membership site, glance at Total Members and Active Memberships each morning. Rising? Business is healthy. Flat or dropping? Time to investigate cancellations.
+See the full chain in the [Chain Map](/reference/chain-map).
 :::
 
-## Membership growth chart
+**Here's what you'll learn:**
+- What each of the four headline stats counts (and what it doesn't).
+- How to read the two charts and the donut.
+- Where the Quick Actions, Latest Members, and Expiring Soon cards come from.
+- Which numbers are safe to check daily vs weekly.
 
-Below the stat cards sits a line chart showing new memberships created per day over the selected range (default: last 30 days).
+**Before we start:** This page assumes Fluent Members is installed. If it's not, see [Installation](./installation).
 
-**How to read it:**
-- Each point = new memberships created that day (not renewals or state changes).
-- The y-axis is absolute count, not cumulative.
-- Hover any point to see the exact number for that date.
+![Dashboard, full view](/screenshots/dashboard.webp)
 
-Use the date-range filter at the top to change the window (7 days, 30 days, 90 days, 1 year).
+---
 
-## Latest Levels
+## The four headline stats
 
-A panel showing the most recently created Membership Levels. Handy as a quick link to jump into a Level you're currently setting up.
+The top row of the Dashboard shows four cards. These are the numbers most worth glancing at.
 
-Click any level title to open it for editing.
+| Card                | What it counts                                                                 |
+|---------------------|--------------------------------------------------------------------------------|
+| **Total Members**   | Distinct WordPress users who hold at least one membership row (any status).    |
+| **Active Members**  | Distinct WordPress users with at least one membership in `active` or `trial`.  |
+| **Access Groups**   | All [Access Groups](/reference/glossary) you've created, both active and inactive. |
+| **Active Levels**   | [Membership Levels](/reference/glossary) whose status is **Active**.           |
 
-## Latest Members
+::: tip In plain language
+*Total Members* counts people. *Active Members* counts people with live access. The gap between them is your churn pile, cancelled, expired, suspended.
+:::
 
-The most recent members — roughly the last 5 signups. Each row shows:
-- Member name + email
-- Membership level
-- Status badge
-- Join date
+---
 
-Click the row to open that member's full record. Great for spot-checking that a signup went through as expected.
+## Membership Activity (bar chart)
 
-## Expiring Soon
+A bar chart, one bar per month for the past several months. Each month splits into two colours: **New Signups** (the count of memberships created that month) and **Cancellations** (the count of memberships flipped to `cancelled` that month).
 
-Memberships whose expiry date is within the next 30 days. A warm-up for your renewal work:
-- Proactively reach out to these members
-- Confirm their payment method on file is valid
-- Send a personal thank-you before they renew
+What to look at:
+- **A growing signups bar** with a flat or smaller cancellations bar = healthy growth.
+- **Cancellations climbing month over month** = something to investigate. Pricing change? Content issue? Payment failures?
+- Renewals are NOT counted as new signups, those go quietly through the cron and Stripe webhooks.
 
-Empty panel = no one expiring soon. Congratulations.
+---
 
-## Where the dashboard data comes from
+## Membership Trends (line chart)
 
-For the curious: every number on the Dashboard comes from your WordPress database, specifically the Fluent Members tables:
-- `fmem_membership_users` → member counts and statuses
-- `fmem_membership_levels` → Levels count
-- `fmem_access_groups` → Access Groups count
-- Calculations for the chart query the `created_at` column of the membership users table.
+A line chart, two coloured series across time: **Active** and **Suspended**. This is the *running total* at each point in time, not new events.
 
-The Dashboard queries run on page load — there's no cache. If you just added a member, the numbers update on refresh.
+It's the right place to see slow trends, is your active base steadily growing, or has it plateaued? Are suspensions spiking (often a sign of a billing problem)?
 
-## A real example — Sara's morning routine
+---
 
-Sara opens the Dashboard every morning with her coffee:
+## Membership Recap (donut)
 
-1. **Total Members** is up by 3 from yesterday. Three new signups — nice.
-2. **Active Memberships** went up by 4. Which means one existing member upgraded to a second plan — worth a look.
-3. **Expiring Soon** has 2 entries. Sara drops them a personal email thanking them for their year with her.
-4. **Membership Growth** chart is flat for the past week. Time to schedule a promotional post.
+A donut chart showing how your Total Member count splits across **levels**. Each slice is a level (e.g. *Pro Plan*, *Premium Plan*, *Starter*) with a member count next to it. The centre shows your **Total Member** number.
 
-Total time: 3 minutes.
+Useful for product decisions: "Is most of my base on the cheap tier, or on the premium tier?"
+
+Click **View More** at the bottom of the card to jump to the full Levels list.
+
+---
+
+## Side column, Quick Actions, Latest Members, Expiring Soon
+
+### Quick Actions
+A small shortcut card on the right. Three buttons:
+- **Add Level**: opens the *Add Membership Level* modal (same as **Levels → Add New Level**).
+- **Add Access Group**: opens the *Create Access Group* modal.
+- **Settings**: jumps to Settings.
+
+### Latest Members
+The five most-recently registered members. Each row has an avatar, name, and email. Click any row to open that member's detail page.
+
+### Expiring Soon
+Members whose `expires_at` falls within the upcoming window (default 30 days). Empty state: *"No recent expirations."*
+
+::: tip Use this list
+When the Expiring Soon card has entries, those are the people most worth a personal nudge, a thank-you email, a renewal reminder, or a check that their payment method on file is still good.
+:::
+
+---
+
+## Daily vs weekly, what to actually check
+
+| Cadence | What to check                                                       |
+|---------|----------------------------------------------------------------------|
+| Daily   | *Total Members* and *Active Members* deltas. *Latest Members* feed.  |
+| Weekly  | *Membership Activity* bars, is the cancel column growing?           |
+| Monthly | *Membership Recap* donut, is the mix shifting between levels?       |
+
+---
+
+## Where the numbers come from
+
+For the curious, the Dashboard reads directly from your WordPress database (the `fmem_membership_users`, `fmem_membership_levels`, `fmem_access_groups` tables). There is no cache; refreshing the page always re-queries.
+
+::: info Add-on stats appear when Pro is active
+With **Fluent Members Pro** installed, the Dashboard adds a **Transactions** entry to the top menu and surfaces a richer Membership Recap. The four headline stats are the same in free and Pro.
+:::
+
+---
 
 ## Things that trip people up
 
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| Total Members doesn't match my WordPress user count | Normal — TM counts only users with an active membership, not all site users | If you want all users, see the WP Users screen |
-| Growth chart is empty but I have members | All your members joined before the selected date range | Widen the range |
-| Expiring Soon shows members I've already renewed | Status didn't update after renewal payment | Check the payment provider's subscription status; see [Troubleshooting](../reference/troubleshooting.md) |
-| Dashboard shows a stale count after I deleted a member | Refresh the page — no cache, but the browser shows the previous view until reload | Hit refresh |
+| What you're seeing                                  | What's probably going on                                                | Quickest fix |
+|------------------------------------------------------|-------------------------------------------------------------------------|---|
+| *Total Members* doesn't match my WP user count       | Normal, TM counts only users with a membership row, not all site users. | Look at WordPress → Users for the full list. |
+| Charts empty even though I have members              | All your members joined before the chart's window.                       | The chart shows recent activity, not all-time. |
+| *Active Members* stays the same after I add a member | The new member's status isn't `active` or `trial` yet.                  | Check the member's detail, `pending` doesn't count. |
+| *Expiring Soon* shows people I've already renewed    | Renewal didn't flip the local row's `expires_at`.                        | See [Troubleshooting](/reference/troubleshooting). |
+
+---
+
+## What's next?
+
+- **→ [Levels, Overview](./levels/)**: start building your first paid (or free) plan.
+- **→ [Access Groups, Overview](./access-groups/)**: group the content you'll protect.
+
+**Recommended reading:**
+- [Membership Statuses](/reference/membership-statuses): what `active`, `trial`, etc. each mean.
+- [Glossary](/reference/glossary): the vocabulary.

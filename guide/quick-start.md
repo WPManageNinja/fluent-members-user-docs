@@ -1,6 +1,6 @@
-# Quick Start — Build Your First Membership Site in 10 Minutes
+# Quick Start - Build Your Membership Site
 
-Follow Sara's story to set up a working membership site from scratch — Levels, Access Groups, protection, and a member portal.
+Follow Sara's story to set up a working membership site from scratch, Levels, Access Groups, protection, and a member portal.
 
 We'll follow **Sara**, a yoga instructor who wants to:
 - Keep her intro videos free for everyone
@@ -16,10 +16,10 @@ By the end of this guide, Sara's site will have protected content, a pricing pag
 - A page with the membership pricing shortcode
 - A member portal page
 
-**Before we start:** Fluent Members needs a payment provider to collect payments. For this Quick Start, we'll assume you have [FluentCart](./integrations/fluent-cart.md) or [WooCommerce](./integrations/woocommerce.md) installed. If you don't have one yet, you can still follow the steps. You just won't be able to process real payments at the end.
+**Before we start:** Fluent Members can collect payments three ways, through a payment plugin like [FluentCart](./levels/pricing-paywalls), through [WooCommerce](./levels/pricing-paywalls) *(Pro)*, or via the built-in [Stripe checkout](./transactions/) *(Pro)* and Paypal. For this Quick Start, we'll keep it simple and assume you have FluentCart installed, but the steps work the same way regardless. If you have nothing installed yet, you can still follow along. You just won't process real payments at the end.
 
 
-## Step 1 — Create an Access Group
+## Step 1: Create an Access Group
 
 The first thing we'll build is the **Access Group**. This is where we define *which content* is protected.
 
@@ -36,18 +36,16 @@ Here's how Sara does it:
 4. Click **Create**.
    *The group is saved and appears in the list. We'll add the restriction rules in Step 3, once we have a Level to connect it to.*
 
-![Create Access Group form](/images/quick-start/create-access-group.png)
-
 
 ::: tip 
-You've created your first Access Group. It doesn't protect anything yet — that's Step 3. But the group is ready.
+You've created your first Access Group. It doesn't protect anything yet, that's Step 3. But the group is ready.
 :::
 
 ---
 
-## Step 2 — Create a Membership Level
+## Step 2: Create a Membership Level
 
-Now let's create the plan Sara will sell. A [Membership Level](./core-concepts/membership-levels.md) is the product the thing a visitor buys. When they buy it, they get access to the Access Groups attached to it.
+Now let's create the plan Sara will sell. A [Membership Level](./levels/) is the product the thing a visitor buys. When they buy it, they get access to the Access Groups attached to it.
 
 1. In your sidebar, go to **Fluent Members → Levels**.
 2. Click **Add New Level**.
@@ -60,15 +58,13 @@ Now let's create the plan Sara will sell. A [Membership Level](./core-concepts/m
 4. Click **Create**.
    *The level is saved. You'll see it appear in the Levels list.*
 
-![Create Membership Level form](/images/quick-start/create-membership-level.png)
-
 ::: info What about pricing?
-Pricing is managed inside your payment plugin (FluentCart, WooCommerce, and so on), not inside Fluent Members itself. We'll link the payment product to this Level in a moment. For now, the Level is created.
+Pricing lives inside each **Pricing Plan** attached to your Level. You can configure plans that point at FluentCart products, WooCommerce products *(Pro)*, Fluent Forms, Paymattic forms, or native Stripe checkout *(Pro)*. We'll add a plan in the next step. For now, the Level is created.
 :::
 
 ---
 
-## Step 3 — Protect your Content
+## Step 3: Protect your Content
 
 This is where it gets real. We're now going to tell the *Pro Content* Access Group which pages or posts it should protect.
 
@@ -85,14 +81,6 @@ This is where it gets real. We're now going to tell the *Pro Content* Access Gro
 
 The access group now protects all content of the type(s) you selected.
 
-![Access Group restriction rules](/images/quick-start/restriction-rules.png)
-<!-- SCREENSHOT-NEEDED
-Page: WP Admin → Fluent Members → Access Groups → Pro Content → Edit
-State: Restriction Rules section with one rule added (Posts type)
-Highlight: The "Add Rule" area and the action dropdown
-Size: 1440 × 900 viewport
--->
-
 Go open one of the protected pages in a **new incognito window** (where you're not logged in). You should see Sara's custom message instead of the content. That means it's working.
 
 ::: tip Test in Incognito
@@ -101,7 +89,7 @@ Admins always bypass content restrictions that's intentional. To see what a real
 
 ---
 
-## Step 4 — Create a Pricing Page
+## Step 4: Create a Pricing Page
 
 Sara needs a page where visitors can see the Pro Plan price and click to buy. Fluent Members handles this with a shortcode.
 
@@ -124,19 +112,11 @@ First, you'll need a product in your payment provider (FluentCart or WooCommerce
 
 When you visit the page as a logged-out visitor, you'll see a pricing card with a **Subscribe Now** button. That button links to your payment provider's checkout.
 
-![Pricing shortcode frontend](/images/quick-start/pricing-page-frontend.png)
-<!-- SCREENSHOT-NEEDED
-Page: Frontend pricing page as a logged-out visitor
-State: Pricing card rendered with price, subscribe button visible
-Highlight: The pricing card
-Size: 1440 × 900 viewport
--->
-
 ---
 
-## Step 5 — Set up the Member Portal
+## Step 5: Set up the Member Portal
 
-The [Member Portal](./member-portal/setup.md) is the page your members visit to view and manage their memberships. Let's create it.
+The [Member Portal](./members/portal/setup) is the page your members visit to view and manage their memberships. Let's create it.
 
 1. Go to **Pages → Add New**.
 2. Title the page **My Membership** (or whatever you prefer).
@@ -156,11 +136,11 @@ After logging in, members see their membership name, start date, expiry date, an
 
 ---
 
-## Step 6 — Test 
+## Step 6: Test 
 
 Let's check that everything works end-to-end.
 
-1. **Test as a non-member:** Open an incognito window and go to one of Sara's protected lesson pages. You should see her restriction message — not the content.
+1. **Test as a non-member:** Open an incognito window and go to one of Sara's protected lesson pages. You should see her restriction message, not the content.
 2. **Test the pricing page:** Visit the pricing page you created. The Pro Plan card should be visible with a Subscribe button.
 3. **Test the portal as a member:** If you have a test account with an active membership, log in and visit the Member Portal page. Your membership details should appear.
 
@@ -173,15 +153,15 @@ If all three work, Sara's membership site is live.
 You've built a working membership site. Here's what to explore next, in the order most people find useful:
 
 **Go deeper on the features you just used:**
-- [Access Groups in detail](./core-concepts/access-groups.md): Restriction rule types, content dripping, partial previews
-- [Membership Levels in detail](./core-concepts/membership-levels.md): Corporate plans, multiple access groups, status management
-- [Member Portal setup](./member-portal/setup.md): Customising the portal, corporate team management
+- [Access Groups in detail](./access-groups/): Restriction rule types, content dripping, partial previews
+- [Membership Levels in detail](./levels/): Corporate plans, multiple access groups, status management
+- [Member Portal setup](./members/portal/setup): Customising the portal, corporate team management
 
 **Set up payments properly:**
-- [FluentCart integration](./integrations/fluent-cart.md)
-- [WooCommerce integration](./integrations/woocommerce.md)
+- [FluentCart integration](./levels/pricing-paywalls)
+- [WooCommerce integration](./levels/pricing-paywalls)
 
 **Polish the member experience:**
-- [Welcome email](./settings/email-notifications.md): Send an automatic welcome message when someone joins
+- [Welcome email](./settings/email-configuration/email-notifications): Send an automatic welcome message when someone joins
 - [Login Popup](./settings/login-popup.md): Instead of redirecting non-members, show a login popup
-- [Partial Content Preview](./content-protection/partial-content-preview.md): Show a teaser of protected content instead of a hard block
+- [Partial Content Preview](./access-groups/protected-content): Show a teaser of protected content instead of a hard block

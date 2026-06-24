@@ -2,6 +2,14 @@
 
 Get the plugin installed and activated on your WordPress site in about 3 minutes.
 
+::: info Part of Chain 1: First-time site setup · step 1 of 10
+**Next:** [General Settings](/guide/settings/general)
+
+**Also part of:** Chain 10: Migration (step 1 of 6)
+
+See the full chain in the [Chain Map](/reference/chain-map).
+:::
+
 **Here's what you'll learn:**
 - Three ways to install Fluent Members
 - How to activate it after installation
@@ -12,14 +20,14 @@ Get the plugin installed and activated on your WordPress site in about 3 minutes
 
 ## Three ways to install
 
-### Method 1 — Install from the WordPress plugin directory (easiest)
+### Method 1, Install from the WordPress plugin directory (easiest)
 
 This is the fastest way. No file downloading needed.
 
 This method works because Fluent Members is listed in the official WordPress.org plugin directory, so WordPress can find and install it in one click.
 
 1. Log into your WordPress dashboard and go to **Plugins → Add New Plugin**.
-   *You'll see the plugin search screen — WordPress's built-in plugin marketplace.*
+   *You'll see the plugin search screen, WordPress's built-in plugin marketplace.*
 2. In the search box at the top right, type **Fluent Members**.
    *Results appear as you type. Look for the plugin card that says "Fluent Members" with the WPManageNinja author.*
 3. Click **Install Now** on the Fluent Members card.
@@ -27,13 +35,11 @@ This method works because Fluent Members is listed in the official WordPress.org
 4. Click **Activate**.
    *The plugin activates and sets up its database tables automatically. You'll see a new "Fluent Members" menu appear in your sidebar.*
 
-![Install from WordPress plugin directory](/images/installation/install-from-directory.png)
-
 ::: tip Small win
 See **Fluent Members** in your sidebar? You've nailed it. That's the plugin ready to use.
 :::
 
-### Method 2 — Upload a ZIP file manually
+### Method 2, Upload a ZIP file manually
 
 Use this method if you downloaded the ZIP file from WordPress.org (or received it directly).
 
@@ -48,9 +54,8 @@ This approach is handy if your server has limited outbound internet access, or i
 5. Click **Activate Plugin** on the success screen.
    *The plugin is now active.*
 
-![Upload plugin ZIP](/images/installation/upload-plugin-zip.png)
 
-### Method 3 — Manual upload via FTP
+### Method 3, Manual upload via FTP
 
 Use this method if you prefer direct server access, or if the other methods aren't available for some reason.
 
@@ -65,12 +70,12 @@ This is the most hands-on approach. You'll need an FTP client (like [FileZilla](
 6. Find **Fluent Members** in the list and click **Activate**.
 
 ::: info FTP path note
-The full path on most servers is something like `/var/www/html/wp-content/plugins/` — check with your hosting provider if you're unsure.
+The full path on most servers is something like `/var/www/html/wp-content/plugins/`, check with your hosting provider if you're unsure.
 :::
 
 ## What happens when you activate
 
-You don't need to do anything special during activation — Fluent Members handles setup automatically.
+You don't need to do anything special during activation, Fluent Members handles setup automatically.
 
 Here's what happens behind the scenes:
 - Six new database tables are created in your WordPress database (prefixed with `fmem_`). These store your access groups, membership levels, pricing, members, and settings.
@@ -78,36 +83,27 @@ Here's what happens behind the scenes:
 
 Nothing on your existing site changes. Your posts, pages, and theme are untouched.
 
-![Fluent Members in the WordPress sidebar](/images/installation/sidebar-menu.png)
-
 ## Confirming it works
 
 Let's make sure everything is set up correctly before you start configuring.
 
 1. Click **Fluent Members** in your sidebar.
-   *You should land on the Fluent Members Dashboard. On a fresh install, it'll be mostly empty — that's expected.*
-2. Check that the menu has these five items: **Dashboard**, **Levels**, **Access Groups**, **Members**, and **Settings**.
+   *You should land on the Fluent Members Dashboard. On a fresh install, it'll be mostly empty, that's expected.*
+2. Check that the menu has these five items: **Dashboard**, **Levels**, **Access Groups**, **Members**, and **Settings**. (If you also have Fluent Members Pro active, you'll see a sixth item: **Transactions**.)
 3. Click **Settings** and confirm the Settings screen loads without any errors.
 
 If you see those screens, you're fully installed and ready.
+
+::: info Adding Fluent Members Pro
+The Pro add-on installs the same way (Method 1 isn't available for Pro, use Method 2 with the ZIP from your licence portal). Activating Pro creates three more tables (`fmem_membership_orders`, `fmem_membership_subscriptions`, `fmem_membership_transactions`) and adds the **Transactions** sub-menu, refund buttons, and Stripe settings.
+:::
 
 ::: warning Plugin conflict check
 Some caching plugins and security plugins can interfere with Fluent Members' admin interface. If the dashboard looks broken (blank panels, missing menus), try temporarily disabling your caching plugin, clear your browser cache, and reload. If problems persist, see [Troubleshooting](../reference/troubleshooting.md).
 :::
 
-## Things that trip people up
-
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| "Fluent Members" menu doesn't appear after activating | You may not have the Administrator role | Log in with an Administrator account — only admins see the plugin menu |
-| The Dashboard loads but charts are empty | That's normal on a fresh install — no data yet | Start by [creating your first Membership Level](./core-concepts/membership-levels.md) |
-| White screen or fatal error after activation | PHP version conflict | Confirm your server is running PHP 7.4 or higher in **Tools → Site Health** |
-| Plugin won't install: "destination folder already exists" | A partial install is stuck | Delete the `fluent-members` folder in `/wp-content/plugins/` and try again |
-
-Still stuck? Jump to [Troubleshooting](../reference/troubleshooting.md) for a more detailed checklist.
-
 ## What's next?
 
 You've got Fluent Members installed. Nice work.
 
-The fastest way to understand how everything fits together is the **[Quick Start guide](./quick-start.md)** — it walks you through building a real membership site from scratch in about 10 minutes, using our example persona Sara the yoga coach.
+The fastest way to understand how everything fits together is the **[Quick Start guide](./quick-start.md)**, it walks you through building a real membership site from scratch in about 10 minutes, using our example persona Sara the yoga coach.

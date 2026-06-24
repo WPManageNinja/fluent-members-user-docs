@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "Fluent Members"
   text: "Memberships for WordPress"
-  tagline: "Build, protect, and grow your membership site with step-by-step guides and real examples."
+  tagline: "Build, protect, and grow your membership site with step-by-step guides written against the live plugin UI."
   actions:
     - theme: brand
       text: Get Started
@@ -16,32 +16,42 @@ hero:
 features:
   - icon: "🚀"
     title: Getting Started
-    details: Learn what Fluent Members does, install it properly, and launch your first setup in minutes.
+    details: Install, configure, and ship your first Level in under 10 minutes, the Quick Start walks Sara through a real example.
     link: /guide/introduction
     linkText: Start here
-  - icon: "🧩"
-    title: Core Concepts
-    details: Understand Access Groups, Membership Levels, pricing, and corporate memberships without jargon.
-    link: /guide/core-concepts/
-    linkText: Learn the model
+  - icon: "📊"
+    title: Dashboard
+    details: Read the four headline stats, the activity charts, and the side cards at a glance.
+    link: /guide/dashboard
+    linkText: Tour the dashboard
+  - icon: "🎟️"
+    title: Levels
+    details: Membership Levels, Pricing Plans (Native Payment and Paywalls), and Corporate seats.
+    link: /guide/levels/
+    linkText: Build a Level
   - icon: "🔒"
-    title: Content Protection
-    details: Restrict posts, pages, categories, and entire sections with practical copy-paste examples.
-    link: /guide/content-protection/
-    linkText: Protect content
+    title: Access Groups
+    details: Protected Content rules, the five Unauthorized Access actions, Content Drip, and the Gutenberg block.
+    link: /guide/access-groups/
+    linkText: Lock content
   - icon: "👥"
     title: Members & Portal
-    details: Manage members, statuses, upgrades, and member self-service portal experiences.
-    link: /guide/members/managing-members
+    details: List, detail, status reference, manual grants, and the self-service Member Portal, including Pro flows for payment updates and corporate invites.
+    link: /guide/members/
     linkText: Manage members
-  - icon: "🔌"
-    title: Integrations
-    details: Connect FluentCart, WooCommerce, Fluent Forms, Paymattic, FluentCRM, and Fluent Support.
-    link: /guide/integrations/
-    linkText: View integrations
+  - icon: "💳"
+    title: Transactions (Pro)
+    details: The money ledger, Succeeded, Pending, Failed, Refunded. Refunds and subscription cancellation modes.
+    link: /guide/transactions/
+    linkText: See the ledger
+  - icon: "⚙️"
+    title: Settings
+    details: General, Partial Content Lock, Login Popup, Payment Settings (Stripe), Migration from PMPro / MemberPress / Content Restriction Pro, and Email Configuration.
+    link: /guide/settings/general
+    linkText: Configure the site
   - icon: "📘"
     title: Reference
-    details: Jump into glossary terms, shortcode attributes, merge tags, troubleshooting, and FAQ.
+    details: Glossary, statuses, shortcodes, merge tags, FAQ, troubleshooting, and developer hooks.
     link: /reference/glossary
-    linkText: Open reference
+    linkText: Look it up
 ---
