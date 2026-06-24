@@ -31,7 +31,7 @@ export default defineConfig({
             { text: 'What is Fluent Members?', link: '/guide/introduction' },
             { text: 'Installation', link: '/guide/installation' },
             { text: 'Quick Start', link: '/guide/quick-start' },
-            { text: 'Glossary', link: '/guide/glossary' }
+            { text: 'Fluent Members Glossary', link: '/guide/glossary' }
           ]
         },
         {
