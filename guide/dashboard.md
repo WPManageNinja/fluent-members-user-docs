@@ -18,8 +18,6 @@ See the full chain in the [Chain Map](/reference/chain-map).
 
 ![Dashboard, full view](/screenshots/dashboard.webp)
 
----
-
 ## The four headline stats
 
 The top row of the Dashboard shows four cards. These are the numbers most worth glancing at.
