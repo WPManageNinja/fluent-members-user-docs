@@ -18,7 +18,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/introduction' },
-      { text: 'Reference', link: '/reference/glossary' },
+      { text: 'Reference', link: '/reference/chain-map' },
       { text: 'Website', link: 'https://fluentmembers.com' }
     ],
 
@@ -30,7 +30,8 @@ export default defineConfig({
           items: [
             { text: 'What is Fluent Members?', link: '/guide/introduction' },
             { text: 'Installation', link: '/guide/installation' },
-            { text: 'Quick Start', link: '/guide/quick-start' }
+            { text: 'Quick Start', link: '/guide/quick-start' },
+            { text: 'Glossary', link: '/guide/glossary' }
           ]
         },
         {
@@ -117,7 +118,6 @@ export default defineConfig({
           text: 'Reference',
           items: [
             { text: 'Chain Map', link: '/reference/chain-map' },
-            { text: 'Glossary', link: '/reference/glossary' },
             { text: 'Membership Statuses', link: '/reference/membership-statuses' },
             { text: 'Shortcode Reference', link: '/reference/shortcode-reference' },
             { text: 'Email Merge Tags', link: '/reference/email-merge-tags' },

@@ -111,4 +111,4 @@ Non-members see the post normally, with stretch 5 replaced by the fallback actio
 
 **Recommended reading:**
 - [Protected Content, Restriction Types](../protected-content): when you want whole-post protection instead.
-- [Glossary, Access Group block](/reference/glossary).
+- [Glossary, Access Group block](/guide/glossary).

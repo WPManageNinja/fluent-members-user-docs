@@ -123,4 +123,4 @@ She didn't add any drip rules on the *Pro Yoga* Level, so her lessons are availa
 
 **Recommended reading:**
 - [Content Drip](/guide/levels/content-drip): release content over time (configured on the Level).
-- [Glossary](/reference/glossary): terms.
+- [Glossary](/guide/glossary): terms.

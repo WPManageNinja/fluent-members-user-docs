@@ -122,5 +122,5 @@ Buyer side: someone clicks Subscribe → FluentCart cart → Stripe Elements (Fl
 - **→ [Pricing, Native Payment](./pricing-native)**: compare with the built-in path.
 
 **Recommended reading:**
-- [Glossary, Paywall](/reference/glossary): short definition.
+- [Glossary, Paywall](/guide/glossary): short definition.
 - [Membership Statuses](/reference/membership-statuses): what state the new member lands in.

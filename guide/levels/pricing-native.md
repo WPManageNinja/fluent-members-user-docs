@@ -146,4 +146,4 @@ Both attached to her existing *Pro Yoga* Level. On her pricing page, the shortco
 **Recommended reading:**
 - [Pricing, Paywalls](./pricing-paywalls): if you'd rather sell through another plugin.
 - [Stripe Setup](/guide/settings/payment-settings/stripe-setup): connect or troubleshoot Stripe.
-- [Glossary](/reference/glossary): terms used here.
+- [Glossary](/guide/glossary): terms used here.

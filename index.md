@@ -11,7 +11,7 @@ hero:
       link: /guide/introduction
     - theme: alt
       text: Reference
-      link: /reference/glossary
+      link: /guide/glossary
 
 features:
   - icon: "🚀"
@@ -52,6 +52,6 @@ features:
   - icon: "📘"
     title: Reference
     details: Glossary, statuses, shortcodes, merge tags, FAQ, troubleshooting, and developer hooks.
-    link: /reference/glossary
+    link: /guide/glossary
     linkText: Look it up
 ---

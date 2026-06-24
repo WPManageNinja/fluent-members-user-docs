@@ -121,4 +121,4 @@ A new member sees Lesson 1 immediately. Lesson 2 unlocks a week in. By week 5 th
 
 **Recommended reading:**
 - [Protected Content](/guide/access-groups/protected-content): the picker that feeds Show This Content.
-- [Glossary — Content Dripping](/reference/glossary).
+- [Glossary — Content Dripping](/guide/glossary).

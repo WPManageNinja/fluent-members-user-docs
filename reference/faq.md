@@ -1,6 +1,6 @@
 # Frequently Asked Questions
 
-Quick answers to the most common questions about Fluent Members. If you can't find your answer here, try [Troubleshooting](/reference/troubleshooting) or the [Glossary](/reference/glossary).
+Quick answers to the most common questions about Fluent Members. If you can't find your answer here, try [Troubleshooting](/reference/troubleshooting) or the [Glossary](/guide/glossary).
 
 ## General
 
@@ -133,5 +133,5 @@ Free plugin: the [WordPress.org support forum](https://wordpress.org/support/plu
 
 **What's next?**
 - [Troubleshooting](/reference/troubleshooting): fixing the common issues.
-- [Glossary](/reference/glossary): the vocabulary.
+- [Glossary](/guide/glossary): the vocabulary.
 - [Quick Start](/guide/quick-start), 10 minutes to a working site.

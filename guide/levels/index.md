@@ -31,7 +31,7 @@ Open **Fluent Members → Levels** in wp-admin. You'll see one row per Level wit
 | **Title**       | The Level name (e.g. *Pro Plan*).                                   |
 | **Description** | Short description for your reference.                               |
 | **Type**        | `Individual` or `Corporate`.                                         |
-| **Access Group**| How many [Access Groups](/reference/glossary) this Level unlocks.    |
+| **Access Group**| How many [Access Groups](/guide/glossary) this Level unlocks.    |
 | **Status**      | Active or Inactive.                                                 |
 | **Shortcode**   | `[fluent_membership_level id="N"]` with a copy button.              |
 
@@ -103,5 +103,5 @@ A Level with no Access Groups *does* let people buy it, but they won't actually 
 - **→ [Pricing, Paywalls](./pricing-paywalls)**: sell through FluentCart, Fluent Forms, or Paymattic.
 
 **Recommended reading:**
-- [Glossary](/reference/glossary): the vocabulary.
+- [Glossary](/guide/glossary): the vocabulary.
 - [Membership Statuses](/reference/membership-statuses): what `active`, `trial`, etc. mean for a member.

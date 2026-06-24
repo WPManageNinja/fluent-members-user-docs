@@ -56,19 +56,19 @@ Every Fluent Members site is built on three concepts. It's worth understanding t
 
 ### 1. Access Groups, "the locked rooms"
 
-An [Access Group](../reference/glossary.md#access-group) is a collection of content you want to protect. You might have an Access Group called *Premium Articles* that contains 50 posts. Or one called *Private Lessons* that contains a custom post type.
+An [Access Group](../guide/glossary.md#access-group) is a collection of content you want to protect. You might have an Access Group called *Premium Articles* that contains 50 posts. Or one called *Private Lessons* that contains a custom post type.
 
 Think of an Access Group as the **room**. The Membership Level is the **key**.
 
 ### 2. Membership Levels, "the plans"
 
-A [Membership Level](../reference/glossary.md#membership-level) is a plan you offer your visitors. *Free*, *Pro*, *Annual*, *Team*, whatever makes sense for your business. Each Level unlocks one or more Access Groups.
+A [Membership Level](../guide/glossary.md#membership-level) is a plan you offer your visitors. *Free*, *Pro*, *Annual*, *Team*, whatever makes sense for your business. Each Level unlocks one or more Access Groups.
 
 Levels can be individual (one person) or corporate (a team with multiple seats).
 
 ### 3. Members, "the people"
 
-A [Member](../reference/glossary.md#member) is a WordPress user who has been assigned a Membership Level. When someone buys your Pro plan, Fluent Members creates a member record, links them to the Pro Level, and immediately grants them access to everything that Level unlocks.
+A [Member](../guide/glossary.md#member) is a WordPress user who has been assigned a Membership Level. When someone buys your Pro plan, Fluent Members creates a member record, links them to the Pro Level, and immediately grants them access to everything that Level unlocks.
 
 ## How it fits with your existing tools
 
@@ -125,4 +125,4 @@ Once it's installed, we recommend the **[Quick Start guide](./quick-start.md)**,
 
 **Related reading:**
 - [Core Concepts explained](./levels/): a deeper look at Levels, Groups, and Members
-- [Glossary](../reference/glossary.md): plain-English definitions for every term in the docs
+- [Glossary](../guide/glossary.md): plain-English definitions for every term in the docs

@@ -236,7 +236,7 @@ If you want a page-by-chain index instead, every guide page lists its chain(s) i
 
 ## Reference reading
 
-- [Glossary](/reference/glossary)
+- [Glossary](/guide/glossary)
 - [Membership Statuses](/reference/membership-statuses)
 - [Developer Hooks](/reference/developer-hooks)
 - [Troubleshooting](/reference/troubleshooting)

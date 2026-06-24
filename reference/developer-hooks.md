@@ -242,5 +242,5 @@ Ravi commits this; from now on every new member announces themselves in #signups
 - **→ [Stripe Setup](/guide/settings/payment-settings/stripe-setup)**: Stripe filters in context.
 
 **Recommended reading:**
-- [Glossary](/reference/glossary): vocabulary.
+- [Glossary](/guide/glossary): vocabulary.
 - [Troubleshooting](/reference/troubleshooting): common issues.

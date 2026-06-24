@@ -111,4 +111,4 @@ Both flows write to the same join table. Pick the direction that matches how you
 
 **Recommended reading:**
 - [Active Levels](/guide/levels/attaching-access-groups): the Group-side view of the same join.
-- [Glossary](/reference/glossary): terms.
+- [Glossary](/guide/glossary): terms.
