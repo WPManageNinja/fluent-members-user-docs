@@ -1,13 +1,6 @@
 # Attaching Access Groups to a Level
 
 A Level on its own unlocks nothing. To grant content access, you attach one or more **Access Groups** to the Level. Holders of the Level then see everything those Groups protect.
-
-::: info Part of Chain 1: First-time site setup · step 10 of 10
-**Previously:** [Protected Content: Restriction Types](/guide/access-groups/protected-content)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 **Here's what you'll learn:**
 - Where to attach Groups on the Level edit screen.
 - The Select Access Group modal, what the cards mean.

@@ -1,14 +1,4 @@
 # Renewing a Failed Subscription
-
-::: info Part of Chain 5: Member self-serve · step 5 of 6
-**Previously:** [Updating Payment Method](/guide/members/portal/updating-payment-method)
-**Next:** [Corporate Seat Invites](/guide/members/portal/corporate-seat-invites)
-
-**Also part of:** Chain 8: Failed renewal & recovery (step 2 of 4)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 ::: warning Requires Fluent Members Pro
 Renew exists only for memberships on Native Payment (Stripe). Subscriptions sold through other paywalls (FluentCart, Fluent Forms, Paymattic) recover failed payments through *those* plugins' dunning flows.
 :::

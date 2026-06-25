@@ -1,13 +1,6 @@
 # Member Portal Setup
 
 The Member Portal is a single page on your site (any page you choose) where logged-in members see their memberships and manage them. It exists because the alternative, admin-managed everything, doesn't scale.
-
-::: info Part of Chain 5: Member self-serve · step 1 of 6
-**Next:** [What Members See](/guide/members/portal/what-members-see)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 **Here's what you'll learn:**
 - The single shortcode that powers the portal.
 - The fastest way to create the portal page from inside Fluent Members.

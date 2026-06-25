@@ -1,16 +1,6 @@
 # Members List
 
 The **Members** screen lists everyone on your site who holds at least one membership. It's the command centre for member management, search, filter, jump to a member, and see at a glance how the system is doing.
-
-::: info Part of Chain 2: Buy & onboard · step 5 of 6
-**Previously:** [Email Notifications](/guide/settings/email-configuration/email-notifications)
-**Next:** [Member Detail](/guide/members/detail)
-
-**Also part of:** Chain 4: Day-to-day admin (step 2 of 6)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 **Here's what you'll learn:**
 - How to open the Members screen.
 - The four filter tabs at the top.

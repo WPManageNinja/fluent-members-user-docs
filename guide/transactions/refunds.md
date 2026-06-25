@@ -1,14 +1,4 @@
 # Refunds
-
-::: info Part of Chain 4: Day-to-day admin · step 5 of 6
-**Previously:** [Suspending & Cancelling](/guide/members/suspending-and-cancelling)
-**Next:** [What Members See](/guide/members/portal/what-members-see)
-
-**Also part of:** Chain 9: Refund (step 3 of 5)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 ::: warning Requires Fluent Members Pro
 Refunds work only for charges made through Native Payment (Stripe). Refunds for FluentCart, Fluent Forms, or Paymattic happen in their respective plugins.
 :::

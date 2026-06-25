@@ -1,13 +1,6 @@
 # Developer Hooks
 
 The action and filter hooks Fluent Members emits. Use them to integrate with FluentCRM, build custom email notifications, sync membership events to your CRM, or react to changes in your own code.
-
-::: info Part of Chain 11: Custom email automation · step 2 of 2
-**Previously:** [Email Notifications](/guide/settings/email-configuration/email-notifications)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 If you're following along, meet **Ravi**, the senior developer on Sara's team who hooks into these events. Ravi's examples are concrete.
 
 **Here's what you'll learn:**

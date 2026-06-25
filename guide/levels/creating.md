@@ -1,16 +1,6 @@
 # Creating a Level
 
 A Level is the first thing you build on a fresh Fluent Members install. This page walks the **Add Membership Level** modal and the **Edit Level** tab.
-
-::: info Part of Chain 1: First-time site setup · step 6 of 10
-**Previously:** [Levels Overview](/guide/levels/)
-**Next:** [Pricing: Native Payment](/guide/levels/pricing-native)
-
-**Also part of:** Chain 6: Corporate (step 1 of 3)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 **Here's what you'll learn:**
 - How to open the Add Level modal.
 - Every field the modal and the edit screen ask for.

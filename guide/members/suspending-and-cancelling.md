@@ -1,16 +1,6 @@
 # Suspending & Cancelling
 
 Two row-actions sit behind the kebab on every Memberships table row: **Suspend** and **Cancel**. They look similar but mean very different things, this page makes the difference plain.
-
-::: info Part of Chain 4: Day-to-day admin · step 4 of 6
-**Previously:** [Member Detail](/guide/members/detail)
-**Next:** [Refunds](/guide/transactions/refunds)
-
-**Also part of:** Chain 9: Refund (step 5 of 5)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 **Here's what you'll learn:**
 - What Suspend does and what it doesn't.
 - What Cancel does and how it integrates with payment providers.

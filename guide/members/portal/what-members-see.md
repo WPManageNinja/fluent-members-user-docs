@@ -1,15 +1,6 @@
 # Member Portal: What Members See
 
 A tour of the portal page from the member's side. This is the page they hit when they click "My Account" in your menu. What they see depends on their login state, their memberships, and whether you have Fluent Members Pro active.
-
-::: info Part of Chain 4: Day-to-day admin · step 6 of 6
-**Previously:** [Refunds](/guide/transactions/refunds)
-
-**Also part of:** Chain 5: Member self-serve (step 2 of 6) · Chain 8: Failed renewal & recovery (step 4 of 4)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 **Here's what you'll learn:**
 - The three states a visitor can be in (logged out / logged in no membership / logged in with memberships).
 - What each membership card contains.

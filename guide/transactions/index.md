@@ -1,14 +1,4 @@
 # Transactions List
-
-::: info Part of Chain 2: Buy & onboard · step 3 of 6
-**Previously:** [Pricing: Paywalls](/guide/levels/pricing-paywalls)
-**Next:** [Email Notifications](/guide/settings/email-configuration/email-notifications)
-
-**Also part of:** Chain 7: Recurring renewal (Pro) (step 3 of 4) · Chain 9: Refund (step 1 of 5)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 ::: warning Requires Fluent Members Pro
 The Transactions screen ships only with Fluent Members Pro. The wp-admin top nav shows **Transactions** alongside Dashboard / Levels / Access Groups / Members only when Pro is active.
 :::

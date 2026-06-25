@@ -1,14 +1,4 @@
 # Stripe Setup
-
-::: info Part of Chain 1: First-time site setup · step 4 of 10
-**Previously:** [Mailing Settings](/guide/settings/email-configuration/mailing-settings)
-**Next:** [Levels Overview](/guide/levels/)
-
-**Also part of:** Chain 7: Recurring renewal (Pro) (step 2 of 4) · Chain 8: Failed renewal & recovery (step 1 of 4) · Chain 10: Migration (step 2 of 6)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 ::: warning Requires Fluent Members Pro
 Native Stripe integration ships with Pro only. Without Pro you can still process Stripe payments through FluentCart / Fluent Forms / Paymattic via [Paywalls](../../levels/pricing-paywalls).
 :::

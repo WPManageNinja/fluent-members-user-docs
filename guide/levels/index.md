@@ -1,14 +1,6 @@
 # Levels Overview
 
 A **Level** is the membership you're selling (or giving away). Think of it like a single product line, *Pro Plan*, *Premium*, *VIP*. Every member you ever have ends up holding one or more Levels.
-
-::: info Part of Chain 1: First-time site setup · step 5 of 10
-**Previously:** [Stripe Setup](/guide/settings/payment-settings/stripe-setup)
-**Next:** [Creating a Level](/guide/levels/creating)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 This page is the map for the **Levels** screen. The pages under it walk through each tab and field.
 
 **Here's what you'll learn:**

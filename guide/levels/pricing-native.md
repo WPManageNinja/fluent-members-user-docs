@@ -1,14 +1,4 @@
 # Native Payment Pricing
-
-::: info Part of Chain 1: First-time site setup · step 7 of 10
-**Previously:** [Creating a Level](/guide/levels/creating)
-**Next:** [Access Groups Overview](/guide/access-groups/)
-
-**Also part of:** Chain 2: Buy & onboard (step 1 of 6) · Chain 7: Recurring renewal (Pro) (step 1 of 4)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 ::: warning Requires Fluent Members Pro
 **Native Payment** is the built-in checkout that Fluent Members Pro runs through Stripe. Without Pro, the Pricing Type dropdown still shows *Native Payment*, but no payment methods will be available, use [Paywalls](./pricing-paywalls) instead, or follow [Stripe Setup](/guide/settings/payment-settings/stripe-setup) to connect Pro first.
 :::

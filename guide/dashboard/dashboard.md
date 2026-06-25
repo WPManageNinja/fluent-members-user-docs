@@ -4,7 +4,7 @@ The **Fluent Members** Dashboard is your central hub for monitoring your members
 
 ## Access the Dashboard
 
-Log in to your WordPress admin and click **Fluent Members** in the left sidebar the Dashboard opens by default. If you are on another plugin screen, click **Dashboard** in the top navigation to return here.
+Log in to your WordPress dashboard and click **Fluent Members** in the left sidebar the Dashboard opens by default. If you are on another plugin screen, click **Dashboard** in the top navigation to return here.
 
 ![Fluent Members Dashboard overview](/screenshots/dashboard.webp)
 

@@ -1,14 +1,4 @@
 # Updating Payment Method
-
-::: info Part of Chain 5: Member self-serve · step 4 of 6
-**Previously:** [Cancelling a Membership](/guide/members/portal/cancelling)
-**Next:** [Renewing a Failed Subscription](/guide/members/portal/renewing-a-failed-subscription)
-
-**Also part of:** Chain 8: Failed renewal & recovery (step 3 of 4)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 ::: warning Requires Fluent Members Pro
 The Update Payment Method button only appears when the membership is on Native Payment (Stripe via Fluent Members Pro). Memberships sold through FluentCart, WooCommerce, Fluent Forms, or Paymattic update their payment method inside the *host* plugin's portal, not here.
 :::

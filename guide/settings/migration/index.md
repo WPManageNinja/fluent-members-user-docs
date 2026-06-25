@@ -1,14 +1,6 @@
 # Migration
 
 Move data from another membership plugin into Fluent Members. The wizard supports three sources: **Paid Memberships Pro**, **MemberPress**, and **Content Restriction Pro**.
-
-::: info Part of Chain 10: Migration · step 3 of 6
-**Previously:** [Stripe Setup](/guide/settings/payment-settings/stripe-setup)
-**Next:** [Migration from Paid Memberships Pro](/guide/settings/migration/from-paid-memberships-pro)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 **Here's what you'll learn:**
 - Which sources the wizard can read.
 - The "Detected" vs "Not Detected" badge.

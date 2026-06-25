@@ -1,15 +1,6 @@
 # Member Detail
 
 The page you land on when you click a row in [Members](./). It shows everything about one specific person, their account info and every membership they hold.
-
-::: info Part of Chain 2: Buy & onboard · step 6 of 6
-**Previously:** [Members List](/guide/members/)
-
-**Also part of:** Chain 4: Day-to-day admin (step 3 of 6)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 **Here's what you'll learn:**
 - The two cards on this page (user header + Memberships table).
 - Every column in the Memberships table.

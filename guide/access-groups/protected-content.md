@@ -1,16 +1,6 @@
 # Protected Content: Restriction Types
 
 The **Protected Content** section of an Access Group answers one question: *what's inside the bag?* You pick from a single dropdown, **Apply Restriction To**, and the items underneath light up to be protected.
-
-::: info Part of Chain 1: First-time site setup · step 9 of 10
-**Previously:** [Access Groups Overview](/guide/access-groups/)
-**Next:** [Attaching Access Groups](/guide/levels/attaching-access-groups)
-
-**Also part of:** Chain 3: Restriction & enforcement (step 1 of 4)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 **Here's what you'll learn:**
 - Where to find the *Apply Restriction To* dropdown.
 - Every restriction type the dropdown lists, plain English.

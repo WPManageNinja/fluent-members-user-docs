@@ -1,14 +1,6 @@
 # Access Groups Overview
 
 An **Access Group** is a bundle of content protection rules attached to one or more Membership Levels. It says *"these posts/pages/products are restricted, and here's what to show people who don't have access."*
-
-::: info Part of Chain 1: First-time site setup · step 8 of 10
-**Previously:** [Pricing: Native Payment](/guide/levels/pricing-native)
-**Next:** [Protected Content: Restriction Types](/guide/access-groups/protected-content)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 This page maps the **Access Groups** screen. The pages under it walk through each section of the edit form.
 
 **Here's what you'll learn:**

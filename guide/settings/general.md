@@ -1,14 +1,6 @@
 # General Settings
 
 The first tab in **Settings**. Three controls that affect the whole site: which pages stay public, which page is your member portal, and what currency you trade in.
-
-::: info Part of Chain 1: First-time site setup · step 2 of 10
-**Previously:** [Installation](/guide/getting-started/installation)
-**Next:** [Mailing Settings](/guide/settings/email-configuration/mailing-settings)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 **Here's what you'll learn:**
 - Each of the three fields and what it does.
 - The fastest way to create the portal page.

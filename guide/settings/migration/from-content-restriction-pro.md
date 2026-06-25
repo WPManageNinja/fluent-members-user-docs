@@ -1,13 +1,6 @@
 # Migration from Content Restriction Pro
 
 The third source. Same 8-step wizard structure as [PMPro](./from-paid-memberships-pro) and [MemberPress](./from-memberpress), with Content Restriction Pro–specific mapping.
-
-::: info Part of Chain 10: Migration · step 6 of 6
-**Previously:** [Migration from MemberPress](/guide/settings/migration/from-memberpress)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 ::: tip Name change
 Content Restriction Pro is the same plugin many know as "Restrict Content Pro" (RCP). Fluent Members' UI labels it as **Content Restriction Pro**, that's the name to look for on the Migration card.
 :::

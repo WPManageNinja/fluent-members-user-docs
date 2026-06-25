@@ -1,13 +1,4 @@
 # Corporate Seat Invites
-
-::: info Part of Chain 5: Member self-serve · step 6 of 6
-**Previously:** [Renewing a Failed Subscription](/guide/members/portal/renewing-a-failed-subscription)
-
-**Also part of:** Chain 6: Corporate (step 3 of 3)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 ::: warning Requires Fluent Members Pro
 The Team panel and the invite flow are Pro features. The parent's portal shows nothing extra in free; sub-members never see the Team panel.
 :::

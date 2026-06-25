@@ -1,12 +1,4 @@
 # Filters & Search
-
-::: info Part of Chain 9: Refund · step 2 of 5
-**Previously:** [Transactions List](/guide/transactions/)
-**Next:** [Refunds](/guide/transactions/refunds)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 ::: warning Requires Fluent Members Pro
 The Transactions screen is Pro-only.
 :::

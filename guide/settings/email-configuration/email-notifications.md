@@ -1,16 +1,6 @@
 # Email Notifications
 
 The list of every email notification Fluent Members can send. Toggle them on, edit the subject and body, and use the merge tags to personalise.
-
-::: info Part of Chain 2: Buy & onboard · step 4 of 6
-**Previously:** [Transactions List](/guide/transactions/)
-**Next:** [Members List](/guide/members/)
-
-**Also part of:** Chain 11: Custom email automation (step 1 of 2)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 **Here's what you'll learn:**
 - Which notifications ship in 1.0 (spoiler: one).
 - How to toggle a notification on/off.

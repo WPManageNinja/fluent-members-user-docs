@@ -1,14 +1,6 @@
 # Cancelling a Membership
 
 The member-driven cancel flow. Members click a button, confirm, and they're out. This page is what your support team will quote when someone emails *"how do I cancel?"*.
-
-::: info Part of Chain 5: Member self-serve · step 3 of 6
-**Previously:** [What Members See](/guide/members/portal/what-members-see)
-**Next:** [Updating Payment Method](/guide/members/portal/updating-payment-method)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 **Here's what you'll learn:**
 - The single button members use to cancel themselves.
 - What happens at the provider when they cancel.

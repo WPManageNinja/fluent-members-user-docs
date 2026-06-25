@@ -1,14 +1,6 @@
 # Mailing Settings
 
 The global "From" + footer + logo for every email Fluent Members sends. Set these once and your transactional emails look on-brand instead of like a default WordPress notification.
-
-::: info Part of Chain 1: First-time site setup · step 3 of 10
-**Previously:** [General Settings](/guide/settings/general)
-**Next:** [Stripe Setup](/guide/settings/payment-settings/stripe-setup)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 **Here's what you'll learn:**
 - Every field on the **Default From Settings** card.
 - The three site-token smartcodes you can use in the email footer.

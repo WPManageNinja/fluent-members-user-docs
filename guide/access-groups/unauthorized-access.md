@@ -1,14 +1,6 @@
 # Unauthorized Access
 
 The **Unauthorized Access** card on the Access Group edit page decides what a non-member sees when they hit your protected content. Pick the right action and your site behaves like a hard paywall, a soft paywall, or a quiet redirect, your call.
-
-::: info Part of Chain 3: Restriction & enforcement · step 2 of 4
-**Previously:** [Protected Content: Restriction Types](/guide/access-groups/protected-content)
-**Next:** [Partial Content Lock](/guide/settings/partial-content-lock)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 **Here's what you'll learn:**
 - The five Action options the dropdown gives you.
 - Which fields appear under each action.

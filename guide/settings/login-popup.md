@@ -1,13 +1,6 @@
 # Login Popup
 
 A small in-page login modal that opens instead of a hard block. When an [Access Group's Unauthorized Access action](/guide/access-groups/unauthorized-access) is set to **Show a login prompt**, this is what your visitors see. Styling and copy live here.
-
-::: info Part of Chain 3: Restriction & enforcement · step 4 of 4
-**Previously:** [Partial Content Lock](/guide/settings/partial-content-lock)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 **Here's what you'll learn:**
 - The master toggle plus every field on the Login Popup card.
 - How the popup interacts with WordPress's standard login.

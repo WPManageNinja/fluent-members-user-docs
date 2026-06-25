@@ -1,14 +1,6 @@
 # Partial Content Lock
 
 The styling and copy for the soft-paywall overlay. When an [Access Group's Unauthorized Access action](/guide/access-groups/unauthorized-access) is set to **Display partial preview**, this is what your visitors see. Set it once globally; override per-block in the Gutenberg editor when needed.
-
-::: info Part of Chain 3: Restriction & enforcement · step 3 of 4
-**Previously:** [Unauthorized Access](/guide/access-groups/unauthorized-access)
-**Next:** [Login Popup](/guide/settings/login-popup)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 **Here's what you'll learn:**
 - Every field in the **Partial Content Blur Settings** card.
 - How the global defaults interact with per-block overrides.

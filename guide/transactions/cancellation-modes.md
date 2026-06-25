@@ -1,13 +1,4 @@
 # Subscription Cancellation Modes
-
-::: info Part of Chain 7: Recurring renewal (Pro) · step 4 of 4
-**Previously:** [Transactions List](/guide/transactions/)
-
-**Also part of:** Chain 9: Refund (step 4 of 5)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 ::: warning Requires Fluent Members Pro
 Cancellation modes only apply to Native Payment subscriptions (Stripe). Paywall-driven memberships (FluentCart, etc.) follow the host plugin's cancellation behaviour.
 :::

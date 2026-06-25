@@ -1,14 +1,6 @@
 # Migration from Paid Memberships Pro
 
 The PMPro-specific wizard. Walks you through importing levels, members, subscriptions, transactions, and content rules.
-
-::: info Part of Chain 10: Migration · step 4 of 6
-**Previously:** [Migration](/guide/settings/migration/)
-**Next:** [Migration from MemberPress](/guide/settings/migration/from-memberpress)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 **Here's what you'll learn:**
 - How the wizard maps PMPro concepts to Fluent Members.
 - The ten step actions and what each one does.

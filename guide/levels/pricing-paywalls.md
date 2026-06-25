@@ -1,14 +1,6 @@
 # Paywalls Pricing
 
 A **Paywall** is a Pricing Plan that points at an existing product or form in another plugin, FluentCart, Fluent Forms, or Paymattic. The buyer pays inside that plugin's checkout; Fluent Members grants the Level when the payment lands.
-
-::: info Part of Chain 2: Buy & onboard · step 2 of 6
-**Previously:** [Pricing: Native Payment](/guide/levels/pricing-native)
-**Next:** [Transactions List](/guide/transactions/)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 Use Paywalls when you already sell through one of those plugins. Use [Native Payment](./pricing-native) when you want one tool (Stripe) to do everything.
 
 **Here's what you'll learn:**

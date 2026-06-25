@@ -1,14 +1,6 @@
 # Migration from MemberPress
 
 The MemberPress-specific wizard. Same 8-step structure as the [Paid Memberships Pro flow](./from-paid-memberships-pro) with MemberPress-specific mapping and gotchas.
-
-::: info Part of Chain 10: Migration · step 5 of 6
-**Previously:** [Migration from Paid Memberships Pro](/guide/settings/migration/from-paid-memberships-pro)
-**Next:** [Migration from Content Restriction Pro](/guide/settings/migration/from-content-restriction-pro)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 **Here's what you'll learn:**
 - How MemberPress's data model maps to Fluent Members.
 - The wizard steps adapted for MemberPress.

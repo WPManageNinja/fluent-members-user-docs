@@ -1,12 +1,4 @@
 # Corporate Memberships
-
-::: info Part of Chain 6: Corporate · step 2 of 3
-**Previously:** [Creating a Level](/guide/levels/creating)
-**Next:** [Corporate Seat Invites](/guide/members/portal/corporate-seat-invites)
-
-See the full chain in the [Chain Map](/reference/chain-map).
-:::
-
 ::: warning Requires Fluent Members Pro
 Corporate Memberships need Fluent Members Pro. The Level *type* exists in free, but seat invites, the team panel in the Member Portal, and cascade-on-cancel are all Pro behaviour.
 :::
