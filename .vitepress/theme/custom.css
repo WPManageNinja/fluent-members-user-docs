@@ -1,0 +1,152 @@
+/* ── Fluent Members Brand Colors ───────────────────────────────────────────
+   Brand Purple : #6B35E8  Primary CTAs, links
+   Purple Mid   : #824EEB  Secondary accents, hover
+   Purple Light : #ac89f2  Highlights, tints
+   Purple Pale  : #CAB7EF  Borders, glass
+   Ink          : #0A011C  Text, headings
+   Deep Dark    : #080010  Dark backgrounds
+   Light        : #F9F8FD  Light backgrounds
+   Surface      : #F5F1FC  Cards, elevated surfaces
+──────────────────────────────────────────────────────────────────────────── */
+
+/* ── Light mode ─────────────────────────────────────────────────────────── */
+:root {
+  /* Brand */
+  --vp-c-brand-1: #6B35E8;
+  --vp-c-brand-2: #824EEB;
+  --vp-c-brand-3: #ac89f2;
+  --vp-c-brand-soft: rgba(107, 53, 232, 0.12);
+
+  /* CTA buttons */
+  --vp-button-brand-bg: #6B35E8;
+  --vp-button-brand-hover-bg: #824EEB;
+  --vp-button-brand-active-bg: #5a2bd4;
+  --vp-button-brand-border: transparent;
+  --vp-button-brand-hover-border: transparent;
+  --vp-button-brand-active-border: transparent;
+  --vp-button-brand-text: #ffffff;
+  --vp-button-brand-hover-text: #ffffff;
+  --vp-button-brand-active-text: #ffffff;
+
+  /* Alt buttons (secondary) */
+  --vp-button-alt-border: #CAB7EF;
+  --vp-button-alt-hover-border: #824EEB;
+
+  /* Home hero gradient name */
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(135deg, #6B35E8 0%, #824EEB 100%);
+
+  /* Home hero image glow */
+  --vp-home-hero-image-background-image: radial-gradient(ellipse, rgba(107,53,232,0.2) 0%, transparent 65%);
+  --vp-home-hero-image-filter: blur(44px);
+
+  /* Sidebar active link */
+  --vp-c-text-active: #6B35E8;
+
+  /* Custom property for badge / tip accents */
+  --fm-purple: #6B35E8;
+  --fm-purple-mid: #824EEB;
+  --fm-purple-light: #ac89f2;
+  --fm-surface: #F5F1FC;
+  --fm-ink: #0A011C;
+}
+
+/* ── Dark mode ──────────────────────────────────────────────────────────── */
+.dark {
+  --vp-c-brand-1: #ac89f2;
+  --vp-c-brand-2: #824EEB;
+  --vp-c-brand-3: #6B35E8;
+  --vp-c-brand-soft: rgba(172, 137, 242, 0.16);
+
+  --vp-button-brand-bg: #6B35E8;
+  --vp-button-brand-hover-bg: #824EEB;
+  --vp-button-brand-active-bg: #5a2bd4;
+  --vp-button-brand-text: #ffffff;
+  --vp-button-brand-hover-text: #ffffff;
+  --vp-button-brand-active-text: #ffffff;
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(135deg, #ac89f2 0%, #CAB7EF 100%);
+  --vp-home-hero-image-background-image: radial-gradient(ellipse, rgba(107,53,232,0.35) 0%, transparent 65%);
+
+  --fm-surface: rgba(107, 53, 232, 0.08);
+}
+
+/* ── Links ──────────────────────────────────────────────────────────────── */
+.vp-doc a {
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.vp-doc a:hover {
+  color: var(--vp-c-brand-2);
+  text-decoration: underline;
+}
+
+/* ── Sidebar active item ────────────────────────────────────────────────── */
+.VPSidebarItem.is-active > .item .link .text {
+  color: var(--vp-c-brand-1) !important;
+}
+.VPSidebarItem.is-active > .item .indicator {
+  background-color: var(--vp-c-brand-1);
+}
+
+/* ── Navbar active link ─────────────────────────────────────────────────── */
+.VPNavBarMenuLink.active,
+.VPNavBarMenuLink:hover {
+  color: var(--vp-c-brand-1) !important;
+}
+
+/* ── Custom containers (tip / info / warning) ───────────────────────────── */
+.custom-block.tip {
+  border-color: var(--vp-c-brand-3);
+  background-color: var(--fm-surface);
+}
+.custom-block.tip .custom-block-title {
+  color: var(--vp-c-brand-1);
+}
+
+.custom-block.info {
+  border-color: #CAB7EF;
+  background-color: var(--fm-surface);
+}
+.custom-block.info .custom-block-title {
+  color: var(--vp-c-brand-2);
+}
+
+/* ── Code inline ────────────────────────────────────────────────────────── */
+.vp-doc :not(pre) > code {
+  color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-brand-soft);
+}
+
+/* ── Table header ───────────────────────────────────────────────────────── */
+.vp-doc table thead tr {
+  background-color: var(--fm-surface);
+}
+.dark .vp-doc table thead tr {
+  background-color: var(--fm-surface);
+}
+
+/* ── Outline (on this page) active ─────────────────────────────────────── */
+.VPDocOutlineItem a.active {
+  color: var(--vp-c-brand-1);
+}
+
+/* ── "On this page" outline left border highlight ──────────────────────── */
+.VPDocAside .outline-link.active {
+  color: var(--vp-c-brand-1);
+  border-left-color: var(--vp-c-brand-1);
+}
+
+/* ── Search highlight ───────────────────────────────────────────────────── */
+.vp-doc mark,
+.DocSearch-Hit-icon {
+  color: var(--vp-c-brand-1);
+}
+
+/* ── External link icon ─────────────────────────────────────────────────── */
+.vp-doc a[href^="http"]::after {
+  filter: none;
+  opacity: 0.7;
+}

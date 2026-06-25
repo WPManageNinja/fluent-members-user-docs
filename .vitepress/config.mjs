@@ -6,13 +6,17 @@ export default defineConfig({
   cleanUrls: true,
 
   head: [
-    ['meta', { name: 'theme-color', content: '#0073aa' }],
+    ['meta', { name: 'theme-color', content: '#6B35E8' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }]
   ],
 
   themeConfig: {
-    logo: undefined,
-    siteTitle: 'Fluent Members',
+    logo: {
+      light: '/images/logo/logo-light.webp',
+      dark: '/images/logo/logo-dark.webp',
+      alt: 'Fluent Members'
+    },
+    siteTitle: false,
 
     nav: [
       { text: 'Home', link: '/' },
