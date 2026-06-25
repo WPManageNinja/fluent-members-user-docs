@@ -1,99 +1,56 @@
-# Levels Overview
+# Membership Levels Overview
 
-A **Level** is the membership you're selling (or giving away). Think of it like a single product line, *Pro Plan*, *Premium*, *VIP*. Every member you ever have ends up holding one or more Levels.
-This page is the map for the **Levels** screen. The pages under it walk through each tab and field.
+A **Membership Level** is the core product or subscription plan you offer on your site, such as a *Free Tier*, *Pro Plan*, or *VIP Access*. Every user who joins your site will be assigned to at least one level, which determines what restricted content they can see and how much they pay.
 
-**Here's what you'll learn:**
-- What the Levels list shows.
-- The two Level types: Individual and Corporate.
-- The four inner tabs you'll work with after creating a Level: Edit Level, Pricing, Access Group, Members.
-- Which order to set things up so you don't get stuck.
+## Access Membership Levels
 
-**Before we start:** Read the [Dashboard page](/guide/dashboard/dashboard) for the bigger picture. No other prerequisites.
+Log in to your WordPress admin, click **Fluent Members** in the left sidebar, then click **Levels** in the plugin menu. This opens the Membership Levels list where you can view, create, and manage every plan on your site.
 
----
+## Understanding the Levels Dashboard
 
-## The Levels list
+On the Levels screen, you will see a list of all your created levels with the following details:
 
-Open **Fluent Members → Levels** in wp-admin. You'll see one row per Level with these columns:
+- **ID:** The unique numeric ID for the level (e.g. `#10`). You will need this for shortcodes.
+- **Title:** The name of your membership plan.
+- **Description:** A short internal note explaining what the level offers.
+- **Type:** Displays whether the plan is **Individual** (one person per membership) or **Corporate** (one parent account with team seats, available in Pro).
+- **Access Group:** Shows the total number of restriction rules or [Access Groups](/guide/access-groups/) attached to this level.
+- **Status:** Indicates if the level is currently **Active** (available for users) or **Inactive**.
+- **Shortcode:** Provides a ready-to-use shortcode (e.g. `[fluent_membership_level id="1"]`) with a quick copy button to display the pricing card on your pages.
 
-| Column          | What it shows                                                       |
-|-----------------|---------------------------------------------------------------------|
-| **ID**          | Numeric ID. You'll need this for the `[fluent_membership_level]` shortcode. |
-| **Title**       | The Level name (e.g. *Pro Plan*).                                   |
-| **Description** | Short description for your reference.                               |
-| **Type**        | `Individual` or `Corporate`.                                         |
-| **Access Group**| How many [Access Groups](/guide/getting-started/glossary) this Level unlocks.    |
-| **Status**      | Active or Inactive.                                                 |
-| **Shortcode**   | `[fluent_membership_level id="N"]` with a copy button.              |
+You can also use the **All**, **Active**, and **Inactive** tabs at the top to filter your view, or use the search icon to find a specific level by its title. To create a new plan, click **+ Add New Level** at the top right.
 
-Tabs at the top of the list filter the view: **All / Active / Inactive**. The search icon does title search.
+![Levels Dashboards](/images/levels/membership-levels-overview/access-levels-1.webp)
 
-![Levels list](/screenshots/levels-list.webp)
+## Level Configuration Tabs
 
----
+When you click on any level title from the list or three-dots from the right side, you open its configuration screen.
 
-## Two Level types
+![Levels list](/images/levels/membership-levels-overview/edit-levels-2.webp)
 
-Every Level is either **Individual** or **Corporate**. You pick this when you create the Level, and it can't be changed afterwards.
+This area is divided into four main tabs:
 
-| Type          | Use it for                                                              |
-|---------------|--------------------------------------------------------------------------|
-| **Individual**| One person per membership. The default. Most sites use this.            |
-| **Corporate** | One parent buys, then invites teammates into seats. *Pro feature.*      |
+1. **Edit Level:** Change the title, description, and status. For Corporate levels, you can also set the maximum member limit here.
+2. **Pricing:** Set up how you want to sell this level. You must add at least one Pricing Plan (like a one-time fee or subscription) for users to join.
+3. **Access Group:** Select which protected folders or content rules this level unlocks.
+4. **Members:** View a complete list of all WordPress users who currently hold this specific membership level.
 
-::: tip In plain language
-*Individual* is one ticket, one person. *Corporate* is a family plan, one bill, many logins. See [Corporate Memberships](./corporate-memberships) for the full setup.
+![Edit Level](/images/levels/membership-levels-overview/edit-levels-3.webp)
+
+### Recommended Setup Order
+
+If you are building your first membership site, follow this exact order to avoid getting stuck:
+
+1. **Create the Level:** Give it a title and choose the type (Individual or Corporate). The type cannot be changed after creation.
+2. **Add a Pricing Plan:** Without a pricing plan, visitors cannot purchase or sign up for the level.
+3. **Attach Access Groups:** Connect your level to the content you want to protect.
+4. **Publish the Shortcode:** Copy the shortcode from the main list and paste it onto your pricing page so visitors can see it.
+
+## Important Notes
+
+::: warning Before you go live
+- **Do not skip attaching Access Groups.** If a level has no Access Groups attached, users can still buy it, but they will not unlock any restricted content. Always make sure your level is connected to at least one protected group.
+- **Can't see the shortcode rendering?** Make sure your level status is set to **Active** and that you have added at least one Pricing Plan inside the level settings.
 :::
 
----
-
-## The four inner tabs
-
-When you open any Level (by clicking its title in the list), the edit screen has four tabs across the top:
-
-| Tab               | What you do here                                                       |
-|-------------------|--------------------------------------------------------------------------|
-| **Edit Level**    | Title, description, status. For Corporate, also Maximum Member.        |
-| **Pricing**       | Add one or more [Pricing Plans](./pricing-native). Each plan is a way to sell this Level. |
-| **Access Group**  | Tick which [Access Groups](/guide/access-groups/) this Level unlocks.   |
-| **Members**       | See every WordPress user who currently holds this Level.                |
-
-In the top-right of the page, **More Actions** holds a single item: **Delete**.
-
----
-
-## The order to set things up
-
-If you're brand new, this is the order that stops you getting stuck:
-
-1. **Create the Level** ([Creating a Level](./creating)), give it a title and a type.
-2. **Add a Pricing Plan** ([Native Payment](./pricing-native) or [Paywalls](./pricing-paywalls)), without at least one Plan, nobody can buy or join.
-3. **Attach Access Groups** ([Attaching Access Groups](./attaching-access-groups)), without a Group attached, holding the Level doesn't unlock anything.
-4. **Drop the shortcode** on a page (the *Shortcode* column gives you the snippet), that's your pricing page.
-
-::: warning Don't skip step 3
-A Level with no Access Groups *does* let people buy it, but they won't actually see any restricted content, because nothing is connected. Always attach at least one Group.
-:::
-
----
-
-## Things that trip people up
-
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| Can't change a Level from Individual to Corporate | Type is set at creation and locked. | Delete and recreate. |
-| Members hold the Level but can't see protected content | No Access Groups attached. | [Attach a Group](./attaching-access-groups). |
-| The shortcode renders nothing on the page | Level is Inactive, or it has no Pricing Plans. | Set Status to Active; add a Pricing Plan. |
-
----
-
-## What's next?
-
-- **→ [Creating a Level](./creating)**: the modal and the fields explained.
-- **→ [Pricing, Native Payment](./pricing-native)**: sell with the built-in Stripe checkout (Pro).
-- **→ [Pricing, Paywalls](./pricing-paywalls)**: sell through FluentCart, Fluent Forms, or Paymattic.
-
-**Recommended reading:**
-- [Glossary](/guide/getting-started/glossary): the vocabulary.
-- [Membership Statuses](/reference/membership-statuses): what `active`, `trial`, etc. mean for a member.
+The Levels screen is the control center for your membership products. By understanding how to organize, price, and attach access rules to your levels, you can easily build out a secure and profitable membership site. For a guided walkthrough, see the [Quick Start](/guide/getting-started/quick-start) guide.

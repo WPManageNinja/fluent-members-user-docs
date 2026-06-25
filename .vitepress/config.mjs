@@ -49,7 +49,7 @@ export default defineConfig({
           text: 'Levels',
           collapsed: false,
           items: [
-            { text: 'Overview', link: '/guide/levels/' },
+            { text: 'Levels Overview', link: '/guide/levels/' },
             { text: 'Creating a Level', link: '/guide/levels/creating' },
             { text: 'Pricing: Native Payment', link: '/guide/levels/pricing-native' },
             { text: 'Pricing: Paywalls', link: '/guide/levels/pricing-paywalls' },
