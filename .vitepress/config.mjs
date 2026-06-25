@@ -27,10 +27,11 @@ export default defineConfig({
           text: 'Getting Started',
           collapsed: false,
           items: [
-            { text: 'What is Fluent Members?', link: '/guide/getting-started/introduction' },
+            { text: 'Introduction', link: '/guide/getting-started/introduction' },
             { text: 'Installation', link: '/guide/getting-started/installation' },
+            { text: 'Pro Installation', link: '/guide/getting-started/installation-pro' },
             { text: 'Quick Start', link: '/guide/getting-started/quick-start' },
-            { text: 'Fluent Members Glossary', link: '/guide/getting-started/glossary' }
+            { text: 'Glossary', link: '/guide/getting-started/glossary' }
           ]
         },
         {
