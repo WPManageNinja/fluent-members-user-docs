@@ -3,7 +3,6 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'Fluent Members',
   description: 'The official knowledge base for the Fluent Members WordPress plugin.',
-  lastUpdated: true,
   cleanUrls: true,
 
   head: [
@@ -38,7 +37,7 @@ export default defineConfig({
           text: 'Dashboard',
           collapsed: false,
           items: [
-            { text: 'Reading the Dashboard', link: '/guide/dashboard/dashboard' }
+            { text: 'Dashboard Overview', link: '/guide/dashboard/dashboard' }
           ]
         },
         {
