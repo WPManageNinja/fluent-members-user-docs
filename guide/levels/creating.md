@@ -1,109 +1,69 @@
 # Creating a Level
 
-A Level is the first thing you build on a fresh Fluent Members install. This page walks the **Add Membership Level** modal and the **Edit Level** tab.
-**Here's what you'll learn:**
-- How to open the Add Level modal.
-- Every field the modal and the edit screen ask for.
-- How **Individual** and **Corporate** differ at creation time.
-- What to do right after the Level is saved.
+A **Membership Level** is the plan you sell or offer on your site. This guide walks you through creating one from the **Add Membership Level** modal and completing the **Edit Level** tab.
 
-**Before we start:** No prerequisites. You can create a Level even before you've built any [Access Groups](/guide/access-groups/), you'll attach them later.
+## Access the Add Level Screen
 
----
+Log in to your WordPress admin, click **Fluent Members → Levels**, then click **+ Add New Level** in the top right. The **Add Membership Level** modal opens.
 
-## Step 1: Open the Add Level modal
+![Add New Level](/images/levels/creating/add-new-level.webp)
 
-1. In wp-admin, go to **Fluent Members → Levels**.
-2. Click **+ Add New Level** in the top-right.
+## Step 1: Name the Level and Choose a Type
 
-The **Add Membership Level** modal opens with two fields.
+Fill in the modal fields:
 
-![Add Membership Level modal (Individual)](/screenshots/level-add-individual-modal.webp)
+- **Title:** The name members will see on pricing pages and in their portal (for example, `Pro Plan` or `VIP Access`). This field is required.
+- **Type:** Choose how this membership works:
+  - **Individual:** A single-user membership plan. One person buys and gets their own access.
+  - **Corporate:** A group membership for organizations. One parent account buys seats and invites team members (Pro).
 
----
+Click **Create**. The modal closes and you land on the level's edit screen.
 
-## Step 2: Fill in the modal
+::: warning Type cannot be changed later
+You cannot switch a level from Individual to Corporate (or the other way around) after creation. If you picked the wrong type, delete the level and create it again.
+:::
+
+![Add Membership Level modal](/images/levels/creating/add-membership-level-modal.webp)
+
+## Step 2: Complete the Edit Level Tab
+
+The edit screen opens on the **Edit Level** tab by default. Update these fields in the **Level Information** card:
 
 | Field | Notes |
 |-------|-------|
-| **Title** *(required)* | The name members will see, like `Premium Plan`. Keep it short. |
-| **Type**    | Pick one of two cards: **Individual** ("Single user membership plan.") or **Corporate** ("Group membership for organizations."). |
+| **Title** | Pre-filled from the modal. You can change it anytime. |
+| **Description** | Optional internal note about what the level includes. |
+| **Status** | **Active** makes the level available for sale. **Inactive** hides it from pricing shortcodes. |
 
-Click **Create**. The modal closes and you land on the Level's edit page.
-
-::: warning Type is permanent
-You can't change a Level from Individual to Corporate (or vice versa) after creation. If you picked wrong, delete the Level and start over. No members will be lost, but only because there aren't any yet.
-:::
-
----
-
-## Step 3: Fill out the Edit Level tab
-
-The edit page opens on the **Edit Level** tab by default. The **Level Information** card has these fields:
-
-| Field            | Notes |
-|------------------|-------|
-| **Title** *(required)* | Pre-filled from the modal. You can change it later. |
-| **Description** | Optional, free text. Shown internally and in some integrations. |
-| **Status** | `Active` or `Inactive`. Active Levels are visible to buyers; Inactive ones are hidden from pricing shortcodes. |
-
-For a **Corporate** Level there's one extra field:
+For **Corporate** levels, you will also see:
 
 | Field | Notes |
 |-------|-------|
-| **Maximum Member** | Number of seats (parent + children) the Level allows. **Leave empty to allow unlimited corporate seats.** |
+| **Maximum Member** | The total number of seats for the plan (parent + invited members). Leave empty for unlimited seats. |
 
-![Edit Level, Individual](/screenshots/level-edit-individual.webp)
+Click **Save** in the top right when you are done. The button appears after you make a change.
 
-![Edit Level, Corporate, with Maximum Member field](/screenshots/level-edit-corporate.webp)
+![Edit Level, Individual](/images/levels/creating/edit-level-individual-2.webp)
 
-::: tip In plain language
-*Maximum Member* counts the parent. A 10-seat plan = 1 parent + 9 invitees. Leaving it blank means the parent can invite forever, which you probably don't want unless you're using it as an internal "everyone at our company" Level.
+![Edit Level, Corporate](/images/levels/creating/edit-level-corporate-3.webp)
+
+
+## Step 3: Finish the Rest of the Setup
+
+Creating the level is only the first step. Before visitors can join and see protected content, you still need to:
+
+1. **Add a Pricing Plan** on the **Pricing** tab so people can buy or sign up.
+2. **Attach Access Groups** on the **Access Group** tab so holding the level unlocks content.
+3. **Copy the shortcode** from the Levels list (for example, `[fluent_membership_level id="10"]`) and add it to your pricing page.
+
+After creation, the new level appears in the main list with its **ID**, **Status**, and **Shortcode** ready to use.
+
+## Important Notes
+
+::: warning Before you go live
+- A level with no **Pricing** plan can be created, but visitors cannot purchase or join it.
+- A level with no **Access Groups** attached can still be sold, but members will not unlock any protected content.
+- The **Save** button only appears after you edit a field on the Edit Level tab.
 :::
 
-Click **Save** when you're done. Save lives in the top-right of the page; it appears once you have unsaved changes.
-
----
-
-## Step 4: Set up the rest
-
-The Level exists, but nobody can buy it yet and holding it unlocks nothing. The next three things in order:
-
-1. **Add a Pricing Plan** so people can buy or join, [Native Payment](./pricing-native) for built-in Stripe, [Paywalls](./pricing-paywalls) for a separate payment plugin.
-2. **Attach Access Groups** so holding the Level actually unlocks content, [Attaching Access Groups](./attaching-access-groups).
-3. **Drop the shortcode** on a pricing page, copy `[fluent_membership_level id="N"]` from the Levels list row.
-
----
-
-## A real example: Sara's Pro Plan
-
-Sara teaches yoga online. She creates a Level:
-
-- **Title:** `Pro Yoga`
-- **Type:** Individual (each person buys their own seat)
-- **Description:** *"Full lesson library plus monthly live classes."*
-- **Status:** Active
-
-Then she opens the **Pricing** tab and adds two Pricing Plans (Monthly at $19, Annual at $149), and over in **Access Group** she ticks her *Pro Lessons* group. Done, her Pro Yoga page can now sell memberships.
-
----
-
-## Things that trip people up
-
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| The Save button doesn't appear | You haven't made any changes yet. | Edit any field; the button shows. |
-| Maximum Member field doesn't appear | This is an Individual Level, not Corporate. | Delete and recreate as Corporate. |
-| Level shows in the list but the shortcode renders nothing | Level has no Pricing Plans. | Go to the **Pricing** tab and add one. |
-
----
-
-## What's next?
-
-- **→ [Pricing, Native Payment](./pricing-native)**: fastest if you have Fluent Members Pro and want one tool to do everything.
-- **→ [Pricing, Paywalls](./pricing-paywalls)**: if you already sell through FluentCart, Fluent Forms, or Paymattic.
-- **→ [Attaching Access Groups](./attaching-access-groups)**: connect this Level to your protected content.
-
-**Recommended reading:**
-- [🔒 Pro · Corporate Memberships](./corporate-memberships): the full Corporate-only workflow.
-- [Glossary](/guide/getting-started/glossary): terms used here.
+Your level is now created. Continue with the [Membership Levels Overview](/guide/levels/) recommended setup order, or follow the [Quick Start](/guide/getting-started/quick-start) guide for a full walkthrough.
