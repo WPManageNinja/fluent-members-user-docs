@@ -19,9 +19,9 @@ Fill in the modal fields:
 
 Click **Create**. The modal closes and you land on the level's edit screen.
 
-::: warning Type cannot be changed later
-You cannot switch a level from Individual to Corporate (or the other way around) after creation. If you picked the wrong type, delete the level and create it again.
-:::
+> [!Note]
+> You cannot switch a level from Individual to Corporate (or the other way around) after creation. If you picked the wrong type, delete the level and create it again.
+
 
 ![Add Membership Level modal](/images/levels/creating/add-membership-level-modal.webp)
 
