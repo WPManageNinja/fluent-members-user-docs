@@ -23,7 +23,7 @@ Click **+ Add Pricing**. In the **Add Pricing** modal, open the **Pricing Type**
 
 ## Step 2: Select Stripe
 
-A **Payment Methods** card appears. Tick **Stripe**.
+A **Payment Methods** card appears. Check the checkbox of **Stripe**.
 
 If Stripe is not listed, connect it first under **Fluent Members → Settings → Payment Settings → Stripe**. Fluent Members Pro currently supports Stripe as the native payment gateway.
 
@@ -48,9 +48,9 @@ Click **Save** on the plan, then **Add** on the modal. You can add multiple plan
 
 ## Edit or Remove Pricing
 
-Once a Native Payment plan exists, you can change or delete it from the **Pricing** tab using the three-dot menus.
+Once a Native Payment plan exists, you can change or delete it from the **Pricing** tab using the **three-dot** menus.
 
-### Edit or Remove the Entire Native Payment Setup
+### For Entire Native Payment Setup
 
 Next to the **Native Payment** section header, click the **three-dot icon** on the right. A menu opens with two options:
 
@@ -59,14 +59,14 @@ Next to the **Native Payment** section header, click the **three-dot icon** on t
 
 ![Edit or remove Native Payment](/images/levels/pricing-native/edit-remove-native-payment-5.webp)
 
-### Edit or Delete a single pricing package
+### For single pricing package
 
 In the pricing table, each package row has its own **three-dot icon** in the **Action** column. Click it to open:
 
 - **Edit:** Opens that package's form so you can update the title, price, price type, interval, setup fee, or trial days.
 - **Delete:** Removes only that package from the level. Other packages on the same level are not affected.
 
-::: warning Before you delete
+::: warning Before you Delete
 Removing a pricing package or the full Native Payment setup does not cancel existing member subscriptions automatically. Review active members on this level before deleting a plan they are currently using.
 :::
 
@@ -99,7 +99,7 @@ When a visitor clicks the buy button on your `[fluent_membership_level]` pricing
 
 ## Important Notes
 
-::: warning Before you go live
+::: warning Before you go Live
 - **Stripe must be connected** before the Stripe checkbox appears on the Pricing tab.
 - **Webhook signing secret** must be saved in Stripe settings, or checkout can fail after payment.
 - For trial behaviour, set **Price Type** to **Trial** — trial days on a **Subscription** plan alone may not behave as expected.

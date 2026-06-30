@@ -1,118 +1,85 @@
-# Paywalls Pricing
+# Pricing: Paywalls
 
-A **Paywall** is a Pricing Plan that points at an existing product or form in another plugin, FluentCart, Fluent Forms, or Paymattic. The buyer pays inside that plugin's checkout; Fluent Members grants the Level when the payment lands.
-Use Paywalls when you already sell through one of those plugins. Use [Native Payment](./pricing-native) when you want one tool (Stripe) to do everything.
+A **Paywall** connects a **Membership Level** to an existing product or payment form in another plugin. The buyer pays through that plugin's checkout; **Fluent Members** grants the level when payment completes.
 
-**Here's what you'll learn:**
-- How to open the Pricing modal and pick *Paywalls*.
-- Where the pickable items in *Select Pricing* come from.
-- The hard rule about which forms / products are eligible.
-- How the membership gets granted after payment.
+Use **Paywalls** when you already sell through FluentCart, Fluent Forms, Paymattic, or WooCommerce (Pro). Use [Pricing: Native Payment](/guide/levels/pricing-native) when you want built-in Stripe checkout inside Fluent Members Pro.
 
-**Before we start:** A Level already exists ([Creating a Level](./creating)). The host plugin (FluentCart, Fluent Forms, or Paymattic) is installed and has at least one matching product or form.
+## Access the Pricing Tab
 
----
+Log in to your WordPress admin, go to **Fluent Members → Levels**, open the level you want to sell, then click the **Pricing** tab. If no plan exists yet, you will see *"No pricing plan has been added yet"*. Click **+ Add Pricing** in the top right.
 
-## Step 1: Open the Pricing tab
+![Pricing tab, empty state](/images/levels/pricing-paywalls/level-pricing-empty.webp)
 
-1. **Fluent Members → Levels → your Level**.
-2. Click **Pricing**.
-3. Click **+ Add Pricing**.
+## Step 1: Choose Paywalls
 
-The **Add Pricing** modal appears.
+In the **Add Pricing** modal, open the **Pricing Type** dropdown and select **Paywalls**.
 
----
+- **Paywalls:** Sell through a connected payment plugin (this guide).
+- **Native Payment:** Built-in Stripe checkout in Fluent Members Pro.
 
-## Step 2: Pick Paywalls
+Click **Add** after you select a product in Step 2.
 
-In the **Pricing Type** dropdown, pick **Paywalls**.
+![Choose Paywalls in the Add Pricing modal](/images/levels/pricing-paywalls/level-pricing-type-dropdown-2.webp)
 
-![Pricing Type dropdown showing Paywalls + Native Payment](/screenshots/level-pricing-type-dropdown.webp)
+## Step 2: Select a Product or Form
 
-The modal now shows a **Select Pricing** typeahead and an info banner.
+With **Paywalls** selected, click **Select Pricing** and search or browse the grouped list. Items come from each active host plugin:
 
----
+| Group | What appears |
+|-------|----------------|
+| **FluentCart Products** | FluentCart products linked to your store |
+| **Fluent Forms** | Payment forms with one fixed-price item |
+| **Paymattic** | Paymattic forms with one fixed-price item |
+| **WooCommerce** *(Pro)* | WooCommerce products with a single fixed price |
 
-## Step 3: Pick an existing product or form
+Pick the product or form you want (for example, a FluentCart product), then click **Add** at the bottom of the modal.
 
-Click into **Select Pricing**. A grouped list opens, items from each host plugin you have active.
-
-| Group              | Items shown                                                  |
-|--------------------|--------------------------------------------------------------|
-| **FluentCart Products** | All FluentCart products with a single fixed price.       |
-| **Fluent Forms**   | Payment forms that take exactly one fixed-price item.        |
-| **Paymattic**      | Paymattic forms with a single fixed-price item.              |
-| **WooCommerce** *(Pro)* | WC products with a single fixed price.                  |
-
-![Select Pricing typeahead showing FluentCart Products + Fluent Forms](/screenshots/level-pricing-paywalls-typeahead.webp)
-
-Pick one and click **Add**. The Pricing Plan is created and linked to that product/form.
-
-::: warning Only simple paywalls work
-The modal's info banner reads:
-> *"Only payment forms with a single fixed-price or subscription item are listed. Forms with custom payment inputs, donation fields, or multiple pricing options are not supported."*
-
-If your product or form lets the buyer type their own amount, has multiple plans inside one form, or supports donations, it won't appear here. Create a simpler version dedicated to this Level instead.
+::: warning Only simple paywalls are supported
+Only payment forms with a **single fixed-price or subscription item** appear in the list. Products or forms with custom amounts, donation fields, or multiple pricing options inside one form are not supported. Create a dedicated product or form for this level instead.
 :::
 
----
+![Select a FluentCart product in the Paywalls modal](/images/levels/pricing-paywalls/level-pricing-paywalls-typeahead-3.webp)
 
-## Step 4: Verify the link
+## Step 3: Review Linked Products
 
-After saving, the Pricing tab shows the new Plan with the host plugin's icon and price. From here the chain is:
+After you save, the **Pricing Plan** card lists each linked product as its own row with a thumbnail, title, and price. You can add more than one paywall to the same level by clicking **+ Add Pricing** again.
 
-1. Buyer clicks the Pricing card's button → they're taken to the host plugin's checkout (FluentCart cart, Fluent Forms form, etc.).
-2. Buyer pays, your existing payment processor handles it (Stripe via FluentCart, PayPal via Paymattic, whatever you've configured there).
-3. Host plugin fires a "payment completed" event.
-4. Fluent Members listens, finds the matching Pricing Plan, and grants the Level to the buyer's WordPress user.
+## Manage a Linked Product
 
-::: tip In plain language
-Native Payment is "we'll take the money." Paywalls is "you take the money over there, just tell us when it lands."
+Each product row has a **three-dot icon** on the right. Click it to open:
+
+- **View Product:** Open the linked product in the host plugin.
+- **Edit Product:** Change which product or form is linked to this paywall row.
+- **Delete Product:** Remove this paywall from the level.
+
+![View, edit, or delete a linked product](/images/levels/pricing-paywalls/edit-product-4.webp)
+
+## Direct Checkout
+
+On any linked product row, the **three-dot menu** also includes **Direct Checkout**. Use this to open or copy the checkout link for that specific product so visitors can buy without going through the membership shortcode first.
+
+![Direct Checkout option on a paywall row](/images/levels/pricing-paywalls/direct-checkout-5.webp)
+
+::: warning Before you delete
+Removing a paywall does not cancel existing subscriptions in the host plugin. Check active members on this level before deleting a product they are currently using.
 :::
 
----
+## What Happens at Checkout
 
-## How Paywalls compares to Native Payment
+When a visitor clicks the buy button on your `[fluent_membership_level]` pricing card:
+
+1. They are sent to the host plugin's checkout (FluentCart cart, Fluent Forms form, Paymattic form, or WooCommerce checkout).
+2. They pay using the gateway configured in that plugin (Stripe, PayPal, etc.).
+3. The host plugin fires a payment-completed event.
+4. **Fluent Members** matches the product or form to the linked level and activates the membership.
+
+## Paywalls vs Native Payment
 
 | | **Paywalls** | **Native Payment** |
 |---|---|---|
-| Needs Fluent Members Pro | No (FluentCart/Forms/Paymattic). WooCommerce is Pro. | Yes |
-| Where checkout happens | Host plugin's checkout | Built into Fluent Members |
-| Money flow | Through host plugin's gateway | Direct to your Stripe account |
-| Refunds / subscription management | In the host plugin | Inside Fluent Members → Transactions |
-| Best when… | You already sell through one of these | You want everything in one tool |
+| Requires Pro | No (WooCommerce paywalls need Pro) | Yes |
+| Checkout location | Host plugin | Built into Fluent Members |
+| Best for | Sites already using FluentCart, Forms, Paymattic, or WooCommerce | One-tool Stripe checkout inside Fluent Members |
 
----
 
-## A real example: Sara via FluentCart
-
-Sara already runs FluentCart for her ebook shop. She:
-
-1. Creates a FluentCart product *"Pro Yoga, Monthly Subscription"* at $19/mo.
-2. In Fluent Members, opens her *Pro Yoga* Level → Pricing → **+ Add Pricing**.
-3. Picks **Paywalls** → searches *"Pro Yoga"* → selects the FluentCart product.
-4. Adds the Plan.
-
-Buyer side: someone clicks Subscribe → FluentCart cart → Stripe Elements (FluentCart's own) → payment success → FluentCart fires its event → Fluent Members grants Pro Yoga.
-
----
-
-## Things that trip people up
-
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| Empty dropdown / no products listed | Host plugin isn't active, or none of its products meet the "single fixed-price" rule. | Activate the plugin; create or simplify a product. |
-| Buyer paid but never got access | Host plugin's webhook / event didn't reach Fluent Members. | Check the host plugin's logs; ensure the product is linked. |
-| Multiple Pricing Plans for the same Level get out of sync | That's fine, they're independent rows. Members can buy any one of them. | No fix needed; just be sure each maps to its own product. |
-| WC product missing | WooCommerce paywalls need Fluent Members Pro. | Install Pro. |
-
----
-
-## What's next?
-
-- **→ [Attaching Access Groups](./attaching-access-groups)**: make the Level unlock content after the buyer pays.
-- **→ [Pricing, Native Payment](./pricing-native)**: compare with the built-in path.
-
-**Recommended reading:**
-- [Glossary, Paywall](/guide/getting-started/glossary): short definition.
-- [Membership Statuses](/reference/membership-statuses): what state the new member lands in.
+Your paywall is set up. Next, [attach Access Groups](/guide/levels/attaching-access-groups) so members can access your protected content.
