@@ -1,84 +1,47 @@
 # Members on a Level
 
-The fourth inner tab on a Level, a read-only list of every WordPress user who currently holds this Level. Use it for quick triage: who's on this plan, how many, and what state are they in.
+The **Members** tab on a level shows every WordPress user who currently holds that membership level. Use it for quick checks: who is on this plan, how many, and what status each membership is in.
 
-**Here's what you'll learn:**
-- How to open the Members tab on a Level.
-- What each column tells you.
-- How to spot something off without leaving this screen.
-- Where to go for full member management.
+This is a read-only list. To change a member's status, cancel a membership, or view full history, open the member's detail page or go to **Fluent Members → Members**.
 
-**Before we start:** This tab is only useful once people are actually holding the Level. New Levels show an empty list.
+You need at least one member on the level before this tab shows useful data. New levels start with an empty list.
 
----
+## Access the Members Tab
 
-## Step 1: Open the tab
+Go to **Fluent Members → Levels**, open the level you want to review, then click the **Members** tab.
 
-1. **Fluent Members → Levels**.
-2. Click the Level.
-3. Click **Members** (the fourth tab).
+The page lists every user holding this level. Use **Search by name or email** in the top right to filter the list.
 
-The page lists every WordPress user holding this Level, with a search box and pagination.
+![Members tab on a level](/images/levels/members-on-a-level/member.webp)
 
-![Members tab inside a Level](/screenshots/level-members-tab.webp)
+## What the Columns Show
 
----
+| Column | What it shows |
+|--------|----------------|
+| **ID** | Numeric ID of the membership record (not the WordPress user ID). |
+| **User** | Avatar, display name, and email address. |
+| **Status** | Current membership status — for example, **Active**, **Trial**, **Pending**, **Cancelled**, **Expired**, or **Suspended**. |
+| **Role** | The member's WordPress role (for example, Subscriber). |
+| **Registered** | The date the WordPress user account was registered. |
 
-## What the columns tell you
+Click a row to open that member's **Member Detail** page for full membership history and actions.
 
-| Column          | Notes                                                              |
-|-----------------|--------------------------------------------------------------------|
-| **ID**          | Numeric ID of the membership row (not the WordPress user ID).      |
-| **User**        | Avatar + display name + email.                                     |
-| **Status**      | One of `Active`, `Trial`, `Pending`, `Cancelled`, `Expired`, `Suspended`. |
-| **Role**        | The WordPress role of the user (Subscriber, Administrator, etc.).  |
-| **Registered**  | Date the WordPress user was registered.                            |
+## What This Tab Is For
 
-The **Search by name or email** box at the top filters within this Level.
+Use the Members tab for quick triage without leaving the level:
 
----
+- Check how many people are on this plan (pagination total at the bottom).
+- Search for a specific signup by name or email.
+- Spot status patterns — for example, several **Pending** or **Expired** rows after a campaign.
 
-## What this tab is *not*
+For site-wide member management, use **Fluent Members → Members** in the top navigation instead.
 
-This is a triage view. From here you can see *that* someone holds the Level, but to actually act on a member, change their status, cancel, refund, you click their row to open their **Member Detail** page, or jump to the full **Members** screen.
+## Important Notes
 
-::: tip Use it for quick checks
-- "How many people are on Pro Yoga?", look at the pagination total.
-- "Did Sara's signup go through?", search her email.
-- "Why is this Level losing customers?", sort by status, look at the count of Cancelled / Expired.
-
-For everything else, go to **Members** (top nav) or to a specific member's detail.
+::: warning Good to know
+- An **empty list** after recent signups often means payments are still **Pending** — check **Fluent Members → Transactions** (Pro) or the host payment plugin.
+- The same email can appear twice if the user holds two membership records on this level (for example, a manual add plus a purchase).
+- **Registered** shows when the WordPress user was created, not necessarily when they joined this level.
 :::
 
----
 
-## A real example: Sara checks her latest cohort
-
-Sara launched a 7-day-trial campaign for *Pro Yoga*. After day 1 she:
-
-1. Opens *Pro Yoga* → Members.
-2. Glances at the **Status** column. New signups should show `Trial` for 7 days.
-3. Notices 4 of 12 signups read `Pending` instead of `Trial`, a sign that payment didn't confirm. She'll cross-check with **Transactions** to see why.
-
-The tab told her *something is off* without her needing to leave the Level.
-
----
-
-## Things that trip people up
-
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| Empty list even after recent signups | Members haven't been granted yet, payment may be Pending. | Open Transactions; see what state their payment is in. |
-| Member appears with `Suspended` status | An admin suspended them, or a corporate parent was suspended (cascade). | Open the member's detail to see the trigger. |
-| Two rows for the same email | They hold two memberships of this Level (rare; usually from a manual add + a paywall purchase). | Open the member's detail and clean one up. |
-
----
-
-## What's next?
-
-- **→ [Members, List](/guide/members/)**: see everyone across all Levels.
-- **→ [Member Detail](/guide/members/detail)**: open one person and manage their memberships.
-
-**Recommended reading:**
-- [Membership Statuses](/reference/membership-statuses): what each status means.
-- [Suspending & Cancelling](/guide/members/suspending-and-cancelling): the actions you can take from a member's detail.
