@@ -26,7 +26,7 @@ A **Corporate Membership** lets a single buyer (the **parent** account) purchase
 3. Enter the total number of seats allowed. For example, `5` means 1 parent account plus 4 invited teammates.
 4. Click **Save** when you are done.
 
-Leave **Maximum Member** empty for unlimited seats — the parent can invite as many people as they want.
+Leave **Maximum Member** empty for unlimited seats the parent can invite as many people as they want.
 
 ![Edit Level, Corporate, with Maximum Member field](/images/levels/corporate-memberships/edit-level-corporate-2.webp)
 
