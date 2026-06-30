@@ -44,7 +44,7 @@ Only payment forms with a **single fixed-price or subscription item** appear in 
 
 After you save, the **Pricing Plan** card lists each linked product as its own row with a thumbnail, title, and price. You can add more than one paywall to the same level by clicking **+ Add Pricing** again.
 
-## Manage a Linked Product
+### Manage a Linked Product
 
 Each product row has a **three-dot icon** on the right. Click it to open:
 
@@ -54,9 +54,9 @@ Each product row has a **three-dot icon** on the right. Click it to open:
 
 ![View, edit, or delete a linked product](/images/levels/pricing-paywalls/edit-product-4.webp)
 
-## Direct Checkout
+### Direct Checkout
 
-On any linked product row, the **three-dot menu** also includes **Direct Checkout**. Use this to open or copy the checkout link for that specific product so visitors can buy without going through the membership shortcode first.
+On any linked product row, the **three-dot** menu also includes **Direct Checkout**. Use this to open or copy the checkout link for that specific product so visitors can buy without going through the membership shortcode first.
 
 ![Direct Checkout option on a paywall row](/images/levels/pricing-paywalls/direct-checkout-5.webp)
 

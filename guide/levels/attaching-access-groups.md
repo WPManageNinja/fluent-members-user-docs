@@ -1,107 +1,68 @@
-# Attaching Access Groups to a Level
+# Attaching Access Groups
 
-A Level on its own unlocks nothing. To grant content access, you attach one or more **Access Groups** to the Level. Holders of the Level then see everything those Groups protect.
-**Here's what you'll learn:**
-- Where to attach Groups on the Level edit screen.
-- The Select Access Group modal, what the cards mean.
-- How to detach a Group (and what happens to members when you do).
-- Whether to attach Groups to the Level or the other way around (short answer: either, both work).
+A **Membership Level** on its own unlocks nothing. To grant content access, attach one or more **Access Groups** to the level. Anyone who holds that level can then see everything those groups protect.
 
-**Before we start:** You need both pieces ready, a Level ([Creating a Level](./creating)) and at least one Access Group ([Access Groups Overview](/guide/access-groups/)).
+You need a level already created and at least one [access group](/guide/access-groups/) available before you start.
 
----
+## Access the Access Group Tab
 
-## Step 1: Open the Access Group tab
+Go to **Fluent Members → Levels**, open the level you want to configure, then click the **Access Group** tab.
 
-1. **Fluent Members → Levels**.
-2. Click the Level you want to wire up.
-3. Click the **Access Group** tab.
+If no groups are linked yet, the table shows *"No access groups selected"*. Click **Select Access Group** in the top right.
 
-On a brand-new Level, the table is empty: *"No access groups selected"*. There's a **Select Access Group** button in the top-right.
+![Access Group tab, empty state](/images/levels/attaching-access-groups/level-access-groups-empty.webp)
 
-![Access Group tab, empty state](/screenshots/level-access-groups-empty.webp)
+## Step 1: Select Access Groups
 
----
+Click **Select Access Group**. A modal opens with a card for each access group on your site. Each card shows:
 
-## Step 2: Pick Groups
+- **ID** and **Status** (for example, `#12` · Active)
+- **Title** and **Description**
+- **Level chips** at the bottom showing which other levels already use this group
+- A **checkbox** in the top-right corner to select the group
 
-Click **Select Access Group**. A modal opens with a card for each Group on your site.
+Tick every group this level should unlock, then click **Select** at the bottom of the modal. A success message confirms the update — there is no separate Save button on this tab.
 
-Each card shows:
-- The Group's ID (e.g. `#6`) and status pill (`Active`).
-- Title, e.g. *VIP Vault*.
-- A short description.
-- Small chips at the bottom showing which other Levels already use this Group (e.g. *Starter*, *+2*).
-- A checkbox to select it.
-
-Tick the Groups you want this Level to unlock, then click **Select**.
-
-![Select Access Group modal](/screenshots/level-select-access-group-modal.webp)
-
-You're returned to the Access Group tab. The table now lists the attached Groups with columns *ID / Title / Description / Status* and a row-action kebab on each row.
-
-![Access Group tab, Pro Plan Group attached + kebab open showing Edit/Remove](/screenshots/level-access-group-attached.webp)
-
-::: tip A Group can power many Levels
-The chips at the bottom of each Group card show this: if you see *Starter, Pro, VIP* under a Group, that Group already grants access to holders of all three Levels. Attaching it to a fourth doesn't disturb the existing three.
+::: tip One group can power many levels
+If a group card shows chips like *Lifetime*, *Free Member*, or *Business Team*, that group already unlocks content for those levels. Attaching it to another level does not affect the existing links.
 :::
 
----
+![Select Access Group modal](/images/levels/attaching-access-groups/level-select-access-group-modal-2.webp)
 
-## Step 3: Save (already saved)
 
-There's no explicit Save button on this tab, selections persist immediately when you click **Select** in the modal. You'll see a success toast: *"Access groups updated successfully."*
+## Create an Access Group from the Modal
 
----
+If the group you need does not exist yet, click **+ Create Access Group** at the bottom left of the **Select Access Group** modal.
 
-## Removing a Group from a Level
+Fill in the form:
 
-In the Access Group table, click the kebab (⋮) on the row → **Remove**.
+- **Title:** Name of the access group (required)
+- **Description:** Short note about what the group protects
+- **Status:** **Active** or **Inactive**
 
-::: warning Removal revokes access for current members
-The moment you remove a Group, holders of this Level lose access to whatever content the Group was protecting. There's no grace period. If you only want to retire the Group for *new* signups, leave it attached and instead change the Group's Status to *Inactive* in [Access Groups](/guide/access-groups/), existing memberships keep working until they expire naturally.
+Click **Create**. You return to the **Select Access Group** modal, where the new group appears as a selectable card.
+
+![Create Access Group modal](/images/levels/attaching-access-groups/create-access-group-3.webp)
+
+## Step 2: Review Attached Groups
+
+Back on the **Access Group** tab, the table lists every linked group with **ID**, **Title**, **Description**, and **Status**.
+
+## Edit or Remove an Access Group
+
+Each attached row has a **three-dot icon** on the right. Click it to open:
+
+- **Edit:** Open the access group settings for that linked group.
+- **Remove:** Detach the group from this level.
+
+![Edit or remove an attached access group](/images/levels/attaching-access-groups/edit-or-remove-4.webp)
+
+::: warning Removal revokes access immediately
+Removing a group takes away access to its protected content for every member on this level. There is no grace period. To stop new signups without affecting current members, leave the group attached and set the group to **Inactive** under **Access Groups** instead.
 :::
 
----
+## Attach from the Access Group Side
 
-## A real example: Sara wires Pro Yoga to Pro Lessons
+You can make the same connection from the other direction: open an access group and choose which levels can unlock it from the **Active Levels** card on the group edit screen. Both flows update the same link between levels and groups.
 
-Sara has:
-- A Level called *Pro Yoga*.
-- An Access Group called *Pro Lessons* covering her lesson custom post type.
 
-She opens Pro Yoga → Access Group → Select Access Group → ticks *Pro Lessons* → Select. Done.
-
-Now anyone who buys Pro Yoga can see the lesson posts. New lessons she adds to the post type are protected automatically, she doesn't have to update the Level.
-
----
-
-## Levels-side or Groups-side?
-
-You can wire the same thing from two directions:
-
-- **From the Level** (this page), open the Level, pick which Groups it grants.
-- **From the Group**: open the Group, pick which Levels can see it (the *Active Levels* card). See [Active Levels](/guide/levels/attaching-access-groups).
-
-Both flows write to the same join table. Pick the direction that matches how you're currently thinking, *"this plan unlocks…"* vs *"this content is for…"*
-
----
-
-## Things that trip people up
-
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| Access Group modal is empty | No Groups exist yet, or none are Active. | Go to [Access Groups](/guide/access-groups/) and create one. |
-| Members hold the Level but still see "members only" pages | The Group's Protected Content rules don't cover those pages. | Open the Group → [Protected Content](/guide/access-groups/protected-content). |
-| Removed a Group, members complain about lost access | They were holding access through this Group only. | Re-attach the Group, or change the Group's restriction rules instead. |
-
----
-
-## What's next?
-
-- **→ [Members on a Level](./members-on-a-level)**: see who currently holds this Level.
-- **→ [Access Groups, Overview](/guide/access-groups/)**: build more Groups.
-
-**Recommended reading:**
-- [Active Levels](/guide/levels/attaching-access-groups): the Group-side view of the same join.
-- [Glossary](/guide/getting-started/glossary): terms.
