@@ -1,118 +1,45 @@
 # Access Groups Overview
 
-An **Access Group** is a bundle of content protection rules attached to one or more Membership Levels. It says *"these posts/pages/products are restricted, and here's what to show people who don't have access."*
-This page maps the **Access Groups** screen. The pages under it walk through each section of the edit form.
+An **Access Group** acts as a secure container for your content protection rules in Fluent Members. It lets you easily define which pages, posts, or custom content are restricted, and controls which Membership Levels act as the keys to unlock them.
 
-**Here's what you'll learn:**
-- What the Access Groups list shows.
-- The sections of the Group edit page.
-- How Access Groups and Levels combine to grant content access.
-- The order to set things up.
+## Understanding the Access Groups List
 
-**Before we start:** Read the [Levels Overview](/guide/levels/) so you understand what an Access Group attaches to.
+To see all your created groups, navigate to **Fluent Members → Access Groups** in your WordPress dashboard.
 
-::: tip Drip rules live on the Level, not the Group
-You might expect Content Drip to be configured here, since the drip rule decides *when* protected content appears. It isn't, drip rules are stored on the Level (`level.settings.drip_rules`) and evaluated against the member's `start_date` on that Level. See [Content Drip](/guide/levels/content-drip) for the configuration page.
+- **List View:** Each row displays the group's ID, Title, Description, and Status (Active or Inactive).
+- **Filters and Search:** Use the **All**, **Active**, and **Inactive** tabs at the top to filter your view, or click the search icon to find a group quickly.
+- **Create New:** Click the **+ Add New Access Group** button in the top right corner to start a new rule set.
+
+![Access Groups list view](/images/access-groups/overview/access-group.webp)
+
+## Configuring an Access Group
+
+When you create or edit an Access Group, the page is divided into four sections:
+
+1. **Basic Information:** Enter the group's title, write a short internal description, and set the status to Active.
+2. **Protected Content:** Use the *Apply Restriction To* dropdown to choose what content to lock. You can restrict all posts, specific pages, categories, or even your entire website.
+3. **Unauthorized Access:** Decide what non-members will experience if they try to view the protected content. Options include a redirect, a custom message, a partial content preview, a login popup, or simply hiding the content.
+4. **Active Levels:** Select the specific Membership Levels that will grant users access to this group's content.
+
+![Access Group edit page](/images/access-groups/overview/access-group-edit-full-2.webp)
+
+## Recommended Setup Order
+
+Follow these steps when creating a new group to ensure your content is fully protected:
+
+1. **Create the Group** with a clear title and set its status to Active.
+2. **Select your Protected Content.** To protect all future posts automatically, choose *All Posts* rather than picking individual items.
+3. **Choose your Unauthorized Access action.**
+4. **Select the Active Levels** that should unlock this group.
+5. Click the single **Save** button in the top-right corner to apply all your settings at once.
+
+## Important Notes
+
+::: warning Things to keep in mind
+- **Two-Way Linking:** You can attach a Level to an Access Group from the Group's settings, or from the Level's settings. Both approaches do the exact same thing — use whichever is easier. See [Attaching Access Groups](/guide/levels/attaching-access-groups) for the Level-side flow.
+- **Content Drip Scheduling:** If you want to release content on a schedule, configure this inside the Membership Level settings, not the Access Group. See [Content Drip](/guide/levels/content-drip).
+- **The Save Button:** There is no save button for each individual section. The main **Save** button only appears in the top-right corner after you have made changes to the page.
+- **Access Requirements:** For a user to view protected content, they must hold the correct Membership Level and their account status must be Active or Trial.
 :::
 
----
 
-## The list
-
-Open **Fluent Members → Access Groups** in wp-admin. One row per Group:
-
-| Column          | What it shows                           |
-|-----------------|------------------------------------------|
-| **ID**          | Numeric ID.                              |
-| **Title**       | The Group name (e.g. *VIP Vault*).       |
-| **Description** | Short internal description.              |
-| **Status**      | Active or Inactive.                      |
-
-Tabs at the top filter the view: **All / Active / Inactive**. The search icon does title search.
-
-![Access Groups list](/screenshots/access-groups-list.webp)
-
----
-
-## The sections of the edit page
-
-When you create or open a Group, the edit page has these editable sections:
-
-| Section                    | What it does                                                                  |
-|----------------------------|--------------------------------------------------------------------------------|
-| **Basic Information**      | Title, description, status.                                                   |
-| **Protected Content**      | The *Apply Restriction To* dropdown: what content this Group covers.         |
-| **Unauthorized Access**    | What non-members see (redirect, message, partial, login, hide).               |
-| **Active Levels**          | Multi-select for which Levels grant access to this Group.                     |
-
-![Access Group edit page, full layout](/screenshots/access-group-edit-full.webp)
-
-::: tip One Save button
-There's no per-section Save. A single **Save** button appears in the top-right when you've made unsaved changes; it saves the whole page at once.
-:::
-
-The **Active Levels** multi-select is the UI for the `fmem_access_group_membership_levels` pivot table, the same join you can write from the Level side via the Level's *Access Group* tab. Either side works; pick whichever matches how you're thinking about the change. See [Attaching Access Groups](/guide/levels/attaching-access-groups) for the Level-side flow.
-
----
-
-## How Groups and Levels combine
-
-A user has access to a Group's content when **both** of these are true:
-
-1. The user holds at least one Level listed in the Group's **Active Levels**.
-2. Their membership row is in `active` or `trial` status (see [Membership Statuses](/reference/membership-statuses)).
-
-Otherwise, the **Unauthorized Access** action kicks in: a redirect, a message, the [Partial Content overlay](/guide/settings/partial-content-lock), the login popup, or simply nothing.
-
-::: tip In plain language
-A Group is a bag of "things to protect" + a fallback action. Levels are the keys to the bag.
-:::
-
----
-
-## The order to set things up
-
-1. **Create the Group** with a title and Active status.
-2. **Protected Content**: pick what's inside the bag (all posts, all pages, a specific category, a FluentCart product…).
-3. **Unauthorized Access**: decide what non-members see.
-4. **Active Levels**: pick which Levels can unlock the bag (or do this from the Level side via [Attaching Access Groups](/guide/levels/attaching-access-groups)).
-5. *(Optional, configured on the Level)* **[Content Drip](/guide/levels/content-drip)**: schedule when each item appears for new members.
-
-You can do these in any order, but they're listed in the order most people find easiest.
-
----
-
-## A real example: Sara's Pro Lessons
-
-Sara creates a Group:
-
-- **Title:** *Pro Lessons*
-- **Status:** Active
-- **Protected Content:** *Specific Post/Page/CPT/Taxonomy etc.* → her `lesson` custom post type.
-- **Unauthorized Access:** *Redirect to a specific URL* → `/become-a-pro-member`.
-- **Active Levels:** *Pro Yoga*.
-
-She didn't add any drip rules on the *Pro Yoga* Level, so her lessons are available all at once after signup.
-
----
-
-## Things that trip people up
-
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| Members hold the right Level but still see the unauthorized fallback | The Group's Active Levels doesn't include their Level. | Open the Group → Active Levels → add it. |
-| New posts you publish aren't protected | The Protected Content rule lists specific items, not the post type as a whole. | Change to *All Posts* or "All of this type". |
-| The Save button doesn't show | Nothing has changed yet. | Edit any field. |
-| Active Levels picker is empty | No Levels exist yet, or they're all Inactive. | Go to [Levels](/guide/levels/) and create at least one. |
-
----
-
-## What's next?
-
-- **→ [Protected Content: Restriction Types](./protected-content)**: every option in the *Apply Restriction To* dropdown.
-- **→ [Unauthorized Access](./unauthorized-access)**: the five fallback actions explained.
-- **→ [Attaching Access Groups](/guide/levels/attaching-access-groups)**: wire Levels to this Group from the Level side.
-
-**Recommended reading:**
-- [Content Drip](/guide/levels/content-drip): release content over time (configured on the Level).
-- [Glossary](/guide/getting-started/glossary): terms.
