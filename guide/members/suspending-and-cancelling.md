@@ -1,108 +1,53 @@
 # Suspending & Cancelling
 
-Two row-actions sit behind the kebab on every Memberships table row: **Suspend** and **Cancel**. They look similar but mean very different things, this page makes the difference plain.
-**Here's what you'll learn:**
-- What Suspend does and what it doesn't.
-- What Cancel does and how it integrates with payment providers.
-- How to undo a Suspend.
-- What happens to corporate sub-members when you do this to a parent.
+Fluent Members gives you two ways to remove a member's access from the admin: **Suspend** and **Cancel**. Both revoke access immediately, but they behave differently when it comes to billing and whether the action can be reversed.
 
-**Before we start:** You're on the [Member Detail](./detail) page for someone with an `active` or `trial` membership.
+## Suspend vs Cancel at a Glance
 
----
-
-## Suspend vs Cancel, the short version
-
-| | **Suspend** | **Cancel** |
+| | Suspend | Cancel |
 |---|---|---|
-| Access revoked? | Yes, immediately. | Yes, immediately. |
-| Billing stops? | No, recurring charges continue (unless you also cancel at the provider). | Yes, the plugin tells the payment provider to stop. |
-| Reversible from admin UI? | Yes, change status to Active. | No, you'd grant a new membership. |
-| Use it for | Policy violations, payment disputes, temporary holds. | The customer wants out, or you're cleaning up after a refund. |
+| **Access revoked?** | Yes, immediately | Yes, immediately |
+| **Billing stops?** | No — recurring charges continue | Yes — the plugin notifies the payment provider to stop |
+| **Reversible?** | Yes — change the status back to Active | No — you would need to grant a new membership |
+| **Best used for** | Temporary holds, policy violations, payment disputes | Member requested cancellation, post-refund cleanup, irrecoverable failed payments |
 
-::: tip In plain language
-*Suspend* is "you're benched but still on the team payroll." *Cancel* is "you're off the team, and we're not billing you anymore."
+## How to Suspend a Membership
+
+1. Go to **Fluent Members → Members** and click the member's row to open their [Member Detail](./detail) page.
+2. On the membership row, click the action menu and select **Suspend**.
+3. The row status changes to `Suspended` and access is revoked immediately.
+
+To restore access, go back to the same row and change the status to **Active**. There is no dedicated "Unsuspend" button — updating the status field directly is how you reverse a suspension.
+
+::: warning Suspend does not stop billing
+If the membership is connected to a Stripe subscription or FluentCart subscription, recurring charges will continue even after suspending. To stop billing as well, either cancel at the payment provider directly, or use Cancel instead of Suspend.
 :::
 
----
+## How to Cancel a Membership
 
-## How to Suspend
+1. On the membership row, click the action menu and select **Cancel**.
+2. The row status changes to `Cancelled` and access is revoked immediately.
+3. The plugin notifies the payment provider to stop recurring charges:
+   - **Stripe (Pro):** subscription is cancelled immediately, or at the end of the billing period depending on your [Cancellation Mode](/guide/transactions/cancellation-modes) setting.
+   - **FluentCart:** the linked subscription is cancelled.
+   - **Fluent Forms / Paymattic / others:** the integration's cancel hook fires.
 
-1. **Fluent Members → Members**, click the user's row.
-2. On the membership row, open the kebab (⋮) → **Suspend**.
-3. The row's status flips to `Suspended`. Access is revoked the instant the next page loads.
+A cancelled member can re-purchase from your pricing page. The old `Cancelled` row stays in their membership history for your records, and a new `Active` row is created when they rejoin.
 
-Re-enabling a suspended member: go to the same row and change status back to Active. (In 1.0 there's no dedicated "Unsuspend" action; the path is via the status field.)
+## Corporate Memberships
 
-::: warning Suspend doesn't cancel billing
-If you've configured the membership through Stripe (Native Payment) or via FluentCart subscriptions, recurring charges keep going. To stop billing, either also cancel at the provider, or use Cancel instead.
+When you suspend or cancel a **corporate parent** membership, every child (seat) account under that parent mirrors the new status automatically:
+
+- Suspend the parent → all active children become `Suspended`
+- Cancel the parent → all active children become `Cancelled`
+
+To restore access for the entire team, change the parent's status back to Active. Individual child rows do not need to be updated separately.
+
+## Important Notes
+
+::: warning Things to keep in mind
+- **Suspend does not stop billing.** Always check with your payment provider if you need to pause charges, or use Cancel instead.
+- **Cancel may take effect immediately or at period end.** This depends on your Subscription Cancellation Mode setting. See [Cancellation Modes](/guide/transactions/cancellation-modes) to configure this behavior.
+- **Cancelled rows are kept for your records.** The old row is not deleted — it remains in the member's history with a `Cancelled` status. A fresh membership row is created if they re-join.
+- **Corporate cascades are parent-driven.** If child accounts were individually suspended for other reasons, un-suspending the parent will not automatically restore those children. Each would need to be updated individually.
 :::
-
----
-
-## How to Cancel
-
-1. Same as above, but click **Cancel** in the kebab.
-2. The row flips to `Cancelled`. Access is revoked.
-3. The plugin tells the payment provider to stop recurring charges:
-   - **Stripe (Pro):** subscription cancelled immediately (or at period end if you've configured that mode, see [Subscription Cancellation Modes](/guide/transactions/cancellation-modes)).
-   - **FluentCart subscriptions:** matching subscription cancelled.
-   - **Fluent Forms / Paymattic / others:** the integration's cancel hook fires; behaviour depends on the host plugin.
-
-A cancelled member can re-buy through your pricing page. The old `Cancelled` row stays in their history for audit; a fresh `Active` row gets created.
-
----
-
-## When to use which
-
-- **Use Suspend when:** they violated a community guideline, you want a payment-dispute hold, an admin asks for a temporary "off" without losing the billing relationship.
-- **Use Cancel when:** the customer asked to leave, you're cleaning up after a refund, the subscription is irrecoverable (multiple failed charges).
-
----
-
-## Cascade for corporate parents
-
-If the membership row you're suspending or cancelling is a *corporate parent*, every sub-member's row mirrors the parent's new status:
-
-- Suspend the parent → every active child becomes `Suspended`.
-- Cancel the parent → every active child becomes `Cancelled`.
-
-This is automatic; you don't have to touch the children individually.
-
-::: warning Sub-members can't be saved by un-suspending one child
-The cascade is parent-driven. To restore access for the whole team, change the parent's status back to Active.
-:::
-
----
-
-## A real example: Sara handles a chargeback
-
-A buyer files a chargeback through their bank. Stripe notifies the site. Sara:
-
-1. Goes to the buyer's [Member Detail](./detail).
-2. On the `Active` Pro Yoga row, opens kebab → **Suspend**. Status flips to `Suspended`. The buyer immediately loses access.
-3. Sara investigates with Stripe; resolves the dispute over the next week.
-
-If she wins the chargeback, she changes the row's status back to Active. If she loses, she cancels the row, the membership ends, and (in Pro) she may also issue a Refund on the Transaction record to keep the books square.
-
----
-
-## Things that trip people up
-
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| Suspend menu item is missing | Status isn't `Active` or `Trial`. | Suspend only applies to live memberships. |
-| Cancelled the row but Stripe still charges next month | Stripe webhook URL wrong, or end-of-period mode misunderstood. | Check [Stripe Setup](/guide/settings/payment-settings/stripe-setup) and [Cancellation Modes](/guide/transactions/cancellation-modes). |
-| Cancelled a row, member complains they lost access immediately and they expected end-of-period | Cancellation mode is set to *Immediate* (the default). | Change the mode in [Cancellation Modes](/guide/transactions/cancellation-modes). |
-| Un-suspended the parent but children are still Suspended | The cascade only fires on status *change*. If children were Suspended for other reasons (manual), they need individual fixes. | Cancel + re-add each affected child. |
-
----
-
-## What's next?
-
-- **→ [🔒 Pro · Refunds](/guide/transactions/refunds)**: refund a transaction when you cancel.
-- **→ [Member Portal, Cancelling](./portal/cancelling)**: the member-driven version of Cancel.
-
-**Recommended reading:**
-- [Membership Statuses](/reference/membership-statuses): the canonical vocabulary.
-- [🔒 Pro · Subscription Cancellation Modes](/guide/transactions/cancellation-modes): immediate vs end-of-period.

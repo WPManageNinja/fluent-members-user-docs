@@ -1,99 +1,47 @@
 # Member Detail
 
-The page you land on when you click a row in [Members](./). It shows everything about one specific person, their account info and every membership they hold.
-**Here's what you'll learn:**
-- The two cards on this page (user header + Memberships table).
-- Every column in the Memberships table.
-- The row actions you can take on a single membership.
+The **Member Detail** page opens when you click any row in the [Members list](./). It shows everything about one specific user — their account information and every membership they hold — and gives you direct controls to manage their memberships from a single screen.
 
-**Before we start:** Open the [Members](./) screen and click any row.
+## User Information
 
----
+At the top of the page you will see the user's WordPress account details:
 
-## The two cards
+- **Avatar** and **Display Name**
+- **Email Address**
+- **Registration Date** — when the WordPress user account was created
+- **Role** — the WordPress role assigned to this user (e.g. Subscriber, Administrator)
 
-### The user header
+## Memberships Table
 
-The top card shows the WordPress account behind the membership:
+Below the user details is a table listing every membership this user holds. A single user can hold multiple memberships at the same time — each one appears as its own row.
 
-- **Avatar**
-- **Display name**
-- **Email**
-- **Registration Date** (when the WordPress user was created)
-- **Role badge** (Subscriber, Administrator, etc.)
+| Column | What it shows |
+|---|---|
+| **Plan & Level** | The pricing plan title and the Membership Level name |
+| **Provider** | Where the membership came from: `default` (native payment), `FluentForms`, `FluentCart`, `WooCommerce`, etc. |
+| **Start Date** | When the membership was created |
+| **Expires** | The expiry date, `Lifetime`, or blank for cancelled or expired rows |
+| **Amount** | The charge amount at the time of purchase |
+| **Status** | Coloured pill: `Active`, `Trial`, `Pending`, `Cancelled`, `Expired`, or `Suspended` |
 
-Click the avatar/name area to jump to the user's standard WordPress profile.
+To add a new membership to this user, click the **+ Add Membership** button at the top-right of the table. See [Adding a Membership Manually](./adding-manually) for the full steps.
 
-![Member detail, user header](/screenshots/member-detail-header.webp)
+## Row Actions
 
-### The Memberships table
+Each membership row has an action menu at the end of the row. The available actions depend on the current status of that membership:
 
-Underneath, every membership this user holds. One row per membership, a user can have many.
+- **Suspend** — available when status is `Active` or `Trial`. Revokes the member's access without cancelling their billing. See [Suspending & Cancelling](./suspending-and-cancelling).
+- **Cancel** — available when status is `Active`, `Trial`, or `Pending`. Ends the membership and removes access.
+- **Refund** *(Pro only)* — available when a linked transaction exists. Opens the refund modal. See [Refunds](/guide/transactions/refunds).
 
-| Column        | What it shows |
-|---------------|----------------|
-| **Plan & Level** | Plan title (top) and Level name (bottom). |
-| **Provider**     | Where the membership came from: `default` (Native Payment), `FluentForms`, `FluentCart`, `WooCommerce`, etc. |
-| **Start Date**   | When the membership row was created. |
-| **Expires**      | The expiry date, `Lifetime`, or `N/A` for cancelled/expired rows. |
-| **Amount**       | Initial charge amount (blank when not tracked). |
-| **Created**      | Same as Start Date in most cases. |
-| **Status**       | Coloured pill: `Active`, `Trial`, `Pending`, `Cancelled`, `Expired`, `Suspended`. |
-
-The **+ Add Membership** button at the top-right of the card opens the [Adding a Membership Manually](./adding-manually) modal.
-
----
-
-## Row actions
-
-Each membership row has a kebab (⋮) at the end. Clicking it opens a small menu:
-
-| Action            | Visible when… | What happens |
-|-------------------|---------------|---------------|
-| **Suspend**       | Status is `Active` or `Trial` | Revokes access without ending billing. See [Suspending & Cancelling](./suspending-and-cancelling). |
-| **Cancel**        | Status is `Active`, `Trial`, or `Pending` | Ends the membership; access revoked. |
-| **Refund** *(Pro)* | A linked transaction exists | Opens the Refund modal, see [Refunds](/guide/transactions/refunds). |
-
-![Memberships table with row action menu open (Suspend / Cancel)](/screenshots/member-detail-row-actions.webp)
-
-::: warning Status-aware actions
-The menu only shows actions that make sense for the current row. You won't see Suspend on a Cancelled row, or Cancel on an Expired one. If the action you expect is missing, check the row's status.
+::: tip Actions are status-aware
+The menu only shows actions that apply to the current status. If an action you expect is missing, check the status pill on that row first.
 :::
 
----
+## Important Notes
 
-## A real example: Sara handles a refund request
-
-A member emails: *"Please cancel my Pro Yoga subscription and refund this month's charge."*
-
-Sara:
-
-1. Opens **Members**, searches their email.
-2. Clicks the row → lands on this Detail page.
-3. On the membership row (currently `Active`), clicks the kebab → **Cancel**. Status flips to `Cancelled`; if Pro Stripe is connected, the recurring charge stops too.
-4. Clicks the kebab again on the same row → **Refund** (Pro only). A modal opens with the original transaction amount pre-filled. She confirms.
-5. The member receives a refund email; their access is gone.
-
-Two clicks, one screen. Done.
-
----
-
-## Things that trip people up
-
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| Memberships table is empty even after a known purchase | The buyer hasn't logged in yet, so no WP user → no membership row. | Wait for them to confirm their account, or grant manually. |
-| Status shows Pending for hours | Provider webhook hasn't fired (e.g. Stripe webhook URL is wrong, or FluentCart event was missed). | Check the provider's logs; see [Troubleshooting](/reference/troubleshooting). |
-| Refund action doesn't appear | Either the plugin is free (no refunds without Pro) or no charge was recorded for this row. | Install Pro; check Transactions for a linked charge. |
-| Member has multiple rows for the same Level | Could be one paid purchase + one manual grant. | Cancel the duplicate row. |
-
----
-
-## What's next?
-
-- **→ [Adding a Membership Manually](./adding-manually)**: comp an admin or comp someone for support.
-- **→ [Suspending & Cancelling](./suspending-and-cancelling)**: what these actions do in depth.
-
-**Recommended reading:**
-- [Membership Statuses](/reference/membership-statuses): the canonical status vocabulary.
-- [🔒 Pro · Refunds](/guide/transactions/refunds): the refund flow.
+::: warning Things to keep in mind
+- **A user can have multiple membership rows.** Each row is a separate membership, not a separate user account. If you see the same user twice, they hold more than one membership.
+- **Refund is a Pro feature.** The Refund action only appears if Fluent Members Pro is installed and a transaction is linked to that membership row.
+- **Cancelling does not automatically issue a refund.** You must use the Refund action separately after cancelling.
+:::

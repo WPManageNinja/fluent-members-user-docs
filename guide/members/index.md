@@ -27,7 +27,7 @@ Use the tabs at the top of the table to filter the list by membership status:
 
 ## Search
 
-Use the **Search by name or email** field in the top-right corner of the table to find a specific member. The search applies to the currently selected tab — if you are on the **Active** tab, results will only include active members. Switch to **All** if you are not sure which status the member is in.
+Use the **Search by name or email** field in the top-right corner of the table to find a specific member. The search applies to the currently selected tab. If you are on the **Active** tab, results will only include active members. Switch to **All** if you are not sure which status the member is in.
 
 ## Pagination
 

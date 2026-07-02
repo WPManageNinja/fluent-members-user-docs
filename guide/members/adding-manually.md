@@ -1,118 +1,51 @@
 # Adding a Membership Manually
 
-Manual membership granting is a common admin task, comping a staff account, fixing a paywall mix-up, granting access to a beta tester. Fluent Members exposes this through the **+ Add Membership** modal on the [Member Detail](./detail) page.
+Fluent Members lets you assign a membership to any WordPress user directly from the admin — without requiring them to purchase. This is useful for comping staff accounts, fixing a missed webhook, granting beta access, or migrating members from another platform.
 
-**Here's what you'll learn:**
-- How to open the Add Membership modal.
-- How the Level → Pricing → Assign flow works inside the modal.
-- What gets recorded when you assign manually (no charge happens).
-- When to use this vs the user buying themselves.
+## Before You Start
 
-**Before we start:** The user must already have a WordPress account on your site, and at least one [Level](../levels/) with at least one Pricing Plan must exist.
+- The user must already have a WordPress account on your site. If they do not, create one first via **Users → Add New**.
+- At least one [Membership Level](../levels/) with at least one Pricing Plan must exist.
 
----
+## How to Add a Membership
 
-## Step 1: Open the modal
+1. Go to **Fluent Members → Members**.
+2. Find the user by name or email using the search field, then click their row to open the [Member Detail](./detail) page.
+3. Click the **+ Add Membership** button at the top-right of the Memberships table.
+4. The **Add Membership** modal opens. Each Level appears as a collapsible section — click a Level to expand it and see its available Pricing Plans.
+5. Each Pricing Plan card shows the plan name, price, billing interval, trial days, and provider. Click **+ Assign Member** on the plan that matches the access you want to grant.
+6. The modal closes and the new membership row appears in the table with a status of **Active**.
 
-1. **Fluent Members → Members**.
-2. Click the row of the user you want to add a membership to. (If they don't appear, search by email; if they still don't appear, they don't have a WP account yet, create one via **Users → Add New** first.)
-3. On the [Member Detail](./detail) page, click **+ Add Membership** in the top-right of the Memberships card.
-
-The **Add Membership** modal opens.
-
-![Add Membership modal, Levels listed as accordions, Pro Plan expanded with Payment Item and "+ Assign Member"](/screenshots/add-membership-modal.webp)
-
----
-
-## Step 2: Pick the Level
-
-The modal lists every Level on your site as a collapsible accordion (Pro Plan, Premium Plan, Starter, Pro, VIP, whatever you've built).
-
-Click the Level's accordion header to expand it. You'll see every Pricing Plan attached to that Level as a card with:
-
-- The Plan title (e.g. *Payment Item*) and ID (`#0`).
-- An **Active** pill if the Plan is active.
-- The provider source: *"Pro Plan Pay Form"* (Fluent Forms), *"FluentCart - Premium Plan"*, etc.
-- Price ($30.00) and Interval (`one_time`, `monthly`).
-- Trial Days (`0 days`).
-- A **+ Assign Member** button.
-
----
-
-## Step 3: Click + Assign Member
-
-Click **+ Assign Member** on the Pricing Plan that should drive this membership. The modal closes; the new row appears in the Memberships table with Status `Active`, the chosen Plan's name, the matching provider, and a Created date of "now".
-
-A success toast confirms: *"Membership created successfully."*
-
-![Memberships table after manual add, new Active row appears](/screenshots/member-detail-row-actions.webp)
-
-::: warning No charge happens
-Manual assignment doesn't charge the user. It creates a local membership row only. If you want a charge, the user has to buy through your pricing page.
+::: warning No charge is applied
+Manually assigning a membership does not charge the user. A membership record is created in your database only. If a payment is required, the user must purchase through your pricing page.
 :::
 
----
+## When to Use Manual Assignment
 
-## When to use this
+- Granting access to a team member or staff account so they can preview protected content
+- Fixing a membership that was purchased but not activated due to a failed integration webhook
+- Giving a beta tester or reviewer access to a Level without payment
+- Migrating a member who joined through an off-platform method (gift card, in-person sale, etc.)
 
-- **Comping a staff account** so internal team members can preview the protected content.
-- **Fixing a paywall miss** when a buyer paid but the integration's webhook didn't fire.
-- **Granting a beta tester** access to a Level without payment.
-- **Migrating an old member** who joined off-platform (gift card, in-person sale, etc.).
+## How Expiry is Set
 
-When **not** to use it:
+The expiry date on the new membership row is determined by the Pricing Plan you choose:
 
-- A user can pay, let them. Manual grants skip the Welcome Email's "first-time paying customer" feel, and they don't go through your accounting funnel.
-- You want to charge them, manual grants don't charge.
-
----
-
-## How the expiry is calculated
-
-| Pricing Plan type | Expiry on the new row |
+| Plan type | Expiry on the new row |
 |---|---|
-| `One-time` / `Lifetime` | `expires_at` is `NULL` (Lifetime). |
-| `Subscription` (recurring) | `expires_at` = now + Interval × Interval count. The hourly cron will flip it to Expired when that date passes. |
-| `Free` | `expires_at` is `NULL`. |
-| `Trial` | `expires_at` = now + Trial Days. After that, behaviour depends on the integration, manual trial grants without follow-up rarely make sense. |
+| **One-time / Lifetime** | No expiry — membership is permanent |
+| **Subscription (recurring)** | Expires after one billing interval; the system will flip it to Expired if not renewed |
+| **Free** | No expiry |
+| **Trial** | Expires after the configured trial period |
 
-::: tip Choose the Plan that matches your intent
-If you want a non-expiring comp, pick a Lifetime Plan (or a one-time Plan). If you want a 30-day trial, pick a Subscription Plan whose interval is Monthly, the cron will flip it to Expired in 30 days.
+::: tip Pick the right plan for your intent
+To grant permanent access, choose a Lifetime or one-time plan. To grant temporary access, choose a subscription plan — it will expire automatically after one interval.
 :::
 
----
+## Important Notes
 
-## A real example: Sara comps her video editor
-
-Sara hires Mike to edit her lesson videos. Mike needs access to all *Pro Yoga* content but shouldn't be charged.
-
-She:
-
-1. Creates a WP user for Mike (Users → Add New).
-2. Opens **Members**, searches "Mike", clicks the row.
-3. Clicks **+ Add Membership**.
-4. Expands **Pro Yoga**, finds her Lifetime Plan, clicks **+ Assign Member**.
-
-Mike's row now reads: `Pro Yoga / Lifetime, Active, Expires: Lifetime`. He can sign in and see every lesson.
-
----
-
-## Things that trip people up
-
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| Levels modal is empty | No Levels exist, or none have Pricing Plans. | Create a Plan first. |
-| User isn't in the Members search | They don't have a WordPress account yet. | Create one in **Users → Add New**. |
-| New row shows status `Pending` | The chosen Plan triggers an integration that expects payment first. | Pick a Native Payment or Free Plan for manual grants. |
-| Welcome Email doesn't go out | The action that fires emails (`fluent_members/membership_level_assigned`) does run, but the notification may be disabled. | Toggle it on in [Email Notifications](/guide/settings/email-configuration/email-notifications). |
-
----
-
-## What's next?
-
-- **→ [Status Reference](./statuses)**: what each status means after you assign.
-- **→ [Suspending & Cancelling](./suspending-and-cancelling)**: how to walk back if needed.
-
-**Recommended reading:**
-- [Member Detail](./detail): everything else you can do on this page.
-- [Membership Statuses](/reference/membership-statuses): the canonical vocabulary.
+::: warning Things to keep in mind
+- **The user must have a WordPress account.** If the user does not appear in the Members search, they do not have a WordPress account yet. Create one under **Users → Add New** first.
+- **Levels with no Pricing Plans will not appear in the modal.** Make sure your Level has at least one active Pricing Plan before trying to assign it manually.
+- **A new row with `Pending` status** means the selected plan expects a payment confirmation from an integration. Choose a Native Payment or Free plan for manual grants to get an `Active` status immediately.
+:::
