@@ -2,7 +2,7 @@
 
 Fluent Members lets you assign a membership to any WordPress user directly from the admin — without requiring them to purchase. This is useful for comping staff accounts, fixing a missed webhook, granting beta access, or migrating members from another platform.
 
-## Before You Start
+#### Before You Start
 
 - The user must already have a WordPress account on your site. If they do not, create one first via **Users → Add New**.
 - At least one [Membership Level](../levels/) with at least one Pricing Plan must exist.
@@ -12,13 +12,21 @@ Fluent Members lets you assign a membership to any WordPress user directly from 
 1. Go to **Fluent Members → Members**.
 2. Find the user by name or email using the search field, then click their row to open the [Member Detail](./detail) page.
 3. Click the **+ Add Membership** button at the top-right of the Memberships table.
+
+![ Add Membership](/images/members/adding-memberships/manually-add-membership-1.webp)
+
 4. The **Add Membership** modal opens. Each Level appears as a collapsible section — click a Level to expand it and see its available Pricing Plans.
 5. Each Pricing Plan card shows the plan name, price, billing interval, trial days, and provider. Click **+ Assign Member** on the plan that matches the access you want to grant.
+
+![ Assign Membership](/images/members/adding-memberships/assign-membership-2.webp)
+
 6. The modal closes and the new membership row appears in the table with a status of **Active**.
 
 ::: warning No charge is applied
 Manually assigning a membership does not charge the user. A membership record is created in your database only. If a payment is required, the user must purchase through your pricing page.
 :::
+
+![ Assign Membership](/images/members/adding-memberships/memberships-3.webp)
 
 ## When to Use Manual Assignment
 

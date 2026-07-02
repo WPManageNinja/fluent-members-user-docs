@@ -25,7 +25,7 @@ The Memberships table displays all memberships assigned to the user. If the user
  * **Amount:** The total price the user paid at checkout.
  * **Status:** A colored badge indicating if the plan is currently Active, Trial, Pending, Cancelled, Expired, or Suspended.
 
->[Tip]
+>[!Tip]
 >To give the user a brand new [membership manually](./adding-manually), simply click the dark **+ Add Membership** button at the top right of the table.
 
 ![Membership Table](/images/members/members-details/membership-table-2.webp)
