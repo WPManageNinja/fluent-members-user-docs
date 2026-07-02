@@ -65,7 +65,7 @@ export default defineConfig({
           items: [
             { text: 'Overview', link: '/guide/access-groups/' },
             { text: 'Protected Content: Restriction Types', link: '/guide/access-groups/protected-content' },
-            { text: 'Unauthorized Access', link: '/guide/access-groups/unauthorized-access' },
+            { text: 'Setting Up Unauthorized Access Rules', link: '/guide/access-groups/unauthorized-access' },
             { text: 'Gutenberg Block: Inserting', link: '/guide/access-groups/gutenberg-block/inserting' },
             { text: 'Gutenberg Block: Configuring', link: '/guide/access-groups/gutenberg-block/configuring' },
             { text: 'Gutenberg Block: Nesting & Limits', link: '/guide/access-groups/gutenberg-block/nesting-and-limits' }
