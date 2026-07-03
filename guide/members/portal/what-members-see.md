@@ -1,116 +1,53 @@
-# Member Portal: What Members See
+# What Members See
 
-A tour of the portal page from the member's side. This is the page they hit when they click "My Account" in your menu. What they see depends on their login state, their memberships, and whether you have Fluent Members Pro active.
-**Here's what you'll learn:**
-- The three states a visitor can be in (logged out / logged in no membership / logged in with memberships).
-- What each membership card contains.
-- Which actions appear in free vs Pro.
-- How corporate parents see their team.
+The Member Portal renders differently depending on who is visiting and what memberships they hold. This page walks through each state a visitor can be in and what appears on screen.
 
-**Before we start:** You've [set up the portal](./setup). Open it as a member to follow along.
+## Logged Out
 
-::: warning Screenshots pending
-The front-end portal screenshots aren't in our reference folder yet. When you share them, they'll fit at the noted spots.
+A visitor who is not signed in sees a simple prompt to log in. They are not redirected — the portal page stays in place and shows a sign-in link to your standard WordPress login page.
 
-[Screenshot needed: front-end Member Portal page rendered for a logged-in active member]
-:::
+## Logged In — No Membership
 
----
+A member who is logged in but holds no membership rows sees an empty state with a link directing them to your pricing page. No membership cards or action buttons are shown.
 
-## State 1: Logged out
+## Logged In — With Memberships
 
-A visitor who isn't signed in sees a small box: *"Please log in to view your membership."* plus a sign-in link to your standard WordPress login.
+This is the most common case. The portal shows one card per membership the member holds. A member with multiple memberships sees multiple cards stacked on the same page.
 
-::: tip Customise this if your login is non-standard
-If you use a separate signin page (e.g. a custom Fluent Forms login), point the sign-in link there with WP's standard `wp_login_url()` filter or with the [Login Popup](/guide/settings/login-popup) settings.
-:::
+![Member dashboard](/images/members/portal-setup/memeber-dashboard-2.webp)
 
----
+### What Each Membership Card Shows
 
-## State 2, Logged in, no memberships
+Each membership card displays the following details:
 
-A visitor who's logged in but holds no membership rows sees an empty-state card with a CTA to your pricing page:
+ * **Plan & Level:** Shows the pricing plan and the assigned membership level (for example, Monthly · Pro Access).
+ * **Status:** Displays the current membership status, such as **Active, Trial, Pending, Cancelled, Expired, or Suspended**.
+ * **Start Date:** The date the membership was created.
+ * **Expires:** Shows the membership expiration date, **Lifetime** for lifetime memberships, or remains blank if the membership is not active.
+ * **Amount:** The amount paid when the membership was purchased.
+ * **Provider:** Indicates the source of the membership, such as **FluentCart, Native Payment, or Fluent Forms**.
 
-*"You don't have any active memberships. [See plans](#)"*
+### Action Buttons
 
-Configure that CTA's link to your pricing page (where `[fluent_membership_level]` lives) in the future once the plugin exposes a setting; in 1.0 the link uses a default fallback.
+The buttons available on each card depend on the membership status and whether Pro is installed:
 
----
+| Button | When it appears | Free | Pro |
+|---|---|:---:|:---:|
+| **Cancel Membership** | Status is `Active` or `Trial` | ✅ | ✅ |
+| **Update Payment Method** | Status is `Active` or `Trial`, provider is Native Payment (Stripe) | — | ✅ |
+| **Renew** | Status is `Expired` and the subscription is renewable | — | ✅ |
 
-## State 3: Logged in with one or more memberships
+Actions update the card immediately without a full page reload. Cancelling a membership changes the status pill to `Cancelled` in place.
 
-The most common case. The portal shows one **card per membership** the user holds.
+## Corporate Team Panel (Pro)
 
-### Each card displays:
+Members who hold a **corporate parent** membership see an additional **Team Members** panel below their membership card. The panel shows:
 
-- **Title**: the Plan title (e.g. *Monthly*) and Level name (e.g. *Pro Yoga*).
-- **Status badge**: colored pill: Active / Trial / Pending / Cancelled / Expired / Suspended.
-- **Start date**: when the membership was created.
-- **Expires**: the expiry date, *Lifetime*, or *N/A*.
-- **Amount**: original price.
-- **Provider**, *FluentCart*, *Native Payment (Stripe)*, *Fluent Forms*, etc.
+- A list of invited sub-members with each one's current status (Active, Pending, Expired)
+- A **Send Invitation** button to invite new seat holders by email
+- A remove option on each row to revoke a seat
 
-### Action buttons (depending on status and Pro)
+Sub-members do not see the Team panel — they see only their own membership card, the same as any individual member.
 
-| Button                          | Visible when…                                            | Free | Pro |
-|----------------------------------|----------------------------------------------------------|:--:|:--:|
-| **Cancel Membership**           | Status is `Active` or `Trial`.                          | ✅ | ✅ |
-| **Update Payment Method**       | Status is `Active`/`Trial` and provider is Native Payment. |, | ✅ |
-| **Renew**                       | Status is `Expired` and the subscription is renewable.   |, | ✅ |
+For the full invite and seat management flow, see [Corporate Seat Invites](/guide/members/portal/corporate-seat-invites).
 
----
-
-## Corporate parents, the Team panel (Pro)
-
-If the member holds a corporate parent membership, the portal adds a **Team Members** panel:
-
-- A list of currently invited members, each with a status (Active, Pending invite, Expired).
-- A **Send Invitation** button.
-- A **Cancel** kebab on each row to remove a sub-member.
-
-The full corporate flow is in [Corporate Seat Invites](./corporate-seat-invites).
-
-::: tip In plain language
-The portal shows the *parent* a team panel; sub-members never see the panel, they just see their own membership card, exactly like an Individual member would.
-:::
-
----
-
-## The portal updates live
-
-Most actions update the portal in place, without a full page reload. Cancel a membership and the card immediately changes its status pill to *Cancelled*; remove a teammate and the team panel re-renders the seat count. Behind the scenes, the portal is a small Vue app calling the plugin's REST endpoints.
-
----
-
-## A real example: Mike checks his Pro Yoga subscription
-
-Mike has been on Pro Yoga for 6 months. He visits *My Yoga Membership*:
-
-- He's logged in → State 3.
-- One card: *Monthly · Pro Yoga · Active · Started Jan 1, 2026 · Expires Feb 1, 2026 (recurring) · $19.00 · Native Payment*.
-- Three buttons: **Cancel Membership** · **Update Payment Method** · *(no Renew, he's not expired)*.
-
-He clicks Cancel; the card updates without a reload to show *Cancelled*. He'll keep access until his current period ends (because Sara configured end-of-period cancellation).
-
----
-
-## Things that trip people up
-
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| Portal renders for one member but not another | A page-cache plugin caches the rendered HTML across users. | Exclude the portal URL from cache, or use object cache only. |
-| Pro buttons missing for paying members | Provider is FluentCart or another paywall, not Native Payment, Pro's portal buttons only work with Stripe-driven subs. | This is expected; tell members to manage through the provider's own portal. |
-| Corporate Team panel is missing | The member holds an Individual Level, or is a sub-member rather than the parent. | Confirm the Level is Corporate; confirm this user is the parent. |
-| Card shows status `Pending` and no actions | Payment hasn't confirmed yet. | Check Transactions / provider logs. |
-
----
-
-## What's next?
-
-- **→ [Cancelling a Membership](./cancelling)**: the cancel flow in detail.
-- **→ [🔒 Pro · Updating Payment Method](./updating-payment-method)**: the Stripe-Elements flow inside the portal.
-- **→ [🔒 Pro · Corporate Seat Invites](./corporate-seat-invites)**: the Team panel walkthrough.
-
-**Recommended reading:**
-- [Setup](./setup): get the page itself in place.
-- [Membership Statuses](/reference/membership-statuses): what each badge means.

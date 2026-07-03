@@ -1,123 +1,48 @@
-# Cancelling a Membership
+# Cancelling a Membership 
 
-The member-driven cancel flow. Members click a button, confirm, and they're out. This page is what your support team will quote when someone emails *"how do I cancel?"*.
-**Here's what you'll learn:**
-- The single button members use to cancel themselves.
-- What happens at the provider when they cancel.
-- The two cancellation modes (immediate vs end-of-period).
-- What the member sees afterwards, and whether they can come back.
+FluentMember allows your users to easily cancel their own active subscriptions directly from the frontend Member Portal. This gives your members full control over their accounts and reduces the number of support tickets you receive.
 
-**Before we start:** The member is signed in to your site and the [Member Portal page](./setup) is reachable.
+## How Members Access the Portal
 
----
+Members must be logged into your WordPress site to manage their account. If a logged-out visitor tries to view the page, they will see a sign-in prompt instead.
 
-## Step 1: Member opens the portal
+Members can reach their portal through:
 
-The member visits the URL with `[fluent_member_portal]` on it. They see their card for the membership they want to cancel, Status badge, dates, amount, and a **Cancel Membership** button (visible only when status is `Active` or `Trial`).
+* **Site Navigation:** A custom link you place in your header or footer menu.
+* **Direct URL:** The specific webpage where you placed the `[fluent_member_portal]` shortcode.
+* **Email Links:** Direct links automatically included in FluentMember notification emails.
 
----
+## How to Cancel a Membership
 
-## Step 2: Member clicks Cancel Membership
+When a member is ready to cancel, the process is quick and completely self-serve.
 
-A confirmation modal opens. The exact copy depends on your [cancellation mode](/guide/transactions/cancellation-modes):
+1. The member opens the portal and views their list of memberships.
+2. They click the **Manage** button next to the specific plan they want to cancel (this button is only available for Active or Trial plans).
 
-| Mode | Modal copy |
-|---|---|
-| **Immediate** | *"Are you sure? You'll lose access right away."* |
-| **End of period** | *"Are you sure? Your access continues until [expiry date], then ends."* |
+![Member portal — membership list](/images/members/cancel-memberships/manage-1.webp)
 
-They click **Confirm Cancellation**.
+3. On the Membership Details screen, they click the **three-dot menu** icon located at the top right of the profile card.
+4. They click **Cancel Membership** from the dropdown menu.
+5. A confirmation pop-up will appear to verify their choice.
 
----
+![Cancel membership confirmation](/images/members/cancel-memberships/cancel-memberships-2.webp)
 
-## Step 3: What happens server-side
+6. The member clicks **Confirm Cancellation** to finish the process, and the page updates automatically.
 
-The plugin runs through this sequence:
+## What Happens After Cancellation
 
-1. **Local status flip.** The membership row's status goes to `Cancelled`. The portal card updates in place.
-2. **Provider sync (if applicable).** If the membership is on Native Payment (Stripe), the plugin tells Stripe to cancel the subscription using the configured mode.
-3. **Cascade to children (corporate parents only).** Every sub-member's row flips to `Cancelled`.
-4. **Action fires.** `fluent_members/membership_cancelled` runs, so [FluentCRM](/guide/settings/email-configuration/email-notifications) or other integrations can react.
+As soon as the member confirms their cancellation, FluentMember runs a few automated tasks in the background:
 
-::: tip In plain language
-For most setups it's one click → access ends. The provider-side cancel keeps Stripe (or whoever) from billing again.
-:::
+* **Status Update:** The membership row immediately changes to "Cancelled" on both the frontend portal and your backend admin dashboard.
+* **Provider Sync:** If the membership uses Native Payment (Stripe), the plugin tells Stripe to stop future recurring charges.
+* **Corporate Cascade:** If the cancelled plan is a parent Corporate Membership, all invited team members (child seats) will also have their access cancelled automatically.
 
----
+## Immediate vs. End of Period Modes
 
-## Immediate vs End of period
+You can configure exactly how access is handled after a cancellation is requested.
 
-The two cancellation modes have different semantics:
+* **Immediate:** The membership is cancelled, and the user loses access to all protected content right away.
+* **End of period:** The status changes to cancelled immediately, but the user keeps their access to the protected content until their current billing cycle reaches its renewal date.
 
-| | **Immediate** | **End of period** |
-|---|---|---|
-| Local status flip | Now | Now |
-| Access revoked | Now | Not yet, at next renewal |
-| Stripe behaviour | Cancel now | `cancel_at_period_end=true` |
-| When the cron flips Expired | n/a, already Cancelled | At the original `expires_at` |
-
-End-of-period is the friendlier option for paying customers, they keep what they paid for. Immediate is simpler for "they want out now, no refund" cases.
-
-::: warning End-of-period status stays "Active" locally
-With End-of-period mode, the local row keeps `Active` status until Stripe fires `customer.subscription.deleted` at the period boundary. Members see "Cancelled" on their portal card because the UI also reads `cancel_at_period_end`, but admin tooling that reads the raw status sees `Active` until then.
-:::
-
-See [Subscription Cancellation Modes](/guide/transactions/cancellation-modes) for the full configuration.
-
----
-
-## What the member sees afterwards
-
-After cancellation:
-
-- Their portal card shows status `Cancelled`.
-- Cancel button is gone; no actions remain on the card.
-- Protected content is no longer accessible (subject to mode).
-- If the Welcome Email or a "sorry to see you go" custom email is enabled, they receive it. (In 1.0, only the Welcome Email ships; goodbye emails are FluentCRM territory.)
-
----
-
-## Can they come back?
-
-Yes, the cancelled row stays in their history. They re-buy through your pricing page, which creates a *new* Active row alongside the old Cancelled one. Their old data, payment history, and any analytics on them stays intact.
-
----
-
-## What the admin sees
-
-From the [Member Detail](../detail) screen the cancelled row appears with status `Cancelled`. The Cancel and Suspend kebab actions are gone (already cancelled). The Refund action remains available (Pro) if a transaction needs reversing.
-
----
-
-## A real example: Mike cancels Pro Yoga
-
-Mike opens the portal, clicks Cancel on his Monthly Pro Yoga card.
-
-| Site setting | What happens |
-|---|---|
-| Cancellation mode = **Immediate** | Mike loses access right now. His next billing date passes without a charge. |
-| Cancellation mode = **End of period** | Mike keeps access until February 1. He's not billed again. On Feb 1, Stripe sends `customer.subscription.deleted` and the cron flips his row to fully ended. |
-
-In both cases his row says Cancelled.
-
----
-
-## Things that trip people up
-
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| Cancel button is missing | Status isn't `Active` or `Trial`. | Confirm status in the card. |
-| Cancelled but next month's Stripe charge still happened | Webhook isn't reaching Stripe, or the cancellation didn't sync. | See [Stripe Setup](/guide/settings/payment-settings/stripe-setup) → webhook configuration. |
-| Member expected to keep access through period end but lost it immediately | Mode is set to *Immediate* (the default). | Change mode in [Cancellation Modes](/guide/transactions/cancellation-modes). |
-| Corporate parent cancelled but sub-members still have access | Cache, or cascade hasn't run yet. | Wait a few seconds, refresh; if persistent, check the cron. |
-
----
-
-## What's next?
-
-- **→ [🔒 Pro · Updating Payment Method](./updating-payment-method)**: let members fix a failed card.
-- **→ [🔒 Pro · Renewing a Failed Subscription](./renewing-a-failed-subscription)**: bring an expired one back.
-
-**Recommended reading:**
-- [🔒 Pro · Subscription Cancellation Modes](/guide/transactions/cancellation-modes): immediate vs end-of-period in depth.
-- [Suspending & Cancelling](../suspending-and-cancelling): the admin-side counterpart.
+>[!Note]
+> Once a membership is cancelled, the user cannot undo it from their portal. If they want to rejoin, they must purchase a brand new plan from your pricing page. On the admin side, the "Cancel" and "Suspend" actions will disappear for this user, but Pro users will still see the "Refund" option if a past transaction needs to be reversed.
