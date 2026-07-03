@@ -82,7 +82,7 @@ export default defineConfig({
             { text: 'Suspending & Cancelling', link: '/guide/members/suspending-and-cancelling' },
             { text: 'Portal: Setup', link: '/guide/members/portal/setup' },
             { text: 'Portal: What Members See', link: '/guide/members/portal/what-members-see' },
-            { text: 'Portal: Cancelling', link: '/guide/members/portal/cancelling' },
+            { text: 'Portal: Cancelling a Membership', link: '/guide/members/portal/cancelling' },
             { text: 'Portal: Updating Payment Method (Pro)', link: '/guide/members/portal/updating-payment-method' },
             { text: 'Portal: Renewing a Failed Subscription(Pro)', link: '/guide/members/portal/renewing-a-failed-subscription' },
             { text: 'Portal: Corporate Seat Invites (Pro)', link: '/guide/members/portal/corporate-seat-invites' }
