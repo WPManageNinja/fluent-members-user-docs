@@ -41,7 +41,7 @@ A cancelled member can re-purchase from your pricing page. The old `Cancelled` r
 
 How you restore access depends on which action was used:
 
-- **After a Suspension**: Open the member's [Member Detail](/guide/members/detail) page, click the action menu on the suspended row, and change the status to **Active**. Access is restored immediately. There is no dedicated "Reactivate" button updating the status field directly is how you reverse a suspension.
+- **After a Suspension**: Open the member's [Member Detail](/guide/members/detail) page, click the action menu on the suspended row, and change the status to **Active** by cliking the **three-dot** **Reactivate** button. Now, it is restored immediately. 
 - **After a Cancellation**: Cancelled memberships cannot be reversed. The cancelled row stays in the member's history. To restore access, use [Adding a Membership Manually](/guide/members/adding-manually) to create a new membership row.
 
 ![Reactivating a membership](/images/members/suspend-and-cancel/reactivate-2.webp)
