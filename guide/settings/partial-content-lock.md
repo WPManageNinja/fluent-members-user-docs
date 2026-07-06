@@ -1,6 +1,6 @@
 # Partial Content Lock
 
-Partial Content Lock controls the soft-paywall overlay that appears when an Access Group's [Unauthorized Access](/guide/access-groups/unauthorized-access) action is set to **Display partial preview**. Visitors see the first few words of protected content, then hit a blurred overlay with a call-to-action button. Set the defaults here once — individual blocks or posts can override them in the Gutenberg editor when needed.
+Partial Content Lock controls the soft-paywall overlay that appears when an Access Group's [Unauthorized Access](/guide/access-groups/unauthorized-access) action is set to **Display partial preview**. Visitors see the first few words of protected content, then hit a blurred overlay with a call-to-action button. Set the defaults here once individual blocks or posts can override them in the Gutenberg editor when needed.
 
 ## Access Partial Content Lock
 
@@ -31,7 +31,7 @@ The following fields control the appearance and behaviour of the overlay:
 
 ## Global Defaults and Per-Block Overrides
 
-The values set here are global defaults. Individual Gutenberg blocks can override the Preview Length, Overlay Message, Button Text, and Button URL from the block's Inspector panel — any field left blank in the block inherits from this page.
+The values set here are global defaults. Individual Gutenberg blocks can override the Preview Length, Overlay Message, Button Text, and Button URL from the block's Inspector panel any field left blank in the block inherits from this page.
 
 ::: tip
 These settings only take effect when an Access Group's Unauthorized Access action is set to **Display partial preview**. For Redirect, Custom Message, or other actions, this configuration has no effect. See [Unauthorized Access](/guide/access-groups/unauthorized-access) for the full options.
