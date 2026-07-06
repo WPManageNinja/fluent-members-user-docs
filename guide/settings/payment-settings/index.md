@@ -1,91 +1,41 @@
 # Payment Settings
 
-The list of payment gateways Fluent Members can charge through. As of 1.0, the only entry is **Stripe**.
+The **Payment Settings** page lets you manage the payment gateways used for [Native Payment](/guide/levels/pricing-native) in Fluent Members. Here, you can view the available gateways, check their connection status, and open their settings for configuration.
 
-**Here's what you'll learn:**
-- The shape of the Payment Settings page.
-- When the Stripe card is Active vs Inactive.
-- The single button that takes you deeper.
+> [!Note]
+> These settings apply only to Native Payments. If you're using payment integrations such as FluentCart, Fluent Forms, or Paymattic, you don't need to configure anything on this page.
 
-**Before we start:** Click the gear icon → **Payment Settings** in the left rail. This tab is only relevant for Native Payment ([Pricing Type, Native Payment](../../levels/pricing-native)); paywall-driven sales bypass this tab entirely.
+## Access Payment Settings
 
----
+Click the **Settings** gear icon in the top-right corner of any Fluent Members screen, then select **Payment Settings** from the left-hand menu.
 
-## What you see
+![Payment Settings page](/images/settings/payment/payment-settings/payment-settings-1.webp)
 
-The Payment Settings page is a list of cards, one per gateway. Currently:
+## Available Gateways
 
-| Card | What it does |
-|---|---|
-| **Stripe** | Accept one-time and recurring membership payments through Stripe. |
+Here displays all the payment gateways supported by Fluent Members. Currently, Stripe (Pro) is the only available gateway.
 
-Each card shows:
+Each gateway card includes the following information:
 
-- The gateway's logo and name.
-- An **Active** badge (green) if it's currently in use, otherwise nothing.
-- A one-line description.
-- A **Manage** button to its right.
-
-![Payment Settings, Stripe card with Active badge](/screenshots/settings-payment-settings.webp)
-
----
+* **Gateway Name:** Displays the name and logo of the payment gateway.
+* **Status:** Shows an Active badge when the gateway is enabled and configured correctly.
+* **Description:** Provides a brief overview of the gateway.
+* **Manage:** Opens the gateway settings, where you can configure and manage the payment gateway.
 
 ## Active vs Inactive
 
-A gateway is **Active** when:
+A gateway shows the **Active** badge when:
 
-- Its master toggle is on.
-- Its credentials are valid (Stripe: keys for the current Payment Mode are saved).
-- It's reachable (no immediate API error on save).
+- Its master toggle is switched on
+- Valid API credentials are saved for the current mode (Test or Live)
+- The plugin can reach the gateway without an API error
 
-If any of those is false, the **Active** badge disappears. New Pricing Plans configured as Native Payment won't list this gateway in their Payment Methods picker.
+If any of these conditions is not met, the badge disappears and the gateway will not appear as a payment option in Native Payment pricing plans.
 
----
+## Stripe (Pro)
 
-## Click Manage
+Click **Manage** on the Stripe card to open [Stripe Setup](/guide/settings/payment-settings/stripe-setup), where you configure your API keys, select Test or Live mode, and register the webhook endpoint.
 
-The **Manage** button opens the gateway's detailed settings page. For Stripe, that's [Stripe Setup](./stripe-setup), connection, mode, webhook URL, and the list of events to subscribe to.
-
-::: tip In plain language
-This tab is the "table of contents." Each gateway has its own page reached via Manage. Today the list has one entry; in future releases more may appear.
+::: warning Pro feature
+Payment Settings and Stripe native checkout require **Fluent Members Pro**. If the Payment Settings menu item is missing or the page is empty, confirm that the Pro add-on is installed and activated.
 :::
-
----
-
-## Why only Stripe in 1.0?
-
-The plugin is built to be multi-gateway, the architecture supports adding more (PayPal, Authorize.net, regional providers). Stripe is the first because it covers the majority of use cases globally and integrates cleanly with the rest of Fluent Members Pro's billing model (subscriptions, refunds, dunning).
-
-For payments that aren't Stripe, use the [Paywalls Pricing Type](../../levels/pricing-paywalls), your FluentCart, Fluent Forms, or Paymattic gateway handles the money.
-
----
-
-## A real example: Sara confirms Stripe is live
-
-After connecting Stripe through Stripe Setup, Sara revisits Payment Settings to double-check:
-
-1. She sees the **Stripe** card with the **Active** badge.
-2. The description reads: *"Accept one-time and recurring membership payments with Stripe."*
-3. She doesn't click Manage, everything she needs is configured already.
-
-The card is the at-a-glance confirmation.
-
----
-
-## Things that trip people up
-
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| Stripe card without Active badge | Master toggle off, or keys for the current mode (test/live) aren't set. | Open Manage → toggle on → enter keys. |
-| Manage button doesn't open the settings page | JavaScript error from another plugin. | Try in a private window with most plugins off. |
-| Empty page | The Payment Settings menu item is missing. | Confirm Fluent Members Pro is active. |
-
----
-
-## What's next?
-
-- **→ [🔒 Pro · Stripe Setup](./stripe-setup)**: the full Stripe configuration and webhook walkthrough.
-
-**Recommended reading:**
-- [Pricing, Native Payment](../../levels/pricing-native): use Stripe in a Pricing Plan.
-- [Pricing, Paywalls](../../levels/pricing-paywalls): when you'd skip native and use a paywall plugin.
