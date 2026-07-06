@@ -1,6 +1,8 @@
 # Migration from MemberPress
 
-This page walks you through importing your MemberPress data into Fluent Members. The wizard runs six steps in sequence — detect, analyze, import members, import subscriptions, import orders, and cleanup. MemberPress is the only source that supports a **live Stripe subscription transfer** (Pro), meaning existing subscribers do not need to re-enter their card details. Complete the [Migration Overview](/guide/settings/migration/) checklist before starting.
+The Migration tool allows you to import your MemberPress membership data into Fluent Members. The wizard guides you through six steps: detecting your existing data, analyzing it, importing members, importing subscriptions, importing orders, and cleanup. MemberPress is the only source that supports a **live Stripe subscription transfer** (Pro), meaning existing subscribers do not need to re-enter their card details after migration.
+
+Before you begin, complete the [Migration Overview](/guide/settings/migration/) checklist.
 
 ## Before You Start
 
@@ -27,17 +29,17 @@ Which pages and posts are restricted must be configured manually in Fluent Membe
 
 Open **Settings → Migration**, click the **MemberPress** card, and run each step in order.
 
-1. **Detect** — Checks that MemberPress tables exist and returns a count of members, products, subscriptions, and transactions.
+1. **Detect**: Checks that MemberPress tables exist and returns a count of members, products, subscriptions, and transactions.
 
-2. **Analyze** — Maps each MemberPress Membership product to a Fluent Members Level. Levels are created or matched by name.
+2. **Analyze**: Maps each MemberPress Membership product to a Fluent Members Level. Levels are created or matched by name.
 
-3. **Import Members** — Reads MemberPress member records in batches and creates Membership rows in Fluent Members.
+3. **Import Members**: Reads MemberPress member records in batches and creates Membership rows in Fluent Members.
 
-4. **Import Subscriptions** *(Pro)* — Imports subscription records. If the subscription was billed via Stripe and Fluent Members Pro has Stripe connected, the live Stripe subscription is transferred to your Fluent Members Stripe account — members continue to be billed without re-entering card details.
+4. **Import Subscriptions** *(Pro)*: Imports subscription records. If the subscription was billed via Stripe and Fluent Members Pro has Stripe connected, the live Stripe subscription is transferred — members continue to be billed without re-entering card details.
 
-5. **Import Orders** *(Pro)* — Imports MemberPress transaction records as Fluent Members Transaction rows.
+5. **Import Orders** *(Pro)*: Imports MemberPress transaction records as Fluent Members Transaction rows.
 
-6. **Cleanup** — Finalises the migration and marks it as complete.
+6. **Cleanup**: Finalises the migration and marks it as complete.
 
 If any step returns an unexpected count, click **Reset Migration State** and re-run from that step.
 
@@ -63,9 +65,9 @@ Subscriptions on non-Stripe gateways (PayPal, offline) are not transferred. Thos
 
 ## After Migration
 
-- **Verify counts** — compare totals in Fluent Members against MemberPress records.
-- **Set up Access Groups** — assign Levels to Access Groups and add protected content. This step is always manual.
-- **Test access** — log in as a sample member and confirm their content is accessible.
-- **Rebuild email templates** — see [Email Notifications](/guide/settings/email-configuration/email-notifications).
-- **Update the portal URL** — send members the new [Member Portal](/guide/members/portal/setup) link.
-- **Deactivate MemberPress** — only after full verification. Keep it installed for a few weeks in case you need to reference its data.
+- **Verify counts**: Compare totals in Fluent Members against MemberPress records.
+- **Set up Access Groups**: Assign Levels to Access Groups and add protected content. This step is always manual.
+- **Test access**: Log in as a sample member and confirm their content is accessible.
+- **Rebuild email templates**: See [Email Notifications](/guide/settings/email-configuration/email-notifications).
+- **Update the portal URL**: Send members the new [Member Portal](/guide/members/portal/setup) link.
+- **Deactivate MemberPress**: Only after full verification. Keep it installed for a few weeks in case you need to reference its data.
