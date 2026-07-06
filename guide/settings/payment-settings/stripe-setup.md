@@ -1,178 +1,110 @@
-# Stripe Setup
-::: warning Requires Fluent Members Pro
-Native Stripe integration ships with Pro only. Without Pro you can still process Stripe payments through FluentCart / Fluent Forms / Paymattic via [Paywalls](../../levels/pricing-paywalls).
-:::
+# Stripe Setup (Pro)
 
-The Stripe configuration screen. Connect once, configure the webhook once, and Fluent Members can take payments, handle subscriptions, and process refunds for you.
+Stripe Setup is where you connect your Stripe account, choose Test or Live mode, enter your API keys, and register the webhook endpoint that syncs payments, renewals, and refunds back into Fluent Members. You only need to complete this setup once.
 
-**Here's what you'll learn:**
-- How to connect Stripe (OAuth or manual keys).
-- Test Mode vs Live Mode and when to use each.
-- The exact webhook URL to paste into Stripe and the 8 events to subscribe to.
-- How to disconnect if needed.
+>[!Note]
+> Native Stripe integration is available in **Fluent Members Pro** only. Without Pro you can still accept Stripe payments through FluentCart, Fluent Forms, or Paymattic via [Paywalls](/guide/levels/pricing-paywalls).
 
-**Before we start:** Open **Fluent Members → Settings → Payment Settings → Stripe → Manage**. You need a Stripe account.
+## Access Stripe Setup
 
----
+Go to **Fluent Members → Settings → Payment Settings**, then click **Manage** on the Stripe card.
 
-## Step 1: Toggle the master switch
+![Stripe Setup page](/images/settings/payment/stripe/payment-settings-1.webp)
 
-At the top of the page is **Stripe Payment Settings** with a toggle. Switch it on. A note appears: *"Configure your Stripe payment settings for membership subscriptions."*
+## Enabling Stripe Payments
 
-![Stripe Settings full page](/screenshots/settings-stripe.webp)
+At the top of the page is the **Stripe Payment Settings** master toggle. Switch it on to activate Stripe as a payment method for your [Native Payment](/guide/levels/pricing-native) pricing plans.
 
----
+![Enable Stripe Payments](/images/settings/payment/stripe/enable-stripe-settings-2.webp)
 
-## Step 2: Pick a Payment Mode
+## Payment Mode
 
-Below the toggle, **Payment Mode** is a radio with two options:
+Below the toggle, select your **Payment Mode**:
 
 | Mode | Use it for |
 |---|---|
-| **Test Mode** | Development, staging, testing the checkout flow with Stripe's test cards. No real money moves. |
-| **Live Mode** | Production. Real cards charged for real money. |
+| **Test Mode** | Development and staging. Use Stripe's test cards — no real money moves. |
+| **Live Mode** | Production. Real cards are charged for real money. |
 
-Each mode is configured independently, you can have test-mode keys saved and live-mode keys saved separately, switching between them with this radio.
+Each mode stores its own API keys independently. You can have both test and live keys saved and switch between them with this radio button.
 
-::: warning Switching modes mid-traffic
-If you switch from Live to Test, any subscription in flight will fail to renew (the webhook will arrive on the wrong-mode endpoint). Only switch when no live transactions are in flight, or do it on a staging copy.
-:::
+>[!Note]
+> If you switch from Live to Test while subscriptions are running, renewal webhooks will arrive on the wrong-mode endpoint and fail to sync. Only switch modes when no live transactions are in flight.
 
----
+## Connecting with Stripe
 
-## Step 3: Connect with Stripe
+Below the mode selector, click the **Connect with Stripe** button to start the OAuth flow. You will be redirected to Stripe to authorise the connection. When authorisation is complete, the page confirms your account is connected, showing your business name and a **Disconnect Stripe** button.
 
-Below the mode radio is a **Connect with Stripe** card. It opens an OAuth flow that redirects you to Stripe to authorise the connection.
+Alternatively, you can enter your **Publishable Key** and **Secret Key** manually if the OAuth flow is not available for your account.
 
-When you complete OAuth, the right column updates to *"Your Stripe Account is Up & Running 🎉"* with your business name and a **Disconnect Stripe** button (red, on the right).
+## Configuring the Stripe Webhook
 
-::: tip In plain language
-OAuth is the simplest way to connect, Stripe sends back the right keys and Fluent Members stores them encrypted. The alternative (manual keys) is for unusual setups where OAuth doesn't work, most users won't need it.
-:::
+The webhook lets Stripe notify Fluent Members when a payment succeeds, a subscription renews, or a refund is processed. Without it, member access will not update automatically.
 
----
+**Step 1: Copy the webhook URL from Fluent Members**
 
-## Step 4: Configure the Stripe Webhook
-
-The **Stripe Webhook** block is the longest part of the page, but it's what makes the system reliable. Without it, payment confirmations, renewals, and refunds won't sync back into Fluent Members.
-
-### The webhook URL
-
-The page displays the exact URL to paste into Stripe:
+On the Stripe settings page, locate the **Webhook URL** field and copy the endpoint shown. It looks like:
 
 ```
-https://your-site.com/?fluent_members_payment_listener=1&payment_method=stripe
+https://your-site.com/wp-json/fluent-members/v2/stripe-webhook
 ```
 
-Copy this URL, it's specific to your site.
+![Stripe settings with webhook URL](/images/settings/payment/stripe/stripe-settings-3.webp)
 
-### Add the webhook in Stripe
+**Step 2: Open Webhooks in your Stripe Dashboard**
 
-Sign in to your Stripe Dashboard:
+Log in to your Stripe account. Click **Developers** from the bottom-left corner, then select **Webhooks**.
 
-1. **Developers → Webhooks → Add endpoint**.
-2. **Endpoint URL**: paste the URL from above.
-3. **Description**: *"Fluent Members payment listener"* (or whatever you like).
-4. **Events to send**: tick exactly these 8:
+![Stripe Developers — Webhooks](/images/settings/payment/stripe/stripe-developer-4.webp)
 
-   | Event | Why it matters |
-   |---|---|
-   | `payment_intent.succeeded`     | Initial payment confirmation. |
-   | `payment_intent.payment_failed`| Failed initial payments. |
-   | `charge.refunded`              | Full refunds processed. |
-   | `charge.refund.updated`        | Partial / state-change refunds. |
-   | `invoice.paid`                 | Recurring renewals succeeded. |
-   | `invoice.payment_failed`       | Renewal failures (triggers dunning). |
-   | `customer.subscription.updated`| Status / mode changes (active, past_due, canceled). |
-   | `customer.subscription.deleted`| Subscription fully ended. |
+**Step 3: Add a new destination**
 
-5. Save the endpoint.
+Click the **+ Add destination** button.
 
-### Paste the signing secret back
+![Add destination button](/images/settings/payment/stripe/add-destination-5.webp)
 
-After saving, Stripe shows a **Signing secret** for the endpoint (`whsec_...`). Copy it. Back in Fluent Members → Stripe Settings, paste it into the **Webhook Signing Secret** field. Save.
+**Step 4: Select the required events**
 
-::: warning Use the matching mode's secret
-Test-mode webhooks have a test signing secret; live-mode webhooks have a live signing secret. Confirm you're saving the right one for the Payment Mode currently selected.
+Search for and select the following events that Fluent Members needs:
+
+- **`payment_intent.succeeded`**: Confirms a one-time payment and activates the membership.
+- **`invoice.payment_succeeded`**: Records a renewal and extends the membership expiry date.
+- **`invoice.payment_failed`**: Marks a subscription as past-due and triggers a failure notification.
+- **`customer.subscription.updated`**: Syncs subscription status changes (active, past_due, cancelled).
+- **`customer.subscription.deleted`**: Cancels the local subscription; cascades to child seats for corporate memberships.
+
+Once you have selected all five events, click **Continue**.
+
+![Select webhook events](/images/settings/payment/stripe/select-a-event-6.webp)
+
+**Step 5: Set the endpoint URL and create**
+
+Select **Webhook endpoint**, click **Continue**, then paste the webhook URL you copied from Fluent Members into the **Endpoint URL** field. Click **Create destination** to save.
+
+![Paste webhook endpoint URL](/images/settings/payment/stripe/webhook-endpoint-7.webp)
+
+**Step 6: Paste the signing secret back into Fluent Members**
+
+After the endpoint is created, Stripe displays a **Signing secret** (starts with `whsec_`). Copy it and paste it into the **Webhook Signing Secret** field in Fluent Members, then click **Save Settings**.
+
+::: warning Match the signing secret to the active mode
+Test-mode endpoints have a test signing secret; live-mode endpoints have a live signing secret. Make sure you paste the secret that corresponds to the Payment Mode currently selected.
 :::
 
----
+## Webhook Events Reference
 
-## Step 5: Test the connection
-
-Best practice: in Test Mode, create a Pricing Plan with a small amount, paste your test page on a staging site, and run a checkout with one of [Stripe's test cards](https://stripe.com/docs/testing) (e.g. `4242 4242 4242 4242`).
-
-What should happen:
-
-1. Checkout completes.
-2. `payment_intent.succeeded` arrives at the webhook URL.
-3. Fluent Members → Transactions shows a new `succeeded` row.
-4. Fluent Members → Members shows the new active membership.
-
-If any step fails, see [Troubleshooting → Stripe webhook 401/400](/reference/troubleshooting).
-
----
-
-## What each event does
-
-| Event | What Fluent Members does |
+| Stripe Event | What Fluent Members Does |
 |---|---|
-| `payment_intent.succeeded` | Marks the matching order as `completed`; grants the Level. |
-| `payment_intent.payment_failed` | Marks the order `failed`; no grant. |
-| `charge.refunded` | Creates a `refund` transaction; flips the original to `refunded`. |
-| `charge.refund.updated` | Syncs partial / state changes. |
-| `invoice.paid` | Records a `renewal` transaction; extends `expires_at`. |
-| `invoice.payment_failed` | Records a failed renewal; the cron / portal triggers dunning. |
-| `customer.subscription.updated` | Syncs subscription status (active, past_due, canceled). |
-| `customer.subscription.deleted` | Cancels the local subscription; cascades to children for corporate. |
-
----
+| `payment_intent.succeeded` | Confirms a one-time payment and activates the membership. |
+| `invoice.payment_succeeded` | Records a renewal transaction and extends the membership expiry date. |
+| `invoice.payment_failed` | Marks the subscription as past-due and triggers a failure notification. |
+| `customer.subscription.updated` | Syncs subscription status changes (active, past_due, cancelled). |
+| `customer.subscription.deleted` | Cancels the local subscription; cascades to child seats for corporate memberships. |
 
 ## Disconnecting Stripe
 
-In the right column of the connected state, **Disconnect Stripe** (red). Clicking it:
+To remove the Stripe connection, click **Disconnect Stripe** in the connected state panel. This severs the OAuth link and removes stored API keys from Fluent Members. Existing subscriptions in Stripe will continue to charge, but Fluent Members will no longer be able to sync events or manage them.
 
-1. Severs the OAuth link to your Stripe account.
-2. Stops Fluent Members from making API calls in Stripe's name.
-3. Existing subscriptions in Stripe keep running, but Fluent Members can no longer manage them. New checkouts that try to use Stripe will fail.
-
-::: warning Don't disconnect with live subscriptions running
-Disconnecting strands your existing subscriptions: Stripe keeps charging, but Fluent Members can't sync the events back. Cancel all subscriptions first, or migrate them to a paywall before disconnecting.
+::: warning Cancel subscriptions before disconnecting
+Disconnecting with live subscriptions running means Stripe will keep charging your members, but Fluent Members cannot process the webhook events. Cancel or migrate all active subscriptions before disconnecting.
 :::
-
----
-
-## A real example: Sara goes live
-
-Sara built her site in Test Mode for a week, ran 12 test purchases, refunded a few, confirmed everything synced. She's ready to go live.
-
-1. Stripe Dashboard → switch to Live data → **Developers → Webhooks → Add endpoint** with her live URL and the same 8 events.
-2. Copy the live signing secret.
-3. Fluent Members → Stripe Settings → switch **Payment Mode** to Live.
-4. Paste the live publishable key, secret key, and webhook secret.
-5. Save.
-
-Her existing test subscriptions don't carry over, Test and Live are separate worlds in Stripe. She runs one tiny live charge to herself ($1) to confirm the end-to-end flow, then announces the launch.
-
----
-
-## Things that trip people up
-
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| Webhook URL pasted but Stripe says "Test failed" | Site behind HTTP Basic Auth or a firewall blocking POST. | Whitelist Stripe's IPs or remove auth. |
-| Charges land but no Transaction row appears | Wrong-mode signing secret. | Match secret to current Payment Mode. |
-| OAuth redirect loops | Cookies blocked, or your Stripe account is restricted. | Use a fresh browser; check Stripe Dashboard for restrictions. |
-| Switched to Live but old test subscriptions still try to renew in the live webhook | The webhook for test mode is still pointed at the same URL. | Two webhooks in Stripe (one test, one live) is fine, same URL, mode is in the secret. |
-
----
-
-## What's next?
-
-- **→ [Pricing, Native Payment](../../levels/pricing-native)**: create your first Native Payment Pricing Plan.
-- **→ [Migration, Stripe Import](../migration/)** *(if importing from PMPro/MemberPress/RCP with Stripe history)*.
-
-**Recommended reading:**
-- [Refunds](/guide/transactions/refunds): once Stripe is connected, you can refund here too.
-- [Subscription Cancellation Modes](/guide/transactions/cancellation-modes): Immediate vs End of period.
-- [Troubleshooting](/reference/troubleshooting): common Stripe issues.

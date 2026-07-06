@@ -1,82 +1,73 @@
 # Migration from MemberPress
 
-The MemberPress-specific wizard. Same 8-step structure as the [Paid Memberships Pro flow](./from-paid-memberships-pro) with MemberPress-specific mapping and gotchas.
-**Here's what you'll learn:**
-- How MemberPress's data model maps to Fluent Members.
-- The wizard steps adapted for MemberPress.
-- MemberPress-specific things that need extra care.
+The Migration tool allows you to import your MemberPress membership data into Fluent Members. The wizard guides you through six steps: detecting your existing data, analyzing it, importing members, importing subscriptions, importing orders, and cleanup. MemberPress is the only source that supports a **live Stripe subscription transfer** (Pro), meaning existing subscribers do not need to re-enter their card details after migration.
 
-**Before we start:** MemberPress is active (so the card shows **Detected**) and you've read [Migration, Overview](./).
+Before you begin, complete the [Migration Overview](/guide/settings/migration/) checklist.
 
-::: warning Screenshot pending
-A MemberPress-specific wizard screenshot isn't in our reference folder yet.
+## Before You Start
 
-[Screenshot needed: Migration wizard mid-flow, MemberPress source]
+- MemberPress must be **active** on the site so the Migration card shows **Detected**.
+- Fluent Members must be installed and active.
+- Install **Fluent Members Pro** and complete [Stripe Setup](/guide/settings/payment-settings/stripe-setup) if you want subscriptions, transaction history, or the Stripe live-transfer imported.
+- Take a full database backup before running any step.
+
+## Data Mapping
+
+| MemberPress | Fluent Members |
+|---|---|
+| Membership (product) | Level |
+| Membership pricing | Pricing Plan |
+| Transaction (active) | Membership row |
+| Subscription | Subscription row (Pro) |
+| Transaction (paid) | Transaction row (Pro) |
+
+::: warning Content restriction rules are not imported
+Which pages and posts are restricted must be configured manually in Fluent Members after migration. See [Access Groups](/guide/access-groups/) to set up content rules.
 :::
 
----
+## Migration Steps
 
-## Mapping: MemberPress to Fluent Members
+Open **Settings → Migration**, click the **MemberPress** card, and run each step in order.
 
-| MemberPress                       | Fluent Members                    |
-|-----------------------------------|------------------------------------|
-| Membership (CPT `memberpressproduct`) | Level + Pricing Plan          |
-| Membership pricing                | Pricing Plan (Native or Paywall)   |
-| Transaction (active)              | Membership row (`active`)          |
-| Subscription                      | Subscription row (Pro)             |
-| Transaction (paid)                | Transaction row (Pro)              |
-| Content protection rule (CPT)     | Access Group + Protected Content rule |
-| Corporate accounts (add-on)       | Corporate Level + child rows       |
+1. **Detect**: Checks that MemberPress tables exist and returns a count of members, products, subscriptions, and transactions.
 
-::: tip In plain language
-MemberPress stores memberships as a custom post type; Fluent Members stores them as DB rows. The wizard translates the CPT model into the relational model.
-:::
+2. **Analyze**: Maps each MemberPress Membership product to a Fluent Members Level. Levels are created or matched by name.
 
----
+3. **Import Members**: Reads MemberPress member records in batches and creates Membership rows in Fluent Members.
 
-## The wizard steps
+4. **Import Subscriptions** *(Pro)*: Imports subscription records. If the subscription was billed via Stripe and Fluent Members Pro has Stripe connected, the live Stripe subscription is transferred — members continue to be billed without re-entering card details.
 
-| # | Step | What it does |
-|---|------|--------------|
-| 1 | **Detect / analyse** | Counts MemberPress Memberships, transactions, subscriptions. |
-| 2 | **Migrate Access Groups** | One Access Group per MemberPress Membership. |
-| 3 | **Migrate Levels** | Creates Levels from Membership CPTs; pricing preserved. |
-| 4 | **Migrate Memberships** | Per-user Membership rows from active transactions. |
-| 5 | **Migrate Orders** (Pro) | Each MemberPress transaction → Fluent Members order/transaction. |
-| 6 | **Migrate Transactions** (Pro) | Detailed payment events. |
-| 7 | **Migrate Subscriptions** (Pro) | Stripe linkage via the import bridge. |
-| 8 | **Cleanup** | Wraps up. |
+5. **Import Orders** *(Pro)*: Imports MemberPress transaction records as Fluent Members Transaction rows.
 
-Same advice as for PMPro: run in order, don't skip, reset if a count looks off.
+6. **Cleanup**: Finalises the migration and marks it as complete.
 
----
+If any step returns an unexpected count, click **Reset Migration State** and re-run from that step.
 
-## MemberPress-specific gotchas
+## Stripe Subscription Transfer (Pro)
 
-- **MemberPress Rules CPT**: MemberPress stores access rules as a separate CPT. The migrator reads those and converts them into Access Group Protected Content rules. Complex rules (multiple conditions, exclusions) may need manual review.
-- **Corporate Accounts add-on**: If you use the Corporate Accounts add-on, it maps to Fluent Members Corporate Levels. Seat allocations are preserved.
-- **Coupons**: MemberPress coupons don't migrate. Apply equivalent discounts in the new Pricing Plan or run them via Stripe's coupon feature.
-- **Custom registration fields**: MemberPress's custom registration fields don't migrate. Use a registration form plugin or [Fluent Forms](https://fluentforms.com) to recreate them.
-- **Stripe-attached subscriptions**: Linked via the Stripe-import bridge if [Pro + Stripe Setup](../payment-settings/stripe-setup) is in place.
+When Fluent Members Pro is active and [Stripe Setup](/guide/settings/payment-settings/stripe-setup) is configured with the same Stripe account MemberPress used, the Import Subscriptions step transfers each Stripe-billed subscription to Fluent Members by updating its metadata in Stripe. After transfer:
 
----
+- Renewals continue charging on the existing Stripe subscriptions — no member action required.
+- Cancellations from the Member Portal correctly call Stripe to stop billing.
+- The Transactions screen shows new local records; Stripe Dashboard retains the original customer history.
 
-## Things that trip people up
+Subscriptions on non-Stripe gateways (PayPal, offline) are not transferred. Those members will need to re-purchase after migration.
 
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| Levels imported with zero pricing | The Membership had no published pricing. | Add a Pricing Plan manually after import. |
-| Subscription bridge missing for some subs | Those subs were on a non-Stripe gateway. | Member needs to re-buy on the new flow. |
-| Content rules don't restrict after import | The rule was tied to a CPT slug that doesn't exist on this site. | Check Access Group → Protected Content → adjust the rule. |
-| MemberPress Corporate Accounts cap is wrong | The seat-count field maps to Maximum Member; some custom-add-on builds store it elsewhere. | Edit the Level → set Maximum Member manually. |
+## Status Mapping
 
----
+| MemberPress Status | Fluent Members Status |
+|---|---|
+| active | Active |
+| expired | Expired |
+| cancelled | Cancelled |
+| suspended | Suspended |
+| pending | Pending |
 
-## What's next?
+## After Migration
 
-- **→ [Email Notifications](../email-configuration/email-notifications)**: recreate your email templates.
-- **→ [Member Portal, Setup](../../members/portal/setup)**: switch your members to the new portal.
-
-**Recommended reading:**
-- [Migration, Overview](./): the cross-source rules.
-- [Stripe Setup](../payment-settings/stripe-setup): required for subscription bridging.
+- **Verify counts**: Compare totals in Fluent Members against MemberPress records.
+- **Set up Access Groups**: Assign Levels to Access Groups and add protected content. This step is always manual.
+- **Test access**: Log in as a sample member and confirm their content is accessible.
+- **Rebuild email templates**: See [Email Notifications](/guide/settings/email-configuration/email-notifications).
+- **Update the portal URL**: Send members the new [Member Portal](/guide/members/portal/setup) link.
+- **Deactivate MemberPress**: Only after full verification. Keep it installed for a few weeks in case you need to reference its data.

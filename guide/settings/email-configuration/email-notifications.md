@@ -1,165 +1,65 @@
 # Email Notifications
 
-The list of every email notification Fluent Members can send. Toggle them on, edit the subject and body, and use the merge tags to personalise.
-**Here's what you'll learn:**
-- Which notifications ship in 1.0 (spoiler: one).
-- How to toggle a notification on/off.
-- How to edit the subject and body.
-- Where the merge tags come from.
+Email Notifications lets you enable, disable, and customise the transactional emails Fluent Members sends to members on key membership events. Each notification has its own subject line and body editor with merge tag support. Set up [Mailing Settings](/guide/settings/email-configuration/mailing-settings) first so your emails carry the correct sender name, address, and logo.
 
-**Before we start:** Click the gear icon → **Email Configuration → Email Notifications** in the left rail. The Mailing Settings ([previous page](./mailing-settings)) should be set up first.
+## Access Email Notifications
 
----
+Click the **Settings** gear icon in the top-right corner of any Fluent Members screen, then select **Email Configuration → Email Notifications** from the left-hand menu.
 
-## What ships out of the box
+![Email Notifications page](/images/settings/email-notification/email-notification-1.webp)
 
-A single notification: **Welcome Email**. Sent to the member whenever the `fluent_members/membership_level_assigned` event fires, that covers initial paywall purchases, manual admin grants, native Stripe checkouts, corporate join acceptances, **and** admin re-activations from Suspended status.
+## Built-in Notifications
 
-::: warning Welcome Email re-fires on re-activation from Suspended
-If you Suspend a member and later set their status back to Active, the Welcome Email fires again, because re-activation is implemented as a fresh `membership_level_assigned` event under the hood. To avoid surprising re-sends, either temporarily disable the Welcome Email before re-activating, or use a custom notification keyed on `start_date` to detect "this is a fresh grant" vs "this is a reactivation."
+Fluent Members ships with three built-in email notifications:
+
+| Notification | When it fires |
+|---|---|
+| **Welcome Email** | When a member is assigned to a Membership Level — covers new purchases, manual admin grants, Stripe checkouts, corporate join acceptances, and re-activations from Suspended status. |
+| **Expiry Notification** | When a member's status changes to `expired`. |
+| **Suspension Notification** | When a member's status changes to `suspended`. |
+
+::: warning Welcome Email re-fires on re-activation
+If you suspend a member and later set their status back to Active, the Welcome Email fires again because re-activation triggers a fresh membership assignment event. Temporarily disable the Welcome Email before re-activating if you want to avoid the re-send.
 :::
 
-| Event              | Receiver | Default subject              |
-|--------------------|----------|------------------------------|
-| `membership_level_assigned` | Member  | *"Welcome, {{user_name}}!"* |
+## Enabling and Disabling Notifications
 
-That's the entirety of the ships-by-default email vocabulary in 1.0. Future versions will add more (renewal reminders, payment-failed alerts, expiration notices, etc.).
+The notifications list shows each notification with an **Enable** toggle on the right. Switch the toggle on to activate a notification; switch it off to disable it. A disabled notification never fires regardless of the underlying event.
 
-![Email Notifications table with Welcome Email row](/screenshots/settings-email-notifications.webp)
+![Default email body editor](/images/settings/email-notification/default-body-2.webp)
 
-::: tip In plain language
-There's only one out-of-the-box email today. For everything else, "your renewal failed", "you're being suspended", "your team invite was accepted", use [FluentCRM](https://fluentcrm.com) subscribing to Fluent Members' lifecycle hooks, or build a custom notification via [Developer Hooks](/reference/developer-hooks).
+## Editing a Notification
+
+Click the **pencil icon** on the right of any notification row to open its editor. Two fields are available:
+
+- **Subject**: The email subject line. Supports merge tags.
+- **Email Body**: The email body content. Uses a rich-text editor (free) or Gutenberg block editor (Pro). Supports merge tags and basic HTML.
+
+After making changes, click **Save**. The next time the notification event fires, the updated content is sent.
+
+![Customised email body](/images/settings/email-notification/customized-body-3.webp)
+
+## Available Merge Tags
+
+Use these tags in both the subject and body of any notification. Tags are case-sensitive and use <span v-pre>`{{double curly brace}}`</span> syntax.
+
+### Member
+
+| Tag | Replaced with |
+|---|---|
+| <span v-pre>`{{user_name}}`</span> | The member's WordPress display name |
+| <span v-pre>`{{user_email}}`</span> | The member's email address |
+| <span v-pre>`{{membership_level}}`</span> | The name of the Membership Level granted |
+| <span v-pre>`{{start_date}}`</span> | The membership start date |
+| <span v-pre>`{{expires_at}}`</span> | The membership expiry date (blank for Lifetime memberships) |
+
+### Site
+
+| Tag | Replaced with |
+|---|---|
+| <span v-pre>`{{site_name}}`</span> | Your WordPress site name |
+| <span v-pre>`{{site_url}}`</span> | Your WordPress home URL |
+
+::: warning Merge tags vs footer smartcodes
+Merge tags (<span v-pre>`{{user_name}}`</span>, <span v-pre>`{{membership_level}}`</span>, etc.) work in the notification subject and body only. The email footer in [Mailing Settings](/guide/settings/email-configuration/mailing-settings) uses a separate set of smartcodes (<span v-pre>`{{site_name_with_url}}`</span>, etc.) that only work in the footer. Do not mix the two.
 :::
-
----
-
-## Toggling a notification
-
-The list shows three columns: **Event** / **Receiver** / **Enable**, plus a pencil icon for editing.
-
-- **Enable** column has a toggle. Tick to enable; untick to disable.
-- A disabled notification never fires, regardless of the underlying event.
-
-By default, Welcome Email is enabled. Disabling it means new members get *no* welcome email, they just gain access silently.
-
-::: warning Test before launch
-A common mistake: customise the subject/body, click Save, never actually trigger a test. Grant yourself a test membership ([Adding a Membership Manually](../../members/adding-manually)) to confirm the email arrives looking the way you want.
-:::
-
----
-
-## Editing a notification
-
-Click the pencil icon on the right of a row. An editor panel opens with two fields:
-
-- **Subject**: the email subject line.
-- **Email Body**: the email body content. Rich-text editor with media + shortcode insert.
-
-Both support merge tags (`{{user_name}}`, `{{site_name}}`, etc.), see [Email Merge Tags](/reference/email-merge-tags) for the full list.
-
-Save closes the panel and stores the change. The next time the event fires, the new content is used.
-
----
-
-## The merge tags available in the Welcome Email
-
-These all work in both Subject and Body of the Welcome Email:
-
-| Tag                      | Replaced with                  |
-|--------------------------|---------------------------------|
-| `{{user_name}}`          | The new member's display name. |
-| `{{user_email}}`         | Their email address.            |
-| `{{membership_level}}`   | The title of the Level granted.|
-| `{{start_date}}`         | When the membership started.    |
-| `{{expires_at}}`         | When it expires, or "Never" for Lifetime. |
-| `{{site_name}}`          | Your site title.                |
-| `{{site_url}}`           | Your home URL.                  |
-
-Full list with examples in [Email Merge Tags](/reference/email-merge-tags).
-
-::: warning Body merge tags vs footer smartcodes
-The Email Body uses *merge tags*, `{{user_name}}` and friends, which only work in subject and body. The [footer](./mailing-settings) uses a smaller set of *smartcodes*, `{{site_name_with_url}}` etc., that only work in the footer. Different scopes; pay attention to which you're typing where.
-:::
-
----
-
-## A real example: Sara's Welcome Email
-
-Sara wants her welcome warm and useful:
-
-**Subject:**
-```text
-Welcome to Pro Yoga, {{user_name}}!
-```
-
-**Body:**
-```text
-Hi {{user_name}},
-
-Thanks for joining {{membership_level}}! Your membership is active starting {{start_date}}.
-
-Here's how to get started:
-1. Bookmark your member portal: {{site_url}}/my-account
-2. Browse the lesson library
-3. Join the monthly live call (link in your portal)
-
-If you have any questions, reply to this email.
-
-Sara
-```
-
-She enables the notification, saves, and runs a test grant on her staff account to verify formatting.
-
----
-
-## Can I add more notification types?
-
-In 1.0, the admin UI only exposes the single `user_welcome` notification. For more types you have two paths:
-
-### Option A, FluentCRM (no code)
-
-FluentCRM is Fluent Members' first-class CRM integration. It listens to lifecycle hooks (`membership_cancelled`, `membership_expired`, `membership_renewed`, etc.) and lets you build email sequences around them. No code, more types, full template editor.
-
-### Option B, Developer hooks (code)
-
-If you maintain the site yourself or have a developer, you can register additional notifications via filters:
-
-```php
-add_filter('fluent_members/default_notifications', function ($notifications) {
-    $notifications['my_renewal_reminder'] = [
-        'event'    => 'membership_level_assigned',
-        'recipient'=> 'member',
-        'title'    => 'Renewal Reminder',
-        'defaults' => [
-            'active'  => 'no',
-            'subject' => 'Your {{membership_level}} renews in 3 days',
-            'email_body' => '...',
-        ],
-    ];
-    return $notifications;
-});
-```
-
-See [Developer Hooks](/reference/developer-hooks) for the full action/filter list.
-
----
-
-## Things that trip people up
-
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| Welcome Email never arrives | Notification disabled, or Mailing From email rejected by recipient. | Toggle on; check From email; check spam. |
-| Merge tag shows as literal `{{user_name}}` | The tag was typed in the footer (which uses smartcodes only). | Move it to subject or body. |
-| Edit panel won't save | Body HTML uses disallowed tags. | Switch to Code view; remove disallowed tags. |
-| Emails are missing the logo / footer | Mailing Settings not configured yet. | See [Mailing Settings](./mailing-settings). |
-
----
-
-## What's next?
-
-- **→ [Mailing Settings](./mailing-settings)**: the surrounding context.
-- **→ [Email Merge Tags](/reference/email-merge-tags)**: the full vocabulary.
-
-**Recommended reading:**
-- [Developer Hooks](/reference/developer-hooks): register custom notifications.
-- [Member Detail](../../members/detail): the Add Membership flow that triggers Welcome Email.

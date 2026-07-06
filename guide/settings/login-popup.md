@@ -1,100 +1,56 @@
 # Login Popup
 
-A small in-page login modal that opens instead of a hard block. When an [Access Group's Unauthorized Access action](/guide/access-groups/unauthorized-access) is set to **Show a login prompt**, this is what your visitors see. Styling and copy live here.
-**Here's what you'll learn:**
-- The master toggle plus every field on the Login Popup card.
-- How the popup interacts with WordPress's standard login.
-- The "Auto Open" checkbox and when to use it.
+The Login Popup is an optional modal dialog that appears when a visitor tries to access restricted content. Instead of redirecting to a login page, the login form slides in as an overlay on the same page. You can customize the heading, message, button style, and supporting links and optionally have it open automatically on restricted pages.
 
-**Before we start:** Click the gear icon → **Login Popup** in the left rail.
+## Access Login Popup Settings
 
----
+Click the **Settings** gear icon in the top-right corner of any Fluent Members screen, then select **Login Popup** from the left-hand menu.
 
-## Step 1: Toggle the feature on
+### Enabling the Popup
 
-At the top of the card is **Login Popup Settings**. Switch it on. A note appears: *"Enable on-page login popup for public user."*
+At the top of the card is the **Login Popup Settings** master toggle. Switch it on to activate the feature. When disabled, no popup appears anywhere on your site regardless of other settings.
 
-![Login Popup full settings](/screenshots/settings-login-popup.webp)
+![Access the Login Popup](/images/settings/login-popup/login-popup-1.webp)
 
----
+## Configuring the Popup
 
-## The fields
+With the toggle on, the following fields control the popup's appearance and behaviour:
 
-| Field | Default | What it controls |
-|---|---|---|
-| **Title** | *"Login Required"* | Heading shown at the top of the modal. |
-| **Custom Message** | *"Please log in to access this content."* | Subtitle / explanation under the heading. Supports basic HTML. |
-| **Button Color** | `#0073AA` | Background of the Login button. |
-| **Button Text Color** | `#FFFFFF` | Text colour of the Login button. |
-| **Button Text** | *"Log In"* | Login button label. |
-| **Button Size** | `Medium` | Radio: Small / Medium / Large. |
-| **Register URL** | (empty) | Custom registration URL. Defaults to WordPress's `wp-login.php?action=register` if empty. |
-| **Register Link Text** | *"Register here"* | Link text shown below the Login button. |
-| **Lost Password URL** | (empty) | Custom lost-password URL. Defaults to WordPress's standard `wp-login.php?action=lostpassword` if empty. |
-| **Lost Password Link Text** | *"Lost your password?"* | Link text shown below the Login button. |
-| **Auto Open Popup** | unchecked | Whether the popup opens automatically when a restricted page loads. |
+- **Title**: The heading shown at the top of the modal (e.g. *"Login Required"*).
+- **Custom Message**: A short explanation shown under the heading. Supports basic HTML (e.g. links, bold). Defaults to *"Please log in to access this content."*
+- **Button Text**: Label for the Login button (e.g. *"Log In"*).
+- **Button Color**: Background color of the Login button (default `#0073AA`).
+- **Button Text Color**: Text color on the Login button (default `#FFFFFF`).
+- **Button Size**: Choose **Small**, **Medium**, or **Large**.
+- **Register URL**: Optional URL to your registration page. If left empty, defaults to WordPress's built-in `wp-login.php?action=register`.
+- **Register Link Text**: The link text shown below the Login button (e.g. *"Register here"*).
+- **Lost Password URL**: Optional URL to your password-reset page. Defaults to `wp-login.php?action=lostpassword` if empty.
+- **Lost Password Link Text**: The link text for the lost password link (e.g. *"Lost your password?"*).
+- **Auto Open Popup**: When checked, the popup opens automatically whenever a logged-out visitor lands on any restricted page. See below for when to use this.
 
----
+Once you have set your fields, click **Save Settings**.
 
-## Auto Open Popup, when to tick it
+![Login Popup settings configured](/images/settings/login-popup/login-popup-settings-2.webp)
 
-When *Auto Open Popup* is **unchecked**, the popup only appears when an Access Group is set to *Show a login prompt*, the engine triggers it on the restricted post.
+## Auto Open Popup
 
-When **checked**, the popup also opens automatically on any page where the user is *not* logged in and content is restricted, regardless of the Group's action setting. Useful for members-only sites where you assume people just need to log in.
+When **Auto Open Popup** is unchecked (the default), the popup only appears on pages where the linked [Access Group's Unauthorized Access](/guide/access-groups/unauthorized-access) action is set to **Show a login prompt**. The popup is triggered by the restriction engine, not on every page.
 
-::: warning Don't auto-open on every page
-Auto Open applies site-wide. If your site has free *and* paid content, auto-opening on free pages annoys readers. Leave it off and rely on the Group's *Show a login prompt* action only where it makes sense.
-:::
+When **Auto Open Popup** is checked, the popup opens automatically on any page where the visitor is not logged in and any content is restricted regardless of the Access Group's action setting.
 
----
+>[!Note]
+> Auto Open applies site-wide. If your site has a mix of free and members-only content, enabling this will cause the popup to open on free pages too. Leave it unchecked and rely on the Access Group's **Show a login prompt** action to control exactly where the popup fires.
 
-## Plain WordPress login under the hood
 
-The popup is a styled wrapper around WordPress's `wp-login.php` action. When a user submits:
+## How the Popup Works
 
-1. The credentials go to WordPress's normal authentication flow.
-2. If correct, the user is signed in and the popup closes; the page reloads to render their member view.
-3. If incorrect, the WordPress error message appears in the popup.
+The popup is a styled wrapper around WordPress's standard authentication flow:
 
-This means everything WordPress login supports, application passwords, 2FA plugins, custom login redirects, works inside the popup too.
+1. The visitor clicks a restricted link or lands on a restricted page.
+2. The popup slides in as an overlay no page redirect occurs.
+3. The visitor submits their credentials inside the popup.
+4. WordPress authenticates the request. If correct, the popup closes and the page reloads to show the member view. If incorrect, the WordPress error message appears inside the popup.
 
----
+Because it uses WordPress's native `wp-login.php` action under the hood, everything WordPress login supports two-factor authentication plugins, custom login redirects, application passwords works inside the popup as well.
 
-## A real example: Sara's coaching client area
 
-Sara's coaching clients sign in to access their private resources. She wants a friendly login experience, not a hard block:
-
-| Field | Value |
-|---|---|
-| Title | *"Welcome back"* |
-| Custom Message | *"Please log in to access your client resources."* |
-| Button Color | `#0073AA` |
-| Button Text | *"Log In to My Account"* |
-| Button Size | Large |
-| Register URL | (empty, clients don't self-register) |
-| Lost Password Link Text | *"Forgot your password?"* |
-| Auto Open Popup | ✅ (the whole client area is members-only) |
-
-She then sets her client-resources Access Group's Action to *Show a login prompt*.
-
----
-
-## Things that trip people up
-
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| Popup never appears | Login Popup is disabled at the master toggle. | Toggle it on. |
-| Popup opens on free pages too | Auto Open is checked. | Uncheck it. |
-| Register link points to standard WP login | Custom Register URL field is empty. | Fill in your custom URL. |
-| Submitting login does nothing | Theme conflict, popup JS isn't initialised. | Check browser console for errors; whitelist `/wp-includes/js/`. |
-
----
-
-## What's next?
-
-- **→ [Payment Settings](./payment-settings/)**: set up Stripe.
-- **→ [Partial Content Lock](./partial-content-lock)**: the soft-paywall alternative.
-
-**Recommended reading:**
-- [Unauthorized Access](/guide/access-groups/unauthorized-access): the engine that triggers this popup.
-- [General Settings](./general): the surrounding tab.
