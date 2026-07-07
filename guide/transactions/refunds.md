@@ -9,7 +9,7 @@ You can issue a full or partial refund on any paid Stripe transaction directly f
 
 Open **Fluent Members → Transactions**, switch to the **Paid** tab, and locate the row. Use the search field to filter by member name, email, or transaction ID. See [Filters & Search](/guide/transactions/filters-and-search).
 
-You can also initiate a refund from a member's detail page open **Members**, find the member, and use the action menu on their membership row.
+You can also initiate a refund from a member's detail page — open **Members**, find the member, and use the action menu on their membership row.
 
 ## Issue the Refund
 
@@ -20,6 +20,8 @@ You can also initiate a refund from a member's detail page open **Members**, fin
 5. Click **Confirm**.
 
 Fluent Members calls the Stripe API, records a new transaction row with type `refund`, and updates the original transaction's status to `refunded`.
+
+![Refund confirmation](/images/transactions/refund/refunded-1.webp)
 
 ## Full vs Partial Refunds
 
@@ -45,9 +47,9 @@ See [Suspending & Cancelling](/guide/members/suspending-and-cancelling) for the 
 
 Stripe may decline a refund for these reasons:
 
-- **Charge too old** — most banks limit refunds to 120 days from the original charge
-- **Dispute in progress** — a chargeback is already open on this charge
-- **Insufficient Stripe balance** — your Stripe account balance is too low to fund the refund
+- **Charge too old**: Most banks limit refunds to 120 days from the original charge
+- **Dispute in progress**: A chargeback is already open on this charge
+- **Insufficient Stripe balance**: Your Stripe account balance is too low to fund the refund
 
 When Stripe rejects, the modal shows the error message. No refund row is created and the original transaction is unchanged.
 
