@@ -44,18 +44,20 @@ When a member cancels:
 5. On the original renewal date, Stripe sends `customer.subscription.deleted`. Fluent Members flips the local row to `Cancelled`.
 6. No final charge runs.
 
-::: warning Admin views under End of Period
+::: warning Admin Views Under End of Period
 Under End of Period, the membership row's `status` column stays `Active` between the cancel click and the period boundary. The member portal shows `Cancelled` because it reads both the `status` field and the `cancel_at_period_end` flag. Admin tooling or reports that read only `status` will show `Active` — this is expected behaviour, not a bug.
 :::
 
 ## Which Mode to Choose
 
 **Use Immediate when:**
+
 - You include a refund on cancellation
 - You run free trials where a failed conversion should remove access instantly
 - You want Cancel to mean instant revocation
 
 **Use End of Period when:**
+
 - You charge non-refundable monthly or annual fees
 - You want members to keep access through the period they already paid for
 - You prefer to minimise refund requests by letting the period run out naturally
