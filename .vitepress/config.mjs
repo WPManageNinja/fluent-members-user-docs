@@ -94,6 +94,7 @@ const guideSidebar = [
     text: 'Help & Support',
     collapsed: true,
     items: [
+      { text: 'FAQ', link: '/guide/help-support/faq' },
       { text: 'Get Support', link: '/guide/help-support/get-support' },
       { text: 'Changelog', link: '/changelog' }
     ]
@@ -144,7 +145,6 @@ export default defineConfig({
             { text: 'Membership Statuses', link: '/reference/membership-statuses' },
             { text: 'Shortcode Reference', link: '/reference/shortcode-reference' },
             { text: 'Email Merge Tags', link: '/reference/email-merge-tags' },
-            { text: 'FAQ', link: '/reference/faq' },
             { text: 'Troubleshooting', link: '/reference/troubleshooting' },
             { text: 'Developer Hooks', link: '/reference/developer-hooks' }
           ]

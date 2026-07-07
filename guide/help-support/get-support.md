@@ -1,6 +1,6 @@
 # Get Support
 
-If you have already gone through the **Docs** and the [FAQ](/reference/faq) and you are still running into a problem with **Fluent Members**, our support team is ready to help.
+If you have already gone through the **Docs** and the [FAQ](/guide/help-support/faq) and you are still running into a problem with **Fluent Members**, our support team is ready to help.
 
 ## How to Contact Support
 
