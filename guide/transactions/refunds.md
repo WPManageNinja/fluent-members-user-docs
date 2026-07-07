@@ -1,138 +1,56 @@
 # Refunds
-::: warning Requires Fluent Members Pro
-Refunds work only for charges made through Native Payment (Stripe). Refunds for FluentCart, Fluent Forms, or Paymattic happen in their respective plugins.
-:::
 
-Reversing a payment is a few clicks: open the transaction, click **Refund**, decide full or partial, decide whether to also cancel the membership. This page is the practical walkthrough plus the edge cases.
+You can issue a full or partial refund on any paid Stripe transaction directly from the Fluent Members admin. The refund calls the Stripe API, records a refund transaction row, and marks the original transaction as refunded.
 
-**Here's what you'll learn:**
-- Where the Refund button lives.
-- The Refund modal's fields.
-- Full vs partial refunds.
-- The "also cancel membership" option.
-- What happens server-side and on Stripe.
+> [!Note]
+> Refunds work only for charges made through native Stripe payments. Charges from FluentCart, WooCommerce, Fluent Forms, or Paymattic must be refunded in their respective plugins.
 
-**Before we start:** You're on Fluent Members Pro with Stripe connected, and a Succeeded transaction exists.
+## Find the Transaction
 
-::: warning Screenshot pending
-A refund-modal screenshot isn't in our reference folder yet. The walk below describes what the UI shows.
+Open **Fluent Members → Transactions**, switch to the **Paid** tab, and locate the row. Use the search field to filter by member name, email, or transaction ID. See [Filters & Search](/guide/transactions/filters-and-search).
 
-[Screenshot needed: Transactions screen, refund modal open with amount input + "also cancel membership" toggle]
-:::
+You can also initiate a refund from a member's detail page open **Members**, find the member, and use the action menu on their membership row.
 
----
+## Issue the Refund
 
-## Step 1: Find the transaction
+1. Click the action menu on the transaction row.
+2. Click **Refund**.
+3. Enter the amount to refund. Leave it at the original amount for a full refund, or enter a lower value for a partial refund.
+4. Add an optional **Payment Note** stored internally on the refund row, not sent to the member.
+5. Click **Confirm**.
 
-Open [Transactions](./) and use [Filters & Search](./filters-and-search) to find the row. The Refund action lives behind the row's kebab (⋮).
+Fluent Members calls the Stripe API, records a new transaction row with type `refund`, and updates the original transaction's status to `refunded`.
 
-You can also open a refund from a [Member Detail](../members/detail) page, the kebab on the matching membership row offers **Refund** directly when a linked transaction exists.
+## Full vs Partial Refunds
 
----
-
-## Step 2: Open the Refund modal
-
-Click **Refund** in the kebab menu. The modal opens with three fields:
-
-| Field | Notes |
-|-------|-------|
-| **Amount** | Pre-filled with the original charge amount. Editable down to any positive value ≤ original. |
-| **Payment note** | Internal note. Stored on the new refund transaction; not sent to the member. |
-| **Also cancel membership** | Checkbox. If ticked, the linked membership row flips to `Cancelled` after the refund succeeds. |
-
-::: tip In plain language
-*Full refund* = leave Amount at the original. *Partial refund* = lower the Amount. *Cancel the membership* = tick the checkbox; usually paired with full refunds, occasionally with partials when you're closing out a long-term relationship.
-:::
-
----
-
-## Step 3: Confirm
-
-Click **Refund**. Behind the scenes:
-
-1. Fluent Members calls Stripe to refund the amount. Stripe returns success (or an error).
-2. A new transaction row is created with Type `refund`, Status `succeeded`, Amount = the refund amount, `parent_transaction_id` = the original.
-3. The original transaction's Status flips to `refunded` (full refund) or `partially_refunded` (partial).
-4. If "Also cancel membership" was ticked, the linked membership row flips to `Cancelled`. Stripe is told to stop the subscription if there is one.
-5. If "Also cancel membership" was ticked, the lifecycle action `fluent_members/membership_cancelled` fires so CRM and analytics can react. There is no global `refund_processed` action in 1.0. Integrations that want to detect every refund regardless of gateway should watch the Transactions table for new rows where `type='refund'`, or hook the per-gateway dispatcher `fluent_members/refund_payment_stripe`.
-
-You see a success toast: *"Refund processed successfully."*
-
----
-
-## Full vs partial refunds
-
-| | **Full** | **Partial** |
+| | Full refund | Partial refund |
 |---|---|---|
-| When to use | The buyer is leaving, money back in full. | A pro-rated refund (e.g. cancellation mid-period). |
-| Amount field | Leave at original. | Lower it. |
-| What Stripe shows | Charge refunded. | Partial refund recorded; original charge stays "succeeded, partially refunded". |
-| Original transaction status | `refunded` | `partially_refunded` |
-| Can you refund again? | No. | Yes, until the total of refunds equals the original. |
+| Amount | Equal to original charge | Less than original charge |
+| Original transaction status after | `refunded` | `partially_refunded` |
+| Can refund again? | No | Yes — until total refunds equal the original amount |
+| Stripe shows | Charge fully refunded | Partial refund on the charge |
 
-::: warning You can refund multiple times
-A partial refund leaves room for another partial. The modal will show the remaining refundable amount on the next attempt.
+## Refunds and Membership Access
+
+Issuing a refund does **not** cancel or expire the member's access. Fluent Members returns the money via Stripe but leaves the membership row unchanged.
+
+If you want to revoke access after refunding, update the member's status manually:
+
+1. Go to **Members** and open the member's detail page.
+2. Find the membership row and change the status to **Cancelled** or **Expired**.
+
+See [Suspending & Cancelling](/guide/members/suspending-and-cancelling) for the full flow.
+
+## When Stripe Rejects a Refund
+
+Stripe may decline a refund for these reasons:
+
+- **Charge too old** — most banks limit refunds to 120 days from the original charge
+- **Dispute in progress** — a chargeback is already open on this charge
+- **Insufficient Stripe balance** — your Stripe account balance is too low to fund the refund
+
+When Stripe rejects, the modal shows the error message. No refund row is created and the original transaction is unchanged.
+
+::: warning Stripe-side refunds do not sync automatically
+If you issue a refund directly in the Stripe Dashboard (outside Fluent Members), the transaction row in Fluent Members will not update automatically unless the `charge.refunded` webhook is configured. Always refund through Fluent Members when possible, or ensure your Stripe webhook is set up correctly. See [Stripe Setup](/guide/settings/payment-settings/stripe-setup).
 :::
-
----
-
-## What about the membership?
-
-By default, refunding doesn't end the membership, Stripe takes money back, but the member still has access. That's intentional: sometimes you refund a partial without ending the relationship.
-
-To also end access, tick **Also cancel membership** in the modal. The plugin will:
-
-- Flip the membership row to `Cancelled`.
-- Cancel the Stripe subscription (immediate, regardless of your global cancellation-mode setting).
-- Cascade to children if this was a corporate parent.
-
----
-
-## What if Stripe rejects the refund?
-
-Reasons Stripe might say no:
-
-- Charge is too old (some banks limit refunds to ~120 days).
-- The original payment was disputed (chargeback in flight).
-- Your Stripe account doesn't have enough balance to fund the refund.
-
-In all those cases, the modal shows Stripe's error message. The original transaction stays unchanged; no refund row is created.
-
----
-
-## A real example: Sara refunds Mike one month
-
-Mike emails: *"I forgot to cancel, please refund me one month and end the subscription."*
-
-Sara:
-
-1. Opens [Members](../members/) → searches Mike → opens his detail.
-2. On the Active Pro Yoga row, kebab → **Refund**.
-3. Modal opens with Amount pre-filled at $19. She leaves it.
-4. Payment note: "Sara approved 6/17, user request, late notice."
-5. Ticks **Also cancel membership**.
-6. Clicks **Refund**.
-
-Mike's $19 goes back to his card within a few business days. His membership flips to `Cancelled`. Sara sees a refund transaction row in Transactions; Mike sees `Cancelled` in his portal.
-
----
-
-## Things that trip people up
-
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| Refund button missing on a row | Transaction wasn't a Native Payment charge, or status is already refunded. | Refund in the host plugin (for paywalls), or note it's already refunded. |
-| Modal shows "Maximum refundable: $X" lower than original | Partial refunds already applied. | Refund the remaining amount only. |
-| Refund succeeds but membership still Active | "Also cancel membership" wasn't ticked. | Cancel separately via the kebab. |
-| Stripe rejects with "charge_already_refunded" | A duplicate click submitted twice. | Refresh; the refund did go through. |
-
----
-
-## What's next?
-
-- **→ [Subscription Cancellation Modes](./cancellation-modes)**: control how subscriptions end (immediate vs end-of-period).
-- **→ [Filters & Search](./filters-and-search)**: find specific transactions quickly.
-
-**Recommended reading:**
-- [Stripe Setup](/guide/settings/payment-settings/stripe-setup): make sure webhooks are set so Stripe-side refunds also sync here.
-- [Suspending & Cancelling](../members/suspending-and-cancelling): the non-refund way to end an admin's relationship with a member.
