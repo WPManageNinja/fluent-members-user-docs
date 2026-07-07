@@ -1,124 +1,64 @@
-# Transactions List
-::: warning Requires Fluent Members Pro
-The Transactions screen ships only with Fluent Members Pro. The wp-admin top nav shows **Transactions** alongside Dashboard / Levels / Access Groups / Members only when Pro is active.
+# Transactions
+
+The **Transactions** screen is your billing ledger one row per billing event (initial charge, renewal, refund). Use it to confirm a payment landed, look up a charge by member or ID, or issue a refund directly from the admin.
+
+> [!Note]
+> The Transactions screen is only available with Fluent Members Pro. The **Transactions** link appears in the top navigation only when Pro is active.
+
+
+## Access Transactions
+
+In your WordPress admin, go to **Fluent Members → Transactions** using the top navigation bar.
+
+## Filter Tabs
+
+The tab bar at the top filters the list by transaction status:
+
+| Tab | Shows |
+|---|---|
+| **All** | Every transaction regardless of status |
+| **Paid** | Successful charges — money collected |
+| **Pending** | Payments awaiting confirmation (e.g. 3D Secure in progress) |
+| **Failed** | Charges that did not succeed (declined card, expired card) |
+| **Refunded** | Charges where the amount was returned to the member |
+
+## Columns
+
+- **ID**: The unique transaction row ID. Use this when contacting support or referencing a specific charge.
+- **User**: The member's display name and email address. Click the name to open their profile.
+- **Level**: The Membership Level the payment was for.
+- **Type**: The nature of the transaction `charge` (initial payment), `renewal` (recurring), or `refund`.
+- **Amount**: The exact amount processed for this transaction.
+- **Status**: A status badge showing `paid`, `pending`, `failed`, or `refunded`.
+- **Payment Method**: The gateway used, including card type and masked card number (e.g. Visa \*\*\*\*4242).
+- **Date**: The timestamp when the billing event occurred, in your site's timezone.
+
+![Transactions screen](/images/transactions/index/transaction-dashboard-1.webp)
+
+## Where Transactions Come From
+
+Transactions are written automatically you do not create them manually:
+
+- **Stripe (native checkout)**: every Stripe webhook event (charge, renewal, refund) creates or updates a transaction row
+- **Paywall integrations (FluentCart, WooCommerce, etc.)**: successful payment hooks write a transaction row so all sources appear in one ledger
+- **Refunds**: when you refund a transaction from this screen, or when Stripe sends a `charge.refunded` webhook event
+
+## Issuing a Refund
+
+Find the transaction in the **Paid** tab, open the action menu on the row, and click **Refund**. Enter the amount (full or partial) and confirm. See [Refunds](/guide/transactions/refunds) for the complete walkthrough.
+
+::: warning Refunds do not change membership status
+Issuing a refund does not automatically expire or cancel the member's access. If you want to revoke access, update the member's status manually. See [Suspending & Cancelling](/guide/members/suspending-and-cancelling).
 :::
-
-The **Transactions** screen is your ledger, one row per billing event (initial charge, renewal charge, refund). Use it to confirm money moved, find a specific charge by ID, or refund a payment.
-
-**Here's what you'll learn:**
-- How to open Transactions.
-- The five filter tabs.
-- The columns and what each tells you.
-- What the empty state means.
-
-**Before we start:** Pro plugin is active and at least one membership has been purchased.
-
----
-
-## Step 1: Open Transactions
-
-In wp-admin top nav, click **Transactions** (visible only with Pro). You land on a paginated list of every transaction the plugin knows about.
-
-If no purchases have been made yet, the empty state reads *"No Transactions Found"* with a friendly icon.
-
-![Transactions screen empty state](/screenshots/transactions-empty.webp)
-
----
-
-## The five tabs
-
-The tab bar at the top filters by transaction status:
-
-| Tab          | Shows                                                  |
-|--------------|--------------------------------------------------------|
-| **All**      | Every transaction, regardless of status.              |
-| **Succeeded**| Successful charges, money landed in your account.    |
-| **Pending**  | Payments waiting for confirmation (e.g. 3DS in flight).|
-| **Failed**   | Charges that didn't succeed (declined, expired card). |
-| **Refunded** | Charges where some or all amount was returned.        |
-
----
-
-## The columns
-
-| Column            | What it shows |
-|-------------------|---------------|
-| **ID**            | Transaction row ID. Reference this in support emails. |
-| **User**          | Member's display name and email. |
-| **Level**         | Which Level the payment was for. |
-| **Type**          | `charge`, `renewal`, or `refund`. |
-| **Amount**        | The amount of this transaction (positive, refunds are positive too, just classed as `refund` type). |
-| **Status**        | `succeeded`, `pending`, `failed`, `refunded`. |
-| **Payment Method**| `Stripe`, or whatever paywall integration drove this. |
-| **Date**          | When the event happened, in your site's timezone. |
-
-Click any row to open the transaction's detail panel (1.0 shows the same fields in a side drawer; future versions add refund history).
-
----
-
-## Where transactions come from
-
-Transactions are written automatically:
-
-- **Native Payment (Stripe):** Every Stripe webhook event lands here.
-- **Paywall integrations (FluentCart, WC, etc.):** Their successful-payment hooks create Transaction rows so you have one ledger across all sources.
-- **Refunds:** When you click Refund on a row, or when Stripe sends a `charge.refunded` event.
-
-::: tip In plain language
-Transactions is the *money* table; Members is the *people* table. One member can have many transactions (initial + renewals + refunds), and one transaction always points at one member.
-:::
-
----
-
-## How transactions tie to members
-
-Every transaction is linked to:
-
-- A **member** (the WordPress user who paid).
-- A **membership row** (the specific Level they bought).
-- For renewals: the **subscription** that triggered the charge.
-- For refunds: the **parent transaction** that's being refunded.
-
-From a transaction row you can jump to the member's [Detail](../members/detail) page (click the User column).
-
----
 
 ## Searching
 
-The search icon opens a search field, filter by user name, email, or transaction ID. Search applies within the current tab.
+Use the search field to filter by member name, email address, or transaction ID. Search applies within the currently active tab if a search returns nothing, switch to the **All** tab first.
 
----
+## How Transactions Relate to Members
 
-## A real example: Sara reconciles last month
+Every transaction is linked to a member, a Membership Level, and (for renewals) the subscription that triggered the charge. Click the **User** column in any row to jump to that member's detail page.
 
-It's the first of the month. Sara:
-
-1. Opens **Transactions → Succeeded**.
-2. Filters by Date (UI is limited in 1.0, she scrolls to last month's range).
-3. Tallies the total to confirm her Stripe payout matches.
-4. Switches to **Refunded** to see how many returns happened, useful for her support metrics.
-
-Two screens, no spreadsheet export required.
-
----
-
-## Things that trip people up
-
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| Transactions tab is missing | You're on free; only Pro adds this. | Install Fluent Members Pro. |
-| Empty list even after a recent Stripe charge | Webhook URL not configured in Stripe. | See [Stripe Setup → webhooks](/guide/settings/payment-settings/stripe-setup). |
-| Renewal charges don't appear | `invoice.paid` webhook isn't subscribed. | Add it in Stripe webhooks. |
-| Duplicate rows for the same charge | Webhook delivered twice; the de-dup didn't catch it (rare). | Open both rows and verify, usually one is `pending`, one is `succeeded`. |
-| Old paywall purchases (pre-Pro install) don't appear | Transactions are written from the moment Pro is active. | Imported via migration, see [Stripe Import Bridge](/guide/settings/migration/), would have populated history. |
-
----
-
-## What's next?
-
-- **→ [Filters & Search](./filters-and-search)**: narrow the list to what you're looking for.
-- **→ [Refunds](./refunds)**: the refund workflow.
-
-**Recommended reading:**
-- [Stripe Setup](/guide/settings/payment-settings/stripe-setup): the source of most Transactions data.
-- [Subscription Cancellation Modes](./cancellation-modes): what happens when a member cancels.
+::: tip No transactions after a recent Stripe charge?
+The most common cause is a missing or misconfigured webhook. See [Stripe Setup](/guide/settings/payment-settings/stripe-setup).
+:::
