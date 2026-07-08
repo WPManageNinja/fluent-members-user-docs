@@ -82,10 +82,11 @@ const guideSidebar = [
       { text: 'Login Popup', link: '/guide/settings/login-popup' },
       { text: 'Payment Settings', link: '/guide/settings/payment-settings/' },
       { text: 'Stripe Setup (Pro)', link: '/guide/settings/payment-settings/stripe-setup' },
+      { text: 'PayPal Setup (Pro)', link: '/guide/settings/payment-settings/paypal-setup' },
       { text: 'Migration: Overview', link: '/guide/settings/migration/' },
       { text: 'Migration: From Paid Memberships Pro', link: '/guide/settings/migration/from-paid-memberships-pro' },
       { text: 'Migration: From MemberPress', link: '/guide/settings/migration/from-memberpress' },
-      { text: 'Migration: From Content Restriction Pro', link: '/guide/settings/migration/from-content-restriction-pro' },
+      { text: 'Migration: From Kadence Memberships', link: '/guide/settings/migration/from-kadence-memberships' },
       { text: 'Email Configuration: Mailing Settings', link: '/guide/settings/email-configuration/mailing-settings' },
       { text: 'Email Configuration: Email Notifications', link: '/guide/settings/email-configuration/email-notifications' }
     ]

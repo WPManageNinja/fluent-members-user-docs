@@ -94,7 +94,17 @@ Verification: `Stripe::constructEvent($payload, $sigHeader, $webhookSecret)` —
 
 ## StripeConnectService
 
-Handles reading and writing Stripe credentials. Keys are encrypted with WordPress salts before storing.
+Handles reading and writing Stripe credentials.
+
+### Credential encryption (v1.1.0)
+
+Secret key fields are encrypted at rest using the same `enc:v1:` prefix pattern as PayPal (chunk 39):
+
+```php
+const ENCRYPTED_PREFIX = 'enc:v1:';
+```
+
+On save: if the field value is non-blank and doesn't start with `'enc:v1:'`, it is encrypted via `App::make('encrypter')->encryptString($value)` and stored with the prefix. On read: prefix stripped and decrypted. This applies to `stripe_secret_key` and `stripe_webhook_secret`.
 
 ---
 

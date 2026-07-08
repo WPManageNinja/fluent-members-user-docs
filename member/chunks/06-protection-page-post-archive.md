@@ -117,9 +117,26 @@ Key static methods:
 
 ---
 
+## Hide comments on restricted content (v1.1.0)
+
+Three additional hooks in `AccessHandler` suppress comment UI on posts the current user cannot access:
+
+| Method | WordPress filter | Priority | Effect |
+|---|---|---|---|
+| `filterRestrictedComments($comments, $query)` | `the_comments` | default | Strips inaccessible comments from `WP_Comment_Query` result |
+| `maybeCloseComments($open, $postId)` | `comments_open` | default | Returns `false` for restricted posts — disables comment form |
+| `maybeZeroCommentsCount($count, $postId)` | `get_comments_number` | default | Returns `0` for restricted posts — hides count in themes |
+
+`filterRestrictedComments` bulk-primes post/meta/term caches before looping so `hasAccess()` doesn't cause N+1 queries on multi-post comment sets (sidebar widgets, REST responses).
+
+All three use `$this->postAccessCache[$postId]` to avoid redundant `hasAccess()` calls within the same request.
+
+---
+
 ## Key facts for docs
 
 - Admins ALWAYS bypass protection — test in incognito / as non-admin user
 - If redirect URL is set on the group → visitor is redirected; otherwise restriction HTML is shown in-place
 - `entire_website` affects archive/taxonomy/homepage but NOT singular pages (singular handled by `maybeRedirectRestrictedContent`)
 - Drip check happens BEFORE partial content check (drip wins)
+- Hide comments feature (v1.1.0): three filters suppress comment form, count, and list on restricted posts

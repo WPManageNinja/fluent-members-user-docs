@@ -63,7 +63,7 @@ always-load: true
 | Migration overview, supported sources, what transfers | 25 |
 | PMPro migration phases and API endpoints | 26 |
 | MemberPress migration, Stripe-import bridge | 27 |
-| Restrict Content Pro migration, run-step loop | 28 |
+| Kadence Memberships migration (renamed from Restrict Content Pro in v1.1.0), run-step loop | 28 |
 | Native Stripe checkout, payment intent flow (Pro) | 29 |
 | Stripe webhook IPN, Stripe Connect settings (Pro) | 29 |
 | MembershipSubscription model, subscription lifecycle (Pro) | 30 |
@@ -80,6 +80,10 @@ always-load: true
 | All Pro plugin REST API routes | 36 |
 | WordPress filters and actions (all hooks) | 37 |
 | Every .md doc file → feature it covers | 38 |
+| Pro PayPal payments, PayPal checkout, PayPal settings (Pro) | 39 |
+| PayPal webhook events (9 events), PayPalLock mutex (Pro) | 39 |
+| PayPal subscription import, paypal_era, REST PPCP, fmem_renew_token | 39 |
+| Hide comments on restricted posts (the_comments, comments_open, get_comments_number) | 06 |
 
 ## Chunk file list
 
@@ -123,7 +127,8 @@ member/chunks/
 ├── 35-api-routes-free.md
 ├── 36-api-routes-pro.md
 ├── 37-hooks-filters.md
-└── 38-doc-file-index.md
+├── 38-doc-file-index.md
+└── 39-pro-paypal-payments.md
 ```
 
 ## Common load patterns
@@ -134,6 +139,8 @@ member/chunks/
 | Add a new settings field | 00 → 13–18 (pick the right settings chunk) |
 | Add a new integration | 00 → 19–24 (nearest integration as pattern) |
 | Update migration docs | 00 → 25 → 26/27/28 |
+| PayPal settings/checkout question | 00 → 39 |
+| PayPal subscription import from migration | 00 → 25 → 39 |
 | Pro billing question | 00 → 30 + 31 |
 | New email merge tag | 00 → 16 |
 | New shortcode | 00 → 12 + 38 (doc index) |

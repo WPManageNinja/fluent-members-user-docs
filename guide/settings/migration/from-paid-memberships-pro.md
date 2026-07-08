@@ -43,6 +43,16 @@ Open **Settings → Migration**, click the **Paid Memberships Pro** card, and ru
 
 If any step returns an unexpected count, click **Reset Migration State** at the bottom of the wizard and re-run from that step.
 
+## PayPal Subscription Transfer (Pro)
+
+If your members were billed via **PayPal REST PPCP** in Paid Memberships Pro and you have [PayPal Setup](/guide/settings/payment-settings/paypal-setup) configured in Fluent Members Pro, the Import Subscriptions step can carry those live subscriptions over. After transfer:
+
+- Renewals continue via PayPal webhooks — no member action required.
+- Cancellations from the Member Portal correctly call PayPal to stop billing.
+- The Transactions screen records new local rows going forward.
+
+PayPal subscriptions on legacy IPN (non-PPCP) are handled via IPN continuation once PMPro is deactivated.
+
 ## Status Mapping
 
 | PMPro Status | Fluent Members Status |

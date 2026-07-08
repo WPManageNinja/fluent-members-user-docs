@@ -70,6 +70,24 @@ Request: `{ page: int, per_page: int }`
 
 ---
 
+## PayPal subscription import (Pro, v1.1.0)
+
+When Fluent Members Pro is active and PayPal is connected, `MigrationHooksHandler` intercepts subscription import via:
+
+- Filter: `fluent_members/migration/memberpress/import_subscription`
+- Handler: `MigrationHooksHandler::handleImportMemberPressSubscription`
+- IPN continuation: `fluent_members/paypal_ipn_continuation_sources` → `registerMemberPressIpnSource`
+
+Note: MemberPress posts legacy PayPal IPNs to `index.php?plugin=mepr&pmt={gateway}&action=ipn`. The handler takes over routing only when MemberPress is inactive.
+
+PayPal REST PPCP subscriptions are identified by `paypal_era = 'rest_ppcp'`. Handler looks up plan via PayPal API and sets `current_payment_method = 'paypal'`.
+
+`fluent_members/migration/memberpress/check_paypal_configured` — bool filter used by UI.
+
+See chunk 39 for full PayPal import mechanics.
+
+---
+
 ## Status mapping (MemberPress → Fluent Members)
 
 | MemberPress status | Fluent Members status |

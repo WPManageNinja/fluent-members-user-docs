@@ -2,8 +2,8 @@
 chunk: 25
 category: Migration
 subcategory: Overview
-query-triggers: [migration, migrate, import from, PMPro, MemberPress, Restrict Content Pro, migration wizard, import members, migration overview]
-related-chunks: [26, 27, 28]
+query-triggers: [migration, migrate, import from, PMPro, MemberPress, Restrict Content Pro, Kadence Memberships, Kadence migration, migration wizard, import members, migration overview, PayPal import, paypal_era]
+related-chunks: [26, 27, 28, 39]
 source-files: [app/Http/Routes/api.php, app/Http/Controllers/Migration/]
 doc-files: [guide/settings/migration/index.md]
 ---
@@ -12,50 +12,62 @@ doc-files: [guide/settings/migration/index.md]
 
 ## Supported source plugins
 
-| Plugin | Controller | Status |
+| Plugin | Controller | Notes |
 |---|---|---|
 | Paid Memberships Pro (PMPro) | `PmproMigrationController` | Full support |
 | MemberPress | `MemberPressMigrationController` | Full support |
-| Restrict Content Pro (RCP) | `RcpMigrationController` | Full support |
+| Kadence Memberships | `KadenceMigrationController` | Full support (renamed from Restrict Content Pro in v1.1.0) |
 
 ---
 
 ## What transfers
 
-| Data | PMPro | MemberPress | RCP |
+| Data | PMPro | MemberPress | Kadence |
 |---|---|---|---|
 | Membership levels → Fluent Members Levels | YES | YES | YES |
 | Member assignments | YES | YES | YES |
 | Member status (active, expired, cancelled) | YES | YES | YES |
-| Subscription records | YES | YES | NO |
-| Order records | YES (Pro) | YES (Pro) | NO |
+| Subscription records | YES | YES (Pro) | YES (Pro) |
+| Order/payment records | YES (Pro) | YES (Pro) | YES (Pro) |
 | Stripe subscriptions (live transfer) | NO | YES (Pro) | NO |
+| PayPal PPCP subscriptions (import, v1.1.0) | YES (Pro) | YES (Pro) | YES (Pro) |
 | Access Group content rules | NO | NO | NO |
 
-Content restriction rules (which posts are in which groups) must be set up manually in Fluent Members after migration. Only member data and level assignments transfer automatically.
+Content restriction rules (which posts are in which groups) must be set up manually after migration. Only member data and level assignments transfer automatically.
 
 ---
 
-## Migration process model
+## Migration process models
 
-All three migrations use a **chunked step approach** to avoid PHP timeouts:
+### PMPro and MemberPress — sequential phase model
 
 ```
-POST /migration/{plugin}/detect     → check if source plugin is active + count records
-POST /migration/{plugin}/analyze    → analyze levels/plans to map them
-POST /migration/{plugin}/import-members   → import member records in batches
-POST /migration/{plugin}/import-subscriptions → import subscription records (if applicable)
-POST /migration/{plugin}/import-orders  → import order records (Pro, if applicable)
-POST /migration/{plugin}/cleanup    → finalize, set migration complete flag
+POST /migration/{plugin}/detect
+POST /migration/{plugin}/analyze
+POST /migration/{plugin}/import-members
+POST /migration/{plugin}/import-subscriptions
+POST /migration/{plugin}/import-orders
+POST /migration/{plugin}/cleanup
 ```
 
-Each step returns `{success, message, data}` — the frontend polls and advances to the next step on success.
+Each step returns `{success, message, data}` — frontend advances on success.
+
+### Kadence Memberships — named-step model
+
+```
+POST /migration/kadence/analyze
+POST /migration/kadence/run-step   { step: 'access_groups' | 'levels' | 'drip' | 'memberships' | 'payments' | 'subscriptions' | 'corporate' | 'cleanup' }
+GET  /migration/kadence/get-status
+POST /migration/kadence/reset      (debug/WP-CLI only)
+```
+
+Steps have explicit dependencies — see chunk 28.
 
 ---
 
 ## Routes
 
-All routes: namespace `/wp-json/fluent-members/v2/migration`
+All routes: namespace `/wp-json/fluent-members/v2/migration` — admin auth required (`UserPolicy`).
 
 | Plugin | Route | Method |
 |---|---|---|
@@ -71,12 +83,22 @@ All routes: namespace `/wp-json/fluent-members/v2/migration`
 | MemberPress | `/migration/memberpress/import-subscriptions` | POST |
 | MemberPress | `/migration/memberpress/import-orders` | POST |
 | MemberPress | `/migration/memberpress/cleanup` | POST |
-| RCP | `/migration/rcp/detect` | POST |
-| RCP | `/migration/rcp/analyze` | POST |
-| RCP | `/migration/rcp/run-step` | POST |
-| RCP | `/migration/rcp/cleanup` | POST |
+| Kadence | `/migration/kadence/analyze` | POST |
+| Kadence | `/migration/kadence/run-step` | POST |
+| Kadence | `/migration/kadence/get-status` | GET |
+| Kadence | `/migration/kadence/reset` | POST |
 
-Auth: all require admin (`UserPolicy`).
+## PayPal subscription import (v1.1.0)
+
+When Fluent Members Pro is active and PayPal is connected, `MigrationHooksHandler` adds PayPal import support to all three migration sources via filters:
+
+| Filter | Source |
+|---|---|
+| `fluent_members/migration/pmpro/import_subscription` | PMPro |
+| `fluent_members/migration/memberpress/import_subscription` | MemberPress |
+| `fluent_members/migration/kadence/import_subscription` | Kadence |
+
+PayPal REST PPCP subscriptions are identified by `paypal_era = 'rest_ppcp'` in the import payload. See chunk 39 for full details.
 
 ---
 
