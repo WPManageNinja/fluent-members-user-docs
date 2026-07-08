@@ -2,6 +2,53 @@
 
 Stay updated with the latest improvements, new features, bug fixes, and performance enhancements in **Fluent Members**.
 
+## Fluent Members v1.1.0
+
+_Released on July 08, 2026_
+
+:::tabs
+== ✨ Added
+```markdown
+• Import PayPal subscriptions from MemberPress, Paid Memberships Pro (PMPro), and Kadence Memberships
+• Option to hide comments on members-only content
+• Search-as-you-type page picker for button links
+• Tests for core models and services
+```
+== 🚀 Improved
+```markdown
+• Renamed the Restrict Content Pro integration to Kadence Memberships
+• Stronger login validation
+```
+== 🐛 Fixed
+```markdown
+• Migrated subscriptions now renew with the correct dates and pricing
+• Resolved an issue where members could lose access to FluentCart content
+• Fixed incorrect member limits shown on the dashboard
+```
+:::
+
+## Fluent Members Pro v1.1.0
+
+_Released on July 08, 2026_
+
+:::tabs
+== ✨ Added
+```markdown
+• Full PayPal payment support
+• Automatic webhook retry limits to prevent overload
+```
+== 🚀 Improved
+```markdown
+• Encrypted payment credentials for improved security
+• Stronger PayPal webhook handling
+• Clearer payment provider labels and consistent date formatting
+```
+== 🐛 Fixed
+```markdown
+• Fixed member portal payment method updates
+```
+:::
+
 ## Fluent Members v1.0.0
 
 _Released on June 01, 2025_
@@ -27,16 +74,6 @@ _Released on June 01, 2025_
 • Native integrations: FluentCart, FluentCRM (4 funnel triggers), Fluent Forms,
   FluentSupport, FluentCommunity, Paymattic
 • Migration wizards from Paid Memberships Pro, MemberPress, and Restrict Content Pro
-```
-:::
-
-## Fluent Members Pro v1.0.0
-
-_Released on June 01, 2025_
-
-:::tabs
-== ✨ Added
-```markdown
 • Native Stripe checkout via Payment Intents and Setup Intents
 • Stripe webhook listener for subscription lifecycle events
 • Transactions admin screen — full billing ledger with paid, pending, failed, and
