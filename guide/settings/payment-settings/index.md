@@ -13,14 +13,19 @@ Click the **Settings** gear icon in the top-right corner of any Fluent Members s
 
 ## Available Gateways
 
-Here displays all the payment gateways supported by Fluent Members. Currently, Stripe (Pro) is the only available gateway.
+The Payment Settings page shows one card for each supported native gateway. Currently two gateways are available — both require **Fluent Members Pro**:
 
-Each gateway card includes the following information:
+| Gateway | Notes |
+|---|---|
+| **Stripe** | Credit/debit cards via Payment Intents and Setup Intents. Supports one-time and recurring subscriptions. |
+| **PayPal** | PayPal checkout via REST PPCP. Supports one-time and recurring subscriptions. Added in v1.1.0. |
+
+Each gateway card includes:
 
 * **Gateway Name:** Displays the name and logo of the payment gateway.
-* **Status:** Shows an Active badge when the gateway is enabled and configured correctly.
+* **Status:** Shows an **Active** badge when the gateway is enabled and configured correctly.
 * **Description:** Provides a brief overview of the gateway.
-* **Manage:** Opens the gateway settings, where you can configure and manage the payment gateway.
+* **Manage:** Opens the gateway settings for configuration.
 
 ## Active vs Inactive
 
@@ -36,6 +41,10 @@ If any of these conditions is not met, the badge disappears and the gateway will
 
 Click **Manage** on the Stripe card to open [Stripe Setup](/guide/settings/payment-settings/stripe-setup), where you configure your API keys, select Test or Live mode, and register the webhook endpoint.
 
+## PayPal (Pro)
+
+Click **Manage** on the PayPal card to open [PayPal Setup](/guide/settings/payment-settings/paypal-setup), where you enter your Client ID and Client Secret, select Sandbox or Live mode, and register the webhook with one click.
+
 ::: warning Pro feature
-Payment Settings and Stripe native checkout require **Fluent Members Pro**. If the Payment Settings menu item is missing or the page is empty, confirm that the Pro add-on is installed and activated.
+Payment Settings and all native checkout gateways (Stripe and PayPal) require **Fluent Members Pro**. If the Payment Settings menu item is missing or the page is empty, confirm that the Pro add-on is installed and activated.
 :::

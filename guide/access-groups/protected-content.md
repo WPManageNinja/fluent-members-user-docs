@@ -46,6 +46,18 @@ The **Exclude Content** search field lets you carve out exceptions from a broade
 - Any item you add here will remain **publicly visible**, even if it would otherwise be covered by your restriction type.
 - Use this when you want to protect most content in a category but leave a few items free to preview.
 
+## Hide Comments on Protected Content
+
+When an Access Group restricts a post or page, Fluent Members can also hide the comment section from non-members. This prevents visitors from reading discussions about content they cannot access.
+
+The following are suppressed automatically for any post the current user does not have access to:
+
+- **Comment list** — existing comments are hidden from the page output and REST API responses.
+- **Comment form** — the form is closed so non-members cannot submit a comment.
+- **Comment count** — the count shown in themes and widgets is set to zero.
+
+This behaviour is enabled by default alongside content protection — no additional setting is required.
+
 ## Important Notes
 
 ::: warning Things to keep in mind

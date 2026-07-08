@@ -1,6 +1,6 @@
 # Migration
 
-The Migration tool lets you move membership data from another plugin into Fluent Members. The wizard supports three source plugins **Paid Memberships Pro**, **MemberPress**, and **Content Restriction Pro** and runs each import in chunked steps to avoid PHP timeouts on large datasets.
+The Migration tool lets you move membership data from another plugin into Fluent Members. The wizard supports three source plugins — **Paid Memberships Pro**, **MemberPress**, and **Kadence Memberships** — and runs each import in chunked steps to avoid PHP timeouts on large datasets.
 
 ## Access Migration
 
@@ -15,20 +15,21 @@ The Migration page shows one card per supported source plugin. Each card display
 
 | Source Plugin | Notes |
 |---|---|
-| **Paid Memberships Pro** | Full support — levels, members, subscriptions, and orders. |
-| **MemberPress** | Full support — levels, members, subscriptions, orders, and Stripe live-transfer (Pro). |
-| **Content Restriction Pro** | Levels and members only — no subscription or order records. |
+| **Paid Memberships Pro** | Full support — levels, members, subscriptions, orders, and PayPal import (Pro). |
+| **MemberPress** | Full support — levels, members, subscriptions, orders, Stripe live-transfer, and PayPal import (Pro). |
+| **Kadence Memberships** | Full support — levels, members, subscriptions, payments, and PayPal import (Pro). Previously named Restrict Content Pro. |
 
 ## What Gets Migrated
 
-| Data | Paid Memberships Pro | MemberPress | Content Restriction Pro |
+| Data | Paid Memberships Pro | MemberPress | Kadence Memberships |
 |---|---|---|---|
 | Membership levels → Fluent Members Levels | Yes | Yes | Yes |
 | Member assignments | Yes | Yes | Yes |
 | Member status (active, expired, cancelled) | Yes | Yes | Yes |
-| Subscription records | Yes | Yes | No |
-| Transaction / order records | Yes (Pro) | Yes (Pro) | No |
-| Stripe customer + subscription IDs | No | Yes (Pro) | No |
+| Subscription records | Yes (Pro) | Yes (Pro) | Yes (Pro) |
+| Transaction / order records | Yes (Pro) | Yes (Pro) | Yes (Pro) |
+| Stripe subscription live-transfer | No | Yes (Pro) | No |
+| PayPal PPCP subscription import | Yes (Pro) | Yes (Pro) | Yes (Pro) |
 
 ::: warning Content restriction rules are not migrated
 The wizard imports member data and level assignments only. Which pages and posts are protected — and under which Access Groups — must be configured manually in Fluent Members after the import. See [Access Groups](/guide/access-groups/) to set these up.
@@ -42,6 +43,7 @@ Complete these steps before opening any migration wizard:
 2. **Install Fluent Members** (and Pro if you need subscriptions, transactions, or Stripe transfer).
 3. **Keep the source plugin active** throughout the migration. Do not deactivate it until the cleanup step is complete.
 4. **Configure Stripe** in [Stripe Setup](/guide/settings/payment-settings/stripe-setup) if the source plugin used Stripe and you want to keep existing subscriptions running (MemberPress + Pro only).
+5. **Configure PayPal** in [PayPal Setup](/guide/settings/payment-settings/paypal-setup) if the source plugin used PayPal REST PPCP subscriptions and you want them to continue without members re-entering payment details (Pro only).
 
 ## Running the Migration
 
@@ -50,7 +52,7 @@ Complete these steps before opening any migration wizard:
 3. Follow the per-source walkthrough for your plugin:
    - [From Paid Memberships Pro](/guide/settings/migration/from-paid-memberships-pro)
    - [From MemberPress](/guide/settings/migration/from-memberpress)
-   - [From Content Restriction Pro](/guide/settings/migration/from-content-restriction-pro)
+   - [From Kadence Memberships](/guide/settings/migration/from-kadence-memberships)
 
 ::: tip Steps are safe to re-run
 The wizard uses a chunked step model. If a step is interrupted, re-running it updates existing rows rather than creating duplicates — but a database backup before you start is still strongly recommended.

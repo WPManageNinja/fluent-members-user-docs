@@ -51,7 +51,16 @@ When Fluent Members Pro is active and [Stripe Setup](/guide/settings/payment-set
 - Cancellations from the Member Portal correctly call Stripe to stop billing.
 - The Transactions screen shows new local records; Stripe Dashboard retains the original customer history.
 
-Subscriptions on non-Stripe gateways (PayPal, offline) are not transferred. Those members will need to re-purchase after migration.
+Subscriptions on non-Stripe gateways (offline) are not transferred. Those members will need to re-purchase after migration.
+
+## PayPal Subscription Transfer (Pro)
+
+If your members were billed via **PayPal REST PPCP** in MemberPress and you have [PayPal Setup](/guide/settings/payment-settings/paypal-setup) configured in Fluent Members Pro, the Import Subscriptions step imports those live PayPal subscriptions. After transfer:
+
+- Renewals continue via PayPal webhooks — no member action required.
+- Cancellations from the Member Portal correctly call PayPal to stop billing.
+
+PayPal subscriptions on legacy IPN are handled via IPN continuation once MemberPress is deactivated.
 
 ## Status Mapping
 
