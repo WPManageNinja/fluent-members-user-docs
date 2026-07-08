@@ -21,13 +21,15 @@ Before you begin, complete the [Migration Overview](/guide/settings/migration/) 
 | Recurring subscription | Subscription row (Pro) |
 | Order / payment | Transaction row (Pro) |
 
-::: warning Content restriction rules are not imported
-Which pages and posts are restricted and under which Access Groups — must be set up manually after migration. See [Access Groups](/guide/access-groups/) to configure content rules.
+::: warning Content Restriction Rules Are Not Imported
+Only member and membership data are imported during migration. Protected pages, posts, and their access rules are not included. After the migration is complete, you’ll need to create [Access Groups](/guide/access-groups/) and configure your content protection rules manually.
 :::
 
 ## Migration Steps
 
 Open **Settings → Migration**, click the **Paid Memberships Pro** card, and run each step in order.
+
+![Access Migration](/images/settings/migration/migration-1.webp)
 
 1. **Detect**: Checks that PMPro tables exist and returns a count of members, levels, subscriptions, and orders. The migration cannot continue if PMPro tables are not found.
 
@@ -47,7 +49,7 @@ If any step returns an unexpected count, click **Reset Migration State** at the 
 
 If your members were billed via **PayPal REST PPCP** in Paid Memberships Pro and you have [PayPal Setup](/guide/settings/payment-settings/paypal-setup) configured in Fluent Members Pro, the Import Subscriptions step can carry those live subscriptions over. After transfer:
 
-- Renewals continue via PayPal webhooks — no member action required.
+- Renewals continue via PayPal webhooks no member action required.
 - Cancellations from the Member Portal correctly call PayPal to stop billing.
 - The Transactions screen records new local rows going forward.
 
