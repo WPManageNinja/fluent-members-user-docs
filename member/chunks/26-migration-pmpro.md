@@ -69,6 +69,22 @@ Request: `{ page: int, per_page: int }`
 
 ---
 
+## PayPal subscription import (Pro, v1.1.0)
+
+When Fluent Members Pro is active and PayPal is connected, `MigrationHooksHandler` intercepts the subscription import step via:
+
+- Filter: `fluent_members/migration/pmpro/import_subscription`
+- Handler: `MigrationHooksHandler::handleImportPmproSubscription`
+- IPN continuation: `fluent_members/paypal_ipn_continuation_sources` → `registerPmproIpnSource`
+
+PayPal REST PPCP subscriptions are identified by `paypal_era = 'rest_ppcp'` in the import payload. Handler calls PayPal API to look up the plan ID and sets `current_payment_method = 'paypal'` so renewals work via PayPal webhooks without re-entry of payment details.
+
+`fluent_members/migration/pmpro/check_paypal_configured` — bool filter used by the UI to show/hide PayPal import option.
+
+See chunk 39 for full PayPal import mechanics.
+
+---
+
 ## Status mapping (PMPro → Fluent Members)
 
 | PMPro status | Fluent Members status |
