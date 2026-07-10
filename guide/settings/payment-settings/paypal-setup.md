@@ -5,44 +5,44 @@ PayPal Setup is where you connect your PayPal Business account, choose Sandbox o
 > [!Note]
 > Native PayPal integration is available in **Fluent Members Pro** only. Without Pro you can still accept PayPal payments through Fluent Forms or Paymattic via [Paywalls](/guide/levels/pricing-paywalls).
 
-## Step 1: Access PayPal Setup
+## Access PayPal Setup
 
 Go to **Fluent Members → Settings → Payment Settings**, then click **Manage** on the PayPal card.
 
-![Payment Settings — Stripe active, PayPal disabled, click Manage on PayPal](/images/settings/payment/paypal/payment-settings-1.webp)
+![Payment Settings showing Stripe active and PayPal disabled, with Manage highlighted on the PayPal card](/images/settings/payment/paypal/payment-settings-1.webp)
 
-## Step 2: Enable PayPal Payments
+## Enable PayPal Payments
 
 At the top of the page is the **PayPal Payment Settings** master toggle. Switch it on to activate PayPal as a payment method for your [Native Payment](/guide/levels/pricing-native) pricing plans, then click **Save Settings**.
 
-![PayPal Payment Settings toggle and Save Settings](/images/settings/payment/paypal/enable-paypal-settings-2.webp)
+![PayPal Payment Settings toggle and Save Settings button](/images/settings/payment/paypal/enable-paypal-settings-2.webp)
 
-## Step 3: Choose Payment Mode
+## Choose Your Payment Mode
 
 With PayPal enabled, the page expands to show **Payment Mode**, **Connect with PayPal**, and **PayPal Webhook**.
 
 | Mode | Use it for |
 |---|---|
-| **Sandbox Mode** | Development and staging. Uses PayPal's sandbox environment — no real money moves. |
+| **Sandbox Mode** | Development and staging. Uses PayPal's sandbox environment; no real money moves. |
 | **Live Mode** | Production. Real PayPal accounts are charged. |
 
-Each mode stores its own connected account and webhook independently — you can connect both Sandbox and Live and switch between them with this selector.
+Each mode stores its own connected account and webhook independently, so you can connect both Sandbox and Live and switch between them with this selector.
 
 > [!Note]
 > If you switch from Live to Sandbox while subscriptions are running, renewal webhooks will arrive on the wrong endpoint and fail to sync. Only switch modes when no live transactions are in flight.
 
-![PayPal Settings — Payment Mode, Connect with PayPal, PayPal Webhook](/images/settings/payment/paypal/connect-with-paypal-3.webp)
+![PayPal Settings page showing Payment Mode, Connect with PayPal, and PayPal Webhook sections](/images/settings/payment/paypal/connect-with-paypal-3.webp)
 
-## Step 4: Connect with PayPal
+## Connect With PayPal
 
 Click **Connect with PayPal**. Fluent Members opens a **Connect PayPal** screen confirming which mode (Sandbox or Live) you're connecting.
 
-![Connect PayPal — Connect PayPal with Fluent Members](/images/settings/payment/paypal/connect-paypal-4.webp)
+![Connect PayPal screen with the Connect PayPal with Fluent Members button](/images/settings/payment/paypal/connect-paypal-4.webp)
 
-Click **Connect PayPal with Fluent Members**. You're redirected to PayPal to log in and authorize the connection. Once approved, PayPal redirects you back to Fluent Members with your account connected — no manual Client ID or Secret entry required.
+Click **Connect PayPal with Fluent Members**. You're redirected to PayPal to log in and authorize the connection. Once approved, PayPal redirects you back to Fluent Members with your account connected, and no manual Client ID or Secret entry is required.
 
 > [!Note]
-> Advanced/self-hosted setups can still bypass the connect flow by defining credentials in `wp-config.php`, which take precedence over the connected account:
+> Advanced or self-hosted setups can still bypass the connect flow by defining credentials in `wp-config.php`, which take precedence over the connected account:
 > ```php
 > // Sandbox
 > define('FMEM_PAYPAL_SANDBOX_CLIENT_ID', 'your-sandbox-client-id');
@@ -53,23 +53,23 @@ Click **Connect PayPal with Fluent Members**. You're redirected to PayPal to log
 > define('FMEM_PAYPAL_LIVE_CLIENT_SECRET', 'your-live-secret');
 > ```
 
-## Step 5: Configure the PayPal Webhook
+## Configure the PayPal Webhook
 
-The webhook lets PayPal notify Fluent Members when a subscription activates, a payment is captured, or a refund is processed. Without it, member access will not update automatically. Copy the webhook endpoint URL shown under **PayPal Webhook** on the settings page — you'll paste it into the PayPal Developer Dashboard.
+The webhook lets PayPal notify Fluent Members when a subscription activates, a payment is captured, or a refund is processed. Without it, member access will not update automatically. Copy the webhook endpoint URL shown under **PayPal Webhook** on the settings page; you'll paste it into the PayPal Developer Dashboard.
 
-**5a. Open Apps & Credentials**
+### Open Apps and Credentials
 
 Log in to the [PayPal Developer Dashboard](https://developer.paypal.com) with the same account you connected, and open **Apps & Credentials**. Make sure you're on the tab (**Sandbox** or **Live**) matching the mode you connected. If you don't already have an app, click **Create App**.
 
-![PayPal Apps & Credentials — Create App](/images/settings/payment/paypal/create-app-3.webp)
+![PayPal Apps and Credentials page with the Create App button highlighted](/images/settings/payment/paypal/create-app-3.webp)
 
-**5b. Add a webhook**
+### Add a Webhook
 
 Open the app, scroll down to **Sandbox Webhooks** (or **Live Webhooks**), and click **Add Webhook**.
 
-![Sandbox Webhooks — Add Webhook](/images/settings/payment/paypal/add-webhook-4.webp)
+![Sandbox Webhooks section with the Add Webhook button highlighted](/images/settings/payment/paypal/add-webhook-4.webp)
 
-**5c. Paste the URL and select events**
+### Paste the URL and Select Events
 
 Paste the webhook URL you copied from Fluent Members, then select the following events under **Event types**, and click **Save**:
 
@@ -83,16 +83,16 @@ Paste the webhook URL you copied from Fluent Members, then select the following 
 - Payment sale completed
 - Payment sale refunded
 
-![Add webhook — paste URL and select event types](/images/settings/payment/paypal/add-webhook-url-and-events-5.webp)
+![Add webhook modal with the URL pasted and event types selected](/images/settings/payment/paypal/add-webhook-url-and-events-5.webp)
 
-**5d. Confirm the webhook is active**
+### Confirm the Webhook Is Active
 
 Once saved, the webhook appears in the list with a **Webhook ID** and its tracked events.
 
-![Webhook updated successfully — Webhook ID and tracked events](/images/settings/payment/paypal/webhook-update-6.webp)
+![Sandbox Webhooks list showing the new Webhook ID and its tracked events](/images/settings/payment/paypal/webhook-update-6.webp)
 
 > [!Note]
-> Sandbox and Live use separate webhooks. Repeat Step 5 once in **Sandbox** during testing, and once in **Live** before going live.
+> Sandbox and Live use separate webhooks. Repeat this section once in **Sandbox** during testing, and once in **Live** before going live.
 
 ## Webhook Events Reference
 
@@ -115,7 +115,7 @@ Fluent Members listens for the following PayPal events:
 When a member subscribes using PayPal, the checkout flow uses the **PayPal JS SDK** embedded on your pricing page:
 
 1. Member clicks **Subscribe with PayPal** on the pricing card.
-2. The PayPal popup opens — the member logs in and approves the subscription plan.
+2. The PayPal popup opens, and the member logs in and approves the subscription plan.
 3. Fluent Members receives the subscription ID and confirms the checkout server-side.
 4. The **Billing subscription activated** webhook fires and activates the membership.
 
@@ -128,13 +128,13 @@ PayPal does not support a native "cancel at end of period" API. When a member ca
 - **Cancel immediately**: The subscription is cancelled in PayPal straight away and access ends.
 - **Cancel at end of period**: The subscription is cancelled in PayPal now, but Fluent Members continues access until the current billing period ends. No further charges occur.
 
-## After Setup
+## Confirm PayPal Is Connected
 
 Once connected, both payment gateways show as **Active** on the Payment Settings screen.
 
-![Payment Settings — Stripe and PayPal both Active](/images/settings/payment/paypal/payment-settings-7.webp)
+![Payment Settings showing both Stripe and PayPal as Active](/images/settings/payment/paypal/payment-settings-7.webp)
 
-## Disconnecting PayPal
+## Disconnect PayPal
 
 To remove your PayPal connection, click **Disconnect PayPal** in the settings panel. This removes the connected account from Fluent Members. Existing PayPal subscriptions will continue to charge your members in PayPal, but Fluent Members will no longer be able to process the webhook events or manage them.
 
