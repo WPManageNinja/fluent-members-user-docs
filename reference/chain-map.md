@@ -185,18 +185,18 @@ You need to refund a customer and want to understand the full chain of what chan
 
 ---
 
-## Chain 10: Migration (from PMPro / MemberPress / RCP)
+## Chain 10: Migration (from PMPro / MemberPress / Kadence Memberships)
 
 Moving an existing membership site onto Fluent Members.
 
 1. Back up everything (DB, files)
-2. Install Fluent Members *(and Pro if you'll need Stripe-linked subscriptions)*
-3. [Stripe Setup](/guide/settings/payment-settings/stripe-setup), only if Stripe data needs to come across
+2. Install Fluent Members *(and Pro if you'll need Stripe- or PayPal-linked subscriptions)*
+3. [Stripe Setup](/guide/settings/payment-settings/stripe-setup) or [PayPal Setup](/guide/settings/payment-settings/paypal-setup), only if payment data needs to come across
 4. [Migration Overview](/guide/settings/migration/), confirm your source shows **Detected**
 5. Pick the wizard:
    - [From Paid Memberships Pro](/guide/settings/migration/from-paid-memberships-pro)
    - [From MemberPress](/guide/settings/migration/from-memberpress)
-   - [From Content Restriction Pro](/guide/settings/migration/from-content-restriction-pro)
+   - [From Kadence Memberships](/guide/settings/migration/from-kadence-memberships)
 6. Walk the wizard steps in order, verify after each
 7. Switch your members to the new [Portal](/guide/members/portal/setup) URL
 8. Deactivate (don't delete) the source plugin for a week
