@@ -19,7 +19,7 @@ Go to **Settings → Migration** and click the **MemberPress** card to open the 
 
 ![Migration source selection — click the MemberPress card](/images/settings/migration/memberpress/access-memberpress-1.webp)
 
-## Step 1 — Data Map
+## Step 1: Data Map
 
 The wizard opens on the **Data Map** screen, which shows exactly what will be migrated and the record counts detected from MemberPress.
 
@@ -37,7 +37,7 @@ Review the counts and the **Validation Warnings** at the bottom of the modal. Wh
 
 ![Data Map — review what will be migrated and click Next](/images/settings/migration/memberpress/import-from-memberships-2.webp)
 
-## Step 2 — Migration Steps
+## Step 2: Migration Steps
 
 The second screen lists all migration steps. Click **Migrate All** to run every step in sequence, or click **Run** next to an individual step to run it on its own.
 
@@ -49,12 +49,12 @@ The second screen lists all migration steps. Click **Migrate All** to run every 
 | **4. Orders** | Imports order records as Transaction rows (Pro) |
 | **5. Transactions** | Imports payment transaction history (Pro) |
 | **6. Subscriptions** | Imports subscription records; transfers live Stripe or PayPal subscriptions if configured (Pro) |
-| **7. Corporate Members** | Imports corporate seat data — skipped automatically if no corporate data exists |
+| **7. Corporate Members** | Imports corporate seat data skipped automatically if no corporate data exists |
 | **8. Cleanup & Verify** | Finalises the migration and marks it complete. Do not skip this step. |
 
 ![Migration Steps — click Migrate All or run each step individually](/images/settings/migration/memberpress/migrate-all-3.webp)
 
-## Step 3 — Review Data
+## Step 3: Review Data
 
 When all steps finish, the **Migration Complete** screen shows a summary of what was imported with counts per entity. Click **Download Migration Log** to save a record, then click **View Members** to confirm your members appear in Fluent Members.
 
