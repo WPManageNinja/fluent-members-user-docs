@@ -16,7 +16,7 @@ Merge tags are `{{user_name}}`-style placeholders. Use them in the **Subject** f
 
 That's the complete list. Anything else you've seen in third-party docs is *not* shipped in Fluent Members 1.0.0.
 
-## Fallbacks with the pipe
+## Fallbacks with the Pipe
 
 You can give a tag a fallback when the value is empty. The fallback text comes after a `|`:
 
@@ -26,7 +26,7 @@ If `expires_at` is null (a lifetime membership), the email shows the word `Never
 
 This works for any tag, but it's most useful on `expires_at` and `start_date`.
 
-## Where merge tags work
+## Where Merge Tags Work
 
 | Location                      | Tags work? |
 |-------------------------------|:----------:|
@@ -37,7 +37,7 @@ This works for any tag, but it's most useful on `expires_at` and `start_date`.
 
 The **email footer** field (Settings → Mailing) has its own limited set: only `{{site_name}}`, `{{site_url}}`, and `{{site_name_with_url}}` work there. The full merge-tag parser does NOT run on the footer.
 
-## Inserting tags in the editor
+## Inserting Tags in the Editor
 
 In **Settings → Email Notifications**, the editor sidebar groups tags by source so you can click to insert:
 
@@ -47,17 +47,12 @@ In **Settings → Email Notifications**, the editor sidebar groups tags by sourc
 
 Pro's Block Email Editor exposes the same sidebar in the iframe.
 
-## What about HTML escaping?
+## What about HTML Escaping?
 
 The parser HTML-escapes string values by default, so a member named `<script>` becomes `&lt;script&gt;` and won't break your template. Trust the parser; you don't need to wrap tags in any escape helper.
 
-## Custom merge tags (developers)
+## Custom Merge Tags (developers)
 
-You can add your own tag groups via `apply_filters('fluent_members/email_notification_shortcode_groups', $groups)` for free, or `fluent_members/email_editor_smartcode_groups` for the Pro block editor. Then implement a parser that responds to your accessor key. See [Developer Reference → Hooks](/reference/developer-hooks).
+Add your own tag groups with `apply_filters('fluent_members/email_notification_shortcode_groups', $groups)`. The same groups populate the picker in both the free HTML editor and Pro's Block Email Editor. To customise how Pro's block editor parses your custom tag inside a block, hook `fluent_members/parse_email_block_content`. See [Developer Reference → Hooks](/reference/developer-hooks).
 
----
 
-**What's next?**
-- [Email Notifications](/guide/settings/email-configuration/email-notifications): turning on the welcome email and editing the body.
-- [Mailing Settings](/guide/settings/email-configuration/mailing-settings): From, Reply-To, and footer.
-- [🔒 Pro Block Email Editor](/guide/settings/email-configuration/email-notifications): compose with Gutenberg-style blocks.

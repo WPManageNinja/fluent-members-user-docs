@@ -2,22 +2,21 @@
 
 Fluent Members ships **two** shortcodes. Both work in the Classic Editor, the Block Editor (via the Shortcode block), and in any theme template that calls `do_shortcode()`.
 
-## `[fluent_membership_level]`
+## The `[fluent_membership_level]` shortcode
 
 Renders a pricing card / table for one Membership Level. Each Pricing Plan attached to the level becomes a buy button.
 
 ### Attributes
 
-| Attribute           | Default        | What it does                                                                 |
-|---------------------|----------------|--------------------------------------------------------------------------------|
-| `id`                | **required**   | The Level ID, from **Fluent Members → Levels**.                                |
-| `payment_type`      | (all)          | Restrict displayed plans to one price type: `one_time`, `recurring`, `lifetime`, `trial`, `free`. |
-| `signup_fee`        | (from plan)    | Override the displayed setup fee.                                              |
-| `trial_days`        | (from plan)    | Override the trial-period label.                                                |
-| `repeat_interval`   | (from plan)    | Override the billing cadence text shown next to the price.                      |
-| `billing_summary`   | `yes`          | `yes` shows the small "billed every…" line; `no` hides it.                      |
+| Attribute | Type | Required | Default | What it does |
+|---|---|---|---|---|
+| `id` | integer | yes | none | The Level ID, from **Fluent Members → Levels**. |
 
-### Examples
+That's the only attribute the shortcode accepts. Everything else (setup fee, trial length, billing cadence, the "billed every…" summary line) comes from the Pricing Plan you configured on the Level itself, in **Fluent Members → Levels → [your level] → Pricing Plans**, not from shortcode parameters.
+
+If `id` is missing or `0`, the shortcode outputs "Invalid membership level ID." If the ID doesn't match a Level in the database, it outputs "Membership level not found." If no payment provider is active for the site, it renders nothing.
+
+### Example
 
 Show the pricing card for Level ID 4:
 
@@ -25,35 +24,23 @@ Show the pricing card for Level ID 4:
 [fluent_membership_level id="4"]
 ```
 
-Show only the monthly recurring plan:
-
-```text
-[fluent_membership_level id="4" payment_type="recurring"]
-```
-
-Drop the small billing-summary line under the price (cleaner for hero sections):
-
-```text
-[fluent_membership_level id="4" billing_summary="no"]
-```
-
-### Where the buy buttons go
-
-Each button links to the matching provider:
-- `default` provider → the plugin's own native checkout page (Pro to actually charge with Stripe; free for `free` plans).
-- `fluentcart` → FluentCart checkout for the mapped product.
-- `woocommerce` (Pro) → WooCommerce checkout for the mapped product.
-- `fluentform` → the form's URL.
-- `paymattic` → the form's URL.
-- `stripe` (Pro) → native Stripe checkout flow.
-
 ::: tip Finding the Level ID
 Go to **Fluent Members → Levels** in wp-admin. The first column is the ID.
 :::
 
----
+### Where the Buy Buttons Go
 
-## `[fluent_member_portal]`
+Fluent Members checks which payment integrations are active and renders one buy button per available provider on each Pricing Plan:
+
+- **FluentCart** → checkout for the mapped FluentCart product, if FluentCart is active.
+- **WooCommerce** (Pro) → checkout for the mapped WooCommerce product, if WooCommerce and Pro are both active.
+- **Fluent Forms** → the mapped form's URL, if Fluent Forms is active.
+- **Paymattic** → the mapped form's URL, if Paymattic is active.
+- **Native** (Pro) → the plugin's own Stripe or PayPal checkout, if Pro is active.
+- **Migrated** → for sites that migrated from Paid Memberships Pro or MemberPress, pricing rows carried over from the old plugin render here automatically, even without a payment integration configured yet.
+
+
+## The `[fluent_member_portal]` Shortcode
 
 Mounts the Member Portal, a Vue-based self-service area where logged-in members see their memberships and (if Pro) manage payment methods or invite team-members.
 
@@ -69,7 +56,7 @@ None. The portal reads its data from the logged-in user, so there's nothing to c
 
 Put it on any page (the plugin will offer to create one for you from **Settings → General → Create Portal Page**). Logged-out visitors see a "please log in" prompt; logged-in members see their dashboard.
 
-### What renders
+### What Renders
 
 | Section                     | Free | Pro |
 |-----------------------------|:----:|:---:|
@@ -77,20 +64,12 @@ Put it on any page (the plugin will offer to create one for you from **Settings 
 | Status badges               | ✅   | ✅  |
 | Start date / expiry         | ✅   | ✅  |
 | Cancel button               | ✅   | ✅  |
-| Update payment method       |,    | ✅  |
-| Renew failed subscription   |,    | ✅  |
-| Corporate seat panel        |,    | ✅  |
-| Recent transactions         |,    | ✅  |
+| Corporate seat panel        |      | ✅  |
+| Update payment method       |      | ✅  |
+| Renew failed subscription   |      | ✅  |
 
----
-
-## What about the Gutenberg block?
+## What about the Gutenberg Block?
 
 Fluent Members also ships **one** Gutenberg block, `fluent-members/access-group`, that wraps inner content and restricts it inline. It is NOT a shortcode; it's a real block. See [The Access Group Block](/guide/access-groups/gutenberg-block/inserting).
 
----
 
-**What's next?**
-- [Quick Start](/guide/getting-started/quick-start): see both shortcodes in action.
-- [The Access Group Block](/guide/access-groups/gutenberg-block/inserting): the block-editor equivalent.
-- [Member Portal Setup](/guide/members/portal/setup): where `[fluent_member_portal]` belongs.

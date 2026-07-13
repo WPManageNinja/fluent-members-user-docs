@@ -15,37 +15,37 @@ There are six statuses. This page is the one-stop summary.
 | `expired`   | No          | The membership reached its `expires_at` date and the hourly cron flipped it. Access is revoked. |
 | `suspended` | No          | An admin paused this member. Access is revoked but billing is not necessarily stopped. Use for policy violations / payment disputes. |
 
-## What moves a membership between statuses
+## What Moves a Membership between Statuses
 
-### → `active`
+### Becomes `active`
 - Admin manually adds a member from **Members → Add Membership**.
 - A paywall integration (FluentCart, WooCommerce, Fluent Forms, Paymattic) reports a successful payment.
-- A native Stripe checkout completes (Pro).
+- A native Stripe or PayPal checkout completes (Pro).
 - The corporate join page is accepted by an invitee (Pro).
 - Status change from `suspended` back to `active` via the admin UI.
 
-### → `trial`
+### Becomes `trial`
 - Pricing plan has `trial_period_days > 0` and the member is inside that window.
 
-### → `pending`
+### Becomes `pending`
 - Order placed but payment not yet confirmed (provider-dependent).
 
-### → `cancelled`
+### Becomes `cancelled`
 - Member clicks **Cancel** in the Member Portal.
 - Admin cancels from the Members detail screen.
-- Stripe webhook reports `customer.subscription.deleted` (Pro).
+- A provider webhook reports the subscription ended: Stripe sends `customer.subscription.deleted`, PayPal sends **Billing subscription cancelled** (Pro).
 - A refund triggers cancellation (when "cancel on refund" is enabled, Pro).
 - Cascade: the corporate parent was cancelled, so children cascade to `cancelled`.
 
-### → `expired`
+### Becomes `expired`
 - The hourly cron `fluent_members_check_expired_memberships` picks up any `active|trial` row whose `expires_at <= NOW()` and flips it.
 - Cascade: the corporate parent expired, so children cascade.
 
-### → `suspended`
+### Becomes `suspended`
 - Admin clicks **Suspend** on the member detail.
 - Cascade from a suspended corporate parent.
 
-## What members see at each status
+## What Members see at Each Status
 
 | Status      | Member Portal shows                                  | Restricted content shows                              |
 |-------------|------------------------------------------------------|--------------------------------------------------------|
@@ -56,18 +56,18 @@ There are six statuses. This page is the one-stop summary.
 | `expired`   | "Expired" badge, **Renew** button if subscription is renewable (Pro) | The fallback action                       |
 | `suspended` | "Suspended" badge, no actions                         | The fallback action                                   |
 
-## What admin actions are available at each status
+## What Admin Actions are Available at each Status
 
 | Status      | Cancel | Suspend | Renew (Pro) | Refund (Pro) | Change Level |
 |-------------|--------|---------|-------------|--------------|---------------|
-| `active`    | ✅      | ✅      |,           | ✅ (on a charge) | ✅          |
-| `trial`     | ✅      | ✅      |,           | ✅           | ✅            |
-| `pending`   | ✅      |,       |,           |,            |,             |
-| `cancelled` |,      |,       | ✅ (Pro, if subscription)  | ✅ (on past charges) |,  |
-| `expired`   |,      |,       | ✅ (Pro)    | ✅           |,             |
-| `suspended` | ✅      |,       |,           | ✅           | ✅            |
+| `active`    | ✅     | ✅      |             | ✅ (on a charge) | ✅        |
+| `trial`     | ✅     | ✅      |             | ✅           | ✅            |
+| `pending`   | ✅     |         |             |              |               |
+| `cancelled` |        |         | ✅ (if subscription) | ✅ (on past charges) |    |
+| `expired`   |        |         | ✅          | ✅           |               |
+| `suspended` | ✅     |         |             | ✅           | ✅            |
 
-## Cascade behaviour
+## Cascade Behaviour
 
 Corporate parent rows propagate their status to every child row in one shot:
 
@@ -77,15 +77,25 @@ Corporate parent rows propagate their status to every child row in one shot:
 
 Children cannot cancel themselves, but their access lifts and falls with the parent.
 
-## Where status is stored
+## Provider Values
 
-The single source of truth is `fmem_membership_users.status` on each membership row. Even Stripe-driven memberships use this column, the webhook just keeps it in sync.
+Alongside `status`, every membership row also stores a `provider`, recording which system created or manages it:
 
-The status vocabulary is also exposed to your code via `MembershipService::getStatusLabels()` if you're building admin UI.
+| Value | Source |
+|---|---|
+| `fluent_cart` | FluentCart checkout |
+| `woocommerce` | WooCommerce checkout (Pro) |
+| `fluent_forms` | Fluent Forms payment form |
+| `paymattic` | Paymattic payment form |
+| `native` | Fluent Members Pro native Stripe or PayPal checkout |
+| `pmpro` | Imported from Paid Memberships Pro |
+| `memberpress` | Imported from MemberPress |
+| `rcp` | Imported from Kadence Memberships (retained from the plugin's earlier name, Restrict Content Pro) |
+| `manual` | Added manually by an admin |
 
----
+## Where Status is Stored
 
-**What's next?**
-- [Cancelling a Membership](/guide/members/portal/cancelling): the portal-side flow.
-- [Glossary](/guide/getting-started/glossary): definitions for everything else.
-- [Member Portal, What Members See](/guide/members/portal/what-members-see): how statuses surface to the member.
+The single source of truth is `fmem_membership_users.status` on each membership row. Even Stripe- and PayPal-driven memberships use this column, the webhook just keeps it in sync.
+
+
+
