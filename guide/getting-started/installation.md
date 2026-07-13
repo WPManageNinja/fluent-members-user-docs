@@ -2,7 +2,7 @@
 
 Install and activate **Fluent Members** on your WordPress site in just a few minutes. You need administrator access to your WordPress dashboard to follow these steps.
 
-## Install from the WordPress Directory (Recommended)
+## Install From the WordPress Directory (Recommended)
 
 This is the easiest method. WordPress finds and downloads the plugin for you automatically.
 

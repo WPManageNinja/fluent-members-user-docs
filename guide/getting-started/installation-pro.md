@@ -15,7 +15,7 @@ To get started, you need to download the Pro installation file from your account
 3. Find **Fluent Members Pro** and download the ZIP file to your computer.
 4. Go to the **Licenses** tab and copy your license key. You will need this in Step 3.
 
-## Step 2: Install the Pro Add-on
+## Step 2: Install the Pro Add-On
 
 Upload the downloaded file to your WordPress site.
 

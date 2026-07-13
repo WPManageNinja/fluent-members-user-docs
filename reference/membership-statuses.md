@@ -4,7 +4,7 @@ Every row in the Members list has a **status**. Status decides whether a person 
 
 There are six statuses. This page is the one-stop summary.
 
-## The six statuses
+## The Six Statuses
 
 | Status      | Has access? | What it means                                                                 |
 |-------------|-------------|--------------------------------------------------------------------------------|
@@ -15,7 +15,7 @@ There are six statuses. This page is the one-stop summary.
 | `expired`   | No          | The membership reached its `expires_at` date and the hourly cron flipped it. Access is revoked. |
 | `suspended` | No          | An admin paused this member. Access is revoked but billing is not necessarily stopped. Use for policy violations / payment disputes. |
 
-## What Moves a Membership between Statuses
+## What Moves a Membership Between Statuses
 
 ### Becomes `active`
 - Admin manually adds a member from **Members → Add Membership**.
@@ -45,7 +45,7 @@ There are six statuses. This page is the one-stop summary.
 - Admin clicks **Suspend** on the member detail.
 - Cascade from a suspended corporate parent.
 
-## What Members see at Each Status
+## What Members See at Each Status
 
 | Status      | Member Portal shows                                  | Restricted content shows                              |
 |-------------|------------------------------------------------------|--------------------------------------------------------|
@@ -56,7 +56,7 @@ There are six statuses. This page is the one-stop summary.
 | `expired`   | "Expired" badge, **Renew** button if subscription is renewable (Pro) | The fallback action                       |
 | `suspended` | "Suspended" badge, no actions                         | The fallback action                                   |
 
-## What Admin Actions are Available at each Status
+## What Admin Actions Are Available at Each Status
 
 | Status      | Cancel | Suspend | Renew (Pro) | Refund (Pro) | Change Level |
 |-------------|--------|---------|-------------|--------------|---------------|
@@ -93,7 +93,7 @@ Alongside `status`, every membership row also stores a `provider`, recording whi
 | `rcp` | Imported from Kadence Memberships (retained from the plugin's earlier name, Restrict Content Pro) |
 | `manual` | Added manually by an admin |
 
-## Where Status is Stored
+## Where Status Is Stored
 
 The single source of truth is `fmem_membership_users.status` on each membership row. Even Stripe- and PayPal-driven memberships use this column, the webhook just keeps it in sync.
 

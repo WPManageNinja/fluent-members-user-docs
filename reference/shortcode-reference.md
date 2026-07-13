@@ -2,7 +2,7 @@
 
 Fluent Members ships **two** shortcodes. Both work in the Classic Editor, the Block Editor (via the Shortcode block), and in any theme template that calls `do_shortcode()`.
 
-## The `[fluent_membership_level]` shortcode
+## The `[fluent_membership_level]` Shortcode
 
 Renders a pricing card / table for one Membership Level. Each Pricing Plan attached to the level becomes a buy button.
 
@@ -68,7 +68,7 @@ Put it on any page (the plugin will offer to create one for you from **Settings 
 | Update payment method       |      | ✅  |
 | Renew failed subscription   |      | ✅  |
 
-## What about the Gutenberg Block?
+## What About the Gutenberg Block?
 
 Fluent Members also ships **one** Gutenberg block, `fluent-members/access-group`, that wraps inner content and restricts it inline. It is NOT a shortcode; it's a real block. See [The Access Group Block](/guide/access-groups/gutenberg-block/inserting).
 

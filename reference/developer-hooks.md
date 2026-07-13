@@ -25,7 +25,7 @@ These are the stable event surface for integrations. CRM tools (FluentCRM), anal
 | `fluent_members/member_expired` | The hourly cron flips an `active`/`trial` row to `expired`. | `$membership, $user` |
 | `fluent_members/member_suspended` | An admin suspends a membership. | `$membership, $user` |
 
-### Example: log every enrollment to a custom audit table
+### Example: Log Every Enrollment to a Custom Audit Table
 
 ```php
 add_action('fluent_members/member_enrolled', function ($membership, $user) {
@@ -68,7 +68,7 @@ These fire from the Pro plugin's subscription lifecycle, regardless of gateway (
 |---|---|
 | `fluent_members/refund_payment_{gateway_key}` | Per-gateway refund dispatcher, for example `fluent_members/refund_payment_stripe`. The gateway's refund method binds here. |
 
-### Example: notify Slack when a Stripe refund is dispatched
+### Example: Notify Slack When a Stripe Refund Is Dispatched
 
 ```php
 add_action('fluent_members/refund_payment_stripe', function ($transaction, $refundData) {
@@ -84,7 +84,7 @@ add_action('fluent_members/refund_payment_stripe', function ($transaction, $refu
 There is no single "refund completed" action that fires for every gateway. To react to any refund regardless of gateway, watch for Transaction rows whose `status` flips to `refunded`, or subscribe to `fluent_members/member_cancelled` when the admin ticks "Also cancel membership" on the Refund modal.
 :::
 
-## Form-paywall Eevents
+## Form-Paywall Events
 
 FluentCart, Fluent Forms, and Paymattic each emit a set of `fluent_members/{src}_*` actions covering payment status changes and subscription lifecycle events. Replace `{src}` with `fc` for FluentCart, `ff` for Fluent Forms, or `paymattic` for Paymattic.
 
@@ -97,7 +97,7 @@ FluentCart, Fluent Forms, and Paymattic each emit a set of `fluent_members/{src}
 | `fluent_members/{src}_subscription_renewed` | A renewal payment succeeded. |
 
 
-## Portal and Member-side Filters
+## Portal and Member-Side Filters
 
 | Filter | Lets you |
 |---|---|
@@ -107,7 +107,7 @@ FluentCart, Fluent Forms, and Paymattic each emit a set of `fluent_members/{src}
 | `fluent_members/portal_provider_cancel_membership` | Intercept a self-cancel request at the provider level (Pro). |
 | `fluent_members/portal_app_data` | Inject feature flags or data into the portal's front-end app. |
 
-### Example: Add a custom panel to the member portal
+### Example: Add a Custom Panel to the Member Portal
 
 ```php
 add_filter('fluent_members/portal_app_data', function ($data) {
@@ -130,7 +130,7 @@ add_filter('fluent_members/portal_app_data', function ($data) {
 | `fluent_members/expiry_batch_size` | Tune the hourly expiry cron's batch size (default 100). |
 | `fluent_members/woocommerce_bypass_restriction` | Bypass WooCommerce restrictions for specific products (Pro). |
 
-### Example: Let a custom role always bypass restrictions
+### Example: Let a Custom Role Always Bypass Restrictions
 
 ```php
 add_filter('fluent_members/has_access', function ($hasAccess, $userId, $postId, $postType) {
@@ -141,7 +141,7 @@ add_filter('fluent_members/has_access', function ($hasAccess, $userId, $postId, 
 }, 10, 4);
 ```
 
-### Example: Raise the expiry batch size for a high-volume site
+### Example: Raise the Expiry Batch Size for a High-Volume Site
 
 ```php
 add_filter('fluent_members/expiry_batch_size', fn () => 500);
@@ -174,7 +174,7 @@ add_filter('fluent_members/expiry_batch_size', fn () => 500);
 | `fluent_members/prepare_email_template_data` | Manipulate the template data before an email renders (Pro block editor restores the body here). |
 | `fluent_members/parse_email_block_content` | Custom block-content parsing for the Pro block editor. |
 
-### Example: Register a custom merge tag group
+### Example: Register a Custom Merge Tag Group
 
 ```php
 add_filter('fluent_members/email_notification_shortcode_groups', function ($groups) {
@@ -190,7 +190,7 @@ add_filter('fluent_members/email_notification_shortcode_groups', function ($grou
 
 See [Email Merge Tags](/reference/email-merge-tags) for the full built-in tag list.
 
-## Stripe-specific Filters (Pro)
+## Stripe-Specific Filters (Pro)
 
 | Filter | Default |
 |---|---|
@@ -221,7 +221,7 @@ See [Migration: Overview](/guide/settings/migration/) for the wizard flow these 
 
 If you're writing new hook listeners, target the forward-slash form; it's what we recommend going forward.
 
-## A full example: Slack notification on signup
+## A Full Example: Slack Notification on Signup
 
 ```php
 // In your theme's functions.php or a small custom plugin

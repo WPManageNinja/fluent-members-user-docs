@@ -35,7 +35,7 @@ Manually assigning a membership does not charge the user. A membership record is
 - Giving a beta tester or reviewer access to a Level without payment
 - Migrating a member who joined through an off-platform method (gift card, in-person sale, etc.)
 
-## How Expiry is Set
+## How Expiry Is Set
 
 The expiry date on the new membership row is determined by the Pricing Plan you choose:
 

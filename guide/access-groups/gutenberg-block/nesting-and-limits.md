@@ -2,7 +2,7 @@
 
 Whether you restrict a single block directly or wrap several blocks in the Access Groups container, most nested content behaves exactly as you'd expect. A few things don't, and a few have surprises worth knowing before you build something complex.
 
-## What "just works" inside the block
+## What "Just Works" Inside the Block
 
 These standard blocks behave perfectly:
 
@@ -15,7 +15,7 @@ These standard blocks behave perfectly:
 
 For each of those, the engine wraps the rendered output in an "is the visitor allowed?" check. If yes, render. If no, show the configured fallback.
 
-## What has caveats
+## What Has Caveats
 
 | Inner block / source                       | What happens                                                                 |
 |--------------------------------------------|------------------------------------------------------------------------------|
@@ -47,7 +47,7 @@ You can put a restricted block, or an Access Groups container, inside another. R
 Nesting restricted blocks inside each other is easy to lose track of in the editor. For multi-tier "VIP gets bonus content" patterns, use two siblings (one for Pro, one for VIP) rather than nesting.
 :::
 
-## The recommended pattern for landing pages
+## The Recommended Pattern for Landing Pages
 
 For a landing page with multiple gated sections:
 
@@ -66,7 +66,7 @@ For a landing page with multiple gated sections:
 
 Each block stands alone with its own Groups and fallback. The page reads well to everyone, free visitors see the Free section's content (because they joined the Free Group), Pro members also see the Pro bonus, and unauthenticated visitors see the appropriate fallback in each slot.
 
-## Things that trip people up
+## Things That Trip People Up
 
 | What you're seeing | What's probably going on | Quickest fix |
 |---|---|---|

@@ -21,7 +21,7 @@ Front-end screenshot of the Update Payment Method modal isn't in our reference f
 
 ---
 
-## Step 1: Member clicks Update Payment Method
+## Step 1: Member Clicks Update Payment Method
 
 On an Active or Trial membership card whose provider is Native Payment (Stripe), the **Update Payment Method** button is visible alongside the Cancel button. Member clicks it.
 
@@ -33,7 +33,7 @@ The modal isn't a Fluent Members form. It's Stripe's own widget, hosted on your 
 
 ---
 
-## Step 2: Member enters new card details
+## Step 2: Member Enters New Card Details
 
 The form asks for card number, expiry, CVC, and (if you've configured it in Stripe) postal/zip code.
 
@@ -46,7 +46,7 @@ If 3D Secure / SCA is required for the buyer's region, Stripe presents the bank'
 
 ---
 
-## Step 3: Member clicks Update
+## Step 3: Member Clicks Update
 
 When the form is valid and they click **Update**, Fluent Members:
 
@@ -63,13 +63,13 @@ Updating the card *does not* automatically retry a failed invoice. If the previo
 
 ---
 
-## Rate-limited to prevent abuse
+## Rate-Limited to Prevent Abuse
 
 Each member can attempt this update a limited number of times per hour (default 5 attempts per hour). If they hit the limit, the button is greyed out with a tooltip. The limit prevents abuse of Setup Intents (each is a small Stripe API call) and is configurable via developer hooks if needed.
 
 ---
 
-## A real example: Mike's card expired
+## A Real Example: Mike's Card Expired
 
 Mike's bank issued him a new card. He visits the portal and:
 
@@ -83,13 +83,13 @@ His Pro Yoga is fully reactivated in under a minute.
 
 ---
 
-## What admins can do here
+## What Admins Can Do Here
 
 Nothing, this flow is member-only. Admins can't update a member's card on their behalf (Stripe doesn't permit it for compliance reasons). If a member can't access the portal, they need to contact you for the link, but they still have to submit the card themselves.
 
 ---
 
-## Things that trip people up
+## Things That Trip People Up
 
 | What you're seeing | What's probably going on | Quickest fix |
 |---|---|---|
@@ -101,7 +101,7 @@ Nothing, this flow is member-only. Admins can't update a member's card on their 
 
 ---
 
-## What's next?
+## What's Next?
 
 - **→ [🔒 Pro · Renewing a Failed Subscription](./renewing-a-failed-subscription)**: what to do after the card is updated.
 - **→ [Cancelling](./cancelling)**: the alternative flow.

@@ -4,7 +4,7 @@ When you first activate **Fluent Members**, a 3-step setup wizard walks you thro
 
 You can skip any step and come back later from the Settings menu, nothing in the wizard is permanent.
 
-## What you'll set up
+## What You'll Set Up
 
 | Step | What it does |
 |---|---|
@@ -60,7 +60,7 @@ The Access Group is created here, but which specific pages, posts, or post types
 
 Step 3 lets you choose how members will pay for memberships.
 
-#### Paywall integrations (free):
+#### Paywall Integrations (Free):
 
 These work by linking an existing product in another plugin to your Membership Level. When a customer completes a purchase in that plugin, Fluent Members automatically activates their membership.
 
@@ -71,7 +71,7 @@ These work by linking an existing product in another plugin to your Membership L
 | **Paymattic** | Link a Paymattic payment form to a Membership Level |
 | **WooCommerce** | Link a WooCommerce product or product variation to a Membership Level |
 
-#### Native payment (Pro):
+#### Native Payment (Pro):
 
 | Integration | How it works |
 |---|---|
@@ -85,7 +85,7 @@ This step is a preview of your payment options. Actual connection of a payment p
 
 ![The Step 3 Payment System screen showing Fluent Cart, Fluent Forms, Paymattic, WooCommerce, and Stripe options](/images/quick-start/payment-system-3.webp)
 
-## After the wizard
+## After the Wizard
 
 When you click **Complete Installation**, the wizard closes and you land on the Fluent Members dashboard. Your first Membership Level and Access Group already exist, here's what to do next:
 

@@ -30,7 +30,7 @@ If a group card shows chips like *Lifetime*, *Free Member*, or *Business Team*, 
 ![Select Access Group modal](/images/levels/attaching-access-groups/level-select-access-group-modal-2.webp)
 
 
-## Create an Access Group from the Modal
+## Create an Access Group From the Modal
 
 If the group you need does not exist yet, click **+ Create Access Group** at the bottom left of the **Select Access Group** modal.
 
@@ -61,7 +61,7 @@ Each attached row has a **three-dot icon** on the right. Click it to open:
 Removing a group takes away access to its protected content for every member on this level. There is no grace period. To stop new signups without affecting current members, leave the group attached and set the group to **Inactive** under **Access Groups** instead.
 :::
 
-## Attach from the Access Group Side
+## Attach From the Access Group Side
 
 You can make the same connection from the other direction: open an access group and choose which levels can unlock it from the **Active Levels** card on the group edit screen. Both flows update the same link between levels and groups.
 

@@ -8,7 +8,7 @@ Click the **Settings** gear icon in the top-right corner of any Fluent Members s
 
 ![Email Notifications page](/images/settings/email-notification/email-notification-1.webp)
 
-## Built-in Notifications
+## Built-In Notifications
 
 Fluent Members ships with three built-in email notifications:
 

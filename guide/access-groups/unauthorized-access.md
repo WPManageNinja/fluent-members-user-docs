@@ -16,11 +16,11 @@ Go to **Fluent Members → Access Groups**, open the group you want to configure
 | **Display a custom message** | The protected content is replaced with a message you write. | **Custom Message** *(required)*, **Button Text**, **Button URL** |
 | **Display partial preview** | The first few words show, then the rest blurs out. | Configured globally in [Partial Content Lock](/guide/settings/partial-content-lock); per-Group overrides available. |
 
-### Redirect to a specific URL
+### Redirect to a Specific URL
 
 Type the exact web address into the **Redirect URL** field — a relative path (`/pricing`) or a full URL both work. Save with it empty and you'll see *"Please enter redirect URL."*
 
-### Display a custom message
+### Display a Custom Message
 
 Type the text non-members should see into the **Custom Message** field. Save with it empty and you'll see *"Please enter a custom message."*
 
@@ -35,7 +35,7 @@ Fill in both to show a button under the message; leave either blank and no butto
 
 ![Unauthorized Access card set to Display a custom message, with Button Text and Button URL fields](/images/access-groups/unauthorized-access/display-a-custom-message-2.webp)
 
-### Display partial preview
+### Display Partial Preview
 
 No extra fields on this card. Preview length, overlay colour, and button text are all set globally in [Settings → Partial Content Lock](/guide/settings/partial-content-lock); per-Group overrides can also be set in the Gutenberg block editor.
 

@@ -31,7 +31,7 @@ Each mode stores its own API keys independently. You can have both test and live
 >[!Note]
 > If you switch from Live to Test while subscriptions are running, renewal webhooks will arrive on the wrong-mode endpoint and fail to sync. Only switch modes when no live transactions are in flight.
 
-## Connecting with Stripe
+## Connecting With Stripe
 
 Below the mode selector, click the **Connect with Stripe** button to start the OAuth flow. You will be redirected to Stripe to authorise the connection. When authorisation is complete, the page confirms your account is connected, showing your business name and a **Disconnect Stripe** button.
 

@@ -18,7 +18,7 @@ The block-Inspector (right sidebar) screenshot isn't in our reference folder yet
 
 ---
 
-## Step 1: Open the block's Inspector
+## Step 1: Open the Block's Inspector
 
 1. Click anywhere inside the Access Groups block to select it.
 2. On the right side of the editor, the **Settings** panel opens. (If it's collapsed, click the gear icon top-right of the editor to expand it.)
@@ -43,7 +43,7 @@ The Group still has its own [Protected Content](../protected-content) rule that 
 
 ---
 
-## Step 3: Pick the per-block fallback action
+## Step 3: Pick the Per-Block Fallback Action
 
 The next control is **Action for Unauthorized Users**, the same five options as on the [Unauthorized Access card](../unauthorized-access):
 
@@ -60,7 +60,7 @@ The next control is **Action for Unauthorized Users**, the same five options as 
 
 ---
 
-## Step 4: Partial Content override (optional)
+## Step 4: Partial Content Override (Optional)
 
 If you picked **Display partial preview**, the Inspector exposes a small set of overrides, Preview Length, Overlay Message, Button Text, Button URL. These let you set a different teaser for *this block* than your global [Partial Content Lock](/guide/settings/partial-content-lock) defaults.
 
@@ -68,7 +68,7 @@ Leave them empty to inherit the global settings.
 
 ---
 
-## How per-block fallback interacts with the Group's fallback
+## How Per-Block Fallback Interacts With the Group's Fallback
 
 The block's settings *override* the parent Group's Unauthorized Access action **for this block only**. Everything else on the post (other blocks, the whole-post Protected Content rules) still uses the Group's setting.
 
@@ -80,7 +80,7 @@ The block's settings *override* the parent Group's Unauthorized Access action **
 
 ---
 
-## A real example: Sara's video block
+## A Real Example: Sara's Video Block
 
 In her free blog post (from the [Inserting](./inserting) example), Sara configures the block:
 
@@ -91,7 +91,7 @@ Non-members keep reading the surrounding free content; where stretch 5 would be 
 
 ---
 
-## Things that trip people up
+## Things That Trip People Up
 
 | What you're seeing | What's probably going on | Quickest fix |
 |---|---|---|
@@ -102,7 +102,7 @@ Non-members keep reading the surrounding free content; where stretch 5 would be 
 
 ---
 
-## What's next?
+## What's Next?
 
 - **→ [Nesting & Limits](./nesting-and-limits)**: what works inside the block and what doesn't.
 - **→ [Unauthorized Access](../unauthorized-access)**: the same actions, applied to whole-Group protection.

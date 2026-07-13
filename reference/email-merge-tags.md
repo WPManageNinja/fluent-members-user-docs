@@ -2,7 +2,7 @@
 
 Merge tags are `{{user_name}}`-style placeholders. Use them in the **Subject** field and the **Body** of any email notification. The plugin replaces them at send time with values from the recipient and the membership.
 
-## The seven tags
+## The Seven Tags
 
 | Tag                     | Replaced with                                              | Example output            |
 |-------------------------|------------------------------------------------------------|---------------------------|
@@ -16,7 +16,7 @@ Merge tags are `{{user_name}}`-style placeholders. Use them in the **Subject** f
 
 That's the complete list. Anything else you've seen in third-party docs is *not* shipped in Fluent Members 1.0.0.
 
-## Fallbacks with the Pipe
+## Fallbacks With the Pipe
 
 You can give a tag a fallback when the value is empty. The fallback text comes after a `|`:
 
@@ -47,11 +47,11 @@ In **Settings → Email Notifications**, the editor sidebar groups tags by sourc
 
 Pro's Block Email Editor exposes the same sidebar in the iframe.
 
-## What about HTML Escaping?
+## What About HTML Escaping?
 
 The parser HTML-escapes string values by default, so a member named `<script>` becomes `&lt;script&gt;` and won't break your template. Trust the parser; you don't need to wrap tags in any escape helper.
 
-## Custom Merge Tags (developers)
+## Custom Merge Tags (Developers)
 
 Add your own tag groups with `apply_filters('fluent_members/email_notification_shortcode_groups', $groups)`. The same groups populate the picker in both the free HTML editor and Pro's Block Email Editor. To customise how Pro's block editor parses your custom tag inside a block, hook `fluent_members/parse_email_block_content`. See [Developer Reference → Hooks](/reference/developer-hooks).
 

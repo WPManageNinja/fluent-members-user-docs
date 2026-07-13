@@ -14,7 +14,7 @@ If you only need to protect one specific piece of content, you don't need a spec
 3. Scroll down to find the **Access Groups** panel.
 4. Check the box next to the Group(s) that should be allowed to see this block.
 
-### Method 2: Use the Access Groups Container (for multiple blocks)
+### Method 2: Use the Access Groups Container (for Multiple Blocks)
 
 If you want to protect several blocks together, use the dedicated container block.
 

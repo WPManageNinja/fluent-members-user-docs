@@ -4,14 +4,14 @@ Eleven end-to-end journeys that connect Fluent Members' features into something 
 
 If you ever land on a page and think *"OK, but what comes next?"*, find the chain it's on here and follow the arrow.
 
-## How to use this page
+## How to Use This Page
 
 - Find the chain that matches what you're trying to do.
 - Walk the steps top to bottom. Each step links to its dedicated page.
 - The **Use this map when…** tip at the bottom of each chain helps you confirm you're in the right one.
 
 
-## Chain 1: First-time Site Setup
+## Chain 1: First-Time Site Setup
 
 The admin-onboarding chain. You just installed Fluent Members and want it doing something real.
 
@@ -67,7 +67,7 @@ What a non-member sees when they hit protected content.
 You're trying to figure out why non-members see (or don't see) what you intended on a restricted page.
 :::
 
-## Chain 4: Day-to-day Admin
+## Chain 4: Day-to-Day Admin
 
 How an admin manages a single member from a Dashboard signal.
 
@@ -100,7 +100,7 @@ What a logged-in member can do from the portal page.
 You want to understand the member-facing side of the plugin, what your customers actually interact with.
 :::
 
-## Chain 6: Corporate (team plan)
+## Chain 6: Corporate (Team Plan)
 
 End-to-end for a B2B team purchase.
 
@@ -119,7 +119,7 @@ You're selling team plans and want to understand both the admin-side configurati
 :::
 
 
-## Chain 7: Recurring Renewal (Pro, happy path)
+## Chain 7: Recurring Renewal (Pro, Happy Path)
 
 What happens at renewal time with zero UI interaction.
 
@@ -154,7 +154,7 @@ When the renewal charge fails and the member needs to fix it.
 You want a dunning-flow walkthrough, or you're explaining to a customer why their card was declined and what to do.
 :::
 
-## Chain 9: Refund (admin-driven exit)
+## Chain 9: Refund (Admin-Driven Exit)
 
 Reversing a payment.
 
@@ -171,7 +171,7 @@ Reversing a payment.
 You need to refund a customer and want to understand the full chain of what changes on the local site and at Stripe.
 :::
 
-## Chain 10: Migration (from PMPro / MemberPress / Kadence Memberships)
+## Chain 10: Migration (From PMPro / MemberPress / Kadence Memberships)
 
 Moving an existing membership site onto Fluent Members.
 

@@ -59,7 +59,7 @@ Next to the **Native Payment** section header, click the **three-dot icon** on t
 
 ![Edit or remove Native Payment](/images/levels/pricing-native/edit-remove-native-payment-5.webp)
 
-### For single pricing package
+### For Single Pricing Package
 
 In the pricing table, each package row has its own **three-dot icon** in the **Action** column. Click it to open:
 

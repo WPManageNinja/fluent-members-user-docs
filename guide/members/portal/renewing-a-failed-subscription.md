@@ -21,7 +21,7 @@ Front-end screenshot of the Renew flow isn't in our reference folder yet.
 
 ---
 
-## Step 1: The status that allows Renew
+## Step 1: The Status That Allows Renew
 
 The **Renew** button appears on a membership card only when:
 
@@ -33,7 +33,7 @@ If any of those is false, the button isn't shown.
 
 ---
 
-## Step 2: Member clicks Renew
+## Step 2: Member Clicks Renew
 
 A small modal opens explaining the situation: *"Your subscription lapsed because your last payment failed. Click Renew to retry the charge on your current payment method."*
 
@@ -45,7 +45,7 @@ Two buttons: **Cancel** and **Renew Now**.
 
 ---
 
-## Step 3: What happens server-side
+## Step 3: What Happens Server-Side
 
 When the member clicks **Renew Now**, Fluent Members:
 
@@ -61,13 +61,13 @@ If the retry **fails**, the modal shows the bank's reason (declined, insufficien
 
 ---
 
-## What about 3D Secure / SCA?
+## What About 3D Secure / SCA?
 
 If the bank requires authentication, Stripe presents a 3DS challenge inline. The member completes it; on success, Stripe captures the payment and Fluent Members flips the row to Active.
 
 ---
 
-## A real example: Mike's annual lapsed by 3 days
+## A Real Example: Mike's Annual Lapsed by 3 Days
 
 Mike's annual Pro Yoga renewed on Feb 1. The renewal charge failed, the bank flagged a "fraud check" because Mike was travelling. The membership flipped to `Past Due` then `Expired` after a few days.
 
@@ -81,7 +81,7 @@ His subscription, customer record, and Stripe metadata are intact, no re-buy nee
 
 ---
 
-## What if Renew can't help?
+## What if Renew Can't Help?
 
 If too much time has passed and Stripe has fully cancelled the subscription on its side (typically after a few weeks of failed retries), Renew won't appear, the subscription is dead.
 
@@ -89,13 +89,13 @@ In that case the member has to re-buy through your pricing page. The new row is 
 
 ---
 
-## What admins can do here
+## What Admins Can Do Here
 
 Same as [Update Payment Method](./updating-payment-method), this is member-only by design. Admins can manually grant a fresh membership ([Adding a Membership Manually](../adding-manually)) to get someone access while they work out the billing.
 
 ---
 
-## Things that trip people up
+## Things That Trip People Up
 
 | What you're seeing | What's probably going on | Quickest fix |
 |---|---|---|
@@ -106,7 +106,7 @@ Same as [Update Payment Method](./updating-payment-method), this is member-only 
 
 ---
 
-## What's next?
+## What's Next?
 
 - **→ [🔒 Pro · Updating Payment Method](./updating-payment-method)**: if Renew keeps failing, this is the fix.
 - **→ [🔒 Pro · Corporate Seat Invites](./corporate-seat-invites)**: the other Pro-only portal feature.
