@@ -46,7 +46,7 @@ If you are building your first membership site, follow this exact order to avoid
 3. **Attach Access Groups:** Connect your level to the content you want to protect.
 4. **Publish the Shortcode:** Copy the shortcode from the main list and paste it onto your pricing page so visitors can see it.
 
-### Notes
+### Important Notes
 
 ::: warning Before you go live
  * **Attach an Access Group:** A membership level without an **Access Group** will not unlock any protected content.

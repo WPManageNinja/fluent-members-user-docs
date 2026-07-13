@@ -34,7 +34,7 @@ With **Paywalls** selected, click **Select Pricing** and search or browse the gr
 
 Pick the product or form you want (for example, a FluentCart product), then click **Add** at the bottom of the modal.
 
-::: warning Only simple paywalls are supported
+::: Info
 Only payment forms with a **single fixed-price or subscription item** appear in the list. Products or forms with custom amounts, donation fields, or multiple pricing options inside one form are not supported. Create a dedicated product or form for this level instead.
 :::
 
@@ -60,8 +60,8 @@ On any linked product row, the **three-dot** menu also includes **Direct Checkou
 
 ![Direct Checkout option on a paywall row](/images/levels/pricing-paywalls/direct-checkout-5.webp)
 
-::: warning Before you delete
-Removing a paywall does not cancel existing subscriptions in the host plugin. Check active members on this level before deleting a product they are currently using.
+:::Important Note
+Removing an Access Group immediately removes members' access to its protected content. If you only want to stop new signups, keep the Access Group attached and set it to Inactive instead.
 :::
 
 ## What Happens at Checkout
