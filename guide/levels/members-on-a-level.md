@@ -4,7 +4,8 @@ The **Members** tab on a level shows every WordPress user who currently holds th
 
 This is a read-only list. To change a member's status, cancel a membership, or view full history, open the member's detail page or go to **Fluent Members → Members**.
 
-You need at least one member on the level before this tab shows useful data. New levels start with an empty list.
+> [!Note]
+> You need at least one member on the level before this tab shows useful data. New levels start with an empty list.
 
 ## Access the Members Tab
 
