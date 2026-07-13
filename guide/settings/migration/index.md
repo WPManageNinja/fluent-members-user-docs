@@ -17,9 +17,9 @@ The Migration page shows one card per supported source plugin. Each card display
 
 | Source Plugin | Notes |
 |---|---|
-| **Paid Memberships Pro** | Full support — levels, members, subscriptions, orders, and PayPal import (Pro). |
-| **MemberPress** | Full support — levels, members, subscriptions, orders, Stripe live-transfer, and PayPal import (Pro). |
-| **Kadence Memberships** | Full support — levels, members, subscriptions, payments, and PayPal import (Pro). Previously named Restrict Content Pro. |
+| **Paid Memberships Pro** | Full support: levels, members, subscriptions, orders, and PayPal import (Pro). |
+| **MemberPress** | Full support: levels, members, subscriptions, orders, Stripe live-transfer, and PayPal import (Pro). |
+| **Kadence Memberships** | Full support: levels, members, subscriptions, payments, and PayPal import (Pro). Previously named Restrict Content Pro. |
 
 ## What Gets Migrated
 

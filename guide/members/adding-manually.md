@@ -1,6 +1,6 @@
 # Adding a Membership Manually
 
-Fluent Members lets you assign a membership to any WordPress user directly from the admin — without requiring them to purchase. This is useful for comping staff accounts, fixing a missed webhook, granting beta access, or migrating members from another platform.
+Fluent Members lets you assign a membership to any WordPress user directly from the admin, without requiring them to purchase. This is useful for comping staff accounts, fixing a missed webhook, granting beta access, or migrating members from another platform.
 
 #### Before You Start
 
@@ -15,7 +15,7 @@ Fluent Members lets you assign a membership to any WordPress user directly from 
 
 ![ Add Membership](/images/members/adding-memberships/manually-add-membership-1.webp)
 
-4. The **Add Membership** modal opens. Each Level appears as a collapsible section — click a Level to expand it and see its available Pricing Plans.
+4. The **Add Membership** modal opens. Each Level appears as a collapsible section: click a Level to expand it and see its available Pricing Plans.
 5. Each Pricing Plan card shows the plan name, price, billing interval, trial days, and provider. Click **+ Assign Member** on the plan that matches the access you want to grant.
 
 ![ Assign Membership](/images/members/adding-memberships/assign-membership-2.webp)
@@ -41,13 +41,13 @@ The expiry date on the new membership row is determined by the Pricing Plan you 
 
 | Plan type | Expiry on the new row |
 |---|---|
-| **One-time / Lifetime** | No expiry — membership is permanent |
+| **One-time / Lifetime** | No expiry: membership is permanent |
 | **Subscription (recurring)** | Expires after one billing interval; the system will flip it to Expired if not renewed |
 | **Free** | No expiry |
 | **Trial** | Expires after the configured trial period |
 
 ::: tip Pick the right plan for your intent
-To grant permanent access, choose a Lifetime or one-time plan. To grant temporary access, choose a subscription plan — it will expire automatically after one interval.
+To grant permanent access, choose a Lifetime or one-time plan. To grant temporary access, choose a subscription plan; it will expire automatically after one interval.
 :::
 
 ## Important Notes

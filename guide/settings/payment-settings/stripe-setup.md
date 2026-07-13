@@ -23,7 +23,7 @@ Below the toggle, select your **Payment Mode**:
 
 | Mode | Use it for |
 |---|---|
-| **Test Mode** | Development and staging. Use Stripe's test cards — no real money moves. |
+| **Test Mode** | Development and staging. Use Stripe's test cards; no real money moves. |
 | **Live Mode** | Production. Real cards are charged for real money. |
 
 Each mode stores its own API keys independently. You can have both test and live keys saved and switch between them with this radio button.
@@ -55,7 +55,7 @@ https://your-site.com/wp-json/fluent-members/v2/stripe-webhook
 
 Log in to your Stripe account. Click **Developers** from the bottom-left corner, then select **Webhooks**.
 
-![Stripe Developers — Webhooks](/images/settings/payment/stripe/stripe-developer-4.webp)
+![Stripe Developers: Webhooks](/images/settings/payment/stripe/stripe-developer-4.webp)
 
 **Step 3: Add a new destination**
 

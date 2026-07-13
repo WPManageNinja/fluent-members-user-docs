@@ -6,15 +6,15 @@ Every membership row in Fluent Members carries a single status value. The status
 
 | Status | Has Access? | What it means |
 |---|:---:|---|
-| `active` | ✅ | Normal operating state — full access granted |
-| `trial` | ✅ | Inside the trial period — same access as active |
+| `active` | ✅ | Normal operating state: full access granted |
+| `trial` | ✅ | Inside the trial period: same access as active |
 | `pending` | ❌ | Payment initiated but not yet confirmed by the provider |
-| `expired` | ❌ | Past the expiry date — set automatically by an hourly background job |
-| `suspended` | ❌ | Admin has paused access — billing may still be running |
-| `cancelled` | ❌ | Explicitly ended — record kept in history |
+| `expired` | ❌ | Past the expiry date, set automatically by an hourly background job |
+| `suspended` | ❌ | Admin has paused access; billing may still be running |
+| `cancelled` | ❌ | Explicitly ended; record kept in history |
 
 ::: tip
-**Active** and **Trial** both grant full access — the difference is billing stage only. Every other status blocks access immediately.
+**Active** and **Trial** both grant full access; the difference is billing stage only. Every other status blocks access immediately.
 :::
 
 ## Admin Actions by Status
@@ -40,10 +40,10 @@ When a member visits the Member Portal, the content shown depends on their statu
 |---|---|
 | `active` | Active badge, expiry date or lifetime label, Cancel button |
 | `trial` | Trial badge and the trial end date |
-| `pending` | Pending badge — no actions available |
-| `cancelled` | Cancelled badge — member can re-purchase from your pricing page |
-| `expired` | Expired badge — Pro: Renew button if the subscription is renewable |
-| `suspended` | Suspended badge — no actions available |
+| `pending` | Pending badge; no actions available |
+| `cancelled` | Cancelled badge; member can re-purchase from your pricing page |
+| `expired` | Expired badge; Pro: Renew button if the subscription is renewable |
+| `suspended` | Suspended badge; no actions available |
 
 When a member with a non-active status tries to view protected content, the [Unauthorized Access](/guide/access-groups/unauthorized-access) setting on the Access Group controls what they see.
 

@@ -22,10 +22,10 @@ Yes. The plugin uses standard WordPress hooks and outputs no theme-specific mark
 
 ### Do I Need a Separate Payment Plugin?
 
-- **Free or admin-comped memberships** — no payment plugin needed.
-- **Paid memberships with Pro** — native Stripe is built in, no extra plugin required.
-- **Paid memberships without Pro** — connect a paywall to FluentCart, Fluent Forms, or Paymattic.
-- **WooCommerce** — requires Pro.
+- **Free or admin-comped memberships**: no payment plugin needed.
+- **Paid memberships with Pro**: native Stripe is built in, no extra plugin required.
+- **Paid memberships without Pro**: connect a paywall to FluentCart, Fluent Forms, or Paymattic.
+- **WooCommerce**: requires Pro.
 
 ### Is There a Cap on How Many Membership Levels I Can Create?
 
@@ -47,11 +47,11 @@ Pages, posts, custom post types, categories, tags, custom taxonomies, FluentCart
 
 ### Can I Show a Teaser to Non-Members Instead of Blocking Them?
 
-Yes — use the **Partial Content Preview** restriction action. It shows the first N words with a blurred overlay and a call-to-action button. Configure the defaults in **Settings → Partial Content Lock**, or override per Access Group.
+Yes, use the **Partial Content Preview** restriction action. It shows the first N words with a blurred overlay and a call-to-action button. Configure the defaults in **Settings → Partial Content Lock**, or override per Access Group.
 
 ### Can I Drip-Feed Content Over Time?
 
-Yes. Set drip rules on the Membership Level — each rule specifies how many days after joining a member gains access to specific content. See [Content Dripping](/guide/levels/content-drip).
+Yes. Set drip rules on the Membership Level: each rule specifies how many days after joining a member gains access to specific content. See [Content Dripping](/guide/levels/content-drip).
 
 ### Does Protection Apply to the REST API?
 
@@ -90,11 +90,11 @@ Three: **Welcome Email** (fires when a membership is granted), **Expiry Notifica
 
 ### Can I Customise Notification Templates?
 
-Yes — edit the subject and body of each notification from **Settings → Email Configuration → Email Notifications**. The free plugin provides a rich-text editor. Pro adds the Gutenberg Block Email Editor.
+Yes, edit the subject and body of each notification from **Settings → Email Configuration → Email Notifications**. The free plugin provides a rich-text editor. Pro adds the Gutenberg Block Email Editor.
 
 ### Can I Add Custom Event-Based Notifications (Cancel, Upgrade, etc.)?
 
-Not from the admin UI. Developers can register additional notifications via the `EmailNotifications` registry — see [Developer Hooks](/reference/developer-hooks). For production use, FluentCRM is the recommended approach: hook into lifecycle actions like `fluent_members/membership_cancelled` and send branded emails from there.
+Not from the admin UI. Developers can register additional notifications via the `EmailNotifications` registry; see [Developer Hooks](/reference/developer-hooks). For production use, FluentCRM is the recommended approach: hook into lifecycle actions like `fluent_members/membership_cancelled` and send branded emails from there.
 
 ### My Emails Are Not Arriving — What Do I Check?
 
@@ -108,11 +108,11 @@ Go to **Settings → Payment Settings**, click **Manage** on the Stripe card. Co
 
 ### What Is the Stripe Webhook URL?
 
-`/wp-json/fluent-members/v2/stripe-webhook` — the exact full URL is shown on the Stripe settings screen, copy it from there.
+`/wp-json/fluent-members/v2/stripe-webhook`: the exact full URL is shown on the Stripe settings screen, copy it from there.
 
 ### Can I Issue a Refund From Fluent Members?
 
-Yes (Pro). Open **Transactions**, find the charge, and click **Refund**. Full and partial refunds are supported. Refunding does not automatically cancel the membership — do that separately if needed. See [Refunds](/guide/transactions/refunds).
+Yes (Pro). Open **Transactions**, find the charge, and click **Refund**. Full and partial refunds are supported. Refunding does not automatically cancel the membership; do that separately if needed. See [Refunds](/guide/transactions/refunds).
 
 ### What if I Refund Through the Stripe Dashboard Instead?
 
@@ -130,4 +130,4 @@ Yes (Pro). The Stripe-import bridge links the new Fluent Members records to the 
 
 ### Does Fluent Members Work With WooCommerce?
 
-Yes (Pro) — restrict WooCommerce products to specific Membership Levels, use WC products as paywalls, support WooCommerce Subscriptions for recurring billing, and use the instant-checkout flow.
+Yes (Pro): restrict WooCommerce products to specific Membership Levels, use WC products as paywalls, support WooCommerce Subscriptions for recurring billing, and use the instant-checkout flow.

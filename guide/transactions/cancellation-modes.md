@@ -12,7 +12,7 @@ When a member or admin cancels a Stripe subscription, Fluent Members decides whe
 | Access revoked | Now | At the next renewal date |
 | Stripe action | Cancel subscription now | Set `cancel_at_period_end = true` |
 | Local membership status | `Cancelled` immediately | Stays `Active` until period ends, then `Cancelled` |
-| Final charge | None | None — current period is already paid |
+| Final charge | None | None: current period is already paid |
 | `customer.subscription.deleted` webhook | Fires now | Fires at the period boundary |
 
 ## Where to Configure
@@ -38,14 +38,14 @@ When a member cancels:
 When a member cancels:
 
 1. The portal card shows `Cancelled` with an *"Access ends on [date]"* notice.
-2. Fluent Members sets `cancel_at_period_end = true` on the Stripe subscription — it stays active in Stripe until the period boundary.
+2. Fluent Members sets `cancel_at_period_end = true` on the Stripe subscription; it stays active in Stripe until the period boundary.
 3. The local membership row stays `Active` until that boundary.
 4. The member keeps access throughout the paid period.
 5. On the original renewal date, Stripe sends `customer.subscription.deleted`. Fluent Members flips the local row to `Cancelled`.
 6. No final charge runs.
 
 ::: warning Admin Views Under End of Period
-Under End of Period, the membership row's `status` column stays `Active` between the cancel click and the period boundary. The member portal shows `Cancelled` because it reads both the `status` field and the `cancel_at_period_end` flag. Admin tooling or reports that read only `status` will show `Active` — this is expected behaviour, not a bug.
+Under End of Period, the membership row's `status` column stays `Active` between the cancel click and the period boundary. The member portal shows `Cancelled` because it reads both the `status` field and the `cancel_at_period_end` flag. Admin tooling or reports that read only `status` will show `Active`; this is expected behaviour, not a bug.
 :::
 
 ## Which Mode to Choose

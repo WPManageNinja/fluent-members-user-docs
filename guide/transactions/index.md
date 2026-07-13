@@ -17,7 +17,7 @@ The tab bar at the top filters the list by transaction status:
 | Tab | Shows |
 |---|---|
 | **All** | Every transaction regardless of status |
-| **Paid** | Successful charges — money collected |
+| **Paid** | Successful charges (money collected) |
 | **Pending** | Payments awaiting confirmation (e.g. 3D Secure in progress) |
 | **Failed** | Charges that did not succeed (declined card, expired card) |
 | **Refunded** | Charges where the amount was returned to the member |

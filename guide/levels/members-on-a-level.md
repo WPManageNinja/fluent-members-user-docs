@@ -20,7 +20,7 @@ The page lists every user holding this level. Use **Search by name or email** in
 |--------|----------------|
 | **ID** | Numeric ID of the membership record (not the WordPress user ID). |
 | **User** | Avatar, display name, and email address. |
-| **Status** | Current membership status — for example, **Active**, **Trial**, **Pending**, **Cancelled**, **Expired**, or **Suspended**. |
+| **Status** | Current membership status, for example, **Active**, **Trial**, **Pending**, **Cancelled**, **Expired**, or **Suspended**. |
 | **Role** | The member's WordPress role (for example, Subscriber). |
 | **Registered** | The date the WordPress user account was registered. |
 
@@ -32,14 +32,14 @@ Use the Members tab for quick triage without leaving the level:
 
 - Check how many people are on this plan (pagination total at the bottom).
 - Search for a specific signup by name or email.
-- Spot status patterns — for example, several **Pending** or **Expired** rows after a campaign.
+- Spot status patterns, for example, several **Pending** or **Expired** rows after a campaign.
 
 For site-wide member management, use **Fluent Members → Members** in the top navigation instead.
 
 ## Important Notes
 
 ::: warning Good to know
-- An **empty list** after recent signups often means payments are still **Pending** — check **Fluent Members → Transactions** (Pro) or the host payment plugin.
+- An **empty list** after recent signups often means payments are still **Pending**; check **Fluent Members → Transactions** (Pro) or the host payment plugin.
 - The same email can appear twice if the user holds two membership records on this level (for example, a manual add plus a purchase).
 - **Registered** shows when the WordPress user was created, not necessarily when they joined this level.
 :::

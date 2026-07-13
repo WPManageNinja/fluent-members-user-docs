@@ -18,7 +18,7 @@ Go to **Fluent Members → Access Groups**, open the group you want to configure
 
 ### Redirect to a Specific URL
 
-Type the exact web address into the **Redirect URL** field — a relative path (`/pricing`) or a full URL both work. Save with it empty and you'll see *"Please enter redirect URL."*
+Type the exact web address into the **Redirect URL** field: a relative path (`/pricing`) or a full URL both work. Save with it empty and you'll see *"Please enter redirect URL."*
 
 ### Display a Custom Message
 

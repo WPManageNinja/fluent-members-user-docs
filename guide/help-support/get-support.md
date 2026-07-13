@@ -20,7 +20,7 @@ To get the fastest and most accurate response, please follow the steps below whe
    - **Screenshots or screen recordings:** Screenshots of your Level settings, Access Group configuration, the member's detail page, and any visible error on the frontend help us enormously.
    - **Error messages:** If you see anything in a red box, a browser console error, or a line in your WordPress debug log, copy it into the ticket as text.
    - **Your WordPress version.**
-   - **Your Fluent Members Free version** — and, if applicable, **your Fluent Members Pro version.**
+   - **Your Fluent Members Free version** and, if applicable, **your Fluent Members Pro version.**
    - **Your PHP version** (found under **Tools → Site Health → Info → Server**).
    - **Any other active plugins on your site:** List them, especially anything related to email delivery (FluentSMTP, WP Mail SMTP), caching (WP Rocket, LiteSpeed, W3 Total Cache), security (Wordfence, iThemes Security), payments (WooCommerce, FluentCart, Paymattic), or page builders (Elementor, Bricks, Gutenberg blocks). These are the most common sources of conflict for membership access, checkout flows, and email notifications.
 

@@ -9,7 +9,7 @@ You can issue a full or partial refund on any paid Stripe transaction directly f
 
 Open **Fluent Members → Transactions**, switch to the **Paid** tab, and locate the row. Use the search field to filter by member name, email, or transaction ID. See [Filters & Search](/guide/transactions/filters-and-search).
 
-You can also initiate a refund from a member's detail page — open **Members**, find the member, and use the action menu on their membership row.
+You can also initiate a refund from a member's detail page: open **Members**, find the member, and use the action menu on their membership row.
 
 ## Issue the Refund
 
@@ -29,7 +29,7 @@ Fluent Members calls the Stripe API, records a new transaction row with type `re
 |---|---|---|
 | Amount | Equal to original charge | Less than original charge |
 | Original transaction status after | `refunded` | `partially_refunded` |
-| Can refund again? | No | Yes — until total refunds equal the original amount |
+| Can refund again? | No | Yes, until total refunds equal the original amount |
 | Stripe shows | Charge fully refunded | Partial refund on the charge |
 
 ## Refunds and Membership Access

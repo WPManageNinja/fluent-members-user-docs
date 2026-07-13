@@ -13,7 +13,7 @@ Click the **Settings** gear icon in the top-right corner of any Fluent Members s
 
 ## Available Gateways
 
-The Payment Settings page shows one card for each supported native gateway. Currently two gateways are available — both require **Fluent Members Pro**:
+The Payment Settings page shows one card for each supported native gateway. Currently two gateways are available; both require **Fluent Members Pro**:
 
 | Gateway | Notes |
 |---|---|

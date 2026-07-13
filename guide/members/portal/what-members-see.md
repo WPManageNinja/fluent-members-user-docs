@@ -4,7 +4,7 @@ The Member Portal renders differently depending on who is visiting and what memb
 
 ## Logged Out
 
-A visitor who is not signed in sees a simple prompt to log in. They are not redirected — the portal page stays in place and shows a sign-in link to your standard WordPress login page.
+A visitor who is not signed in sees a simple prompt to log in. They are not redirected; the portal page stays in place and shows a sign-in link to your standard WordPress login page.
 
 ## Logged In — No Membership
 
@@ -47,7 +47,7 @@ Members who hold a **corporate parent** membership see an additional **Team Memb
 - A **Send Invitation** button to invite new seat holders by email
 - A remove option on each row to revoke a seat
 
-Sub-members do not see the Team panel — they see only their own membership card, the same as any individual member.
+Sub-members do not see the Team panel; they see only their own membership card, the same as any individual member.
 
 For the full invite and seat management flow, see [Corporate Seat Invites](/guide/members/portal/corporate-seat-invites).
 

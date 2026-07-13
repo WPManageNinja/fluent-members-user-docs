@@ -36,7 +36,7 @@ Follow these steps when creating a new group to ensure your content is fully pro
 ## Important Notes
 
 ::: warning Things to keep in mind
-- **Two-Way Linking:** You can attach a Level to an Access Group from the Group's settings, or from the Level's settings. Both approaches do the exact same thing — use whichever is easier. See [Attaching Access Groups](/guide/levels/attaching-access-groups) for the Level-side flow.
+- **Two-Way Linking:** You can attach a Level to an Access Group from the Group's settings, or from the Level's settings. Both approaches do the exact same thing; use whichever is easier. See [Attaching Access Groups](/guide/levels/attaching-access-groups) for the Level-side flow.
 - **Content Drip Scheduling:** If you want to release content on a schedule, configure this inside the Membership Level settings, not the Access Group. See [Content Drip](/guide/levels/content-drip).
 - **The Save Button:** There is no save button for each individual section. The main **Save** button only appears in the top-right corner after you have made changes to the page.
 - **Access Requirements:** For a user to view protected content, they must hold the correct Membership Level and their account status must be Active or Trial.

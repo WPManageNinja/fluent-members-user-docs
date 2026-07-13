@@ -41,4 +41,4 @@ Each membership row has an action menu at the end of the row. The available acti
 
 
 > [!Note]
-> The action menu is "status-aware." This means it only shows actions that make sense for the current status. If you are looking for the "Cancel" button but cannot find it, check the status badge—the user might already be marked as "Expired" or "Cancelled."
+> The action menu is "status-aware." This means it only shows actions that make sense for the current status. If you are looking for the "Cancel" button but cannot find it, check the status badge: the user might already be marked as "Expired" or "Cancelled."

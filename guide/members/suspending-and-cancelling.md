@@ -7,8 +7,8 @@ Fluent Members gives you two ways to remove a member's access from the admin: **
 | | Suspend | Cancel |
 |---|---|---|
 | **Access revoked?** | Yes, immediately | Yes, immediately |
-| **Billing stops?** | No — recurring charges continue | Yes — the plugin notifies the payment provider to stop |
-| **Reversible?** | Yes — change the status back to Active | No — you would need to grant a new membership |
+| **Billing stops?** | No, recurring charges continue | Yes, the plugin notifies the payment provider to stop |
+| **Reversible?** | Yes, change the status back to Active | No, you would need to grant a new membership |
 | **Best used for** | Temporary holds, policy violations, payment disputes | Member requested cancellation, post-refund cleanup, irrecoverable failed payments |
 
 ## How to Suspend a Membership
@@ -17,7 +17,7 @@ Fluent Members gives you two ways to remove a member's access from the admin: **
 2. On the membership row, click the action menu and select **Suspend**.
 3. The row status changes to `Suspended` and access is revoked immediately.
 
-To restore access, return to the same row and change the status back to **Active**. There is no dedicated "Unsuspend" button — updating the status field directly is how you reverse a suspension.
+To restore access, return to the same row and change the status back to **Active**. There is no dedicated "Unsuspend" button: updating the status field directly is how you reverse a suspension.
 
 ::: warning Suspend does not stop billing
 If the membership is tied to a Stripe or FluentCart subscription, recurring charges will continue even after suspending. To stop billing as well, either cancel the subscription at the payment provider directly, or use Cancel instead of Suspend.
@@ -60,7 +60,7 @@ To restore access for the entire team, change the parent's status back to Active
 ::: warning Things to keep in mind
 - **Suspend does not stop billing.** Always check with your payment provider if you need to pause charges, or use Cancel instead.
 - **Cancel may take effect immediately or at period end.** This depends on your Cancellation Modes setting. See [Cancellation Modes](/guide/transactions/cancellation-modes) to configure this behavior.
-- **Cancelled rows are kept for your records.** The old row is not deleted — it remains in the member's history with a `Cancelled` status. A fresh membership row is created if they re-join.
+- **Cancelled rows are kept for your records.** The old row is not deleted; it remains in the member's history with a `Cancelled` status. A fresh membership row is created if they re-join.
 - **Corporate cascades are parent-driven.** If child accounts were individually suspended for other reasons, un-suspending the parent will not automatically restore those children. Each child would need to be updated individually.
 :::
 

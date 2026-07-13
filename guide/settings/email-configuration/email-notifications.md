@@ -14,7 +14,7 @@ Fluent Members ships with three built-in email notifications:
 
 | Notification | When it fires |
 |---|---|
-| **Welcome Email** | When a member is assigned to a Membership Level — covers new purchases, manual admin grants, Stripe checkouts, corporate join acceptances, and re-activations from Suspended status. |
+| **Welcome Email** | When a member is assigned to a Membership Level: covers new purchases, manual admin grants, Stripe checkouts, corporate join acceptances, and re-activations from Suspended status. |
 | **Expiry Notification** | When a member's status changes to `expired`. |
 | **Suspension Notification** | When a member's status changes to `suspended`. |
 

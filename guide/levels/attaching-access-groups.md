@@ -21,7 +21,7 @@ Click **Select Access Group**. A modal opens with a card for each access group o
 - **Level chips** at the bottom showing which other levels already use this group
 - A **checkbox** in the top-right corner to select the group
 
-Tick every group this level should unlock, then click **Select** at the bottom of the modal. A success message confirms the update — there is no separate Save button on this tab.
+Tick every group this level should unlock, then click **Select** at the bottom of the modal. A success message confirms the update; there is no separate Save button on this tab.
 
 ::: tip One group can power many levels
 If a group card shows chips like *Lifetime*, *Free Member*, or *Business Team*, that group already unlocks content for those levels. Attaching it to another level does not affect the existing links.

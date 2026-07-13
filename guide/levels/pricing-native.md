@@ -1,6 +1,6 @@
 # Pricing: Native Payment
 
-**Native Payment** is the built-in checkout in **Fluent Members Pro**. Visitors pay through Stripe directly on your site — no FluentCart, Fluent Forms, or other payment plugin required.
+**Native Payment** is the built-in checkout in **Fluent Members Pro**. Visitors pay through Stripe directly on your site: no FluentCart, Fluent Forms, or other payment plugin required.
 
 > [!Note]
 > Native Payment needs **Fluent Members Pro** and a connected Stripe account. Without Pro, the **Native Payment** option may appear in the Pricing Type dropdown, but no payment methods will be available. Use [Pricing: Paywalls](/guide/levels/pricing-paywalls) instead, or complete [Stripe Setup (Pro)](/guide/settings/payment-settings/stripe-setup) first.
@@ -102,7 +102,7 @@ When a visitor clicks the buy button on your `[fluent_membership_level]` pricing
 ::: warning Before you go Live
 - **Stripe must be connected** before the Stripe checkbox appears on the Pricing tab.
 - **Webhook signing secret** must be saved in Stripe settings, or checkout can fail after payment.
-- For trial behaviour, set **Price Type** to **Trial** — trial days on a **Subscription** plan alone may not behave as expected.
+- For trial behaviour, set **Price Type** to **Trial**; trial days on a **Subscription** plan alone may not behave as expected.
 - A level still needs **Access Groups** attached, or members can pay but will not unlock protected content.
 :::
 

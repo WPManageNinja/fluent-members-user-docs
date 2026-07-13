@@ -35,10 +35,10 @@ When the teammate clicks the link, one of three things happens depending on thei
 | State | What they see |
 |---|---|
 | **Logged out** | A login or register prompt. After signing in, the join confirmation is shown automatically. |
-| **Logged in — matching email** | The join confirmation page directly. |
-| **Logged in — different account** | A notice asking them to sign out and retry with the correct account. |
+| **Logged in (matching email)** | The join confirmation page directly. |
+| **Logged in (different account)** | A notice asking them to sign out and retry with the correct account. |
 
-On the join confirmation page they see the parent's plan name and **Accept** / **Decline** buttons. Clicking **Accept** creates their membership row and grants access immediately. Their portal then shows a normal membership card for the level — they cannot cancel, update a payment method, or take any billing action. Those belong to the parent.
+On the join confirmation page they see the parent's plan name and **Accept** / **Decline** buttons. Clicking **Accept** creates their membership row and grants access immediately. Their portal then shows a normal membership card for the level; they cannot cancel, update a payment method, or take any billing action. Those belong to the parent.
 
 ::: tip Invite links are single-use
 Each invite generates a unique token that expires once accepted. If the link lands in the wrong hands, the parent can simply send a new invite the old link becomes invalid.
@@ -54,7 +54,7 @@ Removing a sub-member only cancels their membership on this Corporate Level. The
 
 ## What Happens When the Parent Cancels
 
-When the parent's corporate membership is cancelled, expired, or suspended, every sub-member's row mirrors the new status automatically. The cascade fires one lifecycle hook per child row — so integrations like FluentCRM will see one event per sub-member, not one event for the whole team.
+When the parent's corporate membership is cancelled, expired, or suspended, every sub-member's row mirrors the new status automatically. The cascade fires one lifecycle hook per child row, so integrations like FluentCRM will see one event per sub-member, not one event for the whole team.
 
 For the full admin-side configuration of corporate levels and seat limits, see [Corporate Memberships](/guide/levels/corporate-memberships).
 

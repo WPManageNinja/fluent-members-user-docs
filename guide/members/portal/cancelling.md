@@ -19,7 +19,7 @@ When a member is ready to cancel, the process is quick and completely self-serve
 1. The member opens the portal and views their list of memberships.
 2. They click the **Manage** button next to the specific plan they want to cancel (this button is only available for Active or Trial plans).
 
-![Member portal — membership list](/images/members/cancel-memberships/manage-1.webp)
+![Member portal: membership list](/images/members/cancel-memberships/manage-1.webp)
 
 3. On the Membership Details screen, they click the **three-dot menu** icon located at the top right of the profile card.
 4. They click **Cancel Membership** from the dropdown menu.

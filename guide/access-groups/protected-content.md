@@ -10,14 +10,14 @@ Available restriction types:
 
 | Type | What it protects |
 |---|---|
-| **All Posts** | Every WordPress post (default post type) — including future posts |
-| **All Pages** | Every WordPress page — including future pages |
+| **All Posts** | Every WordPress post (default post type), including future posts |
+| **All Pages** | Every WordPress page, including future pages |
 | **All Categories Archive** | Category archive listing pages (`/category/name/`) |
 | **All Tags Archive** | Tag archive listing pages (`/tag/name/`) |
 | **Specific Post/Page/CPT/Taxonomy Etc.** | A handpicked list of posts, pages, custom post types, or taxonomy terms |
 | **Specific Products/Categories/Brands Etc.** | Specific FluentCart or WooCommerce products, categories, or brands |
 | **All Products** | Every product across active commerce integrations (FluentCart, WooCommerce) |
-| **Entire Website** | Locks the entire site — only members with an active Level can access any page |
+| **Entire Website** | Locks the entire site: only members with an active Level can access any page |
 
 ::: tip Combine types when needed
 Because this is a multi-select, you can protect different content types with a single group. For example, select both **Specific Products/Categories/Brands Etc.** and **All Products** to cover both a handpicked list and all future products at the same time.
@@ -32,7 +32,7 @@ When you select a type that requires specific items (such as *Specific Post/Page
 - Type at least one character to search for content by title.
 - Results appear grouped by type (Posts, Pages, Products, Categories, etc.).
 - Click an item to add it to the rule.
-- Only the items you add here will be protected — new content is **not** added automatically.
+- Only the items you add here will be protected; new content is **not** added automatically.
 
 ::: tip Use post-type rules for automatic coverage
 If you want all future posts in a category or custom post type to be protected automatically without adding them one by one, select a broader type like **All Posts** instead of picking individual items.
@@ -52,11 +52,11 @@ When an Access Group restricts a post or page, Fluent Members can also hide the 
 
 The following are suppressed automatically for any post the current user does not have access to:
 
-- **Comment list** — existing comments are hidden from the page output and REST API responses.
-- **Comment form** — the form is closed so non-members cannot submit a comment.
-- **Comment count** — the count shown in themes and widgets is set to zero.
+- **Comment list**: existing comments are hidden from the page output and REST API responses.
+- **Comment form**: the form is closed so non-members cannot submit a comment.
+- **Comment count**: the count shown in themes and widgets is set to zero.
 
-This behaviour is enabled by default alongside content protection — no additional setting is required.
+This behaviour is enabled by default alongside content protection; no additional setting is required.
 
 ## Important Notes
 

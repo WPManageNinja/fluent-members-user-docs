@@ -21,7 +21,7 @@ The fastest way to set up the portal:
 3. The plugin creates a new WordPress page with the shortcode already inserted, publishes it, and saves the page ID in Settings automatically.
 4. The dropdown updates to show the new page. Use the **Edit** link to rename it, or **Preview** to see it on the front end.
 
-![General Settings — Generate Portal Page](/images/members/portal-setup/generate-portal-page-1.webp)
+![General Settings: Generate Portal Page](/images/members/portal-setup/generate-portal-page-1.webp)
 
 ## Option B: Create the Page Manually
 
@@ -47,10 +47,10 @@ Once the page exists, give members a way to reach it:
 
 When a member visits the portal they see a card for each membership they hold. What is available on each card depends on their plan and whether Pro is installed:
 
-- **Cancel button** — always available; lets the member end their own membership
-- **Update Payment Method** *(Pro)* — change the stored Stripe card
-- **Renew** *(Pro)* — manually retry a failed subscription payment
-- **Team panel** *(Pro, Corporate plans)* — invite or remove seat holders
+- **Cancel button**: always available; lets the member end their own membership
+- **Update Payment Method** *(Pro)*: change the stored Stripe card
+- **Renew** *(Pro)*: manually retry a failed subscription payment
+- **Team panel** *(Pro, Corporate plans)*: invite or remove seat holders
 
 Members with no membership see an empty state directing them to your pricing page. Logged-out visitors see a sign-in prompt.
 

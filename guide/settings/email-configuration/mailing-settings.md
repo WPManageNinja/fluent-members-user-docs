@@ -1,6 +1,6 @@
 # Mailing Settings
 
-Mailing Settings controls the global sender identity and footer branding applied to every email Fluent Members sends. Set these once and all your transactional notifications — welcome emails, expiry reminders, suspension alerts — will carry your brand name and address instead of WordPress's defaults.
+Mailing Settings controls the global sender identity and footer branding applied to every email Fluent Members sends. Set these once and all your transactional notifications (welcome emails, expiry reminders, suspension alerts) will carry your brand name and address instead of WordPress's defaults.
 
 ## Access Mailing Settings
 
