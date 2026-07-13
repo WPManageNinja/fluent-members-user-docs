@@ -22,9 +22,8 @@ Fluent Members lets you assign a membership to any WordPress user directly from 
 
 6. The modal closes and the new membership row appears in the table with a status of **Active**.
 
-::: warning No charge is applied
-Manually assigning a membership does not charge the user. A membership record is created in your database only. If a payment is required, the user must purchase through your pricing page.
-:::
+> [!Note]
+> Manually adding a membership does not charge the user. It only creates a membership record. If you want to collect a payment, the user must purchase the membership through your pricing page.
 
 ![ Assign Membership](/images/members/adding-memberships/memberships-3.webp)
 

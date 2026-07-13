@@ -37,7 +37,7 @@ Each membership row has an action menu at the end of the row. The available acti
 
  * **Suspend:** Temporarily revokes the user's access without [cancelling](./suspending-and-cancelling) their recurring billing. (Only available if the status is Active or Trial).
  * **Cancel:** Instantly ends the membership and removes their access to protected content. (Available for Active, Trial, or Pending statuses).
- * **Refund (Pro only):** Opens the refund window to return the user's money. (Only available if a linked payment transaction exists). See [Refunds](/guide/transactions/refunds).
+ * **Refund (Pro only):** Opens the refund window to return the user's money. (Only available if a linked payment transaction exists). See the full documentation [Refunds](/guide/transactions/refunds).
 
 
 > [!Note]
