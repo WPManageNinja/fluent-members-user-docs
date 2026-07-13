@@ -49,8 +49,7 @@ If you are building your first membership site, follow this exact order to avoid
 ## Important Notes
 
 ::: warning Before you go live
-- **Do not skip attaching Access Groups.** If a level has no Access Groups attached, users can still buy it, but they will not unlock any restricted content. Always make sure your level is connected to at least one protected group.
-- **Can't see the shortcode rendering?** Make sure your level status is set to **Active** and that you have added at least one Pricing Plan inside the level settings.
-:::
+**Attach an Access Group:** A membership level without an **Access Group** will not unlock any protected content.
+**Check the Level Status:** Make sure the membership level is **Active** and has at least one **Pricing Plan** if the shortcode is not displaying.
 
 The Levels screen is the control center for your membership products. By understanding how to organize, price, and attach access rules to your levels, you can easily build out a secure and profitable membership site. For a guided walkthrough, see the [Quick Start](/guide/getting-started/quick-start) guide.
