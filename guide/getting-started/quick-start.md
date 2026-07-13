@@ -77,13 +77,11 @@ These work by linking an existing product in another plugin to your Membership L
 |---|---|
 | **Stripe** | Built-in Stripe checkout with no third-party form plugin needed. Supports one-time and recurring subscriptions. |
 
-This step is a preview of your payment options. Actual connection of a payment plugin to a Membership Level happens inside **Fluent Members → Levels → Pricing Plans** after the wizard.
+This step is a preview of your payment options. Actual connection of a payment plugin to a Membership Level happens inside **Fluent Members → Levels → Pricing Plans** after the wizard. Now, click **Complete Installation** to finish setup.
 
-Click **Complete Installation** to finish setup.
+> [!Note]
+> If you haven't decided on a payment plugin, click **Skip All** and set up payments later from **Fluent Members → Levels**.
 
-::: tip Nothing to configure here yet
-If you haven't decided on a payment plugin, click **Skip All** and set up payments later from **Fluent Members → Levels**.
-:::
 
 ![The Step 3 Payment System screen showing Fluent Cart, Fluent Forms, Paymattic, WooCommerce, and Stripe options](/images/quick-start/payment-system-3.webp)
 
