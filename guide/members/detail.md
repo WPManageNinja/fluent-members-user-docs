@@ -26,7 +26,7 @@ The Memberships table displays all memberships assigned to the user. If the user
  * **Status:** A colored badge indicating if the plan is currently Active, Trial, Pending, Cancelled, Expired, or Suspended.
 
 >[!Tip]
->To give the user a brand new [membership manually](./adding-manually), simply click the dark **+ Add Membership** button at the top right of the table.
+> To give the user a brand new [membership manually](./adding-manually), simply click the dark **+ Add Membership** button at the top right of the table.
 
 ![Membership Table](/images/members/members-details/membership-table-2.webp)
 
@@ -41,4 +41,4 @@ Each membership row has an action menu at the end of the row. The available acti
 
 
 > [!Note]
-> The action menu is "status-aware." This means it only shows actions that make sense for the current status. If you are looking for the "Cancel" button but cannot find it, check the status badge: the user might already be marked as "Expired" or "Cancelled."
+> The action menu is "status-aware." This means it only shows actions that make sense for the current status. If you are looking for the "**Cancel**" button but cannot find it, check the status badge: the user might already be marked as "**Expired**" or "**Cancelled**."

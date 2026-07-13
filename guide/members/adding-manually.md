@@ -15,10 +15,10 @@ Fluent Members lets you assign a membership to any WordPress user directly from 
 
 ![ Add Membership](/images/members/adding-memberships/manually-add-membership-1.webp)
 
-4. The **Add Membership** modal opens. Each Level appears as a collapsible section: click a Level to expand it and see its available Pricing Plans.
+4. The **Add Membership** modal opens, displaying all available membership levels. Click a membership level to expand it and view its available pricing plans.
 5. Each Pricing Plan card shows the plan name, price, billing interval, trial days, and provider. Click **+ Assign Member** on the plan that matches the access you want to grant.
 
-![ Assign Membership](/images/members/adding-memberships/assign-membership-2.webp)
+![ Assigna Member](/images/members/adding-memberships/assign-membership-2.webp)
 
 6. The modal closes and the new membership row appears in the table with a status of **Active**.
 

@@ -16,7 +16,7 @@ Click any row to open that member's [detail page](./detail) where you can view a
 
 ![Member List](/images/members/members-list/all-member-list-1.webp)
 
-## Filter Tabs
+### Filter Tabs
 
 Use the tabs at the top of the table to filter the list by membership status:
 
@@ -25,11 +25,11 @@ Use the tabs at the top of the table to filter the list by membership status:
 - **Expired**: Shows only users whose membership has expired.
 - **More views ▾**: Opens a dropdown with additional filters: Pending, Cancelled, and Suspended.
 
-## Search
+### Search
 
 Use the **Search by name or email** field in the top-right corner of the table to find a specific member. The search applies to the currently selected tab. If you are on the **Active** tab, results will only include active members. Switch to **All** if you are not sure which status the member is in.
 
-## Pagination
+### Pagination
 
 The bottom of the table shows the **Total** member count and a **per-page** dropdown (default 10). Use the page number buttons on the right to navigate between pages. Increase the per-page count to 25 or 50 for larger member lists.
 
