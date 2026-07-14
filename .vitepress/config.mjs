@@ -131,10 +131,10 @@ export default defineConfig({
     siteTitle: false,
 
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Guide', link: '/guide/getting-started/introduction' },
+      { text: 'User Docs', link: '/' },
       { text: 'Reference', link: '/reference/chain-map' },
       { text: 'Changelog', link: '/changelog' },
+      { text: 'Dev Docs', link: 'https://developers.fluentmembers.com/' },
       { text: 'Website', link: 'https://fluentmembers.com' }
     ],
 
