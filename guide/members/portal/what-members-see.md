@@ -6,11 +6,11 @@ The Member Portal renders differently depending on who is visiting and what memb
 
 A visitor who is not signed in sees a simple prompt to log in. They are not redirected; the portal page stays in place and shows a sign-in link to your standard WordPress login page.
 
-## Logged In — No Membership
+## Logged In (No Membership)
 
 A member who is logged in but holds no membership rows sees an empty state with a link directing them to your pricing page. No membership cards or action buttons are shown.
 
-## Logged In — With Memberships
+## Logged In (With Memberships)
 
 This is the most common case. The portal shows one card per membership the member holds. A member with multiple memberships sees multiple cards stacked on the same page.
 
