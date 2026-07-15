@@ -8,7 +8,7 @@ This glossary defines common terms used throughout the Fluent Members documentat
 
 **Access Group Block:** A Gutenberg block inspector feature that lets you restrict a single block a paragraph, image, or button without locking the whole post. You choose which Access Group must be held to see that block; non-members see a restriction message or partial preview in its place. See [Gutenberg Block: Inserting](/guide/access-groups/gutenberg-block/inserting).
 
-**Active:** The normal membership status that gives a member full access to all the content their level unlocks. A membership becomes active after a successful payment or a manual assignment by an admin. See [Membership Statuses](/reference/membership-statuses).
+**Active:** The normal membership status that gives a member full access to all the content their level unlocks. A membership becomes active after a successful payment or a manual assignment by an admin. See [Membership Statuses](/guide/members/statuses).
 
 **Admin Bypass:** WordPress administrators are automatically exempt from all content protection rules. Always test your protection settings in an incognito window as a logged-out visitor, since your admin account will never see restrictions. See [Protected Content](/guide/access-groups/protected-content).
 
@@ -26,10 +26,9 @@ This glossary defines common terms used throughout the Fluent Members documentat
 
 **Cancellation Mode (Pro):** A setting that controls when a cancelled subscription takes effect either immediately (access ends right away) or at the end of the current billing period (access continues until the next renewal date). See [Subscription Cancellation Modes](/guide/transactions/cancellation-modes).
 
-**Cancelled:** A membership status that permanently revokes access, set when a member cancels, an admin cancels, or a payment provider triggers a cancellation. The member's record is kept for history, but they can no longer access protected content. See [Membership Statuses](/reference/membership-statuses).
+**Cancelled:** A membership status that permanently revokes access, set when a member cancels, an admin cancels, or a payment provider triggers a cancellation. The member's record is kept for history, but they can no longer access protected content. See [Membership Statuses](/guide/members/statuses).
 
-**Chain Map:** A reference diagram showing how Fluent Members' three core objects connect: **Membership Level (the key) → Access Group (the lock) → Content (what is protected)**. Understanding this chain is the fastest way to troubleshoot why a member can or cannot see something. See [Chain Map](/reference/chain-map).
-
+**Chain Map:** A reference diagram showing how Fluent Members' three core objects connect: **Membership Level (the key) → Access Group (the lock) → Content (what is protected)**. Understanding this chain is the fastest way to troubleshoot why a member can or cannot see something.
 **Checkout:** The page or flow where a visitor pays for a membership. Checkout is handled by whichever payment plugin you have connected FluentCart, Fluent Forms, Paymattic, WooCommerce, or native Stripe (Pro). See [Pricing: Paywalls](/guide/levels/pricing-paywalls).
 
 **Content Dripping:** A schedule that releases content gradually over time after a member joins. Instead of unlocking everything at once, specific posts or pages become available a set number of days after the member's start date. See [Content Drip](/guide/levels/content-drip).
@@ -52,7 +51,7 @@ This glossary defines common terms used throughout the Fluent Members documentat
 
 **Entire Website Restriction:** An Access Group setting that locks down every page on the site homepage, archives, and all posts rather than individually selected content. Any visitor without the required membership level is redirected or shown a restriction message everywhere. See [Protected Content](/guide/access-groups/protected-content).
 
-**Expired:** A membership status that is set automatically when a membership's end date passes. An expired member loses access but their record is kept; they can renew to restore access. See [Membership Statuses](/reference/membership-statuses).
+**Expired:** A membership status that is set automatically when a membership's end date passes. An expired member loses access but their record is kept; they can renew to restore access. See [Membership Statuses](/guide/members/statuses).
 
 ## F
 
@@ -70,8 +69,7 @@ This glossary defines common terms used throughout the Fluent Members documentat
 
 ## H
 
-**Hook:** A WordPress extension point that lets developers run their own code when specific Fluent Members events occur. Actions fire at events like enrollment or cancellation; filters let you modify values like error messages or redirect URLs. See [Developer Hooks](/reference/developer-hooks).
-
+**Hook:** A WordPress extension point that lets developers run their own code when specific Fluent Members events occur. Actions fire at events like enrollment or cancellation; filters let you modify values like error messages or redirect URLs.
 ## I
 
 **Individual Level:** The standard membership type where each member purchases their own access independently. Contrast with Corporate Membership, where one purchaser buys seats for a team. See [Creating a Level](/guide/levels/creating).
@@ -96,12 +94,11 @@ This glossary defines common terms used throughout the Fluent Members documentat
 
 **Membership Level:** The plan a member buys or is assigned. It connects to one or more Access Groups (the content the member can see) and contains one or more Pricing Plans (how payment is handled). See [Membership Levels](/guide/levels/).
 
-**Membership Status:** The current state of a membership active, trial, pending, expired, suspended, or cancelled. Status controls whether the member can access protected content at any given moment. See [Membership Statuses](/reference/membership-statuses).
+**Membership Status:** The current state of a membership active, trial, pending, expired, suspended, or cancelled. Status controls whether the member can access protected content at any given moment. See [Membership Statuses](/guide/members/statuses).
 
 **MembershipUser:** The internal record that ties a WordPress user to a Membership Level. When documentation or error messages refer to a "membership user," they mean this record, not the WordPress user account itself. See [Member Detail](/guide/members/detail).
 
-**Merge Tag:** A placeholder in email templates, for example `{{user_name}}` or `{{membership_level}}`, that Fluent Members replaces with real member data at the time of sending. See [Email Merge Tags](/reference/email-merge-tags).
-
+**Merge Tag:** A placeholder in email templates, for example `{{user_name}}` or `{{membership_level}}`, that Fluent Members replaces with real member data at the time of sending.
 **Migration:** The process of importing members, levels, and subscriptions from another membership plugin (Paid Memberships Pro, MemberPress, or Restrict Content Pro) into Fluent Members using the built-in migration wizard. See [Migration: Overview](/guide/settings/migration/).
 
 ## N
@@ -128,7 +125,7 @@ This glossary defines common terms used throughout the Fluent Members documentat
 
 **Paywall:** A link between a payment product in an external plugin and a Membership Level. When the customer completes the purchase through that product, Fluent Members automatically grants them the corresponding membership. See [Pricing: Paywalls](/guide/levels/pricing-paywalls).
 
-**Pending:** A membership status that means a payment has been started but not yet confirmed. The member has no access while pending; access is granted once the payment provider confirms payment. See [Membership Statuses](/reference/membership-statuses).
+**Pending:** A membership status that means a payment has been started but not yet confirmed. The member has no access while pending; access is granted once the payment provider confirms payment. See [Membership Statuses](/guide/members/statuses).
 
 **Pricing Plan:** One purchasing option attached to a Membership Level, for example a monthly plan or an annual plan. Each plan specifies the payment provider, price, billing interval, and whether a free trial is offered. See [Pricing: Native Payment](/guide/levels/pricing-native).
 
@@ -152,8 +149,7 @@ This glossary defines common terms used throughout the Fluent Members documentat
 
 **Setup Intent (Pro):** The Stripe object used when a member updates their payment method without making a new charge. It authorizes and saves the new card without processing a payment. See [Portal: Updating Payment Method](/guide/members/portal/updating-payment-method).
 
-**Shortcode:** A WordPress tag that outputs dynamic content. Fluent Members provides `[fluent_membership_level id="X"]` to display a pricing card and `[fluent_member_portal]` to display the member self-service dashboard. See [Shortcode Reference](/reference/shortcode-reference).
-
+**Shortcode:** A WordPress tag that outputs dynamic content. Fluent Members provides `[fluent_membership_level id="X"]` to display a pricing card and `[fluent_member_portal]` to display the member self-service dashboard.
 **Start Date:** The date a membership record became active. Content drip timers count forward from this date to determine when individual pieces of content should unlock for that member. See [Content Drip](/guide/levels/content-drip).
 
 **Stripe:** The payment processor used by Fluent Members Pro for its built-in checkout and subscription billing. Connect Stripe with API keys in Settings → Payment Settings → Stripe; Stripe then sends webhooks to keep subscription records in sync. See [Stripe Setup](/guide/settings/payment-settings/stripe-setup).
@@ -168,7 +164,7 @@ This glossary defines common terms used throughout the Fluent Members documentat
 
 **Transaction (Pro):** A single billing event a charge, a renewal, or a refund. Transactions are listed in the Transactions screen and belong to a parent Order record. See [Transactions](/guide/transactions/).
 
-**Trial:** A membership status for members in a free trial period. Trial members have full content access; when the trial ends the membership transitions to active (if a payment method is on file) or expired (if not). See [Membership Statuses](/reference/membership-statuses).
+**Trial:** A membership status for members in a free trial period. Trial members have full content access; when the trial ends the membership transitions to active (if a payment method is on file) or expired (if not). See [Membership Statuses](/guide/members/statuses).
 
 **Trial Period:** A set number of free days offered at the start of a paid subscription. During the trial the member's status is trial; after it ends the first charge is processed and the status becomes active. See [Pricing: Native Payment](/guide/levels/pricing-native).
 

@@ -10,8 +10,8 @@ hero:
       text: Get Started
       link: /guide/getting-started/introduction
     - theme: alt
-      text: Reference
-      link: /guide/getting-started/glossary
+      text: Dev Docs
+      link: https://developers.fluentmembers.com/
 
 features:
   - icon: "🚀"

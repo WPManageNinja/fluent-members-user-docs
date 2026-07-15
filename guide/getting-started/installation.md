@@ -53,7 +53,7 @@ Use this method if you prefer direct server access or if the WordPress dashboard
 
 ::: warning Before you troubleshoot
 - **Database setup:** Upon activation, the plugin automatically creates six database tables (prefixed with `fmem_`) to store your membership data. Your existing posts, pages, and theme are not affected.
-- **Plugin conflicts:** If the Fluent Members admin screen looks broken after activation (blank panels or missing menus), temporarily disable your caching or security plugin, clear your browser cache, and reload the page. If problems continue, see [Troubleshooting](/reference/troubleshooting).
+- **Plugin conflicts:** If the Fluent Members admin screen looks broken after activation (blank panels or missing menus), temporarily disable your caching or security plugin, clear your browser cache, and reload the page. If problems continue, see [Get Support](/guide/help-support/get-support).
 :::
 
 Once installed and verified, you are ready to start creating membership levels and protecting your WordPress content. Continue with the [Quick Start](/guide/getting-started/quick-start) guide to build your first site in about 10 minutes.

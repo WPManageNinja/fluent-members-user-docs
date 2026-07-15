@@ -136,7 +136,6 @@ export default defineConfig({
 
     nav: [
       { text: 'User Docs', link: '/' },
-      { text: 'Reference', link: '/reference/chain-map' },
       { text: 'Changelog', link: '/changelog' },
       { text: 'Dev Docs', link: 'https://developers.fluentmembers.com/' },
       { text: 'Website', link: 'https://fluentmembers.com' }
@@ -144,21 +143,7 @@ export default defineConfig({
 
     sidebar: {
       '/guide/': guideSidebar,
-      '/changelog': guideSidebar,
-
-      '/reference/': [
-        {
-          text: 'Reference',
-          items: [
-            { text: 'Chain Map', link: '/reference/chain-map' },
-            { text: 'Membership Statuses', link: '/reference/membership-statuses' },
-            { text: 'Shortcode Reference', link: '/reference/shortcode-reference' },
-            { text: 'Email Merge Tags', link: '/reference/email-merge-tags' },
-            { text: 'Troubleshooting', link: '/reference/troubleshooting' },
-            { text: 'Developer Hooks', link: '/reference/developer-hooks' }
-          ]
-        }
-      ]
+      '/changelog': guideSidebar
     },
 
     footer: {
