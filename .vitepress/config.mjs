@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
+import { zoomablePlugin } from './theme/plugin-zoomable'
 
 const guideSidebar = [
   {
@@ -106,6 +107,7 @@ export default defineConfig({
   markdown: {
     config(md) {
       md.use(tabsMarkdownPlugin)
+      md.use(zoomablePlugin)
     }
   },
 
