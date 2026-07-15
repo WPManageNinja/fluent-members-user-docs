@@ -1,6 +1,6 @@
 # Frequently Asked Questions
 
-Quick answers to the most common questions about Fluent Members. If your answer is not here, see [Troubleshooting](/reference/troubleshooting) or open a ticket at [Get Support](/guide/help-support/get-support).
+Quick answers to the most common questions about Fluent Members. If your answer is not here, open a ticket at [Get Support](/guide/help-support/get-support).
 
 ## General
 
@@ -16,7 +16,7 @@ WordPress 6.0+ and PHP 7.4+. Tested up to WordPress 6.9.
 
 ### Does Fluent Members Work With Any Theme?
 
-Yes. The plugin uses standard WordPress hooks and outputs no theme-specific markup. If you notice a conflict, see [Troubleshooting](/reference/troubleshooting).
+Yes. The plugin uses standard WordPress hooks and outputs no theme-specific markup. If you notice a conflict, see [Get Support](/guide/help-support/get-support).
 
 ## Setup
 
@@ -94,11 +94,11 @@ Yes, edit the subject and body of each notification from **Settings → Email Co
 
 ### Can I Add Custom Event-Based Notifications (Cancel, Upgrade, etc.)?
 
-Not from the admin UI. Developers can register additional notifications via the `EmailNotifications` registry; see [Developer Hooks](/reference/developer-hooks). For production use, FluentCRM is the recommended approach: hook into lifecycle actions like `fluent_members/membership_cancelled` and send branded emails from there.
+Not from the admin UI. Developers can register additional notifications via the `EmailNotifications` registry. For production use, FluentCRM is the recommended approach: hook into lifecycle actions like `fluent_members/membership_cancelled` and send branded emails from there.
 
 ### My Emails Are Not Arriving — What Do I Check?
 
-See [Troubleshooting](/reference/troubleshooting). The most common cause is a misconfigured From address or missing SMTP plugin. Set up your sender in **Settings → Email Configuration → Mailing Settings** and install [FluentSMTP](https://wordpress.org/plugins/fluent-smtp/) for reliable delivery.
+The most common cause is a misconfigured From address or missing SMTP plugin. Set up your sender in **Settings → Email Configuration → Mailing Settings** and install [FluentSMTP](https://wordpress.org/plugins/fluent-smtp/) for reliable delivery.
 
 ## Payments
 

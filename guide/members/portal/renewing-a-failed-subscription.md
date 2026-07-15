@@ -113,4 +113,4 @@ Same as [Update Payment Method](./updating-payment-method), this is member-only 
 
 **Recommended reading:**
 - [Stripe Setup](/guide/settings/payment-settings/stripe-setup): confirm the connection.
-- [Membership Statuses](/reference/membership-statuses), `past_due` vs `expired` explained.
+- [Status Reference](/guide/members/statuses), `past_due` vs `expired` explained.

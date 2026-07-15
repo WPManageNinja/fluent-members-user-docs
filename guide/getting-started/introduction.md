@@ -4,7 +4,7 @@
 
 This page gives you the big picture. In the end, you'll understand what Fluent Members does, whether it fits what you're building, and how the main pieces fit together.
 
-## What It Does, in Plain English
+## What It Does
 
 Fluent Members does three things:
 

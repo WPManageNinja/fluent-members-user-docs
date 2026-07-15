@@ -108,4 +108,4 @@ Nothing, this flow is member-only. Admins can't update a member's card on their 
 
 **Recommended reading:**
 - [Stripe Setup](/guide/settings/payment-settings/stripe-setup): make sure Stripe is connected first.
-- [Membership Statuses](/reference/membership-statuses): understand `past_due` and `expired`.
+- [Status Reference](/guide/members/statuses): understand `past_due` and `expired`.
