@@ -113,6 +113,10 @@ export default defineConfig({
   description: 'The official knowledge base for the Fluent Members WordPress plugin.',
   cleanUrls: true,
 
+  // Internal working material (KB chunks + audit reports), not published pages.
+  // Excluded from the build so their raw {{ }} examples don't hit the Vue compiler.
+  srcExclude: ['member/**', 'README.md'],
+
   head: [
     ['meta', { name: 'theme-color', content: '#6B35E8' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
