@@ -21,16 +21,16 @@ The wizard opens on **Welcome to FluentMembers**, "Let's create your first membe
 
 **Create a Membership:**
 
-- **Membership Title**: the name members will see on pricing pages and in their portal. Example: `Premium Membership`, `Gold Plan`.
+- **Membership Title**: The name members will see on pricing pages and in their portal. Example: `Premium Membership`, `Gold Plan`.
 - **Type**: choose how this membership works:
-  - **Individual**: a single-user membership plan. Selected by default.
-  - **Corporate**: a multi-seat plan for teams. See [Corporate Memberships](/guide/levels/corporate-memberships).
+  - **Individual**: A single-user membership plan. Selected by default.
+  - **Corporate**: A multi-seat plan for teams. See [Corporate Memberships](/guide/levels/corporate-memberships).
 
 You can change either field later. Click **Next Step** (bottom right) to continue, or **Skip All** (bottom left) to jump straight to the Step 4 summary.
 
-::: tip You can always come back
-This step only creates the Level shell. You add pricing plans, content rules, and drip schedules from **Fluent Members → Levels** after the wizard completes.
-:::
+> [!Note]
+> This step only creates the Level shell. You add pricing plans, content rules, and drip schedules from **Fluent Members → Levels** after the wizard completes.
+
 
 ![Step 1 of 4: Welcome to FluentMembers, showing the Membership Title field and Individual/Corporate type selector](/images/getting-started/quick-start/step-1.webp)
 
@@ -46,9 +46,9 @@ Use the **Select Type** dropdown to choose what gets locked down, specific pages
 
 Choose what happens when someone without access tries to view this content, from the **Action for Unauthorized Users** dropdown. The wizard defaults to **Display a custom message**, which reveals three more fields:
 
-- **Custom Message**: shown in place of the content. Defaults to `This content is for members only. Please join to get access.`
-- **Button Text**: the call-to-action label. Defaults to `Subscribe Now`.
-- **Button URL**: where that button sends the visitor, search for an existing page or paste a URL directly.
+- **Custom Message**: Shown in place of the content. Defaults to `This content is for members only. Please join to get access.`
+- **Button Text**: Add the call-to-action label. Defaults to `Subscribe Now`.
+- **Button URL**: Where that button sends the visitor, search for an existing page or paste a URL directly.
 
 The other unauthorized-access actions (redirect, partial preview, login popup, hide entirely) are configured the same way from the Access Group's own settings after the wizard. See [Setting Up Unauthorized Access Rules](/guide/access-groups/unauthorized-access).
 
