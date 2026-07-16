@@ -1,64 +1,46 @@
-# Transactions
+# Orders
 
-The **Transactions** screen is your billing ledger one row per billing event (initial charge, renewal, refund). Use it to confirm a payment landed, look up a charge by member or ID, or issue a refund directly from the admin.
+**Orders** is the Pro billing hub. It replaces the old flat Transactions ledger with two focused views: **Subscriptions** for recurring billing and **One-Time Purchases** for single, non-recurring purchases. Every payment, refund, and status change lives inside the record it belongs to instead of one long combined list.
 
 > [!Note]
-> The Transactions screen is only available with Fluent Members Pro. The **Transactions** link appears in the top navigation only when Pro is active.
+> Orders is only available with Fluent Members Pro. The **Orders** link appears in the top navigation only when Pro is active.
 
+## Access Orders
 
-## Access Transactions
+In your WordPress admin, go to **Fluent Members → Orders** using the top navigation bar. Orders opens two sub-views:
 
-In your WordPress admin, go to **Fluent Members → Transactions** using the top navigation bar.
+- **[Subscriptions](/guide/transactions/subscriptions)**: recurring memberships, native (Stripe, PayPal) or migrated from PMPro, MemberPress, or Kadence Memberships.
+- **[One-Time Purchases](/guide/transactions/one-time)**: memberships bought once, with no recurring billing behind them, manual grants, migrated one-off orders, and single native or paywall-integration purchases.
 
-## Filter Tabs
+## Why Two Views Instead of One List
 
-The tab bar at the top filters the list by transaction status:
+A subscription and a one-time purchase behave differently: a subscription can be cancelled or renewed and has a next billing date, a one-time purchase has neither. Splitting them means each view only shows the columns and actions that actually apply, instead of a single table full of blank cells.
 
-| Tab | Shows |
-|---|---|
-| **All** | Every transaction regardless of status |
-| **Paid** | Successful charges (money collected) |
-| **Pending** | Payments awaiting confirmation (e.g. 3D Secure in progress) |
-| **Failed** | Charges that did not succeed (declined card, expired card) |
-| **Refunded** | Charges where the amount was returned to the member |
+## Where Transaction History Went
 
-## Columns
-
-- **ID**: The unique transaction row ID. Use this when contacting support or referencing a specific charge.
-- **User**: The member's display name and email address. Click the name to open their profile.
-- **Level**: The Membership Level the payment was for.
-- **Type**: The nature of the transaction `charge` (initial payment), `renewal` (recurring), or `refund`.
-- **Amount**: The exact amount processed for this transaction.
-- **Status**: A status badge showing `paid`, `pending`, `failed`, or `refunded`.
-- **Payment Method**: The gateway used, including card type and masked card number (e.g. Visa \*\*\*\*4242).
-- **Date**: The timestamp when the billing event occurred, in your site's timezone.
-
-![Transactions screen](/images/transactions/index/transaction-dashboard-1.webp)
-
-## Where Transactions Come From
-
-Transactions are written automatically you do not create them manually:
-
-- **Stripe (native checkout)**: every Stripe webhook event (charge, renewal, refund) creates or updates a transaction row
-- **Paywall integrations (FluentCart, WooCommerce, etc.)**: successful payment hooks write a transaction row so all sources appear in one ledger
-- **Refunds**: when you refund a transaction from this screen, or when Stripe sends a `charge.refunded` webhook event
+There's no longer a standalone Transactions screen. Every charge, renewal, and refund is now shown inside the **Transaction History** panel on that record's detail page, alongside a **Timeline** that merges billing events with subscription lifecycle events (created, trial ended, cancelled, expired) into one reverse-chronological feed. Open any row in Subscriptions or One-Time Purchases to see it.
 
 ## Issuing a Refund
 
-Find the transaction in the **Paid** tab, open the action menu on the row, and click **Refund**. Enter the amount (full or partial) and confirm. See [Refunds](/guide/transactions/refunds) for the complete walkthrough.
+Refunds are still issued per-transaction, from inside a Subscription's or a One-Time Purchase's detail view. Open the record, find the transaction in its Transaction History panel, and use the refund action on that row. See [Refunds](/guide/transactions/refunds) for the complete walkthrough.
 
 ::: warning Refunds do not change membership status
 Issuing a refund does not automatically expire or cancel the member's access. If you want to revoke access, update the member's status manually. See [Suspending & Cancelling](/guide/members/suspending-and-cancelling).
 :::
 
-## Searching
+## Where Orders Come From
 
-Use the search field to filter by member name, email address, or transaction ID. Search applies within the currently active tab if a search returns nothing, switch to the **All** tab first.
+Orders (and the transactions behind them) are written automatically, you do not create them manually:
 
-## How Transactions Relate to Members
+- **Stripe or PayPal native checkout (Pro)**: every webhook event (charge, renewal, refund) creates or updates the underlying transaction record.
+- **Paywall integrations (FluentCart, WooCommerce, Fluent Forms, Paymattic)**: successful payment hooks write a transaction so all sources appear in the same views.
+- **Migration**: importing from PMPro, MemberPress, or Kadence Memberships carries over historical orders, subscriptions, and transactions.
+- **Manual grants**: memberships an admin adds by hand from the Members screen appear under One-Time Purchases with no payment attached.
 
-Every transaction is linked to a member, a Membership Level, and (for renewals) the subscription that triggered the charge. Click the **User** column in any row to jump to that member's detail page.
+## How Orders Relate to Members
 
-::: tip No transactions after a recent Stripe charge?
-The most common cause is a missing or misconfigured webhook. See [Stripe Setup](/guide/settings/payment-settings/stripe-setup).
+Every subscription and one-time purchase is linked to a member, a Membership Level, and, on the detail page, that member's other memberships and lifetime value. Open the **Member** column on any row to jump to that member's detail page.
+
+::: tip No orders after a recent Stripe or PayPal charge?
+The most common cause is a missing or misconfigured webhook. See [Stripe Setup](/guide/settings/payment-settings/stripe-setup) or [PayPal Setup](/guide/settings/payment-settings/paypal-setup).
 :::

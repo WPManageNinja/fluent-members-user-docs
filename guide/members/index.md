@@ -18,16 +18,17 @@ Click any row to open that member's [detail page](./detail) where you can view a
 
 ### Filter Tabs
 
-Use the tabs at the top of the table to filter the list by membership status:
+Use the tabs at the top of the table to filter the list by membership status. The list opens on **Members**, every WordPress user who holds at least one membership record, of any status.
 
-- **All**: Shows every user regardless of status.
+- **Members**: Shows every user with a membership record (active, trial, pending, expired, suspended, cancelled, or upgraded).
 - **Active**: Shows only users with an `active` or `trial` membership.
 - **Expired**: Shows only users whose membership has expired.
-- **More views ▾**: Opens a dropdown with additional filters: Pending, Cancelled, and Suspended.
+- **No Membership**: Shows WordPress users who have never held a membership, useful for finding who to target with a promotion.
+- **More views ▾**: Opens a dropdown with additional filters: Pending, Cancelled, Suspended, and Upgraded.
 
 ### Search
 
-Use the **Search by name or email** field in the top-right corner of the table to find a specific member. The search applies to the currently selected tab. If you are on the **Active** tab, results will only include active members. Switch to **All** if you are not sure which status the member is in.
+Use the **Search by name or email** field in the top-right corner of the table to find a specific member. The search applies to the currently selected tab. If you are on the **Active** tab, results will only include active members. Switch to **Members** if you are not sure which status the member is in, or to **No Membership** if you're not sure they have a membership at all.
 
 ### Pagination
 

@@ -40,10 +40,10 @@ features:
     link: /guide/members/
     linkText: Manage members
   - icon: "💳"
-    title: Transactions (Pro)
-    details: The money ledger, Succeeded, Pending, Failed, Refunded. Refunds and subscription cancellation modes.
+    title: Orders (Pro)
+    details: Subscriptions and One-Time Purchases, each with its own transaction history and timeline. Refunds and subscription cancellation modes.
     link: /guide/transactions/
-    linkText: See the ledger
+    linkText: See your orders
   - icon: "⚙️"
     title: Settings
     details: General, Partial Content Lock, Login Popup, Payment Settings (Stripe), Migration from PMPro / MemberPress / Content Restriction Pro, and Email Configuration.

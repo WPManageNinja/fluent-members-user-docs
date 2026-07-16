@@ -64,10 +64,12 @@ const guideSidebar = [
     ]
   },
   {
-    text: 'Transactions (Pro)',
+    text: 'Orders (Pro)',
     collapsed: true,
     items: [
-      { text: 'Transactions List', link: '/guide/transactions/' },
+      { text: 'Orders Overview', link: '/guide/transactions/' },
+      { text: 'Subscriptions', link: '/guide/transactions/subscriptions' },
+      { text: 'One-Time Purchases', link: '/guide/transactions/one-time' },
       { text: 'Filters & Search', link: '/guide/transactions/filters-and-search' },
       { text: 'Refunds', link: '/guide/transactions/refunds' },
       { text: 'Subscription Cancellation Modes', link: '/guide/transactions/cancellation-modes' }

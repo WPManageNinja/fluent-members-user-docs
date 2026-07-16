@@ -14,7 +14,7 @@ This glossary defines common terms used throughout the Fluent Members documentat
 
 ## B
 
-**Billing:** The collective term for all financial activity on a membership, charges, renewals, refunds, and payment method updates. Billing history is visible in the Transactions screen for Pro users. See [Transactions](/guide/transactions/).
+**Billing:** The collective term for all financial activity on a membership, charges, renewals, refunds, and payment method updates. Billing history is visible in the Transaction History panel on each subscription's or one-time purchase's detail page for Pro users. See [Orders](/guide/transactions/).
 
 **Block Email Editor (Pro):** A visual editor that lets you design email notification templates using Gutenberg blocks instead of a plain text area. Build emails from paragraphs, images, and buttons, then preview them before saving. See [Email Notifications](/guide/settings/email-configuration/email-notifications).
 
@@ -110,7 +110,9 @@ This glossary defines common terms used throughout the Fluent Members documentat
 
 ## O
 
-**Order (Pro):** A record of a purchase event an initial payment, a renewal, or a refund. Each order belongs to one member and may contain one or more Transactions. See [Transactions](/guide/transactions/).
+**One-Time Purchase (Pro):** A membership with no recurring subscription behind it, a single native or paywall payment, a manual grant, or a non-recurring migrated order. Listed in its own view separate from Subscriptions. See [One-Time Purchases](/guide/transactions/one-time).
+
+**Order (Pro):** A record of a purchase event an initial payment, a renewal, or a refund. Each order belongs to one member and backs either a Subscription or a One-Time Purchase. See [Orders](/guide/transactions/).
 
 **Overlay:** The visual layer placed over the teaser portion of a post in Partial Content Preview mode. It shows a customizable message and a call-to-action button, signalling that more content is available after purchasing a membership. See [Partial Content Lock](/guide/settings/partial-content-lock).
 
@@ -138,7 +140,7 @@ This glossary defines common terms used throughout the Fluent Members documentat
 
 ## R
 
-**Recurring Billing:** A payment pattern where a member is automatically charged on a set schedule, monthly, annually, or otherwise for as long as their subscription is active. Requires WooCommerce Subscriptions or Fluent Members Pro with Stripe. See [Transactions](/guide/transactions/).
+**Recurring Billing:** A payment pattern where a member is automatically charged on a set schedule, monthly, annually, or otherwise for as long as their subscription is active. Requires WooCommerce Subscriptions or Fluent Members Pro with native Stripe or PayPal. See [Subscriptions](/guide/transactions/subscriptions).
 
 **Redirect:** An Unauthorized Access action that silently sends non-members to a different page, such as a pricing page or login page instead of showing a restriction message on the current page. See [Unauthorized Access](/guide/access-groups/unauthorized-access).
 
@@ -160,13 +162,13 @@ This glossary defines common terms used throughout the Fluent Members documentat
 
 **Sub-member (Pro):** A team member in a Corporate Membership whose access is provided by a Parent Member. Sub-members can view protected content but cannot manage payments; if the parent's membership ends, all sub-members lose access. See [Corporate Memberships](/guide/levels/corporate-memberships).
 
-**Subscription (Pro):** A recurring billing agreement that automatically renews a membership on a set schedule. Subscriptions are managed through Stripe and kept in sync with the membership record in real time. See [Transactions](/guide/transactions/).
+**Subscription (Pro):** A recurring billing agreement that automatically renews a membership on a set schedule. Native subscriptions are managed through Stripe or PayPal and kept in sync with the membership record in real time; migrated subscriptions from PMPro, MemberPress, or Kadence Memberships are shown for record-keeping only. See [Subscriptions](/guide/transactions/subscriptions).
 
 **Suspended:** A membership status that revokes content access temporarily without cancelling the underlying billing. An admin can suspend a member for a policy reason and restore access by changing the status back to active. See [Suspending & Cancelling](/guide/members/suspending-and-cancelling).
 
 ## T
 
-**Transaction (Pro):** A single billing event a charge, a renewal, or a refund. Transactions are listed in the Transactions screen and belong to a parent Order record. See [Transactions](/guide/transactions/).
+**Transaction (Pro):** A single billing event a charge, a renewal, or a refund. Transactions are listed in the Transaction History panel of the Subscription or One-Time Purchase they belong to. See [Orders](/guide/transactions/).
 
 **Trial:** A membership status for members in a free trial period. Trial members have full content access; when the trial ends the membership transitions to active (if a payment method is on file) or expired (if not). See [Membership Statuses](/reference/membership-statuses).
 
@@ -178,7 +180,7 @@ This glossary defines common terms used throughout the Fluent Members documentat
 
 ## W
 
-**Webhook:** An automatic notification from Stripe to your site that reports payment events a successful charge, a failed renewal, a cancellation, or a refund. Fluent Members uses webhooks to keep membership statuses in sync with Stripe in real time. See [Stripe Setup](/guide/settings/payment-settings/stripe-setup).
+**Webhook:** An automatic notification from Stripe or PayPal to your site that reports payment events a successful charge, a failed renewal, a cancellation, or a refund. Fluent Members uses webhooks to keep membership statuses in sync with the payment provider in real time. See [Stripe Setup](/guide/settings/payment-settings/stripe-setup) or [PayPal Setup](/guide/settings/payment-settings/paypal-setup).
 
 **WooCommerce (Pro):** A WordPress e-commerce plugin that can handle payment for Fluent Members Pro. Link WooCommerce products or variations to Membership Levels; completing the purchase activates the corresponding membership. See [Pricing: Paywalls](/guide/levels/pricing-paywalls).
 

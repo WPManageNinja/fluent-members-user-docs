@@ -81,7 +81,7 @@ If it collides, ask for a distinct slug. The file will be:
 Open `.vitepress/config.mjs`. Show the existing sidebar group names for the chosen zone.
 ```
 # Guide groups: Getting Started, Dashboard, Levels, Access Groups, Members,
-#               Transactions (Pro), Settings
+#               Orders (Pro), Settings
 # Reference groups: Reference (single group)
 ```
 Ask:
@@ -217,7 +217,7 @@ Dashboard         → guide/dashboard.md
 Levels            → guide/levels/
 Access Groups     → guide/access-groups/ (incl. gutenberg-block/ sub-pages)
 Members           → guide/members/ (incl. portal/ sub-pages)
-Transactions(Pro) → guide/transactions/
+Orders (Pro) → guide/transactions/
 Settings          → guide/settings/ (incl. payment-settings/, migration/, email-configuration/)
 ```
 

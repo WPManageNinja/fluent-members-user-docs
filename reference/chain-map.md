@@ -40,7 +40,7 @@ What happens when a real visitor clicks Subscribe.
 3. Payment confirms
 4. Webhook (Stripe or PayPal, Pro) or integration event (FluentCart, Forms, Paymattic) fires
 5. Membership row created → [Member appears in Members list](/guide/members/)
-6. `fluent_members/member_enrolled` fires
+6. `fluent_members/membership_level_assigned` fires
 7. [Welcome Email sent](/guide/settings/email-configuration/email-notifications)
 8. Member visits protected content → sees it
 
@@ -125,7 +125,7 @@ What happens at renewal time with zero UI interaction.
 
 1. Stripe (or PayPal) charges the member at period end
 2. The provider's renewal webhook reaches Fluent Members: Stripe sends `invoice.payment_succeeded`, PayPal sends **Payment sale completed**
-3. The subscription record's status stays `active`, and `fluent_members/subscription_renewed` fires (Pro)
+3. The subscription record's status stays `active`, and `fluent_members/membership_renewed` fires (Pro)
 4. Local `expires_at` extends to the new period end
 5. Member stays Active; no notification by default
 
@@ -144,7 +144,7 @@ When the renewal charge fails and the member needs to fix it.
 
 1. Stripe (or PayPal) charges the member → fails
 2. The provider's failure webhook arrives: Stripe sends `invoice.payment_failed`, PayPal sends **Billing subscription suspended**. The subscription is marked `past_due`
-3. Eventually [the cron](/reference/troubleshooting) flips the membership row to `expired` and fires `fluent_members/member_expired`
+3. Eventually [the cron](/reference/troubleshooting) flips the membership row to `expired` and fires `fluent_members/membership_expired`
 4. Member visits [Portal](/guide/members/portal/what-members-see) → sees Expired card + [Renew button](/guide/members/portal/renewing-a-failed-subscription)
 5. Member clicks Renew → Stripe retries on the existing card
 6. *(If card is bad)* Member [updates payment method](/guide/members/portal/updating-payment-method) first → then Renew
@@ -159,13 +159,13 @@ You want a dunning-flow walkthrough, or you're explaining to a customer why thei
 Reversing a payment.
 
 1. Refund request arrives
-2. Admin opens [Transactions list](/guide/transactions/) → [filters by user / amount](/guide/transactions/filters-and-search)
-3. Row kebab → [Refund modal](/guide/transactions/refunds)
-4. Admin sets amount (full or partial) and ticks "Also cancel membership" *(if appropriate)*
-5. Refund fires through `fluent_members/refund_payment_stripe` → Stripe
-6. The Transaction row's status flips to `refunded`; the order status updates too if the refund was full
-7. *(If "Also cancel" ticked)* membership → `Cancelled` → [cascades to children](/guide/levels/corporate-memberships#cascade)
-8. Member sees Cancelled in their Portal; refund lands on their card in 5-10 days
+2. Admin opens [Orders](/guide/transactions/) → Subscriptions or One-Time Purchases → [finds the record](/guide/transactions/filters-and-search)
+3. Opens the record's Transaction History panel → uses the [refund action](/guide/transactions/refunds) on the transaction
+4. Admin sets amount (full or partial); Stripe refunds can pick a reason, PayPal refunds accept a note
+5. Refund fires through `fluent_members/refund_payment_{gateway}` → Stripe or PayPal
+6. The transaction's status flips to `refunded` (or `partially_refunded`); the order status updates too if the refund was full
+7. Refunding does not change membership status by itself; if access should end, cancel or expire the membership separately → [cascades to children](/guide/levels/corporate-memberships#cascade) if corporate
+8. Member sees the refund reflected on their card in 5-10 days
 
 ::: tip Use this map when…
 You need to refund a customer and want to understand the full chain of what changes on the local site and at Stripe.
@@ -200,14 +200,13 @@ For everything Fluent Members doesn't send out of the box.
 1. Recognise: only [Welcome Email](/guide/settings/email-configuration/email-notifications) ships
 2. Install FluentCRM (or your own CRM)
 3. Subscribe to a [lifecycle hook](/reference/developer-hooks):
-   - `fluent_members/member_cancelled`
-   - `fluent_members/member_expired`
-   - `fluent_members/member_suspended`
-   - `fluent_members/member_status_changed` (catches every transition, including renewals via `subscription_renewed` on Pro)
+   - `fluent_members/membership_expired`
+   - `fluent_members/membership_suspended`
+   - `fluent_members/membership_status_updated` (catches every transition, including cancellations, and renewals via `membership_renewed` on Pro)
 4. Build a CRM funnel for each event you care about
 5. Send branded emails from the CRM
 
-Or, for developers, register an additional notification type via `fluent_members/default_notifications` filter.
+For developers, [`fluent_members/prepare_email_template_data`](/reference/developer-hooks) can adjust an existing notification's data before it renders.
 
 ::: tip Use this map when…
 You need to send renewal reminders, "your card failed" notifications, "we miss you" emails, or any transactional message other than the Welcome Email.

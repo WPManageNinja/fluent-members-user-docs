@@ -2,9 +2,9 @@
 
 Every row in the Members list has a **status**. Status decides whether a person can see protected content, whether their email reminders fire, and what an admin can do next.
 
-There are six statuses. This page is the one-stop summary.
+There are seven statuses. This page is the one-stop summary.
 
-## The Six Statuses
+## The Statuses
 
 | Status      | Has access? | What it means                                                                 |
 |-------------|-------------|--------------------------------------------------------------------------------|
@@ -14,6 +14,7 @@ There are six statuses. This page is the one-stop summary.
 | `cancelled` | No          | The member (or admin) cancelled. Access is revoked. Billing has stopped.       |
 | `expired`   | No          | The membership reached its `expires_at` date and the hourly cron flipped it. Access is revoked. |
 | `suspended` | No          | An admin paused this member. Access is revoked but billing is not necessarily stopped. Use for policy violations / payment disputes. |
+| `upgraded`  | No          | The member's old row after an admin moved them to a different level. A new row on the new level takes over access; this row stays for history. |
 
 ## What Moves a Membership Between Statuses
 
@@ -45,6 +46,10 @@ There are six statuses. This page is the one-stop summary.
 - Admin clicks **Suspend** on the member detail.
 - Cascade from a suspended corporate parent.
 
+### Becomes `upgraded`
+- An admin moves a member from their current level to a different one. The old row flips to `upgraded`, a new row is created on the new level, and `fluent_members/membership_upgraded` fires alongside `fluent_members/membership_status_updated`.
+- Cascade: the corporate parent's old row is upgraded, so children cascade to `upgraded` too.
+
 ## What Members See at Each Status
 
 | Status      | Member Portal shows                                  | Restricted content shows                              |
@@ -55,6 +60,7 @@ There are six statuses. This page is the one-stop summary.
 | `cancelled` | "Cancelled" badge, no actions; can re-purchase        | The fallback action                                   |
 | `expired`   | "Expired" badge, **Renew** button if subscription is renewable (Pro) | The fallback action                       |
 | `suspended` | "Suspended" badge, no actions                         | The fallback action                                   |
+| `upgraded`  | Not shown; the member's new row on their current level shows instead | The fallback action, if this old row is somehow the only one checked |
 
 ## What Admin Actions Are Available at Each Status
 
@@ -66,6 +72,7 @@ There are six statuses. This page is the one-stop summary.
 | `cancelled` |        |         | ✅ (if subscription) | ✅ (on past charges) |    |
 | `expired`   |        |         | ✅          | ✅           |               |
 | `suspended` | ✅     |         |             | ✅           | ✅            |
+| `upgraded`  |        |         |             | ✅ (on past charges) |       |
 
 ## Cascade Behaviour
 
@@ -74,6 +81,7 @@ Corporate parent rows propagate their status to every child row in one shot:
 - Parent → `cancelled` → all children → `cancelled`.
 - Parent → `expired` → all children → `expired`.
 - Parent → `suspended` → all children → `suspended`.
+- Parent → `upgraded` → all children → `upgraded`.
 
 Children cannot cancel themselves, but their access lifts and falls with the parent.
 
