@@ -10,12 +10,12 @@ Every screen has a **Skip All** button (bottom left) that jumps straight to the 
 
 | Step | Screen | What it does |
 |---|---|---|
-| 1 of 4 | Welcome to FluentMembers | Create your first Membership: a title and a type |
-| 2 of 4 | Protect Your Content | Choose what this membership restricts and what non-members see |
-| 3 of 4 | Set Up Payments | Connect a paywall integration or preview native billing |
-| 4 of 4 | Almost Done! | Review a summary and set up your Member Portal page |
+| 1 | Welcome to FluentMembers | Create your first Membership: a title and a type |
+| 2 | Protect Your Content | Choose what this membership restricts and what non-members see |
+| 3 | Set Up Payments | Connect a paywall integration or preview native billing |
+| 4 | Almost Done! | Review a summary and set up your Member Portal page |
 
-## Step 1 of 4: Welcome to FluentMembers
+## Step 1: Welcome to FluentMembers
 
 The wizard opens on **Welcome to FluentMembers**, "Let's create your first membership in just a few steps."
 
@@ -34,7 +34,7 @@ This step only creates the Level shell. You add pricing plans, content rules, an
 
 ![Step 1 of 4: Welcome to FluentMembers, showing the Membership Title field and Individual/Corporate type selector](/images/getting-started/quick-start/step-1.webp)
 
-## Step 2 of 4: Protect Your Content
+## Step 2: Protect Your Content
 
 Step 2, **Protect Your Content**, chooses what this membership restricts and what a non-member sees when they hit it.
 
@@ -60,7 +60,7 @@ Leaving **Apply Restriction To** empty is fine, the note on this screen tells yo
 
 ![Step 2 of 4: Protect Your Content, showing the Apply Restriction To dropdown and the Unauthorized Access message, button text, and button URL fields](/images/getting-started/quick-start/step-2.webp)
 
-## Step 3 of 4: Set Up Payments
+## Step 3: Set Up Payments
 
 Step 3, **Set Up Payments**, connects a payment method so you can start selling this membership.
 
@@ -85,7 +85,7 @@ Click **Next Step** to continue, **Go Back** to revisit Step 2, or **Skip All** 
 
 ![Step 3 of 4: Set Up Payments, showing the FluentCart, Fluent Forms, Paymattic, and WooCommerce integration cards with FluentCart selected](/images/getting-started/quick-start/step-3.webp)
 
-## Step 4 of 4: Almost Done!
+## Step 4: Almost Done!
 
 The final screen, **Almost Done!**, summarizes exactly what the wizard set up, so you can see at a glance what's done and what still needs attention:
 
@@ -112,15 +112,11 @@ Once the wizard closes, you land on the Fluent Members dashboard. Here's what to
 
 Go to **Fluent Members → Levels** to see the Level you created, or add another with **+ Add New Level**.
 
-![The Levels screen reached from the Fluent Members sidebar menu](/images/quick-start/create-membership-level.png)
-
 **2. Review your Access Groups**
 
 Go to **Fluent Members → Access Groups** to see the restriction rule the wizard created, or add another with **+ Add New Group**.
 
 See [Protected Content: Restriction Types](/guide/access-groups/protected-content).
-
-![The Access Groups screen reached from the Fluent Members sidebar menu](/images/quick-start/create-access-group.png)
 
 **3. Finish connecting payments**
 
