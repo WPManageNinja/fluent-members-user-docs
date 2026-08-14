@@ -197,7 +197,7 @@ You're moving a real site with paying members and need every step in order.
 
 For everything Fluent Members doesn't send out of the box.
 
-1. Recognise: only [Welcome Email](/guide/settings/email-configuration/email-notifications) ships
+1. Recognise: only three notifications ship out of the box, [Welcome, Expiry, and Suspension](/guide/settings/email-configuration/email-notifications)
 2. Install FluentCRM (or your own CRM)
 3. Subscribe to a [lifecycle hook](/reference/developer-hooks):
    - `fluent_members/membership_expired`
