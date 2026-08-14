@@ -21,15 +21,15 @@ The wizard opens on **Welcome to FluentMembers**, "Let's create your first membe
 
 **Create a Membership:**
 
-- **Membership Title**: The name members will see on pricing pages and in their portal. Example: `Premium Membership`, `Gold Plan`.
+- **Membership Title**: The name members will see on pricing pages and in their portal. Choose something that clearly explains what the plan offers, for example `Premium Membership`, `Gold Plan`, `Pro Membership`, or `VIP Access`.
 - **Type**: choose how this membership works:
-  - **Individual**: A single-user membership plan. Selected by default.
-  - **Corporate**: A multi-seat plan for teams. See [Corporate Memberships](/guide/levels/corporate-memberships).
+  - **Individual**: A single-user membership plan. Selected by default, and the right fit for most membership sites.
+  - **Corporate**: A multi-seat plan for teams, one parent account manages several member seats. See [Corporate Memberships](/guide/levels/corporate-memberships).
 
-You can change either field later. Click **Next Step** (bottom right) to continue, or **Skip All** (bottom left) to jump straight to the Step 4 summary.
+Click **Next Step** (bottom right) to continue, or **Skip All** (bottom left) to jump straight to the Step 4 summary.
 
 > [!Note]
-> This step only creates the Level shell. You add pricing plans, content rules, and drip schedules from **Fluent Members → Levels** after the wizard completes.
+> You can rename the Membership Title anytime later, but the **Type** is locked in the moment you create the Level, Individual and Corporate can't be switched afterward. If you pick the wrong type here, delete the Level and create it again. This step only creates the Level shell; you add pricing plans, content rules, and drip schedules from **Fluent Members → Levels** after the wizard completes.
 
 
 ![Step 1 of 4: Welcome to FluentMembers, showing the Membership Title field and Individual/Corporate type selector](/images/getting-started/quick-start/step-1.webp)
@@ -46,9 +46,9 @@ Use the **Select Type** dropdown to choose what gets locked down, specific pages
 
 Choose what happens when someone without access tries to view this content, from the **Action for Unauthorized Users** dropdown. The wizard defaults to **Display a custom message**, which reveals three more fields:
 
-- **Custom Message**: Shown in place of the content. Defaults to `This content is for members only. Please join to get access.`
-- **Button Text**: Add the call-to-action label. Defaults to `Subscribe Now`.
-- **Button URL**: Where that button sends the visitor, search for an existing page or paste a URL directly.
+- **Custom Message**: Shown in place of the content. Defaults to `This content is for members only. Please join to get access.`, but you can swap in your own copy, for example `This article is available to Premium members. Join now to unlock this content.`
+- **Button Text**: Add the call-to-action label. Defaults to `Subscribe Now`; other options that work well are `Join Now`, `Get Access`, or `Become a Member`.
+- **Button URL**: Where that button sends the visitor, search for an existing page (your pricing page, registration page, or login page all work) or paste a URL directly.
 
 The other unauthorized-access actions (redirect, partial preview, login popup, hide entirely) are configured the same way from the Access Group's own settings after the wizard. See [Setting Up Unauthorized Access Rules](/guide/access-groups/unauthorized-access).
 
@@ -110,7 +110,7 @@ Once the wizard closes, you land on the Fluent Members dashboard. Here's what to
 
 **1. Review your Membership Levels**
 
-Go to **Fluent Members → Levels** to see the Level you created, or add another with **+ Add New Level**.
+Go to **Fluent Members → Levels** to see the Level you created, or add another with **+ Create Membership Level**, for example a `Free`, `Basic`, `Pro`, and `Premium` tier, each with its own pricing and access rules.
 
 **2. Review your Access Groups**
 
@@ -133,3 +133,16 @@ See [Portal: Setup](/guide/members/portal/setup).
 **5. Test as a non-member**
 
 Open an incognito browser window, visit a protected page, and confirm you see the restriction message instead of the content. Admins always bypass protection, always test as a logged-out visitor.
+
+## Quick Setup Checklist
+
+Before you send traffic to your membership site, confirm you have:
+
+- Created at least one Membership Level with the correct type
+- Chosen the content to protect and attached it to an Access Group
+- Added a Pricing Plan, if the membership is paid
+- Connected a payment method, native or paywall
+- Created or connected the Member Portal page with the `[fluent_member_portal]` shortcode
+- Tested the protected content as a logged-out visitor
+
+Once every box is checked, your basic Fluent Members setup is ready. From here you can add more Levels, build out additional Access Groups, and layer in Pro features like corporate seats and native billing as your site grows.
