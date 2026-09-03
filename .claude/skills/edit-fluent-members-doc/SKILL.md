@@ -35,6 +35,14 @@ technical accuracy.
 10. **DO NOT** touch unrelated docs.
 11. **DO** before starting, map exactly where in the doc and which section needs to change,
     matching the user journey through that page.
+12. **DO** link naturally, inline. Weave the link's anchor text into the sentence where the
+    concept is actually discussed (e.g. "attach it to an [Access Group](...)"). One link per
+    claim, on its single most relevant page — no link-stuffing.
+13. **DO NOT** write a generic "See [Page](/path)." tacked onto the end of a sentence, and
+    don't repeat the same "See [...]" pattern across entries — vary the phrasing per term/section.
+14. **DO** keep image alt text short: a few words naming the screen or field shown
+    (e.g. "Step 2: Restriction and Unauthorized Access fields"), not a full sentence
+    describing everything visible in the screenshot.
 
 ---
 
@@ -145,10 +153,35 @@ Bold:             **term**   (no inner spaces)
 Pro marker:       Feature Name (Pro)
 ```
 
+### Link style
+```
+Bad  (generic, repeated tail):
+  Attach one or more Membership Levels to an Access Group. See [Access Groups](/guide/access-groups/).
+
+Good (inline, natural, varied):
+  Attach one or more Membership Levels to an [Access Group](/guide/access-groups/), the key that unlocks it.
+
+- One link per claim, on its single most relevant page — don't link-stuff a sentence.
+- Anchor text is the words already in the sentence, not a bolted-on "See X" clause.
+- Vary the surrounding phrasing per term/section instead of one repeated template.
+```
+
+### Image alt text
+```
+Bad  (long descriptive caption):
+  ![Step 2 of 4: Protect Your Content, showing the Apply Restriction To dropdown and the
+   Unauthorized Access message, button text, and button URL fields](...)
+
+Good (short, a few words):
+  ![Step 2: Restriction and Unauthorized Access fields](...)
+```
+
 ### Key Principles
 1. **In place only** — same path, same sidebar link.
 2. **Load the chunk first** — verify technical facts from `member/chunks/` before writing.
 3. **Conventions survive edits** — don't regress links/bold/boilerplate.
 4. **Title change ⇒ sidebar text change** (link stays).
 5. **Images live in the doc's own folder.**
-6. **Green build or it's not done.**
+6. **Link inline, not with a bolted-on "See [...]" tail.**
+7. **Alt text is short** — a few words, not a full sentence.
+8. **Green build or it's not done.**

@@ -32,6 +32,12 @@ image folder, wire it into `.vitepress/config.mjs`, and verify with a clean buil
 11. **DO NOT** invent a new category folder or a new sidebar group without asking the user.
 12. **DO NOT** write `** term **` (inner-whitespace bold) — use `**term**`.
 13. **DO** mark Pro-only features with `(Pro)` — both in body text and sidebar `text`.
+14. **DO** link naturally, inline. Weave the link's anchor text into the sentence where the
+    concept is discussed (e.g. "attach it to an [Access Group](...)"). One link per claim, on
+    its single most relevant page — no link-stuffing, and no generic "See [Page](/path)."
+    tacked onto the end of a sentence.
+15. **DO** keep image alt text short: a few words naming the screen or field shown, not a
+    full sentence describing everything visible in the screenshot.
 
 ---
 
@@ -201,6 +207,29 @@ Pro marker:      Feature Name (Pro)
 Build:           npm run docs:build
 ```
 
+### Link style
+```
+Bad  (generic, repeated tail):
+  Attach one or more Membership Levels to an Access Group. See [Access Groups](/guide/access-groups/).
+
+Good (inline, natural, varied):
+  Attach one or more Membership Levels to an [Access Group](/guide/access-groups/), the key that unlocks it.
+
+- One link per claim, on its single most relevant page — don't link-stuff a sentence.
+- Anchor text is the words already in the sentence, not a bolted-on "See X" clause.
+- Vary the surrounding phrasing per term/section instead of one repeated template.
+```
+
+### Image alt text
+```
+Bad  (long descriptive caption):
+  ![Step 2 of 4: Protect Your Content, showing the Apply Restriction To dropdown and the
+   Unauthorized Access message, button text, and button URL fields](...)
+
+Good (short, a few words):
+  ![Step 2: Restriction and Unauthorized Access fields](...)
+```
+
 ### Locate / check
 ```
 Slug unique?     find guide reference -name '<slug>.md'   (must be empty)
@@ -227,4 +256,6 @@ Settings          → guide/settings/ (incl. payment-settings/, migration/, emai
 3. **Sidebar is in config.mjs** — not a separate JSON file; keep valid JS syntax.
 4. **Sidebar is mandatory** — a doc not wired in is invisible in the site nav.
 5. **Never invent a category** — confirm with user if none fits.
-6. **Green build or it's not done.**
+6. **Link inline, not with a bolted-on "See [...]" tail.**
+7. **Alt text is short** — a few words, not a full sentence.
+8. **Green build or it's not done.**
