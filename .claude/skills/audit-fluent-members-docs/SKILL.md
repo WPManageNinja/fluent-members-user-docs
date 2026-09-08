@@ -109,6 +109,14 @@ C8 PRO MARKERS
 
 C9 BUILD
   - npm run docs:build exits 0 with no dead-link warnings.
+
+C10 NOTE FORMAT
+  - Notes must be GitHub-style alerts, not VitePress containers:
+      grep -rn ':::.*info' guide reference   -> expect empty (legacy; should be > [!Note])
+  - Casing must be exactly "[!Note]" (not [!NOTE], [!note], etc.):
+      grep -rn '\[!note\]\|\[!NOTE\]' guide reference  -> expect empty
+  - Every "> [!Note]" line must be followed by at least one "> "-prefixed content line
+    (a note with no body, or a body line missing its "> " prefix, is broken).
 ```
 
 ---
@@ -128,6 +136,7 @@ Print a scored checklist:
 | C7 Bold rule | ✅ / ❌ | ... |
 | C8 Pro markers | ✅ / ❌ | ... |
 | C9 Build | ✅ / ❌ | ... |
+| C10 Note format | ✅ / ❌ | ... |
 
 Summarize total pass/fail. If `FIX_MODE` allows and the user confirms, fix each issue
 via the right skill and re-run the failed checks.
@@ -145,6 +154,7 @@ orphan check:   find guide reference -name '*.md' | sort > /tmp/files.txt \
                 && grep '"link"' .vitepress/config.mjs | sort > /tmp/links.txt
 dup slugs:      find guide reference -name '*.md' -exec basename {} \; | sort | uniq -d
 build:          npm run docs:build
+note format:    grep -rn ':::.*info' guide reference   (legacy container, expect empty)
 ```
 
 ### Path patterns

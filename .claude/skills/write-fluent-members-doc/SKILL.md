@@ -38,6 +38,10 @@ image folder, wire it into `.vitepress/config.mjs`, and verify with a clean buil
     tacked onto the end of a sentence.
 15. **DO** keep image alt text short: a few words naming the screen or field shown, not a
     full sentence describing everything visible in the screenshot.
+16. **DO** write every informational aside as a GitHub-style alert: `> [!Note]` on its own
+    line, content on `> `-prefixed line(s) below it, no bold title/lead-in inside. Reserve
+    `::: tip` (actionable suggestion) and `::: warning` (caution/risk) VitePress containers
+    for those specific cases — never use `::: info`.
 
 ---
 
@@ -204,6 +208,8 @@ Image ref:       ![Alt](/images/<category>/<slug>/<name>.ext)
 
 Bold:            **term**                  (no inner spaces)
 Pro marker:      Feature Name (Pro)
+Note:            > [!Note]
+                 > content on `> `-prefixed lines, no bold title/lead-in
 Build:           npm run docs:build
 ```
 
@@ -228,6 +234,23 @@ Bad  (long descriptive caption):
 
 Good (short, a few words):
   ![Step 2: Restriction and Unauthorized Access fields](...)
+```
+
+### Note format
+```
+Bad  (VitePress container, or a bolded title/lead-in line):
+  ::: info Not sure which you need?
+  The free plugin is fully functional for content protection...
+  :::
+
+Good (GitHub-style alert, content stated directly):
+  > [!Note]
+  > The free plugin is fully functional for content protection and member management.
+
+- `> [!Note]` sits on its own line; every content line below it is prefixed `> `.
+- No bold title/question folded into the note — say the point plainly.
+- `::: tip` (actionable suggestion) and `::: warning` (caution) keep their own VitePress
+  container — this rule only replaces `::: info` / plain informational asides.
 ```
 
 ### Locate / check
@@ -258,4 +281,5 @@ Settings          → guide/settings/ (incl. payment-settings/, migration/, emai
 5. **Never invent a category** — confirm with user if none fits.
 6. **Link inline, not with a bolted-on "See [...]" tail.**
 7. **Alt text is short** — a few words, not a full sentence.
-8. **Green build or it's not done.**
+8. **Notes are `> [!Note]` alerts** — not `::: info`, and no bold title/lead-in inside.
+9. **Green build or it's not done.**

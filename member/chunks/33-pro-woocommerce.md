@@ -2,9 +2,9 @@
 chunk: 33
 category: Pro Features
 subcategory: WooCommerce Integration
-query-triggers: [WooCommerce, woo, WC integration, WooCommerce product, WC_PLUGIN_FILE, woo paywall, woo variants, WooCommerce subscriptions, wc_subscriptions]
-related-chunks: [03, 12, 30]
-source-files: [fluent-members-pro/app/Modules/Integrations/Woocommerce/, fluent-members-pro/app/Http/Routes/api.php]
+query-triggers: [WooCommerce, woo, WC integration, WooCommerce product, WC_PLUGIN_FILE, woo paywall, woo variants, WooCommerce subscriptions, wc_subscriptions, wc_product_ids]
+related-chunks: [03, 04, 12, 30]
+source-files: [fluent-members-pro/app/Modules/Integrations/Woocommerce/Connector.php, fluent-members-pro/app/Modules/Integrations/Woocommerce/Paywalls.php, fluent-members-pro/app/Modules/Integrations/Woocommerce/CustomerPortalIntegration.php, fluent-members-pro/app/Modules/Integrations/Woocommerce/Restrictions.php, fluent-members-pro/app/Modules/Integrations/Woocommerce/Services/InstantCheckoutService.php, fluent-members-pro/app/Modules/Integrations/Woocommerce/Http/Controllers/PaywallController.php, fluent-members-pro/app/Modules/Integrations/Woocommerce/Http/woo_api.php, fluent-members/app/Services/ProviderDataService.php]
 doc-files: [guide/levels/pricing-paywalls.md]
 ---
 
@@ -16,95 +16,67 @@ doc-files: [guide/levels/pricing-paywalls.md]
 defined('WC_PLUGIN_FILE') && defined('FLUENT_MEMBERS_PRO_PLUGIN_VERSION')
 ```
 
-Both WooCommerce AND Fluent Members Pro must be active. Provider key in shortcode: `woo`.
+Both WooCommerce AND Fluent Members Pro must be active. `MembershipLevel::availablePricingTypes()` only offers pricing type `woocommerce` when both are true (see chunk 03). Provider value stored on the membership record: `woocommerce`.
 
 ---
 
-## What it does
+## Two separate roles for WooCommerce
 
-| Feature | Description |
-|---|---|
-| WooCommerce products as paywalls | WC products/variations linked to a Membership Level — member buys product → membership activated |
-| WooCommerce Subscriptions support | WC Subscriptions plugin (or WooPayments recurring) for recurring billing |
-| Pricing card | `[fluent_membership_level]` shows WC product variations as subscribe options |
-| Membership grant on WC order | WC order completed hook → Fluent Members creates/activates membership |
-| WooCommerce My Account tab | Adds Memberships tab to WC My Account page |
+WooCommerce shows up in Fluent Members in two distinct ways:
+
+1. **Paywalls (`Paywalls.php`)** — a WC product/variation, when purchased, grants a Membership Level. This is what `pricing_type = 'woocommerce'` levels use.
+2. **Restriction scope (`Connector.php`)** — Access Groups can restrict WC products/categories/tags/brands/shipping classes directly, independent of whether that level even sells via WooCommerce (see chunk 04's restriction-rule types).
 
 ---
 
-## Variant resolution (from `ShortcodeHandler::getWooVariants()`)
+## Level settings keys (paywall linking)
 
-Source: WooCommerce product model linked to level's `woo_product_ids[]` in level settings.
-
-For each product:
-1. If simple product → one variant
-2. If variable product → one variant per variation
-3. Each variation: `get_permalink()` for checkout_url, `get_price()` for item_price
-4. WC Subscriptions pricing detected via `WC_Subscriptions_Product::get_sign_up_fee()`, `::get_price_string()`, etc.
-
-### Variant shape
-
-```php
-[
-    'id'              => $variation->get_id(),
-    'post_id'         => $product->get_id(),
-    'post_title'      => $product->get_name(),
-    'variation_title' => $variation->get_name(),
-    'checkout_url'    => get_permalink($variation->get_id()),
-    'item_price'      => $variation->get_price(),
-    'formatted_total' => wc_price($variation->get_price()),
-    'other_info'      => [
-        'payment_type'    => 'subscription' | 'one_time',
-        'billing_summary' => string,  // e.g. "$10.00 / month"
-    ],
-    'provider'        => 'woo',
-]
-```
-
----
-
-## Level settings key
+Stored in the Level's `settings` JSON (from `MembershipLevel::PROVIDER_SETTINGS_KEYS['woocommerce']` and read back by `ProviderDataService::getLevelIdsForWcProduct()`):
 
 | Key | Type | Description |
 |---|---|---|
-| `woo_product_ids[]` | int[] | WooCommerce product IDs linked to this level |
+| `wc_product_ids[]` | int[] | WooCommerce product IDs linked to this level |
+| `wc_variation_ids[]` | int[] | Specific variation IDs to restrict to (empty = all variations of a linked variable product) |
 
----
+Managed via Pro's own `woo` route group (not the free `/levels` routes):
 
-## Routes (Pro WooCommerce routes in api.php)
-
-Conditional block: only registered if `defined('WC_PLUGIN_FILE')`.
-
-| Method | Path | Action |
+| Method | Path | Controller@method |
 |---|---|---|
-| GET | `/woocommerce/products` | List WC products available for linking |
-| POST | `/woocommerce/sync` | Sync WC order statuses with membership statuses |
-| GET | `/woocommerce/settings` | Get WC integration settings |
-| POST | `/woocommerce/settings` | Update WC integration settings |
+| GET | `/woo/products/search` | `PaywallController@searchProduct` |
+| GET | `/woo/levels/{levelId}/paywalls` | `PaywallController@getPaywalls` |
+| POST | `/woo/levels/{levelId}/paywalls` | `PaywallController@addPaywall` |
+| DELETE | `/woo/levels/{levelId}/paywalls` | `PaywallController@removePaywall` |
+
+Fires `fluent_members/paywall_added` / `fluent_members/paywall_removed` on link/unlink.
+
+There is no separate `/woocommerce/products`, `/woocommerce/sync`, or `/woocommerce/settings` route — those do not exist in this version.
 
 ---
 
-## Membership grant hook
+## Membership grant flow (`Paywalls.php`)
 
-Registered in WooCommerce module:
-```php
-add_action('woocommerce_order_status_completed', function($orderId) {
-    // Check if order contains a membership product
-    // Create/update MembershipUser with provider = 'woocommerce'
-});
-```
+Registered hooks:
+- `woocommerce_order_status_completed` → `processUserAccess()`: for each paid order line item, resolves linked Level IDs via `ProviderDataService::getLevelIdsForWcProduct($productId, $variationId)`, supersedes any existing active/trial membership on that level (marks it `upgraded`), creates a new `MembershipUser` (`provider = 'woocommerce'`, `provider_source_id` = the WC order ID), migrates any corporate child memberships to the new parent record, and fires `fluent_members/membership_level_assigned`. Order is marked processed via `_fluent_members_processed` order meta to prevent double-processing; renewal orders (`wcs_order_contains_renewal()`) are skipped here and handled by the subscription hooks below.
+- `woocommerce_order_status_changed` → `maybeRevokeOnStatusChange()`: cancels the matching membership(s) when the order moves to `cancelled`, `refunded`, or `failed`.
+- If WooCommerce Subscriptions is active (`wcs_get_subscriptions_for_order()` exists):
+  - `woocommerce_subscription_status_cancelled` / `woocommerce_subscription_status_expired` → cancels the membership tied to the subscription's parent order.
+  - `woocommerce_subscription_status_active` → activates a `trial`-status membership tied to the subscription's parent order, sets `expires_at` from the subscription's next payment date.
+  - `woocommerce_subscription_renewal_payment_complete` → extends `expires_at` on the matching membership(s) (and their corporate children) to the new period end; if the membership had lapsed to `expired`, restores it to `active` and fires `fluent_members/membership_renewed`.
 
 ---
 
-## WooCommerce Subscriptions lifecycle
+## WooCommerce My Account tab (`CustomerPortalIntegration.php`)
 
-If WooCommerce Subscriptions plugin is active:
-- `subscription_status_updated` hook → syncs WC subscription status to MembershipUser status
-- `woocommerce_subscription_renewal_payment_complete` → extends membership `expires_at`
-- `woocommerce_subscription_cancelled` → cancels the membership
+Adds a membership tab to WooCommerce's My Account page via `woocommerce_account_menu_items` (menu entry) and a `woocommerce_account_{endpoint}_endpoint` action (tab content) — lets WC customers see their Fluent Members membership without visiting the dedicated Member Portal page.
+
+---
+
+## Instant checkout (`Services/InstantCheckoutService.php`)
+
+Registered alongside `Paywalls`; supports a "buy now" style checkout path for a WC-linked Level's product without the customer manually navigating the WC cart.
 
 ---
 
 ## Doc note
 
-Covered in `guide/levels/pricing-paywalls.md` (WooCommerce section). Dedicated page: create `guide/integrations/woocommerce.md`.
+Covered in `guide/levels/pricing-paywalls.md` (WooCommerce section).

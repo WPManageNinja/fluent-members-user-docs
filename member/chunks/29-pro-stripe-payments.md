@@ -2,9 +2,9 @@
 chunk: 29
 category: Pro Features
 subcategory: Stripe Payments
-query-triggers: [Stripe, native checkout, payment intent, payment method, Stripe setup, stripe connect, stripe webhook, CheckoutService, NativeCheckoutController, stripe publishable key, stripe secret key]
+query-triggers: [Stripe, native checkout, payment intent, payment method, Stripe setup, stripe connect, stripe webhook, StripeSettingsController, StripeConnectService, Stripe test mode, Stripe live mode, publishable key, secret key]
 related-chunks: [30, 31, 36]
-source-files: [fluent-members-pro/app/Modules/Stripe/CheckoutService.php, fluent-members-pro/app/Modules/Stripe/Stripe.php, fluent-members-pro/app/Http/Controllers/NativeCheckoutController.php, fluent-members-pro/app/Services/StripeConnectService.php]
+source-files: [fluent-members-pro/app/Services/Payments/Stripe/Stripe.php, fluent-members-pro/app/Services/Payments/Stripe/CheckoutService.php, fluent-members-pro/app/Services/Payments/Stripe/CheckoutAssets.php, fluent-members-pro/app/Services/Payments/Stripe/Plan.php, fluent-members-pro/app/Services/Payments/Stripe/StripeLock.php, fluent-members-pro/app/Services/Payments/Stripe/Webhook/WebhookListener.php, fluent-members-pro/app/Services/Payments/Stripe/Webhook/Webhook.php, fluent-members-pro/app/Services/Payments/Stripe/Webhook/WebhookSubscriptionHandler.php, fluent-members-pro/app/Services/StripeSettings.php, fluent-members-pro/app/Services/StripeConnectService.php, fluent-members-pro/app/Http/Controllers/StripeSettingsController.php, fluent-members-pro/app/Http/Controllers/CheckoutController.php]
 doc-files: [guide/settings/payment-settings/stripe-setup.md, guide/transactions/index.md]
 ---
 
@@ -12,99 +12,117 @@ doc-files: [guide/settings/payment-settings/stripe-setup.md, guide/transactions/
 
 ## What it is
 
-Fluent Members Pro includes a native Stripe integration that handles checkout directly — no third-party form plugin needed. Uses Stripe Payment Intents with Stripe Elements on the front end.
+Fluent Members Pro includes a native Stripe integration that handles checkout directly — no third-party form plugin needed. Uses Stripe Payment Intents with Stripe Elements on the front end. Gateway key: `'stripe'`.
 
 ---
 
-## Setup
+## Test / Live modes, each with its own credentials
 
-1. Activate Fluent Members Pro
-2. Go to **Settings → Payment Settings → Stripe**
-3. Enter Publishable Key and Secret Key (test or live)
-4. Add webhook endpoint URL to Stripe dashboard: `{site_url}/wp-json/fluent-members/v2/stripe-webhook`
-5. Copy Webhook Signing Secret from Stripe → paste in Fluent Members Settings
+Settings are **mode-scoped**, not a single set of keys. `StripeSettings` stores:
 
-**Disconnect**: `POST /settings/payment-methods/stripe/disconnect` removes stored keys.
+| Setting | Notes |
+|---|---|
+| `payment_mode` | `'test'` or `'live'` — which mode is currently active |
+| `is_active` | `'yes'`/`'no'` — auto-forced to `'no'` if the active mode has no configuration |
+| `test_publishable_key` / `live_publishable_key` | |
+| `test_secret_key` / `live_secret_key` | encrypted at rest |
+| `test_webhook_secret` / `live_webhook_secret` | encrypted at rest |
 
----
+Test and live can each be connected independently; switching `payment_mode` swaps which pair is used for checkout without discarding the other.
 
-## Routes
+`StripeSettingsController`:
 
 | Method | Path | Action |
 |---|---|---|
-| GET | `/settings/payment-methods/stripe` | Get Stripe settings (masked keys) |
-| POST | `/settings/payment-methods/stripe` | Save Stripe keys + webhook secret |
-| POST | `/settings/payment-methods/stripe/disconnect` | Remove stored Stripe credentials |
-| POST | `/checkout/stripe/payment-intent` | Create a payment intent for checkout |
-| POST | `/checkout/stripe/confirm-payment-intent` | Confirm payment after 3DS / card auth |
+| GET | `/settings/payment-methods/stripe` | Get settings + webhook info + Connect account info for both modes |
+| POST | `/settings/payment-methods/stripe` | Save settings for the posted `payment_mode` (only the changed mode's fields) |
+| POST | `/settings/payment-methods/stripe/disconnect` | Clear credentials for one `mode` (`test` or `live`) |
+
+---
+
+## Stripe Connect (account info), separate from key entry
+
+`StripeConnectService` handles a Stripe Connect OAuth flow (`getConnectConfig()`, `getConnectBase()`, `verifyAuthorizeSuccess()`, `getAccountInfo()`) used to show/verify the connected Stripe account per mode — this is in addition to, not instead of, pasting publishable/secret keys directly into settings.
 
 ---
 
 ## Checkout flow (payment intent)
 
+Routes (`checkout/stripe`, logged-in user auth):
+
+| Method | Path | Controller@method |
+|---|---|---|
+| POST | `/checkout/stripe/payment-intent` | `CheckoutController::createStripePaymentIntent` |
+| POST | `/checkout/stripe/confirm-payment-intent` | `CheckoutController::confirmStripePaymentIntent` |
+
 ```
 1. Member selects a pricing plan on the [fluent_membership_level] shortcode
 2. POST /checkout/stripe/payment-intent { level_id, price_id, ... }
-3. Server creates Stripe Customer + PaymentIntent (or SetupIntent for subscriptions)
-4. Returns { client_secret, publishable_key, intent_type }
-5. Front end mounts Stripe Elements (card input) with client_secret
-6. User enters card → confirmPayment() → Stripe redirects back
-7. POST /checkout/stripe/confirm-payment-intent { payment_intent_id }
-8. Server confirms, creates MembershipUser + Subscription records
+3. Server creates a Stripe Customer + PaymentIntent (or SetupIntent for subscriptions)
+4. Front end mounts Stripe Elements (card input) with the returned client_secret
+5. User enters card → confirmPayment() → Stripe redirects back
+6. POST /checkout/stripe/confirm-payment-intent { payment_intent_id }
+7. Server confirms, creates the MembershipOrder + MembershipTransaction (+ MembershipSubscription for recurring plans)
 ```
+
+`Stripe::onPaymentEventTriggered()` is the shared entry point both the confirm-intent step and the webhook listener funnel into.
+
+---
+
+## Webhook — NOT a `/wp-json/` route
+
+The Stripe webhook is **not** a REST endpoint. `Stripe::getWebhookUrl()` builds a query-arg URL on the site's own front end:
+
+```
+{site_url}/?fluent_members_payment_listener=1&payment_method=stripe
+```
+
+A `template_redirect`-style listener catches that query var and hands the raw request to `WebhookListener::handle()`. (PayPal uses the identical pattern with `payment_method=paypal` — see chunk 39.)
+
+`WebhookListener`:
+- Verifies the `Stripe-Signature` header against `test_webhook_secret` or `live_webhook_secret` (HMAC-SHA256, ±300s tolerance), auto-detecting mode from the event's `livemode` flag when a mode isn't pre-selected.
+- Dedupes by Stripe event `id`, recorded via `Meta` (`object_type = 'stripe_webhook_event'`).
+- Takes a short-lived processing lock per event id (WP option `fmem_stripe_event_lock_{id}`, 300s TTL) so a redelivered/concurrent webhook can't double-process.
+- Delegates the verified event to `Webhook::process($event, $mode)`.
+
+### Events handled
+
+Split across two classes:
+
+`Webhook.php` (payment/charge events):
+
+| Stripe event | Handler method |
+|---|---|
+| `payment_intent.succeeded` | `handlePaymentIntentSucceeded` |
+| `payment_intent.payment_failed` | `handlePaymentIntentFailed` |
+| `charge.refunded` | `handleChargeRefunded` |
+| `charge.refund.updated` | `handleChargeRefundUpdated` |
+
+`WebhookSubscriptionHandler.php` (subscription lifecycle events):
+
+| Stripe event | Handler method |
+|---|---|
+| `invoice.paid` | `handleInvoicePaid` |
+| `invoice.payment_failed` | `handleInvoicePaymentFailed` |
+| `customer.subscription.updated` | `handleCustomerSubscriptionUpdated` |
+| `customer.subscription.deleted` | `handleCustomerSubscriptionDeleted` |
+
+(8 events total. There is no `invoice.payment_succeeded` event in this codebase — the paid-invoice event is `invoice.paid`.)
 
 ---
 
 ## One-time vs subscription
 
-| Price type | Stripe object created | Fluent Members record |
+| Price type | Stripe object created | Fluent Members records |
 |---|---|---|
-| One-time | PaymentIntent | MembershipUser (no subscription) |
-| Subscription | SetupIntent → Stripe Subscription | MembershipUser + MembershipSubscription |
+| `one_time` | PaymentIntent | MembershipOrder + MembershipTransaction (no subscription row) |
+| `subscription` | SetupIntent → Stripe Subscription | MembershipOrder + MembershipTransaction + MembershipSubscription |
 
 ---
 
-## Settings stored
+## Cancel / refund / renew are provider-agnostic
 
-| Setting | Description |
-|---|---|
-| `stripe_publishable_key` | Stripe publishable key (test or live) |
-| `stripe_secret_key` | Stripe secret key (encrypted at rest) |
-| `stripe_webhook_secret` | Webhook signing secret |
-| `stripe_test_mode` | `yes`/`no` — use test keys |
-
-Via: `StripeConnectService::getSettings()` / `StripeConnectService::updateSettings()`
-
----
-
-## Webhook events handled
-
-| Stripe event | Action |
-|---|---|
-| `invoice.payment_succeeded` | Renew subscription, extend `expires_at` |
-| `invoice.payment_failed` | Mark subscription as past-due, trigger notification |
-| `customer.subscription.deleted` | Cancel Fluent Members subscription |
-| `customer.subscription.updated` | Update subscription metadata |
-| `payment_intent.succeeded` | Confirm one-time payment, activate membership |
-
-Webhook endpoint: `POST /wp-json/fluent-members/v2/stripe-webhook`
-Verification: `Stripe::constructEvent($payload, $sigHeader, $webhookSecret)` — request rejected if signature invalid.
-
----
-
-## StripeConnectService
-
-Handles reading and writing Stripe credentials.
-
-### Credential encryption (v1.1.0)
-
-Secret key fields are encrypted at rest using the same `enc:v1:` prefix pattern as PayPal (chunk 39):
-
-```php
-const ENCRYPTED_PREFIX = 'enc:v1:';
-```
-
-On save: if the field value is non-blank and doesn't start with `'enc:v1:'`, it is encrypted via `App::make('encrypter')->encryptString($value)` and stored with the prefix. On read: prefix stripped and decrypted. This applies to `stripe_secret_key` and `stripe_webhook_secret`.
+Admin billing actions (see chunk 31) route through shared, gateway-agnostic services — `Cancellation::processCancellation()`, `Refund::processRefund()`, `Renewal::processRenewal()` — which internally resolve the transaction's/subscription's `provider` and call into Stripe or PayPal accordingly. Nothing in `BillingActionController` calls the Stripe API directly.
 
 ---
 

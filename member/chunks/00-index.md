@@ -27,13 +27,15 @@ always-load: true
 | Access Group model, restriction types | 04 |
 | Assigning content to groups, group-level pivot | 04 |
 | MembershipUser model, all member fields | 05 |
-| Member statuses (active/trial/expired/suspended/pending/cancelled) | 05 |
-| Provider values (fluent_cart, woocommerce, native, pmpro…) | 05 |
+| Member statuses (active/trial/expired/suspended/pending/cancelled/upgraded) | 05 |
+| Provider markers (fluent_cart, woocommerce, fluentform, native_payment/stripe/paypal, pmpro/memberpress/rcp), manual-add always `provider=manual` | 05 |
+| Status-cascade to corporate children on suspend/cancel/upgrade | 05 |
+| Activity log / audit trail (`fmem_activity` table) | 02 |
 | Page/post redirect, the_content filter, archive lockdown | 06 |
 | AccessHelper, RestrictionRenderer | 06 |
 | Partial content preview, word count, overlay | 07 |
 | Per-post partial override, per-block partial override | 07 |
-| Content dripping, time-based access | 08 |
+| Content dripping, time-based access (configured on the Access Group, not the Level) | 08 |
 | Gutenberg block-level access, render_block filter | 09 |
 | Block Inspector panel, classic editor meta box | 09 |
 | REST API protection, rest_prepare_{type} filter | 10 |
@@ -43,7 +45,7 @@ always-load: true
 | Corporate seat management in portal (Pro) | 11 |
 | Payment method update in portal (Pro) | 11 |
 | Subscription renewal in portal (Pro) | 11 |
-| [fluent_membership_level] shortcode | 12 |
+| [fluent_membership_level] shortcode, [fluent_membership_levels] grid, [fluent_members] inline gating | 12 |
 | Payment provider resolution at render time | 12 |
 | Settings → General (portal_page_id, currency) | 13 |
 | create-portal-page action | 13 |
@@ -52,6 +54,7 @@ always-load: true
 | Settings → Mailing (from/reply-to/logo/footer) | 15 |
 | Settings → Email Notifications (notifications, merge tags) | 16 |
 | Email merge tags {{user_name}} etc. | 16 |
+| Expiring-membership reminder email (`membership_expiring`, lead_days 1-90) | 16 |
 | Settings → Partial Content defaults (all 10 fields) | 17 |
 | Settings → Public Contents, bypass list | 18 |
 | FluentCart integration (paywalls, variants, CartHelper) | 19 |
@@ -59,13 +62,14 @@ always-load: true
 | Paymattic integration (paymattic_form_ids, wp_payform) | 21 |
 | FluentCRM integration (4 triggers, MemberHelper) | 22 |
 | Fluent Support integration | 23 |
-| FluentCommunity integration (LevelIntegrationModule) | 24 |
+| FluentCommunity integration (Level Integration framework, 5 events incl. membership_renewed) | 24 |
 | Migration overview, supported sources, what transfers | 25 |
 | PMPro migration phases and API endpoints | 26 |
 | MemberPress migration, Stripe-import bridge | 27 |
-| Kadence Memberships migration (renamed from Restrict Content Pro in v1.1.0), run-step loop | 28 |
+| Kadence Memberships migration (provider marker stays `rcp`), named-step `/migrate/{step}` routes shared with PMPro/MemberPress | 28 |
 | Native Stripe checkout, payment intent flow (Pro) | 29 |
 | Stripe webhook IPN, Stripe Connect settings (Pro) | 29 |
+| Payment webhook listener mechanism (Stripe & PayPal both use a `template_redirect` query-var listener, not a `/wp-json/` REST route) (Pro) | 29 |
 | MembershipSubscription model, subscription lifecycle (Pro) | 30 |
 | Subscription renewal, SubscriptionRenewHelper (Pro) | 30 |
 | Cancel/refund/renew/update-payment-method endpoints (Pro) | 31 |
@@ -78,7 +82,8 @@ always-load: true
 | Email block types (14 blocks) (Pro) | 34 |
 | All free plugin REST API routes | 35 |
 | All Pro plugin REST API routes | 36 |
-| WordPress filters and actions (all hooks) | 37 |
+| WordPress filters and actions (all hooks) — ground-truth list, corrects a fully invented prior version | 37 |
+| Cron jobs (`fluent_members_check_expired_memberships` hourly, `fluent_members_check_expiring_memberships` daily) | 37 |
 | Every .md doc file → feature it covers | 38 |
 | Pro PayPal payments, PayPal checkout, PayPal settings (Pro) | 39 |
 | PayPal webhook events (9 events), PayPalLock mutex (Pro) | 39 |

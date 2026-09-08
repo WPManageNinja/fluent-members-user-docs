@@ -4,7 +4,7 @@ category: Integrations
 subcategory: Paymattic
 query-triggers: [Paymattic, WPPAYFORM_VERSION, paymattic integration, paymattic paywall, paymattic forms, wppayform]
 related-chunks: [03, 12]
-source-files: [app/Modules/Integrations/Paymattic/Paywalls.php, app/Modules/Integrations/Paymattic/Http/paymattic_api.php, app/Modules/Integrations/Paymattic/Http/Controllers/PaywallController.php]
+source-files: [app/Modules/Integrations/Paymattic/Paywalls.php, app/Modules/Integrations/Paymattic/Http/paymattic_api.php, app/Modules/Integrations/Paymattic/Http/Controllers/PaywallController.php, app/Services/MembershipLevelsRenderer.php]
 doc-files: [guide/levels/pricing-paywalls.md]
 ---
 
@@ -34,14 +34,18 @@ Paymattic (WP Payform) payment forms act as the checkout for a Membership Level.
 
 ---
 
-## Variant resolution (from `ShortcodeHandler::getPaymatticVariants()`)
+## Variant resolution (from `MembershipLevelsRenderer::getPaymatticVariants($level, $prefetchedForms = null, $limit = 0)`)
+
+A prior revision of this chunk pointed at `ShortcodeHandler::getPaymatticVariants()` — that method no longer exists; the logic now lives on `MembershipLevelsRenderer` (`app/Services/MembershipLevelsRenderer.php`), alongside the equivalent methods for every other paywall provider (see chunk 20 for the Fluent Forms sibling).
 
 Pattern is equivalent to Fluent Forms:
-1. Load forms by IDs from `paymattic_form_ids` in level settings
+1. Load `wp_payform` posts by IDs from `paymattic_form_ids` in level settings (or a prefetched/bulk-loaded map when rendering multiple levels at once)
 2. `Paywalls::getCheckoutUrl($formId)` — direct URL to the Paymattic form page
 3. `Paywalls::parseFormPlans($form)` — extracts plan options from the form's payment fields
 4. Each plan → a variant with `checkout_url` and price info
-5. Fallback → single payment amount if no plans
+5. Fallback → `Paywalls::getOneTimePaymentData($form)`, then a bare `item_price: 0` variant if that's also empty
+
+Every returned variant is tagged `'provider' => 'paymattic'` in a pass after the loop (matches the shape below).
 
 ### Variant shape
 

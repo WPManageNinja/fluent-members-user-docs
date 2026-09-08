@@ -4,8 +4,8 @@ category: Foundation
 subcategory: Plugin Identity
 query-triggers: [plugin name, version, constants, namespace, framework, entry point, boot, autoload, ZIPs]
 related-chunks: [02]
-source-files: [fluent-members.php, boot/app.php, fluent-members-pro/fluent-members-pro.php]
-doc-files: [guide/introduction.md, guide/installation.md]
+source-files: [fluent-members.php, boot/app.php, composer.json, fluent-members-pro/fluent-members-pro.php]
+doc-files: [guide/getting-started/introduction.md, guide/getting-started/installation.md]
 ---
 
 # Plugin Identity
@@ -22,8 +22,8 @@ doc-files: [guide/introduction.md, guide/installation.md]
 | Text domain | `fluent-members` |
 | Domain path | `/language` |
 | License | GPLv2 or later |
-| ZIP filename | `fluent-members (3).zip` |
-| ZIP size | ~1.5 MB, 435 files |
+| ZIP filename (as handed over) | `fluent-members.zip` |
+| ZIP size | ~1.9 MB, 611 files |
 
 ### PHP constants (free)
 
@@ -36,29 +36,35 @@ doc-files: [guide/introduction.md, guide/installation.md]
 
 ### Namespaces (free)
 
+Composer PSR-4 root: `FluentMembers\App\` → `app/` (see `composer.json`).
+
 | Namespace prefix | Area |
 |---|---|
 | `FluentMembers\App\Http\Controllers\` | HTTP controllers |
 | `FluentMembers\App\Http\Policies\` | Route policies (auth gates) |
 | `FluentMembers\App\Http\Requests\` | Form request validators |
 | `FluentMembers\App\Hooks\Handlers\` | WordPress hook handlers |
-| `FluentMembers\App\Models\` | Database models |
+| `FluentMembers\App\Models\` | Database models — **including** `MembershipOrder`, `MembershipSubscription`, `MembershipTransaction`, and `Activity` (all free-plugin code; see chunk 02) |
 | `FluentMembers\App\Services\` | Business logic services |
 | `FluentMembers\App\Modules\Integrations\` | Third-party integration modules |
 | `FluentMembers\App\Modules\Gutenberg\` | Gutenberg block registration |
 | `FluentMembers\App\Functions\` | Standalone helpers (Utility, CurrencyHelper) |
+| `FluentMembers\Database\Migrations\` | Table migrators |
 | `FluentMembers\Framework\` | WPFluent framework (vendor) |
 
 ### Boot sequence (free)
 
 ```
 fluent-members.php
+  → defines FLUENT_MEMBERS_* constants
   → vendor/autoload.php      (Composer PSR-4 autoloading)
-  → boot/app.php             (Application bootstrap)
-      → WPFluent Foundation\Application
-      → register routes (app/Http/Routes/api.php, routes.php)
-      → register hooks (app/Hooks/actions.php, filters.php, includes.php)
-      → register DB migrations
+  → boot/app.php             (returns a bootstrap closure)
+      → new FluentMembers\Framework\Foundation\Application($file)
+      → register_activation_hook()   → ActivationHandler
+      → register_deactivation_hook() → DeactivationHandler
+      → add_action('plugins_loaded') → do_action('fluent-members/loaded', $app)
+      → Application wiring registers routes (app/Http/Routes/api.php, routes.php),
+        hooks (app/Hooks/actions.php, filters.php, includes.php), and DB migrations
 ```
 
 ---
@@ -71,8 +77,8 @@ fluent-members.php
 | Slug | fluent-members-pro |
 | Version | 1.0.0 |
 | Text domain | `fluent-members-pro` |
-| ZIP filename | `fluent-members-pro.zip` |
-| ZIP size | ~418 KB, 136 files |
+| ZIP filename (as handed over) | `fluent-members-pro.zip` |
+| ZIP size | ~285 KB, 182 files |
 
 ### PHP constants (Pro)
 
@@ -84,14 +90,26 @@ fluent-members.php
 | `FLUENT_MEMBERS_PRO_PLUGIN_URL` | `plugin_dir_url(__FILE__)` |
 | `FLUENT_MEMBERS_PRO_DIR_FILE` | `__FILE__` |
 
-### Namespace (Pro)
+### Namespaces (Pro)
+
+Pro ships **no `app/Models/` directory** — it has no models of its own. It reads/writes the
+free plugin's `FluentMembers\App\Models\*` classes (Order/Subscription/Transaction included).
 
 | Namespace prefix | Area |
 |---|---|
+| `FluentMembersPro\App\Core\` | Pro core/bootstrap glue |
 | `FluentMembersPro\App\Http\Controllers\` | Pro HTTP controllers |
-| `FluentMembersPro\App\Services\` | Pro services (Stripe, subscriptions, etc.) |
-| `FluentMembersPro\App\Models\` | Pro models (subscription, order, transaction) |
-| `FluentMembersPro\App\Modules\Integrations\` | Pro integration modules (WooCommerce) |
+| `FluentMembersPro\App\Http\Policies\` | Pro route policies |
+| `FluentMembersPro\App\Http\Requests\` | Pro form request validators |
+| `FluentMembersPro\App\Hooks\Handlers\` | Pro hook handlers |
+| `FluentMembersPro\App\Services\` | Pro services |
+| `FluentMembersPro\App\Services\Payments\Stripe\` (+ `API\`, `Webhook\`) | Native Stripe checkout/webhooks |
+| `FluentMembersPro\App\Services\Payments\PayPal\` (+ `API\`, `Webhook\`, `Ipn\`) | Native PayPal checkout/webhooks/IPN |
+| `FluentMembersPro\App\Services\Email\` (+ `Blocks\`) | Block email editor |
+| `FluentMembersPro\App\Modules\Integrations\Woocommerce\` (+ `Http\Controllers\`, `Services\`) | WooCommerce paywall integration |
+
+Boot sequence mirrors free: `fluent-members-pro.php` defines constants → `vendor/autoload.php`
+→ `boot/app.php` returns a bootstrap closure that builds the Pro `Application`.
 
 ---
 

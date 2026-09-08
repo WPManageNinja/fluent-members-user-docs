@@ -87,13 +87,22 @@ Doc: `guide/members/portal/setup.md`
 
 ## Cancellation flow
 
-Member clicks Cancel → `POST /member-portal/{id}/cancel` → 
-- Free: sets membership status to `cancelled`
-- Pro (Stripe subscription): calls Stripe API to cancel subscription (immediate or end-of-period depending on cancellation mode setting)
+Member clicks Cancel → `POST /member-portal/{id}/cancel` → `MemberPortalController::cancelMembership()`:
+1. Acquires a short-lived option-based lock (`fmem_portal_cancel_lock_{id}`, 60s TTL) so a double-click can't double-cancel.
+2. Fires `fluent_members/portal_provider_cancel_membership` — a provider (Pro Stripe/PayPal, WooCommerce Subscriptions, etc.) can fully own the cancellation here and return `true` (synced locally), a `WP_Error`, or an array response.
+3. If unhandled, checks the membership is `active`/`trial`, then fires `fluent_members/portal_cancel_membership` for a lighter override.
+4. Falls back to `MembershipService::cancelMembership()` (sets status to `cancelled`), respecting the immediate vs end-of-period cancellation mode where a subscription integration is wired in.
+
+Both cancellation and detail responses run through filters (`fluent_members/portal_memberships`, `fluent_members/portal_membership_detail`) that integrations can hook to reshape the data before it reaches the Vue app.
 
 Doc: `guide/members/portal/cancelling.md`
 
 ---
+
+## Corporate detail enrichment
+
+`GET /member-portal/{id}` adds extra fields when `membership->isCorporateParent()` is true:
+`is_corporate` (bool), `max_members` (int|null, from the level), `child_count` (active sub-members, counted from `fmem_membership_users` where `parent_membership_id` = this membership).
 
 ## Corporate invite flow
 

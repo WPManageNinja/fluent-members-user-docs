@@ -4,7 +4,7 @@ category: Settings
 subcategory: Partial Content Defaults
 query-triggers: [partial content settings, preview length, overlay settings, partial content defaults, word count, overlay color, overlay opacity]
 related-chunks: [07, 13]
-source-files: [app/Http/Controllers/SettingsController.php, app/Functions/Utility.php]
+source-files: [app/Http/Controllers/SettingsController.php, app/Functions/Utility.php, app/Services/PartialContentService.php]
 doc-files: [guide/settings/partial-content-lock.md]
 ---
 

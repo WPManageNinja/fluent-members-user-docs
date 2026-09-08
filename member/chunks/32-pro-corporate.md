@@ -2,9 +2,9 @@
 chunk: 32
 category: Pro Features
 subcategory: Corporate Memberships
-query-triggers: [corporate, corporate membership, team, seats, sub-member, invite, parent member, fmem_join, CorporateMembershipService, CorporatePortalController, team account]
+query-triggers: [corporate, corporate membership, team, seats, sub-member, sub-account, invite, parent member, fmem_join, CorporateMembershipService, CorporatePortalController, CorporateJoinHandler, team account, max_members]
 related-chunks: [03, 05, 11]
-source-files: [fluent-members-pro/app/Services/CorporateMembershipService.php, fluent-members-pro/app/Http/Controllers/CorporatePortalController.php, fluent-members/app/Models/MembershipUser.php]
+source-files: [fluent-members-pro/app/Services/CorporateMembershipService.php, fluent-members-pro/app/Http/Controllers/CorporatePortalController.php, fluent-members-pro/app/Hooks/Handlers/CorporateJoinHandler.php, fluent-members/app/Models/MembershipUser.php, fluent-members/app/Models/MembershipLevel.php]
 doc-files: [guide/levels/corporate-memberships.md, guide/members/portal/corporate-seat-invites.md]
 ---
 
@@ -12,13 +12,13 @@ doc-files: [guide/levels/corporate-memberships.md, guide/members/portal/corporat
 
 ## What it is
 
-A Corporate Membership allows one "parent" member to invite multiple sub-members. The parent buys one plan; their team members get access without purchasing individually.
+A Corporate Membership lets one "parent" member invite multiple sub-accounts. The parent buys one plan; their team members get access without purchasing individually.
 
 ---
 
-## Level type
+## Level setup
 
-Set `type = 'corporate'` on the Membership Level (chunk #03). Only corporate-type levels support the invite flow.
+Set `type = 'corporate'` on the Membership Level (chunk #03) and give it a `max_members` value on `fmem_membership_levels` directly — it's a first-class column, not a nested `settings.corporate_settings` key. **`max_members` includes the buyer/parent seat** — available child seats = `max_members - 1`.
 
 ---
 
@@ -26,95 +26,69 @@ Set `type = 'corporate'` on the Membership Level (chunk #03). Only corporate-typ
 
 In `fmem_membership_users`:
 
-| Field | Corporate parent | Sub-member |
+| Field | Corporate parent | Sub-account |
 |---|---|---|
-| `parent_membership_id` | NULL | Parent's `id` in same table |
-| `status` | `active` | `active` |
-| `provider` | e.g. `native`, `woocommerce` | `manual` |
+| `parent_membership_id` | NULL | Parent's `id` in the same table |
+| `provider` | e.g. `stripe`, `paypal` | `corporate` |
 
-`MembershipUser::isCorporateParent()` → true when: `level.type = 'corporate'` AND `parent_membership_id IS NULL`.
-
----
-
-## Invite flow (full sequence)
-
-```
-1. Parent member visits portal → Corporate tab → clicks "Invite Member"
-2. POST /member-portal/{id}/corporate-invite { email: 'invitee@example.com' }
-3. CorporateMembershipService::validateInvitationRequest()
-   → rate limit: max 1 invite per email per hour (uses WP transient)
-   → check: invitee is not already a sub-member of this parent
-   → check: level.corporate_settings.max_members not exceeded
-4. CorporateMembershipService::sendInvitationEmail()
-   → generates token: Str::random(32)
-   → stores token in DB with parent_membership_id + invitee_email
-   → sends email with join URL: {site_url}?fmem_join={TOKEN}
-5. Invitee clicks join URL → Fluent Members catches ?fmem_join parameter
-6. If invitee is logged in:
-   → Token validated → sub-member record created
-7. If invitee is NOT logged in:
-   → Shown login/register prompt
-   → After login/register → token processed → sub-member created
-8. Sub-member is enrolled: MembershipUser created with parent_membership_id = parent.id
-```
+`MembershipUser::isCorporateParent()` → true when `level.type = 'corporate'` AND `parent_membership_id IS NULL`.
 
 ---
 
-## Rate limiting
+## Invite flow — sending (REST)
 
-`CorporateMembershipService::validateInvitationRequest()` uses WordPress transients:
-- Key: `fmem_invite_rate_{parentId}_{inviteeEmail}`
-- TTL: 3600 seconds (1 hour)
-- If transient exists → `throw ValidationException('Too many invitations. Try again in 1 hour.')`
+`CorporatePortalController`:
 
----
-
-## Join URL token
-
-- Token: `Str::random(32)` — 32-character random string
-- Stored: in `fmem_meta` table (key: `corporate_invite_token_{token}`)
-- Expires: configurable (default 24–48 hours)
-- URL: `{site_url}?fmem_join={TOKEN}`
-
----
-
-## Max seats
-
-Corporate seat limit is stored in the level's `settings` JSON:
-
-| Key | Type | Description |
+| Method | Path | Action |
 |---|---|---|
-| `corporate_settings.max_members` | int | Maximum sub-members this level allows (0 = unlimited) |
+| GET | `/member-portal/{id}/corporate-members` | `getCorporateMembers` — list the team |
+| POST | `/member-portal/{id}/corporate-invite` | `sendCorporateInvite` |
+| POST | `/member-portal/{id}/corporate-remove` | `removeCorporateMember` |
 
-When max is reached, invites are rejected.
-
----
-
-## Remove a sub-member (parent action)
-
-`POST /member-portal/{id}/corporate-remove { sub_member_user_id: int }`
-
-- Finds the sub-member's MembershipUser record where `parent_membership_id = id`
-- Updates status to `cancelled`
-- Revokes access immediately
+`sendCorporateInvite` calls `CorporateMembershipService::sendInvitationEmail($parentMembership, $email, $inviterUser)`:
+- Rejects if an invite to that email is still pending (`Meta` lookup, `object_type = 'corporate_invite'`) → `rate_limited` error
+- Rejects if the parent membership is no longer active
+- Sends an email with a join link: `{site_url}/?fmem_join={TOKEN}`
+- Invitation expiry defaults to **3 days** (`DEFAULT_INVITATION_EXPIRY_DAYS`), filterable via `fluent_members/corporate_invitation_expiry_days`
 
 ---
 
-## View corporate team (parent action)
+## Invite flow — accepting (NOT a REST route)
 
-`GET /member-portal/{id}/corporate-members`
+The join link is handled by `CorporateJoinHandler` on WordPress's `template_redirect` hook — it's a server-rendered page flow, not an API call:
 
-Returns array of:
-```php
-[
-    'user_id'     => int,
-    'name'        => string,
-    'email'       => string,
-    'status'      => string,
-    'joined_date' => datetime,
-    'avatar'      => string (URL),
-]
 ```
+1. Invitee opens {site_url}/?fmem_join={TOKEN}
+2. Token must match /^[a-zA-Z0-9]{20,64}$/ or the handler ignores it entirely
+3. Not logged in  → renders a "log in first" view (wp_login_url() back to the same join URL)
+4. Logged in, GET → CorporateMembershipService::getJoinInfo($token) + verifyInvitedEmail($token, $userId)
+                     renders a confirm view: "{inviter} has invited you to join the {level} membership."
+5. Logged in, POST (form submit with a per-token nonce fmem_accept_join_{token})
+                  → CorporateMembershipService::acceptJoinToken($token, $userId)
+                  → creates the sub-account MembershipUser, renders a success view
+```
+
+Rejections `acceptJoinToken`/`getJoinInfo`/`verifyInvitedEmail` can return (as `WP_Error`): `inactive_membership`, `not_corporate`, `self_join` (inviter tried to join their own team), `already_member`.
+
+---
+
+## CorporateMembershipService — full method list
+
+| Method | Purpose |
+|---|---|
+| `sendInvitationEmail($parentMembership, $email, $inviterUser)` | Send the invite |
+| `getJoinInfo($token)` | Info for the confirm screen |
+| `verifyInvitedEmail($token, $userId)` | Confirm the logged-in user matches the invited email |
+| `acceptJoinToken($token, $userId)` | Create the sub-account |
+| `removeSubAccount($parentMembership, $childMembershipId, $requesterId)` | Parent removes a team member |
+| `getSubAccounts($parentMembership, $filters = [])` | List a parent's team |
+| `getActiveChildCount($parentMembershipId)` | Used against `max_members - 1` to enforce the seat cap |
+
+---
+
+## Remove a sub-account (parent action)
+
+`POST /member-portal/{id}/corporate-remove` → `CorporatePortalController::removeCorporateMember` → `CorporateMembershipService::removeSubAccount()`. Cancels the sub-account's `MembershipUser` record and revokes access immediately.
 
 ---
 

@@ -28,6 +28,8 @@ SCAFFOLD NOTES — delete before saving:
 - NEVER use relative links (./slug or ../slug)
 - Images: store at public/images/<category>/<slug>/, reference /images/<category>/<slug>/<file>
 - Pro-only features: append "(Pro)" after the feature name.
+- Notes: `> [!Note]` on its own line, content on `> `-prefixed line(s) below, no bold
+  title/lead-in. Use `::: tip` / `::: warning` only for actionable tips / cautions.
 - No support boilerplate.
 - Bold has no inner spaces: **term** not ** term **.
 - After writing, add the page to .vitepress/config.mjs in the correct sidebar zone and run npm run docs:build.

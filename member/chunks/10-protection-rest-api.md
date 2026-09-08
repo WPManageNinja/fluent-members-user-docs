@@ -2,7 +2,7 @@
 chunk: 10
 category: Content Protection
 subcategory: REST API Protection
-query-triggers: [REST API, rest_prepare, API protection, headless, JSON API, 401, forbidden, rest_authorization_required_code, fluent_members_rest_forbidden]
+query-triggers: [REST API, rest_prepare, API protection, headless, JSON API, 401, forbidden, rest_authorization_required_code, fluent_members_rest_forbidden, rest_prepare_comment, rest_comment_forbidden_message, register_rest_field, _fmem_cpt_access_groups]
 related-chunks: [04, 06]
 source-files: [app/Hooks/Handlers/AccessHandler.php, app/Services/AccessHelper.php]
 doc-files: [guide/access-groups/protected-content.md]
@@ -29,9 +29,20 @@ $postTypes = get_post_types(['public' => true], 'names');
 foreach ($postTypes as $postType) {
     add_filter("rest_prepare_{$postType}", [$this, 'protectRestContent'], 20, 3);
 }
+
+// List items are stripped by the_comments (chunk 06); this guards single-comment REST reads.
+add_filter('rest_prepare_comment', [$this, 'protectRestComment'], 20, 3);
 ```
 
 **Priority 20**: fires after other plugins that modify the REST response.
+
+### Comment protection — `protectRestComment($response, $comment, $request)`
+
+Same shape as `protectRestContent()`, scoped to a single comment: if the comment's parent post
+isn't accessible to the current user (reusing `AccessHandler`'s per-request `isPostAccessible()`
+cache, chunk 06), the REST response is replaced with the same `fluent_members_rest_forbidden`
+shape below. The message is filterable separately via `fluent_members/rest_comment_forbidden_message`
+(distinct from the post-content filter) so the two messages can be customized independently.
 
 ---
 
@@ -94,6 +105,17 @@ Parameters: `$message` (string), `$post` (WP_Post), `$request` (WP_REST_Request)
 **IS NOT protected**: Custom REST API endpoints (e.g. `/wp-json/your-plugin/v1/custom`) — these are not covered automatically. To protect custom endpoints, call `AccessHelper::hasAccess()` from your own controller before returning the response.
 
 **IS NOT protected**: Private/non-public post types — the loop only registers filters for `get_post_types(['public' => true])`.
+
+---
+
+## Related REST fields exposed on protected content
+
+`app/Modules/Gutenberg/AccessGroupBlock.php` (chunk 09) registers two REST fields on every public
+post type via `register_rest_field()`: `_fmem_cpt_access_groups` (the post's individually-assigned
+Access Group ids) and `_fmem_partial_content_settings` (the per-post partial-preview override,
+chunk 07). Both are readable and writable over the REST API — this is what the block-editor sidebar
+panel actually uses to save assignments, and it means a REST client with `edit_post` capability can
+read/write a post's access group assignment directly.
 
 ---
 

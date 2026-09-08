@@ -22,25 +22,30 @@ technical accuracy.
 2. **DO** load the relevant chunk from `member/chunks/` (see `member/chunks/00-index.md`
    for the topic → chunk lookup) to verify technical accuracy before writing.
 3. **DO** preserve all conventions: correct `/guide/` or `/reference/` links, `**term**`
-   bold (no inner spaces), no support boilerplate, "(Pro)" markers for Pro features.
-4. **DO** keep the H1 as line 1; if the H1 display title changes, update the matching
+   bold (no inner spaces), no support boilerplate, "(Pro)" markers for Pro features,
+   `> [!Note]` alerts for informational asides.
+4. **DO** write (and convert legacy `::: info` into) notes as GitHub-style alerts:
+   `> [!Note]` on its own line, content on `> `-prefixed line(s) below, no bold
+   title/lead-in — state the point directly. `::: tip` / `::: warning` stay as
+   VitePress containers for actionable tips / cautions.
+5. **DO** keep the H1 as line 1; if the H1 display title changes, update the matching
    `text` in the sidebar (`.vitepress/config.mjs`); the `link` stays the same.
-5. **DO** put any new/replacement images in the doc's existing image folder
+6. **DO** put any new/replacement images in the doc's existing image folder
    `public/images/<category>/<slug>/`.
-6. **DO** end on a green `npm run docs:build`.
-7. **DO NOT** change the file path or move the file — that is restructure work.
-8. **DO NOT** introduce relative links (`./slug`, `../slug`) or wrong-zone links
+7. **DO** end on a green `npm run docs:build`.
+8. **DO NOT** change the file path or move the file — that is restructure work.
+9. **DO NOT** introduce relative links (`./slug`, `../slug`) or wrong-zone links
    (a `/reference/` link inside a guide doc for navigation is fine, but link format must match).
-9. **DO NOT** add closing support boilerplate.
-10. **DO NOT** touch unrelated docs.
-11. **DO** before starting, map exactly where in the doc and which section needs to change,
+10. **DO NOT** add closing support boilerplate.
+11. **DO NOT** touch unrelated docs.
+12. **DO** before starting, map exactly where in the doc and which section needs to change,
     matching the user journey through that page.
-12. **DO** link naturally, inline. Weave the link's anchor text into the sentence where the
+13. **DO** link naturally, inline. Weave the link's anchor text into the sentence where the
     concept is actually discussed (e.g. "attach it to an [Access Group](...)"). One link per
     claim, on its single most relevant page — no link-stuffing.
-13. **DO NOT** write a generic "See [Page](/path)." tacked onto the end of a sentence, and
+14. **DO NOT** write a generic "See [Page](/path)." tacked onto the end of a sentence, and
     don't repeat the same "See [...]" pattern across entries — vary the phrasing per term/section.
-14. **DO** keep image alt text short: a few words naming the screen or field shown
+15. **DO** keep image alt text short: a few words naming the screen or field shown
     (e.g. "Step 2: Restriction and Unauthorized Access fields"), not a full sentence
     describing everything visible in the screenshot.
 
@@ -176,6 +181,25 @@ Good (short, a few words):
   ![Step 2: Restriction and Unauthorized Access fields](...)
 ```
 
+### Note format
+```
+Bad  (VitePress container, or a bolded title/lead-in line):
+  ::: info Not sure which you need?
+  The free plugin is fully functional for content protection...
+  :::
+
+Good (GitHub-style alert, content stated directly):
+  > [!Note]
+  > The free plugin is fully functional for content protection and member management.
+
+- `> [!Note]` sits on its own line; every content line below it is prefixed `> `.
+- No bold title/question folded into the note — say the point plainly.
+- `::: tip` (actionable suggestion) and `::: warning` (caution) keep their own VitePress
+  container — this rule only replaces `::: info` / plain informational asides.
+- When a CHANGE touches an existing `::: info` block, convert it to `> [!Note]` while
+  you're in there.
+```
+
 ### Key Principles
 1. **In place only** — same path, same sidebar link.
 2. **Load the chunk first** — verify technical facts from `member/chunks/` before writing.
@@ -184,4 +208,5 @@ Good (short, a few words):
 5. **Images live in the doc's own folder.**
 6. **Link inline, not with a bolted-on "See [...]" tail.**
 7. **Alt text is short** — a few words, not a full sentence.
-8. **Green build or it's not done.**
+8. **Notes are `> [!Note]` alerts** — not `::: info`, and no bold title/lead-in inside.
+9. **Green build or it's not done.**

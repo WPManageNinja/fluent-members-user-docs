@@ -2,9 +2,9 @@
 chunk: 30
 category: Pro Features
 subcategory: Subscriptions
-query-triggers: [subscription, recurring, billing cycle, subscription status, past due, cancel subscription, fmem_membership_subscriptions, MembershipSubscription, SubscriptionHelper]
+query-triggers: [subscription, recurring, billing cycle, subscription status, past due, cancel subscription, fmem_membership_subscriptions, MembershipSubscription, SubscriptionHelper, SubscriptionController, SubscriptionRenewHelper, bill_times, bill_count, signup_fee, next_billing_date]
 related-chunks: [05, 29, 31]
-source-files: [fluent-members-pro/app/Models/MembershipSubscription.php, fluent-members-pro/app/Services/SubscriptionHelper.php, fluent-members-pro/app/Http/Controllers/BillingActionController.php]
+source-files: [fluent-members/app/Models/MembershipSubscription.php, fluent-members/database/Migrations/MembershipSubscriptionsMigrator.php, fluent-members-pro/app/Http/Controllers/SubscriptionController.php, fluent-members-pro/app/Services/SubscriptionHelper.php, fluent-members-pro/app/Services/SubscriptionRenewHelper.php, fluent-members-pro/app/Services/SubscriptionQueryService.php, fluent-members-pro/app/Services/MembershipUpgradeTargetService.php]
 doc-files: [guide/transactions/index.md, guide/members/portal/renewing-a-failed-subscription.md]
 ---
 
@@ -12,90 +12,125 @@ doc-files: [guide/transactions/index.md, guide/members/portal/renewing-a-failed-
 
 ## Table: `fmem_membership_subscriptions`
 
+Model lives in the **free** plugin (`app/Models/MembershipSubscription.php`) even though subscriptions are a Pro-only feature — Pro's controllers/services are what create and act on rows.
+
 | Column | Type | Description |
 |---|---|---|
 | `id` | int PK | |
-| `uuid` | varchar | Public-facing UUID (used in portal URLs) |
-| `membership_user_id` | int | FK → fmem_membership_users.id |
-| `user_id` | int | WordPress user ID (denormalized) |
+| `uuid` | varchar | Public-facing UUID (portal URLs, API paths) |
+| `user_id` | int | WordPress user ID |
+| `membership_user_id` | int\|null | FK → fmem_membership_users.id |
+| `parent_order_id` | int\|null | FK → fmem_membership_orders.id — the order that created this subscription |
 | `membership_level_id` | int | FK → fmem_membership_levels.id |
 | `price_id` | int | FK → fmem_membership_level_pricing.id |
-| `provider` | varchar | `native` / `woocommerce` |
-| `provider_subscription_id` | varchar | Stripe subscription ID (sub_xxx) or WC subscription ID |
-| `provider_customer_id` | varchar | Stripe customer ID (cus_xxx) |
-| `status` | varchar | See subscription statuses |
-| `trial_end_at` | datetime | When trial period ends (null if no trial) |
-| `current_period_end` | datetime | When current billing period ends |
-| `current_period_start` | datetime | When current billing period started |
-| `cancel_at_period_end` | tinyint | 1 = will cancel at period end, not immediately |
-| `billing_interval` | varchar | `month` / `year` / `week` etc |
-| `billing_interval_count` | int | Number of intervals per billing period |
-| `billing_amount` | decimal | Amount charged per period |
-| `settings` | longtext | JSON: additional config |
-| `created_at` | datetime | |
-| `updated_at` | datetime | |
+| `item_name` | varchar | Snapshot of the plan's display name |
+| `billing_interval` | varchar | e.g. `month`, `year` |
+| `interval_count` | int | Number of intervals per billing period (default 1) |
+| `signup_fee` | decimal | One-off fee charged at signup (default 0) |
+| `currency` | varchar | ISO 4217 |
+| `quantity` | int | Default 1 |
+| `recurring_amount` | decimal | Amount charged per period |
+| `recurring_total` | decimal | `recurring_amount` × `quantity` |
+| `bill_times` | int | Total number of billing cycles (0 = unlimited/until cancelled) |
+| `bill_count` | int | Number of cycles billed so far |
+| `expire_at` | datetime\|null | |
+| `trial_ends_at` | datetime\|null | null = no trial |
+| `canceled_at` | datetime\|null | |
+| `restored_at` | datetime\|null | Set if a cancelled subscription is reactivated |
+| `collection_method` | varchar | `automatic` (default) |
+| `trial_days` | int | |
+| `provider` | varchar | `stripe` (default) or `paypal` |
+| `provider_customer_id` | varchar | Stripe customer ID / PayPal payer ID |
+| `provider_plan_id` | varchar | Stripe Price ID / PayPal plan ID |
+| `provider_subscription_id` | varchar | Stripe subscription ID (`sub_xxx`) or PayPal subscription ID |
+| `next_billing_date` | datetime\|null | |
+| `status` | varchar | See statuses below |
+| `original_plan` | longtext | Serialized snapshot of the plan at signup |
+| `provider_response` | longtext | Serialized raw gateway response |
+| `current_payment_method` | varchar | e.g. `card` |
+| `settings` | longtext | Serialized JSON |
+| `created_at` / `updated_at` | timestamp | |
+
+There is **no** `billing_amount` or `current_period_end`/`current_period_start` column — use `recurring_amount`/`recurring_total` and `next_billing_date` instead.
 
 ---
 
-## Subscription statuses
+## Subscription statuses (model constants)
 
-| Status | Description |
-|---|---|
-| `active` | Subscription is current |
-| `trialing` | In trial period |
-| `past_due` | Payment failed but subscription not yet cancelled |
-| `cancelled` | Subscription cancelled |
-| `paused` | Subscription paused (if Stripe supports) |
-| `incomplete` | Initial payment not yet confirmed |
+| Constant | Value | Description |
+|---|---|---|
+| `STATUS_PENDING` | `pending` | Created, not yet confirmed |
+| `STATUS_INCOMPLETE` | `incomplete` | Initial payment not yet confirmed |
+| `STATUS_TRIALING` | `trialing` | In trial period |
+| `STATUS_ACTIVE` | `active` | Current |
+| `STATUS_PAST_DUE` | `past_due` | Payment failed, not yet cancelled |
+| `STATUS_CANCELED` | `canceled` | Note: single "l" — matches Stripe's spelling |
+| `STATUS_EXPIRED` | `expired` | |
+| `STATUS_UNPAID` | `unpaid` | |
+| `STATUS_FAILED` | `failed` | |
 
 ---
 
 ## Model: `MembershipSubscription`
 
-Relationships:
-- `membershipUser()` → belongsTo MembershipUser
-- `membershipLevel()` → belongsTo MembershipLevel
-- `price()` → belongsTo MembershipLevelPricing
-- `orders()` → hasMany MembershipOrder
+Lookup helpers: `findByUuid()`, `findByParentOrder($orderId)`, `findByMembershipUser($membershipUserId)`, `findByProviderSubscription($provider, $id)`, `findStripeManagedByProviderSubscription($id)` (matches a migrated Stripe-billed subscription from `memberpress`/`pmpro`/`rcp` provider markers whose `current_payment_method = 'stripe'`).
 
-Key scopes:
-- `active()` → where status in ['active', 'trialing']
-- `forUser($userId)` → where user_id = $userId
+Relations: `user()`, `membershipUser()`, `parentOrder()`, `membershipLevel()`, `price()`.
 
 ---
 
-## SubscriptionHelper
+## Admin subscription routes (`SubscriptionController`)
 
-`fluent-members-pro/app/Services/SubscriptionHelper.php`
+| Method | Path | Action |
+|---|---|---|
+| GET | `/billing/subscriptions` | List subscriptions (paginated, admin) |
+| GET | `/billing/subscriptions/{uuid}` | Single subscription detail |
+| GET | `/billing/subscriptions/{uuid}/available-upgrades` | Upgrade targets for this subscription |
 
-Key static methods:
+Both read routes are thin wrappers over `SubscriptionQueryService`.
+
+Mutating actions (cancel/renew/upgrade/payment-method) live on `BillingActionController` — see chunk 31.
+
+---
+
+## SubscriptionHelper — creating/updating rows
+
+`fluent-members-pro/app/Services/SubscriptionHelper.php` (all **instance**, not static, methods):
 
 | Method | Description |
 |---|---|
-| `getActiveSubscriptions($userId)` | Get all active subscriptions for a user |
-| `cancelSubscription($subscription, $atPeriodEnd)` | Cancel via Stripe API (immediate or end-of-period) |
-| `renewSubscription($subscription)` | Retry failed payment via Stripe API |
-| `getPortalSubscriptions($userId)` | Subscriptions formatted for the member portal UI |
+| `processSubscription(MembershipOrder $order, $subscriptionData = [])` | Create/update the subscription row for a paid order |
+| `getSubscriptionByHash($hash)` | Lookup by `uuid` |
+| `getSubscriptionByParentOrder($orderId)` | |
+| `getSubscriptionByMembershipUser($membershipUserId)` | |
+| `getSubscriptionByProviderSubscription($provider, $subscriptionId)` | |
+| `updateSubscriptionStatus($subscriptionHash, $status = 'pending')` | |
+
+## SubscriptionRenewHelper
+
+`processExpiredStripeRenewal(MembershipSubscription $subscription, MembershipOrder $order, array $renewData = [], $paymentMode = '')` — retries a failed/expired Stripe subscription's latest invoice.
 
 ---
 
 ## Cancel at period end vs immediate cancel
 
-`cancel_at_period_end = 1` → member keeps access until `current_period_end`, then subscription terminates automatically.
+Handled by the shared `Cancellation` service (chunk 31), not per-gateway code:
 
-`cancel_at_period_end = 0` + immediate cancel → membership cancelled now, access ends now.
+```php
+const MODE_IMMEDIATE = 'immediate';
+const MODE_END_OF_PERIOD = 'end_of_period';
+```
 
-Controlled by the "Cancellation Mode" setting in Settings → Payment Settings.
+`MODE_END_OF_PERIOD` keeps access until `next_billing_date`, then the subscription is cancelled; `MODE_IMMEDIATE` cancels and revokes access now.
 
 ---
 
 ## Subscription renewal (failed payment recovery)
 
-1. Member goes to portal → sees "Payment Failed" badge
-2. Clicks "Retry Payment"
-3. `POST /billing/subscriptions/{uuid}/renew`
-4. `SubscriptionHelper::renewSubscription()` calls Stripe to retry the latest invoice
-5. On success → subscription status → `active`, MembershipUser status → `active`
+1. Member sees a "Payment Failed" badge in the portal
+2. Clicks "Retry Payment" → `POST /billing/subscriptions/{uuid}/renew` (`BillingActionController::renewSubscription`)
+3. The provider-agnostic `Renewal::processRenewal()` service resolves the subscription's gateway and retries payment (Stripe retries the latest invoice; PayPal issues a fresh checkout URL — see chunk 39)
+4. On success → subscription status → `active`, linked MembershipUser status → `active`
 
 Doc: `guide/members/portal/renewing-a-failed-subscription.md`
 
