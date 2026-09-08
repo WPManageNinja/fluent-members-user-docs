@@ -1,132 +1,174 @@
 # What is Fluent Members?
 
-**Fluent Members** is a WordPress plugin that turns your site into a full membership platform, without writing a single line of code.
+**Fluent Members** is a WordPress membership plugin that lets you control access to your website content, manage members, and create membership plans without writing code.
 
-This page gives you the big picture. In the end, you'll understand what Fluent Members does, whether it fits what you're building, and how the main pieces fit together.
+You can use it to create free or paid membership levels, protect content, manage members, and connect your memberships with payment and other business tools.
 
-## What It Does, in Plain English
+This guide gives you an overview of Fluent Members and explains how its main features work together.
 
-Fluent Members does three things:
+## What Does Fluent Members Do?
 
-1. **Organises your content into groups:** you decide which pages, posts, or custom content belongs to which tier.
-2. **Controls who sees what:** logged out visitors, free members, and paid members all see different things.
-3. **Tracks your members:** from the moment someone joins, through renewals, to cancellations, all from one dashboard.
+At its core, Fluent Members handles three main things:
 
-Everything else in the plugin (the shortcodes, the integrations, the email notifications) exists to support those three jobs.
+1. **Organises your content:** Decide which pages, posts, or other content should be available to each membership level.
+2. **Controls access:** Choose what logged-out visitors, free members, and paid members can see.
+3. **Manages members:** View members, assign membership levels, manage their status, and handle their membership lifecycle.
 
-::: tip The core idea in one sentence
-You create **Membership Levels** (the plans you sell), attach **Access Groups** (the content bundles) to them, and Fluent Members handles the rest.
-:::
+Other features, such as email notifications, integrations, shortcodes, and content protection tools, support these main functions.
 
-## Who It's For
+> [!Note]
+> The basic structure is simple: create **Membership Levels**, connect them to **Access Groups**, and assign members to the appropriate level.
 
-Fluent Members is built for site owners who want to sell or gate access to content. Common use cases:
+## Who Can Use Fluent Members?
 
- * **Online course creators**: Lock your lessons behind a paid membership. Free visitors see a course overview; paying members get everything.
- * **Newsletter writers and bloggers**: Publish free teasers for everyone, and full articles only for paid subscribers.
- * **Coaches and consultants**: Build a private resource library (templates, recordings, worksheets) only accessible to your clients.
- * **Community builders**: Create a members only forum or discussion area. Non-members see a preview and an invitation to join.
- * **Agencies and training portals**: Sell team plans. One company buys ten seats, and each employee gets their own login and access.
- * **Subscription product sellers**: Gate downloadable files, PDFs, or premium tools behind a recurring payment.
+Fluent Members is useful for any website that needs to restrict content or provide members with access to specific resources.
 
-## The Three Building Blocks
+Common use cases include:
 
-Every Fluent Members site is built on three concepts. It's worth understanding them before you start clicking buttons.
+- **Online courses:** Protect lessons and other course content for paying members.
+- **Blogs and newsletters:** Show free previews while keeping full content available to members.
+- **Coaching and consulting:** Create private libraries for clients, such as templates, videos, and worksheets.
+- **Online communities:** Restrict community areas or resources to specific membership levels.
+- **Training portals:** Create team or corporate memberships where multiple users can access the same resources.
+- **Subscription websites:** Protect downloadable files, PDFs, tools, and other premium resources.
+
+## The Three Main Concepts
+
+Before setting up Fluent Members, it helps to understand three basic concepts: Access Groups, Membership Levels, and Members.
 
 ### Access Groups
 
-An [Access Group](/guide/access-groups/) is a collection of content you want to protect. You might have an Access Group called *Premium Articles* that contains 50 posts, or one called *Private Lessons* that contains a custom post type.
+An [Access Group](/guide/access-groups/) is a collection of content that you want to protect.
 
-Think of an Access Group as the **room**. The Membership Level is the **key**.
+For example, you could create an Access Group for:
+
+- Premium blog posts
+- Private lessons
+- A custom post type
+- A specific category or tag
+- Your entire website, locked down in a single rule
+
+Think of an Access Group as a **room** that contains protected content.
 
 ### Membership Levels
 
-A [Membership Level](/guide/levels/) is a plan you offer your visitors: *Free*, *Pro*, *Annual*, *Team*, whatever makes sense for your business. Each Level unlocks one or more Access Groups.
+A [Membership Level](/guide/levels/) is a plan that you offer to your users.
 
-Levels come in two types: individual (one person) and corporate (a team with multiple seats, Pro).
+For example:
+
+- Free
+- Pro
+- Annual
+- Team
+
+Each Membership Level can provide access to one or more Access Groups.
+
+Fluent Members supports **individual** membership levels for one person and [corporate](/guide/levels/corporate-memberships) membership levels for teams (Pro).
 
 ### Members
 
-A [Member](/guide/members/) is a WordPress user who has been assigned a Membership Level. When someone buys your Pro plan, Fluent Members creates a member record, links them to the Pro Level, and immediately grants them access to everything that Level unlocks.
+A [Member](/guide/members/) is a WordPress user who has a Membership Level.
+
+When a user joins a membership, Fluent Members creates or updates their member record, connects them to the appropriate Membership Level, and gives them access to the content available to that level.
+
+In simple terms:
+
+**Access Groups contain the content → Membership Levels control access → Members receive the access.**
 
 ## Free vs Pro
 
-Fluent Members is available as a **free plugin** with a full content protection feature set, and a **Pro add-on** that adds native payments, subscriptions, and advanced business tooling.
+Fluent Members has a free plugin and a Pro add-on.
+
+The **free plugin** provides the core membership and content protection features. **Pro** adds payment processing, subscriptions, corporate memberships, and other advanced features.
 
 ### Free Features
 
 | Feature | What it includes |
 |---|---|
-| Membership Levels & Plans | Unlimited levels, individual type |
+| Membership Levels | Create unlimited individual membership levels |
 | Access Groups | Restrict posts, pages, categories, tags, and custom post types |
-| Partial Content Preview | Show a teaser and overlay to non-members |
-| Content Dripping | Release specific content on a schedule after a member joins |
-| Block-Level Protection | Restrict individual Gutenberg blocks inside a post |
-| Member Management | Member list, detail view, manual assignment, status management |
-| Member Portal | Self-service front-end page for members to view and cancel memberships |
-| Email Notifications | Welcome, expiry, and suspension emails with merge tags |
+| Partial Content Preview | Show a preview or teaser to users without access |
+| Content Dripping | Release content according to a schedule |
+| Block-Level Protection | Restrict individual Gutenberg blocks |
+| Member Management | View members, assign levels, and manage member status |
+| Member Portal | Let members view and manage their memberships from the frontend |
+| Email Notifications | Send membership-related emails such as welcome, expiry, and suspension notifications |
 | Migration Tools | Import members from Paid Memberships Pro, MemberPress, and Kadence Memberships |
 | FluentCart Integration | Sell memberships through FluentCart products |
-| Fluent Forms Integration | Sell memberships through Fluent Forms payment forms |
-| Paymattic Integration | Sell memberships through Paymattic payment forms |
-| FluentCRM Integration | Auto apply and remove CRM tags on membership events |
-| Fluent Support Integration | Show member level inside support tickets |
-| FluentCommunity Integration | Gate community spaces by Membership Level |
+| Fluent Forms Integration | Connect memberships with Fluent Forms payment forms |
+| Paymattic Integration | Connect memberships with Paymattic payment forms |
+| FluentCRM Integration | Trigger CRM automations when a membership is assigned, removed, expires, or is suspended |
+| Fluent Support Integration | Display membership information inside support tickets |
+| FluentCommunity Integration | Restrict community spaces based on Membership Level |
 
 ### Pro Features
 
 | Feature | What it adds |
 |---|---|
-| Native Stripe Checkout | Built-in Stripe payment flow, no third-party form plugin needed |
-| Native PayPal Checkout | Built-in PayPal payment flow using the PayPal Commerce Platform |
-| Subscriptions | Full subscription lifecycle: create, renew, cancel, fail, recover |
-| Orders & Transactions | Complete billing history with order and transaction records |
-| Refunds | Admin-initiated refunds from the Transactions screen |
-| Corporate Memberships | Parent buys seats; sub-members join via invite link |
+| Stripe Checkout | Accept payments through native Stripe checkout |
+| PayPal Checkout | Accept payments through native PayPal checkout |
+| Subscriptions | Manage subscription creation, renewals, cancellations, failures, and recovery |
+| Orders & Transactions | Keep records of orders and payment transactions |
+| Refunds | Process refunds from the Transactions area |
+| Corporate Memberships | Create team memberships with multiple seats |
 | WooCommerce Integration | Sell memberships through WooCommerce products and variations |
-| WooCommerce Subscriptions | Recurring billing managed through WC Subscriptions |
-| Block Email Editor | Build email templates visually using Gutenberg blocks |
-| Update Payment Method | Members can update their saved card from the portal |
-| Renew Failed Subscription | Members can retry a failed renewal from the portal |
-| Corporate Seat Management | Parent manages team invites and removals from the portal |
-| Cancellation Modes | Choose immediate or end of period cancellation per subscription |
+| WooCommerce Subscriptions | Support recurring membership payments through WooCommerce Subscriptions |
+| Block Email Editor | Create email templates using Gutenberg blocks |
+| Update Payment Method | Allow members to update their saved payment method |
+| Failed Subscription Renewal | Allow members to retry failed subscription payments |
+| Corporate Seat Management | Let corporate members manage team invitations and seats |
+| Cancellation Modes | Choose whether a subscription ends immediately or at the end of its current period |
 
-::: info Not sure which you need?
-The free plugin is fully functional for content protection and member management. Upgrade to Pro when you need native payments, subscription billing, corporate teams, or order and transaction history.
-:::
+> [!Note]
+> The free version is enough if you mainly need content protection and member management. You need Pro when you want native Stripe or PayPal payments, subscription billing, corporate memberships, or detailed order and transaction management.
 
-## How It Fits With Your Existing Tools
+## How Does Fluent Members Handle Payments?
 
-Fluent Members works two ways for payments:
+Fluent Members gives you two main ways to connect payments with memberships.
 
-**Option A: Use the built-in Stripe or PayPal checkout (Pro).** The Pro plugin includes native Stripe and PayPal checkouts, refunds, transactions, and subscription management. No second plugin needed.
+### Option 1: Use Native Payments with Pro
 
-**Option B: Use a payment plugin (Free or Pro).** Connect memberships to products in any of these:
+With Pro, you can use the built-in [Stripe](/guide/settings/payment-settings/stripe-setup) or [PayPal](/guide/settings/payment-settings/paypal-setup) checkout.
 
-| Payment plugin | Tier |
+This allows you to handle payments, subscriptions, refunds, transactions, and related billing features without relying on a separate payment form plugin.
+
+### Option 2: Connect a Payment Plugin
+
+You can also connect Fluent Members with supported payment and commerce plugins.
+
+| Payment plugin | Available with |
 |---|---|
 | FluentCart | Free |
 | Fluent Forms | Free |
 | Paymattic | Free |
 | WooCommerce | Pro |
 
-For free or admin-assigned memberships, no payment plugin is required at all.
+You do not need a payment plugin for free memberships or memberships assigned manually by an administrator.
 
-Fluent Members also connects to:
-- **FluentCRM:** funnel triggers fire when a member joins, expires, or is suspended.
-- **Fluent Support:** your support team sees a customer's memberships right in the ticket.
-- **FluentCommunity:** granting a Level can auto-enrol the member in a community space.
+> [!Note]
+> A Membership Level is tied to its selected payment method. After you set the payment method for a Level, you cannot switch that Level to a different payment method.
+>
+> If you are not ready to choose a payment method, create your Membership Levels and Access Groups first.
 
-::: info No payment plugin yet?
-That's fine. Install Fluent Members, build your Levels and Access Groups, and connect a payment provider later. Nothing breaks. You just won't sell until something is wired up.
-:::
+## Other Integrations
+
+Fluent Members can also connect with other Fluent products to extend your membership workflow.
+
+- **FluentCRM:** Fluent Members adds four automation triggers inside FluentCRM's funnel builder, for when a member is assigned, removed, expires, or is suspended.
+- **Fluent Support:** Display a customer's membership information inside support tickets.
+- **FluentCommunity:** Automatically enrol members in community spaces based on their Membership Level.
+
+> [!Note]
+> You can install and configure Fluent Members before connecting a payment provider. You can create your Levels and Access Groups first and connect payments later when you are ready to sell memberships.
 
 ## What Fluent Members Does Not Do
 
-- It **doesn't process payments directly** in the free version. That's your payment plugin's job.
-- It **doesn't build registration forms**. WordPress handles user registration, or you can use Fluent Forms.
-- It **doesn't manage your WooCommerce shop**. It connects to it.
-- It **doesn't replace a dedicated LMS**. If you need quizzes, course completion tracking, or certificates, pair it with a learning management plugin.
+Understanding what Fluent Members does **not** handle can help you choose the right tools for your website.
+
+- The **free version does not process payments directly**. You need a supported payment or commerce plugin for paid memberships.
+- Fluent Members **does not create registration forms**. WordPress handles user registration, or you can use a form plugin such as Fluent Forms.
+- Fluent Members **does not manage your WooCommerce store**. It integrates with WooCommerce to connect products and memberships.
+- Fluent Members **does not replace a dedicated LMS**. If your website needs features such as quizzes, course completion tracking, or certificates, you may need a separate learning management plugin.
 
 ## System Requirements
 
@@ -134,17 +176,18 @@ That's fine. Install Fluent Members, build your Levels and Access Groups, and co
 |---|---|
 | WordPress | 6.0 or higher |
 | PHP | 7.4 or higher |
-| WordPress role | Administrator (to access the plugin panel) |
-| Payment plugin | Optional. Required only for paid memberships unless you use the built-in Stripe or PayPal checkout (Pro) |
+| WordPress role | Administrator for access to the plugin panel |
+| Payment plugin | Optional. Required for paid memberships unless you use Pro's native Stripe or PayPal checkout |
 
 ## What's Next?
 
-If you're ready to get started, the next step is installing the plugin.
+Now that you understand the main concepts, you can start setting up Fluent Members.
 
-**→ [Installing Fluent Members](/guide/getting-started/installation)**
+The recommended next step is to **[install the plugin](/guide/getting-started/installation)** and complete the initial setup.
 
-Once it's installed, follow the **[Quick Start guide](/guide/getting-started/quick-start)**, which walks you through the first-time setup wizard step by step.
+After installation, follow the **[Quick Start](/guide/getting-started/quick-start)** guide to create your first Membership Levels and Access Groups.
 
-**Related reading:**
-- [Membership Levels](/guide/levels/): a deeper look at Levels, Pricing Plans, and Access Groups
-- [Glossary](/guide/getting-started/glossary): plain-English definitions for every term in the docs
+### Related Guides
+
+- **[Membership Levels](/guide/levels/):** Learn how Membership Levels, pricing plans, and Access Groups work together.
+- **[Glossary](/guide/getting-started/glossary):** Find plain-English definitions for the terms used throughout the Fluent Members documentation.
