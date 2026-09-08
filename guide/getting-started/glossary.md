@@ -32,7 +32,7 @@ This glossary explains the core terms used across the Fluent Members documentati
 
 **Checkout:** The flow where a visitor pays for a membership, via FluentCart, Fluent Forms, Paymattic, WooCommerce, or native [Stripe/PayPal](/guide/levels/pricing-paywalls) (Pro).
 
-**Content Dripping:** Releases content gradually after a member joins, instead of all at once. Set unlock timing per post from [Content Drip](/guide/levels/content-drip).
+**Content Dripping:** Releases content gradually after a member joins, instead of all at once. Configured on an Access Group's drip rules, each with its own unlock delay, see [Content Drip](/guide/levels/content-drip).
 
 **Content Protection:** Every way Fluent Members restricts content: redirects, messages, partial previews, dripping, and block-level rules. Each [Access Group](/guide/access-groups/protected-content) picks its own combination.
 
@@ -58,15 +58,15 @@ This glossary explains the core terms used across the Fluent Members documentati
 
 **FluentCart:** A WPManageNinja e-commerce plugin that can bill for memberships. A linked purchase [activates the level](/guide/levels/pricing-paywalls) automatically.
 
-**FluentCommunity:** A WPManageNinja community platform. Active spaces can be restricted to level holders via this [paywall](/guide/levels/pricing-paywalls) connection.
+**FluentCommunity:** A WPManageNinja community platform. A Membership Level can be configured to automatically grant or remove a member's access to specific community spaces and courses as their membership status changes.
 
-**FluentCRM:** A WPManageNinja CRM plugin. Fluent Members can tag or untag contacts on enrollment or cancellation, enabled from [General Settings](/guide/settings/general).
+**FluentCRM:** A WPManageNinja CRM plugin. Fluent Members adds four automation triggers, Level Assigned, Removed, Expired, and Suspended, inside FluentCRM's own funnel builder; it doesn't tag or untag contacts on its own.
 
 **Fluent Forms:** A form builder that can bill for memberships. Submitting a linked, paid form [activates the level](/guide/levels/pricing-paywalls) instantly.
 
 **Fluent Members Pro:** The paid add-on adding native Stripe/PayPal checkout, subscriptions, refunds, and corporate memberships. See [fluentmembers.com](https://fluentmembers.com) for plans.
 
-**Fluent Support:** A WPManageNinja helpdesk plugin. Agents see a customer's membership levels right in the ticket view, enabled from [General Settings](/guide/settings/general).
+**Fluent Support:** A WPManageNinja helpdesk plugin. When active, agents automatically see a widget with the customer's membership levels and status badges right in the ticket view.
 
 ## H
 
@@ -76,7 +76,7 @@ This glossary explains the core terms used across the Fluent Members documentati
 
 **Individual Level:** The standard type where each member buys their own access. Locked in when [creating a level](/guide/levels/creating), unlike Corporate Membership.
 
-**Integration:** A connection enabling payments, CRM, or community access. Free options include FluentCart and Fluent Forms; Pro adds WooCommerce and native Stripe/PayPal, see the full [list](/guide/levels/pricing-paywalls).
+**Integration:** A connection enabling payments, CRM, or community access. Free options include FluentCart, Fluent Forms, and Paymattic; Pro adds WooCommerce and native Stripe/PayPal, see the full [list](/guide/levels/pricing-paywalls).
 
 **Invite Token (Pro):** A single-use link a Corporate parent sends a teammate via [Seat Invites](/guide/members/portal/corporate-seat-invites), adding them as a sub-member on click.
 
@@ -154,7 +154,7 @@ This glossary explains the core terms used across the Fluent Members documentati
 
 **Setup Intent (Pro):** The Stripe object used when a member [updates their payment method](/guide/members/portal/updating-payment-method) without a new charge, just saving the card.
 
-**Shortcode:** A WordPress tag for dynamic output: `[fluent_membership_level id="X"]` for pricing, `[fluent_member_portal]` for the portal. Full list in the [Shortcode Reference](/reference/shortcode-reference).
+**Shortcode:** A WordPress tag for dynamic output: `[fluent_membership_level id="X"]` for a single pricing card, `[fluent_membership_levels]` for a multi-level pricing grid, `[fluent_members]` to gate inline content by level, and `[fluent_member_portal]` for the portal. Full list in the [Shortcode Reference](/reference/shortcode-reference).
 
 **Start Date:** The date a membership became active. [Content drip](/guide/levels/content-drip) timers count forward from this date.
 
@@ -177,6 +177,8 @@ This glossary explains the core terms used across the Fluent Members documentati
 ## U
 
 **Unauthorized Access:** What a non-member sees on protected content, [configured per Access Group](/guide/access-groups/unauthorized-access) as a redirect, message, or partial preview.
+
+**Upgraded:** A status set on an old membership row when the same user is given a new membership on the same level while the old one was still active or trial. The record stays for history, see [statuses](/reference/membership-statuses).
 
 ## W
 
