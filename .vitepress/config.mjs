@@ -1,4 +1,7 @@
 import { defineConfig } from 'vitepress'
+import { existsSync } from 'node:fs'
+import { join, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
 import { zoomablePlugin } from './theme/plugin-zoomable'
 
@@ -103,6 +106,33 @@ const guideSidebar = [
   }
 ]
 
+// Canonical origin for this site — reused by the canonical links and the absolute
+// og:/twitter: URLs below. Changing the host should only ever mean editing this line.
+const SITE_URL = 'https://docs.fluentmembers.com'
+
+/**
+ * Per-page link-preview cards.
+ *
+ * `scripts/generate-featured-images.mjs` renders a branded 1200x630 PNG carrying each
+ * page's own title into `public/images/featured/`, served at `/images/featured/`.
+ *
+ * NAMING RULE — kept in sync with that script's cardNameFor(): the card is the page's
+ * served path (i.e. `pageData.relativePath`, which VitePress has already passed through
+ * any `rewrites`) minus `.md`, with every `/` replaced by `--`, plus `.png`. The home
+ * page's `index.md` uses `index.png`.
+ *
+ * Anything without a generated card falls back to `default.png`, which the generator
+ * also emits — so a shared link is never left with no preview at all. The URL must be
+ * absolute: relative paths are ignored by Slack/X/LinkedIn/Facebook scrapers.
+ */
+const FEATURED_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', 'public', 'images', 'featured')
+
+function featuredImageFor(relativePath) {
+  const name = `${relativePath.replace(/\.md$/, '').replace(/\//g, '--')}.png`
+  const file = existsSync(join(FEATURED_DIR, name)) ? name : 'default.png'
+  return `${SITE_URL}/images/featured/${encodeURIComponent(file)}`
+}
+
 export default defineConfig({
   markdown: {
     config(md) {
@@ -125,9 +155,43 @@ export default defineConfig({
     ['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' }],
     ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' }],
-    ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }]
+    ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }],
+
+    // Open Graph / Twitter values that never vary per page. Every generated card is
+    // 1200x630, so the dimensions live here; the image URL itself is per page and
+    // is set in transformPageData() below.
+    ['meta', { property: 'og:site_name', content: 'Fluent Members' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:locale', content: 'en_US' }],
+    ['meta', { property: 'og:image:width', content: '1200' }],
+    ['meta', { property: 'og:image:height', content: '630' }],
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
   ],
 
+  // Per-page SEO tags: canonical URL plus the Open Graph / Twitter values that differ
+  // per page, including the page's own featured image (see featuredImageFor above).
+  transformPageData(pageData, { siteConfig }) {
+    // `relativePath` is the path AFTER `rewrites`, so it matches the public URL.
+    const path = pageData.relativePath.replace(/(^|\/)index\.md$/, '$1').replace(/\.md$/, '')
+    const url = path ? `${SITE_URL}/${path}` : `${SITE_URL}/`
+    const title = pageData.frontmatter.title || pageData.title || siteConfig.site.title
+    const description =
+      pageData.frontmatter.description || pageData.description || siteConfig.site.description
+    const image = featuredImageFor(pageData.relativePath)
+
+    pageData.frontmatter.head ??= []
+    pageData.frontmatter.head.push(
+      ['link', { rel: 'canonical', href: url }],
+      ['meta', { property: 'og:title', content: title }],
+      ['meta', { property: 'og:description', content: description }],
+      ['meta', { property: 'og:url', content: url }],
+      ['meta', { property: 'og:image', content: image }],
+      ['meta', { property: 'og:image:alt', content: title }],
+      ['meta', { name: 'twitter:title', content: title }],
+      ['meta', { name: 'twitter:description', content: description }],
+      ['meta', { name: 'twitter:image', content: image }]
+    )
+  },
   themeConfig: {
     logo: {
       light: '/images/logo/logo-light.webp',
