@@ -4,9 +4,9 @@ A **Membership Level** is the plan you sell or offer on your site. This guide wa
 
 ## Access the Add Level Screen
 
-Log in to your WordPress admin, click **Fluent Members → Levels**, then click **+ Add New Level** in the top right. The **Add Membership Level** modal opens.
+Log in to your WordPress admin, click **Fluent Members → Membership Levels**, then click **+ Create Membership Level** in the top right. The **Add Membership Level** modal opens.
 
-![Add New Level](/images/levels/creating/add-new-level.webp)
+![The Membership Levels list with an arrow pointing to the + Create Membership Level button](/images/levels/creating/add-new-level.webp)
 
 ## Step 1: Name the Level and Choose a Type
 
@@ -23,11 +23,11 @@ Click **Create**. The modal closes and you land on the level's edit screen.
 > You cannot switch a level from Individual to Corporate (or the other way around) after creation. If you picked the wrong type, delete the level and create it again.
 
 
-![Add Membership Level modal](/images/levels/creating/add-membership-level-modal.webp)
+![The Add Membership Level modal, showing the Title field and the Individual/Corporate type selector](/images/levels/creating/add-membership-level-modal.webp)
 
 ## Step 2: Complete the Edit Level Tab
 
-The edit screen opens on the **Edit Level** tab by default. Update these fields in the **Level Information** card:
+The edit screen opens on the **Edit Level** tab by default, alongside **Pricing**, **Access Group**, and **Members**. A **← Membership Level** link at the top left takes you back to the list, and a **More Actions** dropdown at the top right holds **Delete**. Update these fields in the **Level Information** card:
 
 | Field | Notes |
 |-------|-------|
@@ -41,11 +41,11 @@ For **Corporate** levels, you will also see:
 |-------|-------|
 | **Maximum Member** | The total number of seats for the plan (parent + invited members). Leave empty for unlimited seats. |
 
-Click **Save** in the top right when you are done. The button appears after you make a change.
+Click **Save** in the top right when you are done. The **Cancel** / **Save** bar, with an **Unsaved Changes** indicator, only appears after you edit a field.
 
-![Edit Level, Individual](/images/levels/creating/edit-level-individual-2.webp)
+![Edit Level tab for an Individual-type level, showing Title, Description, and Status, with the More Actions menu open](/images/levels/creating/edit-level-individual-2.webp)
 
-![Edit Level, Corporate](/images/levels/creating/edit-level-corporate-3.webp)
+![Edit Level tab for a Corporate-type level, showing the additional Maximum Member field](/images/levels/creating/edit-level-corporate-3.webp)
 
 
 ## Step 3: Finish the Rest of the Setup

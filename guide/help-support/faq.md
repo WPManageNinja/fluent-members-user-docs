@@ -1,6 +1,6 @@
 # Frequently Asked Questions
 
-Quick answers to the most common questions about Fluent Members. If your answer is not here, open a ticket at [Get Support](/guide/help-support/get-support).
+Quick answers to the most common questions about Fluent Members. If your answer is not here, see [Troubleshooting](/reference/troubleshooting) or open a ticket at [Get Support](/guide/help-support/get-support).
 
 ## General
 
@@ -16,7 +16,7 @@ WordPress 6.0+ and PHP 7.4+. Tested up to WordPress 6.9.
 
 ### Does Fluent Members Work With Any Theme?
 
-Yes. The plugin uses standard WordPress hooks and outputs no theme-specific markup. If you notice a conflict, see [Get Support](/guide/help-support/get-support).
+Yes. The plugin uses standard WordPress hooks and outputs no theme-specific markup. If you notice a conflict, see [Troubleshooting](/reference/troubleshooting).
 
 ## Setup
 
@@ -65,7 +65,7 @@ Six: `active`, `trial`, `pending`, `cancelled`, `expired`, `suspended`. See [Sta
 
 ### How Does a Member Cancel Their Own Membership?
 
-From the Member Portal, they click **Cancel Membership** on their membership card. For recurring Stripe subscriptions (Pro), the plugin cancels at the provider according to your configured [cancellation mode](/guide/transactions/cancellation-modes).
+From the Member Portal, they click **Cancel Membership** on their membership card. For recurring Stripe or PayPal subscriptions (Pro), the plugin cancels at the provider according to your configured [cancellation mode](/guide/transactions/cancellation-modes).
 
 ### Does Fluent Members Support Recurring Subscriptions?
 
@@ -94,11 +94,11 @@ Yes, edit the subject and body of each notification from **Settings → Email Co
 
 ### Can I Add Custom Event-Based Notifications (Cancel, Upgrade, etc.)?
 
-Not from the admin UI. Developers can register additional notifications via the `EmailNotifications` registry. For production use, FluentCRM is the recommended approach: hook into lifecycle actions like `fluent_members/membership_cancelled` and send branded emails from there.
+Not from the admin UI. For production use, FluentCRM is the recommended approach: hook into `fluent_members/membership_status_updated` (branch on the new status for cancel, upgrade, and so on) and send branded emails from there. See [Developer Hooks](/reference/developer-hooks).
 
 ### My Emails Are Not Arriving — What Do I Check?
 
-The most common cause is a misconfigured From address or missing SMTP plugin. Set up your sender in **Settings → Email Configuration → Mailing Settings** and install [FluentSMTP](https://wordpress.org/plugins/fluent-smtp/) for reliable delivery.
+See [Troubleshooting](/reference/troubleshooting). The most common cause is a misconfigured From address or missing SMTP plugin. Set up your sender in **Settings → Email Configuration → Mailing Settings** and install [FluentSMTP](https://wordpress.org/plugins/fluent-smtp/) for reliable delivery.
 
 ## Payments
 
@@ -112,7 +112,7 @@ Go to **Settings → Payment Settings**, click **Manage** on the Stripe card. Co
 
 ### Can I Issue a Refund From Fluent Members?
 
-Yes (Pro). Open **Transactions**, find the charge, and click **Refund**. Full and partial refunds are supported. Refunding does not automatically cancel the membership; do that separately if needed. See [Refunds](/guide/transactions/refunds).
+Yes (Pro). Open **Orders**, find the record under **Subscriptions** or **One-Time Purchases**, and refund the charge from its Transaction History panel. Full and partial refunds are supported. Refunding does not automatically cancel the membership; do that separately if needed. See [Refunds](/guide/transactions/refunds).
 
 ### What if I Refund Through the Stripe Dashboard Instead?
 

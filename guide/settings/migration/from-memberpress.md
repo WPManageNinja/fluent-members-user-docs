@@ -28,7 +28,7 @@ The wizard opens on the **Data Map** screen, which shows exactly what will be mi
 | Membership Levels | Membership Levels |
 | Rules | Access Groups |
 | Members (one-time) | Memberships |
-| Transactions (Pro) | Transactions |
+| Transactions (Pro) | Orders |
 
 Review the counts and the **Validation Warnings** at the bottom of the modal. When everything looks correct, click **Next**.
 

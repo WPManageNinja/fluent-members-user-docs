@@ -1,23 +1,23 @@
 # Subscription Cancellation Modes
 
-When a member or admin cancels a Stripe subscription, Fluent Members decides when the cancellation takes effect. Two modes are available: **Immediate** and **End of Period**. Choose the one that matches your refund policy.
+When a member or admin cancels a native Stripe or PayPal subscription, Fluent Members decides when the cancellation takes effect. Two modes are available: **Immediate** and **End of Period**. Choose the one that matches your refund policy.
 
 > [!Note]
-> Cancellation modes apply only to native Stripe subscriptions. Memberships driven by FluentCart, WooCommerce, or other paywall integrations follow the host plugin's own cancellation behaviour.
+> Cancellation modes apply only to native Stripe and native PayPal subscriptions. Subscriptions carried over from a PMPro, MemberPress, or Kadence Memberships migration aren't connected to a live gateway from this screen and can't be cancelled here at all, see [Subscriptions](/guide/transactions/subscriptions). Memberships driven by FluentCart, WooCommerce, or other paywall integrations follow the host plugin's own cancellation behaviour.
 
 ## The Two Modes
 
 | | Immediate | End of Period |
 |---|---|---|
 | Access revoked | Now | At the next renewal date |
-| Stripe action | Cancel subscription now | Set `cancel_at_period_end = true` |
+| Gateway action | Cancel subscription now | Set the subscription to cancel at period end |
 | Local membership status | `Cancelled` immediately | Stays `Active` until period ends, then `Cancelled` |
 | Final charge | None | None: current period is already paid |
-| `customer.subscription.deleted` webhook | Fires now | Fires at the period boundary |
+| Cancellation webhook | Fires now | Fires at the period boundary |
 
 ## Where to Configure
 
-Go to **Settings → Payment Settings**, click **Manage** on the Stripe card, and look for the **Cancellation Mode** toggle.
+Go to **Settings → Payment Settings**, click **Manage** on the Stripe or PayPal card, and look for the **Cancellation Mode** toggle.
 
 The default is **Immediate**. A fresh install will not accidentally extend access beyond what you intend.
 
@@ -28,7 +28,7 @@ The default is **Immediate**. A fresh install will not accidentally extend acces
 When a member cancels:
 
 1. The portal card shows `Cancelled` immediately.
-2. Fluent Members tells Stripe to cancel the subscription right now.
+2. Fluent Members tells the gateway (Stripe or PayPal) to cancel the subscription right now.
 3. The membership row's `expires_at` is set to the current time.
 4. The member loses access on their next page load.
 5. No charge runs at what would have been the renewal date.
@@ -38,10 +38,10 @@ When a member cancels:
 When a member cancels:
 
 1. The portal card shows `Cancelled` with an *"Access ends on [date]"* notice.
-2. Fluent Members sets `cancel_at_period_end = true` on the Stripe subscription; it stays active in Stripe until the period boundary.
+2. Fluent Members schedules the cancellation on the gateway's subscription; it stays active there until the period boundary.
 3. The local membership row stays `Active` until that boundary.
 4. The member keeps access throughout the paid period.
-5. On the original renewal date, Stripe sends `customer.subscription.deleted`. Fluent Members flips the local row to `Cancelled`.
+5. On the original renewal date, the gateway's cancellation webhook arrives (Stripe sends `customer.subscription.deleted`). Fluent Members flips the local row to `Cancelled`.
 6. No final charge runs.
 
 ::: warning Admin Views Under End of Period

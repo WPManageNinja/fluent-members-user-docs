@@ -1,114 +1,148 @@
 # Quick Start
 
-When you first activate **Fluent Members**, a 3-step setup wizard walks you through the core configuration. This guide follows that wizard from start to finish, so you know exactly what each screen is asking and why.
+When you first activate **Fluent Members**, a 4-step setup wizard walks you through the core configuration. This guide follows that wizard screen by screen, so you know exactly what each one is asking and why.
 
-You can skip any step and come back later from the Settings menu, nothing in the wizard is permanent.
+::: tip Optional and skippable
+Every screen has a **Skip All** button (bottom left) that jumps straight to the final summary. Nothing in the wizard is permanent, you can revisit any of it later from **Fluent Members → Levels**, **Access Groups**, **Settings**, or **Members**.
+:::
 
 ## What You'll Set Up
 
-| Step | What it does |
-|---|---|
-| Step 1 | Create your first Membership Level and choose its type |
-| Step 2 | Create an Access Group: the content bundle members unlock |
-| Step 3 | Connect a payment system so members can buy memberships |
+| Step | Screen | What it does |
+|---|---|---|
+| 1 | Welcome to FluentMembers | Create your first Membership: a title and a type |
+| 2 | Protect Your Content | Choose what this membership restricts and what non-members see |
+| 3 | Set Up Payments | Connect a paywall integration or preview native billing |
+| 4 | Almost Done! | Review a summary and set up your Member Portal page |
 
+## Step 1: Welcome to FluentMembers
 
-## Step 1: Create a Membership
+The wizard opens on **Welcome to FluentMembers**, "Let's create your first membership in just a few steps."
 
-The wizard opens on the **Welcome to FluentMembers** screen. This is where you define your first Membership Level.
+**Create a Membership:**
 
-**Fill in the fields:**
-
-- **Membership Title**: the name members will see on pricing pages and in their portal. Example: `Pro Plan`, `Annual Member`, `Basic Access`.
+- **Membership Title**: The name members will see on pricing pages and in their portal. Choose something that clearly explains what the plan offers, for example `Premium Membership`, `Gold Plan`, `Pro Membership`, or `VIP Access`.
 - **Type**: choose how this membership works:
-  - **Individual**: one person buys one seat. This is the standard option for most membership sites.
-  - **Corporate** *(upcoming)*, one purchaser buys a block of seats and invites team members to fill them.
+  - **Individual**: A single-user membership plan. Selected by default, and the right fit for most membership sites.
+  - **Corporate**: A multi-seat plan for teams, one parent account manages several member seats. See [Corporate Memberships](/guide/levels/corporate-memberships).
 
-Once you've filled in the title and selected a type, click **Next Step**.
-
-::: tip You can always come back
-This step only creates the Level shell. You add pricing plans, content rules, and drip schedules from **Fluent Members → Levels** after the wizard completes.
-:::
-
-![The Step 1 welcome screen showing the Membership Title field and type selector](/images/quick-start/starting-1.webp)
-
-
-## Step 2: Grant Access
-
-Step 2 asks **what this membership unlocks** that is, which Access Group members will be able to see.
-
-An **Access Group** is a named container of protected content. Think of it as a padlocked folder. The Membership Level you just created is the key.
-
-**To create your first Access Group here:**
-
-1. Click **+ Create Access Group**. A small form appears with two fields.
-2. **Title**: Give the group a clear name. Examples: `Pro Content`, `Course Library`, `Members Only Area`.
-3. **Description** *(optional)*: A short note for your own reference, not shown to members. 200-character limit.
-4. Click **Add**. The Access Group is created and linked to the Membership Level from Step 1.
-
-You can create more than one Access Group here, or skip and add them later from **Fluent Members → Access Groups**.
-
-Click **Next Step** when done.
-
-::: info What gets protected?
-The Access Group is created here, but which specific pages, posts, or post types it protects is configured inside the Access Group's settings not in this wizard. After completing setup, go to **Fluent Members → Access Groups**, open the group, and add restriction rules.
-:::
-
-![The Step 2 Grant Access screen showing the Title and Description fields for a new Access Group](/images/quick-start/grant-access-2.webp)
-
-## Step 3: Connect a Payment System
-
-Step 3 lets you choose how members will pay for memberships.
-
-#### Paywall Integrations (Free):
-
-These work by linking an existing product in another plugin to your Membership Level. When a customer completes a purchase in that plugin, Fluent Members automatically activates their membership.
-
-| Integration | How it works |
-|---|---|
-| **Fluent Cart** | Link a FluentCart product variant to a Membership Level |
-| **Fluent Forms** | Link a payment form submission to a Membership Level |
-| **Paymattic** | Link a Paymattic payment form to a Membership Level |
-| **WooCommerce** | Link a WooCommerce product or product variation to a Membership Level |
-
-#### Native Payment (Pro):
-
-| Integration | How it works |
-|---|---|
-| **Stripe** | Built-in Stripe checkout with no third-party form plugin needed. Supports one-time and recurring subscriptions. |
-
-This step is a preview of your payment options. Actual connection of a payment plugin to a Membership Level happens inside **Fluent Members → Levels → Pricing Plans** after the wizard. Now, click **Complete Installation** to finish setup.
+Click **Next Step** (bottom right) to continue, or **Skip All** (bottom left) to jump straight to the Step 4 summary.
 
 > [!Note]
-> If you haven't decided on a payment plugin, click **Skip All** and set up payments later from **Fluent Members → Levels**.
+> You can rename the Membership Title anytime later, but the **Type** is locked in the moment you create the Level, Individual and Corporate can't be switched afterward. If you pick the wrong type here, delete the Level and create it again. This step only creates the Level shell; you add pricing plans, content rules, and drip schedules from **Fluent Members → Levels** after the wizard completes.
 
 
-![The Step 3 Payment System screen showing Fluent Cart, Fluent Forms, Paymattic, WooCommerce, and Stripe options](/images/quick-start/payment-system-3.webp)
+![Step 1 of 4: Welcome to FluentMembers, showing the Membership Title field and Individual/Corporate type selector](/images/getting-started/quick-start/step-1.webp)
+
+## Step 2: Protect Your Content
+
+Step 2, **Protect Your Content**, chooses what this membership restricts and what a non-member sees when they hit it.
+
+**Apply Restriction To:**
+
+Use the **Select Type** dropdown to choose what gets locked down, specific pages or posts, an entire post type, categories or other content types, or your whole site. See [Protected Content: Restriction Types](/guide/access-groups/protected-content).
+
+**Unauthorized Access:**
+
+Choose what happens when someone without access tries to view this content, from the **Action for Unauthorized Users** dropdown. The wizard defaults to **Display a custom message**, which reveals three more fields:
+
+- **Custom Message**: Shown in place of the content. Defaults to `This content is for members only. Please join to get access.`, but you can swap in your own copy, for example `This article is available to Premium members. Join now to unlock this content.`
+- **Button Text**: Add the call-to-action label. Defaults to `Subscribe Now`; other options that work well are `Join Now`, `Get Access`, or `Become a Member`.
+- **Button URL**: Where that button sends the visitor, search for an existing page (your pricing page, registration page, or login page all work) or paste a URL directly.
+
+The other unauthorized-access actions (redirect, partial preview, login popup, hide entirely) are configured the same way from the Access Group's own settings after the wizard. See [Setting Up Unauthorized Access Rules](/guide/access-groups/unauthorized-access).
+
+Click **Next Step** to continue, **Go Back** to revisit Step 1, or **Skip All** to jump to the summary.
+
+::: info Nothing selected yet?
+Leaving **Apply Restriction To** empty is fine, the note on this screen tells you exactly that: restrict pages, posts, your entire site, or specific categories and content types now, or skip and configure it later from Settings.
+:::
+
+![Step 2 of 4: Protect Your Content, showing the Apply Restriction To dropdown and the Unauthorized Access message, button text, and button URL fields](/images/getting-started/quick-start/step-2.webp)
+
+## Step 3: Set Up Payments
+
+Step 3, **Set Up Payments**, connects a payment method so you can start selling this membership.
+
+**Paywall Integrations:**
+
+The wizard detects which supported plugins are already installed on your site and shows each as **Installed** or **Not Installed**:
+
+| Integration | Requires |
+|---|---|
+| FluentCart | Free |
+| Fluent Forms | Free |
+| Paymattic | Free |
+| WooCommerce | Pro |
+
+Select an installed integration and its own setup fields appear underneath. For FluentCart, that's a **Search FluentCart Products** field (type at least one character to search) and a **+ Create Pricing** link if you'd rather create a new product from here.
+
+::: tip Prefer built-in billing?
+The banner at the top of this step also points you to native billing: connect Stripe or PayPal directly from the **Native Payment** section instead of linking an external plugin's product. See [Stripe Setup (Pro)](/guide/settings/payment-settings/stripe-setup) or [PayPal Setup (Pro)](/guide/settings/payment-settings/paypal-setup).
+:::
+
+Click **Next Step** to continue, **Go Back** to revisit Step 2, or **Skip All** to jump to the summary, you can always add pricing from the Level's own settings later.
+
+![Step 3 of 4: Set Up Payments, showing the FluentCart, Fluent Forms, Paymattic, and WooCommerce integration cards with FluentCart selected](/images/getting-started/quick-start/step-3.webp)
+
+## Step 4: Almost Done!
+
+The final screen, **Almost Done!**, summarizes exactly what the wizard set up, so you can see at a glance what's done and what still needs attention:
+
+| Item | Shows |
+|---|---|
+| Membership Level | Your title, or "new" if you skipped Step 1 |
+| Content Protection | The restriction you chose, or "Skipped, No restriction set" |
+| Payment | The integration and product you picked, or "Skipped" |
+| Member Portal Page | Whether a portal page is connected |
+
+**Member Portal Page:**
+
+This is the one thing the wizard asks you to finish here: your members need a page to view and manage their memberships. Use the **Select an existing page** dropdown to attach an existing page, or click **+** to create a new one on the spot. Either way, the page needs the `[fluent_member_portal]` shortcode on it, the wizard shows you that shortcode directly under the field.
+
+Click **Complete Setup** to finish, or **Go Back** to revisit Step 3.
+
+![Step 4 of 4: Almost Done, showing the setup summary and the Member Portal Page selector](/images/getting-started/quick-start/step-4.webp)
 
 ## After the Wizard
 
-When you click **Complete Installation**, the wizard closes and you land on the Fluent Members dashboard. Your first Membership Level and Access Group already exist, here's what to do next:
+Once the wizard closes, you land on the Fluent Members dashboard. Here's what to check next, especially for anything you skipped:
 
-**1. Protect some content**
+**1. Review your Membership Levels**
 
-Go to **Fluent Members → Access Groups**, open the Access Group you created, and add restriction rules: which posts, pages, post types, or categories it should lock down.
+Go to **Fluent Members → Levels** to see the Level you created, or add another with **+ Create Membership Level**, for example a `Free`, `Basic`, `Pro`, and `Premium` tier, each with its own pricing and access rules.
+
+**2. Review your Access Groups**
+
+Go to **Fluent Members → Access Groups** to see the restriction rule the wizard created, or add another with **+ Add New Group**.
 
 See [Protected Content: Restriction Types](/guide/access-groups/protected-content).
 
-**2. Connect a payment system**
+**3. Finish connecting payments**
 
-Go to **Fluent Members → Levels**, open your Level, and add a Pricing Plan that links to your payment plugin.
+If you skipped Step 3, go to **Fluent Members → Levels**, open your Level, and add a Pricing Plan.
 
 See [Pricing: Paywalls](/guide/levels/pricing-paywalls) or [Pricing: Native Payment](/guide/levels/pricing-native).
 
-**3. Add the member portal**
+**4. Confirm the member portal page is live**
 
-Create a WordPress page, add the shortcode `[fluent_member_portal]`, and publish it. This is where logged-in members manage their membership.
+If you didn't finish Step 4, create or edit a WordPress page, add the `[fluent_member_portal]` shortcode, and publish it.
 
 See [Portal: Setup](/guide/members/portal/setup).
 
-**4. Test as a non-member**
+**5. Test as a non-member**
 
 Open an incognito browser window, visit a protected page, and confirm you see the restriction message instead of the content. Admins always bypass protection, always test as a logged-out visitor.
 
+## Quick Setup Checklist
 
+Before you send traffic to your membership site, confirm you have:
+
+- Created at least one Membership Level with the correct type
+- Chosen the content to protect and attached it to an Access Group
+- Added a Pricing Plan, if the membership is paid
+- Connected a payment method, native or paywall
+- Created or connected the Member Portal page with the `[fluent_member_portal]` shortcode
+- Tested the protected content as a logged-out visitor
+
+Once every box is checked, your basic Fluent Members setup is ready. From here you can add more Levels, build out additional Access Groups, and layer in Pro features like corporate seats and native billing as your site grows.

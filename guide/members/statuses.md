@@ -2,7 +2,7 @@
 
 Every membership row in Fluent Members carries a single status value. The status controls whether a member can access protected content, what they see in the Member Portal, and which admin actions are available on that row.
 
-## The Six Statuses
+## The Statuses
 
 | Status | Has Access? | What it means |
 |---|:---:|---|
@@ -12,6 +12,7 @@ Every membership row in Fluent Members carries a single status value. The status
 | `expired` | ❌ | Past the expiry date, set automatically by an hourly background job |
 | `suspended` | ❌ | Admin has paused access; billing may still be running |
 | `cancelled` | ❌ | Explicitly ended; record kept in history |
+| `upgraded` | ❌ | The member's old membership row after they were moved to a different level; the old row is kept for history and a new row carries the new level |
 
 ::: tip
 **Active** and **Trial** both grant full access; the difference is billing stage only. Every other status blocks access immediately.
@@ -29,6 +30,7 @@ The actions available on a membership row depend on its current status:
 | `cancelled` | — | — | ✅ | ✅ |
 | `expired` | — | — | ✅ | ✅ |
 | `suspended` | ✅ | — | ✅ | — |
+| `upgraded` | — | — | ✅ | — |
 
 To re-grant access to a cancelled or expired member, use [Adding a Membership Manually](./adding-manually).
 
@@ -44,6 +46,7 @@ When a member visits the Member Portal, the content shown depends on their statu
 | `cancelled` | Cancelled badge; member can re-purchase from your pricing page |
 | `expired` | Expired badge; Pro: Renew button if the subscription is renewable |
 | `suspended` | Suspended badge; no actions available |
+| `upgraded` | Not shown; the member instead sees their new, active membership row |
 
 When a member with a non-active status tries to view protected content, the [Unauthorized Access](/guide/access-groups/unauthorized-access) setting on the Access Group controls what they see.
 
@@ -56,6 +59,7 @@ Status changes on a corporate parent account automatically cascade to all child 
 | `cancelled` | `cancelled` |
 | `expired` | `expired` |
 | `suspended` | `suspended` |
+| `upgraded` | `upgraded` |
 
 See [Corporate Memberships](/guide/levels/corporate-memberships) for details.
 
@@ -66,4 +70,5 @@ See [Corporate Memberships](/guide/levels/corporate-memberships) for details.
 - **Expired is set automatically.** An hourly background job checks for rows whose expiry date has passed and flips them to `expired`. You do not need to do this manually.
 - **A Pending row that stays Pending** usually means an integration webhook did not fire. Check the payment provider logs, then use [Adding a Membership Manually](./adding-manually) to grant access if needed.
 - **Cancelled rows are not deleted.** The record stays in the member's history. A new `Active` row is created if they re-join.
+- **Upgraded rows are not deleted either.** Moving a member to a different level marks the old row `upgraded` and creates a fresh row on the new level, keeping full history of what they held before.
 :::

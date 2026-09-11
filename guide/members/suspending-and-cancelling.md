@@ -29,7 +29,7 @@ If the membership is tied to a Stripe or FluentCart subscription, recurring char
 2. On the membership row, click the action menu and select **Cancel**.
 3. The row status changes to `Cancelled` and access is revoked immediately.
 4. The plugin notifies the payment provider to stop recurring charges:
-   - **Stripe (Pro):** subscription is cancelled immediately or at the end of the billing period, depending on your [Cancellation Modes](/guide/transactions/cancellation-modes) setting.
+   - **Stripe or PayPal (Pro):** subscription is cancelled immediately or at the end of the billing period, depending on your [Cancellation Modes](/guide/transactions/cancellation-modes) setting. Subscriptions carried over from a migration aren't connected to a live gateway here and must be cancelled at the source or handled manually.
    - **FluentCart:** the linked subscription is cancelled.
    - **Fluent Forms / Paymattic / others:** the integration's cancel hook fires.
 
