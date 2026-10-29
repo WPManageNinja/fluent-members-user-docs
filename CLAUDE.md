@@ -22,11 +22,11 @@ There is no test suite. `npm run docs:build` is the gate: it errors on broken in
 ## Architecture
 
 - **Two content zones**, each with its own sidebar config and link format:
-  - `guide/<category>/<slug>.md` — instructional content (how-to, setup, walkthroughs). URL: `/guide/<category>/<slug>`. **The category IS part of the URL.**
+  - `docs/<category>/<slug>.md` — instructional content (how-to, setup, walkthroughs). URL: `/docs/<category>/<slug>`. **The category IS part of the URL.**
   - `reference/<slug>.md` — flat lookup content (glossary, shortcodes, merge tags, hooks). URL: `/reference/<slug>`.
   - Guide categories: `getting-started`, `dashboard`, `levels`, `access-groups`, `members`, `transactions`, `settings`, `help-support`. Some nest one level deeper (`members/portal/`, `settings/payment-settings/`, `settings/migration/`, `settings/email-configuration/`, `access-groups/gutenberg-block/`).
 
-- **The sidebar and nav are hand-maintained in `.vitepress/config.mjs`** — an inline JS array (`guideSidebar`) plus a `/reference/` sidebar object, not generated from the filesystem. A page is invisible in site navigation until it is wired in here. Keep valid JS object syntax. `cleanUrls: true`, so links omit `.md`.
+- **The sidebar and nav are hand-maintained in `.vitepress/config.mjs`** — an inline JS array (`docsSidebar`) plus a `/reference/` sidebar object, not generated from the filesystem. A page is invisible in site navigation until it is wired in here. Keep valid JS object syntax. `cleanUrls: true`, so links omit `.md`.
 
 - **Images** live at `public/images/<category>/<slug>/<name>.webp` and are referenced with an absolute path `/images/<category>/<slug>/<name>.webp` (the `public/` prefix is dropped in refs). Prefer `.webp`.
 
@@ -36,7 +36,7 @@ There is no test suite. `npm run docs:build` is the gate: it errors on broken in
 
 - Line 1 is a bare `# H1` with **no frontmatter**, and it must match the sidebar `text` for that page.
 - Bold UI labels and feature names: `**Fluent Members → Levels**`. No inner spaces: `**term**`, never `** term **`.
-- Use `> [!Note]` callouts and tables for field references (see existing pages like `guide/levels/creating.md` for house style).
+- Use `> [!Note]` callouts and tables for field references (see existing pages like `docs/levels/creating.md` for house style).
 - Always use **absolute** links in the zone's format; never relative (`./slug`, `../slug`).
 - Mark Pro-only features with `(Pro)` in both body text and the sidebar `text`.
 - No closing support/boilerplate blocks at the end of pages.

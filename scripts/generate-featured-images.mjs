@@ -12,7 +12,7 @@
  *
  * "Served page path" is what `pageData.relativePath` holds by the time the config's
  * transform hook runs — i.e. AFTER any `rewrites` have been applied. For a repo with no
- * rewrites that is the real source path (`guide/setup/install.md` -> `guide--setup--install.png`);
+ * rewrites that is the real source path (`docs/setup/install.md` -> `docs--setup--install.png`);
  * for a repo that flattens URLs it is the flat slug (`install.md` -> `install.png`). The
  * `servedPath()` function in the CONFIG block below replicates this repo's rewrite rule so
  * the script can compute the same name without importing the TypeScript config.
@@ -52,7 +52,7 @@ const EXCLUDE_DIRS_REL = ["member"]
 
 // Eyebrow label = first folder of the page path, after skipping these wrapper folders,
 // title-cased — with SECTION_LABELS pinning the ones that title-case badly (acronyms etc.).
-const SECTION_PREFIXES = ["guide"]
+const SECTION_PREFIXES = ["docs"]
 const SECTION_LABELS = {
   'help-support': 'Help & Support'
 }

@@ -18,12 +18,12 @@
 ## <Second Major Section>
 
 <Cross-reference other docs using the correct link format for the zone:>
-See [Descriptive Text](/guide/<category>/<slug>) for more.
+See [Descriptive Text](/docs/<category>/<slug>) for more.
 
 <!--
 SCAFFOLD NOTES — delete before saving:
 - Line 1 must be the bare H1 (no frontmatter). It must match the sidebar "text".
-- Guide links: /guide/<category>/<slug>  (category IS part of the URL)
+- Guide links: /docs/<category>/<slug>  (category IS part of the URL)
 - Reference links: /reference/<slug>
 - NEVER use relative links (./slug or ../slug)
 - Images: store at public/images/<category>/<slug>/, reference /images/<category>/<slug>/<file>

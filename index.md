@@ -8,7 +8,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /guide/getting-started/introduction
+      link: /docs/getting-started/introduction
     - theme: alt
       text: Dev Docs
       link: https://developers.fluentmembers.com/
@@ -17,41 +17,41 @@ features:
   - icon: "🚀"
     title: Getting Started
     details: Install, configure, and ship your first Level in under 10 minutes, the Quick Start walks Sara through a real example.
-    link: /guide/getting-started/introduction
+    link: /docs/getting-started/introduction
     linkText: Start here
   - icon: "📊"
     title: Dashboard
     details: Read the four headline stats, the activity charts, and the side cards at a glance.
-    link: /guide/dashboard/dashboard
+    link: /docs/dashboard/dashboard
     linkText: Tour the dashboard
   - icon: "🎟️"
     title: Levels
     details: Membership Levels, Pricing Plans (Native Payment and Paywalls), and Corporate seats.
-    link: /guide/levels/
+    link: /docs/levels/
     linkText: Build a Level
   - icon: "🔒"
     title: Access Groups
     details: Protected Content rules, the five Unauthorized Access actions, Content Drip, and the Gutenberg block.
-    link: /guide/access-groups/
+    link: /docs/access-groups/
     linkText: Lock content
   - icon: "👥"
     title: Members & Portal
     details: List, detail, status reference, manual grants, and the self-service Member Portal, including Pro flows for payment updates and corporate invites.
-    link: /guide/members/
+    link: /docs/members/
     linkText: Manage members
   - icon: "💳"
     title: Orders (Pro)
     details: Subscriptions and One-Time Purchases, each with its own transaction history and timeline. Refunds and subscription cancellation modes.
-    link: /guide/transactions/
+    link: /docs/transactions/
     linkText: See your orders
   - icon: "⚙️"
     title: Settings
     details: General, Partial Content Lock, Login Popup, Payment Settings (Stripe), Migration from PMPro / MemberPress / Content Restriction Pro, and Email Configuration.
-    link: /guide/settings/general
+    link: /docs/settings/general
     linkText: Configure the site
   - icon: "📘"
     title: Reference
     details: Glossary, statuses, shortcodes, merge tags, FAQ, troubleshooting, and developer hooks.
-    link: /guide/getting-started/glossary
+    link: /docs/getting-started/glossary
     linkText: Look it up
 ---

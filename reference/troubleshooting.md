@@ -38,7 +38,7 @@ The webhook URL must be reachable from Stripe's IPs and your signing secret must
 Almost always a webhook configuration mismatch, since PayPal webhooks are set up manually in the PayPal Developer Dashboard rather than automatically.
 
 1. **Confirm the URL**, copy it from Settings → Payment Settings → PayPal → **Manage** (it contains `?fluent_members_payment_listener=1&payment_method=paypal`). It must match exactly what's pasted into PayPal's **Apps & Credentials → your app → Add Webhook**.
-2. **Confirm the events are selected**, the webhook needs all 9 events listed in [PayPal Webhook Events Reference](/guide/settings/payment-settings/paypal-setup#webhook-events-reference). Missing an event means that specific transition (for example, cancellation) never reaches Fluent Members.
+2. **Confirm the events are selected**, the webhook needs all 9 events listed in [PayPal Webhook Events Reference](/docs/settings/payment-settings/paypal-setup#webhook-events-reference). Missing an event means that specific transition (for example, cancellation) never reaches Fluent Members.
 3. **Sandbox vs Live**, PayPal keeps sandbox and live webhooks completely separate. Confirm you registered the webhook on the same tab (Sandbox or Live) that matches the Payment Mode selected in Fluent Members.
 4. **Reconnect if the account changed**, if you disconnected and reconnected a different PayPal account, the app credentials changed too. You'll need to add the webhook again under the new app.
 
@@ -61,11 +61,11 @@ Either route through `WP_REST_Posts_Controller`, or call `AccessHandler::protect
 Four things to check.
 
 1. **Is the plugin Pro and is Stripe or PayPal configured?** Only Pro routes the cancel through the gateway.
-2. **Is this a native subscription, not a migrated one?** Cancel only works for subscriptions billed through native Stripe or native PayPal. Subscriptions carried over from a PMPro, MemberPress, or Kadence Memberships migration aren't connected to a live gateway and can't be cancelled from this screen at all, see [Subscriptions](/guide/transactions/subscriptions).
+2. **Is this a native subscription, not a migrated one?** Cancel only works for subscriptions billed through native Stripe or native PayPal. Subscriptions carried over from a PMPro, MemberPress, or Kadence Memberships migration aren't connected to a live gateway and can't be cancelled from this screen at all, see [Subscriptions](/docs/transactions/subscriptions).
 3. **Was the subscription created by Fluent Members?** The local subscription row needs a non-empty `provider_subscription_id`. If you imported old data without the correct import bridge, that field is empty and the plugin has nothing to cancel.
 4. **Cancellation mode**, if your default is **End of period**, the gateway is told to cancel at the period end instead of now. The subscription stays `active` (and the local row stays `active`) until the next renewal date, then the gateway's cancellation webhook (Stripe sends `customer.subscription.deleted`) arrives and the plugin flips the status.
 
-See [Subscription Cancellation Modes](/guide/transactions/cancellation-modes).
+See [Subscription Cancellation Modes](/docs/transactions/cancellation-modes).
 
 ## Partial Content Preview Overlay Sits Behind the Content
 
@@ -111,5 +111,5 @@ Always test in a default theme (Twenty Twenty-Five) with all other plugins deact
 
 
 **What's Next?**
-- [FAQ](/guide/help-support/faq): quick yes/no answers.
+- [FAQ](/docs/help-support/faq): quick yes/no answers.
 

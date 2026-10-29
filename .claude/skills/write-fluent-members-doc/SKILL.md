@@ -2,7 +2,7 @@
 name: write-fluent-members-doc
 description: 'Create a NEW Fluent Members end-user documentation page in this VitePress site, correctly placed in a category folder and wired into the sidebar in config.mjs. Optionally converts pasted content or raw notes into a clean doc. USE FOR: add a doc, write a new doc page, create a doc for X, document this feature, write a guide for, new documentation page, turn this content into a doc. DO NOT USE FOR: editing an existing page (use edit-fluent-members-doc), renaming/moving/deleting a page or reordering the sidebar (use restructure-fluent-members-docs), site-wide quality checks (use audit-fluent-members-docs), or non-doc markdown like README.md.'
 license: MIT
-compatibility: 'VitePress repo with guide/<category>/<slug>.md and reference/<slug>.md layout. Sidebar inline in .vitepress/config.mjs (two zones: /guide/ and /reference/). Images at public/images/<category>/<slug>/. Requires Node + npm.'
+compatibility: 'VitePress repo with docs/<category>/<slug>.md and reference/<slug>.md layout. Sidebar inline in .vitepress/config.mjs (two zones: /docs/ and /reference/). Images at public/images/<category>/<slug>/. Requires Node + npm.'
 metadata:
   project: fluent-members-user-docs
   knowledge-base: member/chunks/
@@ -21,7 +21,7 @@ image folder, wire it into `.vitepress/config.mjs`, and verify with a clean buil
 1. **DO** complete Phase 1 setup and confirm the summary table before writing anything.
 2. **DO** load the relevant knowledge-base chunk from `member/chunks/` before writing —
    check `member/chunks/00-index.md` for the topic → chunk mapping.
-3. **DO** place the file at `guide/<category>/<slug>.md` or `reference/<slug>.md`.
+3. **DO** place the file at `docs/<category>/<slug>.md` or `reference/<slug>.md`.
 4. **DO** make line 1 a bare `# H1` (no frontmatter) that matches the sidebar `text`.
 5. **DO** use the correct link format for the zone (see Quick Reference).
 6. **DO** add the page to `.vitepress/config.mjs` in the correct sidebar zone and group.
@@ -47,7 +47,7 @@ Record as `TITLE`.
 ### 1.2 Zone
 > **Is this a guide page or a reference page?**
 
-- **guide/** — instructional content: how-to, setup steps, feature walkthroughs
+- **docs/** — instructional content: how-to, setup steps, feature walkthroughs
 - **reference/** — lookup content: glossary, shortcode specs, merge tags, changelog, FAQ
 
 Record as `ZONE`.
@@ -57,13 +57,13 @@ Record as `ZONE`.
 
 Show existing categories:
 ```
-ls guide/      # e.g. levels, access-groups, members, settings, transactions
+ls docs/      # e.g. levels, access-groups, members, settings, transactions
 ```
 Or for nested pages (portal sub-pages, gutenberg-block sub-pages, settings sub-pages):
 ```
-ls guide/members/      # portal/
-ls guide/settings/     # payment-settings/, migration/, email-configuration/
-ls guide/access-groups/ # gutenberg-block/
+ls docs/members/      # portal/
+ls docs/settings/     # payment-settings/, migration/, email-configuration/
+ls docs/access-groups/ # gutenberg-block/
 ```
 The user picks. If none fits, STOP and ask whether to add a new category — do not invent one.
 Record as `CATEGORY` (may include a sub-path, e.g. `members/portal`).
@@ -71,10 +71,10 @@ Record as `CATEGORY` (may include a sub-path, e.g. `members/portal`).
 ### 1.4 Slug (with uniqueness check)
 Derive `SLUG` = kebab-case of `TITLE`. Verify globally unique:
 ```
-find guide reference -name '<slug>.md'  # must return nothing
+find docs reference -name '<slug>.md'  # must return nothing
 ```
 If it collides, ask for a distinct slug. The file will be:
-- Guide: `guide/<CATEGORY>/<SLUG>.md`
+- Guide: `docs/<CATEGORY>/<SLUG>.md`
 - Reference: `reference/<SLUG>.md`
 
 ### 1.5 Sidebar group + position
@@ -116,8 +116,8 @@ Record as `SOURCE_CONTENT`.
 | Title | ... |
 | Zone | guide / reference |
 | Category | ... |
-| File path | guide/<category>/<slug>.md |
-| Public URL | /guide/<category>/<slug> |
+| File path | docs/<category>/<slug>.md |
+| Public URL | /docs/<category>/<slug> |
 | Sidebar group | ... |
 | Position | after "..." |
 | Pro-only | yes / no |
@@ -140,7 +140,7 @@ Wait for confirmation before proceeding.
 ## Phase 3: Procedure
 
 ```
-1. SCAFFOLD - Copy templates/doc-template.md to guide/<CATEGORY>/<SLUG>.md (or reference/<SLUG>.md).
+1. SCAFFOLD - Copy templates/doc-template.md to docs/<CATEGORY>/<SLUG>.md (or reference/<SLUG>.md).
               Replace the H1 with TITLE; delete the scaffold-notes comment.
 
 2. BODY     - Write the page using facts from CHUNK_LOADED:
@@ -160,7 +160,7 @@ Wait for confirmation before proceeding.
 
 4. SIDEBAR  - Insert into .vitepress/config.mjs under the correct zone and SIDEBAR_GROUP
               at SIDEBAR_POSITION:
-              { text: "<TITLE>", link: "/guide/<CATEGORY>/<SLUG>" }
+              { text: "<TITLE>", link: "/docs/<CATEGORY>/<SLUG>" }
               (or { text: "<TITLE>", link: "/reference/<SLUG>" } for reference)
               Keep the group collapsed: true. Keep valid JS object syntax.
 
@@ -172,8 +172,8 @@ Wait for confirmation before proceeding.
 
 ## Phase 4: Verify & Report
 
-- File created: `guide/<CATEGORY>/<SLUG>.md` (or `reference/<SLUG>.md`)
-- Public URL: `/guide/<CATEGORY>/<SLUG>` (or `/reference/<SLUG>`)
+- File created: `docs/<CATEGORY>/<SLUG>.md` (or `reference/<SLUG>.md`)
+- Public URL: `/docs/<CATEGORY>/<SLUG>` (or `/reference/<SLUG>`)
 - Sidebar entry added under **<SIDEBAR_GROUP>**
 - Knowledge base chunk used: `member/chunks/XX.md`
 - Image folder: `public/images/<CATEGORY>/<SLUG>/` (N files) or "none"
@@ -185,12 +185,12 @@ Wait for confirmation before proceeding.
 
 ### Paths & formats
 ```
-Guide file:      guide/<category>/<slug>.md
-Guide nested:    guide/<category>/<subcategory>/<slug>.md
+Guide file:      docs/<category>/<slug>.md
+Guide nested:    docs/<category>/<subcategory>/<slug>.md
 Reference file:  reference/<slug>.md
 
-Guide link:      /guide/<category>/<slug>
-Guide nested:    /guide/<category>/<subcategory>/<slug>
+Guide link:      /docs/<category>/<slug>
+Guide nested:    /docs/<category>/<subcategory>/<slug>
 Reference link:  /reference/<slug>
 
 Image file:      public/images/<category>/<slug>/<name>.ext
@@ -203,22 +203,22 @@ Build:           npm run docs:build
 
 ### Locate / check
 ```
-Slug unique?     find guide reference -name '<slug>.md'   (must be empty)
+Slug unique?     find docs reference -name '<slug>.md'   (must be empty)
 Sidebar zone:    read .vitepress/config.mjs → sidebar object
 Chunk to load:   member/chunks/00-index.md → lookup table → read chunk file
-Category list:   ls guide/
-Nested cats:     ls guide/members/ ; ls guide/settings/ ; ls guide/access-groups/
+Category list:   ls docs/
+Nested cats:     ls docs/members/ ; ls docs/settings/ ; ls docs/access-groups/
 ```
 
 ### Existing sidebar groups (guide zone)
 ```
-Getting Started   → guide/ root files
-Dashboard         → guide/dashboard.md
-Levels            → guide/levels/
-Access Groups     → guide/access-groups/ (incl. gutenberg-block/ sub-pages)
-Members           → guide/members/ (incl. portal/ sub-pages)
-Orders (Pro) → guide/transactions/
-Settings          → guide/settings/ (incl. payment-settings/, migration/, email-configuration/)
+Getting Started   → docs/ root files
+Dashboard         → docs/dashboard.md
+Levels            → docs/levels/
+Access Groups     → docs/access-groups/ (incl. gutenberg-block/ sub-pages)
+Members           → docs/members/ (incl. portal/ sub-pages)
+Orders (Pro) → docs/transactions/
+Settings          → docs/settings/ (incl. payment-settings/, migration/, email-configuration/)
 ```
 
 ### Key Principles

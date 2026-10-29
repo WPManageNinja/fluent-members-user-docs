@@ -2,7 +2,7 @@
 name: edit-fluent-members-doc
 description: 'Edit the CONTENT of an EXISTING Fluent Members documentation page in place (same path, same sidebar link) while preserving every site convention. Handles wording changes, new/removed sections, updated steps, and swapped or added screenshots. USE FOR: edit the X doc, update the wording on, add a section to, rewrite this page, fix the screenshot in, this doc is out of date, correct an error in the doc, expand the X guide, update after plugin version bump. DO NOT USE FOR: creating a new page (use write-fluent-members-doc), renaming the slug / moving to another category / deleting / reordering the sidebar (use restructure-fluent-members-docs), or site-wide audits (use audit-fluent-members-docs).'
 license: MIT
-compatibility: 'VitePress repo with guide/<category>/<slug>.md and reference/<slug>.md layout. Sidebar inline in .vitepress/config.mjs. Images at public/images/<category>/<slug>/. Requires Node + npm.'
+compatibility: 'VitePress repo with docs/<category>/<slug>.md and reference/<slug>.md layout. Sidebar inline in .vitepress/config.mjs. Images at public/images/<category>/<slug>/. Requires Node + npm.'
 metadata:
   project: fluent-members-user-docs
   knowledge-base: member/chunks/
@@ -21,7 +21,7 @@ technical accuracy.
 1. **DO** locate the exact file before editing and confirm it with the user.
 2. **DO** load the relevant chunk from `member/chunks/` (see `member/chunks/00-index.md`
    for the topic → chunk lookup) to verify technical accuracy before writing.
-3. **DO** preserve all conventions: correct `/guide/` or `/reference/` links, `**term**`
+3. **DO** preserve all conventions: correct `/docs/` or `/reference/` links, `**term**`
    bold (no inner spaces), no support boilerplate, "(Pro)" markers for Pro features.
 4. **DO** keep the H1 as line 1; if the H1 display title changes, update the matching
    `text` in the sidebar (`.vitepress/config.mjs`); the `link` stays the same.
@@ -41,14 +41,14 @@ technical accuracy.
 ## Phase 1: Setup (Interactive)
 
 ### 1.1 Target page
-> **Which doc?** (title, sidebar label, or path like `guide/levels/creating.md`)
+> **Which doc?** (title, sidebar label, or path like `docs/levels/creating.md`)
 
 Resolve to a file. Check common locations:
 ```
-find guide -name '<slug>.md'
+find docs -name '<slug>.md'
 find reference -name '<slug>.md'
 ```
-If ambiguous or not found, ask. Record `TARGET_PATH`, `SLUG`, `CATEGORY`, `ZONE` (guide/reference).
+If ambiguous or not found, ask. Record `TARGET_PATH`, `SLUG`, `CATEGORY`, `ZONE` (docs/reference).
 
 ### 1.2 The change
 > **What should change?** (new wording, add/remove a section, update steps, swap image, reflect new plugin version…)
@@ -128,7 +128,7 @@ Wait for confirmation.
 
 ### Locate
 ```
-File by name:     find guide -name '<slug>.md'
+File by name:     find docs -name '<slug>.md'
                   find reference -name '<slug>.md'
 Sidebar entry:    grep -n '<slug>' .vitepress/config.mjs
 Image folder:     public/images/<category>/<slug>/
@@ -137,8 +137,8 @@ Chunk index:      member/chunks/00-index.md
 
 ### Link formats
 ```
-Guide page:       /guide/<category>/<slug>
-Guide nested:     /guide/<category>/<subcategory>/<slug>
+Guide page:       /docs/<category>/<slug>
+Guide nested:     /docs/<category>/<subcategory>/<slug>
 Reference page:   /reference/<slug>
 Image ref:        ![Alt](/images/<category>/<slug>/<name>.ext)
 Bold:             **term**   (no inner spaces)
