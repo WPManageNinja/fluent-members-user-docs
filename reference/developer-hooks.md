@@ -187,7 +187,7 @@ add_filter('fluent_members/email_notification_shortcode_groups', function ($grou
 });
 ```
 
-See [Email Merge Tags](/reference/email-merge-tags) for the full built-in tag list.
+See **Email Merge Tags** for the full built-in tag list.
 
 ## Stripe-Specific Filters (Pro)
 
@@ -214,7 +214,7 @@ For PMPro, MemberPress, and Kadence Memberships migrations. Replace `{source}` w
 | `fluent_members/migration/{source}/reset_state` | Fires when a migration's state is reset. Available for PMPro, MemberPress, and Kadence; WP-CLI / debug-mode only. |
 | `fluent_members/paypal_ipn_continuation_sources` | Registers a migration source so Fluent Members takes over legacy PayPal IPN routing once the source plugin is deactivated. |
 
-See [Migration: Overview](/guide/settings/migration/) for the wizard flow these hooks plug into.
+See [Migration: Overview](/docs/settings/migration/) for the wizard flow these hooks plug into.
 
 ## Naming Conventions
 
