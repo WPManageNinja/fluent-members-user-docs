@@ -1,93 +1,120 @@
+---
+title: "Migration from Paid Memberships Pro"
+description: "Import Paid Memberships Pro levels, restrictions, members, subscriptions and orders into Fluent Members."
+---
+
 # Migration from Paid Memberships Pro
 
-The Migration tool imports your **Paid Memberships Pro (PMPro)** membership data levels, access restrictions, members, subscriptions, orders, and transactions into Fluent Members.
+The **Migration** tool imports your **Paid Memberships Pro (PMPro)** levels, page and category restrictions, members, corporate memberships and drip content into Fluent Members. With **Fluent Members Pro** (Pro) it also imports subscriptions, orders and transactions.
 
-Before you begin, complete the [Migration Overview](/docs/settings/migration/) checklist.
+Before you begin, read the [Migration overview](/docs/settings/migration/).
 
-## Before You Start
+## Before you start
 
-- Paid Memberships Pro must be **active** on the site so the Migration card shows **Detected**.
-- Fluent Members must be installed and active.
-- Install **Fluent Members Pro** if you want corporate memberships, drip rules, subscriptions, orders, and transactions imported.
-- Complete [PayPal Setup](/docs/settings/payment-settings/paypal-setup) if members used PayPal REST PPCP and you want subscriptions to continue without re-entry.
-- Take a full database backup before running any step.
-
-## Access the Migration Wizard
-
-Go to **Settings → Migration** and click the **Paid Memberships Pro** card to open the import wizard.
-
-![Migration source selection: click the Paid Memberships Pro card](/images/settings/migration/paid-memberships-pro/access-paid-memberships-1.webp)
+- Keep Paid Memberships Pro active on the site. Its card shows **Not Detected** otherwise.
+- Install **Fluent Members Pro** if you want subscriptions, orders and transactions imported.
+- Take a full database backup.
 
 ## Step 1: Data Map
 
-The wizard opens on the **Data Map** screen, which shows exactly what will be migrated and the record counts detected from PMPro.
+Go to **Settings → Migration** and click the **Paid Memberships Pro** card. The wizard opens on the **Data Map** screen, which lists **What will be imported** with the records found on your site.
 
-| PMPro | Fluent Members |
+<!-- TODO(screenshot): from-paid-memberships-pro-1
+  screen: Settings → Migration → Paid Memberships Pro card → Data Map
+  state: What will be imported table and the Before You Migrate panel
+  data: a site with PMPro active and sample levels and members
+  highlight: Next button
+  view: admin
+  alt: Screenshot of the Import from Paid Memberships Pro wizard on the Data Map screen
+  reason: Paid Memberships Pro is not active on the local site
+-->
+
+These rows can appear. Rows with no records are hidden, except **Membership Levels** and **Page + Category Restrictions**.
+
+| In Paid Memberships Pro | Becomes in FluentMembers |
 |---|---|
 | Membership Levels | Membership Levels |
 | Page + Category Restrictions | Access Groups |
-| Active Members | Memberships |
+| Series (Drip Content) | Content Drip Rules |
+| Active, Expired, Cancelled and Paused Members | Memberships |
+| Corporate | Corporate Parents |
+| Corporate Members | Corporate Children |
+| Orders | Orders |
+| Subscriptions | Subscriptions |
 
-Review the counts and the **Before You Migrate** notice at the bottom of the modal. When everything looks correct, click **Next**.
+Read the **Before You Migrate** panel, then click **Next**. Besides the items below, it can warn you about:
+
+- **Inline restrictions:** Posts that restrict content with a PMPro shortcode or block become public once PMPro is deactivated. Restrict them by hand.
+- **Shortcodes:** Pages using `[pmpro_*]` shortcodes show them as plain text once PMPro is deactivated.
+- **Level terms:** Paid trials become free for new buyers. A cheaper first payment is dropped, so new buyers pay the renewal amount from the start. A fixed membership length doesn't apply to new purchases, while existing members keep their end dates.
+- **Skipped records:** Memberships of deleted users or levels are not migrated, and neither are their payments. An older subscription on a membership with a newer one isn't imported either, so cancel it at its gateway if it still charges.
 
 > [!Note]
-> PMPro shortcodes (`[pmpro_*]`) are not replaced automatically: update them manually after migration. Member login/account redirect settings are migrated to Fluent Members settings.
+> Not migrated: discount codes, email settings and templates, user fields, level groups, custom level and order fields, and the login redirect.
 
-![Data Map: review what will be migrated and click Next](/images/settings/migration/paid-memberships-pro/mapping-data-2.webp)
+## Step 2: Migration
 
-## Step 2: Migration Steps
+Click **Migrate All** to run every step in order, or click **Run** on one step.
 
-The second screen lists all migration steps. Click **Migrate All** to run every step in sequence, or click **Run** next to an individual step to run it on its own.
+<!-- TODO(screenshot): from-paid-memberships-pro-2
+  screen: Import from Paid Memberships Pro → Migration
+  state: Migration Steps list before running
+  data: a site with PMPro active
+  highlight: Migrate All button
+  view: admin
+  alt: Screenshot of the Migration Steps list for Paid Memberships Pro with the Migrate All button
+  reason: Paid Memberships Pro is not active on the local site
+-->
 
-| Step | What it does |
-|---|---|
-| **1. Membership Levels** | Creates Fluent Members Levels matched by name to PMPro membership levels |
-| **2. Access Groups** | Imports PMPro page and category restrictions as Fluent Members Access Groups |
-| **3. Members** | Imports member records and their level assignments |
-| **4. Corporate Memberships** | Imports corporate/group seat data (Pro), skipped automatically if no corporate data exists |
-| **5. Content Drip Rules** | Imports drip schedule rules (Pro), skipped automatically if no drip data exists |
-| **6. Subscriptions** | Imports recurring subscription records; transfers live PayPal REST PPCP subscriptions if configured (Pro) |
-| **7. Orders** | Imports PMPro order records (Pro) |
-| **8. Transactions** | Imports payment transaction history as Transaction rows (Pro) |
-| **9. Cleanup & Verify** | Finalises the migration and marks it complete. Do not skip this step. |
+| Step | What it does | Needs first |
+|---|---|---|
+| **Membership Levels** | Creates a Fluent Members level for each PMPro level. | Nothing |
+| **Access Groups** | Imports page and category restrictions. | Membership Levels |
+| **Members** | Imports members and their memberships. | Membership Levels, Access Groups |
+| **Corporate Memberships** | Imports corporate parents and their seats. | Members |
+| **Content Drip Rules** | Imports series drip rules. | Access Groups |
+| **Subscriptions** (Pro) | Imports recurring subscriptions. | Members |
+| **Orders** (Pro) | Imports PMPro orders. | Members |
+| **Transactions** (Pro) | Imports payment history. | Orders, Subscriptions |
+| **Cleanup & Verify** | Finishes and checks the migration. | All steps above |
 
-![Migration Steps: click Migrate All or run each step individually](/images/settings/migration/paid-memberships-pro/migrate-all-3.webp)
+Optional **Convert FluentCRM Automations** and **Sync Integrations** steps can follow. See the [Migration overview](/docs/settings/migration/).
 
 ## Step 3: Review Data
 
-When all steps finish, the **Migration Complete** screen shows a summary of what was imported with counts per entity. Click **Download Migration Log** to save a record, then click **View Members** to confirm your members appear in Fluent Members.
+Click **View Summary**. The screen shows the record total, a **What was imported** table and any failed records or warnings. Click **Download Migration Log** to review them, then click **View Members**.
 
-![Migration Complete: review imported counts and click View Members](/images/settings/migration/paid-memberships-pro/migration-complete-4.webp)
+## What happens to subscriptions
 
-## PayPal Subscription Transfer (Pro)
+Subscriptions need Fluent Members Pro. Without it, renewals and cancellations aren't recorded, so a membership ends at its next payment date. Install Pro before you migrate (or later, then run the **Subscriptions** step), or cancel the subscription at its gateway.
 
-If your members were billed via **PayPal REST PPCP** in Paid Memberships Pro and you have [PayPal Setup](/docs/settings/payment-settings/paypal-setup) configured in Fluent Members Pro, the Subscriptions step can carry those live subscriptions over. After transfer:
+With Pro, the result depends on the gateway:
 
-- Renewals continue via PayPal webhooks; no member action required.
-- Cancellations from the Member Portal correctly call PayPal to stop billing.
-- The Transactions screen records new local rows going forward.
+| Gateway | What you do | Result |
+|---|---|---|
+| **Stripe** | Connect the same account in [Stripe Setup](/docs/settings/payment-settings/stripe-setup) and add the Fluent Members webhook in Stripe. | Renewals and cancellations reach Fluent Members. |
+| **PayPal (REST)** | Connect the same PayPal app in [PayPal Setup](/docs/settings/payment-settings/paypal-setup), in the same live or sandbox mode as PMPro, before the **Subscriptions** step. | The subscription imports and its renewals are recorded. If PayPal isn't connected, the subscription doesn't import until you connect it and click **Retry**. |
+| **Legacy PayPal** | Deactivate PMPro and connect the same PayPal account. | Renewals are recorded. The subscription can only be cancelled in PayPal. |
+| **PayPal with no subscription ID** | Nothing to set up. | Not imported. The membership ends at its next payment date. |
+| **Payflow Pro, Braintree, CyberSource, 2Checkout, Authorize.net** | Cancel the subscription at the gateway. | It can't renew in Fluent Members. The membership ends at its next payment date. |
 
-PayPal subscriptions on legacy IPN (non-PPCP) are handled via IPN continuation; Fluent Members takes over IPN routing once PMPro is deactivated.
+## Status mapping
 
-## Status Mapping
+Each PMPro status becomes one Fluent Members status:
 
-| PMPro Status | Fluent Members Status |
+| PMPro status | Fluent Members status |
 |---|---|
 | active | Active |
-| inactive | Expired |
 | expired | Expired |
-| cancelled | Cancelled |
-| admin_cancelled | Cancelled |
+| changed, admin_changed | Expired |
+| cancelled, admin_cancelled | Cancelled |
+| inactive | Cancelled |
+| paused | Suspended |
 
-## After Migration
+## After the migration
 
-Once the Cleanup & Verify step finishes, confirm the import was successful:
-
-- **Verify counts**: Compare member totals in Fluent Members against PMPro's records.
-- **Set up Access Groups**: Confirm imported Access Groups reflect your intended content protection, and assign any remaining Levels manually. See [Access Groups](/docs/access-groups/).
-- **Test access**: Log in as a sample member and confirm their content is accessible.
-- **Rebuild email templates**: See [Email Notifications](/docs/settings/email-configuration/email-notifications).
-- **Update the portal URL**: Send members the new [Member Portal](/docs/members/portal/setup) link.
-- **Deactivate PMPro**: Only after full verification. Keep it installed for a few weeks in case you need to reference its data.
-
-![Imported members visible in Fluent Members → Members](/images/settings/migration/paid-memberships-pro/members-5.webp)
+- Compare member totals in **Fluent Members → Members** with PMPro.
+- Check the imported [Access Groups](/docs/access-groups/) and restrict by hand anything the **Before You Migrate** panel listed.
+- Log in as a sample member and open protected content.
+- Point members to your [Member Portal](/docs/members/portal/setup).
+- Deactivate PMPro as soon as the migration and its optional steps are done. Changes PMPro records afterwards aren't imported.
