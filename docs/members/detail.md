@@ -1,44 +1,63 @@
-# Member Detail
+---
+title: Member Details
+description: See one member's account information and every membership they hold, and act on each membership from its row menu.
+---
 
-The **Member Detail** page gives you a complete overview of a specific user on your site. Here, you can view their account information, track their plans, and manage their membership statuses all from a single, easy-to-use screen.
+# Member Details
 
-## Viewing User Information
+**Member Details** shows one person's account information and every membership they hold, past and present. Come here to check a member's access or to change a membership.
 
-To find a specific user's account details, follow these steps:
+Go to **Fluent Members → Members** and click the member's row.
 
- - In your WordPress dashboard, navigate to **Fluent Members → Members**.  
- - **Click** anywhere on a user's row to open their profile.
+![Screenshot of Member Details with the profile card and a Memberships table of two rows](/images/members/detail/detail-overview.webp)
 
- ![Member](/images/members/members-details/members-1.webp)
+## Profile
 
- - At the top of the page, you will see their **Avatar**, **Display Name**, and **Email Address**.
- - You will also see their **Registration Date** (when they created their WordPress account) and their current WordPress **Role** (like Administrator or Subscriber) displayed as a badge on the right.
+The card at the top shows the member's avatar, display name, email address, and **Registration Date**. Their WordPress role is on the right.
 
-## Understanding the Memberships Table
+## Memberships table
 
-The Memberships table displays all memberships assigned to the user. If the user has multiple memberships, each one appears in a separate row.
+Each membership has its own row, newest first:
 
- * **Plan & Level:** The name of the specific pricing plan and the overall Membership Level they belong to.
- * **Provider:** How the user acquired the membership (e.g., Manual, native payment, FluentForms, WooCommerce).
- * **Start Date & Created:** When the membership officially began and when the record was generated.
- * **Expires:** The date the membership access ends. This will show "N/A" or remain blank for lifetime, expired, or cancelled plans.
- * **Amount:** The total price the user paid at checkout.
- * **Status:** A colored badge indicating if the plan is currently Active, Trial, Pending, Cancelled, Expired, or Suspended.
+| Column | What it shows |
+|--------|---------------|
+| **Plan** | The pricing plan, or **Corporate Child** for a seat on a team. A team owner's row also has a seat link, such as `2 / 10 seats used`. |
+| **Level** | The Membership Level, which links to that level. |
+| **Provider** | Where the membership came from: **FluentCart**, **WooCommerce**, **FluentForms**, **Paymattic**, **Corporate**, **Manual**, or a payment gateway name such as Stripe. A seat shows the team owner's name, which links to the owner. |
+| **Start Date** | When the membership began. |
+| **Expires** | The end date, or **Lifetime** if there is none. **Scheduled to end** appears below the date when a cancellation is scheduled. |
+| **Amount** | The price of the plan. A seat with no price of its own shows **Included**. |
+| **Status** | Active, Trial, Suspended, Cancelled, Expired, or Upgraded. See [Membership statuses](/reference/membership-statuses). |
 
->[!Tip]
-> To give the user a brand new [membership manually](./adding-manually), simply click the dark **+ Add Membership** button at the top right of the table.
+To give this member another membership, click **Add Membership** and follow [Adding a Membership Manually](/docs/members/adding-manually).
 
-![Membership Table](/images/members/members-details/membership-table-2.webp)
+<!-- TODO(screenshot): detail-1
+  screen: Fluent Members → Members → a member → Memberships table
+  state: A manual membership with a future expiry after Keep Until Expiry, row menu open
+  data: Sample member with one manual subscription-plan membership
+  highlight: Scheduled to end text in the Expires column
+  view: admin
+  alt: Screenshot of a membership row showing Scheduled to end under the expiry date, with Undo Cancellation in the row menu
+  reason: needs the develop build on the local site
+-->
 
+## Row menu
 
-## Using Row Actions
+Click the three-dot icon at the end of a row. The menu shows only what applies to that membership, and rows with nothing to do have no icon.
 
-Each membership row has an action menu at the end of the row. The available actions depend on the current status of that membership:
+![Screenshot of a membership row menu open with Suspend and Cancel](/images/members/detail/detail-row-menu.webp)
 
- * **Suspend:** Temporarily revokes the user's access without [cancelling](./suspending-and-cancelling) their recurring billing. (Only available if the status is Active or Trial).
- * **Cancel:** Instantly ends the membership and removes their access to protected content. (Available for Active, Trial, or Pending statuses).
- * **Refund (Pro only):** Opens the refund window to return the user's money. (Only available if a linked payment transaction exists). See the full documentation [Refunds](/docs/billing/refunds).
+| Action | When it appears |
+|--------|-----------------|
+| **Refund** (Pro) | The membership has a payment that can be refunded. Opens the [refund dialog](/docs/billing/refunds). |
+| **Cancel Subscription** (Pro) | The membership has a Stripe or PayPal subscription through Fluent Members that can still be cancelled. |
+| **Suspend** or **Suspend Access** | The status is Active or Trial. |
+| **Reactivate** or **Reactivate Access** | The status is Suspended. A seat shows this only while the team owner's membership is Active or Trial. |
+| **Undo Cancellation** | A cancellation is scheduled for the expiry date. |
+| **Cancel** | The status is Active or Trial, and the membership has no Stripe or PayPal subscription managed through Fluent Members. |
 
+**Suspend Access** and **Reactivate Access** are the labels on memberships with a subscription, because billing carries on while access is off. See [Suspending & Cancelling](/docs/members/suspending-and-cancelling) for what each action does.
 
-> [!Note]
-> The action menu is "status-aware." This means it only shows actions that make sense for the current status. If you are looking for the "**Cancel**" button but cannot find it, check the status badge: the user might already be marked as "**Expired**" or "**Cancelled**."
+## Team owners and seats
+
+On a corporate level (Pro), click anywhere on the owner's row, or its seat link, to open the [Corporate Members](/docs/members/corporate-members) screen. The links and the three-dot icon in the row keep their own behaviour.
