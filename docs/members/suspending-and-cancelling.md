@@ -1,66 +1,105 @@
+---
+title: Suspending & Cancelling
+description: Pause a member's access with Suspend, restore it with Reactivate, or end a membership with Cancel, and see how each affects billing.
+---
+
 # Suspending & Cancelling
 
-Fluent Members gives you two ways to remove a member's access from the admin: **Suspend** and **Cancel**. Both revoke access immediately, but they behave differently when it comes to billing and whether the action can be reversed.
+**Suspend** pauses a member's access and can be undone. **Cancel** ends the membership. Suspend when you expect to restore access, such as during a payment dispute. Cancel when the member is leaving.
 
-## Suspend vs Cancel at a Glance
+Both start from the row menu on [Member Details](/docs/members/detail): go to **Fluent Members → Members**, click the member's row, then click the three-dot icon on the membership.
+
+![Screenshot of a membership row menu with Refund, Suspend, and Cancel](/images/members/suspending-and-cancelling/suspending-and-cancelling-row-menu.webp)
+
+## Suspend vs cancel
 
 | | Suspend | Cancel |
-|---|---|---|
-| **Access revoked?** | Yes, immediately | Yes, immediately |
-| **Billing stops?** | No, recurring charges continue | Yes, the plugin notifies the payment provider to stop |
-| **Reversible?** | Yes, change the status back to Active | No, you would need to grant a new membership |
-| **Best used for** | Temporary holds, policy violations, payment disputes | Member requested cancellation, post-refund cleanup, irrecoverable failed payments |
+|---|---------|--------|
+| **Access** | Ends immediately | Ends immediately or at the expiry date, depending on the membership |
+| **Billing** | Continues | Depends on the membership, as shown below |
+| **Undo** | **Reactivate** | Add a new membership, unless the cancellation is only scheduled |
 
-## How to Suspend a Membership
+## Suspend a membership
 
-1. Go to **Fluent Members → Members** and click the member's row to open their [Member Detail](/docs/members/detail) page.
-2. On the membership row, click the action menu and select **Suspend**.
-3. The row status changes to `Suspended` and access is revoked immediately.
+1. Open the row menu on an Active or Trial membership and click **Suspend**. Memberships with a subscription show **Suspend Access** instead.
+2. Click **Yes, Suspend** or **Yes, Suspend Access** to confirm.
 
-To restore access, return to the same row and change the status back to **Active**. There is no dedicated "Unsuspend" button: updating the status field directly is how you reverse a suspension.
+    ![Screenshot of the suspend confirmation with No and Yes, Suspend](/images/members/suspending-and-cancelling/suspending-and-cancelling-suspend-confirm.webp)
 
-::: warning Suspend does not stop billing
-If the membership is tied to a Stripe or FluentCart subscription, recurring charges will continue even after suspending. To stop billing as well, either cancel the subscription at the payment provider directly, or use Cancel instead of Suspend.
-:::
+The status changes to **Suspended** and the member loses access right away.
 
-## How to Cancel a Membership
+> [!Note]
+> Suspending does not stop billing. A subscription keeps charging until it is cancelled.
 
-1. Go to **Fluent Members → Members** and click the member's row to open their [Member Detail](/docs/members/detail) page.
-2. On the membership row, click the action menu and select **Cancel**.
-3. The row status changes to `Cancelled` and access is revoked immediately.
-4. The plugin notifies the payment provider to stop recurring charges:
-   - **Stripe or PayPal (Pro):** subscription is cancelled immediately or at the end of the billing period, depending on your [Cancellation Modes](/docs/billing/cancelling-a-subscription) setting. Subscriptions carried over from a migration aren't connected to a live gateway here and must be cancelled at the source or handled manually.
-   - **FluentCart:** the linked subscription is cancelled.
-   - **Fluent Forms / Paymattic / others:** the integration's cancel hook fires.
+Fluent Members also suspends a membership by itself (Pro) when its subscription becomes past due, unpaid, incomplete, failed, or paused.
 
-A cancelled member can re-purchase from your pricing page. The old `Cancelled` row stays in their membership history for your records, and a new `Active` row is created when they rejoin.
+## Reactivate a membership
 
-![Suspend and Cancel](/images/members/suspend-and-cancel/suspend-and-cancel-1.webp)
+1. Open the row menu on the suspended membership and click **Reactivate** or **Reactivate Access**.
+2. Click **Yes, Reactivate** or **Yes, Reactivate Access** to confirm.
 
-### Reactivating
+    ![Screenshot of a suspended membership with Reactivate in the row menu](/images/members/suspending-and-cancelling/suspending-and-cancelling-reactivate.webp)
 
-How you restore access depends on which action was used:
+The membership returns to the status it had before, Active or Trial. Reactivate fails with a message if the member already holds a live membership on the same level.
 
-- **After a Suspension**: Open the member's [Member Detail](/docs/members/detail) page, click the action menu on the suspended row, and change the status to **Active** by cliking the **three-dot** **Reactivate** button. Now, it is restored immediately. 
-- **After a Cancellation**: Cancelled memberships cannot be reversed. The cancelled row stays in the member's history. To restore access, use [Adding a Membership Manually](/docs/members/adding-manually) to create a new membership row.
+## Cancel a membership
 
-![Reactivating a membership](/images/members/suspend-and-cancel/reactivate-2.webp)
+What you see after clicking the action depends on the membership:
 
-## Corporate Memberships
+| Membership | Action | What happens |
+|------------|--------|--------------|
+| Manual or migrated, Active or Trial, with a future expiry date and no live subscription | **Cancel** | The **Cancel Membership** dialog offers **Keep Until Expiry** or **Cancel Immediately**. |
+| Stripe or PayPal subscription through Fluent Members (Pro) | **Cancel Subscription** | The **Cancel Subscription** dialog offers **End of Billing Period** or **Cancel Immediately**. The plain **Cancel** action is not offered. |
+| Migrated subscription still billed by PayPal (Pro) | **Cancel** | A confirmation warns that PayPal keeps charging until the subscription is cancelled in PayPal, by the member or from your PayPal business account. |
+| Everything else, such as a lifetime membership, a team seat, or a FluentCart, WooCommerce, Fluent Forms, or Paymattic membership | **Cancel** | A confirmation asks you to click **Yes, Cancel**. Access ends immediately. |
 
-When you suspend or cancel a **corporate parent** membership, every child (seat) account under that parent mirrors the new status automatically:
+![Screenshot of the Cancel Membership confirmation with No and Yes, Cancel](/images/members/suspending-and-cancelling/suspending-and-cancelling-cancel-confirm.webp)
 
-- Suspend the parent → all active children become `Suspended`
-- Cancel the parent → all active children become `Cancelled`
+> [!Note]
+> **Cancel** on a FluentCart, WooCommerce, Fluent Forms, or Paymattic membership changes the membership in Fluent Members only. If the member has a subscription in that plugin, stop it there as well.
 
-To restore access for the entire team, change the parent's status back to Active. Individual child rows do not need to be updated separately.
+### Keep Until Expiry
 
-## Important Notes
+**Keep Until Expiry** is selected by default in the **Cancel Membership** dialog. The member keeps access until the date shown, and the status stays as it is. **Scheduled to end** appears under the date in the **Expires** column. Once the date passes, the status changes to **Expired**.
 
-::: warning Things to keep in mind
-- **Suspend does not stop billing.** Always check with your payment provider if you need to pause charges, or use Cancel instead.
-- **Cancel may take effect immediately or at period end.** This depends on your Cancellation Modes setting. See [Cancellation Modes](/docs/billing/cancelling-a-subscription) to configure this behavior.
-- **Cancelled rows are kept for your records.** The old row is not deleted; it remains in the member's history with a `Cancelled` status. A fresh membership row is created if they re-join.
-- **Corporate cascades are parent-driven.** If child accounts were individually suspended for other reasons, un-suspending the parent will not automatically restore those children. Each child would need to be updated individually.
-:::
+<!-- TODO(screenshot): suspending-and-cancelling-1
+  screen: Fluent Members → Members → a member → row menu → Cancel
+  state: Cancel Membership dialog open, Keep Until Expiry selected, not submitted
+  data: Sample member with a manual subscription-plan membership and a future expiry date
+  highlight: -
+  view: admin
+  alt: Screenshot of the Cancel Membership dialog with Keep Until Expiry and Cancel Immediately
+  reason: needs the develop build on the local site
+-->
 
+To take it back, open the row menu and click **Undo Cancellation**. To end access sooner, click **Cancel** and confirm.
+
+**Cancel Immediately** sets the status to **Cancelled** and ends access now.
+
+### Cancel a subscription (Pro)
+
+**End of Billing Period** is selected by default in the **Cancel Subscription** dialog. It stops future renewals and keeps access until the current period ends, so the status stays as it is until then. **Cancel Immediately** cancels the subscription now and ends access. See [Subscription Cancellation Modes](/docs/billing/cancelling-a-subscription) for more detail.
+
+<!-- TODO(screenshot): suspending-and-cancelling-2
+  screen: Fluent Members → Members → a member → row menu → Cancel Subscription
+  state: Cancel Subscription dialog open, End of Billing Period selected, not submitted
+  data: Sample member with a live Stripe subscription
+  highlight: -
+  view: admin
+  alt: Screenshot of the Cancel Subscription dialog with End of Billing Period and Cancel Immediately
+  reason: needs a gateway-linked subscription, the local sample subscriptions do not show this action
+-->
+
+## After a cancellation
+
+A cancelled membership cannot be reactivated. Its row stays on Member Details as a record. To give access again, [add a membership manually](/docs/members/adding-manually), or have the member buy again from your pricing page. Either way creates a new row.
+
+## Corporate memberships
+
+Actions on a team owner's membership (Pro) carry down to the seats:
+
+- **Suspend the owner:** Active and Trial seats become Suspended.
+- **Reactivate the owner:** Suspended seats return, up to the seats free on the level, oldest first.
+- **Cancel the owner:** Live seats become Cancelled.
+
+See [Corporate Members](/docs/members/corporate-members) for the full rules, including what happens to a seat you act on separately.
