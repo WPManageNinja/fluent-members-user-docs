@@ -20,9 +20,9 @@ You need:
 
     ![Screenshot of the Pricing tab with no plans and an arrow pointing to Add Pricing](/images/levels/pricing-native/pricing-native-empty.webp)
 
-3. Fill in the plan under **Pricing Packages**.
+3. Fill in the plan under **Pricing Plans**.
 
-    ![Screenshot of the Add Pricing modal with a plan form under Pricing Packages](/images/levels/pricing-native/pricing-native-add-dialog.webp)
+    ![Screenshot of the Add Pricing modal with a plan form under Pricing Plans](/images/levels/pricing-native/pricing-native-add-dialog.webp)
 
 4. Click **Add another plan** to offer another option, such as monthly and yearly, on the same level.
 5. Click **Add**.
@@ -52,12 +52,12 @@ To change the display order, drag a plan by its handle and click **Save**. Or us
 
 ![Screenshot of a plan's menu open with Edit, Move down, Copy Checkout Link, Duplicate and Delete](/images/levels/pricing-native/pricing-native-row-menu.webp)
 
-- **Edit:** Opens the **Edit Pricing Package** modal, where you can also choose the plan's **Payment Methods**.
+- **Edit:** Opens the **Edit Pricing Plan** modal, where you can also choose the plan's **Payment Methods**.
 - **Copy Checkout Link:** Copies a direct link to this plan's checkout.
-- **Duplicate:** Creates a copy named `<title> - Duplicated(<id>)`.
+- **Duplicate:** Creates an inactive copy named `<title> - Duplicated(<id>)`. An inactive plan cannot be sold. Its row looks the same as an active plan, and this screen has no control to activate it, so add a new plan when you need one to sell.
 - **Delete:** Removes the plan after you confirm.
 
-![Screenshot of the Edit Pricing Package modal with the plan's fields and Payment Methods](/images/levels/pricing-native/pricing-native-edit-modal.webp)
+![Screenshot of the Edit Pricing Plan modal with the plan's fields and Payment Methods](/images/levels/pricing-native/pricing-native-edit-modal.webp)
 
 > [!Note]
 > You cannot delete a plan that members or subscriptions use.
