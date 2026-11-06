@@ -14,17 +14,17 @@ This glossary explains the core terms used across the Fluent Members documentati
 
 ## B
 
-**Billing:** The financial activity tied to a membership: charges, renewals, refunds, and payment method updates. Pro users can review full billing history in the Transaction History panel on each Subscription's or One-Time Purchase's detail page. See [Orders](/docs/transactions/).
+**Billing:** The financial activity tied to a membership: charges, renewals, refunds, and payment method updates. Pro users can review full billing history in the Transaction History panel on each Subscription's or One-Time Purchase's detail page. See [Orders](/docs/billing/).
 
 **Block Email Editor (Pro):** A visual, Gutenberg-based editor for designing email notification templates instead of using a plain text area. Build emails from blocks like paragraphs, images, and buttons, then preview them before saving. See [Email Notifications](/docs/settings/email-configuration/email-notifications).
 
-**Block-Level Protection:** Content restriction that targets a single Gutenberg block inside a post rather than the entire post. Blocked blocks are removed from the page entirely, not just hidden, so non-members can't see them even in the page source. See [Gutenberg Block: Configuring](/docs/access-groups/gutenberg-block/configuring).
+**Block-Level Protection:** Content restriction that targets a single Gutenberg block inside a post rather than the entire post. Blocked blocks are removed from the page entirely, not just hidden, so non-members can't see them even in the page source. See [Gutenberg Block: Configuring](/docs/access-groups/gutenberg-block/inserting).
 
 ## C
 
 **Cached Access:** A stored snapshot of which Access Groups a member currently unlocks, used to speed up page loads on a busy membership site. The cache refreshes automatically whenever a membership status or Access Group assignment changes. See [Members List](/docs/members/).
 
-**Cancellation Mode (Pro):** A setting that controls when a cancelled native Stripe or PayPal subscription actually loses access. **Immediate** ends access right away; **End of Period** keeps access until the current billing period runs out. See [Subscription Cancellation Modes](/docs/transactions/cancellation-modes).
+**Cancellation Mode (Pro):** A setting that controls when a cancelled native Stripe or PayPal subscription actually loses access. **Immediate** ends access right away; **End of Period** keeps access until the current billing period runs out. See [Subscription Cancellation Modes](/docs/billing/cancelling-a-subscription).
 
 **Cancelled:** A membership status that permanently revokes access, set when a member cancels, an admin cancels, or a payment provider reports the subscription ended. The record is kept for history, but the member can no longer reach protected content. See [Membership Statuses](/reference/membership-statuses).
 
@@ -32,7 +32,7 @@ This glossary explains the core terms used across the Fluent Members documentati
 
 **Checkout:** The page or flow where a visitor pays for a membership. Checkout is handled by whichever payment integration you've connected: FluentCart, Fluent Forms, Paymattic, WooCommerce, or native Stripe/PayPal checkout (Pro). See [Pricing: Paywalls](/docs/levels/pricing-paywalls).
 
-**Content Dripping:** A schedule that releases content gradually after a member joins, instead of unlocking everything at once. Specific posts or pages become available a set number of days after the member's start date. See [Content Drip](/docs/levels/content-drip).
+**Content Dripping:** A schedule that releases content gradually after a member joins, instead of unlocking everything at once. Specific posts or pages become available a set number of days after the member's start date. See [Content Drip](/docs/access-groups/content-drip).
 
 **Content Protection:** The full set of ways Fluent Members restricts access to content: page redirects, inline restriction messages, partial previews, content dripping, block-level restrictions, and REST API filtering. Every Access Group picks its own combination of these. See [Protected Content](/docs/access-groups/protected-content).
 
@@ -44,7 +44,7 @@ This glossary explains the core terms used across the Fluent Members documentati
 
 **Dashboard:** The main overview screen in Fluent Members, showing headline stats like total members, membership levels, and recent activity. Pro users also see revenue and billing signals alongside the free-plan charts. See [Reading the Dashboard](/docs/dashboard/dashboard).
 
-**Drip Rule:** A single time-gate entry in a content drip schedule. Each rule names a piece of content and how many days after a member's start date it should unlock. See [Content Drip](/docs/levels/content-drip).
+**Drip Rule:** A single time-gate entry in a content drip schedule. Each rule names a piece of content and how many days after a member's start date it should unlock. See [Content Drip](/docs/access-groups/content-drip).
 
 ## E
 
@@ -110,9 +110,9 @@ This glossary explains the core terms used across the Fluent Members documentati
 
 ## O
 
-**One-Time Purchase (Pro):** A membership with no recurring subscription behind it: a single native or paywall payment, a manual grant, or a non-recurring migrated order. It's listed in its own view, separate from Subscriptions. See [One-Time Purchases](/docs/transactions/one-time).
+**One-Time Purchase (Pro):** A membership with no recurring subscription behind it: a single native or paywall payment, a manual grant, or a non-recurring migrated order. It's listed in its own view, separate from Subscriptions. See [One-Time Purchases](/docs/billing/one-time).
 
-**Order (Pro):** A record of a purchase event, an initial payment, a renewal, or a refund. Each order belongs to one member and backs either a Subscription or a One-Time Purchase. See [Orders](/docs/transactions/).
+**Order (Pro):** A record of a purchase event, an initial payment, a renewal, or a refund. Each order belongs to one member and backs either a Subscription or a One-Time Purchase. See [Orders](/docs/billing/).
 
 **Overlay:** The visual layer placed over the teaser portion of a post in Partial Content Preview mode. It shows a customizable message and call-to-action button, signalling that more content is available after purchasing a membership. See [Partial Content Lock](/docs/settings/partial-content-lock).
 
@@ -140,7 +140,7 @@ This glossary explains the core terms used across the Fluent Members documentati
 
 ## R
 
-**Recurring Billing:** A payment pattern where a member is charged automatically on a set schedule, monthly, annually, or otherwise, for as long as their subscription stays active. It requires WooCommerce Subscriptions or Fluent Members Pro with native Stripe or PayPal. See [Subscriptions](/docs/transactions/subscriptions).
+**Recurring Billing:** A payment pattern where a member is charged automatically on a set schedule, monthly, annually, or otherwise, for as long as their subscription stays active. It requires WooCommerce Subscriptions or Fluent Members Pro with native Stripe or PayPal. See [Subscriptions](/docs/billing/subscriptions).
 
 **Redirect:** An Unauthorized Access action that silently sends non-members to a different page, such as a pricing or login page, instead of showing a restriction message on the current page. It's the least disruptive way to route visitors toward becoming members. See [Unauthorized Access](/docs/access-groups/unauthorized-access).
 
@@ -156,19 +156,19 @@ This glossary explains the core terms used across the Fluent Members documentati
 
 **Shortcode:** A WordPress tag that outputs dynamic content. Fluent Members provides `[fluent_membership_level id="X"]` to display a pricing card and `[fluent_member_portal]` to display the member self-service dashboard. See **Shortcode Reference**.
 
-**Start Date:** The date a membership record became active. Content drip timers count forward from this date to decide when each piece of content unlocks for that member. See [Content Drip](/docs/levels/content-drip).
+**Start Date:** The date a membership record became active. Content drip timers count forward from this date to decide when each piece of content unlocks for that member. See [Content Drip](/docs/access-groups/content-drip).
 
 **Stripe:** The payment processor Fluent Members Pro uses for native checkout and subscription billing. Connect it with API keys in Settings → Payment Settings → Stripe, then Stripe sends webhooks to keep subscription records in sync. See [Stripe Setup](/docs/settings/payment-settings/stripe-setup).
 
 **Sub-member (Pro):** A team member in a Corporate Membership whose access comes from a Parent Member. Sub-members can view protected content but can't manage payments, and lose access if the parent's membership ends. See [Corporate Memberships](/docs/levels/corporate-memberships).
 
-**Subscription (Pro):** A recurring billing agreement that renews a membership automatically on a set schedule. Native subscriptions run through Stripe or PayPal and stay synced with the membership record in real time; subscriptions migrated from PMPro, MemberPress, or Kadence Memberships are shown for record-keeping only. See [Subscriptions](/docs/transactions/subscriptions).
+**Subscription (Pro):** A recurring billing agreement that renews a membership automatically on a set schedule. Native subscriptions run through Stripe or PayPal and stay synced with the membership record in real time; subscriptions migrated from PMPro, MemberPress, or Kadence Memberships are shown for record-keeping only. See [Subscriptions](/docs/billing/subscriptions).
 
 **Suspended:** A membership status that revokes content access temporarily without cancelling the underlying billing. An admin can suspend a member for a policy reason and restore access by switching the status back to active. See [Suspending & Cancelling](/docs/members/suspending-and-cancelling).
 
 ## T
 
-**Transaction (Pro):** A single billing event: a charge, a renewal, or a refund. Transactions are listed in the Transaction History panel of the Subscription or One-Time Purchase they belong to. See [Orders](/docs/transactions/).
+**Transaction (Pro):** A single billing event: a charge, a renewal, or a refund. Transactions are listed in the Transaction History panel of the Subscription or One-Time Purchase they belong to. See [Orders](/docs/billing/).
 
 **Trial:** A membership status for members inside a free trial window. Trial members have full content access; when the trial ends, the membership becomes active (with a payment method on file) or expired (without one). See [Membership Statuses](/reference/membership-statuses).
 
