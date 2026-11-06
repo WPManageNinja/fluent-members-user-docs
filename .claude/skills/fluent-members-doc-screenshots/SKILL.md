@@ -77,6 +77,17 @@ Open each `.webp` with Read and check: no WP admin bar/menu/browser chrome; cont
 ### Step 6 — Leave the site as found
 Undo any saved setting; delete test levels/members you created for a shot. Keep the plan JSON in `scripts/screenshots/plans/` as the regression fixture.
 
+## 2b. Filling `TODO(screenshot)` placeholders
+
+The docs overhaul strips stale images and leaves placeholders (format in `fluent-members-docs-overhaul` §5):
+
+```bash
+grep -rn 'TODO(screenshot)' docs reference            # the queue
+grep -rhoE 'TODO\(screenshot\): [a-z0-9-]+' docs reference | sort | uniq -d   # duplicate ids: must print nothing
+```
+
+For each placeholder: `screen` + `state` + `data` + `highlight` + `view` + `alt` are the shot spec. Put them in the plan (`name` = a short kebab name, `outDir` = `public/images/<category>/<slug>`), run, verify the image (Step 4), then **replace the whole comment** with `![<alt>](/images/<category>/<slug>/<name>.webp)` in the same position. A placeholder that cannot be shot locally stays, with a line added to `.claude/docs-overhaul/QUESTIONS.md`. Finish with `npm run docs:build`. Create fake sample data first when the screen would otherwise be empty, and delete it afterwards.
+
 ## 3. Recipes
 - **List screen** (`/levels`, `/members`): `admin` → `shot` clip `app` + `crop.height`.
 - **Create/edit form** (`/levels/:id`, `/access-groups/create`): taller viewport (1400+), fill sample values, one `app` shot, then `element`/`crop` close-ups per section.

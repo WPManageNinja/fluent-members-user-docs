@@ -43,13 +43,34 @@ There is no test suite. `npm run docs:build` is the gate: it errors on broken in
 
 ## Skills — route doc work through these
 
-Five repo-specific skills in `.claude/skills/` encode the full workflow (placement, sidebar wiring, image folders, knowledge-base lookup, clean build). Prefer them over ad-hoc edits:
+Repo-specific skills in `.claude/skills/` encode the full workflow (placement, sidebar wiring, image folders, knowledge-base lookup, clean build). Prefer them over ad-hoc edits:
 
 - **write-fluent-members-doc** — create a new page
 - **edit-fluent-members-doc** — edit an existing page's content in place
 - **restructure-fluent-members-docs** — rename/move/delete/merge a page or reorder the sidebar (rewrites inbound links + moves image folder + updates config.mjs)
 - **audit-fluent-members-docs** — read-only quality gate (links, sidebar coverage, images, build)
-- **fluent-members-doc-screenshots** — take/annotate/place admin screenshots with the headless-Chrome runner
+- **fluent-members-doc-writer** — master voice/format guide; **load before writing any page**
+- **fluent-members-docs-overhaul** — update the WHOLE site to the current plugin (feature map → journey → page-by-page verify/rewrite → screenshot placeholders); resumable via `.claude/docs-overhaul/`
+- **verify-fluent-members-doc-against-code** — prove one page claim-by-claim against the plugin source and live site
+- **fluent-members-code-to-docs** — get the plugin source (`dev` branches), map code → doc pages, sync after a release
+- **fluent-members-doc-screenshots** — take/annotate/place admin screenshots with the headless-Chrome runner; fills `TODO(screenshot)` placeholders
+
+## Writing voice (summary — full rules in `fluent-members-doc-writer`)
+
+- Open with 1–3 sentences: what the feature is and when to use it; bold the feature name, add `(Pro)` if Pro-only. No "In this guide…".
+- Second person, present tense, imperative steps, short direct sentences. Members are **members**; people on the site are **visitors**.
+- **No em dashes (`—`)** in prose. End on the action or outcome, never a sign-off or support line.
+- Exact UI labels as shown in the current app (top nav says **Membership Levels**). Bold labels, `**Fluent Members → Membership Levels**` paths, `> [!Note]` for the one aside a page may need.
+- Never state anything you have not proven against the plugin code or live site; the old docs and `member/chunks/` are drafts, not evidence.
+
+## Updating docs after plugin UI/feature changes
+
+1. `fluent-members-code-to-docs` — get the plugin source (`dev` branches of WPManageNinja/fluent-members and fluent-members-pro, checked out read-only under `~/Desktop/WPManageninja-clone-from-git/`), record the shas.
+2. `fluent-members-docs-overhaul` — Phase A feature map (code + live site `http://localhost:10053`), Phase B journey/structure plan (**approval gate**), Phase C each page: verify (`verify-fluent-members-doc-against-code`), rewrite (`fluent-members-doc-writer`), strip stale screenshots, leave `TODO(screenshot)` placeholders.
+3. `fluent-members-doc-screenshots` — fill the placeholders with the runner.
+4. `audit-fluent-members-docs` + clean `npm run docs:build`.
+
+Working state (ledger, feature map, questions, redirects) lives in `.claude/docs-overhaul/`; plugin catalog and sync log in `.claude/plugin-memory/`. Both are excluded from the site build. Never commit unless asked.
 
 ## Git
 

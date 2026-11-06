@@ -157,6 +157,15 @@ Sidebar config:  .vitepress/config.mjs  (sidebar object, /docs/ and /reference/ 
 Knowledge base:  member/chunks/         (AI context; load relevant chunk before writing)
 ```
 
+### Voice and overhaul-leftover checks (add to the report)
+```
+grep -rln '—' docs reference                       # em dashes in prose: should be none
+grep -rn 'TODO(screenshot)' docs reference | wc -l   # outstanding screenshot placeholders
+grep -rhoE 'TODO\(screenshot\): [a-z0-9-]+' docs reference | sort | uniq -d   # duplicate ids
+grep -rnE '(^|[^`])\*\* [^*]+ \*\*' docs reference   # inner-space bold
+```
+Report each count; offer to fix. Voice rules: `fluent-members-doc-writer`.
+
 ### Key Principles
 1. **Read-only first** — report before you touch anything.
 2. **Paths, not just counts** — every failure names its files.

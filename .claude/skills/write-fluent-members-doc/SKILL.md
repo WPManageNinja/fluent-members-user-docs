@@ -32,6 +32,11 @@ image folder, wire it into `.vitepress/config.mjs`, and verify with a clean buil
 11. **DO NOT** invent a new category folder or a new sidebar group without asking the user.
 12. **DO NOT** write `** term **` (inner-whitespace bold) — use `**term**`.
 13. **DO** mark Pro-only features with `(Pro)` — both in body text and sidebar `text`.
+14. **DO** load `fluent-members-doc-writer` before writing and follow its voice and page shape.
+15. **DO** confirm every label, default and Free/Pro claim against the plugin code or live site
+    (`fluent-members-code-to-docs`), not only the knowledge-base chunk.
+16. **DO** place `TODO(screenshot)` placeholders (format: `fluent-members-docs-overhaul` §5)
+    where a screen needs an image; fill them with `fluent-members-doc-screenshots`.
 
 ---
 

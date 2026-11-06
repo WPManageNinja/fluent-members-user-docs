@@ -35,6 +35,15 @@ technical accuracy.
 10. **DO NOT** touch unrelated docs.
 11. **DO** before starting, map exactly where in the doc and which section needs to change,
     matching the user journey through that page.
+12. **DO** load `fluent-members-doc-writer` before writing and follow its voice (opening, tone,
+    no em dashes, exact UI labels, page shape).
+13. **DO** treat the existing text as a draft: prove every label, step, default and Free/Pro
+    claim you keep against the plugin code or the live site
+    (`verify-fluent-members-doc-against-code`). `member/chunks/` is a map, not proof.
+14. **DO** strip screenshots that no longer match the UI and leave a `TODO(screenshot)`
+    placeholder (format: `fluent-members-docs-overhaul` §5). Never leave a stale image.
+15. For a whole-site pass after a UI/feature change use `fluent-members-docs-overhaul`,
+    not repeated single edits.
 
 ---
 
@@ -59,6 +68,8 @@ Record as `CHANGE`.
 Load the relevant knowledge-base chunk:
 - Check `member/chunks/00-index.md` → find the chunk number for this topic
 - Read that chunk file before writing any technical content
+- Then confirm the claims you will state or keep against the plugin source / live site
+  (`fluent-members-code-to-docs` §0 for the source checkout). The chunk can be stale.
 
 ### 1.4 Images & title
 > **Does this change involve images?** and **Does the page title (H1) change?**

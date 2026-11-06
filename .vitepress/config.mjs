@@ -149,7 +149,7 @@ export default defineConfig({
 
   // Internal working material (KB chunks + audit reports), not published pages.
   // Excluded from the build so their raw {{ }} examples don't hit the Vue compiler.
-  srcExclude: ['member/**', 'README.md'],
+  srcExclude: ['member/**', 'README.md', 'CLAUDE.md', '.claude/**'],
 
   head: [
     ['meta', { name: 'theme-color', content: '#6B35E8' }],
