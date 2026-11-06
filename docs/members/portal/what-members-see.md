@@ -1,53 +1,62 @@
+---
+title: "What Members See"
+description: "What the Member Portal shows to visitors and members: the login prompt, profile, stats and membership cards."
+---
+
 # What Members See
 
-The Member Portal renders differently depending on who is visiting and what memberships they hold. This page walks through each state a visitor can be in and what appears on screen.
+The **Member Portal** changes with who is looking at it. Visitors get a login prompt, and members get their profile, stats and a card for each membership.
 
-## Logged Out
+## Visitors who are not logged in
 
-A visitor who is not signed in sees a simple prompt to log in. They are not redirected; the portal page stays in place and shows a sign-in link to your standard WordPress login page.
+Visitors stay on the page and see a short prompt. **Log In** opens the WordPress login page and brings them back to the portal afterwards.
 
-## Logged In (No Membership)
+![Screenshot of the portal prompt reading Please log in to view your memberships, with a Log In button](/images/members/portal/what-members-see/what-members-see-logged-out.webp)
 
-A member who is logged in but holds no membership rows sees an empty state with a link directing them to your pricing page. No membership cards or action buttons are shown.
+## Logged-in members
 
-## Logged In (With Memberships)
+Members see three sections, top to bottom:
 
-This is the most common case. The portal shows one card per membership the member holds. A member with multiple memberships sees multiple cards stacked on the same page.
+![Screenshot of the Member Portal with the member profile, Stats Overview cards and the Your memberships list](/images/members/portal-setup/memeber-dashboard-2.webp)
 
-![Member dashboard](/images/members/portal-setup/memeber-dashboard-2.webp)
+A logged-in person with no memberships still sees the profile and stats, with the text **You don't have any memberships yet.** in place of the list.
 
-### What Each Membership Card Shows
+### Profile
 
-Each membership card displays the following details:
+The profile shows the member's avatar, display name, user ID, email address and registration date. The three-dot menu holds **Logout**.
 
- * **Plan & Level:** Shows the pricing plan and the assigned membership level (for example, Monthly · Pro Access).
- * **Status:** Displays the current membership status, such as **Active, Trial, Pending, Cancelled, Expired, or Suspended**.
- * **Start Date:** The date the membership was created.
- * **Expires:** Shows the membership expiration date, **Lifetime** for lifetime memberships, or remains blank if the membership is not active.
- * **Amount:** The amount paid when the membership was purchased.
- * **Provider:** Indicates the source of the membership, such as **FluentCart, Native Payment, or Fluent Forms**.
+### Stats Overview
 
-### Action Buttons
+Four cards sum up the member's account:
 
-The buttons available on each card depend on the membership status and whether Pro is installed:
+| Card | Shows |
+|---|---|
+| **Active Membership** | How many memberships give access now, out of the member's total. |
+| **Next payment** | The amount and date of the next subscription charge. |
+| **Next Expire** | When the next membership ends. |
+| **Total Spent** | The member's lifetime spend. |
 
-| Button | When it appears | Free | Pro |
-|---|---|:---:|:---:|
-| **Cancel Membership** | Status is `Active` or `Trial` | ✅ | ✅ |
-| **Update Payment Method** | Status is `Active` or `Trial`, provider is Native Payment (Stripe) | — | ✅ |
-| **Renew** | Status is `Expired` and the subscription is renewable | — | ✅ |
+A card shows **N/A** when it has nothing to report.
 
-Actions update the card immediately without a full page reload. Cancelling a membership changes the status pill to `Cancelled` in place.
+### Your memberships
 
-## Corporate Team Panel (Pro)
+**Your memberships** lists every membership the member holds, including ended ones, with a count beside the heading. The list shows 5 cards per page, and the member can change that with the page size menu below it.
 
-Members who hold a **corporate parent** membership see an additional **Team Members** panel below their membership card. The panel shows:
+Each card shows:
 
-- A list of invited sub-members with each one's current status (Active, Pending, Expired)
-- A **Send Invitation** button to invite new seat holders by email
-- A remove option on each row to revoke a seat
+- **Level and ID:** The Membership Level name and the membership ID, such as **Pro (#61)**.
+- **Status:** **Active**, **Trial**, **Suspended**, **Cancelled**, **Expired** or **Upgraded**. A trial shows the days left, such as **Trial - 5 days**.
+- **Start date:** For example, **Started 2026-09-27**.
+- **Provider:** Where the membership came from, such as **FluentCart**, **WooCommerce**, **FluentForms**, **Paymattic**, **Corporate** or **Manual**.
+- **End date:** **Expires** with a date, **Expired** with a date, **Lifetime access** or **N/A**.
+- **Price:** The amount and its billing term, such as **$29.00 per month** or **one-time**.
+- **Manage:** Opens the membership's details.
 
-Sub-members do not see the Team panel; they see only their own membership card, the same as any individual member.
+## Actions on a membership
 
-For the full invite and seat management flow, see [Corporate Seat Invites](/docs/members/portal/corporate-seat-invites).
+Cards hold no action except **Manage**. Everything else is on the [Membership Details](/docs/members/portal/membership-details) page, where the available actions depend on the membership:
 
+- [Cancel a membership](/docs/members/portal/cancelling)
+- [Update the payment method](/docs/members/portal/updating-payment-method) (Pro)
+- [Renew a membership](/docs/members/portal/renewing-a-membership) (Pro)
+- [Invite team members](/docs/members/portal/corporate-seat-invites) (Pro), for owners of a corporate membership
