@@ -49,7 +49,7 @@ Steps that need Pro show **Requires Pro** when Fluent Members Pro is not active.
 Click a source card to open its wizard. The wizard has three screens, and nothing is written until you run a step on the second one. Your data in the source plugin is never changed or deleted.
 
 1. **Data Map:** Shows **What will be imported**, with a record count per row, and a **Before You Migrate** panel built from what the wizard found on your site. Read this panel carefully. It names the subscriptions, content and level terms that need your attention. Click **Next**.
-2. **Migration:** Lists the **Migration Steps**. Click **Migrate All** to run them in order, or **Run** on a single step.
+2. **Migration:** Lists the **Migration Steps**. The steps run in the listed order. Click **Migrate All** to run them all, or **Run** to run the next one.
 3. **Review Data:** Click **View Summary** when the steps finish. It shows the record total and a **What was imported** table. Click **Download Migration Log** to keep a record, then **View Members**.
 
 ### While the steps run
@@ -57,7 +57,7 @@ Click a source card to open its wizard. The wizard has three screens, and nothin
 Keep the browser tab open. Progress is saved, so if the tab closes, reopen the same migration and click **Resume Migration**.
 
 - **Pause** stops the run so you can continue later.
-- A hint such as **Run Membership Levels first** means that step depends on another one. Some steps are independent of each other, so the order is not strictly linear.
+- A hint such as **Run Membership Levels first** names the next step to finish. **Run** stays disabled on later steps until the earlier ones are done.
 - **Retry** appears on a step that failed or needs another pass.
 - **Completed**, **Skipped** and **Not Found** show how a step ended. **Not Found** means the source had no records for it.
 
