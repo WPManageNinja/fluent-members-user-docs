@@ -42,6 +42,10 @@ The **More Actions** button holds the actions that apply to the record:
 
 Subscriptions billed by another plugin have no **More Actions** button. You manage those in that plugin.
 
+## Test payments
+
+Test payments carry a **Test** badge. While a gateway is in test or sandbox mode you can [filter the lists by payment mode](/docs/billing/filters-and-search). Once every connected gateway is live, test records no longer appear in the lists.
+
 ## Where records come from
 
 Records are created for you. You do not add them on this screen:
