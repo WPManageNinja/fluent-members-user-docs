@@ -29,7 +29,7 @@ These types are always available:
 | **All Pages** | Every page, including pages you publish later. |
 | **All Categories Archive** | Every post, the same as **All Posts**. The category archive page itself still opens. |
 | **All Tags Archive** | Every post, the same as **All Posts**. The tag archive page itself still opens. |
-| **Specific Post/Page/CPT/Taxonomy etc.** | Only the posts, pages, categories and tags you pick. |
+| **Specific Post/Page/CPT/Taxonomy etc.** | Only the posts, pages, categories and tags you pick. Terms from custom taxonomies protect nothing. |
 
 Here's how the list looks when you choose a type:
 
@@ -71,14 +71,14 @@ The **Specific** types show a **Protected Content** field in the rule card.
 1. Click **Add Content** and type part of a title.
 2. Click a result to add it. Results are grouped by type, such as **Posts**, **Pages** and **Categories**.
 
-Picking a category or tag protects every post in it, including posts you add later. A single post or page stays the only one protected until you add more.
+Picking a category or tag protects every post assigned directly to it, including posts you add later. A post that is only in a child category is not covered when you pick the parent, so it stays public. Pick each child category too. A single post or page stays the only one protected until you add more.
 
 > [!Note]
-> The **Specific Post/Page/CPT/Taxonomy etc.** search returns posts, pages and terms only. To protect a custom post type item, use the [Access Groups panel](/docs/access-groups/per-post-restrictions) in its editor.
+> The **Specific Post/Page/CPT/Taxonomy etc.** search also lists terms from custom taxonomies, under **Categories** or **Tags**. Picking one saves without an error but protects nothing, so that content stays public. To protect a custom post type item, use the [Access Groups panel](/docs/access-groups/per-post-restrictions) in its editor.
 
 ## Exclude items from a rule
 
-Every rule has an **Excluded** field. Click **Add Exclude** and search for the items this rule should skip. Excluding a category or tag skips every post in it.
+Every rule has an **Excluded** field. Click **Add Exclude** and search for the items this rule should skip. Excluding a category or tag skips the posts assigned directly to it, not posts that are only in a child category.
 
 An exclusion applies to its own rule only. If another rule or another group covers the item, the item stays protected. To make something public across all your groups, use **Exclude Content from Restriction** in [General Settings](/docs/settings/general).
 
