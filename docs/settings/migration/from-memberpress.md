@@ -1,105 +1,122 @@
+---
+title: "Migration from MemberPress"
+description: "Import MemberPress memberships, rules, members, subscriptions and transactions into Fluent Members."
+---
+
 # Migration from MemberPress
 
-The Migration tool imports your **MemberPress** membership data levels, members, subscriptions, transactions, and payment history into Fluent Members. MemberPress is the only source that supports a **live payment subscription transfer** (Pro): existing Stripe or PayPal REST PPCP subscribers continue to be billed automatically after migration without re-entering their payment details.
+The **Migration** tool imports your **MemberPress** memberships, rules, members and corporate accounts into Fluent Members. With **Fluent Members Pro** (Pro) it also imports orders, transactions and subscriptions.
 
-Before you begin, complete the [Migration Overview](/docs/settings/migration/) checklist.
+Before you begin, read the [Migration overview](/docs/settings/migration/).
 
-## Before You Start
+## Before you start
 
-- MemberPress must be **active** on the site so the Migration card shows **Detected**.
-- Fluent Members must be installed and active.
-- Install **Fluent Members Pro** if you want subscriptions, transaction history, Stripe live-transfer, or PayPal import.
-- Complete [Stripe Setup](/docs/settings/payment-settings/stripe-setup) if members used Stripe and you want subscriptions to continue without re-entry.
-- Complete [PayPal Setup](/docs/settings/payment-settings/paypal-setup) if members used PayPal REST PPCP and you want subscriptions to continue without re-entry.
-- Take a full database backup before running any step.
-
-## Access the Migration Wizard
-
-Go to **Settings → Migration** and click the **MemberPress** card to open the import wizard.
-
-![Migration source selection: click the MemberPress card](/images/settings/migration/memberpress/access-memberpress-1.webp)
+- Keep MemberPress active on the site. Its card shows **Not Detected** otherwise.
+- Install **Fluent Members Pro** if you want orders, transactions and subscriptions imported.
+- Take a full database backup.
 
 ## Step 1: Data Map
 
-The wizard opens on the **Data Map** screen, which shows exactly what will be migrated and the record counts detected from MemberPress.
+Go to **Settings → Migration** and click the **MemberPress** card. The wizard opens on the **Data Map** screen, which lists **What will be imported** with the records found on your site.
 
-| MemberPress | Fluent Members |
+<!-- TODO(screenshot): from-memberpress-1
+  screen: Settings → Migration → MemberPress card → Data Map
+  state: What will be imported table and the Before You Migrate panel
+  data: a site with MemberPress active and sample memberships and members
+  highlight: Next button
+  view: admin
+  alt: Screenshot of the Import from MemberPress wizard on the Data Map screen
+  reason: MemberPress is not active on the local site
+-->
+
+These rows can appear. Rows with no records are hidden, except **Membership Levels** and **Rules**.
+
+| In MemberPress | Becomes in FluentMembers |
 |---|---|
 | Membership Levels | Membership Levels |
 | Rules | Access Groups |
 | Members (one-time) | Memberships |
-| Transactions (Pro) | Orders |
+| Members (recurring) | Memberships |
+| Transactions (Pro) | Transactions |
+| Corporate Accounts | Corporate Parents |
+| Sub Accounts | Corporate Children |
 
-Review the counts and the **Validation Warnings** at the bottom of the modal. When everything looks correct, click **Next**.
+Read the **Before You Migrate** panel, then click **Next**. Besides the items below, it can warn you about:
+
+- **Unsupported rules:** Rules on custom post types or taxonomies, URIs, regular expressions or partial content aren't migrated, and neither are WooCommerce or FluentCart rules while that plugin is inactive. That content becomes public once MemberPress is deactivated.
+- **Level terms:** Paid trials become free for new buyers. A level that keeps access after the last payment loses that rule for new buyers. A one-time level that expires gives new buyers lifetime access. Existing members keep their rule or end date.
 
 > [!Note]
-> Coupon codes and scheduled email reminders from MemberPress cannot be migrated and will need to be recreated in Fluent Members manually.
+> Not migrated: coupon codes, email settings and scheduled reminders, custom registration fields, group upgrade paths and fallback memberships, who-can-purchase rules, membership access URLs, thank-you and login redirect pages, tax settings, per-account sub-account limits, and MemberPress shortcodes and blocks in your content.
 
-![Data Map: review what will be migrated and click Next](/images/settings/migration/memberpress/import-from-memberships-2.webp)
+## Step 2: Migration
 
-## Step 2: Migration Steps
+Click **Migrate All** to run every step in order, or click **Run** on one step.
 
-The second screen lists all migration steps. Click **Migrate All** to run every step in sequence, or click **Run** next to an individual step to run it on its own.
+<!-- TODO(screenshot): from-memberpress-2
+  screen: Import from MemberPress → Migration
+  state: Migration Steps list before running
+  data: a site with MemberPress active
+  highlight: Migrate All button
+  view: admin
+  alt: Screenshot of the Migration Steps list for MemberPress with the Migrate All button
+  reason: MemberPress is not active on the local site
+-->
 
-| Step | What it does |
-|---|---|
-| **1. Access Groups** | Imports MemberPress Rules as Fluent Members Access Groups |
-| **2. Membership Levels** | Creates Fluent Members Levels matched by name to MemberPress memberships |
-| **3. Memberships** | Imports member records and their level assignments |
-| **4. Orders** | Imports order records as Transaction rows (Pro) |
-| **5. Transactions** | Imports payment transaction history (Pro) |
-| **6. Subscriptions** | Imports subscription records; transfers live Stripe or PayPal subscriptions if configured (Pro) |
-| **7. Corporate Members** | Imports corporate seat data (skipped automatically if no corporate data exists) |
-| **8. Cleanup & Verify** | Finalises the migration and marks it complete. Do not skip this step. |
+| Step | What it does | Needs first |
+|---|---|---|
+| **Access Groups** | Imports MemberPress rules. | Nothing |
+| **Membership Levels** | Creates a Fluent Members level for each membership. | Access Groups |
+| **Memberships** | Imports members and their memberships. | Membership Levels |
+| **Orders** (Pro) | Imports orders. | Memberships |
+| **Transactions** (Pro) | Imports payment history. | Memberships |
+| **Subscriptions** (Pro) | Imports recurring subscriptions. | Memberships, Orders |
+| **Corporate Members** | Imports corporate accounts and sub accounts. Shows **No Corporate Data** if there are none. | Memberships |
+| **Cleanup & Verify** | Finishes and checks the migration. | All steps above |
 
-![Migration Steps: click Migrate All or run each step individually](/images/settings/migration/memberpress/migrate-all-3.webp)
+Optional **Convert FluentCRM Automations** and **Sync Integrations** steps can follow. See the [Migration overview](/docs/settings/migration/).
 
 ## Step 3: Review Data
 
-When all steps finish, the **Migration Complete** screen shows a summary of what was imported with counts per entity. Click **Download Migration Log** to save a record, then click **View Members** to confirm your members appear in Fluent Members.
+Click **View Summary**. The screen shows the record total, a **What was imported** table and any failed records or warnings. Click **Download Migration Log** to review them, then click **View Members**.
 
-![Migration Complete: review imported counts and click View Members](/images/settings/migration/memberpress/migration-complete-4.webp)
+## What happens to subscriptions
 
-## Stripe Subscription Transfer (Pro)
+Subscriptions that renew through Stripe or PayPal need Fluent Members Pro. Without it, renewals and cancellations aren't recorded, so access ends at the paid-through date **while the gateway keeps charging**. Install Pro before you migrate, or cancel the subscription at the gateway.
 
-When Fluent Members Pro is active and [Stripe Setup](/docs/settings/payment-settings/stripe-setup) is configured with the same Stripe account MemberPress used, the Subscriptions step transfers each Stripe-billed subscription by updating its metadata in Stripe. After transfer:
+With Pro, the result depends on the gateway:
 
-- Renewals continue charging on the existing Stripe subscriptions; no member action required.
-- Cancellations from the Member Portal correctly call Stripe to stop billing.
-- The Transactions screen shows new local records; Stripe Dashboard retains the original customer history.
+| Gateway | What you do | Result |
+|---|---|---|
+| **Stripe** | Connect the same account in [Stripe Setup](/docs/settings/payment-settings/stripe-setup) and add the Fluent Members webhook in Stripe. | Renewals and cancellations reach Fluent Members. |
+| **PayPal (REST)** | Connect the same PayPal account in [PayPal Setup](/docs/settings/payment-settings/paypal-setup), in the same live or sandbox mode as MemberPress, before the **Subscriptions** step. | The subscription imports and its renewals are recorded. If PayPal isn't connected, the subscription doesn't import until you connect it and click **Retry**. |
+| **Legacy PayPal** | Deactivate MemberPress and connect the same PayPal account. | Renewals are recorded. The subscription can only be cancelled in PayPal. |
+| **PayPal Vaulting** | Nothing to set up. | Imported, but it can't renew. The membership ends when the paid period runs out. |
+| **PayPal with no subscription ID** | Nothing to set up. | Renewals can't be recorded. The membership ends when the paid period runs out. |
+| **Other gateways**, such as Authorize.net or offline payments | If the gateway still charges, cancel the subscription there. | It can't renew in Fluent Members. The membership ends when the paid period runs out. |
 
-## PayPal Subscription Transfer (Pro)
+## Status mapping
 
-When Fluent Members Pro is active and [PayPal Setup](/docs/settings/payment-settings/paypal-setup) is configured, the Subscriptions step imports live **PayPal REST PPCP** subscriptions from MemberPress. After transfer:
+The status comes from the MemberPress status and whether the member is still paid up.
 
-- Renewals continue via PayPal webhooks; no member action required.
-- Cancellations from the Member Portal correctly call PayPal to stop billing.
-- The Transactions screen records new local rows going forward.
+For recurring memberships:
 
-PayPal subscriptions on legacy IPN (non-PPCP) are handled via IPN continuation; Fluent Members takes over IPN routing once MemberPress is deactivated.
+| MemberPress status | Paid up | Fluent Members status |
+|---|---|---|
+| active, confirmed | Yes | Active |
+| active, confirmed | No | Expired |
+| suspended | Yes | Active |
+| suspended | No | Suspended |
+| cancelled | Yes | Active |
+| cancelled | No | Cancelled |
+| any other status | Either | Cancelled |
 
-> [!Note]
-> Offline or manual payment subscriptions cannot be transferred automatically. Members on those payment methods will need to re-subscribe through Fluent Members after migration.
+For one-time memberships, a complete or confirmed transaction becomes **Active**, or **Expired** once its end date has passed. A refunded transaction, or any other status, becomes **Cancelled**.
 
-## Status Mapping
+## After the migration
 
-| MemberPress Status | Fluent Members Status |
-|---|---|
-| active | Active |
-| expired | Expired |
-| cancelled | Cancelled |
-| suspended | Suspended |
-| pending | Pending |
-
-## After Migration
-
-Once the Cleanup & Verify step finishes, confirm the import was successful:
-
-- **Verify counts**: Compare member and subscription totals in Fluent Members against MemberPress records.
-- **Set up Access Groups**: Assign your Levels to Access Groups and add protected content. This step is always manual. See [Access Groups](/docs/access-groups/).
-- **Test access**: Log in as a sample member and confirm their content is accessible or restricted as expected.
-- **Rebuild email templates**: See [Email Notifications](/docs/settings/email-configuration/email-notifications).
-- **Update the portal URL**: Send members the new [Member Portal](/docs/members/portal/setup) link.
-- **Deactivate MemberPress**: Only after full verification. Keep it installed for a few weeks in case you need to reference its data.
-
-![Imported members visible in Fluent Members → Members](/images/settings/migration/memberpress/preview-5.webp)
+- Compare member and subscription totals in Fluent Members with MemberPress.
+- Check the imported [Access Groups](/docs/access-groups/) and restrict by hand anything the **Before You Migrate** panel listed.
+- Log in as a sample member and open protected content.
+- Point members to your [Member Portal](/docs/members/portal/setup).
+- Deactivate MemberPress as soon as the migration and its optional steps are done. Changes MemberPress records afterwards aren't imported.
