@@ -45,4 +45,7 @@ If the renewal fails, the error shows at the top of the page.
 
 ## Failed payments
 
-A failed renewal doesn't show **Renew Membership** on its own. Fluent Members suspends the membership, and the details page shows **Your last payment did not go through. Update your payment method to restore access.** The fix is to [update the payment method](/docs/members/portal/updating-payment-method), which also tries to collect the unpaid invoice.
+A failed renewal doesn't show **Renew Membership** on its own. Fluent Members suspends the membership, and what the member can do depends on the gateway:
+
+- **Stripe:** The details page shows **Your last payment did not go through. Update your payment method to restore access.** The fix is to [update the payment method](/docs/members/portal/updating-payment-method), which also tries to collect the unpaid invoice.
+- **PayPal:** The page shows a message that the membership has been suspended and to contact the site administrator. PayPal does not support updating the payment method here, so the member has no self-service fix and must contact you.
