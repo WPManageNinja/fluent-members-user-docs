@@ -1,68 +1,94 @@
-# Corporate Seat Invites
+---
+title: "Corporate Seat Invites (Pro)"
+description: "How corporate membership owners invite team members and manage seats from the Member Portal."
+---
 
-> [!Note]
-> The Team panel and the invite flow require Fluent Members Pro. The parent's portal shows no Team panel in the free version, and sub-members never see the panel regardless of plan.
+# Corporate Seat Invites (Pro)
 
+**Corporate Seat Invites** (Pro) let the owner of a corporate membership fill their own seats. The owner invites people by email from the **Member Portal**, and each person who accepts gets access under the owner's membership.
 
-When a member holds a Corporate Membership, their portal includes a **Team Members** panel where they can invite teammates, monitor seat usage, and remove sub-members all without admin involvement. This page walks through that flow from the parent's side.
+## The Team Members panel
 
-## The Team Members Panel
+The owner opens the Member Portal and clicks **Manage** on the corporate membership. The **Team Members** panel is below the membership details.
 
-The corporate parent sees their membership card plus a **Team Members** panel below it. The panel shows:
+![Screenshot of the Team Members panel with an email typed in the Invite Member field and an arrow on Send Invitation](/images/members/portal/corporate-seat-invites/corporate-seat-invites-panel.webp)
 
-- **Seats counter**: How many seats are used out of the allowed maximum (e.g. *5 of 10 seats used*). If no seat limit is set on the level, only the used count is shown.
-- **Team list**: One row per sub-member with their name, email, status (Active / Pending / Expired), join date, and a remove action
-- **Send Invitation** button opens the invite modal
+- **Seat count:** For example **2 / 10 seats · 1 pending**. The owner takes one seat, and pending invitations show separately. A level with no seat limit shows the member count instead.
+- **Invite Member:** The email field and **Send Invitation** button. They're hidden once the corporate membership has ended or its subscription is scheduled to cancel.
+- **Tabs:** **All**, **Active**, **Pending** and **Cancelled**, with a **Search...** field.
+- **Table:** **ID**, **Member**, **Role**, **Joined** and **Status**, with a three-dot menu on each row.
 
-## How to Invite a Teammate
+Seat holders don't get this panel. They see a normal membership card with the provider **Corporate**, and their **Manage** page shows the usual membership details.
 
-1. The parent clicks **Send Invitation** in the Team Members panel.
-2. A modal opens with a single **Email** field. They enter the teammate's email address and click **Send**.
-3. The plugin validates the request it checks the email format, confirms a seat is available, and enforces a rate limit of one invite per email address per hour.
-4. A unique single-use invite link is generated and emailed to the teammate.
-5. A **Pending** row appears in the Team panel immediately.
+Without Pro, the owner sees **Corporate membership management requires Fluent Members Pro.** in place of the panel.
 
-## How the Teammate Accepts
+## Invite a team member
 
-The invite email contains a link in this format:
+1. Type the person's email address under **Invite Member**.
+2. Click **Send Invitation**.
 
-```
-https://yoursite.com/?fmem_join=TOKEN
-```
+The owner sees **Invitation sent to** the address, and a **Pending** row appears in the table. The person gets an email with an **Accept Invitation** button. The invitation expires after 3 days.
 
-When the teammate clicks the link, one of three things happens depending on their login state:
+The invitation is refused in these cases:
 
-| State | What they see |
+| Message | Why |
 |---|---|
-| **Logged out** | A login or register prompt. After signing in, the join confirmation is shown automatically. |
-| **Logged in (matching email)** | The join confirmation page directly. |
-| **Logged in (different account)** | A notice asking them to sign out and retry with the correct account. |
+| **An invitation was already sent to this email recently. Please wait before sending again.** | One invitation per email address per hour. |
+| **This person is already a member of your team.** | The address belongs to the owner or a current seat holder. |
+| **All 10 seats are occupied. No more members can join.** | Every seat is taken. The message shows the level's seat limit. |
+| **All seats are taken or reserved by pending invitations. Cancel an invitation or remove a member first.** | The free seats are all held by pending invitations. |
+| **This corporate membership is no longer active.** | The owner's membership has ended or is suspended. |
 
-On the join confirmation page they see the parent's plan name and **Accept** / **Decline** buttons. Clicking **Accept** creates their membership row and grants access immediately. Their portal then shows a normal membership card for the level; they cannot cancel, update a payment method, or take any billing action. Those belong to the parent.
+## Accept an invitation
 
-::: tip Invite links are single-use
-Each invite generates a unique token that expires once accepted. If the link lands in the wrong hands, the parent can simply send a new invite the old link becomes invalid.
-:::
+The link in the email opens a **Join Corporate Membership** page on your site.
 
-## How to Remove a Teammate
+1. If the person isn't logged in, they see **Please log in to accept this invitation.** They click **Log In** and sign in with the invited email address.
+2. The page says who invited them and to which membership.
+3. They click **Accept Invitation**.
 
-In the Team panel, the parent finds the sub-member's row and clicks the remove action. The sub-member's membership is cancelled immediately, their seat is freed, and the parent can invite a replacement.
+The page confirms **You have successfully joined the corporate membership!** and offers **Go to Portal**. Access starts right away.
 
-::: warning Removal ends the membership, not the WordPress account
-Removing a sub-member only cancels their membership on this Corporate Level. Their WordPress user account remains active, and any other memberships they hold on your site are unaffected.
-:::
+<!-- TODO(screenshot): corporate-seat-invites-1
+  screen: Join Corporate Membership page opened from an invitation link
+  state: logged in as the invited person, Accept Invitation button visible
+  data: a pending invitation for a test account
+  highlight: Accept Invitation button
+  view: frontend
+  alt: Screenshot of the Join Corporate Membership page with the Accept Invitation button
+  reason: needs a real invitation; sending one was out of scope for this pass
+-->
 
-## What Happens When the Parent Cancels
+The page shows an error instead in these cases:
 
-When the parent's corporate membership is cancelled, expired, or suspended, every sub-member's row mirrors the new status automatically. The cascade fires one lifecycle hook per child row, so integrations like FluentCRM will see one event per sub-member, not one event for the whole team.
+| Message | Why |
+|---|---|
+| **This invitation was sent to a different email address.** | The person is logged in with another account. They log out and use the invited address. |
+| **This invitation has expired.** | More than 3 days have passed. The owner sends a new one. |
+| **This invitation link is invalid or has expired.** | The link is no longer valid, for example because it was cancelled or already used. |
+| **You cannot join your own corporate membership as a sub-account.** | The owner opened their own invitation. |
+| **You already have an active membership at this level.** | The person already holds this level. |
 
-For the full admin-side configuration of corporate levels and seat limits, see [Corporate Memberships](/docs/levels/corporate-memberships).
+## Manage invitations
 
-## Important Notes
+Open the three-dot menu on a **Pending** row:
 
-::: warning Things to keep in mind
-- **Team panel is missing.** The panel only appears for a corporate parent. Confirm the Membership Level type is set to Corporate and that this user is the parent, not a sub-member.
-- **"Seats are full" error when sending an invite.** The seat limit on the level has been reached. Remove an existing sub-member or raise the maximum in the level settings.
-- **Invite email never arrived.** Your site's outgoing mail may not be reaching the address. Check your mail plugin or SMTP configuration.
-- **Teammate sees "This invite is for someone else."** They are logged in as a different WordPress user. They need to sign out and retry with the correct account.
-:::
+- **View invitation:** Opens **Invitation details** with **Email**, **Invited by**, **Sent** and **Expires**.
+- **Resend invitation:** Emails the invitation again.
+- **Cancel invitation:** Withdraws it and frees the reserved seat.
+
+## Remove a team member
+
+1. Open the three-dot menu on the member's row and click **Cancel**. The item is only available for an **Active** seat.
+
+    ![Screenshot of the Team Members panel with a seat holder's three-dot menu open](/images/members/portal/corporate-seat-invites/corporate-seat-invites-seat-menu.webp)
+
+2. Click **Confirm** when asked **Are you sure you want to cancel this sub-account?**
+
+The member's seat is cancelled and freed for someone else. Their WordPress account and any other memberships they hold aren't affected.
+
+## When the owner's membership changes
+
+Seats follow the owner's membership. If it's cancelled, expires or is suspended, every seat changes with it. If the team is larger than the plan allows, the panel shows a warning with how many members to remove before inviting again.
+
+For the admin side, see [Corporate Memberships](/docs/levels/corporate-memberships) and [Corporate Members](/docs/members/corporate-members).
