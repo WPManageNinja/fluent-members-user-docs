@@ -1,187 +1,174 @@
-# Fluent Members Glossary
+---
+title: "Glossary"
+description: "Plain definitions of the terms used across the Fluent Members docs, from Membership Levels and Access Groups to Pro billing features."
+---
 
-This glossary explains the core terms used across the Fluent Members documentation, from Membership Levels and Access Groups to Pro billing features. Use it as a quick reference whenever a term in a guide isn't clear.
+# Glossary
+
+This **glossary** explains the terms used across the Fluent Members docs. Use it when a word in a guide or on a screen isn't clear.
 
 ## A
 
-**Access Group:** A named collection of pages, posts, categories, or your entire site that you want to restrict to members. Attach one or more Membership Levels to an Access Group, and any member holding one of those levels unlocks everything inside it. Think of it as a padlocked folder, with the Membership Level as the key. See [Access Groups](/docs/access-groups/).
+**Access Group:** A named set of content you want to protect, with what blocked visitors see instead. Attach it to one or more Membership Levels, and members holding one of those levels can open the content. See [Access groups overview](/docs/access-groups/).
 
-**Access Group Block:** A Gutenberg block-inspector option that restricts a single paragraph, image, or button instead of locking the whole post. Choose which Access Group must be held to see that block; non-members see a restriction message or partial preview in its place. See [Gutenberg Block: Inserting](/docs/access-groups/gutenberg-block/inserting).
+**Access Groups block:** A block that protects whatever you place inside it, instead of the whole post. See [Access Groups block](/docs/access-groups/gutenberg-block/inserting).
 
-**Active:** The normal membership status that gives a member full access to everything their Membership Level unlocks. A membership becomes active after a successful payment or a manual assignment by an admin. See [Membership Statuses](/reference/membership-statuses).
+**Active:** The normal membership status. The member has access to everything their level unlocks. See [Membership statuses](/reference/membership-statuses).
 
-**Admin Bypass:** WordPress administrators are automatically exempt from content restriction rules so they can edit freely. Always test your protection settings in a private or incognito window as a logged-out visitor, since your admin account never sees restrictions. See [Protected Content](/docs/access-groups/protected-content).
+**Administrator:** WordPress administrators skip all protection, so they always see everything. Test your protection in a private window while logged out. See [How protection works](/docs/access-groups/how-protection-works).
 
 ## B
 
-**Billing:** The financial activity tied to a membership: charges, renewals, refunds, and payment method updates. Pro users can review full billing history in the Transaction History panel on each Subscription's or One-Time Purchase's detail page. See [Orders](/docs/billing/).
+**Billing (Pro):** The top bar menu that holds **Subscriptions** and **One-time**. See [Billing overview](/docs/billing/).
 
-**Block Email Editor (Pro):** A visual, Gutenberg-based editor for designing email notification templates instead of using a plain text area. Build emails from blocks like paragraphs, images, and buttons, then preview them before saving. See [Email Notifications](/docs/settings/email-configuration/email-notifications).
-
-**Block-Level Protection:** Content restriction that targets a single Gutenberg block inside a post rather than the entire post. Blocked blocks are removed from the page entirely, not just hidden, so non-members can't see them even in the page source. See [Gutenberg Block: Configuring](/docs/access-groups/gutenberg-block/inserting).
+**Block email editor (Pro):** An editor for designing email notifications with blocks, starting from a template if you want. See [Custom email editor](/docs/settings/email-configuration/custom-email-editor).
 
 ## C
 
-**Cached Access:** A stored snapshot of which Access Groups a member currently unlocks, used to speed up page loads on a busy membership site. The cache refreshes automatically whenever a membership status or Access Group assignment changes. See [Members List](/docs/members/).
+**Cancellation mode (Pro):** Decides when a cancelled subscription ends. **End of Billing Period** keeps access until the paid time runs out. **Cancel Immediately** ends it right away. See [Cancel a subscription](/docs/billing/cancelling-a-subscription).
 
-**Cancellation Mode (Pro):** A setting that controls when a cancelled native Stripe or PayPal subscription actually loses access. **Immediate** ends access right away; **End of Period** keeps access until the current billing period runs out. See [Subscription Cancellation Modes](/docs/billing/cancelling-a-subscription).
+**Cancelled:** A membership status for a membership someone has ended. See [Membership statuses](/reference/membership-statuses).
 
-**Cancelled:** A membership status that permanently revokes access, set when a member cancels, an admin cancels, or a payment provider reports the subscription ended. The record is kept for history, but the member can no longer reach protected content. See [Membership Statuses](/reference/membership-statuses).
+**Chain map:** A reference that traces how levels, Access Groups and content connect. Use it to work out why a member can or cannot see something. See [Chain map](/reference/chain-map).
 
-**Chain Map:** A reference diagram showing how Fluent Members' core objects connect: **Membership Level (the key) → Access Group (the lock) → Content (what's protected)**. It's the fastest way to trace why a member can, or can't, see something. See [Chain Map](/reference/chain-map).
+**Checkout:** The page where a visitor pays. It belongs to the plugin that sells the level, or to Fluent Members itself when you use Native Payment (Pro). See [Checkout & guest checkout](/docs/selling/checkout).
 
-**Checkout:** The page or flow where a visitor pays for a membership. Checkout is handled by whichever payment integration you've connected: FluentCart, Fluent Forms, Paymattic, WooCommerce, or native Stripe/PayPal checkout (Pro). See [Pricing: Paywalls](/docs/levels/pricing-paywalls).
+**Corporate membership (Pro):** A level type for teams. One owner holds the membership and invites people to its seats. See [Corporate memberships](/docs/levels/corporate-memberships).
 
-**Content Dripping:** A schedule that releases content gradually after a member joins, instead of unlocking everything at once. Specific posts or pages become available a set number of days after the member's start date. See [Content Drip](/docs/access-groups/content-drip).
-
-**Content Protection:** The full set of ways Fluent Members restricts access to content: page redirects, inline restriction messages, partial previews, content dripping, block-level restrictions, and REST API filtering. Every Access Group picks its own combination of these. See [Protected Content](/docs/access-groups/protected-content).
-
-**Corporate Membership (Pro):** A membership type where one purchaser buys a set number of seats and invites teammates to fill them. All team members share the same content access, and cancelling the parent membership cascades access removal to the whole team. See [Corporate Memberships](/docs/levels/corporate-memberships).
-
-**Currency:** The three-letter currency code (for example USD, EUR, GBP) used to display prices across your membership site. Set it once in Settings → General and it applies to every pricing card and checkout flow. See [General Settings](/docs/settings/general).
+**Currency:** The default currency for new prices, set under **Settings → General Settings**. Existing prices, subscriptions and payments keep their own currency. See [General settings](/docs/settings/general).
 
 ## D
 
-**Dashboard:** The main overview screen in Fluent Members, showing headline stats like total members, membership levels, and recent activity. Pro users also see revenue and billing signals alongside the free-plan charts. See [Reading the Dashboard](/docs/dashboard/dashboard).
+**Dashboard:** The first screen of the plugin. Its cards show **Active members**, **Revenue**, **Recurring revenue** and **Member churn**, above charts and recent activity. See [Read your dashboard](/docs/dashboard/dashboard).
 
-**Drip Rule:** A single time-gate entry in a content drip schedule. Each rule names a piece of content and how many days after a member's start date it should unlock. See [Content Drip](/docs/access-groups/content-drip).
+**Drip content:** Releases protected content on a schedule that starts when a member joins. **After duration** unlocks content after a set time. **Within duration** makes it available until a set time, then it ends. See [Drip content](/docs/access-groups/content-drip).
 
 ## E
 
-**Email Notification:** An automatic email Fluent Members sends when a membership event occurs. Three notifications ship out of the box: **Welcome** (on enrollment or re-activation), **Expiry** (status becomes expired), and **Suspension** (status becomes suspended), each editable with its own subject and body. See [Email Notifications](/docs/settings/email-configuration/email-notifications).
+**Email notification:** An automatic email for a membership or payment event: **Welcome Email**, **Membership Expiring**, **Membership Expired**, **Payment Receipt**, **Payment Failed**, **Subscription Cancelled** and **Refund Issued**. See [Email notifications](/docs/settings/email-configuration/email-notifications).
 
-**Entire Website Restriction:** An Access Group setting that locks down every page on the site, homepage, archives, and all posts, rather than individually selected content. Any visitor without the required Membership Level is redirected or shown a restriction message everywhere. See [Protected Content](/docs/access-groups/protected-content).
+**Entire Website:** A restriction type that protects every page on your site. See [Restriction types](/docs/access-groups/protected-content).
 
-**Expired:** A membership status set automatically when a membership's expiry date passes. The member loses access but their record is kept, and they can renew or repurchase to restore it. See [Membership Statuses](/reference/membership-statuses).
+**Exclude Content from Restriction:** A list under **Settings → General Settings** of content that stays public, whichever Access Groups cover it. See [General settings](/docs/settings/general).
+
+**Expired:** A membership status set when a membership's end date passes. The member loses access and the record stays. See [Membership statuses](/reference/membership-statuses).
 
 ## F
 
-**FluentCart:** A WPManageNinja e-commerce plugin that can process payment for Fluent Members. When a customer completes a FluentCart purchase linked to a Membership Level, Fluent Members activates the membership automatically. See [Pricing: Paywalls](/docs/levels/pricing-paywalls).
+**FluentCart:** An e-commerce plugin. Sell a level as a FluentCart product, and the membership is granted when the order is paid. See [FluentCart](/docs/integrations/fluentcart).
 
-**FluentCommunity:** A WPManageNinja community platform that integrates with Fluent Members. When active, specific community spaces can be restricted to Membership Level holders, with members added or removed from spaces as their status changes. See [Pricing: Paywalls](/docs/levels/pricing-paywalls).
+**FluentCommunity:** A community plugin. Add members to spaces automatically when they join a level. See [FluentCommunity](/docs/integrations/fluent-community).
 
-**FluentCRM:** A WPManageNinja CRM plugin. Fluent Members can apply or remove contact tags in FluentCRM automatically when a membership is enrolled, expires, or is cancelled, useful for triggering email automations. See [General Settings](/docs/settings/general).
+**FluentCRM:** A CRM plugin. Start automations when a membership changes. See [FluentCRM](/docs/integrations/fluentcrm).
 
-**Fluent Forms:** A WordPress form builder that can process payment for Fluent Members. Link a Fluent Forms payment form to a Membership Level, and the membership activates as soon as the form is submitted and paid. See [Pricing: Paywalls](/docs/levels/pricing-paywalls).
+**Fluent Forms:** A form plugin. Sell a level through a payment form. See [Fluent Forms](/docs/integrations/fluent-forms).
 
-**Fluent Members Pro:** The paid add-on that extends the free WordPress membership plugin with native Stripe and PayPal checkout, subscriptions, refunds, corporate memberships, WooCommerce integration, and a visual block email editor. It's built for sites that need recurring billing without a third-party payment form. See [Fluent Members](https://fluentmembers.com).
+**Fluent Members Pro:** The paid plugin that adds to the free one. See [Free vs Pro](/docs/getting-started/free-vs-pro).
 
-**Fluent Support:** A WPManageNinja helpdesk plugin. When active alongside Fluent Members, support agents can see a customer's active membership levels directly inside the ticket view. See [General Settings](/docs/settings/general).
+**Fluent Support:** A helpdesk plugin. Agents see a customer's memberships inside their ticket. See [Fluent Support](/docs/integrations/fluent-support).
+
+## G
+
+**Guided setup:** The four steps that open the first time you open the plugin on a new install. See [Guided setup & quick start](/docs/getting-started/quick-start).
 
 ## H
 
-**Hook:** A WordPress extension point that lets developers run their own code when a Fluent Members event occurs. Actions fire on events like a membership assignment or cancellation; filters let you modify values such as redirect URLs or webhook data. See [Developer Hooks](/reference/developer-hooks).
+**Hook:** An extension point for developers. Actions run code on an event, and filters change a value. See [Hooks & filters](/reference/developer-hooks).
 
 ## I
 
-**Individual Level:** The standard membership type, where each member purchases their own access independently. Contrast with Corporate Membership, where one purchaser buys seats for an entire team. See [Creating a Level](/docs/levels/creating).
+**Individual:** The standard level type, where each member holds their own membership. See [Create a level](/docs/levels/creating).
 
-**Integration:** A connection between Fluent Members and another plugin that enables payments, CRM automation, or community access. Free integrations include FluentCart, Fluent Forms, Paymattic, FluentCRM, Fluent Support, and FluentCommunity; Pro adds WooCommerce, native Stripe, and native PayPal. See [Pricing: Paywalls](/docs/levels/pricing-paywalls).
+**Integration:** A connection to another plugin. See [Integrations overview](/docs/integrations/).
 
-**Invite Token (Pro):** A single-use link generated when a Corporate Membership parent invites a teammate by email. The invitee clicks the link, logs in to WordPress, and is added as a sub-member automatically. See [Portal: Corporate Seat Invites](/docs/members/portal/corporate-seat-invites).
+**Invitation (Pro):** How a team owner fills a seat. The person gets an emailed link, logs in with the same email address and joins the team. See [Corporate seat invites](/docs/members/portal/corporate-seat-invites).
 
 ## L
 
-**Lifetime Membership:** A membership with no expiry date, so the member keeps access indefinitely. Access only ends if an admin manually cancels or suspends the membership. See [Creating a Level](/docs/levels/creating).
+**Level integration:** An action in another plugin that runs when a member joins or leaves a level, set on the level's **Integrations** tab. See [Level integrations](/docs/levels/integrations).
 
-**Login Popup:** An optional modal that lets a non-logged-in visitor log in without leaving the page when they hit protected content. It can also be configured to appear automatically on any restricted page load. See [Login Popup](/docs/settings/login-popup).
+**Login popup:** A dialog that lets a logged-out visitor log in without leaving a protected page. It is off by default. See [Login popup](/docs/settings/login-popup).
 
 ## M
 
-**Member:** A WordPress user who has been assigned at least one Membership Level. A single user can hold multiple memberships on the same site at once. See [Members List](/docs/members/).
+**Member:** A WordPress user who holds at least one membership. A member can hold several at once. See [Members list](/docs/members/).
 
-**Member Portal:** A self-service page where logged-in members view their active memberships and cancel. Pro members can also update their payment method, renew a failed subscription, and manage corporate team seats. See [Portal: Setup](/docs/members/portal/setup).
+**Member Portal:** The page where logged-in members see and manage their memberships, using the `[fluent_member_portal]` shortcode. See [Set up the portal](/docs/members/portal/setup).
 
-**Membership:** The individual record linking a WordPress user to a Membership Level. It tracks status, start date, expiry date, and which provider created it. See [Member Detail](/docs/members/detail).
+**Membership:** The record linking one WordPress user to one level, with its status, dates and provider. See [Member details](/docs/members/detail).
 
-**Membership Level:** The plan a member buys or is assigned. It connects to one or more Access Groups (the content it unlocks) and one or more Pricing Plans (how payment is handled). See [Membership Levels](/docs/levels/).
+**Membership Level:** The plan a member buys or is given. It has a type and a pricing type, and unlocks one or more Access Groups. See [Levels overview](/docs/levels/).
 
-**Membership Status:** The current state of a membership: active, trial, pending, expired, suspended, cancelled, or upgraded. Status controls whether the member can reach protected content at any given moment. See [Membership Statuses](/reference/membership-statuses).
+**Membership status:** The current state of a membership: **Active**, **Trial**, **Suspended**, **Cancelled**, **Expired** or **Upgraded**. Only **Active** and **Trial** give access. See [Membership statuses](/reference/membership-statuses).
 
-**MembershipUser:** The internal record tying a WordPress user to a Membership Level. When docs or error messages mention a "membership user," they mean this record, not the WordPress user account itself. See [Member Detail](/docs/members/detail).
-
-**Merge Tag:** A placeholder in email templates, for example <span v-pre>`{{user_name}}`</span> or <span v-pre>`{{membership_level}}`</span>, that Fluent Members replaces with real member data when the email sends. Merge tags work across every built-in notification. See **Email Merge Tags**.
-
-**Migration:** The process of importing members, levels, and subscriptions from another membership plugin, Paid Memberships Pro, MemberPress, or Kadence Memberships, into Fluent Members using the built-in migration wizard. Each source plugin has its own step-by-step wizard. See [Migration: Overview](/docs/settings/migration/).
+**Migration:** Importing levels, members and more from Paid Memberships Pro, MemberPress, Kadence Memberships or Restrict Content Pro. See [Migration overview](/docs/settings/migration/).
 
 ## N
 
-**Native Checkout (Pro):** Fluent Members Pro's built-in Stripe or PayPal checkout, requiring no third-party form plugin. It supports one-time payments and recurring subscriptions directly on your site, including Stripe's 3D Secure card authentication. See [Stripe Setup](/docs/settings/payment-settings/stripe-setup).
+**Native Payment (Pro):** The built-in Stripe and PayPal checkout, as opposed to selling through another plugin. See [Price with native payments](/docs/levels/pricing-native).
 
 ## O
 
-**One-Time Purchase (Pro):** A membership with no recurring subscription behind it: a single native or paywall payment, a manual grant, or a non-recurring migrated order. It's listed in its own view, separate from Subscriptions. See [One-Time Purchases](/docs/billing/one-time).
-
-**Order (Pro):** A record of a purchase event, an initial payment, a renewal, or a refund. Each order belongs to one member and backs either a Subscription or a One-Time Purchase. See [Orders](/docs/billing/).
-
-**Overlay:** The visual layer placed over the teaser portion of a post in Partial Content Preview mode. It shows a customizable message and call-to-action button, signalling that more content is available after purchasing a membership. See [Partial Content Lock](/docs/settings/partial-content-lock).
+**One-time membership (Pro):** A membership with no recurring subscription behind it, listed under **Billing → One-time**. See [One-time memberships](/docs/billing/one-time).
 
 ## P
 
-**Parent Member (Pro):** In a Corporate Membership, the user who purchased the seats and manages the team. The parent can invite, view, and remove sub-members directly from the Member Portal. See [Portal: Corporate Seat Invites](/docs/members/portal/corporate-seat-invites).
+**Partial Content Lock:** Shows visitors the start of a protected post, followed by a message and a button. See [Partial content lock](/docs/settings/partial-content-lock).
 
-**Partial Content Preview:** A soft-paywall feature that shows non-members the opening portion of a protected post, followed by a gradient overlay and a Subscribe button. The full content stays hidden until the visitor purchases a membership. See [Partial Content Lock](/docs/settings/partial-content-lock).
+**Paymattic:** A payment form plugin. Sell a level through a Paymattic form. See [Paymattic](/docs/integrations/paymattic).
 
-**Paymattic:** A WordPress payment form plugin, also sold as WP Payform, that can process payment for Fluent Members. Link a Paymattic form to a Membership Level, and completing the form activates the membership. See [Pricing: Paywalls](/docs/levels/pricing-paywalls).
+**Payment method (Pro):** The saved card on a Stripe subscription. Members can replace it from the portal. PayPal subscriptions do not offer this. See [Update payment method](/docs/members/portal/updating-payment-method).
 
-**Payment Intent (Pro):** The Stripe object that tracks a single payment from creation through completion. Fluent Members creates a Payment Intent on the server and sends it to the browser for the customer to finish checkout. See [Stripe Setup](/docs/settings/payment-settings/stripe-setup).
+**Paywall:** A link between a level and a product or form in another plugin. When the purchase completes, the member gets the level. See [Price with paywalls](/docs/levels/pricing-paywalls).
 
-**Payment Method (Pro):** The saved card attached to a member's Stripe-billed subscription. Members can update it from the Member Portal without cancelling and restarting the subscription; this action is only available for Stripe, not PayPal. See [Portal: Updating Payment Method](/docs/members/portal/updating-payment-method).
+**Pricing plan (Pro):** One way to pay for a level with Native Payment, such as monthly or yearly. See [Price with native payments](/docs/levels/pricing-native).
 
-**Paywall:** A link between a payment product in an external plugin and a Membership Level. When the customer completes the purchase through that product, Fluent Members grants the corresponding membership automatically. See [Pricing: Paywalls](/docs/levels/pricing-paywalls).
+**Pricing Type:** How a level is paid for: FluentCart, FluentForms, Paymattic, WooCommerce (Pro) or Native Payment (Pro). It cannot be changed after you create the level. See [Create a level](/docs/levels/creating).
 
-**Pending:** A membership status meaning a payment has started but isn't confirmed yet. The member has no access while pending; access is granted once the payment provider confirms the payment. See [Membership Statuses](/reference/membership-statuses).
-
-**Pricing Plan:** One purchasing option attached to a Membership Level, for example a monthly or annual plan. Each plan specifies the payment provider, price, billing interval, and whether a free trial is offered. See [Pricing: Native Payment](/docs/levels/pricing-native).
-
-**Provider:** The system that created a membership record, for example FluentCart, WooCommerce, Fluent Forms, Paymattic, native Stripe or PayPal, a migration source (Paid Memberships Pro, MemberPress, Kadence Memberships), or a manual admin assignment. Every membership row stores its provider for auditing and reporting. See [Adding a Membership Manually](/docs/members/adding-manually).
-
-**Public Contents:** A whitelist of specific pages, posts, or terms that stay publicly visible even when they fall inside a protected Access Group. Use it to keep landing pages or free sample posts accessible to everyone. See [General Settings](/docs/settings/general).
+**Provider:** The system that created a membership, such as a paywall plugin, a gateway, a migration or a manual assignment. See [Member details](/docs/members/detail).
 
 ## R
 
-**Recurring Billing:** A payment pattern where a member is charged automatically on a set schedule, monthly, annually, or otherwise, for as long as their subscription stays active. It requires WooCommerce Subscriptions or Fluent Members Pro with native Stripe or PayPal. See [Subscriptions](/docs/billing/subscriptions).
+**Recurring billing:** Charging a member automatically on a schedule. Use FluentCart subscriptions, or Stripe, PayPal or WooCommerce Subscriptions with Pro. See [Subscriptions](/docs/billing/subscriptions).
 
-**Redirect:** An Unauthorized Access action that silently sends non-members to a different page, such as a pricing or login page, instead of showing a restriction message on the current page. It's the least disruptive way to route visitors toward becoming members. See [Unauthorized Access](/docs/access-groups/unauthorized-access).
+**Redirect:** An unauthorized access action that sends blocked visitors to another URL on your site. See [What blocked visitors see](/docs/access-groups/unauthorized-access).
 
-**REST API Protection:** Automatic blocking of member-only content in WordPress REST API responses. Non-members who request a protected post through the API get an error response instead of the content, preventing headless or app-based content leaks. See [Protected Content](/docs/access-groups/protected-content).
-
-**Restriction Type:** The kind of content an Access Group protects: individual posts or pages, entire post types, taxonomy terms, WooCommerce products, form access, community spaces, or the entire website. Pick one or combine several per Access Group. See [Protected Content](/docs/access-groups/protected-content).
+**Restriction type:** The kind of content a rule in an Access Group protects, such as **Entire Website**, **All Posts** or specific content. See [Restriction types](/docs/access-groups/protected-content).
 
 ## S
 
-**Seat (Pro):** One slot in a Corporate Membership team. The parent purchases a set number of seats, and each invited sub-member fills one; no new sub-members can join once every seat is taken. See [Corporate Memberships](/docs/levels/corporate-memberships).
+**Seat (Pro):** One place on a corporate membership. **Maximum Members** sets how many there are, and the owner counts as one. See [Corporate memberships](/docs/levels/corporate-memberships).
 
-**Setup Intent (Pro):** The Stripe object used when a member updates their payment method without making a new charge. It authorizes and saves the new card on file without processing a payment. See [Portal: Updating Payment Method](/docs/members/portal/updating-payment-method).
+**Shortcode:** A tag you paste into a page: `[fluent_membership_level]`, `[fluent_membership_levels]`, `[fluent_members]` or `[fluent_member_portal]`. See [Shortcodes](/reference/shortcodes).
 
-**Shortcode:** A WordPress tag that outputs dynamic content. Fluent Members provides `[fluent_membership_level id="X"]` to display a pricing card and `[fluent_member_portal]` to display the member self-service dashboard. See **Shortcode Reference**.
+**Smartcode:** A placeholder in an email, such as <span v-pre>`{{user_name}}`</span> or <span v-pre>`{{membership_level}}`</span>, replaced with real data when the email is sent. See [Email smartcodes](/reference/email-smartcodes).
 
-**Start Date:** The date a membership record became active. Content drip timers count forward from this date to decide when each piece of content unlocks for that member. See [Content Drip](/docs/access-groups/content-drip).
+**Stripe (Pro):** A payment gateway for Native Payment. See [Set up Stripe](/docs/settings/payment-settings/stripe-setup).
 
-**Stripe:** The payment processor Fluent Members Pro uses for native checkout and subscription billing. Connect it with API keys in Settings → Payment Settings → Stripe, then Stripe sends webhooks to keep subscription records in sync. See [Stripe Setup](/docs/settings/payment-settings/stripe-setup).
+**Subscription (Pro):** A recurring payment behind a membership, listed under **Billing → Subscriptions**. See [Subscriptions](/docs/billing/subscriptions).
 
-**Sub-member (Pro):** A team member in a Corporate Membership whose access comes from a Parent Member. Sub-members can view protected content but can't manage payments, and lose access if the parent's membership ends. See [Corporate Memberships](/docs/levels/corporate-memberships).
-
-**Subscription (Pro):** A recurring billing agreement that renews a membership automatically on a set schedule. Native subscriptions run through Stripe or PayPal and stay synced with the membership record in real time; subscriptions migrated from PMPro, MemberPress, or Kadence Memberships are shown for record-keeping only. See [Subscriptions](/docs/billing/subscriptions).
-
-**Suspended:** A membership status that revokes content access temporarily without cancelling the underlying billing. An admin can suspend a member for a policy reason and restore access by switching the status back to active. See [Suspending & Cancelling](/docs/members/suspending-and-cancelling).
+**Suspended:** A membership status that removes access until it is restored. See [Suspend or cancel a member](/docs/members/suspending-and-cancelling).
 
 ## T
 
-**Transaction (Pro):** A single billing event: a charge, a renewal, or a refund. Transactions are listed in the Transaction History panel of the Subscription or One-Time Purchase they belong to. See [Orders](/docs/billing/).
+**Team owner (Pro):** The person who holds a corporate membership and manages its seats from the portal. People in those seats show as **Corporate Child** on their member details. See [Corporate members](/docs/members/corporate-members).
 
-**Trial:** A membership status for members inside a free trial window. Trial members have full content access; when the trial ends, the membership becomes active (with a payment method on file) or expired (without one). See [Membership Statuses](/reference/membership-statuses).
+**Transaction (Pro):** One payment event, such as a charge, renewal or refund, listed under **Transaction History** on a subscription or one-time membership. See [Billing overview](/docs/billing/).
 
-**Trial Period:** A set number of free days offered at the start of a paid subscription. The member's status is trial for that window; once it ends, the first charge runs and the status becomes active. See [Pricing: Native Payment](/docs/levels/pricing-native).
+**Trial:** A membership status during a free trial. Trial members have access. See [Membership statuses](/reference/membership-statuses).
+
+**Trial Days (Pro):** The free days at the start of a recurring pricing plan. See [Price with native payments](/docs/levels/pricing-native).
 
 ## U
 
-**Unauthorized Access:** What a non-member or logged-out visitor sees when they try to reach protected content. Each Access Group is configured individually to redirect, show a restriction message, or display a partial content preview. See [Unauthorized Access](/docs/access-groups/unauthorized-access).
+**Unauthorized Access:** What visitors without access get: a redirect or a custom message. Set a site-wide default, or customize it for an Access Group. See [What blocked visitors see](/docs/access-groups/unauthorized-access).
+
+**Upgrade path (Pro):** A move a member can make from one pricing plan to another, with an optional discount or proration. See [Upgrade paths](/docs/levels/upgrade-paths).
+
+**Upgraded:** The status left on a membership after the member moved to another level or plan. See [Membership statuses](/reference/membership-statuses).
 
 ## W
 
-**Webhook:** An automatic notification from Stripe or PayPal to your site reporting a payment event, a successful charge, a failed renewal, a cancellation, or a refund. Fluent Members uses webhooks to keep membership statuses in sync with the payment provider in real time. See [Stripe Setup](/docs/settings/payment-settings/stripe-setup) or [PayPal Setup](/docs/settings/payment-settings/paypal-setup).
+**Webhook:** A message Stripe or PayPal sends to your site about a payment event, which keeps membership statuses up to date. See [Set up Stripe](/docs/settings/payment-settings/stripe-setup) or [Set up PayPal](/docs/settings/payment-settings/paypal-setup).
 
-**WooCommerce (Pro):** A WordPress e-commerce plugin that can process payment for Fluent Members Pro. Link WooCommerce products or variations to Membership Levels, and completing the purchase activates the corresponding membership. See [Pricing: Paywalls](/docs/levels/pricing-paywalls).
-
-**WPFluent:** The shared framework that powers Fluent Members and other WPManageNinja plugins. It handles routing, database access, and hooks behind the scenes, and most users never interact with it directly. See [Fluent Members](https://fluentmembers.com).
+**WooCommerce (Pro):** An e-commerce plugin. Sell a level as a product, and restrict products to members. See [WooCommerce](/docs/integrations/woocommerce).
