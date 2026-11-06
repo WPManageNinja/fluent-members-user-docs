@@ -5,7 +5,7 @@ description: "Find a record in the Subscriptions and One-time lists with status 
 
 # Filter & Search (Pro)
 
-The [Subscriptions](/docs/billing/subscriptions) and [One-time](/docs/billing/one-time) lists (Pro) share the same tools for finding a record: status tabs, search, column sorting and pagination. Each tool works on one list at a time, so a record in the other list won't show up.
+The [Subscriptions](/docs/billing/subscriptions) and [One-time](/docs/billing/one-time) lists (Pro) share the same tools for finding a record: status tabs, search, column sorting and pagination, plus a test payments filter while you are testing. Each tool works on one list at a time, so a record in the other list won't show up.
 
 ## Status tabs
 
@@ -53,6 +53,12 @@ Click the **Columns** icon beside the magnifier and tick the columns you want to
 - **One-time:** **Level**, **Status**, **Gateway**, **Amount** and **Purchased**.
 
 The other columns are always on. Your choice is saved in your browser, separately for each list.
+
+## Test and live payments
+
+A **Payment mode** select appears on both lists while any connected gateway is in test or sandbox mode. Choose **All payments**, **Live payments** or **Test payments**. **Test payments** hides rows billed by other plugins, and one-time records with no order count as live.
+
+Once every connected gateway is live, the select goes away and the lists show live records only. Test records disappear from them, and no control brings them back.
 
 ## Pagination
 
