@@ -11,7 +11,7 @@ description: "See the checks Fluent Members runs when someone opens protected co
 
 To open protected content, a member needs all of the following:
 
-- A level attached to an active group that covers the content. One group is enough, even if other groups cover the same content.
+- A level attached to a group that covers the content. One group is enough, even if other groups cover the same content.
 - A membership on that level with the status **Active** or **Trial**. See [Membership statuses](/reference/membership-statuses).
 - A membership that has not passed its expiry date.
 - Content that has dripped open, if the group uses [Content Drip](/docs/access-groups/content-drip).
@@ -20,7 +20,10 @@ The **Members of** row on a group names the levels that unlock it:
 
 ![Screenshot of the Content Protection Rules card with the Members of row and the levels that can access the content](/images/access-groups/how-protection-works/how-protection-works-members-of.webp)
 
-Logged-out visitors never pass these checks. An inactive group protects nothing.
+Logged-out visitors never pass these checks.
+
+> [!Note]
+> An inactive group protects nothing, but it can still grant access. If an active group protects a post and a member's level is attached to an inactive group whose rules also cover that post, the member gets in. To remove a level's access, [detach the level from the group](/docs/levels/attaching-access-groups) instead of deactivating the group.
 
 ## The order of the checks
 
@@ -31,7 +34,7 @@ For a post or page, Fluent Members works down this list and stops at the first m
 3. **Group rules:** If no active group's rules cover the content, it is public. An item listed under **Excluded** on a rule doesn't count as covered by that rule.
 4. **Member's groups:** If a group covers the content, the member must hold a level for a group that covers it.
 
-Anyone who fails gets the result set under [When Unauthorized](/docs/access-groups/unauthorized-access). If [Login Popup](/docs/settings/login-popup) is on, logged-out visitors see its login notice unless the group redirects them.
+Anyone who fails gets the result set under [When Unauthorized](/docs/access-groups/unauthorized-access). If [Login Popup](/docs/settings/login-popup) is on with **Auto Open Popup**, the login form opens over that result for logged-out visitors, unless the group redirects them.
 
 > [!Note]
 > Users with the `manage_options` capability, which normally means administrators, skip all protection on your site. Test from a private window or with a member account.
