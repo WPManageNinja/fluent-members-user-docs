@@ -56,4 +56,4 @@ The membership follows the payment and its subscription:
 Logged-out buyers and repeat purchases follow the [rules for every paywall](/docs/integrations/).
 
 > [!Note]
-> Keep the form's payment setup unchanged after you connect it. If the form no longer has exactly one supported payment item, or its payment type changes, the row shows a warning and new payments do not create a membership.
+> Keep the form's payment setup unchanged after you connect it. If the form no longer has exactly one supported payment item, or its payment type changes, new payments do not create a membership. No warning appears, and the form keeps taking payments, so test a payment after any change.
