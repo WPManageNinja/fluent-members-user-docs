@@ -15,10 +15,7 @@ Click the **Settings** gear in the top-right corner of any Fluent Members screen
 
 ## Which Access Groups use these settings
 
-An Access Group uses these settings until you click **Customize for this rule** on its **When Unauthorized** card. See [What blocked visitors see](/docs/access-groups/unauthorized-access).
-
-> [!Note]
-> The text on this screen says existing Access Groups are not affected. In the current version, a group that has not been customized reads these settings each time a visitor is blocked, so a change here reaches those groups too. A customized group keeps its own settings.
+An Access Group uses these settings until you click **Customize for this rule** on its **When Unauthorized** card. A change here reaches every group that has not been customized, including existing ones. A customized group keeps its own settings. See [What blocked visitors see](/docs/access-groups/unauthorized-access).
 
 ## Action for Unauthorized Users
 
