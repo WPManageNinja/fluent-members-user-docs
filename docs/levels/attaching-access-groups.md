@@ -1,68 +1,46 @@
+---
+title: "Attaching Access Groups"
+description: "Link Access Groups to a Membership Level so holding the level unlocks protected content."
+---
+
 # Attaching Access Groups
 
-A **Membership Level** on its own unlocks nothing. To grant content access, attach one or more **Access Groups** to the level. Anyone who holds that level can then see everything those groups protect.
+A level unlocks nothing on its own. Attach **Access Groups** to decide which protected content its members can see. Members of the level get everything its active groups protect.
 
-You need a level already created and at least one [access group](/docs/access-groups/) available before you start.
+## Link an existing group
 
-## Access the Access Group Tab
+1. Go to **Fluent Members → Membership Levels**, open the level and click the **Access Groups** tab.
+2. Click **Link Existing Group**.
 
-Go to **Fluent Members → Levels**, open the level you want to configure, then click the **Access Group** tab.
+    ![Screenshot of the Access Groups tab with no groups linked and an arrow pointing to Link Existing Group](/images/levels/attaching-access-groups/attaching-access-groups-empty.webp)
 
-If no groups are linked yet, the table shows *"No access groups selected"*. Click **Select Access Group** in the top right.
+3. Select each group this level should unlock. Each card shows the group's title, ID, status and the levels already using it.
 
-![Access Group tab, empty state](/images/levels/attaching-access-groups/level-access-groups-empty.webp)
+    ![Screenshot of the Select Access Group modal with a card for each group](/images/levels/attaching-access-groups/attaching-access-groups-link-modal.webp)
 
-## Step 1: Select Access Groups
+4. Click **Select**.
 
-Click **Select Access Group**. A modal opens with a card for each access group on your site. Each card shows:
+One group can serve many levels. Linking it here doesn't affect its other levels.
 
-- **ID** and **Status** (for example, `#12` · Active)
-- **Title** and **Description**
-- **Level chips** at the bottom showing which other levels already use this group
-- A **checkbox** in the top-right corner to select the group
+## Create a new group from the tab
 
-Tick every group this level should unlock, then click **Select** at the bottom of the modal. A success message confirms the update; there is no separate Save button on this tab.
+1. On the **Access Groups** tab, click **Add New**.
+2. Enter a **Title** and click **Next**.
 
-::: tip One group can power many levels
-If a group card shows chips like *Lifetime*, *Free Member*, or *Business Team*, that group already unlocks content for those levels. Attaching it to another level does not affect the existing links.
-:::
+    ![Screenshot of the Create Access Group modal with the Title field](/images/levels/attaching-access-groups/attaching-access-groups-create-modal.webp)
 
-![Select Access Group modal](/images/levels/attaching-access-groups/level-select-access-group-modal-2.webp)
+The new group is created, linked to this level, and opened so you can choose what it protects. See [Access Groups](/docs/access-groups/).
 
+## Review and change linked groups
 
-## Create an Access Group From the Modal
+Each linked group appears as a card with its status and number of protected items. The card lists its **Protected Content** and **Excluded** items, and summarizes its **Content Drip** rules if it has any.
 
-If the group you need does not exist yet, click **+ Create Access Group** at the bottom left of the **Select Access Group** modal.
+![Screenshot of the Access Groups tab with linked group cards and an arrow pointing to Unlink](/images/levels/attaching-access-groups/attaching-access-groups-cards.webp)
 
-Fill in the form:
+- **Edit:** Opens the group's settings.
+- **Unlink:** Removes the group from this level after you confirm. The group itself stays on your site.
 
-- **Title:** Name of the access group (required)
-- **Description:** Short note about what the group protects
-- **Status:** **Active** or **Inactive**
+> [!Note]
+> Unlinking a group takes away its content from members of this level, unless another of their levels also includes it. An inactive group grants no access at all, and a level needs at least one active group to finish its setup.
 
-Click **Create**. You return to the **Select Access Group** modal, where the new group appears as a selectable card.
-
-![Create Access Group modal](/images/levels/attaching-access-groups/create-access-group-3.webp)
-
-## Step 2: Review Attached Groups
-
-Back on the **Access Group** tab, the table lists every linked group with **ID**, **Title**, **Description**, and **Status**.
-
-## Edit or Remove an Access Group
-
-Each attached row has a **three-dot icon** on the right. Click it to open:
-
-- **Edit:** Open the access group settings for that linked group.
-- **Remove:** Detach the group from this level.
-
-![Edit or remove an attached access group](/images/levels/attaching-access-groups/edit-or-remove-4.webp)
-
-::: warning Removal revokes access immediately
-Removing a group takes away access to its protected content for every member on this level. There is no grace period. To stop new signups without affecting current members, leave the group attached and set the group to **Inactive** under **Access Groups** instead.
-:::
-
-## Attach From the Access Group Side
-
-You can make the same connection from the other direction: open an access group and choose which levels can unlock it from the **Active Levels** card on the group edit screen. Both flows update the same link between levels and groups.
-
-
+You can make the same connection from the other side: open an Access Group and click **Add Level**.
