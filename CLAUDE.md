@@ -24,9 +24,9 @@ There is no test suite. `npm run docs:build` is the gate: it errors on broken in
 - **Two content zones**, each with its own sidebar config and link format:
   - `docs/<category>/<slug>.md` — instructional content (how-to, setup, walkthroughs). URL: `/docs/<category>/<slug>`. **The category IS part of the URL.**
   - `reference/<slug>.md` — flat lookup content (glossary, shortcodes, merge tags, hooks). URL: `/reference/<slug>`.
-  - Guide categories: `getting-started`, `dashboard`, `levels`, `access-groups`, `members`, `transactions`, `settings`, `help-support`. Some nest one level deeper (`members/portal/`, `settings/payment-settings/`, `settings/migration/`, `settings/email-configuration/`, `access-groups/gutenberg-block/`).
+  - Guide categories: `getting-started`, `dashboard`, `levels`, `access-groups`, `selling`, `members`, `billing`, `integrations`, `settings`, `help-support`. Some nest one level deeper (`members/portal/`, `settings/payment-settings/`, `settings/migration/`, `settings/email-configuration/`, `access-groups/gutenberg-block/`).
 
-- **The sidebar and nav are hand-maintained in `.vitepress/config.mjs`** — an inline JS array (`docsSidebar`) plus a `/reference/` sidebar object, not generated from the filesystem. A page is invisible in site navigation until it is wired in here. Keep valid JS object syntax. `cleanUrls: true`, so links omit `.md`.
+- **The sidebar and nav are hand-maintained in `.vitepress/config.mjs`** — an inline JS array (`docsSidebar`) shared by `/docs/`, `/reference/` and `/changelog`, not generated from the filesystem. Groups follow the reader's journey and page order in `.claude/docs-overhaul/JOURNEY.md`, so a page's sidebar group can differ from its folder. A page is invisible in site navigation until it is wired in here. Keep valid JS object syntax. `cleanUrls: true`, so links omit `.md`.
 
 - **Images** live at `public/images/<category>/<slug>/<name>.webp` and are referenced with an absolute path `/images/<category>/<slug>/<name>.webp` (the `public/` prefix is dropped in refs). Prefer `.webp`.
 
@@ -34,12 +34,20 @@ There is no test suite. `npm run docs:build` is the gate: it errors on broken in
 
 ## Page conventions
 
-- Line 1 is a bare `# H1` with **no frontmatter**, and it must match the sidebar `text` for that page.
+- Every page starts with frontmatter holding `title` and a one-sentence `description`, followed by a `# H1` that matches `title`. The sidebar `text` is a shorter, task-first label and does not have to match the H1.
 - Bold UI labels and feature names: `**Fluent Members → Levels**`. No inner spaces: `**term**`, never `** term **`.
 - Use `> [!Note]` callouts and tables for field references (see existing pages like `docs/levels/creating.md` for house style).
 - Always use **absolute** links in the zone's format; never relative (`./slug`, `../slug`).
-- Mark Pro-only features with `(Pro)` in both body text and the sidebar `text`.
+- Mark Pro-only features with `(Pro)` in body text and `<span class="fm-pro">Pro</span>` in the sidebar `text`.
 - No closing support/boilerplate blocks at the end of pages.
+
+## Design system
+
+The theme is ported from the Ninja Tables docs (`ninja-table-docs/.vitepress/theme/`) and recoloured to the Fluent Members purple. Classes and variables use the `fm-` prefix.
+
+- `aurora.css` is the soft colour background and frosted nav and sidebar. `motion.css` holds the page and hover transitions. `Layout.vue` adds the sidebar accordion, so only the current group stays open.
+- **Doc trees** (`.vitepress/trees/<id>.json`, registered in `trees/index.ts`) drive landing pages through `::: doc-tree <id> hero|tasks|journey|map|panel` lines, and the "you are here" strip on child pages. After editing a tree, `node scripts/qa/check-trees.mjs` must print `✓`.
+- `::: tabs` and `::: faq` blocks split sections with `== Label` lines (`plugin-doc-blocks.ts`). Do not nest another `:::` block inside them.
 
 ## Skills — route doc work through these
 
@@ -52,7 +60,7 @@ Repo-specific skills in `.claude/skills/` encode the full workflow (placement, s
 - **fluent-members-doc-writer** — master voice/format guide; **load before writing any page**
 - **fluent-members-docs-overhaul** — update the WHOLE site to the current plugin (feature map → journey → page-by-page verify/rewrite → screenshot placeholders); resumable via `.claude/docs-overhaul/`
 - **verify-fluent-members-doc-against-code** — prove one page claim-by-claim against the plugin source and live site
-- **fluent-members-code-to-docs** — get the plugin source (`dev` branches), map code → doc pages, sync after a release
+- **fluent-members-code-to-docs** — get the plugin source (`develop` branches), map code → doc pages, sync after a release
 - **fluent-members-doc-screenshots** — take/annotate/place admin screenshots with the headless-Chrome runner; fills `TODO(screenshot)` placeholders
 
 ## Writing voice (summary — full rules in `fluent-members-doc-writer`)
@@ -65,7 +73,7 @@ Repo-specific skills in `.claude/skills/` encode the full workflow (placement, s
 
 ## Updating docs after plugin UI/feature changes
 
-1. `fluent-members-code-to-docs` — get the plugin source (`dev` branches of WPManageNinja/fluent-members and fluent-members-pro, checked out read-only under `~/Desktop/WPManageninja-clone-from-git/`), record the shas.
+1. `fluent-members-code-to-docs` — get the plugin source (`develop` branches of WPManageNinja/fluent-members and fluent-members-pro, checked out read-only under `~/Desktop/WPManageninja-clone-from-git/`), record the shas.
 2. `fluent-members-docs-overhaul` — Phase A feature map (code + live site `http://localhost:10053`), Phase B journey/structure plan (**approval gate**), Phase C each page: verify (`verify-fluent-members-doc-against-code`), rewrite (`fluent-members-doc-writer`), strip stale screenshots, leave `TODO(screenshot)` placeholders.
 3. `fluent-members-doc-screenshots` — fill the placeholders with the runner.
 4. `audit-fluent-members-docs` + clean `npm run docs:build`.
