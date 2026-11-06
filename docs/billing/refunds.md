@@ -1,68 +1,80 @@
-# Refunds
+---
+title: "Refunds (Pro)"
+description: "Refund a Stripe or PayPal payment from Fluent Members, understand what a full or partial refund does to access, and handle payments you must refund at the gateway."
+---
 
-You can issue a full or partial refund on any paid Stripe or PayPal transaction directly from the Fluent Members admin. The refund calls the gateway's API, records a refund transaction, and marks the original transaction as refunded.
+# Refunds (Pro)
 
-> [!Note]
-> Refunds work only for charges made through native Stripe or native PayPal payments. Charges from FluentCart, WooCommerce, Fluent Forms, or Paymattic must be refunded in their respective plugins.
+**Refunds** (Pro) send money back through Stripe or PayPal without leaving your site. Issue one when a member asks for their money back, or when a payment was charged in error. A full refund also ends the member's access.
 
-## Find the Record
+Refunds here work on Stripe and PayPal payments only. Payments made through FluentCart, WooCommerce, Fluent Forms or Paymattic are [refunded in those plugins](/docs/billing/provider-subscriptions).
 
-Refunds are issued from inside a record's detail page, there's no separate Transactions list anymore.
+## Issue a refund
 
-1. Open **Fluent Members → Orders**.
-2. Go to **[Subscriptions](/docs/billing/subscriptions)** if the charge belongs to a recurring plan, or **[One-Time Purchases](/docs/billing/one-time)** if it was a single purchase.
-3. Use the search field to find the member, then open their row. See [Filters & Search](/docs/billing/filters-and-search).
-4. In the **Transaction History** panel, find the transaction you want to refund.
+1. Go to **Fluent Members → Billing** and open the subscription or one-time membership.
+2. Click **More Actions → Refund**. The **Refund Payment** dialog opens.
+3. Fill in the fields and click **Refund**.
 
-You can also start from a member's detail page: open **Members**, find the member, and use the action menu on their membership row.
+![Screenshot of the Refund Payment dialog with Refund Transaction, Refund Amount, Refund Reason and Refund Note](/images/billing/refunds/refunds-dialog.webp)
 
-## Issue the Refund
+You can also open the same dialog from the three-dot menu on a membership in the [member's page](/docs/members/detail).
 
-1. On the transaction row, use the refund action.
-2. Enter the amount to refund. Leave it at the original amount for a full refund, or enter a lower value for a partial refund.
-3. For Stripe, optionally pick a reason (Duplicate, Fraudulent, or Requested by Customer). For PayPal, you can add a free-text note instead.
-4. Add an optional internal note, stored on the refund record, not sent to the member.
-5. Confirm.
+The dialog has these fields:
 
-Fluent Members calls the gateway's API, records a new transaction with type `refund` (or `partial_refund`), and updates the original transaction's status.
+| Field | Notes |
+|---|---|
+| **Refund Transaction** | Choose which payment to refund. Appears only when there is more than one option. |
+| **Refund Amount** | Starts at the most you can refund, shown under the field. Lower it for a partial refund. |
+| **Refund Reason** | Required. Choose **Requested by customer** (default), **Duplicate**, **Fraudulent** or **Other**. Stripe does not accept **Other**, so choose one of the first three for Stripe payments. |
+| **Refund Note** | Optional internal note for this refund. |
 
-## Full vs Partial Refunds
+## What happens after you refund
+
+A new row appears in **Transaction History** and the **Activity** timeline shows **Refund issued**. The original payment row stays as it was, and the amount you can still refund goes down.
 
 | | Full refund | Partial refund |
 |---|---|---|
-| Amount | Equal to the remaining refundable amount | Less than the remaining refundable amount |
-| Original transaction status after | `refunded` | `partially_refunded` |
-| Can refund again? | No | Yes, until total refunds equal the original amount |
+| New row type | **Refund** | **Partial Refund** |
+| New row status | **Refunded** | **Partially Refunded** |
+| Subscription | Cancelled immediately | Keeps running |
+| Membership | Cancelled | Keeps its access |
 
-Fluent Members tracks how much of a charge has already been refunded, so a second partial refund can't push the total past the original amount.
+A partial refund leaves the rest of the payment refundable, so you can refund again later. If you want to end access after a partial refund, [cancel the subscription](/docs/billing/cancelling-a-subscription) or [revoke the membership](/docs/billing/one-time).
 
-## Refunds and Membership Access
+If the gateway reports the refund as still processing, the new row shows **Pending** until the gateway confirms it. Access stays unchanged until then.
 
-Issuing a refund does **not** cancel or expire the member's access. Fluent Members returns the money via the gateway but leaves the membership row unchanged.
+If you have turned on the **Refund Issued** [email notification](/docs/settings/email-configuration/email-notifications), the member gets an email when the refund is processed.
 
-If you want to revoke access after refunding, update the member's status manually:
+> [!Note]
+> If a full refund goes through but the subscription cannot be cancelled, the member keeps access and Fluent Members logs "Refunded membership needs review". Cancel the subscription yourself. Refunds of payments imported from another membership plugin do not cancel anything automatically.
 
-1. Go to **Members** and open the member's detail page.
-2. Find the membership row and change the status to **Cancelled** or **Expired**.
+## When a refund is rejected
 
-See [Suspending & Cancelling](/docs/members/suspending-and-cancelling) for the full flow.
+Fluent Members blocks the refund before contacting the gateway if:
 
-## When a Refund Is Rejected
+- The transaction is not a **Succeeded** charge or renewal.
+- The gateway does not support refunds from here.
+- The payment has no gateway reference to refund against.
+- Nothing is left to refund on the payment, or the amount is zero or more than what remains.
 
-A refund attempt is blocked before it reaches the gateway if:
+If the gateway itself declines, you see its error message. Fluent Members saves a **Failed** refund row with the gateway's message, and the original payment can still be refunded.
 
-- The transaction isn't a successful charge or renewal (refunds, for example, can't be refunded again).
-- The transaction has no refundable amount left (it's already been fully refunded).
-- The transaction's payment method isn't a gateway that supports refunds from this screen.
+## Payments you must refund at the gateway
 
-If the request reaches the gateway and it declines the refund, common reasons include:
+Some payments cannot be refunded from Fluent Members, such as payments imported from another plugin and PayPal subscriptions imported from another plugin. These payments show **Refund in Stripe** or **Refund in PayPal** in a **Refund** column in **Transaction History**, and again in the dialog.
 
-- **Charge too old**: Most banks and PayPal limit refunds to a window after the original charge (Stripe: typically 120 days).
-- **Dispute in progress**: A chargeback is already open on this charge.
-- **Insufficient balance**: Your Stripe or PayPal account balance is too low to fund the refund.
+<!-- TODO(screenshot): refunds-1
+  screen: Billing → Subscriptions → an imported subscription
+  state: Transaction History with the Refund column showing Refund in PayPal or Refund in Stripe
+  data: a subscription migrated from another plugin with an imported payment
+  highlight: Refund in PayPal label
+  view: admin
+  alt: Screenshot of Transaction History with a Refund in PayPal label on an imported payment
+  reason: the local site has no imported payments without a gateway reference
+-->
 
-When the gateway rejects the refund, the error message is shown and no refund transaction is created; the original transaction is unchanged.
+Refund these in your Stripe or PayPal account.
 
-::: warning Refunds do not sync automatically in every direction
-If you issue a refund directly in the Stripe or PayPal dashboard (outside Fluent Members), the transaction record here will not update automatically unless the corresponding refund webhook is configured. Always refund through Fluent Members when possible, or make sure your gateway's webhook is set up correctly. See [Stripe Setup](/docs/settings/payment-settings/stripe-setup) or [PayPal Setup](/docs/settings/payment-settings/paypal-setup).
-:::
+## Refunds made in Stripe or PayPal
+
+Refunds you issue in the gateway's own dashboard reach Fluent Members through webhooks. Stripe sends `charge.refunded` and `charge.refund.updated`, and PayPal sends its refund events. Make sure the webhook is set up in [Stripe Setup](/docs/settings/payment-settings/stripe-setup) or [PayPal Setup](/docs/settings/payment-settings/paypal-setup), or these refunds will not appear in **Transaction History**.

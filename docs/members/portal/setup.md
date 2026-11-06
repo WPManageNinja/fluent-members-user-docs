@@ -1,57 +1,68 @@
+---
+title: "Member Portal Setup"
+description: "Create the Member Portal page with one click or the shortcode, and link members to it."
+---
+
 # Member Portal Setup
 
-The Member Portal is a page on your WordPress site where logged-in members can view their active memberships and manage them cancelling, renewing, or updating a payment method without contacting you. The entire portal is powered by a single shortcode.
+The **Member Portal** is a page on your site where logged-in members see their memberships and manage them without contacting you. Set it up once, then link to it from your menu and emails.
 
-## The Shortcode
+## Create the portal page
 
-Place the following shortcode on any WordPress page or post:
-
-```text
-[fluent_member_portal]
-```
-
-When a logged-in member visits the page, the plugin renders their membership panel automatically. Visitors who are not logged in see a sign-in prompt. The shortcode takes no attributes.
-
-## Option A: Let Fluent Members Create the Page
-
-The fastest way to set up the portal:
+Use this when you don't have a portal page yet. Fluent Members builds it for you.
 
 1. Go to **Fluent Members → Settings → General Settings**.
-2. Find the **Member Portal Page** field and click the **Generate Portal Page** button next to it.
-3. The plugin creates a new WordPress page with the shortcode already inserted, publishes it, and saves the page ID in Settings automatically.
-4. The dropdown updates to show the new page. Use the **Edit** link to rename it, or **Preview** to see it on the front end.
+2. Find **Generate Portal Page** and click the **+** button next to the page selector.
 
-![General Settings: Generate Portal Page](/images/members/portal-setup/generate-portal-page-1.webp)
+    ![Screenshot of General Settings with an arrow on the plus button beside the Generate Portal Page selector](/images/members/portal-setup/generate-portal-page-1.webp)
 
-## Option B: Create the Page Manually
+3. In the **Create Portal Page** modal, type a **Page Name**.
+4. Click **Create Page**.
 
-If you want to use an existing page:
+Fluent Members publishes a new page with the shortcode already in it and selects it as your portal page. If a published portal page already exists, you get the message **Portal page already exists.** and no second page is created.
 
-1. Open the page in the WordPress editor.
-2. Add a **Shortcode** block and type `[fluent_member_portal]`, or paste it directly in the Classic Editor.
-3. Publish the page.
-4. Go to **Fluent Members → Settings → General Settings → Member Portal Page** and select your page from the dropdown so the plugin knows where to send member links.
+Below the selector, **Edit** opens the page in the WordPress editor and **View** opens it on your site.
 
->[!Note]
-> Use the portal shortcode on only one page. If you add it to multiple pages, the portal will appear on all of them, but emails and admin links will always direct users to the portal page selected in Settings.
+## Use an existing page
 
-## Linking Members to the Portal
+Use this when the portal should live on a page you already have.
 
-Once the page exists, give members a way to reach it:
+1. Open the page in the WordPress editor and add the shortcode. It takes no attributes:
 
-- **Site navigation**: Add the portal page to your primary menu (**Appearance → Menus**). Common labels: *My Account* or *My Membership*.
-- **Welcome email**: Include the portal URL in your Welcome Email template. See [Email Notifications](/docs/settings/email-configuration/email-notifications).
-- **Theme account widget**: If your theme has a user-menu widget, point it at the portal page.
+    ```text
+    [fluent_member_portal]
+    ```
 
-## What Members See
+2. Publish the page.
+3. Go to **Fluent Members → Settings → General Settings**.
+4. Under **Generate Portal Page**, search for your page and select it.
+5. Click **Save Settings**.
 
-When a member visits the portal they see a card for each membership they hold. What is available on each card depends on their plan and whether Pro is installed:
+> [!Note]
+> Add the shortcode to one page only. It renders on every page you place it on, but plugin links such as the `{{portal_url}}` email smartcode go to the page selected in settings.
 
-- **Cancel button**: always available; lets the member end their own membership
-- **Update Payment Method** *(Pro)*: change the stored Stripe card
-- **Renew** *(Pro)*: manually retry a failed subscription payment
-- **Team panel** *(Pro, Corporate plans)*: invite or remove seat holders
+## Link members to the portal
 
-Members with no membership see an empty state directing them to your pricing page. Logged-out visitors see a sign-in prompt.
+Give members a way to reach the page:
 
-![Member Page](/images/members/portal-setup/memeber-dashboard-2.webp)
+- **Site menu:** Add the page to your menu under **Appearance → Menus**.
+- **Emails:** Add the `{{portal_url}}` smartcode to an email template. See [Email Notifications](/docs/settings/email-configuration/email-notifications).
+
+Fluent Members also uses this address on the checkout success page (**Go to Portal**) and on the corporate invitation join page.
+
+## Show the portal in a customer account
+
+You don't need a separate page if members already use a store account. The same portal appears as a **Membership** item in these accounts:
+
+- **FluentCart:** In the customer dashboard, when FluentCart is active.
+- **WooCommerce** (Pro): In **My Account**, when WooCommerce is active.
+
+The profile header and its **Logout** menu are hidden there, because the store account has its own.
+
+## What members get
+
+Members see their profile, stats and a card for each membership:
+
+![Screenshot of the Member Portal with the member profile, Stats Overview cards and two membership cards](/images/members/portal-setup/memeber-dashboard-2.webp)
+
+Read [What Members See](/docs/members/portal/what-members-see) for each part of this screen.

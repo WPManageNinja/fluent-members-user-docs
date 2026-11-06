@@ -1,58 +1,55 @@
+---
+title: Adding a Membership Manually
+description: Give a WordPress user a membership from the admin without taking a payment, and see how the expiry date is set.
+---
+
 # Adding a Membership Manually
 
-Fluent Members lets you assign a membership to any WordPress user directly from the admin, without requiring them to purchase. This is useful for comping staff accounts, fixing a missed webhook, granting beta access, or migrating members from another platform.
+**Add Membership** gives a person a membership from the admin, with no purchase and no charge. Use it for staff accounts, reviewers, or members who paid outside your site.
 
-#### Before You Start
+To add several people to one level at once, use [Members on a level](/docs/levels/members-on-a-level) instead.
 
-- The user must already have a WordPress account on your site. If they do not, create one first via **Users → Add New**.
-- At least one [Membership Level](../levels/) with at least one Pricing Plan must exist.
+## Before you start
 
-## How to Add a Membership
+- The person needs a WordPress account. If they don't have one, create it under **Users → Add New** first.
+- You need an active [Membership Level](/docs/levels/) with at least one pricing plan.
 
-1. Go to **Fluent Members → Members**.
-2. Find the user by name or email using the search field, then click their row to open the [Member Detail](./detail) page.
-3. Click the **+ Add Membership** button at the top-right of the Memberships table.
+## Add the membership
 
-![ Add Membership](/images/members/adding-memberships/manually-add-membership-1.webp)
+1. Go to **Fluent Members → Members**. If the person holds no membership yet, click the **No Membership** tab, because the default tab lists only people who hold one.
 
-4. The **Add Membership** modal opens, displaying all available membership levels. Click a membership level to expand it and view its available pricing plans.
-5. Each Pricing Plan card shows the plan name, price, billing interval, trial days, and provider. Click **+ Assign Member** on the plan that matches the access you want to grant.
+    ![Screenshot of the Members screen on the No Membership tab](/images/members/adding-manually/adding-manually-no-membership-tab.webp)
 
-![ Assigna Member](/images/members/adding-memberships/assign-membership-2.webp)
+2. Click the person's row to open [Member Details](/docs/members/detail).
+3. Click **Add Membership**.
 
-6. The modal closes and the new membership row appears in the table with a status of **Active**.
+    ![Screenshot of Member Details with an arrow pointing to the Add Membership button](/images/members/adding-manually/adding-manually-add-button.webp)
+
+4. In the **Membership Level** dialog, click a level to expand it and see its plans. Each plan shows its name, ID, level, trial or setup fee if it has one, price, and type.
+5. Click **Assign** on the plan you want.
+
+    ![Screenshot of the Membership Level dialog with the Business level expanded and an arrow pointing to Assign](/images/members/adding-manually/adding-manually-assign-plan.webp)
+
+The dialog closes and the new row appears in the **Memberships** table with the status **Active** and the provider **Manual**. No payment is taken, even if the plan has a price or setup fee.
+
+## What the dialog shows
+
+- **Already Assigned:** The person holds this plan with the status Active or Trial.
+- **Assign** greyed out: The person is Active or on Trial on another plan of the same level. One person can hold only one live membership per level.
+- **No pricing plans yet:** The level has no plans. Click **Add pricing plan** to create one.
+- **There are no active membership levels:** Click **Manage Membership Levels** to create or activate a level.
+
+![Screenshot of the Membership Level dialog with a plan marked Already Assigned](/images/members/adding-manually/adding-manually-already-assigned.webp)
+
+## How the expiry date is set
+
+The expiry date comes from the plan you pick:
+
+| Plan | Expiry on the new membership |
+|------|------------------------------|
+| **One-time** | None. The row shows **Lifetime**. |
+| **Subscription** with no trial | One billing interval from today. |
+| **Subscription** with trial days | The number of trial days from today, and the status is still **Active**. |
 
 > [!Note]
-> Manually adding a membership does not charge the user. It only creates a membership record. If you want to collect a payment, the user must purchase the membership through your pricing page.
-
-![ Assign Membership](/images/members/adding-memberships/memberships-3.webp)
-
-## When to Use Manual Assignment
-
-- Granting access to a team member or staff account so they can preview protected content
-- Fixing a membership that was purchased but not activated due to a failed integration webhook
-- Giving a beta tester or reviewer access to a Level without payment
-- Migrating a member who joined through an off-platform method (gift card, in-person sale, etc.)
-
-## How Expiry Is Set
-
-The expiry date on the new membership row is determined by the Pricing Plan you choose:
-
-| Plan type | Expiry on the new row |
-|---|---|
-| **One-time / Lifetime** | No expiry: membership is permanent |
-| **Subscription (recurring)** | Expires after one billing interval; the system will flip it to Expired if not renewed |
-| **Free** | No expiry |
-| **Trial** | Expires after the configured trial period |
-
-::: tip Pick the right plan for your intent
-To grant permanent access, choose a Lifetime or one-time plan. To grant temporary access, choose a subscription plan; it will expire automatically after one interval.
-:::
-
-## Important Notes
-
-::: warning Things to keep in mind
-- **The user must have a WordPress account.** If the user does not appear in the Members search, they do not have a WordPress account yet. Create one under **Users → Add New** first.
-- **Levels with no Pricing Plans will not appear in the modal.** Make sure your Level has at least one active Pricing Plan before trying to assign it manually.
-- **A new row with `Pending` status** means the selected plan expects a payment confirmation from an integration. Choose a Native Payment or Free plan for manual grants to get an `Active` status immediately.
-:::
+> Nothing renews a manual membership. When the expiry date passes, the status changes to **Expired** and access ends. To give ongoing access, pick a one-time plan.

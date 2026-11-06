@@ -1,50 +1,68 @@
-# One-Time Purchases
+---
+title: "One-time Memberships (Pro)"
+description: "Read the One-time Memberships list and detail page, and refund or revoke a membership with no recurring billing behind it."
+---
 
-The **One-Time Purchases** view lists every membership on your site that isn't tied to a recurring subscription, single native or paywall-integration purchases, admin-added members, and orders carried over from a migration.
+# One-time Memberships (Pro)
 
-## What Counts as One-Time
+The **One-time Memberships** (Pro) list shows memberships with no recurring billing behind them. Use it to check single payments and manually added memberships, and to refund or revoke one.
 
-A membership shows up here when it has no subscription record behind it. That covers:
+## What appears here
 
-- A one-time Stripe or PayPal charge (no recurring billing set up on the pricing plan).
-- A purchase through FluentCart, WooCommerce, Fluent Forms, or Paymattic that used a one-time price.
-- A membership imported from PMPro, MemberPress, or Kadence Memberships that wasn't a recurring subscription there either.
-- A membership an admin added manually from the Members screen with no payment attached.
+A membership is listed here when all of these are true:
 
-Corporate parent memberships and their seats are never listed here, they're managed from [Corporate Memberships](/docs/levels/corporate-memberships) instead.
+- It has no subscription record in Fluent Members.
+- It was not a recurring purchase in FluentCart, WooCommerce, Fluent Forms or Paymattic. Those appear under [Subscriptions](/docs/billing/provider-subscriptions).
+- It is not on a corporate level, does not own seats, and is not a seat on someone else's plan.
 
-## Access One-Time Purchases
+## Open the list
 
-Go to **Fluent Members → Orders → One-Time Purchases**.
+Go to **Fluent Members → Billing → One-time**.
 
-## Columns
+![Screenshot of the One-time Memberships list with member rows, amounts and gateways](/images/billing/one-time/one-time-list.webp)
 
-- **Member**: The buyer's avatar, display name, and email address.
-- **Level**: The Membership Level the purchase was for.
-- **Amount**: The amount paid. Blank for manually added memberships with no payment.
-- **Status**: The membership's status, `active`, `expired`, `cancelled`, `suspended`, `pending`, or `trial`. See [Status Reference](/reference/membership-statuses).
-- **Purchased**: The date the membership was created.
+The table has these columns:
 
-Click any row to open its detail page.
+| Column | Shows |
+|---|---|
+| **ID** | The record number. |
+| **Member** | The member's avatar, name and email. |
+| **Level** | The Membership Level. |
+| **Amount** | The amount paid. Manual and corporate records show `--`. Records from other plugins show their saved price label, and other records with no payment show **Free**. |
+| **Status** | **Active**, **Trial**, **Cancelled**, **Suspended** or **Expired**. |
+| **Gateway** | Where the record came from, such as Stripe, PayPal, FluentCart or **Manual**. |
+| **Purchased** | The date the membership was created. |
 
-## Filtering and Sorting
+Click a row to open it, or use **View** in the three-dot menu. To change the columns, sort or search, see [Filter & Search](/docs/billing/filters-and-search).
 
-Filter by **Status** or by **Provider** (Stripe, PayPal, FluentCart, WooCommerce, Fluent Forms, Paymattic, PMPro, MemberPress, Kadence Memberships, or Manual), and sort by purchase date, amount, or status. Search matches the member's name or email address. See [Filters & Search](/docs/billing/filters-and-search).
+## The record page
 
-## The Detail Page
+A record with a payment opens with an **Order Information** panel showing **Order ID**, **Membership Level**, **Amount**, **Payment Gateway** and **Purchased**:
 
-Opening a one-time purchase shows:
+![Screenshot of a paid one-time membership page with Order Information, Transaction History and Activity](/images/billing/one-time/one-time-detail-paid.webp)
 
-- **Record info**: status, provider, whether it was a paid or manual grant, and whether the payment is still refundable.
-- **Member info**: the buyer's profile.
-- **Membership info**: the Membership Level and its Access Groups.
-- **Transaction History**: the payment (and any refund) tied to this membership.
-- **Timeline**: the purchase and any refund events, newest first.
+A record with no payment opens with a **Membership Details** panel showing **Membership Level**, **Amount** and **Purchased**:
 
-## Refunding a One-Time Purchase
+![Screenshot of a manually added one-time membership page with Membership Details and Activity](/images/billing/one-time/one-time-detail-manual.webp)
 
-One-time purchases have no cancel or renew action, there's no subscription to act on. To return the member's money, open the transaction in the Transaction History panel and use its refund action. See [Refunds](/docs/billing/refunds).
+The other panels are the same on both:
 
-::: warning A refund does not revoke access
-Refunding a one-time purchase does not automatically change the membership's status. If you want to end their access, update the status manually. See [Suspending & Cancelling](/docs/members/suspending-and-cancelling).
-:::
+- **Transaction History:** each payment and refund, when there are any.
+- **Activity:** **Membership created**, **Order placed**, **Payment succeeded**, **Payment failed**, **Refund issued** and **Membership cancelled**, newest first.
+- **Member Information:** the member's name and email, a **Wp User** link to their member page, and **Member Since**.
+- **Membership Information:** the **Level**, its **Access Group** list, and any **Other Membership** the member holds.
+
+## Refund a payment
+
+Click **More Actions → Refund**. The option is greyed out when nothing is refundable. A full refund also cancels the membership. See [Refunds](/docs/billing/refunds).
+
+## Revoke a membership
+
+Revoking cancels the membership without refunding anything. Use it to remove access while keeping the payment.
+
+1. Open the record and click **More Actions → Revoke Membership**.
+2. Click **Revoke** in the confirmation box.
+
+![Screenshot of the Revoke Membership confirmation asking to continue, with Cancel and Revoke buttons](/images/billing/one-time/one-time-revoke-confirm.webp)
+
+The status changes to **Cancelled**, and **Revoke Membership** is greyed out from then on.

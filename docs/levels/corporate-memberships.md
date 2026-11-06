@@ -1,60 +1,52 @@
+---
+title: "Corporate Memberships (Pro)"
+description: "Sell one membership to a Team owner who invites colleagues into shared seats."
+---
+
 # Corporate Memberships (Pro)
 
-A **Corporate Membership** lets a single buyer (the **parent** account) purchase a membership plan and invite teammates or colleagues to share the access. Each invited team member gets their own WordPress login, so you can manage group access under one billing account.
+A **Corporate Membership** (Pro) gives one buyer, the **Team owner**, a set of seats to share. The owner invites colleagues from the Member Portal, and each person gets the level's access through their own WordPress account. Use it for agencies, companies and other teams.
+
+## Create a corporate level
+
+1. Go to **Fluent Members → Membership Levels** and click **Create Membership Level**.
+2. Enter a **Title**, such as `Agency Plan`.
+3. Under **Type**, select **Corporate**.
+4. Enter the seat limit in **Maximum Member**. The owner counts as one seat, so the minimum is 2. Leave it empty for unlimited seats.
+5. Choose a **Pricing Type**.
+6. Click **Create Level**.
+
+![Screenshot of the Add Membership Level modal with Corporate selected and Maximum Member set to 10](/images/levels/corporate-memberships/corporate-memberships-add-modal.webp)
 
 > [!Note]
-> Corporate memberships need **Fluent Members Pro**. Seat invites, the **Team Members** panel in the Member Portal, and status cascading to sub-members are Pro features.
+> The **Corporate** option shows a **Pro** badge and can't be selected without Fluent Members Pro.
 
+To change the seat limit later, edit **Maximum Member** on the **Level Details** tab and click **Save**.
 
-## Step 1: Create a Corporate Level
+![Screenshot of the Level Details tab of a corporate level with Maximum Member set to 10](/images/levels/corporate-memberships/corporate-memberships-level-details.webp)
 
-1. Go to **Fluent Members → Levels**.
-2. Click **+ Add New Level** in the top right.
-3. Enter a **Title** for your plan (for example, `Agency Plan` or `Team Access`).
-4. Under **Type**, select **Corporate**.
-5. Click **Create**.
+## Add pricing and Access Groups
 
-> [!Note]
-> You choose **Individual** or **Corporate** when the level is created. To switch types, delete the level and create a new one.
+A corporate level needs the same setup as any other level:
 
-![Add Membership Level modal with Corporate selected](/images/levels/corporate-memberships/add-membership-level-modal.webp)
+1. On the **Pricing** tab, add a [Native Payment plan](/docs/levels/pricing-native) or a [paywall](/docs/levels/pricing-paywalls). The owner pays this price for the team.
+2. On the **Access Groups** tab, [attach the groups](/docs/levels/attaching-access-groups) the level unlocks. Everyone on the team gets the same access.
 
-## Step 2: Set the Seat Limit
+You can also make someone a Team owner yourself with [Assign Members](/docs/levels/members-on-a-level#assign-members-to-a-level). Each person you select becomes a separate owner with their own seats, not a seat on an existing team.
 
-1. Open your new corporate level and stay on the **Edit Level** tab.
-2. Find the **Maximum Member** field.
-3. Enter the total number of seats allowed. For example, `5` means 1 parent account plus 4 invited teammates.
-4. Click **Save** when you are done.
+![Screenshot of the Assign Members modal on a corporate level with the Team owner warning](/images/levels/corporate-memberships/corporate-memberships-assign-warning.webp)
 
-Leave **Maximum Member** empty for unlimited seats the parent can invite as many people as they want.
+## How the owner manages the team
 
-![Edit Level, Corporate, with Maximum Member field](/images/levels/corporate-memberships/edit-level-corporate-2.webp)
+After buying the level, the owner opens the **Member Portal** and finds the **Team Members** panel on their membership. The panel's seat count includes the owner and shows any pending invitations.
 
-## Step 3: Set Pricing and Access Groups
+![Screenshot of the Team Members panel in the Member Portal with the seat count, invite field and team table](/images/levels/corporate-memberships/corporate-memberships-team-panel.webp)
 
-A corporate level needs the same setup as an individual plan:
+To invite someone, the owner enters their email under **Invite Member** and clicks **Send Invitation**. The invitation lasts 3 days. The invitee logs in with the invited email address and clicks **Accept Invitation**.
 
-1. Open the **Pricing** tab and add a [Pricing Plan](/docs/levels/pricing-native). The parent pays this single price for the entire team.
-2. Open the **Access Group** tab and [attach the groups](/docs/levels/attaching-access-groups) this level unlocks. Whatever the parent can access, every invited teammate can access too.
+From a row's menu in the panel, the owner can:
 
-## Step 4: How the Parent Invites Teammates
+- **View invitation**, **Resend invitation** or **Cancel invitation** while it's pending.
+- **Cancel** a team member to free their seat.
 
-After the parent purchases the corporate level, they manage the team from the front-end **Member Portal**:
-
-1. The parent logs in and visits the **Member Portal** page.
-2. They see a **Team Members** panel next to their membership details.
-3. The parent clicks **Send Invitation** and enters the teammate's email address.
-4. **Fluent Members** sends an invitation email with a join link.
-5. The teammate clicks the link, logs in (or registers), and gains access to the protected content.
-
-See [Portal: Corporate Seat Invites (Pro)](/docs/members/portal/corporate-seat-invites) for the full invitation flow.
-
-## Step 5: Remove a Team Member
-
-If a teammate leaves, the parent can free up a seat from the **Team Members** panel:
-
-1. The parent opens the **Member Portal**.
-2. They find the user in **Team Members**, click the **three-dot icon**, and select **Cancel**.
-3. The teammate immediately loses access to the restricted content. Their WordPress account stays on the site.
-
-Corporate memberships work well for B2B plans, agency packages, and family tiers. Letting the buyer manage invitations saves admin time while the team shares one billing account.
+A team member's seat ends when the owner's membership ends. See [Corporate Seat Invites](/docs/members/portal/corporate-seat-invites) for the full flow.

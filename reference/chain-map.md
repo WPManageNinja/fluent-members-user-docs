@@ -1,219 +1,155 @@
+---
+title: "Chain Map"
+description: "Twelve end-to-end journeys through Fluent Members, from first setup to renewals, refunds and migration, with a link for each step."
+---
+
 # Chain Map
 
-Eleven end-to-end journeys that connect Fluent Members' features into something a real person walks through. Every guide page belongs to at least one of these chains; many belong to more than one.
+The **Chain Map** shows how Fluent Members features connect into complete journeys. Use it when you know what you want to do, or want to trace what happens next, and need to see every step in order.
 
-If you ever land on a page and think *"OK, but what comes next?"*, find the chain it's on here and follow the arrow.
+## Chain 1: First-Time Setup
 
-## How to Use This Page
+Use this after you install the plugin, to get a working membership site.
 
-- Find the chain that matches what you're trying to do.
-- Walk the steps top to bottom. Each step links to its dedicated page.
-- The **Use this map when…** tip at the bottom of each chain helps you confirm you're in the right one.
+1. [Install & activate](/docs/getting-started/installation)
+2. [General settings](/docs/settings/general): currency, excluded content and the portal page
+3. [Mailing settings](/docs/settings/email-configuration/mailing-settings): sender name and email
+4. *(Optional, Pro)* [Set up Stripe](/docs/settings/payment-settings/stripe-setup) or [Set up PayPal](/docs/settings/payment-settings/paypal-setup)
+5. [Create a level](/docs/levels/creating)
+6. [Price with native payments](/docs/levels/pricing-native) or [Price with paywalls](/docs/levels/pricing-paywalls)
+7. [Create an Access Group](/docs/access-groups/) and set its [restriction types](/docs/access-groups/protected-content)
+8. [Attach the group to the level](/docs/levels/attaching-access-groups)
+9. Add a [pricing page](/docs/selling/pricing-page)
+10. Test in a private browser window
 
+## Chain 2: Buy and Get Access
 
-## Chain 1: First-Time Site Setup
+Use this to trace a missing membership after a purchase.
 
-The admin-onboarding chain. You just installed Fluent Members and want it doing something real.
+1. A visitor opens your pricing page and clicks a plan button
+2. They pay at [checkout](/docs/selling/checkout) through Stripe or PayPal (Pro), or through FluentCart, Fluent Forms, Paymattic or WooCommerce (Pro)
+3. The payment is confirmed by a webhook or by the connected plugin
+4. A membership is created and the [member appears in the list](/docs/members/)
+5. `fluent_members/membership_level_assigned` fires
+6. The **Welcome Email** goes out, if you [turned it on](/docs/settings/email-configuration/email-notifications)
+7. The member opens protected content and sees it
 
-1. [Installation](/docs/getting-started/installation)
-2. [General Settings](/docs/settings/general), pick currency, exclude public content, generate portal page
-3. [Mailing Settings](/docs/settings/email-configuration/mailing-settings), From name, From email, footer
-4. *(Optional, Pro)* [Stripe Setup](/docs/settings/payment-settings/stripe-setup) or [PayPal Setup](/docs/settings/payment-settings/paypal-setup)
-5. [Levels Overview](/docs/levels/) → [Creating a Level](/docs/levels/creating)
-6. [Pricing: Native Payment](/docs/levels/pricing-native) *or* [Pricing: Paywalls](/docs/levels/pricing-paywalls)
-7. [Access Groups Overview](/docs/access-groups/) → [Protected Content](/docs/access-groups/protected-content)
-8. [Attach the Group to the Level](/docs/levels/attaching-access-groups), either from the Group's Active Levels card or the Level's Access Group tab
-9. Drop `[fluent_membership_level id="N"]` on a pricing page
-10. Test as a guest
+## Chain 3: Protection
 
-::: tip Use this map when…
-You just installed the plugin and want a complete, working membership site as fast as possible.
-:::
+Use this to work out why a visitor does or doesn't see a page.
 
-
-## Chain 2: Buy & Onboard
-
-What happens when a real visitor clicks Subscribe.
-
-1. Pricing page renders via `[fluent_membership_level]`
-2. Visitor clicks Subscribe → provider checkout (Stripe / PayPal / FluentCart / Form)
-3. Payment confirms
-4. Webhook (Stripe or PayPal, Pro) or integration event (FluentCart, Forms, Paymattic) fires
-5. Membership row created → [Member appears in Members list](/docs/members/)
-6. `fluent_members/membership_level_assigned` fires
-7. [Welcome Email sent](/docs/settings/email-configuration/email-notifications)
-8. Member visits protected content → sees it
-
-::: tip Use this map when…
-You want to trace what happens from "checkout button clicked" to "member has access", useful for debugging missing grants.
-:::
-
-## Chain 3: Restriction & Enforcement
-
-What a non-member sees when they hit protected content.
-
-1. Visitor lands on a protected post or page
-2. `AccessHandler` runs → looks up the [Levels attached](/docs/levels/attaching-access-groups) to the Group via the pivot
-3. Checks the visitor's memberships and statuses
-4. If no access → reads the Group's [Unauthorized Access](/docs/access-groups/unauthorized-access) action
-5. Renders the chosen fallback:
-   - **Redirect** → browser goes elsewhere
-   - **Custom message** → post body replaced
-   - **Display partial preview** → [Partial Content overlay](/docs/settings/partial-content-lock)
-   - **Show a login prompt** → [Login Popup](/docs/settings/login-popup)
-   - **Hide entirely** → empty body
-
-::: tip Use this map when…
-You're trying to figure out why non-members see (or don't see) what you intended on a restricted page.
-:::
+1. A visitor opens a protected post or page
+2. Fluent Members [checks the visitor's memberships](/docs/access-groups/how-protection-works) against the levels attached to the Access Group
+3. Only **Active** and **Trial** memberships count
+4. Without access, the visitor sees one of these:
+   - The [partial content lock](/docs/settings/partial-content-lock), when it's on
+   - The group's [unauthorized access](/docs/access-groups/unauthorized-access) action: **Redirect to a specific URL** or **Display a custom message**
+5. A logged-out visitor can also get the [login popup](/docs/settings/login-popup), when it's on
 
 ## Chain 4: Day-to-Day Admin
 
-How an admin manages a single member from a Dashboard signal.
+Use this when you need to act on one member's record.
 
-1. [Dashboard](/docs/dashboard/dashboard) shows a signal (Expiring Soon entry, cancellation spike, etc.)
-2. [Members list](/docs/members/) → search or filter
-3. [Member Detail](/docs/members/detail) → Memberships table
-4. Row kebab → [Suspend or Cancel](/docs/members/suspending-and-cancelling) *or* [Refund (Pro)](/docs/billing/refunds)
-5. Status flips → cascades to children if corporate
-6. Member's [Portal view](/docs/members/portal/what-members-see) updates next time they visit
+1. Spot something on the [dashboard](/docs/dashboard/dashboard)
+2. Find the person in the [members list](/docs/members/)
+3. Open their [member details](/docs/members/detail)
+4. Use the row menu to [suspend or cancel](/docs/members/suspending-and-cancelling), or to [refund](/docs/billing/refunds) (Pro)
+5. The status changes, and on a corporate membership the seats follow
+6. The member's [portal](/docs/members/portal/what-members-see) shows the new status
 
-::: tip Use this map when…
-You need to act on a specific member's record, a chargeback, a refund request, a policy violation.
-:::
+## Chain 5: Member Self-Service
 
-## Chain 5: Member Self-Serve
+Use this to understand what members do on their own.
 
-What a logged-in member can do from the portal page.
+1. You [set up the portal](/docs/members/portal/setup)
+2. A member [opens the portal](/docs/members/portal/what-members-see) and clicks **Manage** on a membership
+3. On the [Manage page](/docs/members/portal/membership-details), they choose an action:
+   - [Cancel](/docs/members/portal/cancelling)
+   - [Update Payment Method](/docs/members/portal/updating-payment-method) (Pro, Stripe)
+   - [Renew Membership](/docs/members/portal/renewing-a-membership) (Pro)
+   - [Upgrade Plan](/docs/levels/upgrade-paths) (Pro)
+   - [Invite a team member](/docs/members/portal/corporate-seat-invites) (Pro, corporate owners)
+4. The change syncs with the gateway and the page updates
 
-1. [Portal page set up](/docs/members/portal/setup) on your site
-2. Member visits → sees [their card](/docs/members/portal/what-members-see)
-3. Picks an action:
-   - [Cancel](/docs/members/portal/cancelling) (free)
-   - [Update Payment Method](/docs/members/portal/updating-payment-method) *(Pro)*
-   - [Renew](/docs/members/portal/renewing-a-membership) *(Pro, on Expired)*
-   - [Invite teammate](/docs/members/portal/corporate-seat-invites) *(Pro, corporate parents)*
-4. Provider sync fires (Stripe / PayPal / paywall)
-5. Status updates → UI re-renders
+## Chain 6: Corporate Team (Pro)
 
-::: tip Use this map when…
-You want to understand the member-facing side of the plugin, what your customers actually interact with.
-:::
+Use this when you sell team plans.
 
-## Chain 6: Corporate (Team Plan)
+1. [Create a corporate level](/docs/levels/corporate-memberships) and set **Maximum Member**
+2. [Add pricing](/docs/levels/pricing-native)
+3. A customer buys and becomes the owner
+4. The owner opens the [portal](/docs/members/portal/corporate-seat-invites), enters an email under **Invite Member** and clicks **Send Invitation**
+5. The invitee gets an email, logs in with that address and clicks **Accept Invitation**
+6. A seat is created, and it appears on [Corporate members](/docs/members/corporate-members)
+7. The seat follows the owner's status changes
 
-End-to-end for a B2B team purchase.
+## Chain 7: Recurring Renewal (Pro)
 
-1. Admin [creates a Corporate Level](/docs/levels/creating), sets **Maximum Member**
-2. Admin adds [Pricing](/docs/levels/pricing-native)
-3. Parent buys → becomes parent membership
-4. Parent visits the [Portal](/docs/members/portal/what-members-see) → **Team Members** panel appears
-5. Parent sends invite → [Email goes to invitee](/docs/members/portal/corporate-seat-invites)
-6. Invitee clicks join link → confirmation page → Accept
-7. Sub-member row created with `parent_membership_id` set
-8. Sub-member uses content (just like an individual member)
-9. *(Eventually)* parent's status changes → [cascade flips children](/docs/levels/corporate-memberships#cascade)
+Use this to confirm renewals are syncing, or to hook custom logic to the renewal.
 
-::: tip Use this map when…
-You're selling team plans and want to understand both the admin-side configuration and the member-side invite flow as one journey.
-:::
+1. Stripe or PayPal charges the member at the end of the period
+2. The webhook arrives: `invoice.paid` from Stripe, `PAYMENT.SALE.COMPLETED` from PayPal
+3. The expiry date moves to the new period end and the membership stays **Active**
+4. `fluent_members/membership_renewed` fires
+5. The **Payment Receipt** email goes out, if you turned it on
 
+## Chain 8: Failed Payment and Recovery (Pro)
 
-## Chain 7: Recurring Renewal (Pro, Happy Path)
+Use this to follow a declined renewal.
 
-What happens at renewal time with zero UI interaction.
+1. A renewal charge fails
+2. The webhook arrives: `invoice.payment_failed` from Stripe, `BILLING.SUBSCRIPTION.SUSPENDED` from PayPal
+3. The **Payment Failed** email goes out, if you turned it on
+4. When the subscription moves to past due or a similar state, the membership becomes **Suspended** and the member loses access
+5. The member opens the [Manage page](/docs/members/portal/membership-details) and sees `Your last payment did not go through. Update your payment method to restore access.`
+6. The member chooses [Update Payment Method](/docs/members/portal/updating-payment-method) (Stripe). A PayPal member fixes payment in PayPal.
+7. The payment succeeds and the membership returns to **Active**
 
-1. Stripe (or PayPal) charges the member at period end
-2. The provider's renewal webhook reaches Fluent Members: Stripe sends `invoice.payment_succeeded`, PayPal sends **Payment sale completed**
-3. The subscription record's status stays `active`, and `fluent_members/membership_renewed` fires (Pro)
-4. Local `expires_at` extends to the new period end
-5. Member stays Active; no notification by default
+If the subscription expires instead, [Renew Membership](/docs/members/portal/renewing-a-membership) sends the member to checkout.
 
-::: tip Use PayPal? See the equivalent table
-[PayPal Webhook Events Reference](/docs/settings/payment-settings/paypal-setup#webhook-events-reference) lists the exact PayPal event for every step in this chain.
-:::
+## Chain 9: Refund (Pro)
 
-::: tip Use this map when…
-You want to confirm renewals are syncing correctly, or hook custom email/CRM logic to the renewal moment.
-:::
+Use this when you reverse a payment.
 
+1. Find the record under [Billing](/docs/billing/) with [filter & search](/docs/billing/filters-and-search), or open the [member's details](/docs/members/detail)
+2. Choose [Refund](/docs/billing/refunds) and set a full or partial amount
+3. Stripe or PayPal processes the refund and the transaction updates
+4. `fluent_members/native_payment_refunded` fires, and the **Refund Issued** email goes out if you turned it on
+5. A full refund of a charge or renewal also cancels the subscription and membership, except for payments carried over by a migration. A partial refund leaves access in place.
 
-## Chain 8: Failed Renewal & Recovery
+## Chain 10: Migration
 
-When the renewal charge fails and the member needs to fix it.
+Use this when you move a live site with paying members.
 
-1. Stripe (or PayPal) charges the member → fails
-2. The provider's failure webhook arrives: Stripe sends `invoice.payment_failed`, PayPal sends **Billing subscription suspended**. The subscription is marked `past_due`
-3. Eventually [the cron](/reference/troubleshooting) flips the membership row to `expired` and fires `fluent_members/membership_expired`
-4. Member visits [Portal](/docs/members/portal/what-members-see) → sees Expired card + [Renew button](/docs/members/portal/renewing-a-membership)
-5. Member clicks Renew → Stripe retries on the existing card
-6. *(If card is bad)* Member [updates payment method](/docs/members/portal/updating-payment-method) first → then Renew
-7. Charge succeeds → row back to Active
-
-::: tip Use this map when…
-You want a dunning-flow walkthrough, or you're explaining to a customer why their card was declined and what to do.
-:::
-
-## Chain 9: Refund (Admin-Driven Exit)
-
-Reversing a payment.
-
-1. Refund request arrives
-2. Admin opens [Orders](/docs/billing/) → Subscriptions or One-Time Purchases → [finds the record](/docs/billing/filters-and-search)
-3. Opens the record's Transaction History panel → uses the [refund action](/docs/billing/refunds) on the transaction
-4. Admin sets amount (full or partial); Stripe refunds can pick a reason, PayPal refunds accept a note
-5. Refund fires through `fluent_members/refund_payment_{gateway}` → Stripe or PayPal
-6. The transaction's status flips to `refunded` (or `partially_refunded`); the order status updates too if the refund was full
-7. Refunding does not change membership status by itself; if access should end, cancel or expire the membership separately → [cascades to children](/docs/levels/corporate-memberships#cascade) if corporate
-8. Member sees the refund reflected on their card in 5-10 days
-
-::: tip Use this map when…
-You need to refund a customer and want to understand the full chain of what changes on the local site and at Stripe.
-:::
-
-## Chain 10: Migration (From PMPro / MemberPress / Kadence Memberships)
-
-Moving an existing membership site onto Fluent Members.
-
-1. Back up everything (DB, files)
-2. Install Fluent Members *(and Pro if you'll need Stripe- or PayPal-linked subscriptions)*
-3. [Stripe Setup](/docs/settings/payment-settings/stripe-setup) or [PayPal Setup](/docs/settings/payment-settings/paypal-setup), only if payment data needs to come across
-4. [Migration Overview](/docs/settings/migration/), confirm your source shows **Detected**
-5. Pick the wizard:
+1. Back up your database and files
+2. Install Fluent Members, plus Pro if you need linked subscriptions
+3. [Set up Stripe](/docs/settings/payment-settings/stripe-setup) or [Set up PayPal](/docs/settings/payment-settings/paypal-setup), if payment data needs to come across
+4. Open the [Migration screen](/docs/settings/migration/) and confirm your source is detected
+5. Follow the guide for your source:
    - [From Paid Memberships Pro](/docs/settings/migration/from-paid-memberships-pro)
    - [From MemberPress](/docs/settings/migration/from-memberpress)
    - [From Kadence Memberships](/docs/settings/migration/from-kadence-memberships)
-6. Walk the wizard steps in order, verify after each
-7. Switch your members to the new [Portal](/docs/members/portal/setup) URL
-8. Deactivate (don't delete) the source plugin for a week
-9. Delete when confident
-
-::: tip Use this map when…
-You're moving a real site with paying members and need every step in order.
-:::
-
+6. Run each step in order and check the result
+7. Point members to your [portal](/docs/members/portal/setup)
+8. Keep the source plugin until you have confirmed members, access and billing
 
 ## Chain 11: Custom Email Automation
 
-For everything Fluent Members doesn't send out of the box.
+Use this for messages beyond the [seven built-in emails](/docs/settings/email-configuration/email-notifications).
 
-1. Recognise: only three notifications ship out of the box, [Welcome, Expiry, and Suspension](/docs/settings/email-configuration/email-notifications)
-2. Install FluentCRM (or your own CRM)
-3. Subscribe to a [lifecycle hook](/reference/developer-hooks):
-   - `fluent_members/membership_expired`
-   - `fluent_members/membership_suspended`
-   - `fluent_members/membership_status_updated` (catches every transition, including cancellations, and renewals via `membership_renewed` on Pro)
-4. Build a CRM funnel for each event you care about
-5. Send branded emails from the CRM
+1. Install FluentCRM
+2. Build an automation on a [Fluent Members trigger](/docs/integrations/fluentcrm): **Membership Level Assigned**, **Membership Level Removed**, **Membership Expiring**, **Membership Expired**, **Membership Suspended**, **Membership Renewed** or **Membership Cancelled**
+3. Send your emails from FluentCRM
 
-For developers, [`fluent_members/prepare_email_template_data`](/reference/developer-hooks) can adjust an existing notification's data before it renders.
+If you use another tool, listen to the same events through [developer hooks](/reference/developer-hooks).
 
-::: tip Use this map when…
-You need to send renewal reminders, "your card failed" notifications, "we miss you" emails, or any transactional message other than the Welcome Email.
-:::
+## Chain 12: Plan Upgrade (Pro)
 
-## Where Every Guide Page Lives
+Use this when members can move to a higher plan.
 
-If you want a page-by-chain index instead, every guide page lists its chain(s) in a small `Part of the … chain` callout near the top.
-
-
+1. Set up [upgrade paths](/docs/levels/upgrade-paths) on the level
+2. A member opens the [Manage page](/docs/members/portal/membership-details) and chooses **Upgrade Plan**
+3. They complete the upgrade
+4. The old membership becomes **Upgraded** and a new membership holds the access
+5. On a corporate membership, seats move to the new membership if the new level is corporate, and are cancelled if it isn't
+6. `fluent_members/membership_upgraded` and `fluent_members/membership_plan_changed` fire

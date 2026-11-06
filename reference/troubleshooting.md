@@ -1,115 +1,130 @@
+---
+title: "Troubleshooting"
+description: "Fixes for the most common Fluent Members problems with protected content, emails, webhooks, renewals, paywalls and migrations."
+---
+
 # Troubleshooting
 
-A focused list of the issues real users hit and the quickest way to resolve them.
+Start here when something on your membership site doesn't behave as expected. Each section names the symptom and the checks to run, in order.
 
-## I Can Still See the Protected Content as Admin
+## I Can Still See Protected Content
 
-That's by design. Administrators bypass content restrictions so they can edit. Always test in a **private / incognito browser window** (or log out completely) to see what a non-member sees.
+Administrators always bypass restrictions so they can edit content. Test in a private browser window, logged out or as a member.
 
-## The Member Portal Page Shows Raw Shortcode Text
+## A Member Can't See Content They Paid For
 
-That means the shortcode didn't process, usually a theme or page builder issue.
+1. Open the member under **Fluent Members → Members** and check the status. Only **Active** and **Trial** give access. See [Membership Statuses](/reference/membership-statuses).
+2. Check that the level is attached to the Access Group that protects the content. See [Attach access groups](/docs/levels/attaching-access-groups).
+3. If the Access Group uses [drip content](/docs/access-groups/content-drip), check whether the content has unlocked yet.
 
-1. Make sure the page is using the WordPress editor (Block or Classic), not a builder that swallows shortcodes.
-2. Put `[fluent_member_portal]` inside a **Shortcode block** (Block Editor) or a plain paragraph (Classic Editor).
-3. If you use Elementor / Bricks, choose the "Shortcode" widget, not the text widget.
+## A Payment Didn't Create a Membership
 
-## My Email Notification Isn't Arriving
+Paywall purchases through FluentCart, Fluent Forms, Paymattic or WooCommerce (Pro) grant access only when the purchase matches a level.
 
-Walk this list top to bottom.
+1. Open the level and check that the product or form is attached in [Price with paywalls](/docs/levels/pricing-paywalls).
+2. Check that the payment finished in the plugin that took it. An unpaid order doesn't grant access.
+3. Check whether the buyer was logged out. Guest purchases can't always create an account. See [Checkout & guest checkout](/docs/selling/checkout).
 
-1. **Is the notification enabled?** Settings → Email Notifications → toggle **Welcome Email** on.
-2. **Is the From email address valid?** Settings → Email Configuration → Mailing Settings. WordPress's default is `wordpress@yoursite.com`. Many email providers reject that. Change it to a real mailbox on your domain.
-3. **Is your site sending mail at all?** Install a transactional mailer (FluentSMTP, Mailgun, SendGrid). WordPress's PHP `mail()` is unreliable and silently fails on many hosts.
-4. **Preview the template.** Settings → Email Notifications → open the notification → **Preview** to confirm the template itself renders correctly, ruling out a broken merge tag or template edit.
-5. **Spam folder.** Especially with a `wordpress@` From address.
+To log the reason on your own site, listen to `fluent_members/membership_not_stored` and the skipped-payment hooks in [Developer Hooks](/reference/developer-hooks).
 
-## Stripe Webhook Is Showing 401 or 400 in the Stripe Dashboard
+## The Member Portal Shows Raw Shortcode Text
 
-The webhook URL must be reachable from Stripe's IPs and your signing secret must match.
+A theme or page builder didn't process the shortcode.
 
-1. **Confirm the URL**, copy it from Settings → Payment Settings → Stripe → **Manage** (the displayed URL contains `?fluent_members_payment_listener=1&payment_method=stripe`). Paste exactly that into Stripe → Developers → Webhooks → endpoint.
-2. **Confirm the signing secret**, Stripe generates one when you create the endpoint. Paste it back into the Stripe settings screen in Fluent Members.
-3. **Test mode vs Live mode**, the webhook secret in your Stripe settings must match the **mode** (test or live) you're operating in.
-4. **Firewall / caching plugins**, some block POST to root URLs. Whitelist `?fluent_members_payment_listener=1&payment_method=stripe`.
+1. Put `[fluent_member_portal]` in a **Shortcode** block in the block editor, or on its own line in the Classic Editor.
+2. In a page builder, use its shortcode widget, not a text widget.
 
-## PayPal Subscriptions Aren't Renewing or Cancelling Automatically
+## An Email Notification Isn't Arriving
 
-Almost always a webhook configuration mismatch, since PayPal webhooks are set up manually in the PayPal Developer Dashboard rather than automatically.
+1. Check the notification is on. All notifications are off by default. Go to **Fluent Members → Settings → Email Configuration → Email Notifications**.
+2. Check the sender in **Email Configuration → Mailing Settings**. Use an address on your own domain.
+3. Check your site can send mail at all. WordPress's default mail often fails on shared hosting, so install an SMTP plugin such as FluentSMTP.
+4. Open the notification and preview it, to rule out a broken template.
+5. Check the spam folder.
 
-1. **Confirm the URL**, copy it from Settings → Payment Settings → PayPal → **Manage** (it contains `?fluent_members_payment_listener=1&payment_method=paypal`). It must match exactly what's pasted into PayPal's **Apps & Credentials → your app → Add Webhook**.
-2. **Confirm the events are selected**, the webhook needs all 9 events listed in [PayPal Webhook Events Reference](/docs/settings/payment-settings/paypal-setup#webhook-events-reference). Missing an event means that specific transition (for example, cancellation) never reaches Fluent Members.
-3. **Sandbox vs Live**, PayPal keeps sandbox and live webhooks completely separate. Confirm you registered the webhook on the same tab (Sandbox or Live) that matches the Payment Mode selected in Fluent Members.
-4. **Reconnect if the account changed**, if you disconnected and reconnected a different PayPal account, the app credentials changed too. You'll need to add the webhook again under the new app.
+Seats on a corporate membership don't get the **Membership Expired** or **Subscription Cancelled** emails. Only the owner does.
 
-## Expired Memberships Don't Auto-Cancel
+## The Stripe Webhook Isn't Verified (Pro)
 
-Expiry runs hourly via the WordPress cron hook `fluent_members_check_expired_memberships`. If cron isn't firing, expiry stalls.
+Payments stay off until Stripe is connected and the webhook check passes.
 
-1. **WP-Cron status**, visit **Tools → Site Health → Info → WordPress Cron**. If "WP Cron is disabled" appears, configure a real system cron to hit `wp-cron.php` every few minutes.
-2. **Define `DISABLE_WP_CRON` carefully**, when you switch to system cron, the hook still fires; just not via web hits.
-3. **Batch size**, the cron processes up to 100 rows per run by default. If you have tens of thousands of expired rows queued, give it a few hours, or raise the batch via `add_filter('fluent_members/expiry_batch_size', fn () => 500);`.
+1. Go to **Fluent Members → Settings → Payment Settings** and click **Manage** on **Stripe**.
+2. Copy the **Webhook URL** from the **Stripe Webhook** section. It contains `?fluent_members_payment_listener=1&payment_method=stripe`. Paste exactly that into the endpoint in your Stripe dashboard.
+3. Confirm every event listed under **Events to send** is selected on the endpoint, including `customer.created`.
+4. Copy the signing secret from Stripe into **Signing Secret**. Test and live mode have separate secrets, so use the one for your current mode.
+5. Click **Check webhook**. It creates and deletes a temporary customer in your Stripe account, then waits for Stripe's signed event.
+6. If the check still fails, ask your host or security plugin to allow POST requests to the webhook URL.
 
-## REST API Is Leaking Restricted Content to My Headless Front-End
+A site on a local address can't receive webhooks from Stripe.
 
-The REST filter only runs when a public-typed post is queried through `rest_prepare_{$postType}`. Custom REST endpoints (e.g. `/wp-json/your-plugin/v1/posts`) are NOT covered automatically.
+## PayPal Subscriptions Aren't Renewing or Cancelling (Pro)
 
-Either route through `WP_REST_Posts_Controller`, or call `AccessHandler::protectRestContent()` from your own controller before returning the response.
+1. Go to **Fluent Members → Settings → Payment Settings** and click **Manage** on **PayPal**.
+2. Click **Check webhook** in the **PayPal Webhook** section. Fluent Members registers the webhook in your PayPal app and confirms its URL and events.
+3. Confirm you are in the right mode. PayPal keeps sandbox and live webhooks separate.
+4. If you connected a different PayPal account, click **Check webhook** again so the webhook is registered on the new app.
 
-## Cancellation in the Portal Doesn't Cancel the Stripe or PayPal Subscription
+See [Set up PayPal](/docs/settings/payment-settings/paypal-setup) for the full setup.
 
-Four things to check.
+## Memberships Aren't Expiring on Time
 
-1. **Is the plugin Pro and is Stripe or PayPal configured?** Only Pro routes the cancel through the gateway.
-2. **Is this a native subscription, not a migrated one?** Cancel only works for subscriptions billed through native Stripe or native PayPal. Subscriptions carried over from a PMPro, MemberPress, or Kadence Memberships migration aren't connected to a live gateway and can't be cancelled from this screen at all, see [Subscriptions](/docs/billing/subscriptions).
-3. **Was the subscription created by Fluent Members?** The local subscription row needs a non-empty `provider_subscription_id`. If you imported old data without the correct import bridge, that field is empty and the plugin has nothing to cancel.
-4. **Cancellation mode**, if your default is **End of period**, the gateway is told to cancel at the period end instead of now. The subscription stays `active` (and the local row stays `active`) until the next renewal date, then the gateway's cancellation webhook (Stripe sends `customer.subscription.deleted`) arrives and the plugin flips the status.
+Expiry runs hourly through the WordPress cron event `fluent_members_check_expired_memberships`. If cron doesn't fire, memberships stay **Active** past their expiry date.
 
-See [Subscription Cancellation Modes](/docs/billing/cancelling-a-subscription).
+1. Go to **Tools → Site Health** and look for scheduled event warnings. WP-Cron only runs when someone visits your site.
+2. If `DISABLE_WP_CRON` is set in `wp-config.php`, set up a real server cron job that calls `wp-cron.php` every few minutes.
+3. The job handles 100 memberships per run by default. For a large backlog, raise it with the `fluent_members/expiry_batch_size` filter in [Developer Hooks](/reference/developer-hooks), up to 1000.
 
-## Partial Content Preview Overlay Sits Behind the Content
+## Restricted Content Shows Through a Custom REST Endpoint
 
-A theme or page builder is overriding the z-index.
+Fluent Members protects the standard WordPress REST post routes and comment routes for protected content. Custom endpoints, such as `/wp-json/your-plugin/v1/posts`, aren't covered. Check access in your own endpoint before you return the content.
 
-1. Open browser DevTools, inspect the `.fmem_partial-content-overlay` div.
-2. Look at the `z-index` on parents. If a theme sets `position: relative` + `z-index: 1` on the article, the overlay needs to be inside a higher-z context.
-3. Add a small custom CSS override: `.fmem_partial-content-overlay { z-index: 99 !important; }` in **Appearance → Customize → Additional CSS**.
+## Cancelling Doesn't Stop the Subscription
 
-## Migration Wizard Says 0 to Import but I Have Data in the Source Plugin
+The result depends on how the member pays:
 
-The detector reads directly from the source plugin's database tables. If the wizard says 0:
+- **Stripe and PayPal (Pro):** **End of Billing Period** keeps the membership **Active** until the period ends, so this is expected until then. **Cancel Immediately** ends it now. See [Cancel a subscription](/docs/billing/cancelling-a-subscription).
+- **Older PayPal subscriptions, including migrated ones:** when billing is managed in PayPal, Fluent Members ends the membership but PayPal keeps charging. The member or you must cancel in PayPal too.
+- **FluentCart and WooCommerce:** cancelling in Fluent Members ends the membership. Check the subscription in the plugin that bills it.
 
-1. Confirm the source plugin (Paid Memberships Pro, MemberPress, or Kadence Memberships) is **active**, not just installed. An inactive plugin's tables aren't detected.
-2. Confirm the source plugin's tables still exist and have rows (for example, `wp_pmpro_memberships_users` for PMPro, `wp_mepr_members` for MemberPress).
-3. For **Kadence Memberships**, remember the internal migration `provider` value stays `rcp`, a holdover from the source plugin's earlier name, Restrict Content Pro. If you're inspecting the database directly, filter on `provider = 'rcp'`.
-4. On Kadence migrations only, you can reset and re-run the analysis: **Reset Migration State** clears a half-finished run that might be hiding remaining rows. This option isn't available for PMPro or MemberPress migrations.
+## The Partial Content Overlay Sits Behind the Content
 
-## Corporate Parent Can't Invite, `Seats are full`
+A theme or page builder is overriding the stacking order. Add this in **Appearance → Customize → Additional CSS**:
 
-The Level's `max_members` is reached. Either:
+```css
+.fmem_partial-content-overlay { z-index: 99 !important; }
+```
 
-- Have the parent **remove** an existing sub-member to free a seat, **or**
-- Bump the Level's `max_members` in **Levels → edit**. Existing children are not affected; the parent simply gets more headroom.
+## A Migration Source Shows Not Detected
 
-## Block Email Editor Iframe Is Blank or Shows Admin Chrome
+The **Migration** screen only detects a source plugin that is active and has its database tables.
 
-A conflicting plugin is loading scripts inside the editor frame.
+1. Activate Paid Memberships Pro, MemberPress or Kadence Memberships. Installed but inactive isn't enough.
+2. Check the plugin's tables still exist. Fluent Members looks for `pmpro_membership_levels`, `mepr_transactions` or `rcp_memberships` with your database prefix.
 
-1. Try the editor in an incognito window after temporarily deactivating page builders / aggressive optimisers (Jetpack, LiteSpeed, WP Rocket).
-2. If the issue clears, add the offending plugin's slug to the allow-list via `add_filter('fluent_members/asset_listed_slugs', fn ($slugs) => array_merge($slugs, ['offending-slug']))`.
+For a half-finished run on a test site, **Reset Migration** appears on all three sources when `WP_DEBUG` is on. See [Migration overview](/docs/settings/migration/).
 
-## Pro Buttons (Refund, Update Payment Method) Don't Appear
+## A Corporate Owner Can't Invite Anyone (Pro)
 
-Two things to verify.
+The invite fails with `All seats are taken or reserved by pending invitations.` or `All %d seats are occupied. No more members can join.`, where `%d` is the seat count. Pending invitations hold a seat.
 
-1. The Pro plugin is active. Look for `Fluent Members Pro` in Plugins.
-2. A native payment gateway is configured. Settings → Payment Settings → Stripe (or PayPal) must say **Active**. Without at least one connected, refund and billing-management UI stays hidden. **Update Payment Method** specifically only appears for Stripe-billed subscriptions.
+- Cancel a pending invitation or remove a member from the owner's **Team Members** panel, or
+- Raise **Maximum Member** on the level under **Fluent Members → Membership Levels**.
 
-## Theme Conflicts, the Front-End Looks Broken
+If the invitee sees `This invitation was sent to a different email address.`, they must log in with the invited email.
 
-Always test in a default theme (Twenty Twenty-Five) with all other plugins deactivated. If the issue clears, reactivate plugins one at a time to find the conflict.
+## The Custom Email Editor Is Blank (Pro)
 
+Fluent Members removes other plugins' scripts and styles from the editor to avoid conflicts, so a blank editor usually comes from an optimizer rewriting assets.
 
-**What's Next?**
-- [FAQ](/docs/help-support/faq): quick yes/no answers.
+1. Deactivate caching and optimization plugins for a moment and reload the editor.
+2. If it loads, turn off asset optimization on the editor page in that plugin, or reactivate plugins one by one to find the conflict.
 
+## Refund or Update Payment Method Doesn't Appear (Pro)
+
+1. Check **Fluent Members Pro** is active.
+2. **Refund** appears only when the membership has a refundable native transaction.
+3. **Update Payment Method** appears only for Stripe subscriptions. PayPal doesn't support it.
+
+## Your Site Looks Broken After Activating
+
+Switch to a default theme with other plugins deactivated, on a staging copy if the site is live. If the problem clears, reactivate plugins one at a time to find the conflict.

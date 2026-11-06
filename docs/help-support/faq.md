@@ -1,133 +1,134 @@
+---
+title: "Frequently Asked Questions"
+description: "Quick answers about Fluent Members plans, requirements, content protection, members, emails, payments and migration."
+---
+
 # Frequently Asked Questions
 
-Quick answers to the most common questions about Fluent Members. If your answer is not here, see [Troubleshooting](/reference/troubleshooting) or open a ticket at [Get Support](/docs/help-support/get-support).
+Quick answers to common questions about **Fluent Members**. For step-by-step fixes, see [Troubleshooting](/reference/troubleshooting).
 
 ## General
 
-### Is Fluent Members Free?
+::: faq
+== Is Fluent Members free?
+Yes. The free plugin includes Membership Levels, Access Groups, content protection, the Member Portal, email notifications and integrations with FluentCart, Fluent Forms, Paymattic, FluentCRM, Fluent Support and FluentCommunity.
 
-Yes. The free plugin includes Membership Levels, Access Groups, content protection, Member Portal, email notifications, and native integrations with FluentCart, Fluent Forms, Paymattic, FluentCRM, FluentSupport, and FluentCommunity.
+**Fluent Members Pro** adds native Stripe and PayPal checkout, the **Billing** screens, refunds, corporate memberships, upgrade paths, the custom email editor and the WooCommerce integration.
 
-**Fluent Members Pro** adds native Stripe checkout, the Block Email Editor, Transactions screen, refunds, corporate memberships, WooCommerce integration, and the Stripe-import bridge for migrations.
+== What WordPress and PHP versions do I need?
+WordPress 6.3 or newer and PHP 7.4 or newer. The plugin is tested up to WordPress 7.1.
 
-### What WordPress and PHP Versions Are Required?
-
-WordPress 6.0+ and PHP 7.4+. Tested up to WordPress 6.9.
-
-### Does Fluent Members Work With Any Theme?
-
-Yes. The plugin uses standard WordPress hooks and outputs no theme-specific markup. If you notice a conflict, see [Troubleshooting](/reference/troubleshooting).
+== How many levels can I create?
+The plugin sets no limit on Membership Levels, in Free or Pro.
+:::
 
 ## Setup
 
-### Do I Need a Separate Payment Plugin?
+::: faq
+== Do I need a separate payment plugin?
+It depends on how you sell:
 
-- **Free or admin-comped memberships**: no payment plugin needed.
-- **Paid memberships with Pro**: native Stripe is built in, no extra plugin required.
-- **Paid memberships without Pro**: connect a paywall to FluentCart, Fluent Forms, or Paymattic.
-- **WooCommerce**: requires Pro.
+- **Admin-assigned memberships:** no payment plugin.
+- **With Pro:** native Stripe and PayPal are built in, with no extra plugin.
+- **Without Pro:** connect a paywall to FluentCart, Fluent Forms or Paymattic.
+- **WooCommerce:** needs Pro.
 
-### Is There a Cap on How Many Membership Levels I Can Create?
+See [Payment settings](/docs/settings/payment-settings/).
 
-No. Both the free and Pro plugins support unlimited Levels.
+== Where do I find a level ID?
+Go to **Fluent Members → Membership Levels**. The ID is in the **ID** column. See [Shortcodes](/reference/shortcodes) for where to use it.
 
-### Where Do I Find My Level ID for the `[fluent_membership_level]` Shortcode?
-
-Go to **Fluent Members → Levels**. The ID is shown in the first column of the list.
-
-### How Do I Create the Member Portal Page?
-
-Go to **Settings → General Settings** and click the **+** button next to **Generate Portal Page**. This creates a page with the `[fluent_member_portal]` shortcode automatically. You can also create the page manually and paste the shortcode anywhere in the content.
+== How do I create the Member Portal page?
+Go to **Fluent Members → Settings → General Settings** and click the **+** button beside **Generate Portal Page**. It creates a page with the `[fluent_member_portal]` shortcode. See [Set up the portal](/docs/members/portal/setup).
+:::
 
 ## Content Protection
 
-### What Types of Content Can I Protect?
+::: faq
+== What can I protect?
+Pages, posts, categories, tags, FluentCart products and WooCommerce products (Pro) through Access Group rules. You can also protect a single post, or a block inside a post. See [Restriction types](/docs/access-groups/protected-content).
 
-Pages, posts, custom post types, categories, tags, custom taxonomies, FluentCart products, WooCommerce products, Fluent Forms, Paymattic forms, and FluentCommunity spaces. You can also restrict individual blocks within a post using the Gutenberg block inspector.
+FluentCommunity access works differently: a [level integration](/docs/levels/integrations) adds members to spaces and courses.
 
-### Can I Show a Teaser to Non-Members Instead of Blocking Them?
+== Can I show a preview to visitors instead of blocking them?
+Yes. Turn on [Partial content lock](/docs/settings/partial-content-lock). It shows the first words of the content, with a blurred overlay and a message.
 
-Yes, use the **Partial Content Preview** restriction action. It shows the first N words with a blurred overlay and a call-to-action button. Configure the defaults in **Settings → Partial Content Lock**, or override per Access Group.
+== Can I release content over time?
+Yes. Set [drip content](/docs/access-groups/content-drip) in the Access Group. Each rule sets how long after joining a member gets the content.
 
-### Can I Drip-Feed Content Over Time?
+== Does protection cover the REST API?
+Yes, for protected posts and comments on the standard WordPress REST routes. Custom endpoints aren't covered.
 
-Yes. Set drip rules on the Membership Level: each rule specifies how many days after joining a member gains access to specific content. See [Content Dripping](/docs/access-groups/content-drip).
+== Why can I still see protected content?
+Administrators always bypass restrictions. Test in a private browser window, logged out or as a member.
+:::
 
-### Does Protection Apply to the REST API?
+## Members and Subscriptions
 
-Yes. Any post type covered by an Access Group has its REST API response scrubbed for users who do not have access. Headless frontends follow the same rules.
+::: faq
+== Which membership statuses exist?
+Six: **Active**, **Trial**, **Suspended**, **Cancelled**, **Expired** and **Upgraded**. Only **Active** and **Trial** give access. See [Membership Statuses](/reference/membership-statuses).
 
-## Members & Subscriptions
+== How do members cancel?
+In the Member Portal they click **Manage** on a membership, open **More Action** and choose **Cancel Membership** or **Cancel Subscription**. See [Cancel a membership](/docs/members/portal/cancelling).
 
-### What Membership Statuses Are Available?
+== Does Fluent Members support recurring subscriptions?
+Yes. Native recurring plans use Stripe or PayPal and need Pro. FluentCart, Fluent Forms and Paymattic subscriptions also work, and so do WooCommerce subscriptions (Pro).
 
-Six: `active`, `trial`, `pending`, `cancelled`, `expired`, `suspended`. See [Status Reference](/reference/membership-statuses) for what each means and what triggers it.
+== What can members do in the portal?
+Every member can view their memberships and cancel an active one. With Pro, members can also update a Stripe payment method, renew an eligible subscription, upgrade a plan and manage corporate seats. See [What members see](/docs/members/portal/what-members-see).
 
-### How Does a Member Cancel Their Own Membership?
+== What is a corporate membership?
+A Pro feature where one member owns a set number of seats and invites a team through the portal. If the owner's membership is cancelled, suspended or expires, the seats follow. See [Corporate memberships](/docs/levels/corporate-memberships).
 
-From the Member Portal, they click **Cancel Membership** on their membership card. For recurring Stripe or PayPal subscriptions (Pro), the plugin cancels at the provider according to your configured [cancellation mode](/docs/billing/cancelling-a-subscription).
-
-### Does Fluent Members Support Recurring Subscriptions?
-
-Yes. Set a pricing plan to `recurring` to create a subscription. Native recurring payments require **Pro + Stripe**. FluentCart subscriptions, WooCommerce Subscriptions, Fluent Forms recurring payments, and Paymattic recurring payments are also supported.
-
-### What Can Members Do in the Portal?
-
-- **Free**: view memberships, cancel a membership
-- **Pro**: update payment method, retry a failed subscription, manage corporate seat invites
-
-Profile fields (name, password) are managed through WordPress's standard profile page.
-
-### What Is a Corporate Membership?
-
-A Pro feature where one parent member purchases a set number of seats and invites team members via the portal. Cancelling the parent membership revokes access for all sub-members. See [Corporate Memberships](/docs/levels/corporate-memberships).
+== Can visitors buy without an account?
+Yes, for levels that support [guest checkout](/docs/selling/checkout). The account is created from their purchase details.
+:::
 
 ## Emails
 
-### How Many Email Notifications Does Fluent Members Include?
+::: faq
+== Which email notifications are included?
+Seven: **Welcome Email**, **Membership Expiring**, **Membership Expired**, **Payment Receipt**, **Payment Failed**, **Subscription Cancelled** and **Refund Issued**. All are off by default. See [Email notifications](/docs/settings/email-configuration/email-notifications).
 
-Three: **Welcome Email** (fires when a membership is granted), **Expiry Notification** (fires on `expired` status), and **Suspension Notification** (fires on `suspended` status). See [Email Notifications](/docs/settings/email-configuration/email-notifications).
+== Is there a suspension email?
+No. To email members on suspension, use the **Membership Suspended** trigger in [FluentCRM](/docs/integrations/fluentcrm) or the `fluent_members/membership_suspended` hook in [Developer Hooks](/reference/developer-hooks).
 
-### Can I Customise Notification Templates?
+== Can I customize the templates?
+Yes. Edit the subject and body of each notification under **Fluent Members → Settings → Email Configuration → Email Notifications**, and use [smartcodes](/reference/email-smartcodes) for member details. Pro adds the [custom email editor](/docs/settings/email-configuration/custom-email-editor).
 
-Yes, edit the subject and body of each notification from **Settings → Email Configuration → Email Notifications**. The free plugin provides a rich-text editor. Pro adds the Gutenberg Block Email Editor.
-
-### Can I Add Custom Event-Based Notifications (Cancel, Upgrade, etc.)?
-
-Not from the admin UI. For production use, FluentCRM is the recommended approach: hook into `fluent_members/membership_status_updated` (branch on the new status for cancel, upgrade, and so on) and send branded emails from there. See [Developer Hooks](/reference/developer-hooks).
-
-### My Emails Are Not Arriving — What Do I Check?
-
-See [Troubleshooting](/reference/troubleshooting). The most common cause is a misconfigured From address or missing SMTP plugin. Set up your sender in **Settings → Email Configuration → Mailing Settings** and install [FluentSMTP](https://wordpress.org/plugins/fluent-smtp/) for reliable delivery.
+== My emails aren't arriving. What do I check?
+First check the notification is on, then your sender address in **Mailing Settings**. See [Troubleshooting](/reference/troubleshooting) for the full list.
+:::
 
 ## Payments
 
-### Where Is the Stripe Configuration?
+::: faq
+== Where do I set up Stripe and PayPal?
+Go to **Fluent Members → Settings → Payment Settings** and click **Manage** on the gateway. This needs Pro. See [Set up Stripe](/docs/settings/payment-settings/stripe-setup) and [Set up PayPal](/docs/settings/payment-settings/paypal-setup).
 
-Go to **Settings → Payment Settings**, click **Manage** on the Stripe card. Connect via Stripe Connect (OAuth) or enter your API keys manually, then copy the webhook URL into your Stripe Dashboard. Requires **Pro**. See [Stripe Setup](/docs/settings/payment-settings/stripe-setup).
+== What is the webhook URL?
+It's shown on the gateway's settings screen under **Webhook URL**. Copy it from there. It contains `?fluent_members_payment_listener=1&payment_method=stripe`, or `payment_method=paypal` for PayPal.
 
-### What Is the Stripe Webhook URL?
+== Can I refund from Fluent Members?
+Yes, with Pro. Open the record under **Billing** and refund it, in full or in part. A full refund of a charge or renewal also cancels the membership, except for payments carried over by a migration. See [Refunds](/docs/billing/refunds).
 
-`/wp-json/fluent-members/v2/stripe-webhook`: the exact full URL is shown on the Stripe settings screen, copy it from there.
+== What if I refund in the Stripe dashboard?
+Stripe sends a `charge.refunded` webhook event and Fluent Members records the refund, as long as your webhook is set up.
+:::
 
-### Can I Issue a Refund From Fluent Members?
+## Integrations and Migration
 
-Yes (Pro). Open **Orders**, find the record under **Subscriptions** or **One-Time Purchases**, and refund the charge from its Transaction History panel. Full and partial refunds are supported. Refunding does not automatically cancel the membership; do that separately if needed. See [Refunds](/docs/billing/refunds).
+::: faq
+== Which plugins can I migrate from?
+Three: **Paid Memberships Pro**, **MemberPress** and **Kadence Memberships**, formerly Restrict Content Pro. See [Migration overview](/docs/settings/migration/).
 
-### What if I Refund Through the Stripe Dashboard Instead?
+== Do existing subscriptions carry over?
+With Pro, Stripe subscriptions can stay linked after migration, and recurring billing continues. PayPal carry-over depends on the subscription type. See the guide for your source plugin in [Migration overview](/docs/settings/migration/).
 
-Stripe will send a `charge.refunded` webhook event. Fluent Members picks it up and marks the transaction as refunded automatically, as long as the webhook is configured correctly.
+== Does it work with WooCommerce?
+Yes, with Pro. You can restrict WooCommerce products, sell a level through a product, and use WooCommerce Subscriptions. See [WooCommerce](/docs/integrations/woocommerce).
 
-## Integrations & Migration
-
-### Which Plugins Can I Migrate From?
-
-Three: **Paid Memberships Pro**, **MemberPress**, and **Restrict Content Pro**. Each has a dedicated step-by-step wizard. See [Migration Overview](/docs/settings/migration/).
-
-### Do Existing Stripe Subscriptions Carry Over During Migration?
-
-Yes (Pro). The Stripe-import bridge links the new Fluent Members records to the existing Stripe customer and subscription IDs, so recurring billing continues without interruption. Supported for migrations from Paid Memberships Pro and MemberPress.
-
-### Does Fluent Members Work With WooCommerce?
-
-Yes (Pro): restrict WooCommerce products to specific Membership Levels, use WC products as paywalls, support WooCommerce Subscriptions for recurring billing, and use the instant-checkout flow.
+== Does it work with FluentCRM?
+Yes. Fluent Members adds seven automation triggers to FluentCRM, including **Membership Level Assigned**, **Membership Expiring** and **Membership Renewed**. See [FluentCRM](/docs/integrations/fluentcrm).
+:::

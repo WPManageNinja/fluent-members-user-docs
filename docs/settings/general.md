@@ -1,21 +1,46 @@
+---
+title: "General Settings"
+description: "Choose which content stays public, set your member portal and pricing pages, and pick the default currency for new prices."
+---
+
 # General Settings
 
-The General Settings tab is the core configuration panel for your membership site. From this screen, you can manage site-wide settings, including which pages remain public, where your members manage their accounts, and the default currency used for your transactions.
+**General Settings** holds the site-wide options for your membership site: which content always stays public, which pages serve as the member portal and pricing page, and the default currency for new prices.
 
-## Access General Settings
+## Open General Settings
 
-Click the **Settings** gear icon in the top-right corner of any Fluent Member screen, then select **General Settings** from the left-hand menu.
+Click the **Settings** gear in the top-right corner of any Fluent Members screen. **General Settings** opens first.
 
-![Access the General Settings](/images/settings/general-settings/access-genarel-setting-1.webp)
+![Screenshot of the General Settings screen with Exclude Content from Restriction, Generate Portal Page, Generate Pricing Page and Select Currency, and an arrow pointing to Save Settings](/images/settings/general-settings/general-settings-overview.webp)
 
-## Configuring Your General Settings
+## Exclude Content from Restriction
 
-1. **Exclude Content from Restriction:** Click inside this search box and type the name of any page or post you want to keep completely public. Adding items here ensures that important pages such as your Home, About, Contact, and Privacy Policy pages are never blocked by your Access Groups. Any item added here bypasses the restriction engine entirely, so never add content you want protected under a membership plan.
+Content you add here is public and no Access Group restricts it. Use it for pages that must stay open, such as your Home, Contact or Privacy Policy page.
 
-2. **Generate Portal Page:** This setting tells the plugin which page serves as your frontend member dashboard. You can select an existing page from the dropdown menu, or click the **+** button to automatically create a new page pre-loaded with the `[fluent_member_portal]` shortcode. Click **+** only once each click creates a new page. If you clicked it multiple times by accident, delete the duplicates from **Pages → All Pages** in WordPress.
+Type at least one character, then pick from the results. The search covers posts, pages, categories and tags, plus WooCommerce or FluentCart products and product terms.
 
-3. **Select Currency:** Click the dropdown menu to choose your preferred base currency for your membership plans. This currency applies by default to new pricing plans, but you can override it on individual plans if your payment gateway supports multiple currencies.
+Adding a category or tag makes every post in it public.
 
-4. **Save Your Changes:** Once you have updated your fields, click the dark **Save Settings** button in the top-right corner to apply all your adjustments simultaneously.
+> [!Note]
+> This setting does not lift a restriction placed on a block inside a page. Blocks follow their own access check, so a restricted block stays restricted on an excluded page.
 
-![General Settings](/images/settings/general-settings/save-settings-2.webp)
+## Generate Portal Page
+
+This is the page where members manage their memberships, view account details and access member content.
+
+- **Use an existing page:** Pick it from the dropdown. The page needs the `[fluent_member_portal]` shortcode. Click the shortcode to copy it.
+- **Create a page:** Click **+**, enter a **Page Name** in the **Create Portal Page** dialog, and click **Create Page**. Fluent Members publishes the page and selects it. If a published portal page is already set, the dialog selects that page instead of making a second one.
+
+**Edit** and **View** open the selected page. See [portal setup](/docs/members/portal/setup) for what happens next.
+
+## Generate Pricing Page
+
+This page displays all your active membership levels. It works the same way as the portal page, with the `[fluent_membership_levels]` shortcode and a **Create Pricing Page** dialog.
+
+## Select Currency
+
+Pick the default currency for new prices. The default is **United States Dollar (USD)**. Existing prices, subscriptions and payments keep their own currency.
+
+## Save your changes
+
+Click **Save Settings** in the top-right corner to apply your changes.

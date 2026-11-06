@@ -1,69 +1,87 @@
-# Subscription Cancellation Modes
+---
+title: "Cancel a Subscription (Pro)"
+description: "Cancel a Stripe or PayPal subscription at the end of the billing period or immediately, and see which subscriptions cannot be cancelled here."
+---
 
-When a member or admin cancels a native Stripe or PayPal subscription, Fluent Members decides when the cancellation takes effect. Two modes are available: **Immediate** and **End of Period**. Choose the one that matches your refund policy.
+# Cancel a Subscription (Pro)
 
-> [!Note]
-> Cancellation modes apply only to native Stripe and native PayPal subscriptions. Subscriptions carried over from a PMPro, MemberPress, or Kadence Memberships migration aren't connected to a live gateway from this screen and can't be cancelled here at all, see [Subscriptions](/docs/billing/subscriptions). Memberships driven by FluentCart, WooCommerce, or other paywall integrations follow the host plugin's own cancellation behaviour.
+**Cancel Subscription** (Pro) stops a member's Stripe or PayPal billing from your site. You choose each time whether the member keeps access until the paid period ends or loses it right away. There is no site-wide setting for this.
 
-## The Two Modes
+## Cancel a subscription
 
-| | Immediate | End of Period |
+1. Go to **Fluent Members → Billing → Subscriptions**.
+2. Click the three-dot menu on the row and choose **Cancel Subscription**. You can also open the subscription and click **More Actions → Cancel Subscription**, or use the three-dot menu on the [member's page](/docs/members/detail).
+
+    ![Screenshot of the three-dot menu on a Subscriptions row with View and Cancel Subscription](/images/billing/cancelling-a-subscription/cancelling-a-subscription-row-menu.webp)
+
+3. Under **Cancellation Mode**, choose **End of Billing Period** or **Cancel Immediately**.
+
+    ![Screenshot of the Cancel Subscription dialog with End of Billing Period selected](/images/billing/cancelling-a-subscription/cancelling-a-subscription-dialog.webp)
+
+4. Click the button at the bottom right. It repeats the mode you chose.
+
+**Cancel** at the bottom left closes the dialog without changing anything.
+
+## Choose a mode
+
+The two modes differ in when access ends:
+
+| | **End of Billing Period** (default) | **Cancel Immediately** |
 |---|---|---|
-| Access revoked | Now | At the next renewal date |
-| Gateway action | Cancel subscription now | Set the subscription to cancel at period end |
-| Local membership status | `Cancelled` immediately | Stays `Active` until period ends, then `Cancelled` |
-| Final charge | None | None: current period is already paid |
-| Cancellation webhook | Fires now | Fires at the period boundary |
+| Future renewals | Stopped | Stopped |
+| Access | Kept until the current billing period ends | Revoked now |
+| Subscription status | Stays as it is until the period ends | **Canceled** now |
+| Next Billing | Stays until the period ends | Cleared |
 
-## Where to Configure
+Neither mode refunds anything. To return money, issue a [refund](/docs/billing/refunds). A full refund also cancels the subscription immediately, so you don't need to cancel it separately.
 
-Go to **Settings → Payment Settings**, click **Manage** on the Stripe or PayPal card, and look for the **Cancellation Mode** toggle.
+## How each gateway handles it
 
-The default is **Immediate**. A fresh install will not accidentally extend access beyond what you intend.
+**End of Billing Period** works differently behind the scenes:
 
-## How Each Mode Works
+- **Stripe:** Stripe keeps the subscription until the period ends, then tells Fluent Members it has ended. A **Paused** Stripe subscription always cancels immediately, even if you choose **End of Billing Period**.
+- **PayPal:** PayPal has no cancel-at-period-end option, so Fluent Members cancels at PayPal right away and keeps the member's access until the next billing date. If there is no next billing date, it cancels immediately.
 
-### Immediate
+## While a cancellation is scheduled
 
-When a member cancels:
+After you choose **End of Billing Period**, the subscription page shows this notice:
 
-1. The portal card shows `Cancelled` immediately.
-2. Fluent Members tells the gateway (Stripe or PayPal) to cancel the subscription right now.
-3. The membership row's `expires_at` is set to the current time.
-4. The member loses access on their next page load.
-5. No charge runs at what would have been the renewal date.
+> This subscription is scheduled for cancellation at the end of the current billing period.
 
-### End of Period
+<!-- TODO(screenshot): cancelling-a-subscription-1
+  screen: Billing → Subscriptions → a Stripe subscription
+  state: subscription page with the scheduled cancellation notice at the top
+  data: a Stripe subscription cancelled with End of Billing Period
+  highlight: -
+  view: admin
+  alt: Screenshot of a subscription page with the scheduled cancellation notice
+  reason: needs a live Stripe subscription; the local site's sample subscriptions have no gateway connection
+-->
 
-When a member cancels:
+The status stays the same until the period ends. To end access sooner, cancel again and choose **Cancel Immediately**.
 
-1. The portal card shows `Cancelled` with an *"Access ends on [date]"* notice.
-2. Fluent Members schedules the cancellation on the gateway's subscription; it stays active there until the period boundary.
-3. The local membership row stays `Active` until that boundary.
-4. The member keeps access throughout the paid period.
-5. On the original renewal date, the gateway's cancellation webhook arrives (Stripe sends `customer.subscription.deleted`). Fluent Members flips the local row to `Cancelled`.
-6. No final charge runs.
+## When members cancel
 
-::: warning Admin Views Under End of Period
-Under End of Period, the membership row's `status` column stays `Active` between the cancel click and the period boundary. The member portal shows `Cancelled` because it reads both the `status` field and the `cancel_at_period_end` flag. Admin tooling or reports that read only `status` will show `Active`; this is expected behaviour, not a bug.
-:::
+Members can cancel their own subscription from the [member portal](/docs/members/portal/cancelling), with the same two modes. After choosing **End of Billing Period**, the portal shows **Scheduled for Cancellation** with a **Cancellation Date**.
 
-## Which Mode to Choose
+<!-- TODO(screenshot): cancelling-a-subscription-2
+  screen: Member portal → membership → Cancel Subscription
+  state: cancel dialog open with both modes
+  data: a member with a Stripe subscription
+  highlight: -
+  view: frontend
+  alt: Screenshot of the member portal cancel dialog with End of Billing Period and Cancel Immediately
+  reason: needs the develop build on the local site and a member with a Stripe or PayPal subscription
+-->
 
-**Use Immediate when:**
+If you have turned on the **Subscription Cancelled** [email notification](/docs/settings/email-configuration/email-notifications), the member gets an email when a subscription is cancelled.
 
-- You include a refund on cancellation
-- You run free trials where a failed conversion should remove access instantly
-- You want Cancel to mean instant revocation
+## Subscriptions you cannot cancel here
 
-**Use End of Period when:**
+**Cancel Subscription** only appears on subscriptions that are **Active**, **Trialing**, **Past Due**, **Unpaid** or **Paused** and billed through Stripe or PayPal. These cannot be cancelled here:
 
-- You charge non-refundable monthly or annual fees
-- You want members to keep access through the period they already paid for
-- You prefer to minimise refund requests by letting the period run out naturally
+- **PayPal subscriptions imported from another plugin:** they stay billed through your PayPal account. Cancel in your PayPal business account, or ask the member to cancel in theirs. Cancelling the membership from the member's page ends it in Fluent Members, but PayPal keeps charging until the subscription is cancelled there.
+- **Imported subscriptions with no Stripe or PayPal connection:** there is nothing here to cancel at a gateway. Imported subscriptions that do bill through Stripe can be cancelled as normal.
+- **[Subscriptions from other plugins](/docs/billing/provider-subscriptions):** cancel them in the plugin that bills them.
 
-::: tip Mode changes apply to new cancellations only
-Switching modes affects cancellations from that point forward. Any subscription already marked `cancel_at_period_end` keeps its original behaviour.
-:::
-
-
+To cancel a membership with no subscription behind it, see [Suspending & Cancelling](/docs/members/suspending-and-cancelling).

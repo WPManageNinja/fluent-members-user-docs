@@ -1,66 +1,109 @@
-# Subscriptions
+---
+title: "Subscriptions (Pro)"
+description: "Read the Subscriptions list and detail page, including columns, statuses, transaction history and the actions you can take."
+---
 
-The **Subscriptions** view lists every recurring membership on your site, native Stripe and PayPal subscriptions, plus subscriptions carried over from a PMPro, MemberPress, or Kadence Memberships migration.
+# Subscriptions (Pro)
 
-## Access Subscriptions
+The **Subscriptions** (Pro) list shows every recurring membership on your site. Use it to see who is paying, when the next charge runs and which renewals have failed.
 
-Go to **Fluent Members → Orders → Subscriptions**.
+It includes subscriptions billed through Stripe or PayPal, subscriptions imported from Paid Memberships Pro, MemberPress or Kadence Memberships, and [subscriptions billed by other plugins](/docs/billing/provider-subscriptions).
+
+## Open the list
+
+Go to **Fluent Members → Billing → Subscriptions**.
+
+![Screenshot of the Subscriptions list with status tabs, member rows and pagination](/images/billing/subscriptions/subscriptions-list.webp)
 
 ## Columns
 
-- **Member**: The subscriber's avatar, display name, and email address.
-- **Level**: The Membership Level the subscription is for.
-- **Amount**: The recurring charge amount and billing interval (for example, `$29.00 / month`).
-- **Status**: A status badge, see [statuses](#subscription-statuses) below.
-- **Next Billing**: The date of the next scheduled charge. Blank for cancelled or expired subscriptions.
-- **Total Paid**: The sum of every successful charge and renewal collected on this subscription so far.
+The table scrolls sideways when it does not fit your screen:
 
-Click any row to open the subscription's detail page.
+| Column | Shows |
+|---|---|
+| **ID** | The record number. |
+| **Member** | The member's avatar, name and email. |
+| **Level** | The Membership Level the subscription is for. |
+| **Billing Cycle** | The recurring amount and interval. |
+| **Status** | The current status. See [Statuses](#statuses). |
+| **Gateway** | Where the billing runs or came from, such as Stripe, PayPal, MemberPress or FluentCart. |
+| **Next Billing** | The date of the next charge, or `--` when none is scheduled. |
+| **Total Paid** | The total collected on this subscription. |
+| **Started** | The date the subscription was created. |
+| **Last Payment** | The date of the most recent payment. |
 
-## Subscription Statuses
+Click a row to open the subscription. The three-dot menu on each row holds **View**, plus **Cancel Subscription** when the subscription can be cancelled here.
+
+To change the columns, sort or search, see [Filter & Search](/docs/billing/filters-and-search).
+
+## Statuses
+
+A subscription shows one of these statuses:
 
 | Status | Meaning |
 |---|---|
-| `pending` | Created but the first payment has not yet been confirmed |
-| `incomplete` | Initial payment attempt did not complete |
-| `trialing` | Inside a free trial window |
-| `active` | Billing normally |
-| `past_due` | A renewal charge failed; the gateway is retrying |
-| `unpaid` | Renewal retries were exhausted without success |
-| `canceled` | Ended, by the member, an admin, or the gateway |
-| `expired` | Ended without a successful cancellation flow |
-| `failed` | The subscription could not be created |
+| **Pending** | Waiting on the gateway to confirm the subscription. |
+| **Incomplete** | The gateway reports the first payment as incomplete. |
+| **Trialing** | Inside a trial. |
+| **Active** | Billing normally. |
+| **Past Due** | A payment failed and is outstanding. |
+| **Paused** | Billing is paused at the gateway. The member can update their payment method to resume it. |
+| **Unpaid** | The gateway reports the subscription as unpaid. The member can update their payment method to restore access. |
+| **Canceled** | The subscription was cancelled. |
+| **Expired** | The subscription has ended. |
+| **Failed** | The subscription failed and has ended. |
 
-## Filtering and Sorting
+## The subscription page
 
-Filter the list by **Status** or by **Provider** (Stripe, PayPal, PMPro, MemberPress, or Kadence Memberships), and sort by next billing date, total paid, start date, or status. See [Filters & Search](/docs/billing/filters-and-search) for the full walkthrough.
+Click a row to open it. The heading shows the record number and status, with **More Actions** on the right.
 
-## The Subscription Detail Page
+![Screenshot of a subscription page with Subscription Details, Transaction History, Activity, Member Information and Membership Information](/images/billing/subscriptions/subscriptions-detail.webp)
 
-Opening a subscription shows:
+### Subscription Details
 
-- **Subscription info**: status, provider, recurring amount, billing interval, next billing date, trial end date (if any), and, for a subscription already scheduled to cancel, the date access ends.
-- **Member info**: the subscriber's profile plus their lifetime value across every subscription they hold and a short list of their other memberships.
-- **Membership info**: the Membership Level, its Access Groups, and, for a corporate parent, the seat count.
-- **Transaction History**: every charge, renewal, and refund tied to this subscription, newest first.
-- **Timeline**: subscription lifecycle events (created, trial ended, cancelled, expired) merged with the transaction history into a single reverse-chronological feed.
+This panel holds the billing facts:
 
-## Managing a Subscription
+- **Subscription ID:** the Fluent Members ID, with a copy button.
+- **Gateway Subscription ID:** the ID at Stripe or PayPal, or `--` if there is none.
+- **Membership Level**, **Billing Cycle**, **Payment Gateway**, **Next Billing Date** and **Start Date.**
+- **Card:** the card brand and last four digits, when a card is on file.
+- **Trial Ends**, **Canceled At** and **Ends At:** shown only when they apply.
 
-The actions available depend on how the subscription is billed:
+### Transaction History
 
-| Action | Native Stripe | Native PayPal | Migrated (PMPro / MemberPress / Kadence Memberships) |
-|---|:---:|:---:|:---:|
-| Cancel | ✅ | ✅ | ❌ |
-| Renew (retry a failed payment) | ✅ | ✅ | ❌ |
-| Update payment method | ✅ | ❌ | ❌ |
+This table lists the latest 100 transactions with their **Date**, **Type**, **Amount**, **Payment Method** and **Status**. The panel is hidden when there are none.
 
-Migrated subscriptions are shown for record-keeping (their status, billing history, and next billing date still display) but aren't connected to a live gateway from this screen, so they can't be cancelled or renewed here. Manage them from the original provider, or through Fluent Members' membership status controls, see [Suspending & Cancelling](/docs/members/suspending-and-cancelling).
+- **Type** is **Charge**, **Renewal**, **Refund** or **Partial Refund**.
+- **Status** is **Succeeded**, **Pending**, **Failed**, **Refunded** or **Partially Refunded**.
 
-::: tip Cancelling
-Cancelling a subscription can take effect immediately or at the end of the current billing period, depending on the cancellation mode you choose. See [Subscription Cancellation Modes](/docs/billing/cancelling-a-subscription).
-:::
+A **Refund** column appears when a payment has to be refunded at the gateway instead of here. See [Refunds](/docs/billing/refunds).
 
-::: tip Refunding a charge on this subscription
-Open the transaction in the Transaction History panel and use its refund action. See [Refunds](/docs/billing/refunds).
-:::
+### Activity
+
+This timeline lists events newest first: **Subscription created**, **Trial ended**, **Payment succeeded**, **Payment failed**, **Refund issued**, **Subscription canceled** and **Subscription expired**.
+
+### Member Information
+
+This panel shows the member's name and email, a **Wp User** link to their member page, and **Member Since**.
+
+### Membership Information
+
+This panel shows the **Level**, its **Access Group** list, **Trial Ends** when it applies, and any **Other Membership** the member holds with its status.
+
+## Actions
+
+Click **More Actions** to see what you can do with the subscription:
+
+![Screenshot of the More Actions menu open on a subscription page](/images/billing/subscriptions/subscriptions-more-actions.webp)
+
+- **Refund:** appears when a payment on this subscription still has a refundable amount. See [Refunds](/docs/billing/refunds).
+- **Cancel Subscription:** appears when the subscription can be cancelled from here. See [Cancel a Subscription](/docs/billing/cancelling-a-subscription).
+
+**More Actions** is greyed out when neither applies. Renewing and updating a card are member actions, which members do from the [member portal](/docs/members/portal/membership-details).
+
+## Notices on this page
+
+Two notices can appear above the details:
+
+- **Scheduled cancellation:** "This subscription is scheduled for cancellation at the end of the current billing period." The subscription keeps its status until then.
+- **Billing managed in PayPal:** "Billing for this subscription is managed in PayPal and cannot be cancelled from here." This appears on PayPal subscriptions imported from another plugin. Cancel them in your PayPal business account, or ask the member to cancel in theirs.

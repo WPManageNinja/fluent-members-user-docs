@@ -1,56 +1,60 @@
+---
+title: "Login Popup"
+description: "Show logged-out visitors a login form on the protected page itself, instead of sending them to the WordPress login screen."
+---
+
 # Login Popup
 
-The Login Popup is an optional modal dialog that appears when a visitor tries to access restricted content. Instead of redirecting to a login page, the login form slides in as an overlay on the same page. You can customize the heading, message, button style, and supporting links and optionally have it open automatically on restricted pages.
+The **Login Popup** replaces a protected page's content with a short login notice and opens a login form over the page. Turn it on when you want members to log in and stay on the page they came for.
 
-## Access Login Popup Settings
+## Turn the popup on
 
-Click the **Settings** gear icon in the top-right corner of any Fluent Members screen, then select **Login Popup** from the left-hand menu.
+1. Go to **Fluent Members → Settings → Login Popup**.
+2. Turn on **Login Popup Settings**. The other fields appear.
+3. Change the fields you want, then click **Save Settings**.
 
-### Enabling the Popup
+The popup is off by default. While it is off, no field is visible.
 
-At the top of the card is the **Login Popup Settings** master toggle. Switch it on to activate the feature. When disabled, no popup appears anywhere on your site regardless of other settings.
+![Screenshot of the Login Popup settings page with the Login Popup Settings toggle highlighted](/images/settings/login-popup/login-popup-1.webp)
 
-![Access the Login Popup](/images/settings/login-popup/login-popup-1.webp)
+## Fields
 
-## Configuring the Popup
+The fields control both the notice on the page and the popup:
 
-With the toggle on, the following fields control the popup's appearance and behaviour:
+![Screenshot of the Login Popup settings with every field visible and the default values filled in](/images/settings/login-popup/login-popup-settings-2.webp)
 
-- **Title**: The heading shown at the top of the modal (e.g. *"Login Required"*).
-- **Custom Message**: A short explanation shown under the heading. Supports basic HTML (e.g. links, bold). Defaults to *"Please log in to access this content."*
-- **Button Text**: Label for the Login button (e.g. *"Log In"*).
-- **Button Color**: Background color of the Login button (default `#0073AA`).
-- **Button Text Color**: Text color on the Login button (default `#FFFFFF`).
-- **Button Size**: Choose **Small**, **Medium**, or **Large**.
-- **Register URL**: Optional URL to your registration page. If left empty, defaults to WordPress's built-in `wp-login.php?action=register`.
-- **Register Link Text**: The link text shown below the Login button (e.g. *"Register here"*).
-- **Lost Password URL**: Optional URL to your password-reset page. Defaults to `wp-login.php?action=lostpassword` if empty.
-- **Lost Password Link Text**: The link text for the lost password link (e.g. *"Lost your password?"*).
-- **Auto Open Popup**: When checked, the popup opens automatically whenever a logged-out visitor lands on any restricted page. See below for when to use this.
+| Field | Default | Notes |
+|---|---|---|
+| **Title** | Login Required | Heading of the notice and the popup. |
+| **Custom Message** | Please log in to access this content. | Text under the heading. Basic HTML such as links and bold works. |
+| **Button Color** | `#0073AA` | Background of the login button. |
+| **Button Text Color** | `#FFFFFF` | Text color of the login button. |
+| **Button Text** | Log In | Label of the login button. |
+| **Button Size** | Medium | **Small**, **Medium** or **Large**. |
+| **Register URL** | Empty | Your registration page. Empty uses the WordPress registration page. |
+| **Register Link Text** | Register here | Text of the registration link. |
+| **Lost Password URL** | Empty | Your password reset page. Empty uses the WordPress lost password page. |
+| **Lost Password Link Text** | Lost your password? | Text of the lost password link. |
+| **Auto Open Popup** | On | Opens the popup as soon as a restricted page loads. |
 
-Once you have set your fields, click **Save Settings**.
+## What visitors see
 
-![Login Popup settings configured](/images/settings/login-popup/login-popup-settings-2.webp)
+With the popup on, a logged-out visitor who opens a single post or page they cannot access sees the notice in place of the content.
 
-## Auto Open Popup
+![Screenshot of a protected article showing the Login Required notice and the Log In button in place of the content](/images/settings/login-popup/login-popup-notice.webp)
 
-When **Auto Open Popup** is unchecked (the default), the popup only appears on pages where the linked [Access Group's Unauthorized Access](/docs/access-groups/unauthorized-access) action is set to **Show a login prompt**. The popup is triggered by the restriction engine, not on every page.
+**Auto Open Popup** decides what happens next:
 
-When **Auto Open Popup** is checked, the popup opens automatically on any page where the visitor is not logged in and any content is restricted regardless of the Access Group's action setting.
+- **On:** The popup opens right away.
+- **Off:** The popup opens when the visitor clicks the button in the notice.
 
->[!Note]
-> Auto Open applies site-wide. If your site has a mix of free and members-only content, enabling this will cause the popup to open on free pages too. Leave it unchecked and rely on the Access Group's **Show a login prompt** action to control exactly where the popup fires.
+The popup holds **Username or Email**, **Password** with a show or hide control, **Remember me**, the login button, and your two links.
 
+![Screenshot of the login popup open over a protected page with username, password, Remember me and the Log In button](/images/settings/login-popup/login-popup-modal.webp)
 
-## How the Popup Works
+After a correct login, the page reloads and shows the content the member can access. A wrong login shows "Invalid username or password." inside the popup. After 5 attempts from one IP address in 5 minutes, the popup shows "Too many login attempts. Please try again later."
 
-The popup is a styled wrapper around WordPress's standard authentication flow:
+> [!Note]
+> Turning the popup on applies to every singular page a logged-out visitor cannot access, and the notice replaces that page's content. Archives and feeds are not affected. If an Access Group's [Unauthorized Access](/docs/access-groups/unauthorized-access) action is set to redirect, the redirect wins and the visitor never sees the notice.
 
-1. The visitor clicks a restricted link or lands on a restricted page.
-2. The popup slides in as an overlay no page redirect occurs.
-3. The visitor submits their credentials inside the popup.
-4. WordPress authenticates the request. If correct, the popup closes and the page reloads to show the member view. If incorrect, the WordPress error message appears inside the popup.
-
-Because it uses WordPress's native `wp-login.php` action under the hood, everything WordPress login supports two-factor authentication plugins, custom login redirects, application passwords works inside the popup as well.
-
-
+The popup form also opens, even with **Login Popup Settings** off, when a logged-out visitor clicks a checkout button on a restriction message or on a [partial content lock](/docs/settings/partial-content-lock). After logging in there, the visitor continues to that checkout.

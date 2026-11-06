@@ -1,4 +1,7 @@
 import type { DocTree, TreeNode } from './types'
+import levels from './levels.json'
+import access from './access.json'
+import product from './product.json'
 
 
 
@@ -8,7 +11,7 @@ import type { DocTree, TreeNode } from './types'
  * (appearance) stay before the site-wide hub (product, `strip: false`), whose nodes
  * overlap with them.
  */
-export const trees: DocTree[] = []
+export const trees: DocTree[] = [levels as DocTree, access as DocTree, product as DocTree]
 
 export function treeById(id: string): DocTree | undefined {
   return trees.find((t) => t.id === id)

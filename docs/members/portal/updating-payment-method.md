@@ -1,111 +1,65 @@
-# Updating Payment Method
-::: warning Requires Fluent Members Pro
-The Update Payment Method button only appears when the membership is on Native Payment (Stripe via Fluent Members Pro). Memberships sold through FluentCart, WooCommerce, Fluent Forms, or Paymattic update their payment method inside the *host* plugin's portal, not here.
-:::
-
-Members can swap the card on file for an active subscription without contacting you. This page walks the flow they see in the portal.
-
-**Here's what you'll learn:**
-- When the Update Payment Method button is visible.
-- The Stripe Elements form that opens.
-- What gets stored after success.
-- Common reasons it doesn't go through.
-
-**Before we start:** The member is signed in, holds an Active or Trial Native-Payment membership, and Stripe is connected ([Stripe Setup](/docs/settings/payment-settings/stripe-setup)).
-
-::: warning Screenshot pending
-Front-end screenshot of the Update Payment Method modal isn't in our reference folder yet.
-
-[Screenshot needed: front-end Member Portal with Stripe Elements modal open for updating card]
-:::
-
+---
+title: "Update Payment Method (Pro)"
+description: "How members replace the card on a Stripe subscription from the Member Portal."
 ---
 
-## Step 1: Member Clicks Update Payment Method
+# Update Payment Method (Pro)
 
-On an Active or Trial membership card whose provider is Native Payment (Stripe), the **Update Payment Method** button is visible alongside the Cancel button. Member clicks it.
+**Update Payment Method** (Pro) replaces the card on a Stripe subscription from the **Member Portal**. Members use it when a card is about to expire or a payment has failed. No card details pass through your site's forms, because the fields come from Stripe.
 
-A modal opens with **Stripe Elements**, Stripe's secure card-entry widget, embedded into your site.
+## When members can use it
 
-::: tip In plain language
-The modal isn't a Fluent Members form. It's Stripe's own widget, hosted on your page via JavaScript. Card details never touch your server, they go straight from the member's browser to Stripe.
-:::
+**Update Payment Method** appears in the **More Action** menu when all of these are true:
 
----
+- [Stripe is connected](/docs/settings/payment-settings/stripe-setup) on your site.
+- The membership has a subscription billed through Fluent Members Stripe.
+- The subscription is active, trialing, past due, unpaid or paused.
+- The subscription isn't scheduled to cancel.
 
-## Step 2: Member Enters New Card Details
+PayPal subscriptions don't have this action. Memberships sold through FluentCart, WooCommerce, Fluent Forms or Paymattic are also excluded, because those plugins hold the payment details.
 
-The form asks for card number, expiry, CVC, and (if you've configured it in Stripe) postal/zip code.
+A member whose membership was suspended after a failed payment can still use it, as long as the subscription meets these rules.
 
-Stripe runs its standard validation:
-- Number is a valid card.
-- Expiry isn't in the past.
-- The card type is supported by your Stripe account.
+## Update the card
 
-If 3D Secure / SCA is required for the buyer's region, Stripe presents the bank's authentication challenge before continuing.
+1. Open the Member Portal and click **Manage** on the membership.
+2. Click **More Action**, then **Update Payment Method**.
 
----
+    <!-- TODO(screenshot): updating-payment-method-1
+      screen: Member Portal, Membership Details, More Action menu
+      state: menu open with Update Payment Method visible
+      data: a membership with a real Stripe subscription
+      highlight: Update Payment Method menu item
+      view: frontend
+      alt: Screenshot of the More Action menu with an arrow on Update Payment Method
+      reason: needs a live Stripe subscription; the test subscription returns no billing data
+    -->
 
-## Step 3: Member Clicks Update
+3. Enter the new card details in the **Update Payment Method** dialog.
 
-When the form is valid and they click **Update**, Fluent Members:
+    <!-- TODO(screenshot): updating-payment-method-2
+      screen: Member Portal, Update Payment Method dialog
+      state: Stripe payment form loaded, Go Back and Update Card buttons visible
+      data: a membership with a real Stripe subscription, Stripe test keys
+      highlight: -
+      view: frontend
+      alt: Screenshot of the Update Payment Method dialog with the Stripe card form and the Update Card button
+      reason: needs a live Stripe subscription; the test subscription returns no billing data
+    -->
 
-1. Creates a Stripe **Setup Intent** (no charge happens, just card attachment).
-2. Stripe attaches the new card to the customer.
-3. The subscription's default payment method is updated.
-4. The local `current_payment_method` on the subscription is recorded.
+4. Click **Update Card**. If the bank asks for authentication, the member completes it to finish.
 
-The modal closes. The portal shows a success toast: *"Payment method updated."*
+**Go Back** closes the dialog without changing anything.
 
-::: warning No retry on the failed invoice
-Updating the card *does not* automatically retry a failed invoice. If the previous month's charge failed and the subscription is now `past_due`, the member also needs to click **Renew**, see [Renewing a Failed Subscription](/docs/members/portal/renewing-a-membership).
-:::
+## What happens next
 
----
+The dialog closes and the details page reloads. **Payment Method** shows the new card's last 4 digits, and **Payment Method Update** shows the date.
 
-## Rate-Limited to Prevent Abuse
+If the subscription had an unpaid invoice, Fluent Members also tries to collect it on the new card, so the member doesn't need to do anything else. When that works, **Billing Status** and the membership status update on the reloaded page. If the charge fails, the error shows in the dialog and the member can try again.
 
-Each member can attempt this update a limited number of times per hour (default 5 attempts per hour). If they hit the limit, the button is greyed out with a tooltip. The limit prevents abuse of Setup Intents (each is a small Stripe API call) and is configurable via developer hooks if needed.
+## Limits
 
----
+Each customer gets 5 update attempts per hour. After that, the member sees **Too many payment method update attempts. Please try again later.**
 
-## A Real Example: Mike's Card Expired
-
-Mike's bank issued him a new card. He visits the portal and:
-
-1. Sees a banner on his Pro Yoga card: *"Your card on file has expired."* (This banner appears when the most recent charge failed because of an expired card.)
-2. Clicks **Update Payment Method**.
-3. Enters his new card; Stripe accepts it.
-4. Clicks **Update** → toast confirms.
-5. Now also clicks **Renew** to retry his missed renewal payment (separate flow, see [Renewing a Failed Subscription](/docs/members/portal/renewing-a-membership)).
-
-His Pro Yoga is fully reactivated in under a minute.
-
----
-
-## What Admins Can Do Here
-
-Nothing, this flow is member-only. Admins can't update a member's card on their behalf (Stripe doesn't permit it for compliance reasons). If a member can't access the portal, they need to contact you for the link, but they still have to submit the card themselves.
-
----
-
-## Things That Trip People Up
-
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| Update button missing | Membership isn't on Native Payment, or status is Cancelled/Expired. | Confirm provider and status. |
-| Stripe Elements modal stays blank | Stripe.js failed to load (CSP, ad-blocker, etc.). | Whitelist `js.stripe.com` in CSP / ad-blocker. |
-| 3D Secure modal appears repeatedly | Bank requires SCA on the card. | Member needs to complete the challenge each time. |
-| Toast says updated but next charge still fails | Card has insufficient funds, or bank declines for fraud. | Different card. |
-| "Too many attempts" error | Rate limit hit. | Wait an hour, or raise the limit via developer hook. |
-
----
-
-## What's Next?
-
-- **→ [🔒 Pro · Renewing a Failed Subscription](/docs/members/portal/renewing-a-membership)**: what to do after the card is updated.
-- **→ [Cancelling](./cancelling)**: the alternative flow.
-
-**Recommended reading:**
-- [Stripe Setup](/docs/settings/payment-settings/stripe-setup): make sure Stripe is connected first.
-- [Status Reference](/reference/membership-statuses): understand `past_due` and `expired`.
+> [!Note]
+> Only the member can do this. There is no admin screen for entering a card on a member's behalf.

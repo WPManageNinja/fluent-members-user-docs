@@ -1,64 +1,70 @@
-# Filters & Search
+---
+title: "Filter & Search (Pro)"
+description: "Find a record in the Subscriptions and One-time lists with status tabs, search, column sorting, column visibility and pagination."
+---
 
-Once your site has been running for a while, [Subscriptions](/docs/billing/subscriptions) and [One-Time Purchases](/docs/billing/one-time) can each grow to hundreds or thousands of rows. Both views share the same filter-and-search pattern, so once you know one, you know both.
+# Filter & Search (Pro)
+
+The [Subscriptions](/docs/billing/subscriptions) and [One-time](/docs/billing/one-time) lists (Pro) share the same tools for finding a record: status tabs, search, column sorting and pagination. Each tool works on one list at a time, so a record in the other list won't show up.
+
+## Status tabs
+
+The tabs above the table filter by status. The last tabs sit under **More**:
+
+| List | Tabs |
+|---|---|
+| **Subscriptions** | **All**, **Active**, **Trialing**, **Past due**, then **Paused**, **Canceled** and **Expired** under **More** |
+| **One-time** | **All**, **Active**, **Trial**, **Cancelled**, then **Suspended** under **More** |
+
+Records with any other status, such as a **Pending** subscription or an **Expired** one-time membership, appear under **All** only.
+
+## Search
+
+Click the magnifier icon to open the search box, then type. Results update as you type, and **Cancel** closes the box and clears the search.
+
+![Screenshot of the Subscriptions list with the search box open and a name entered](/images/billing/filters-and-search/filters-and-search-search.webp)
+
+What search matches depends on the list:
+
+| List | Matches |
+|---|---|
+| **Subscriptions** | Part of the member's name or email. The full **Subscription ID** or **Gateway Subscription ID**. For [subscriptions from other plugins](/docs/billing/provider-subscriptions), the numeric subscription ID in that plugin. |
+| **One-time** | Part of the member's name or email only. |
 
 > [!Note]
-> Both views are only available with Fluent Members Pro.
+> The **One-time** search box shows the same placeholder as **Subscriptions**, "Search by member, subscription or gateway ID", but it only searches names and emails.
 
-## Status Filter
+## Sort
 
-Filter the list by status. The options differ slightly between the two views:
+Click a column header with arrows to sort by it. Click again to reverse the order or clear the sort. You can only sort by these columns:
 
-| View | Status options |
-|---|---|
-| Subscriptions | Pending, Incomplete, Trialing, Active, Past Due, Unpaid, Cancelled, Expired, Failed |
-| One-Time Purchases | Active, Trial, Pending, Cancelled, Expired, Suspended |
+| List | Sortable columns | Default |
+|---|---|---|
+| **Subscriptions** | **Next Billing**, **Total Paid**, **Started** | **Started**, newest first |
+| **One-time** | **Purchased** | **Purchased**, newest first |
 
-## Provider Filter
+## Choose columns
 
-Filter by where the record came from:
+Click the **Columns** icon beside the magnifier and tick the columns you want to see:
 
-| View | Provider options |
-|---|---|
-| Subscriptions | Stripe, PayPal, PMPro, MemberPress, Kadence Memberships |
-| One-Time Purchases | Stripe, PayPal, FluentCart, WooCommerce, Fluent Forms, Paymattic, PMPro, MemberPress, Kadence Memberships, Manual |
+![Screenshot of the Columns menu open with its list of column checkboxes](/images/billing/filters-and-search/filters-and-search-columns.webp)
 
-## Search Field
+- **Subscriptions:** **Level**, **Status**, **Gateway**, **Next Billing**, **Total Paid**, **Started** and **Last Payment**.
+- **One-time:** **Level**, **Status**, **Gateway**, **Amount** and **Purchased**.
 
-Search matches differently depending on the view:
-
-- **Subscriptions**: the member's name or email address, the subscription's own ID, or the provider's gateway ID (for example, a Stripe subscription ID).
-- **One-Time Purchases**: the member's name or email address only.
-
-## Sorting
-
-Both views can be sorted, click the column header or use the sort control:
-
-| View | Sort options |
-|---|---|
-| Subscriptions | Next Billing Date, Total Paid, Started, Status |
-| One-Time Purchases | Purchased, Amount, Status |
-
-Both default to descending order (newest or highest first, or, for status, reverse-alphabetical).
+The other columns are always on. Your choice is saved in your browser, separately for each list.
 
 ## Pagination
 
-The bottom of the table shows the total row count, a per-page selector (default 10), and page controls. Increase the per-page value to 25 or 50 when reviewing a large volume.
+The footer shows the total count, a per-page selector and page numbers. Each list shows 10 rows per page by default, and you can choose 10, 20, 50, 80, 100, 120 or 150.
 
-## Common Lookup Patterns
+![Screenshot of the table footer with the total count, per-page selector and page numbers](/images/billing/filters-and-search/filters-and-search-footer.webp)
 
-**Find every billing record for a specific member:**
-Search their name or email address in whichever view holds the record you're after, Subscriptions if you're chasing a recurring plan, One-Time Purchases if it was a single purchase or a manual grant.
+The footer is hidden when all the records fit on one page.
 
-**Check for failed renewal payments:**
-Open Subscriptions, filter by **Past Due**, and open a row to see the failure detail in its Transaction History panel.
+## Common lookups
 
-**Confirm a refund was processed:**
-Open the member's subscription or one-time purchase, and check its Transaction History panel for a `refund` row with status `refunded`.
-
-**Find every subscription on a specific gateway:**
-Open Subscriptions and filter by **Provider**.
-
-::: tip Wrong view, no results?
-If a search returns nothing, the record may be in the other view. A recurring plan lives in Subscriptions; anything else, one-time payments, manual grants, migrated non-recurring orders, lives in One-Time Purchases.
-:::
+- **All billing for one member:** search their name or email in **Subscriptions**, then in **One-time**.
+- **Failed renewals:** open **Subscriptions** and click **Past due**. Open a row and check **Transaction History** for the **Failed** payment.
+- **A refund went through:** open the record and look in **Transaction History** for a **Refund** or **Partial Refund** row.
+- **A subscription you saw in Stripe or PayPal:** paste its full subscription ID from the gateway into the **Subscriptions** search.

@@ -1,69 +1,84 @@
+---
+title: Dashboard Overview
+description: Read the Fluent Members dashboard, from the stat cards and trend charts to the setup checklist and the recent activity feed.
+---
+
 # Dashboard Overview
 
-The **Fluent Members** Dashboard is your central hub for monitoring your membership site. When you open the plugin, this screen gives you a real-time snapshot of your member growth, access rules, and recent account activity.
+The **Dashboard** is the first screen you see when you open Fluent Members. Use it to check how many members you have, what they paid this month, and what changed recently on your site.
 
-## Access the Dashboard
+Go to **Fluent Members → Dashboard**, or click **Dashboard** in the top navigation from any Fluent Members screen.
 
-Log in to your WordPress dashboard and click **Fluent Members** in the left sidebar, the Dashboard opens by default. Once inside the plugin, its own top navigation bar (**Dashboard**, **Membership Levels**, **Access Groups**, **Members**, and **Orders** for Pro sites) stays visible, click **Dashboard** from any of those screens to come back here.
+![Screenshot of the Fluent Members dashboard with the greeting, four stat cards, the Business trends chart, and the Recent Activity panel](/images/dashboard/dashboard/dashboard-overview.webp)
 
-## Greeting
+The screen opens with a greeting and your site title. If you have payments in a currency other than your site currency, a notice above the greeting lists the currencies left out of the totals. Click its close icon to dismiss it.
 
-The Dashboard opens with a personal greeting, your avatar, a time-of-day greeting ("Good morning" / "Good afternoon" / "Good evening"), and your display name.
+## Stat cards
 
-## Top Statistic Cards
+Four cards sit under the greeting:
 
-Below the greeting, four quick-glance statistic cards summarize your site's current status:
+| Card | What it shows |
+|------|---------------|
+| **Active members** | People who hold at least one membership with the status Active or Trial. Each person counts once. |
+| **Revenue** | Payments received this calendar month, minus refunds. |
+| **Recurring revenue** | The monthly value of your active and trialing subscriptions. A yearly subscription counts as one twelfth of its price. |
+| **Member churn** | Members who cancelled this month, as a percentage of current active members plus those cancellations. |
 
-- **Total Members:** The complete count of WordPress users who have a membership record, including cancelled or expired accounts.
-- **Active Members:** The number of users who currently have an active membership (`active` or `trial` status) and can access your protected content.
-- **Access Groups:** The total number of [Access Groups](/docs/access-groups/) you have created to protect your site's content, including both active and inactive groups.
-- **Membership Levels:** The total number of [Membership Levels](/docs/levels/) you have created, published or not.
+> [!Note]
+> **Revenue**, **Recurring revenue**, and the money figures further down count only Stripe and PayPal payments taken through Fluent Members (Pro), including migrated subscriptions. Sales through FluentCart, WooCommerce, Fluent Forms, or Paymattic are not included. Test mode payments are left out of every figure except **Recurring revenue**.
 
-::: tip Reading the gap
-The difference between *Total Members* and *Active Members* is your churn pile: cancelled, expired, and suspended accounts. A healthy site keeps this gap small relative to total members.
-:::
+## Business trends
 
-![Fluent Members Dashboard: greeting, top statistic cards, Membership Activity chart, Quick Actions, Latest Memberships, and Expiring Soon](/images/getting-started/dashboard/dashboard-overview-1.webp)
+**Business trends** plots three lines over time:
 
-## Performance Charts
+- **Growth:** New memberships created in the period. A member who joins two levels counts twice.
+- **Revenue:** Payments received minus refunds, read against the left axis.
+- **Churn:** Memberships now Cancelled, placed in the period when the record last changed.
 
-Scrolling down, three charts help you visualize your site's performance over time.
+The chart opens on the current month and the five months before it. Click the date range to choose another one, or pick a preset: **Last 7 days**, **Last 30 days**, **Last 3 months**, **Last 6 months**, or **Last 12 months**. Ranges up to 31 days plot each day, ranges up to 120 days plot each week, and longer ranges plot each month. The longest range is about 24 months.
 
-#### Membership Activity
+Use the two icons beside the date range to switch between a bar chart and a line chart. Your choice is remembered in this browser.
 
-This bar chart compares your **New Signups** against **Cancellations** month by month. Each bar is split into two colours: signups created that month, and memberships moved to `cancelled` that month. Renewals are not counted as new signups. Use this chart to see quickly whether your membership base is growing or shrinking.
+## Membership lifecycle
 
-#### Membership Trends
+**Membership lifecycle** shows four figures for the current calendar month:
 
-This line chart tracks the running total of **Active** versus **Suspended** accounts over time. Unlike the bar chart, this shows totals at each point in time, not new events for that period. A steadily rising active line means your base is growing. A spike in the suspended line may indicate billing issues worth investigating.
+![Screenshot of the Membership lifecycle card with Renewals, Cancellations, Refunds, and Trial conversion](/images/dashboard/dashboard/dashboard-lifecycle.webp)
 
-#### Membership Recap
+- **Renewals:** Successful renewal payments. The line below shows how many active subscriptions bill in the next 30 days.
+- **Cancellations:** Members who cancelled. The line below repeats the member churn percentage.
+- **Refunds:** Refunds issued, with the total amount below.
+- **Trial conversion:** The share of subscriptions started this month with a trial that are now active. The line below counts trials ending in the next 7 days.
 
-A donut chart with your total member count in the center, and a color-coded slice per Membership Level below it (for example, *Free Member*, *Starter*, *Pro*), each with its own member count. Click **View More** at the bottom of the card to jump to the full Levels list.
+## Membership Activity
 
-![Fluent Members Dashboard: Membership Trends line chart and Membership Recap donut chart](/images/getting-started/dashboard/dashboard-overview-2.webp)
+**Membership Activity** stacks **Signups** and **Cancellations** for each period, with a line for their combined total. It has its own date range, separate from **Business trends**, and works the same way.
 
-## Side Panel Management
+![Screenshot of the Membership Activity chart with stacked Signups and Cancellations bars](/images/dashboard/dashboard/dashboard-membership-activity.webp)
 
-On the right side of the screen, you will find helpful tools for day-to-day management.
+## Revenue by Membership
 
-#### Quick Actions
+**Revenue by Membership** ranks your top three levels by this week's revenue so far. Each row shows the level, its active member count, and the amount. Refunds are not subtracted here. The figure beside **Performance** compares this week with the same part of last week. The week starts on the day set under **Settings → General** in WordPress.
 
-Use these shortcut buttons to quickly **Create Membership Level**, **Add Access Group**, or jump straight to your global **Settings**. **Create Membership Level** opens the same modal as **Membership Levels → Add New Level**; **Add Access Group** opens the Create Access Group modal.
+![Screenshot of the Revenue by Membership card with two levels ranked by revenue and a comparison with last week](/images/dashboard/dashboard/dashboard-revenue-by-membership.webp)
 
-#### Latest Memberships
+When there is no revenue this week, the card says so instead.
 
-A list showing the five most recently created memberships. Each row shows an avatar, the member's name, the Membership Level they joined on, and a relative "Joined [X] ago" timestamp. Click any row to view that member's detailed profile and full membership history.
+## Getting Started
 
-#### Expiring Soon
+The **Getting Started** card appears on the right until every setup step is done, with a count such as `2 out of 4 done`. Click a step to open the screen that completes it:
 
-This section highlights members whose access will expire within the next 30 days, each row shows the member's name, their Membership Level, and the exact expiry date, so you can send them a quick renewal reminder. If the list is empty, you will see *"No recent expirations."*
+- **Setup Pages:** Opens **General Settings**. Done when a member portal page is set.
+- **Add Access Group:** Opens **Access Groups**. Done when at least one group exists.
+- **Add Membership Level:** Opens **Membership Levels**. Done when at least one level exists.
+- **Setup Payment:** Opens **Payment Settings**. Done when a payment method is connected, or when a level has a paywall product or form ready to sell.
 
-## Important Notes
+## Recent Activity
 
-::: warning Before you draw conclusions from the numbers
-- **User counts:** The *Total Members* count only tracks users with a Fluent Members record. It does not count standard WordPress users who have never interacted with your membership plans.
-- **Dark mode:** Toggle a dark mode view with the moon icon in the top right corner of the Dashboard navigation bar, right next to the **Settings** shortcut (gear icon).
-:::
+**Recent Activity** lists the latest 20 events, newest first, such as a member joining a level or an admin creating a pricing plan. Use the tabs to filter the feed:
 
-The Fluent Members Dashboard is designed to give you instant clarity on your site's health. By checking this screen regularly, you can easily track signups, monitor cancellations, and navigate directly to your most used settings.
+- **All:** Every event.
+- **Members:** Actions taken by members.
+- **Admin:** Actions taken by admins and automatic system events.
+
+Dashboard figures can take up to five minutes to refresh. To open the people behind the numbers, go to the [Members list](/docs/members/).

@@ -1,85 +1,65 @@
+---
+title: "Pricing: Paywalls"
+description: "Link a Membership Level to a product or payment form in FluentCart, FluentForms, Paymattic or WooCommerce."
+---
+
 # Pricing: Paywalls
 
-A **Paywall** connects a **Membership Level** to an existing product or payment form in another plugin. The buyer pays through that plugin's checkout; **Fluent Members** grants the level when payment completes.
+A **Paywall** links a level to a product or payment form in another plugin. The visitor pays through that plugin's checkout, and Fluent Members grants the level when payment completes. Use a paywall when you already sell through FluentCart, FluentForms, Paymattic or WooCommerce (Pro).
 
-Use **Paywalls** when you already sell through FluentCart, Fluent Forms, Paymattic, or WooCommerce (Pro). Use [Pricing: Native Payment](/docs/levels/pricing-native) when you want built-in Stripe checkout inside Fluent Members Pro.
+You need a level created with one of these pricing types, and that plugin active on your site. See [Creating a Level](/docs/levels/creating). Each level uses one provider, shown beside **Pricing Plan** on the tab.
 
-## Access the Pricing Tab
+## Add a paywall
 
-Log in to your WordPress admin, go to **Fluent Members → Levels**, open the level you want to sell, then click the **Pricing** tab. If no plan exists yet, you will see *"No pricing plan has been added yet"*. Click **+ Add Pricing** in the top right.
+1. Go to **Fluent Members → Membership Levels**, open the level and click the **Pricing** tab.
+2. Click **Add Pricing**.
 
-![Pricing tab, empty state](/images/levels/pricing-paywalls/level-pricing-empty.webp)
+    ![Screenshot of the Pricing tab of a FluentCart level with no plans and an arrow pointing to Add Pricing](/images/levels/pricing-paywalls/pricing-paywalls-empty.webp)
 
-## Step 1: Choose Paywalls
+3. Under **Select Pricing**, search for and choose a product or form. Items already linked to this level can't be chosen again.
 
-In the **Add Pricing** modal, open the **Pricing Type** dropdown and select **Paywalls**.
+    ![Screenshot of the Add Pricing modal with the Select Pricing list open, showing FluentCart products](/images/levels/pricing-paywalls/pricing-paywalls-product-list.webp)
 
-- **Paywalls:** Sell through a connected payment plugin (this guide).
-- **Native Payment:** Built-in Stripe checkout in Fluent Members Pro.
+4. Click **Add**.
 
-Click **Add** after you select a product in Step 2.
+Repeat these steps to link more products to the same level.
 
-![Choose Paywalls in the Add Pricing modal](/images/levels/pricing-paywalls/level-pricing-type-dropdown-2.webp)
+> [!Note]
+> FluentForms and Paymattic list only forms with a single fixed-price or recurring item. Forms with custom payment inputs, donation fields or multiple pricing options are not supported.
 
-## Step 2: Select a Product or Form
+### Create a FluentCart product from the modal
 
-With **Paywalls** selected, click **Select Pricing** and search or browse the grouped list. Items come from each active host plugin:
+On a FluentCart level, click **Create Pricing** in the modal, enter a **Title** and **Price**, and click **Add**. This creates a one-time payment product. To go back to the list, click **Select an existing product**.
 
-| Group | What appears |
-|-------|----------------|
-| **FluentCart Products** | FluentCart products linked to your store |
-| **Fluent Forms** | Payment forms with one fixed-price item |
-| **Paymattic** | Paymattic forms with one fixed-price item |
-| **WooCommerce** *(Pro)* | WooCommerce products with a single fixed price |
+![Screenshot of the Add Pricing modal with the Title and Price fields for a new FluentCart product](/images/levels/pricing-paywalls/pricing-paywalls-create-form.webp)
 
-Pick the product or form you want (for example, a FluentCart product), then click **Add** at the bottom of the modal.
+On a FluentForms, Paymattic or WooCommerce level, the modal links to that plugin so you can create a form or product there.
 
-::: Info
-Only payment forms with a **single fixed-price or subscription item** appear in the list. Products or forms with custom amounts, donation fields, or multiple pricing options inside one form are not supported. Create a dedicated product or form for this level instead.
-:::
+## Manage linked products
 
-![Select a FluentCart product in the Paywalls modal](/images/levels/pricing-paywalls/level-pricing-paywalls-typeahead-3.webp)
+Each product or variation appears as its own row with its price. Click **View** to open the product's public page, or open the row's menu:
 
-## Step 3: Review Linked Products
+![Screenshot of linked FluentCart product rows on the Pricing tab with a row menu open and an arrow pointing to Copy Checkout Link](/images/levels/pricing-paywalls/pricing-paywalls-rows.webp)
 
-After you save, the **Pricing Plan** card lists each linked product as its own row with a thumbnail, title, and price. You can add more than one paywall to the same level by clicking **+ Add Pricing** again.
+- **Edit:** Opens the product or form in its own plugin, in a new tab.
+- **Move up** and **Move down:** Change the display order. You can also drag rows by their handle and click **Save**.
+- **Copy Checkout Link:** Copies a direct link to the checkout.
+- **Delete:** Removes the link from this level. The product stays in its own plugin. If a product has several variations, this removes all of them from the level.
 
-### Manage a Linked Product
+## If the provider isn't available
 
-Each product row has a **three-dot icon** on the right. Click it to open:
+The **Pricing** tab tells you when a level can't be sold:
 
-- **View Product:** Open the linked product in the host plugin.
-- **Edit Product:** Change which product or form is linked to this paywall row.
-- **Delete Product:** Remove this paywall from the level.
+- **FluentCart isn't active:** The tab offers **Install FluentCart**, and **Open plugin browser** for other options.
+- **Another provider's plugin isn't active:** The tab shows **The [plugin] plugin is not active.** with a **Go to Plugins** button.
+- **A WooCommerce level without Pro:** The tab shows **WooCommerce pricing requires Fluent Members Pro.**
 
-![View, edit, or delete a linked product](/images/levels/pricing-paywalls/edit-product-4.webp)
+## Paywalls compared with Native Payment
 
-### Direct Checkout
-
-On any linked product row, the **three-dot** menu also includes **Direct Checkout**. Use this to open or copy the checkout link for that specific product so visitors can buy without going through the membership shortcode first.
-
-![Direct Checkout option on a paywall row](/images/levels/pricing-paywalls/direct-checkout-5.webp)
-
-:::Important Note
-Removing an Access Group immediately removes members' access to its protected content. If you only want to stop new signups, keep the Access Group attached and set it to Inactive instead.
-:::
-
-## What Happens at Checkout
-
-When a visitor clicks the buy button on your `[fluent_membership_level]` pricing card:
-
-1. They are sent to the host plugin's checkout (FluentCart cart, Fluent Forms form, Paymattic form, or WooCommerce checkout).
-2. They pay using the gateway configured in that plugin (Stripe, PayPal, etc.).
-3. The host plugin fires a payment-completed event.
-4. **Fluent Members** matches the product or form to the linked level and activates the membership.
-
-## Paywalls vs Native Payment
-
-| | **Paywalls** | **Native Payment** |
+| | **Paywalls** | **[Native Payment](/docs/levels/pricing-native)** |
 |---|---|---|
-| Requires Pro | No (WooCommerce paywalls need Pro) | Yes |
-| Checkout location | Host plugin | Built into Fluent Members |
-| Best for | Sites already using FluentCart, Forms, Paymattic, or WooCommerce | One-tool Stripe checkout inside Fluent Members |
+| Requires Pro | No (WooCommerce needs Pro) | Yes |
+| Where visitors pay | The other plugin's checkout | Built into Fluent Members |
+| Best for | Sites already selling through that plugin | Sites that want one tool for membership and checkout |
 
-
-Your paywall is set up. Next, [attach Access Groups](/docs/levels/attaching-access-groups) so members can access your protected content.
+Next, [attach Access Groups](/docs/levels/attaching-access-groups) so buyers unlock your protected content.

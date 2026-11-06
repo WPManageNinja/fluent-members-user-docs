@@ -1,50 +1,59 @@
+---
+title: "Payment Settings"
+description: "See which payment gateways are ready to take payments, and open their settings."
+---
+
 # Payment Settings
 
-The **Payment Settings** page lets you manage the payment gateways used for [Native Payment](/docs/levels/pricing-native) in Fluent Members. Here, you can view the available gateways, check their connection status, and open their settings for configuration.
+**Payment Settings** lists the gateways for [native payments](/docs/levels/pricing-native) and shows whether each one is ready to take payments. Use it to check a gateway's status or open its settings.
 
-> [!Note]
-> These settings apply only to Native Payments. If you're using payment integrations such as FluentCart, Fluent Forms, or Paymattic, you don't need to configure anything on this page.
+Native payments need **Fluent Members Pro** (Pro). If you sell through FluentCart, Fluent Forms, Paymattic or WooCommerce with [paywalls](/docs/levels/pricing-paywalls), you do not need to configure anything here.
 
-## Access Payment Settings
+Go to **Fluent Members → Settings → Payment Settings**.
 
-Click the **Settings** gear icon in the top-right corner of any Fluent Members screen, then select **Payment Settings** from the left-hand menu.
+<!-- TODO(screenshot): payment-settings-1
+  screen: Settings > Payment Settings
+  state: Stripe connected in test mode, showing the Test Mode badge and a webhook badge, the test mode notice at the top, PayPal showing Disabled
+  data: Default gateway cards
+  highlight: Manage on the Stripe card
+  view: admin
+  alt: Screenshot of Payment Settings with the Stripe and PayPal cards, status badges and Manage buttons
+  reason: needs the develop build on the local site
+-->
 
-![Payment Settings page](/images/settings/payment/payment-settings/payment-settings-1.webp)
+## Gateway cards
 
-## Available Gateways
+There is one card each for **Stripe** and **PayPal**. Both take one-time and recurring payments. A card shows the gateway name, its status, a webhook badge once connected, a short description and a **Manage** button.
 
-The Payment Settings page shows one card for each supported native gateway. Currently two gateways are available; both require **Fluent Members Pro**:
+The status badge means:
 
-| Gateway | Notes |
+| Badge | Meaning |
 |---|---|
-| **Stripe** | Credit/debit cards via Payment Intents and Setup Intents. Supports one-time and recurring subscriptions. |
-| **PayPal** | PayPal checkout via REST PPCP. Supports one-time and recurring subscriptions. Added in v1.1.0. |
+| **Disabled** | The gateway cannot take payments. It is turned off, not connected, or its webhook check has not passed. |
+| **Test Mode** | Stripe is taking test payments. No real money moves. |
+| **Sandbox Mode** | PayPal is taking sandbox payments. No real money moves. |
+| **Live Mode** | The gateway is taking real payments. |
 
-Each gateway card includes:
+The webhook badge appears on a connected gateway:
 
-* **Gateway Name:** Displays the name and logo of the payment gateway.
-* **Status:** Shows an **Active** badge when the gateway is enabled and configured correctly.
-* **Description:** Provides a brief overview of the gateway.
-* **Manage:** Opens the gateway settings for configuration.
+- **Webhook verified:** The webhook check passed for the current mode.
+- **Webhook not verified:** The check has not passed. On a public site, the gateway stays **Disabled** until it does.
 
-## Active vs Inactive
+Only a gateway with a status other than **Disabled** can be used at checkout.
 
-A gateway shows the **Active** badge when:
+## Test mode notice
 
-- Its master toggle is switched on
-- Valid API credentials are saved for the current mode (Test or Live)
-- The plugin can reach the gateway without an API error
+When a gateway is in test or sandbox mode, a notice at the top says that checkout will not take real payments and asks you to switch to live mode before you start selling. On a local site it adds that the site cannot receive payment webhooks, so renewals will not sync there.
 
-If any of these conditions is not met, the badge disappears and the gateway will not appear as a payment option in Native Payment pricing plans.
+## Set up a gateway
 
-## Stripe (Pro)
+Click **Manage** on a card to open its settings:
 
-Click **Manage** on the Stripe card to open [Stripe Setup](/docs/settings/payment-settings/stripe-setup), where you configure your API keys, select Test or Live mode, and register the webhook endpoint.
+- [Set up Stripe](/docs/settings/payment-settings/stripe-setup) (Pro)
+- [Set up PayPal](/docs/settings/payment-settings/paypal-setup) (Pro)
 
-## PayPal (Pro)
+If you opened this page from a level's **Pricing** tab, a breadcrumb at the top takes you back to that level.
 
-Click **Manage** on the PayPal card to open [PayPal Setup](/docs/settings/payment-settings/paypal-setup), where you enter your Client ID and Client Secret, select Sandbox or Live mode, and register the webhook with one click.
+## Without Pro
 
-::: warning Pro feature
-Payment Settings and all native checkout gateways (Stripe and PayPal) require **Fluent Members Pro**. If the Payment Settings menu item is missing or the page is empty, confirm that the Pro add-on is installed and activated.
-:::
+On the free version, the cards show a **Pro Required** badge and a disabled **Pro Required** button. A **Prefer to stay on the free plan?** notice below them links to install FluentCart, Fluent Forms or Paymattic, which sell memberships through a paywall on a level's pricing.

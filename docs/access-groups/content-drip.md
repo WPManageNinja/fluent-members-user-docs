@@ -1,75 +1,67 @@
-# Content Drip
+---
+title: "Drip Content"
+description: "Release protected content on a schedule after a member joins, or make it available only for a limited time."
+---
 
-**Content Drip** releases protected content on a schedule after a member joins. The member has the right level immediately, but specific content unlocks only after a set number of days, hours, and minutes (useful for paced courses, bootcamps, and week-by-week memberships).
+# Drip Content
 
-Content drip rules are configured on the **[Access Group](/docs/access-groups/)** that protects the content, not on the level itself. The level decides who can access the group; drip rules decide when each item inside that group opens.
+**Content Drip** releases protected content on a schedule after a member joins. The member holds the right level from day one, but each item opens only when its time comes, which suits paced courses and week-by-week programs.
 
-You need an access group with **Protected Content** configured and at least one level attached before you add drip rules.
+You set drip rules on the [Access Group](/docs/access-groups/) that protects the content, not on the level. The group needs at least one rule under **Content Protection Rules** first.
 
-## Access the Content Drip Section
+## Add a drip rule
 
-Go to **Fluent Members → Access Groups**, open the group you want to schedule, then scroll to the **Content Drip** section at the bottom of the edit page.
+1. Go to **Fluent Members → Access Groups** and open the group.
+2. Turn on the **Content Drip** toggle. The first rule appears.
 
-Turn on the **Content Drip** toggle in the top-right corner of the section. If no rules exist yet, you will see *"No content drips added yet. Click the button below to add one."* Click **+ Add Content Drip**.
+    ![Screenshot of the Content Drip card with its toggle turned off](/images/access-groups/content-drip/content-drip-1.webp)
 
-![Content Drip section on an Access Group](/images/access-groups/content-drip/content-drip-1.webp)
+3. Fill in the rule's fields, as described below.
+4. To add another rule, click **Add New**.
+5. Click **Save** in the bar at the top of the page.
 
-## Step 1: Add a Drip Rule
+Each rule has these fields:
 
-Each drip rule has three parts:
+| Field | Notes |
+|---|---|
+| **Show This Content** | The items this rule applies to. Type at least one character to search. Keep it blank to apply the rule to all restricted content of this group. |
+| **Timeline** | **After duration** (default) or **Within duration**. |
+| **Days** | Part of the delay. |
+| **Hours** | Part of the delay, up to 23. |
+| **Minutes** | Part of the delay, up to 59. |
 
-| Field | What it controls |
-|-------|------------------|
-| **Show This Content** | Which protected item this rule applies to. Search by keyword to pick a post, page, or other item. Leave blank to apply the drip to **all restricted content** in this group. |
-| **Timeline** | When the rule fires. The default is **After duration**: a fixed delay from the member's start date on the attached level. |
-| **Days / Hours / Minutes** | How long to wait before the content unlocks. |
+![Screenshot of a Content Drip rule with Show This Content, Timeline, Days, Hours and Minutes](/images/access-groups/content-drip/add-content-drip-1.webp)
 
-For example: *Show **Lesson 3** **After duration** **14 days 0 hours 0 minutes** after the member joined.*
+When a group has more than one rule, each rule shows a trash icon that removes it. Turning the toggle off stops all the rules but keeps them, and the group's **Drip** column on the list reads `Off · 1 rule unused`.
 
-Click **+ Add Content Drip** to add more rules. Each rule keeps its own timing.
+## Choose a timeline
 
-![Add a content drip rule](/images/access-groups/content-drip/add-content-drip-1.webp)
+The timeline decides what the duration means:
 
-## Step 2: Chain Rules for a Paced Sequence
+- **After duration:** The item opens once the duration has passed. Use this to release lessons one by one.
+- **Within duration:** The item is available until the duration has passed, then closes. Use this for limited-time bonuses.
 
-Add one rule per item you want to release on a different schedule. Content not covered by any rule unlocks immediately when the member joins.
+The clock starts at the member's start date on the level. If two of the member's levels unlock the same group, the earlier start date counts.
 
-Example for a weekly course:
+## Build a weekly course
 
-| Rule | Show This Content | After duration |
-|------|-------------------|----------------|
-| 1 | Lesson 1 | 0 days |
-| 2 | Lesson 2 | 7 days |
-| 3 | Lesson 3 | 14 days |
-| 4 | Lesson 4 | 21 days |
+Add one rule per item you want to release on a different schedule. Content that no rule covers is available the moment the member joins.
 
-::: tip In plain language
-A drip rule means the member has access to the group, but not yet to *this* item. Items without a drip rule open the moment they join.
-:::
+| Rule | Show This Content | Timeline | Days |
+|---|---|---|---|
+| 1 | Lesson 2 | After duration | 7 |
+| 2 | Lesson 3 | After duration | 14 |
+| 3 | Lesson 4 | After duration | 21 |
 
-## Step 3: Save Your Changes
+Lesson 1 needs no rule because the member can open it straight away.
 
-Click **Save** in the top-right corner of the page when you are done. Content drip settings are not applied until you save the access group.
+## What members see
 
-### Remove a Drip Rule
+A member who has to wait stays on the page and sees **Content Not Yet Available**, a line such as *This content will be available in 6 days, 4 hours.*, and a live countdown. The page reloads when the countdown ends. [When Unauthorized](/docs/access-groups/unauthorized-access) doesn't apply here, so the member is never redirected.
 
-Click **Delete** on the rule you want to remove. Other rules stay in place. Click **Save** to confirm the change.
+![Screenshot of a post on the site showing Content Not Yet Available and a countdown](/images/access-groups/content-drip/content-drip-frontend-countdown.webp)
 
-## What Members See Before Content Unlocks
-
-When a member visits content that has not dripped yet, they see a countdown notice such as *"Available in 6 days, 4 hours."* The exact message depends on the group's [Unauthorized Access](/docs/access-groups/unauthorized-access) settings. Dripped content is not redirected away; the member stays on the page and sees the countdown instead of the full content.
+After a **Within duration** rule has run out, the member sees **Content No Longer Available** and *This content is no longer available.*
 
 > [!Note]
-> The delay is measured from the member's `start_date` on the level that grants this access group. If a member changes levels, the clock restarts from the new level's start date.
-
-
-## Important Notes
-
-::: warning Before you go live
-- **Protected Content must be set** on the access group first, or the **Show This Content** picker will have nothing to search.
-- **Toggle Content Drip on**: rules have no effect while the section is disabled.
-- **Active members only**: drip timing applies to members with `active` or `trial` status on a level attached to this group.
-- Content without a drip rule is available immediately after the member joins.
-:::
-
-Content drip is configured. See [Members on a Level](/docs/levels/members-on-a-level) to check who currently holds the levels attached to this group.
+> Drip rules only hold back members of the group's levels. If another group the member can access covers the same content with no waiting rule, the content opens right away. Visitors without a level still get the normal [blocked result](/docs/access-groups/unauthorized-access).

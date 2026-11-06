@@ -1,45 +1,77 @@
+---
+title: "Access Groups Overview"
+description: "Create access groups that link your protected content to Membership Levels, and find every content protection feature in one place."
+---
+
 # Access Groups Overview
 
-An **Access Group** acts as a secure container for your content protection rules in Fluent Members. It lets you easily define which pages, posts, or custom content are restricted, and controls which Membership Levels act as the keys to unlock them.
+An **Access Group** links the content you want to protect to the Membership Levels that unlock it. Create one whenever a set of posts, pages or products should be for members only.
 
-## Understanding the Access Groups List
+::: doc-tree access hero
 
-To see all your created groups, navigate to **Fluent Members → Access Groups** in your WordPress dashboard.
+## What do you want to do?
 
-- **List View:** Each row displays the group's ID, Title, Description, and Status (Active or Inactive).
-- **Filters and Search:** Use the **All**, **Active**, and **Inactive** tabs at the top to filter your view, or click the search icon to find a group quickly.
-- **Create New:** Click the **+ Add New Access Group** button in the top right corner to start a new rule set.
+Pick the goal that sounds like yours. Each card takes you straight to the right guide.
 
-![Access Groups list view](/images/access-groups/overview/access-group.webp)
+::: doc-tree access tasks
 
-## Configuring an Access Group
+## Every protection feature on one map
 
-When you create or edit an Access Group, the page is divided into four sections:
+Here is the whole protection system at a glance, grouped by where you set it. Click a feature to open its guide.
 
-1. **Basic Information:** Enter the group's title, write a short internal description, and set the status to Active.
-2. **Protected Content:** Use the *Apply Restriction To* dropdown to choose what content to lock. You can restrict all posts, specific pages, categories, or even your entire website.
-3. **Unauthorized Access:** Decide what non-members will experience if they try to view the protected content. Options include a redirect, a custom message, a partial content preview, a login popup, or simply hiding the content.
-4. **Active Levels:** Select the specific Membership Levels that will grant users access to this group's content.
+::: doc-tree access map
 
-![Access Group edit page](/images/access-groups/overview/access-group-edit-full-2.webp)
+## The Access Groups list
 
-## Recommended Setup Order
+Go to **Fluent Members → Access Groups** to see your groups. Use the **All**, **Active** and **Inactive** tabs to filter the list, or click the search icon to find a group by name.
 
-Follow these steps when creating a new group to ensure your content is fully protected:
+![Screenshot of the Access Groups list with the Create Access Group button](/images/access-groups/overview/access-group.webp)
 
-1. **Create the Group** with a clear title and set its status to Active.
-2. **Select your Protected Content.** To protect all future posts automatically, choose *All Posts* rather than picking individual items.
-3. **Choose your Unauthorized Access action.**
-4. **Select the Active Levels** that should unlock this group.
-5. Click the single **Save** button in the top-right corner to apply all your settings at once.
+Each row shows a summary of the group:
 
-## Important Notes
+| Column | What it shows |
+|---|---|
+| **ID** | The group's number. |
+| **Title** | The group's name. |
+| **Protected Content** | How many items the rules cover. A rule such as **All Posts** counts as one item. |
+| **Excluded** | How many items the rules leave out. |
+| **Drip** | The state of [Content Drip](/docs/access-groups/content-drip), for example `2 items · After`. `Off · 1 rule unused` means rules exist but the toggle is off. |
+| **Used By** | How many levels unlock the group. Hover to see their names. |
+| **Status** | **Active** or **Inactive**. An inactive group protects nothing. |
 
-::: warning Things to keep in mind
-- **Two-Way Linking:** You can attach a Level to an Access Group from the Group's settings, or from the Level's settings. Both approaches do the exact same thing; use whichever is easier. See [Attaching Access Groups](/docs/levels/attaching-access-groups) for the Level-side flow.
-- **Content Drip Scheduling:** If you want to release content on a schedule, configure this inside the Membership Level settings, not the Access Group. See [Content Drip](/docs/access-groups/content-drip).
-- **The Save Button:** There is no save button for each individual section. The main **Save** button only appears in the top-right corner after you have made changes to the page.
-- **Access Requirements:** For a user to view protected content, they must hold the correct Membership Level and their account status must be Active or Trial.
-:::
+## Create an access group
 
+1. Go to **Fluent Members → Access Groups** and click **Create Access Group**.
+2. Enter a **Title**. **Description** is optional. **Status** starts on **Active**.
+3. Click **Create**. The group's edit page opens.
 
+    ![Screenshot of the Create Access Group dialog with Title, Description and Status](/images/access-groups/overview/access-groups-index-create-dialog.webp)
+
+4. Under **Content Protection Rules**, click **Add Level** next to **Members of** and choose the levels that unlock this group.
+5. In the rule card, choose what to protect. [Restriction types](/docs/access-groups/protected-content) lists every option.
+6. Under **When Unauthorized**, keep the global default or click **Customize for this rule** to [set what blocked visitors see](/docs/access-groups/unauthorized-access).
+7. Click **Save** in the bar at the top of the page.
+
+The content is protected as soon as you save.
+
+## What's on the edit page
+
+The edit page has four cards, and one **Save** bar that appears at the top when you change something. **Cancel** in the same bar discards your changes.
+
+![Screenshot of an access group's edit page with Basic Information, Content Protection Rules, When Unauthorized and Content Drip](/images/access-groups/overview/access-group-edit-full-2.webp)
+
+- **Basic Information:** **Title**, **Description** and **Status**.
+- **Content Protection Rules:** The **Members of** row names the levels that unlock the group. The rule cards below it set what is protected.
+- **When Unauthorized:** What visitors without access see.
+- **Content Drip:** A toggle that releases content on a schedule after a member joins.
+
+You can also attach groups from the level's side, and the result is the same. See [Attach access groups](/docs/levels/attaching-access-groups).
+
+## Duplicate or delete a group
+
+Click the three-dot menu at the end of a row for **Edit**, **Duplicate** and **Delete**.
+
+![Screenshot of the row menu on the Access Groups list with Edit, Duplicate and Delete](/images/access-groups/overview/access-groups-index-row-menu.webp)
+
+- **Duplicate:** Creates a copy with the same rules, settings and levels. Its title ends in ` - Duplicated(<id>)`, where `<id>` is the original group's ID.
+- **Delete:** Also available under **More Actions** on the edit page. A group that a level still uses cannot be deleted. The error names the levels, so remove the group from them first.

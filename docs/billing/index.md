@@ -1,46 +1,52 @@
-# Orders
+---
+title: "Billing (Pro)"
+description: "Find every subscription and one-time membership on your site, with the payments, refunds and activity behind each one."
+---
 
-**Orders** is the Pro billing hub. It replaces the old flat Transactions ledger with two focused views: **Subscriptions** for recurring billing and **One-Time Purchases** for single, non-recurring purchases. Every payment, refund, and status change lives inside the record it belongs to instead of one long combined list.
+# Billing (Pro)
+
+**Billing** (Pro) is where you look up what members pay. It splits your records into recurring subscriptions and one-time memberships, and each record holds its own payments, refunds and activity. Use it to check a payment, issue a refund or cancel a subscription.
 
 > [!Note]
-> Orders is only available with Fluent Members Pro. The **Orders** link appears in the top navigation only when Pro is active.
+> The **Billing** menu only appears when Fluent Members Pro is active.
 
-## Access Orders
+## Open Billing
 
-In your WordPress admin, go to **Fluent Members → Orders** using the top navigation bar. Orders opens two sub-views:
+Go to **Fluent Members → Billing**. Point at **Billing** in the top navigation to choose a list:
 
-- **[Subscriptions](/docs/billing/subscriptions)**: recurring memberships, native (Stripe, PayPal) or migrated from PMPro, MemberPress, or Kadence Memberships.
-- **[One-Time Purchases](/docs/billing/one-time)**: memberships bought once, with no recurring billing behind them, manual grants, migrated one-off orders, and single native or paywall-integration purchases.
+![Screenshot of the Billing menu open in the top navigation, showing Subscriptions and One-time](/images/billing/index/billing-index-nav.webp)
 
-## Why Two Views Instead of One List
+- **[Subscriptions](/docs/billing/subscriptions):** recurring memberships billed by Stripe or PayPal, carried over from a migration, or [billed by another plugin](/docs/billing/provider-subscriptions).
+- **[One-time](/docs/billing/one-time):** memberships with no recurring billing behind them, such as single payments and memberships you add by hand.
 
-A subscription and a one-time purchase behave differently: a subscription can be cancelled or renewed and has a next billing date, a one-time purchase has neither. Splitting them means each view only shows the columns and actions that actually apply, instead of a single table full of blank cells.
+Each list has its own status tabs, search and columns. See [Filter & Search](/docs/billing/filters-and-search).
 
-## Where Transaction History Went
+## What each record shows
 
-There's no longer a standalone Transactions screen. Every charge, renewal, and refund is now shown inside the **Transaction History** panel on that record's detail page, alongside a **Timeline** that merges billing events with subscription lifecycle events (created, trial ended, cancelled, expired) into one reverse-chronological feed. Open any row in Subscriptions or One-Time Purchases to see it.
+Click any row to open its record. There is no separate transactions screen. Each record keeps its own history:
 
-## Issuing a Refund
+- **Transaction History:** every charge, renewal and refund for that record. The panel is hidden when the record has no transactions.
+- **Activity:** a timeline of events such as the record being created, payments succeeding or failing, and refunds being issued.
+- **Member Information:** the member's name and email, with a **Wp User** link that opens their member page.
+- **Membership Information:** the level, its Access Groups, and any other memberships the member holds.
 
-Refunds are still issued per-transaction, from inside a Subscription's or a One-Time Purchase's detail view. Open the record, find the transaction in its Transaction History panel, and use the refund action on that row. See [Refunds](/docs/billing/refunds) for the complete walkthrough.
+## What you can do from a record
 
-::: warning Refunds do not change membership status
-Issuing a refund does not automatically expire or cancel the member's access. If you want to revoke access, update the member's status manually. See [Suspending & Cancelling](/docs/members/suspending-and-cancelling).
-:::
+The **More Actions** button holds the actions that apply to the record:
 
-## Where Orders Come From
+| Action | Available on | Result |
+|---|---|---|
+| **Refund** | Subscriptions and one-time memberships with a refundable payment | Opens the refund dialog. See [Refunds](/docs/billing/refunds). |
+| **Cancel Subscription** | Subscriptions billed through Stripe or PayPal | Opens the cancel dialog. See [Cancel a Subscription](/docs/billing/cancelling-a-subscription). |
+| **Revoke Membership** | One-time memberships | Cancels the membership. See [One-time Memberships](/docs/billing/one-time). |
 
-Orders (and the transactions behind them) are written automatically, you do not create them manually:
+Subscriptions billed by another plugin have no **More Actions** button. You manage those in that plugin.
 
-- **Stripe or PayPal native checkout (Pro)**: every webhook event (charge, renewal, refund) creates or updates the underlying transaction record.
-- **Paywall integrations (FluentCart, WooCommerce, Fluent Forms, Paymattic)**: successful payment hooks write a transaction so all sources appear in the same views.
-- **Migration**: importing from PMPro, MemberPress, or Kadence Memberships carries over historical orders, subscriptions, and transactions.
-- **Manual grants**: memberships an admin adds by hand from the Members screen appear under One-Time Purchases with no payment attached.
+## Where records come from
 
-## How Orders Relate to Members
+Records are created for you. You do not add them on this screen:
 
-Every subscription and one-time purchase is linked to a member, a Membership Level, and, on the detail page, that member's other memberships and lifetime value. Open the **Member** column on any row to jump to that member's detail page.
-
-::: tip No orders after a recent Stripe or PayPal charge?
-The most common cause is a missing or misconfigured webhook. See [Stripe Setup](/docs/settings/payment-settings/stripe-setup) or [PayPal Setup](/docs/settings/payment-settings/paypal-setup).
-:::
+- **Stripe and PayPal checkout:** each payment and webhook event updates the record. If a recent payment is missing, check the webhook in [Stripe Setup](/docs/settings/payment-settings/stripe-setup) or [PayPal Setup](/docs/settings/payment-settings/paypal-setup).
+- **Other plugins:** FluentCart, WooCommerce, Fluent Forms and Paymattic purchases that grant a membership appear in one of the two lists.
+- **Migration:** subscriptions and one-time purchases imported from Paid Memberships Pro, MemberPress or Kadence Memberships keep their source as the **Gateway**.
+- **Manual memberships:** memberships you [add by hand](/docs/members/adding-manually) appear under **One-time** with no payment attached.
