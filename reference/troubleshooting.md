@@ -61,11 +61,11 @@ Either route through `WP_REST_Posts_Controller`, or call `AccessHandler::protect
 Four things to check.
 
 1. **Is the plugin Pro and is Stripe or PayPal configured?** Only Pro routes the cancel through the gateway.
-2. **Is this a native subscription, not a migrated one?** Cancel only works for subscriptions billed through native Stripe or native PayPal. Subscriptions carried over from a PMPro, MemberPress, or Kadence Memberships migration aren't connected to a live gateway and can't be cancelled from this screen at all, see [Subscriptions](/docs/transactions/subscriptions).
+2. **Is this a native subscription, not a migrated one?** Cancel only works for subscriptions billed through native Stripe or native PayPal. Subscriptions carried over from a PMPro, MemberPress, or Kadence Memberships migration aren't connected to a live gateway and can't be cancelled from this screen at all, see [Subscriptions](/docs/billing/subscriptions).
 3. **Was the subscription created by Fluent Members?** The local subscription row needs a non-empty `provider_subscription_id`. If you imported old data without the correct import bridge, that field is empty and the plugin has nothing to cancel.
 4. **Cancellation mode**, if your default is **End of period**, the gateway is told to cancel at the period end instead of now. The subscription stays `active` (and the local row stays `active`) until the next renewal date, then the gateway's cancellation webhook (Stripe sends `customer.subscription.deleted`) arrives and the plugin flips the status.
 
-See [Subscription Cancellation Modes](/docs/transactions/cancellation-modes).
+See [Subscription Cancellation Modes](/docs/billing/cancelling-a-subscription).
 
 ## Partial Content Preview Overlay Sits Behind the Content
 

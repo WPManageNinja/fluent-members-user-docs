@@ -74,7 +74,7 @@ How an admin manages a single member from a Dashboard signal.
 1. [Dashboard](/docs/dashboard/dashboard) shows a signal (Expiring Soon entry, cancellation spike, etc.)
 2. [Members list](/docs/members/) → search or filter
 3. [Member Detail](/docs/members/detail) → Memberships table
-4. Row kebab → [Suspend or Cancel](/docs/members/suspending-and-cancelling) *or* [Refund (Pro)](/docs/transactions/refunds)
+4. Row kebab → [Suspend or Cancel](/docs/members/suspending-and-cancelling) *or* [Refund (Pro)](/docs/billing/refunds)
 5. Status flips → cascades to children if corporate
 6. Member's [Portal view](/docs/members/portal/what-members-see) updates next time they visit
 
@@ -91,7 +91,7 @@ What a logged-in member can do from the portal page.
 3. Picks an action:
    - [Cancel](/docs/members/portal/cancelling) (free)
    - [Update Payment Method](/docs/members/portal/updating-payment-method) *(Pro)*
-   - [Renew](/docs/members/portal/renewing-a-failed-subscription) *(Pro, on Expired)*
+   - [Renew](/docs/members/portal/renewing-a-membership) *(Pro, on Expired)*
    - [Invite teammate](/docs/members/portal/corporate-seat-invites) *(Pro, corporate parents)*
 4. Provider sync fires (Stripe / PayPal / paywall)
 5. Status updates → UI re-renders
@@ -145,7 +145,7 @@ When the renewal charge fails and the member needs to fix it.
 1. Stripe (or PayPal) charges the member → fails
 2. The provider's failure webhook arrives: Stripe sends `invoice.payment_failed`, PayPal sends **Billing subscription suspended**. The subscription is marked `past_due`
 3. Eventually [the cron](/reference/troubleshooting) flips the membership row to `expired` and fires `fluent_members/membership_expired`
-4. Member visits [Portal](/docs/members/portal/what-members-see) → sees Expired card + [Renew button](/docs/members/portal/renewing-a-failed-subscription)
+4. Member visits [Portal](/docs/members/portal/what-members-see) → sees Expired card + [Renew button](/docs/members/portal/renewing-a-membership)
 5. Member clicks Renew → Stripe retries on the existing card
 6. *(If card is bad)* Member [updates payment method](/docs/members/portal/updating-payment-method) first → then Renew
 7. Charge succeeds → row back to Active
@@ -159,8 +159,8 @@ You want a dunning-flow walkthrough, or you're explaining to a customer why thei
 Reversing a payment.
 
 1. Refund request arrives
-2. Admin opens [Orders](/docs/transactions/) → Subscriptions or One-Time Purchases → [finds the record](/docs/transactions/filters-and-search)
-3. Opens the record's Transaction History panel → uses the [refund action](/docs/transactions/refunds) on the transaction
+2. Admin opens [Orders](/docs/billing/) → Subscriptions or One-Time Purchases → [finds the record](/docs/billing/filters-and-search)
+3. Opens the record's Transaction History panel → uses the [refund action](/docs/billing/refunds) on the transaction
 4. Admin sets amount (full or partial); Stripe refunds can pick a reason, PayPal refunds accept a note
 5. Refund fires through `fluent_members/refund_payment_{gateway}` → Stripe or PayPal
 6. The transaction's status flips to `refunded` (or `partially_refunded`); the order status updates too if the refund was full
