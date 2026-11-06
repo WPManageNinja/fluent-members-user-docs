@@ -1,26 +1,17 @@
 ---
 title: "Install and Activate Fluent Members"
-description: "Install the free Fluent Members plugin from your WordPress dashboard, a ZIP file or FTP, then activate it."
+description: "Install the free Fluent Members plugin from a ZIP file or over FTP, then activate it."
 ---
 
 # Install and Activate Fluent Members
 
-**Fluent Members** is a free WordPress plugin. Install it from your WordPress dashboard in a few minutes. You need an administrator account on a site running WordPress 6.3 or newer and PHP 7.4 or newer.
-
-## Install from the WordPress dashboard
-
-This is the easiest way. WordPress downloads the plugin for you.
-
-1. Go to **Plugins → Add Plugin** in your WordPress dashboard (**Add New** on older versions of WordPress).
-2. Search for **Fluent Members**.
-3. Click **Install Now** on the **Fluent Members** card.
-4. Click **Activate**.
+**Fluent Members** is a free WordPress plugin. Install it from its ZIP file in a few minutes. You need an administrator account on a site running WordPress 6.3 or newer and PHP 7.4 or newer.
 
 ## Install from a ZIP file
 
-Use this when you already have the plugin's ZIP file.
+This is the easiest way.
 
-1. Go to **Plugins → Add Plugin** and click **Upload Plugin**.
+1. Go to **Plugins → Add Plugin** in your WordPress dashboard and click **Upload Plugin**.
 2. Click **Choose File** and select the ZIP file.
 3. Click **Install Now**.
 
