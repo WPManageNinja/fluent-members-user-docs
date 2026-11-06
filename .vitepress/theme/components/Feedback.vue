@@ -3,10 +3,9 @@ import { reactive, watch } from 'vue'
 import { useData, useRoute } from 'vitepress'
 
 // --- CONFIGURATION ---
-// 1. Google Web App URL (shared feedback collector; rows are keyed by PRODUCT_NAME).
-//    Replace with a dedicated endpoint if this project should log to its own sheet.
+// Paste your Google Web App URL here
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwQPG7SqKCME-siL3xkDqOwCJ1WHOGuZCQZnZO0-7GgYACxeb6lNT1mjpvkJXrG0QxbqQ/exec'
-// 2. PRODUCT NAME for this docs repo.
+// 2. PRODUCT NAME for each product repo (e.g. 'FluentCRM', 'FluentForms')
 const PRODUCT_NAME = 'fluent-members-user-docs'
 // ---------------------
 
@@ -14,105 +13,123 @@ const { page } = useData()
 const route = useRoute()
 
 const state = reactive({
-  voted: false,
-  voting: false,
-  showFeedback: false,
-  feedbackText: ''
+  vote: null,        // 'yes' | 'no'
+  showComment: false,
+  comment: '',
+  sent: false,       // a comment has been submitted
+  sending: false
 })
 
-// Reset the widget whenever the user navigates to a new page.
+// Watch for changes in the URL path.
+// If the user goes to a new page, reset the widget.
 watch(() => route.path, () => {
-  state.voted = false
-  state.voting = false
-  state.showFeedback = false
-  state.feedbackText = ''
+  state.vote = null
+  state.showComment = false
+  state.comment = ''
+  state.sent = false
+  state.sending = false
 })
 
-const toggleFeedback = () => {
-  state.showFeedback = !state.showFeedback
-}
-
-const submitFeedback = async (vote, feedback = '') => {
-  state.voting = true
-
-  const payload = JSON.stringify({
-    product: PRODUCT_NAME,
-    path: route.path,
-    title: page.value.title,
-    vote: vote,
-    message: feedback // Apps Script writes data.message to Column F
-  })
-
+const send = async (payload) => {
   try {
     await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors', // Essential for skipping CORS checks
       headers: { 'Content-Type': 'text/plain' },
-      body: payload
+      body: JSON.stringify({
+        product: PRODUCT_NAME,
+        path: route.path,
+        title: page.value.title,
+        ...payload
+      })
     })
-    state.voted = true
+    return true
   } catch (e) {
     console.error('Feedback Error:', e)
-  } finally {
-    state.voting = false
+    return false
   }
 }
 
-const sendWrittenFeedback = () => {
-  const text = state.feedbackText.trim()
-  if (!text) return
-  submitFeedback('feedback', text)
+const submitVote = async (vote) => {
+  if (state.sending) return
+  state.sending = true
+  state.vote = vote
+  await send({ vote })
+  state.sending = false
+}
+
+const submitComment = async () => {
+  if (state.sending || !state.comment.trim()) return
+  state.sending = true
+  // NOTE: the Apps Script writes `data.message` to column F — the key must be `message`.
+  const ok = await send({ vote: state.vote, message: state.comment.trim() })
+  state.sending = false
+  if (ok) {
+    state.sent = true
+    state.showComment = false
+    state.comment = ''
+  }
 }
 </script>
 
 <template>
   <div class="feedback-wrapper">
-    <div v-if="!state.voted" class="feedback-card">
+    <div class="feedback-card">
       <p class="feedback-title">Was this page helpful?</p>
 
       <div class="feedback-buttons">
-        <button @click="submitFeedback('yes')" :disabled="state.voting" class="fb-btn">
+        <button
+          class="fb-btn"
+          :class="{ active: state.vote === 'yes' }"
+          :disabled="state.sending"
+          @click="submitVote('yes')"
+        >
           👍 Yes
         </button>
-        <button @click="submitFeedback('no')" :disabled="state.voting" class="fb-btn">
+        <button
+          class="fb-btn"
+          :class="{ active: state.vote === 'no' }"
+          :disabled="state.sending"
+          @click="submitVote('no')"
+        >
           👎 No
         </button>
         <button
-          @click="toggleFeedback"
-          :disabled="state.voting"
           class="fb-btn"
-          :class="{ 'is-active': state.showFeedback }"
+          :class="{ active: state.showComment }"
+          :disabled="state.sent"
+          @click="state.showComment = !state.showComment"
         >
-          💬 {{ state.showFeedback ? 'Close' : 'Feedback' }}
+          💬 {{ state.showComment ? 'Close' : 'Feedback' }}
         </button>
       </div>
 
-      <div v-if="state.showFeedback" class="feedback-form">
+      <div v-if="state.showComment" class="feedback-form">
         <textarea
-          v-model="state.feedbackText"
+          v-model="state.comment"
           class="fb-textarea"
-          rows="3"
+          rows="4"
           placeholder="How can we improve this specific page?"
         ></textarea>
         <button
-          @click="sendWrittenFeedback"
-          :disabled="state.voting || !state.feedbackText.trim()"
           class="fb-send"
+          :disabled="state.sending || !state.comment.trim()"
+          @click="submitComment"
         >
-          Send Feedback
+          {{ state.sending ? 'Sending…' : 'Send Feedback' }}
         </button>
       </div>
-    </div>
 
-    <div v-else class="feedback-thanks">
-      Thanks for your feedback! 💜
+      <p v-else-if="state.sent || state.vote" class="feedback-thanks">
+        Thanks for your feedback! 💜
+      </p>
     </div>
   </div>
 </template>
 
 <style scoped>
 .feedback-wrapper {
-  margin: 3rem 0 1rem;
+  margin-top: 3rem;
 }
 
 .feedback-card {
@@ -124,67 +141,64 @@ const sendWrittenFeedback = () => {
 }
 
 .feedback-title {
-  margin: 0 0 1rem;
+  margin: 0 0 16px;
+  font-size: 20px;
   font-weight: 600;
-  font-size: 1.05rem;
+  line-height: 1.4;
   color: var(--vp-c-text-1);
 }
 
 .feedback-buttons {
   display: flex;
-  justify-content: center;
-  gap: 0.5rem;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
 }
 
 .fb-btn {
   border: 1px solid var(--vp-c-divider);
   background-color: var(--vp-c-bg);
   color: var(--vp-c-text-1);
-  padding: 6px 14px;
+  padding: 9px 18px;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.4;
-  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
 }
 
 .fb-btn:hover:not(:disabled) {
-  background-color: var(--vp-c-bg-mute);
+  border-color: var(--vp-c-brand-1);
 }
 
-.fb-btn.is-active {
+.fb-btn.active {
   border-color: var(--vp-c-brand-1);
   color: var(--vp-c-brand-1);
 }
 
 .fb-btn:disabled {
-  opacity: 0.6;
-  cursor: default;
+  opacity: 0.55;
+  cursor: not-allowed;
 }
 
 .feedback-form {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+  margin-top: 16px;
 }
 
 .fb-textarea {
+  display: block;
   width: 100%;
-  max-width: 520px;
-  min-height: 90px;
-  padding: 10px 12px;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 12px 14px;
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   background-color: var(--vp-c-bg);
   color: var(--vp-c-text-1);
   font-family: inherit;
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.6;
   resize: vertical;
-  transition: border-color 0.2s;
 }
 
 .fb-textarea:focus {
@@ -193,34 +207,41 @@ const sendWrittenFeedback = () => {
 }
 
 .fb-send {
-  border: none;
+  margin-top: 16px;
+  border: 1px solid var(--vp-c-brand-1);
   background-color: var(--vp-c-brand-1);
-  color: #ffffff;
-  padding: 8px 20px;
+  color: var(--vp-c-white);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 11px 24px;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  transition: background-color 0.2s, opacity 0.2s;
+  transition: opacity 0.2s;
 }
 
 .fb-send:hover:not(:disabled) {
-  background-color: var(--vp-c-brand-2);
+  opacity: 0.85;
 }
 
 .fb-send:disabled {
-  opacity: 0.6;
-  cursor: default;
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .feedback-thanks {
-  margin: 3rem 0 1rem;
-  padding: 24px 20px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  background-color: var(--vp-c-bg-soft);
-  text-align: center;
+  margin: 16px 0 0;
   font-weight: 600;
+  font-size: 16px;
   color: var(--vp-c-brand-1);
+}
+
+@media (max-width: 640px) {
+  .feedback-card {
+    padding: 20px 14px;
+  }
+
+  .feedback-title {
+    font-size: 18px;
+  }
 }
 </style>

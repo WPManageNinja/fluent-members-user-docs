@@ -1,0 +1,81 @@
+/* Aurora page background (soft, slow-moving colour glows behind the whole site, like docs.fluentcommunity.co).
+   Four radial-gradient blobs live in a fixed layer (Layout.vue, #layout-top). Nav and sidebar turn into frosted
+   glass so the colour shows through them. Off in print and for reduced motion (static glow stays). */
+
+:root {
+  --fm-aurora-1: 107 53 232;   /* brand purple */
+  --fm-aurora-2: 172 137 242;  /* light purple */
+  --fm-aurora-3: 129 140 248;   /* indigo */
+  --fm-aurora-4: 202 183 239;  /* pale purple */
+  --fm-aurora-op: .3;
+
+  --vp-nav-bg-color: color-mix(in srgb, var(--vp-c-bg) 38%, transparent);
+  --vp-sidebar-bg-color: color-mix(in srgb, var(--vp-c-bg-alt) 55%, transparent);
+  --vp-local-nav-bg-color: color-mix(in srgb, var(--vp-c-bg) 70%, transparent);
+}
+.dark {
+  --fm-aurora-op: .26;
+  --fm-aurora-3: 99 102 241;
+}
+
+.fm-aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  /* The glow fades out toward the bottom so long pages stay calm and readable. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 35%, transparent 92%);
+          mask-image: linear-gradient(to bottom, #000 0, #000 35%, transparent 92%);
+}
+.fm-aurora__blob {
+  position: absolute;
+  border-radius: 50%;
+  opacity: var(--fm-aurora-op);
+  will-change: transform;
+}
+.fm-aurora__blob.b1 {
+  width: 62vw; height: 62vw; left: -14vw; top: -30vw;
+  background: radial-gradient(circle, rgb(var(--fm-aurora-1) / .62) 0%, rgb(var(--fm-aurora-1) / .3) 38%, transparent 68%);
+  animation: fm-drift-a 34s ease-in-out infinite alternate;
+}
+.fm-aurora__blob.b2 {
+  width: 56vw; height: 56vw; right: -12vw; top: -26vw;
+  background: radial-gradient(circle, rgb(var(--fm-aurora-2) / .56) 0%, rgb(var(--fm-aurora-2) / .26) 40%, transparent 70%);
+  animation: fm-drift-b 40s ease-in-out infinite alternate;
+}
+.fm-aurora__blob.b3 {
+  width: 64vw; height: 64vw; left: 24vw; top: -34vw;
+  background: radial-gradient(circle, rgb(var(--fm-aurora-3) / .5) 0%, rgb(var(--fm-aurora-3) / .24) 38%, transparent 68%);
+  animation: fm-drift-c 46s ease-in-out infinite alternate;
+}
+.fm-aurora__blob.b4 {
+  width: 48vw; height: 48vw; left: -10vw; top: 8vw;
+  background: radial-gradient(circle, rgb(var(--fm-aurora-4) / .46) 0%, rgb(var(--fm-aurora-4) / .22) 40%, transparent 70%);
+  animation: fm-drift-b 38s ease-in-out infinite alternate-reverse;
+}
+@keyframes fm-drift-a { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(7vw, 4vw, 0) scale(1.12); } }
+@keyframes fm-drift-b { from { transform: translate3d(0, 0, 0) scale(1.05); } to { transform: translate3d(-6vw, 5vw, 0) scale(.94); } }
+@keyframes fm-drift-c { from { transform: translate3d(-4vw, 0, 0) scale(.96); } to { transform: translate3d(5vw, 3vw, 0) scale(1.1); } }
+
+/* Frosted glass for the nav and sidebar (colour shows through, text stays readable). */
+.VPNav .VPNavBar, .VPLocalNav { -webkit-backdrop-filter: blur(14px) saturate(1.1); backdrop-filter: blur(14px) saturate(1.1); }
+/* One surface for the whole bar. The nav content box stops at the layout max-width, so tinting and
+   blurring it as well doubled the colour inside its box and left vertical seams on wide screens. */
+@media (min-width: 960px) {
+  .VPNav .VPNavBar:not(.home.top) { background-color: var(--vp-nav-bg-color); }
+  .VPNav .VPNavBar:not(.home.top) .content-body { background-color: transparent; }
+}
+.VPSidebar { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+
+@media (max-width: 760px) {
+  .fm-aurora__blob { opacity: calc(var(--fm-aurora-op) * .8); }
+  .fm-aurora__blob.b1, .fm-aurora__blob.b2, .fm-aurora__blob.b3 { width: 110vw; height: 110vw; }
+}
+@media (prefers-reduced-motion: reduce) { .fm-aurora__blob { animation: none; } }
+@media print { .fm-aurora { display: none; } :root { --vp-nav-bg-color: var(--vp-c-bg); --vp-sidebar-bg-color: var(--vp-c-bg-alt); } }
+
+/* The slide-out sidebar (below 960px) overlays the page, so it must stay opaque or the text behind shows through. */
+@media (max-width: 959px) {
+  .VPSidebar { --vp-sidebar-bg-color: var(--vp-c-bg-alt); background-color: var(--vp-c-bg-alt); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
