@@ -24,7 +24,7 @@ Each rule has these fields:
 
 | Field | Notes |
 |---|---|
-| **Show This Content** | The items this rule applies to. Type at least one character to search. Keep it blank to apply the rule to all restricted content of this group. |
+| **Show This Content** | The items this rule applies to. Type at least one character to search. Keep it blank to apply the rule to all restricted content of this group. A category or tag covers posts assigned directly to it, not posts that are only in a child category. |
 | **Timeline** | **After duration** (default) or **Within duration**. |
 | **Days** | Part of the delay. |
 | **Hours** | Part of the delay, up to 23. |
