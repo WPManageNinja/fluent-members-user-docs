@@ -33,7 +33,7 @@ Click any row to open the subscription's detail page.
 
 ## Filtering and Sorting
 
-Filter the list by **Status** or by **Provider** (Stripe, PayPal, PMPro, MemberPress, or Kadence Memberships), and sort by next billing date, total paid, start date, or status. See [Filters & Search](/docs/transactions/filters-and-search) for the full walkthrough.
+Filter the list by **Status** or by **Provider** (Stripe, PayPal, PMPro, MemberPress, or Kadence Memberships), and sort by next billing date, total paid, start date, or status. See [Filters & Search](/docs/billing/filters-and-search) for the full walkthrough.
 
 ## The Subscription Detail Page
 
@@ -58,9 +58,9 @@ The actions available depend on how the subscription is billed:
 Migrated subscriptions are shown for record-keeping (their status, billing history, and next billing date still display) but aren't connected to a live gateway from this screen, so they can't be cancelled or renewed here. Manage them from the original provider, or through Fluent Members' membership status controls, see [Suspending & Cancelling](/docs/members/suspending-and-cancelling).
 
 ::: tip Cancelling
-Cancelling a subscription can take effect immediately or at the end of the current billing period, depending on the cancellation mode you choose. See [Subscription Cancellation Modes](/docs/transactions/cancellation-modes).
+Cancelling a subscription can take effect immediately or at the end of the current billing period, depending on the cancellation mode you choose. See [Subscription Cancellation Modes](/docs/billing/cancelling-a-subscription).
 :::
 
 ::: tip Refunding a charge on this subscription
-Open the transaction in the Transaction History panel and use its refund action. See [Refunds](/docs/transactions/refunds).
+Open the transaction in the Transaction History panel and use its refund action. See [Refunds](/docs/billing/refunds).
 :::

@@ -22,7 +22,7 @@ image folder, wire it into `.vitepress/config.mjs`, and verify with a clean buil
 2. **DO** load the relevant knowledge-base chunk from `member/chunks/` before writing —
    check `member/chunks/00-index.md` for the topic → chunk mapping.
 3. **DO** place the file at `docs/<category>/<slug>.md` or `reference/<slug>.md`.
-4. **DO** make line 1 a bare `# H1` (no frontmatter) that matches the sidebar `text`.
+4. **DO** start with frontmatter (`title`, one-sentence `description`), then a `# H1` that matches `title`. Keep the sidebar `text` short and task-first.
 5. **DO** use the correct link format for the zone (see Quick Reference).
 6. **DO** add the page to `.vitepress/config.mjs` in the correct sidebar zone and group.
 7. **DO** end on a green `npm run docs:build`.
@@ -31,7 +31,7 @@ image folder, wire it into `.vitepress/config.mjs`, and verify with a clean buil
 10. **DO NOT** add closing support boilerplate.
 11. **DO NOT** invent a new category folder or a new sidebar group without asking the user.
 12. **DO NOT** write `** term **` (inner-whitespace bold) — use `**term**`.
-13. **DO** mark Pro-only features with `(Pro)` — both in body text and sidebar `text`.
+13. **DO** mark Pro-only features with `(Pro)` in body text and the `<span class="fm-pro">Pro</span>` badge in the sidebar `text`.
 14. **DO** load `fluent-members-doc-writer` before writing and follow its voice and page shape.
 15. **DO** confirm every label, default and Free/Pro claim against the plugin code or live site
     (`fluent-members-code-to-docs`), not only the knowledge-base chunk.

@@ -1,6 +1,6 @@
 ---
 name: verify-fluent-members-doc-against-code
-description: 'Verify ONE Fluent Members doc page claim by claim against the plugin source (free + Pro, `dev` branch) and the live local site, then fix what is wrong. Extracts every checkable claim (UI label, option, default, step, path, Free/Pro flag, shortcode attribute, hook, limit), proves or disproves each with file:line evidence, checks coverage of options the page forgot, and applies the fixes. USE FOR: verify this doc against the code, is this page accurate, fact-check a doc, the UI changed so check this page, deep audit of a page or a category folder. DO NOT USE FOR: site-wide link/sidebar lint (audit-fluent-members-docs), a full multi-page pass (fluent-members-docs-overhaul, which calls this per page), writing a new page (write-fluent-members-doc). Adapted from the Ninja Tables verify skill.'
+description: 'Verify ONE Fluent Members doc page claim by claim against the plugin source (free + Pro, `develop` branch) and the live local site, then fix what is wrong. Extracts every checkable claim (UI label, option, default, step, path, Free/Pro flag, shortcode attribute, hook, limit), proves or disproves each with file:line evidence, checks coverage of options the page forgot, and applies the fixes. USE FOR: verify this doc against the code, is this page accurate, fact-check a doc, the UI changed so check this page, deep audit of a page or a category folder. DO NOT USE FOR: site-wide link/sidebar lint (audit-fluent-members-docs), a full multi-page pass (fluent-members-docs-overhaul, which calls this per page), writing a new page (write-fluent-members-doc). Adapted from the Ninja Tables verify skill.'
 ---
 
 # Verify a Fluent Members doc against the plugin code
@@ -48,7 +48,7 @@ List every control on the documented screen from the Vue template (fields, switc
 Edit the page with `edit-fluent-members-doc` + `fluent-members-doc-writer`:
 - Change `WRONG`, `OUTDATED`, `MISSING` items to what the code proves, with exact bold labels.
 - Leave `UNVERIFIED` text unchanged and list it; never guess.
-- Mark Pro with `(Pro)` on first use (page and sidebar `text`).
+- Mark Pro with `(Pro)` on first use on the page, and with the `fm-pro` badge in the sidebar `text`.
 - Keep the slug, absolute links, no `.md`, no relative links.
 - Stale screenshots: strip them and leave a `TODO(screenshot)` placeholder (format in `fluent-members-docs-overhaul` §5).
 

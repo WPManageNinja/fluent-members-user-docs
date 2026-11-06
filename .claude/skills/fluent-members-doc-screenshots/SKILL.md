@@ -12,7 +12,7 @@ Every screenshot is taken by a script, never by hand, so output is reproducible 
 | Thing | Value |
 |---|---|
 | Dev site | `http://localhost:10053` (Local by Flywheel site `fcrmv3`, this Mac). Login `admin` / `admin`. Fluent Members + Pro are installed there. |
-| Plugin code | `~/Local Sites/fcrmv3/app/public/wp-content/plugins/fluent-members` (built, no Vue sources, not a git repo). Source of truth for features: the knowledge base `member/chunks/` and the `dev` branch of WPManageNinja/fluent-members(-pro). |
+| Plugin code | `~/Local Sites/fcrmv3/app/public/wp-content/plugins/fluent-members` (built, no Vue sources, not a git repo). Source of truth for features: the knowledge base `member/chunks/` and the `develop` branch of WPManageNinja/fluent-members(-pro). |
 | Admin URL | `http://localhost:10053/wp-admin/admin.php?page=fluent-members#<route>`. Routes (from the built app): `/` dashboard, `/levels`, `/levels/:id`, `/access-groups`, `/access-groups/create`, `/access-groups/:id/edit`, `/members`, `/members/:id`, `/subscriptions`, `/subscriptions/:uuid`, `/one-time`, `/one-time/:id`, `/settings`, `/settings/email-notifications`. |
 | App root | `#fluent-members-app_app`. Top nav: Dashboard, Membership Levels, Access Groups, Members, Billing, Settings gear. |
 | Runner | `npm run shots -- scripts/screenshots/plans/<plan>.json` (= `node scripts/screenshots/shoot.cjs …`). Library in `scripts/screenshots/lib/` (`harness.cjs`, `annotate.cjs`). |

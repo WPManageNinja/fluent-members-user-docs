@@ -15,7 +15,7 @@ Where this skill and `CLAUDE.md` disagree on structure, `CLAUDE.md` wins. Where 
 
 ## 1. Universal page rules (non-negotiable)
 
-- Line 1 is a bare `# H1`. **No frontmatter.** The H1 matches the sidebar `text`.
+- Every page starts with frontmatter holding `title` and a one-sentence `description`, then a `# H1` that matches `title`. The sidebar `text` is a shorter, task-first label and does not have to match the H1.
 - `##` for main sections, `###` for sub-topics.
 - Links are absolute and in the zone's format: `[Text](/docs/<category>/<slug>)` or `[Text](/reference/<slug>)`. Never `.md`, never relative. Confirm the target exists (`find docs reference -name '<slug>.md'`).
 - Images: `![Screenshot of what the reader sees](/images/<category>/<slug>/<name>.webp)`. Never external, never relative. Produced by the screenshot runner, never by hand (`fluent-members-doc-screenshots`).
@@ -92,7 +92,7 @@ Link only when the reader would be stuck without it, or when explaining the conc
 `> [!Note]` for a helpful aside or related setting; use it for a behaviour that surprises or data loss too. About one per page, two at most.
 
 ### 3.7 Pro marking
-`(Pro)` after the feature or option name on its first mention on the page, plus `(Pro)` in the sidebar `text` for Pro pages. Decide Free vs Pro from the plugin code (is the code in `fluent-members-pro`, or behind a Pro check), not from the old docs.
+`(Pro)` after the feature or option name on its first mention on the page, plus the `<span class="fm-pro">Pro</span>` badge in the sidebar `text` for Pro pages. Decide Free vs Pro from the plugin code (is the code in `fluent-members-pro`, or behind a Pro check), not from the old docs.
 
 ### 3.8 Code
 Inline code for shortcodes, attributes, hooks, file names and values typed by the user: `[fluent_membership_level id="10"]`. Fenced blocks with a language for anything multi-line. Never paste plugin source into user docs.

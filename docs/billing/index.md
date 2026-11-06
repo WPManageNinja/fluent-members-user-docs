@@ -9,8 +9,8 @@
 
 In your WordPress admin, go to **Fluent Members → Orders** using the top navigation bar. Orders opens two sub-views:
 
-- **[Subscriptions](/docs/transactions/subscriptions)**: recurring memberships, native (Stripe, PayPal) or migrated from PMPro, MemberPress, or Kadence Memberships.
-- **[One-Time Purchases](/docs/transactions/one-time)**: memberships bought once, with no recurring billing behind them, manual grants, migrated one-off orders, and single native or paywall-integration purchases.
+- **[Subscriptions](/docs/billing/subscriptions)**: recurring memberships, native (Stripe, PayPal) or migrated from PMPro, MemberPress, or Kadence Memberships.
+- **[One-Time Purchases](/docs/billing/one-time)**: memberships bought once, with no recurring billing behind them, manual grants, migrated one-off orders, and single native or paywall-integration purchases.
 
 ## Why Two Views Instead of One List
 
@@ -22,7 +22,7 @@ There's no longer a standalone Transactions screen. Every charge, renewal, and r
 
 ## Issuing a Refund
 
-Refunds are still issued per-transaction, from inside a Subscription's or a One-Time Purchase's detail view. Open the record, find the transaction in its Transaction History panel, and use the refund action on that row. See [Refunds](/docs/transactions/refunds) for the complete walkthrough.
+Refunds are still issued per-transaction, from inside a Subscription's or a One-Time Purchase's detail view. Open the record, find the transaction in its Transaction History panel, and use the refund action on that row. See [Refunds](/docs/billing/refunds) for the complete walkthrough.
 
 ::: warning Refunds do not change membership status
 Issuing a refund does not automatically expire or cancel the member's access. If you want to revoke access, update the member's status manually. See [Suspending & Cancelling](/docs/members/suspending-and-cancelling).

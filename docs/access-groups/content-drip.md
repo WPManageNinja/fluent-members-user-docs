@@ -12,7 +12,7 @@ Go to **Fluent Members → Access Groups**, open the group you want to schedule,
 
 Turn on the **Content Drip** toggle in the top-right corner of the section. If no rules exist yet, you will see *"No content drips added yet. Click the button below to add one."* Click **+ Add Content Drip**.
 
-![Content Drip section on an Access Group](/images/levels/content-drip/content-drip-1.webp)
+![Content Drip section on an Access Group](/images/access-groups/content-drip/content-drip-1.webp)
 
 ## Step 1: Add a Drip Rule
 
@@ -28,7 +28,7 @@ For example: *Show **Lesson 3** **After duration** **14 days 0 hours 0 minutes**
 
 Click **+ Add Content Drip** to add more rules. Each rule keeps its own timing.
 
-![Add a content drip rule](/images/levels/content-drip/add-content-drip-1.webp)
+![Add a content drip rule](/images/access-groups/content-drip/add-content-drip-1.webp)
 
 ## Step 2: Chain Rules for a Paced Sequence
 

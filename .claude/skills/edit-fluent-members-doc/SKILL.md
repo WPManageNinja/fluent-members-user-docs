@@ -23,8 +23,8 @@ technical accuracy.
    for the topic → chunk lookup) to verify technical accuracy before writing.
 3. **DO** preserve all conventions: correct `/docs/` or `/reference/` links, `**term**`
    bold (no inner spaces), no support boilerplate, "(Pro)" markers for Pro features.
-4. **DO** keep the H1 as line 1; if the H1 display title changes, update the matching
-   `text` in the sidebar (`.vitepress/config.mjs`); the `link` stays the same.
+4. **DO** keep the frontmatter `title` and the H1 identical; if they change, review the sidebar
+   `text` in `.vitepress/config.mjs`, a shorter task-first label; the `link` stays the same.
 5. **DO** put any new/replacement images in the doc's existing image folder
    `public/images/<category>/<slug>/`.
 6. **DO** end on a green `npm run docs:build`.
@@ -96,7 +96,7 @@ Wait for confirmation.
 1. Read `TARGET_PATH` fully.
 2. Load relevant chunk from `member/chunks/` (identified in 1.3).
 3. If `TITLE_CHANGES`: open `.vitepress/config.mjs` and find the sidebar entry whose
-   `link` matches the page's path — update its `text` to match the new H1.
+   `link` matches the page's path — update its `text` if the short label no longer fits the new H1.
 4. Read 1 neighbor doc in the same category if matching house style for new content.
 
 ---

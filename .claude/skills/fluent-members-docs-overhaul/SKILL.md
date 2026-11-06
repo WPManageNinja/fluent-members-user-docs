@@ -81,7 +81,7 @@ Derive structure from the feature map, not from the current folders. A new site 
 1. **Understand and install**: what Fluent Members is, Free vs Pro, install, licence, first-run setup.
 2. **Create what you sell**: Membership Levels (Individual, Corporate), pricing plans, status.
 3. **Decide what is protected**: Access Groups, page/post/archive protection, partial preview, dripping, block-level access, REST protection.
-4. **Take members in**: pricing shortcodes, login popup, payments (native, FluentCart, Fluent Forms, Paymattic, PayPal/Stripe/WooCommerce Pro), migration from PMPro/MemberPress/RCP.
+4. **Take members in**: pricing shortcodes, login popup, payments (native, FluentCart, Fluent Forms, Paymattic, PayPal/Stripe/WooCommerce Pro), migration from PMPro, MemberPress, Kadence Memberships or Restrict Content Pro.
 5. **Manage members**: member list, statuses, profile, manual add, corporate seats, subscriptions and billing actions (Pro).
 6. **The member's side**: member portal, cancelling, account pages.
 7. **Settings**: General, Login Popup, Mailing, Email Notifications, Partial Content, Public Contents, integrations.
@@ -99,7 +99,7 @@ For each page in LEDGER order, set `in-progress`, then:
 2. **Collect** the FEATURE-MAP rows for this page and the matching code files.
 3. **Verify every claim** with `verify-fluent-members-doc-against-code`: menu path, button labels, step order, defaults, option lists, what happens after **Save**, Free/Pro. Wrong → fix. Missing → add. Gone from the plugin → delete, and mention the new location only if it moved.
 4. **Complete it:** every assigned feature gets its own option or step with what it does, when to use it, defaults and conditions. Prerequisites first, outcome last.
-5. **Rewrite in house voice** (writer skill §2-§3): H1 on line 1 (no frontmatter), 1-3 sentence opening with the bold feature name and `(Pro)`, the right page shape (§6 of the writer skill), exact bold labels, absolute links (check every target), at most two `> [!Note]`, no em dashes, ends on the action or outcome.
+5. **Rewrite in house voice** (writer skill §2-§3): frontmatter (`title`, `description`) then the H1, 1-3 sentence opening with the bold feature name and `(Pro)`, the right page shape (§6 of the writer skill), exact bold labels, absolute links (check every target), at most two `> [!Note]`, no em dashes, ends on the action or outcome.
 6. **Strip screenshots** (§5) and place placeholders.
 7. **Record** in LEDGER: Code ✓, Live ✓, feature numbers, placeholder count, open questions, plugin sha; fill the FEATURE-MAP `Doc page §` cells; status `done`. Update the sidebar `text` if the H1 changed.
 
@@ -141,7 +141,7 @@ grep -rhoE 'TODO\(screenshot\): [a-z0-9-]+' docs reference | sort | uniq -d   # 
 
 1. FEATURE-MAP: no empty `Doc page §` cells (or each approved as "no doc needed").
 2. LEDGER: every row `done` / merged / deleted as approved.
-3. Every page in the sidebar exactly once, in `JOURNEY.md` order; every H1 matches its sidebar `text`.
+3. Every page in the sidebar exactly once, in `JOURNEY.md` order; every H1 matches its frontmatter `title`.
 4. `npm run docs:build` clean. No dangling image refs: every `/images/...` in the docs exists on disk (check) and none is external or relative; report orphan files, do not delete.
 5. Content lint: `grep -rn '—' docs reference` (no em dashes in prose), no `** x **`, no relative links, no support boilerplate.
 6. `npm run featured:generate` for new pages; for retitled pages delete the old card first.

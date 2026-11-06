@@ -10,8 +10,8 @@ You can issue a full or partial refund on any paid Stripe or PayPal transaction 
 Refunds are issued from inside a record's detail page, there's no separate Transactions list anymore.
 
 1. Open **Fluent Members → Orders**.
-2. Go to **[Subscriptions](/docs/transactions/subscriptions)** if the charge belongs to a recurring plan, or **[One-Time Purchases](/docs/transactions/one-time)** if it was a single purchase.
-3. Use the search field to find the member, then open their row. See [Filters & Search](/docs/transactions/filters-and-search).
+2. Go to **[Subscriptions](/docs/billing/subscriptions)** if the charge belongs to a recurring plan, or **[One-Time Purchases](/docs/billing/one-time)** if it was a single purchase.
+3. Use the search field to find the member, then open their row. See [Filters & Search](/docs/billing/filters-and-search).
 4. In the **Transaction History** panel, find the transaction you want to refund.
 
 You can also start from a member's detail page: open **Members**, find the member, and use the action menu on their membership row.
