@@ -35,6 +35,8 @@ The table has these columns:
 
 Click a row to open it, or use **View** in the three-dot menu. To change the columns, sort or search, see [Filter & Search](/docs/billing/filters-and-search).
 
+A **Test** badge beside the **Amount** marks a test payment, where no real money moved. The same badge appears in the record's panels and in **Transaction History**.
+
 ## The record page
 
 A record with a payment opens with an **Order Information** panel showing **Order ID**, **Membership Level**, **Amount**, **Payment Gateway** and **Purchased**:
@@ -54,7 +56,7 @@ The other panels are the same on both:
 
 ## Refund a payment
 
-Click **More Actions → Refund**. The option is greyed out when nothing is refundable. A full refund also cancels the membership. See [Refunds](/docs/billing/refunds).
+Click **More Actions → Refund**. The option is greyed out when nothing is refundable. A full refund of a payment also cancels the membership, and that includes refunding the last remainder after a partial refund. See [Refunds](/docs/billing/refunds).
 
 ## Revoke a membership
 
