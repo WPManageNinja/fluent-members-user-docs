@@ -26,7 +26,7 @@ const docsSidebar = [
     items: [
       { text: "Levels overview", link: '/docs/levels/' },
       { text: "Create a level", link: '/docs/levels/creating' },
-      { text: "Price with native payments", link: '/docs/levels/pricing-native' },
+      { text: "Price with native payments <span class=\"fm-pro\">Pro</span>", link: '/docs/levels/pricing-native' },
       { text: "Price with paywalls", link: '/docs/levels/pricing-paywalls' },
       { text: "Attach access groups", link: '/docs/levels/attaching-access-groups' },
       { text: "Upgrade paths <span class=\"fm-pro\">Pro</span>", link: '/docs/levels/upgrade-paths' },
@@ -89,7 +89,7 @@ const docsSidebar = [
       { text: "Membership details", link: '/docs/members/portal/membership-details' },
       { text: "Cancel a membership", link: '/docs/members/portal/cancelling' },
       { text: "Update payment method <span class=\"fm-pro\">Pro</span>", link: '/docs/members/portal/updating-payment-method' },
-      { text: "Renew a membership", link: '/docs/members/portal/renewing-a-membership' },
+      { text: "Renew a membership <span class=\"fm-pro\">Pro</span>", link: '/docs/members/portal/renewing-a-membership' },
       { text: "Corporate seat invites <span class=\"fm-pro\">Pro</span>", link: '/docs/members/portal/corporate-seat-invites' }
     ]
   },

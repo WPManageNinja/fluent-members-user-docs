@@ -1,0 +1,233 @@
+{
+  "id": "access",
+  "kind": "hub",
+  "title": "Protect Your Content",
+  "mapRoot": "Fluent Members Content Protection",
+  "overview": "/docs/access-groups/",
+  "sidebarOverviewText": "Access groups overview",
+  "hero": {
+    "eyebrow": "Access Groups",
+    "title": "Decide who sees what on your site",
+    "lead": "An Access Group links your content to your Membership Levels. Pick what to protect, choose who gets in, and decide what everyone else sees. Protect a whole site, one post or a single block.",
+    "actions": [
+      {
+        "text": "Create an access group",
+        "link": "#create-an-access-group",
+        "primary": true
+      },
+      {
+        "text": "How protection works",
+        "link": "/docs/access-groups/how-protection-works"
+      }
+    ],
+    "path": [
+      "Fluent Members",
+      "Access Groups"
+    ]
+  },
+  "tasks": [
+    {
+      "text": "Lock all my posts or pages",
+      "sub": "Restriction types",
+      "to": "restriction-types"
+    },
+    {
+      "text": "Lock one post or page",
+      "sub": "Access Groups panel in the editor",
+      "to": "per-post"
+    },
+    {
+      "text": "Hide part of a post",
+      "sub": "Access Groups block",
+      "to": "block"
+    },
+    {
+      "text": "Send visitors to my pricing page",
+      "sub": "When Unauthorized",
+      "to": "unauthorized"
+    },
+    {
+      "text": "Tease the start of an article",
+      "sub": "Partial Content Lock",
+      "to": "partial"
+    },
+    {
+      "text": "Release lessons over time",
+      "sub": "Content Drip",
+      "to": "drip"
+    },
+    {
+      "text": "Show my plans on a page",
+      "sub": "Membership Levels block",
+      "to": "levels-block"
+    },
+    {
+      "text": "Find out why a visitor is blocked",
+      "sub": "How protection works",
+      "to": "how-it-works"
+    }
+  ],
+  "sidebarSections": [
+    {
+      "text": "Protect content",
+      "nodes": [
+        "how-it-works",
+        "restriction-types",
+        "unauthorized",
+        "drip",
+        "per-post",
+        "partial"
+      ]
+    },
+    {
+      "text": "Blocks",
+      "nodes": [
+        "block",
+        "nesting",
+        "levels-block"
+      ]
+    }
+  ],
+  "branches": [
+    {
+      "id": "basics",
+      "label": "How it fits together",
+      "where": "Fluent Members › Access Groups",
+      "goal": "Understand which check decides whether someone gets in.",
+      "nodes": [
+        {
+          "id": "how-it-works",
+          "label": "How protection works",
+          "link": "/docs/access-groups/how-protection-works",
+          "ux": "See the checks that decide who gets in.",
+          "facts": [
+            "One active group the member holds a level for is enough",
+            "Membership must be Active or Trial and not expired",
+            "Administrators skip all protection on your site",
+            "Comments, feeds and REST responses are protected too"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "group",
+      "label": "Inside an access group",
+      "where": "Fluent Members › Access Groups › open a group",
+      "goal": "Set what the group protects and what blocked visitors see.",
+      "nodes": [
+        {
+          "id": "restriction-types",
+          "label": "Restriction types",
+          "link": "/docs/access-groups/protected-content",
+          "pro": "partial",
+          "proNote": "WooCommerce types need Pro",
+          "ux": "Choose what the group protects, one rule at a time.",
+          "facts": [
+            "Core: Entire Website, All Posts, All Pages, All Categories Archive, All Tags Archive, Specific Post/Page/CPT/Taxonomy etc.",
+            "FluentCart Products: needs FluentCart",
+            "WooCommerce Products (Pro): needs WooCommerce",
+            "Excluded: exceptions for one rule"
+          ]
+        },
+        {
+          "id": "unauthorized",
+          "label": "What blocked visitors see",
+          "link": "/docs/access-groups/unauthorized-access",
+          "ux": "Redirect blocked visitors or show them a message.",
+          "facts": [
+            "Actions: Redirect to a specific URL, Display a custom message",
+            "Uses your global default until you click Customize for this rule",
+            "Revert to defaults removes the group's own settings"
+          ]
+        },
+        {
+          "id": "drip",
+          "label": "Drip content",
+          "link": "/docs/access-groups/content-drip",
+          "ux": "Unlock content step by step after a member joins.",
+          "state": "off",
+          "facts": [
+            "Timeline: After duration, Within duration",
+            "Delay in Days, Hours and Minutes",
+            "Leave Show This Content blank to cover the whole group"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "editor",
+      "label": "Inside the editor",
+      "where": "WordPress post or page editor",
+      "goal": "Protect one post, or one part of a post, while you write it.",
+      "nodes": [
+        {
+          "id": "per-post",
+          "label": "Protect a single post",
+          "link": "/docs/access-groups/per-post-restrictions",
+          "ux": "Lock one post or page from its own sidebar.",
+          "facts": [
+            "Access Groups panel on the Post or Page tab",
+            "Replaces the rules of your groups for that post",
+            "Works on any public post type"
+          ]
+        },
+        {
+          "id": "block",
+          "label": "Access Groups block",
+          "link": "/docs/access-groups/gutenberg-block/inserting",
+          "sidebar": "Access Groups block",
+          "ux": "Keep a post public and hide only part of it.",
+          "facts": [
+            "Any block: Access Groups panel on the Block tab",
+            "Several blocks: wrap them in the Access Groups block",
+            "No group ticked means visible to everyone"
+          ]
+        },
+        {
+          "id": "nesting",
+          "label": "Nesting & limits",
+          "link": "/docs/access-groups/gutenberg-block/nesting-and-limits",
+          "ux": "Know what happens when restricted blocks sit inside each other.",
+          "facts": [
+            "Every layer must pass",
+            "Blocked blocks show fixed text or a partial preview",
+            "Exclude Content from Restriction does not apply to blocks"
+          ]
+        },
+        {
+          "id": "levels-block",
+          "label": "Membership Levels block",
+          "link": "/docs/access-groups/gutenberg-block/membership-levels-block",
+          "ux": "Show your levels and plans on any page.",
+          "facts": [
+            "Levels to display",
+            "Plans per row: 1 to 4",
+            "Logged-in button and Logged-out button text",
+            "Display toggles for title, description and level name"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "site-wide",
+      "label": "Site-wide settings",
+      "where": "Settings gear › Partial Content Lock",
+      "goal": "Show the start of protected content to win visitors over.",
+      "nodes": [
+        {
+          "id": "partial",
+          "label": "Partial content lock",
+          "link": "/docs/settings/partial-content-lock",
+          "ux": "Show a readable preview, then blur the rest.",
+          "state": "off",
+          "facts": [
+            "Preview Length: 10 to 500 words, 50 by default",
+            "Overlay color, opacity and message",
+            "Button text, URL, colors and size",
+            "Turn it off per post or per block"
+          ]
+        }
+      ]
+    }
+  ]
+}

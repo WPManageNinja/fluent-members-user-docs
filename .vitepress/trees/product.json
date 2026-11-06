@@ -1,0 +1,217 @@
+{
+  "id": "product",
+  "kind": "hub",
+  "strip": false,
+  "title": "Fluent Members",
+  "mapRoot": "Fluent Members",
+  "overview": "/docs/getting-started/introduction",
+  "sidebarOverviewText": "Introduction",
+  "hero": {
+    "eyebrow": "Fluent Members docs",
+    "title": "Turn your WordPress site into a membership site",
+    "lead": "Sell membership levels, lock your content behind them, and manage every member from one screen.",
+    "path": ["WordPress admin", "FluentMembers", "Dashboard"],
+    "actions": [
+      { "text": "Set up your first membership", "link": "#set-up-your-first-membership", "primary": true },
+      { "text": "Compare Free and Pro", "link": "/docs/getting-started/free-vs-pro" }
+    ]
+  },
+  "tasks": [
+    { "text": "Create a membership to sell", "sub": "Title, type, pricing type", "to": "create-level" },
+    { "text": "Lock my content", "sub": "Posts, pages, or the whole site", "to": "access-overview" },
+    { "text": "Sell through a plugin I use", "sub": "FluentCart, Fluent Forms, Paymattic", "to": "pricing-paywalls" },
+    { "text": "Take payments with Stripe", "sub": "Built-in checkout and subscriptions", "to": "stripe" },
+    { "text": "Give someone access myself", "sub": "Add a membership by hand", "to": "add-manually" },
+    { "text": "Move from another plugin", "sub": "Paid Memberships Pro, MemberPress, Kadence", "to": "migration" }
+  ],
+  "journey": [
+    { "text": "Install Fluent Members", "sub": "From Plugins › Add Plugin, free", "to": "install" },
+    { "text": "Run the guided setup", "sub": "Level, payment, protected content and pages in four steps", "to": "quick-start" },
+    { "text": "Check what blocked visitors see", "sub": "Open a protected page in a private window", "to": "blocked" },
+    { "text": "Publish your pricing page", "sub": "Link visitors to it so they can join", "to": "pricing-page" }
+  ],
+  "branches": [
+    {
+      "id": "setup",
+      "label": "Get set up",
+      "where": "WordPress admin › Plugins",
+      "goal": "Install the plugin, add Pro if you have it, and learn the admin.",
+      "nodes": [
+        { "id": "free-vs-pro", "label": "Free vs Pro", "link": "/docs/getting-started/free-vs-pro", "ux": "See at a glance which features need Pro.", "facts": ["Every feature group, side by side"] },
+        { "id": "install", "label": "Install & activate", "link": "/docs/getting-started/installation", "ux": "Get the free plugin running in a few minutes.", "facts": ["Needs: WordPress 6.3, PHP 7.4"] },
+        { "id": "install-pro", "label": "Activate Pro", "link": "/docs/getting-started/installation-pro", "pro": true, "ux": "Add the Pro plugin on top of the free one.", "facts": ["Needs: Fluent Members active"] },
+        { "id": "quick-start", "label": "Guided setup & quick start", "link": "/docs/getting-started/quick-start", "ux": "Create your first membership in four guided steps.", "facts": ["Steps: Level, Set Up Payments, Protect Your Content, Set Up Pages"] },
+        { "id": "admin-nav", "label": "Find your way around", "link": "/docs/getting-started/admin-navigation", "ux": "Learn the top bar, the level tabs and Settings.", "facts": ["Theme: Light, Dark, System"] },
+        { "id": "glossary", "label": "Glossary", "link": "/docs/getting-started/glossary", "ux": "Look up any term the docs use." }
+      ]
+    },
+    {
+      "id": "levels",
+      "label": "Membership Levels",
+      "where": "Top bar › Membership Levels",
+      "goal": "Create the plans you sell and decide how they are paid for.",
+      "nodes": [
+        { "id": "levels-overview", "label": "Levels overview", "link": "/docs/levels/", "ux": "Find, filter and open every level.", "facts": ["Tabs: Level Details, Pricing, Access Groups, Members, Upgrade Paths, Integrations"] },
+        { "id": "create-level", "label": "Create a level", "link": "/docs/levels/creating", "ux": "Name a level and pick its type and pricing type.", "facts": ["Type: Individual, Corporate (Pro)", "Pricing Type: cannot be changed later"] },
+        { "id": "pricing-native", "label": "Price with native payments", "link": "/docs/levels/pricing-native", "pro": true, "ux": "Add one-time or recurring plans paid through Stripe or PayPal.", "facts": ["Plan: Title, Price Type, Amount, Setup Fee, Trial Days"] },
+        { "id": "pricing-paywalls", "label": "Price with paywalls", "link": "/docs/levels/pricing-paywalls", "pro": "partial", "proNote": "WooCommerce is Pro", "ux": "Grant a level when someone buys a product or pays a form.", "facts": ["Plugins: FluentCart, Fluent Forms, Paymattic, WooCommerce"] },
+        { "id": "attach-groups", "label": "Attach access groups", "link": "/docs/levels/attaching-access-groups", "ux": "Choose the protected content a level unlocks." },
+        { "id": "upgrade-paths", "label": "Upgrade paths", "link": "/docs/levels/upgrade-paths", "pro": true, "ux": "Let members move up to a better plan, with a discount or proration.", "facts": ["Only on levels with Native Payment"] },
+        { "id": "corporate", "label": "Corporate memberships", "link": "/docs/levels/corporate-memberships", "pro": true, "ux": "Sell one membership that covers a whole team.", "facts": ["Maximum Members: the owner counts as a seat"] }
+      ]
+    },
+    {
+      "id": "protect",
+      "label": "Access Groups",
+      "where": "Top bar › Access Groups",
+      "goal": "Decide what is protected, and what everyone else sees instead.",
+      "nodes": [
+        { "id": "access-overview", "label": "Access groups overview", "link": "/docs/access-groups/", "ux": "Bundle the content you want to protect.", "facts": ["Columns: Protected Content, Excluded, Drip, Used By, Status"] },
+        { "id": "how-protection", "label": "How protection works", "link": "/docs/access-groups/how-protection-works", "ux": "See why a visitor can or cannot open a page." },
+        { "id": "restriction-types", "label": "Restriction types", "link": "/docs/access-groups/protected-content", "ux": "Protect one post, a whole post type or the entire site.", "facts": ["Core: Entire Website, All Posts, All Pages, specific content"] },
+        { "id": "blocked", "label": "What blocked visitors see", "link": "/docs/access-groups/unauthorized-access", "ux": "Redirect blocked visitors or show them a message.", "facts": ["Actions: Redirect to a specific URL, Display a custom message"] },
+        { "id": "drip", "label": "Drip content", "link": "/docs/access-groups/content-drip", "ux": "Release content step by step after a member joins.", "facts": ["Timeline: After duration, Within duration"] },
+        { "id": "per-post", "label": "Protect a single post", "link": "/docs/access-groups/per-post-restrictions", "ux": "Lock one post right from the editor." },
+        { "id": "partial-lock", "label": "Partial content lock", "link": "/docs/settings/partial-content-lock", "ux": "Show a preview of a post, then ask visitors to join.", "facts": ["Where: Settings › Partial Content Lock"] },
+        { "id": "block-access", "label": "Access Groups block", "group": "Blocks", "link": "/docs/access-groups/gutenberg-block/inserting", "ux": "Lock part of a page instead of the whole page." },
+        { "id": "block-nesting", "label": "Nesting & limits", "group": "Blocks", "link": "/docs/access-groups/gutenberg-block/nesting-and-limits", "ux": "Know what happens when protected blocks sit inside each other." },
+        { "id": "block-levels", "label": "Membership Levels block", "group": "Blocks", "link": "/docs/access-groups/gutenberg-block/membership-levels-block", "ux": "Add pricing cards to any page with a block." }
+      ]
+    },
+    {
+      "id": "sell",
+      "label": "Sell memberships",
+      "where": "Your pricing page, and Settings › Payment Settings",
+      "goal": "Show your levels on your site and collect payment.",
+      "nodes": [
+        { "id": "pricing-page", "label": "Pricing page", "link": "/docs/selling/pricing-page", "ux": "Show your levels on a page visitors can buy from.", "facts": ["Shortcode: [fluent_membership_levels]"] },
+        { "id": "checkout", "label": "Checkout & guest checkout", "link": "/docs/selling/checkout", "pro": "partial", "proNote": "The built-in checkout is Pro", "ux": "See what a visitor goes through when they buy." },
+        { "id": "payment-settings", "label": "Payment settings", "link": "/docs/settings/payment-settings/", "pro": "partial", "proNote": "Stripe and PayPal are Pro", "ux": "See which gateways are ready to take payments.", "facts": ["Where: Settings › Payment Settings"] },
+        { "id": "stripe", "label": "Set up Stripe", "link": "/docs/settings/payment-settings/stripe-setup", "pro": true, "ux": "Connect Stripe for cards and recurring subscriptions.", "facts": ["Payment Mode: Test Mode, Live Mode"] },
+        { "id": "paypal", "label": "Set up PayPal", "link": "/docs/settings/payment-settings/paypal-setup", "pro": true, "ux": "Connect PayPal for payments and recurring subscriptions.", "facts": ["Payment Mode: Sandbox Mode, Live Mode"] },
+        { "id": "login-popup", "label": "Login popup", "link": "/docs/settings/login-popup", "ux": "Let members log in without leaving the page.", "facts": ["Where: Settings › Login Popup", "Off by default"] }
+      ]
+    },
+    {
+      "id": "members",
+      "label": "Dashboard & Members",
+      "where": "Top bar › Dashboard, and Members",
+      "goal": "Follow your numbers and manage each member.",
+      "nodes": [
+        { "id": "dashboard", "label": "Read your dashboard", "link": "/docs/dashboard/dashboard", "ux": "Check members, revenue and churn at a glance.", "facts": ["Cards: Active members, Revenue, Recurring revenue, Member churn"] },
+        { "id": "members-list", "label": "Members list", "link": "/docs/members/", "ux": "Search and filter everyone who holds a membership." },
+        { "id": "member-detail", "label": "Member details", "link": "/docs/members/detail", "ux": "See one member's memberships and act on them." },
+        { "id": "add-manually", "label": "Add a membership manually", "link": "/docs/members/adding-manually", "ux": "Give a WordPress user a membership yourself." },
+        { "id": "members-on-level", "label": "Members on a level", "link": "/docs/levels/members-on-a-level", "ux": "See who holds a level and assign more members.", "facts": ["Where: open a level › Members"] },
+        { "id": "suspend-cancel", "label": "Suspend or cancel a member", "link": "/docs/members/suspending-and-cancelling", "ux": "Pause or end a member's access." },
+        { "id": "corporate-members", "label": "Corporate members", "link": "/docs/members/corporate-members", "pro": true, "ux": "See a team owner's seats and who fills them." }
+      ]
+    },
+    {
+      "id": "portal",
+      "label": "Member Portal",
+      "where": "Your portal page, with [fluent_member_portal]",
+      "goal": "Give members one page to manage their own memberships.",
+      "nodes": [
+        { "id": "portal-setup", "label": "Set up the portal", "link": "/docs/members/portal/setup", "ux": "Create the page members manage their membership from.", "facts": ["Shortcode: [fluent_member_portal]"] },
+        { "id": "portal-sees", "label": "What members see", "link": "/docs/members/portal/what-members-see", "ux": "Tour the portal from a member's side." },
+        { "id": "portal-details", "label": "Membership details", "link": "/docs/members/portal/membership-details", "ux": "See the details page behind each membership." },
+        { "id": "portal-cancel", "label": "Cancel a membership", "link": "/docs/members/portal/cancelling", "ux": "Let members cancel without contacting you." },
+        { "id": "portal-payment", "label": "Update payment method", "link": "/docs/members/portal/updating-payment-method", "pro": true, "ux": "Let members replace their card.", "facts": ["Stripe only"] },
+        { "id": "portal-renew", "label": "Renew a membership", "link": "/docs/members/portal/renewing-a-membership", "pro": true, "ux": "Let members restart a membership that is ending." },
+        { "id": "portal-invites", "label": "Corporate seat invites", "link": "/docs/members/portal/corporate-seat-invites", "pro": true, "ux": "Let team owners invite people to their seats." }
+      ]
+    },
+    {
+      "id": "billing",
+      "label": "Billing",
+      "where": "Top bar › Billing",
+      "goal": "Track subscriptions and one-time purchases, and handle refunds.",
+      "nodes": [
+        { "id": "billing-overview", "label": "Billing overview", "link": "/docs/billing/", "pro": true, "ux": "See where payments and subscriptions are listed.", "facts": ["Menus: Subscriptions, One-time"] },
+        { "id": "subscriptions", "label": "Subscriptions", "link": "/docs/billing/subscriptions", "pro": true, "ux": "Follow every recurring membership and its status." },
+        { "id": "provider-subs", "label": "Subscriptions from other plugins", "link": "/docs/billing/provider-subscriptions", "pro": true, "ux": "See recurring memberships billed by other plugins." },
+        { "id": "one-time", "label": "One-time memberships", "link": "/docs/billing/one-time", "pro": true, "ux": "Review memberships with no recurring payment." },
+        { "id": "billing-filters", "label": "Filter & search", "link": "/docs/billing/filters-and-search", "pro": true, "ux": "Find one subscription or purchase fast." },
+        { "id": "refunds", "label": "Refunds", "link": "/docs/billing/refunds", "pro": true, "ux": "Refund a payment from the admin." },
+        { "id": "cancel-sub", "label": "Cancel a subscription", "link": "/docs/billing/cancelling-a-subscription", "pro": true, "ux": "End a subscription now or at the end of the period.", "facts": ["Modes: End of Billing Period, Cancel Immediately"] }
+      ]
+    },
+    {
+      "id": "emails",
+      "label": "Emails",
+      "where": "Settings › Email Configuration",
+      "goal": "Choose what your members are emailed, and who it comes from.",
+      "nodes": [
+        { "id": "mailing", "label": "Mailing settings", "link": "/docs/settings/email-configuration/mailing-settings", "ux": "Set the sender and the look of every email." },
+        { "id": "notifications", "label": "Email notifications", "link": "/docs/settings/email-configuration/email-notifications", "ux": "Turn each automatic email on or off and edit it.", "facts": ["Welcome Email, Membership Expiring, Membership Expired", "Payment Receipt, Payment Failed, Subscription Cancelled, Refund Issued"] },
+        { "id": "email-editor", "label": "Custom email editor", "link": "/docs/settings/email-configuration/custom-email-editor", "pro": true, "ux": "Design emails with blocks and starter templates." }
+      ]
+    },
+    {
+      "id": "integrations",
+      "label": "Connect other plugins",
+      "where": "Open a level › Integrations, and the plugin's own screens",
+      "goal": "Connect your membership site to the rest of your tools.",
+      "nodes": [
+        { "id": "integrations-overview", "label": "Integrations overview", "link": "/docs/integrations/", "ux": "See every plugin Fluent Members connects to." },
+        { "id": "level-integrations", "label": "Level integrations", "link": "/docs/levels/integrations", "ux": "Run an action in another plugin when a member joins a level.", "facts": ["Where: open a level › Integrations"] },
+        { "id": "fluentcart", "label": "FluentCart", "link": "/docs/integrations/fluentcart", "ux": "Sell memberships as FluentCart products." },
+        { "id": "fluent-forms", "label": "Fluent Forms", "link": "/docs/integrations/fluent-forms", "ux": "Sell memberships through a payment form." },
+        { "id": "paymattic", "label": "Paymattic", "link": "/docs/integrations/paymattic", "ux": "Sell memberships through a Paymattic form." },
+        { "id": "woocommerce", "label": "WooCommerce", "link": "/docs/integrations/woocommerce", "pro": true, "ux": "Sell memberships as products and restrict your shop." },
+        { "id": "fluentcrm", "label": "FluentCRM", "link": "/docs/integrations/fluentcrm", "ux": "Start automations when a membership changes." },
+        { "id": "fluent-support", "label": "Fluent Support", "link": "/docs/integrations/fluent-support", "ux": "See a customer's memberships in their ticket." },
+        { "id": "fluent-community", "label": "FluentCommunity", "link": "/docs/integrations/fluent-community", "ux": "Add members to community spaces automatically." }
+      ]
+    },
+    {
+      "id": "migrate",
+      "label": "Migrate",
+      "where": "Settings › Migration",
+      "goal": "Bring your levels and members over from another plugin.",
+      "nodes": [
+        { "id": "migration", "label": "Migration overview", "link": "/docs/settings/migration/", "pro": "partial", "proNote": "Billing data needs Pro", "ux": "Import levels, access groups and members in one run.", "facts": ["Subscriptions, Orders, Transactions and Payments need Pro"] },
+        { "id": "from-pmpro", "label": "From Paid Memberships Pro", "link": "/docs/settings/migration/from-paid-memberships-pro", "ux": "Move your Paid Memberships Pro site over." },
+        { "id": "from-memberpress", "label": "From MemberPress", "link": "/docs/settings/migration/from-memberpress", "ux": "Move your MemberPress site over." },
+        { "id": "from-kadence", "label": "From Kadence or Restrict Content Pro", "link": "/docs/settings/migration/from-kadence-memberships", "ux": "Both use the same migration card." }
+      ]
+    },
+    {
+      "id": "settings",
+      "label": "Settings",
+      "where": "Gear icon › Settings",
+      "goal": "Set the options that apply to your whole site.",
+      "nodes": [
+        { "id": "general", "label": "General settings", "link": "/docs/settings/general", "ux": "Set your pages, your currency and your always-public content.", "facts": ["Exclude Content from Restriction, Select Currency"] },
+        { "id": "default-unauthorized", "label": "Default unauthorized access", "link": "/docs/settings/unauthorized-access", "ux": "Set what blocked visitors see by default." },
+        { "id": "permissions", "label": "Permissions", "link": "/docs/settings/permissions", "ux": "Choose who can change restrictions on content.", "facts": ["Content Restrictions, Managers"] },
+        { "id": "privacy", "label": "Privacy & personal data", "link": "/docs/settings/privacy", "ux": "See how member data is exported and erased." }
+      ]
+    },
+    {
+      "id": "developers",
+      "label": "For developers",
+      "where": "Shortcodes, smartcodes and hooks",
+      "goal": "Look up the codes and hooks Fluent Members provides.",
+      "nodes": [
+        { "id": "shortcodes", "label": "Shortcodes", "link": "/reference/shortcodes", "ux": "Every shortcode and what it does.", "facts": ["[fluent_membership_level], [fluent_membership_levels], [fluent_members], [fluent_member_portal]"] },
+        { "id": "smartcodes", "label": "Email smartcodes", "link": "/reference/email-smartcodes", "ux": "Every placeholder you can use in an email." },
+        { "id": "hooks", "label": "Hooks & filters", "link": "/reference/developer-hooks", "ux": "Extend Fluent Members with your own code." },
+        { "id": "chain-map", "label": "Chain map", "link": "/reference/chain-map", "ux": "Trace how levels, groups and content connect." }
+      ]
+    },
+    {
+      "id": "help",
+      "label": "Help & updates",
+      "where": "These docs",
+      "goal": "Fix a problem, or see what changed.",
+      "nodes": [
+        { "id": "statuses", "label": "Membership statuses", "link": "/reference/membership-statuses", "ux": "See what each status means for access." },
+        { "id": "troubleshooting", "label": "Troubleshooting", "link": "/reference/troubleshooting", "ux": "Fix the most common problems." },
+        { "id": "faq", "label": "FAQ", "link": "/docs/help-support/faq", "ux": "Find quick answers to common questions." },
+        { "id": "support", "label": "Get help", "link": "/docs/help-support/get-support", "ux": "Find out how to reach the support team." }
+      ]
+    }
+  ]
+}
