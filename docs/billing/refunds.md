@@ -5,7 +5,7 @@ description: "Refund a Stripe or PayPal payment from Fluent Members, understand 
 
 # Refunds (Pro)
 
-**Refunds** (Pro) send money back through Stripe or PayPal without leaving your site. Issue one when a member asks for their money back, or when a payment was charged in error. A full refund also ends the member's access.
+**Refunds** (Pro) send money back through Stripe or PayPal without leaving your site. Issue one when a member asks for their money back, or when a payment was charged in error. A full refund of any one payment also ends the member's access.
 
 Refunds here work on Stripe and PayPal payments only. Payments made through FluentCart, WooCommerce, Fluent Forms or Paymattic are [refunded in those plugins](/docs/billing/provider-subscriptions).
 
@@ -25,8 +25,8 @@ The dialog has these fields:
 |---|---|
 | **Refund Transaction** | Choose which payment to refund. Appears only when there is more than one option. |
 | **Refund Amount** | Starts at the most you can refund, shown under the field. Lower it for a partial refund. |
-| **Refund Reason** | Required. Choose **Requested by customer** (default), **Duplicate**, **Fraudulent** or **Other**. Stripe does not accept **Other**, so choose one of the first three for Stripe payments. |
-| **Refund Note** | Optional internal note for this refund. |
+| **Refund Reason** | Required. Choose **Requested by customer** (default), **Duplicate**, **Fraudulent** or **Other**. **Other** sends no reason to Stripe. |
+| **Refund Note** | Optional. On PayPal payments the note goes to PayPal as a note to the payer, so the member can see it. No admin screen shows the note afterwards. |
 
 ## What happens after you refund
 
@@ -38,6 +38,9 @@ A new row appears in **Transaction History** and the **Activity** timeline shows
 | New row status | **Refunded** | **Partially Refunded** |
 | Subscription | Cancelled immediately | Keeps running |
 | Membership | Cancelled | Keeps its access |
+
+> [!Note]
+> "Full" means the whole amount of that one payment, not of the subscription. Refunding all of a single renewal cancels the whole subscription immediately and ends access, and the dialog gives no warning. To return one month's payment and keep the membership running, enter a lower amount. Refunding the last remainder after a partial refund also counts as a full refund.
 
 A partial refund leaves the rest of the payment refundable, so you can refund again later. If you want to end access after a partial refund, [cancel the subscription](/docs/billing/cancelling-a-subscription) or [revoke the membership](/docs/billing/one-time).
 
