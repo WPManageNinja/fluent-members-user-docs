@@ -1,45 +1,37 @@
-# Install & Activate Fluent Members Pro
+---
+title: "Install and Activate Fluent Members Pro"
+description: "Add the Fluent Members Pro plugin to your site for built-in Stripe and PayPal checkout, billing, corporate memberships and the block email editor."
+---
 
-**Fluent Members Pro** is a premium add-on that unlocks advanced features like native Stripe checkout, recurring subscriptions, corporate memberships, and the visual block email editor.
+# Install and Activate Fluent Members Pro
 
-::: warning Prerequisite
-**Fluent Members Pro** acts as an add-on. You must have the free version of **Fluent Members** installed and activated before you can install the Pro version. If you have not done that yet, start with [Installing Fluent Members (Free Version)](/docs/getting-started/installation).
-:::
+**Fluent Members Pro** (Pro) is a separate plugin that adds built-in Stripe and PayPal checkout, billing screens, corporate memberships, WooCommerce and the block email editor. See [Free vs Pro](/docs/getting-started/free-vs-pro) for the full list.
 
-## Step 1: Download the Pro Plugin
+Before you start, you need:
 
-To get started, you need to download the Pro installation file from your account.
+- The free **Fluent Members** plugin [installed and active](/docs/getting-started/installation). Pro only runs on top of it, so keep both active.
+- The **Fluent Members Pro** ZIP file.
+- WordPress 6.3 or newer and PHP 7.4 or newer.
 
-1. Log in to your [WPManageNinja user dashboard](https://wpmanageninja.com/account/).
-2. Navigate to the **Downloads** section.
-3. Find **Fluent Members Pro** and download the ZIP file to your computer.
-4. Go to the **Licenses** tab and copy your license key. You will need this in Step 3.
+## Install Pro
 
-## Step 2: Install the Pro Add-On
+1. Go to **Plugins → Add Plugin** and click **Upload Plugin**.
+2. Click **Choose File** and select the **Fluent Members Pro** ZIP file.
+3. Click **Install Now**.
+4. Click **Activate Plugin**.
 
-Upload the downloaded file to your WordPress site.
+## Check that Pro is active
 
-1. Log in to your WordPress admin dashboard.
-2. Navigate to **Plugins → Add New Plugin**.
-3. Click **Upload Plugin** at the top of the screen.
-4. Click **Choose File** and select the **Fluent Members Pro** ZIP file you just downloaded.
-5. Click **Install Now**.
-6. Once the installation is complete, click **Activate Plugin**.
+The WordPress sidebar item changes to **FluentMembers Pro**, and a **Billing** item appears under it.
 
-## Step 3: Activate Your License
+![Screenshot of the WordPress sidebar showing FluentMembers Pro with Dashboard, Levels, Access Groups, Members, Billing and Settings](/images/getting-started/installation-pro/installation-pro-wp-menu.webp)
 
-To unlock all premium features and receive automatic updates, you must activate your license key.
+Inside the plugin, you also get:
 
-1. In your WordPress dashboard, go to **Fluent Members → Settings**.
-2. Open the **License** or **Activation** tab.
-3. Paste the license key you copied from your WPManageNinja dashboard.
-4. Click **Activate License**.
+- A **Pro** tag beside the logo, and **Billing** in the top bar.
+- **Corporate** as a level type, without the Pro badge.
+- **Native Payment** and **WooCommerce** as pricing types, without the Pro badge.
 
+## What to do next
 
-## Confirm the Pro Installation
-
-Once activated, check your **Fluent Members** sidebar. You will notice new menus unlocked, such as **Transactions**, meaning your Pro version is active and ready to go.
-
-You should also see Pro-only options elsewhere in the plugin, including native Stripe pricing on Levels and corporate membership types.
-
-Your **Fluent Members Pro** installation is now complete. You can begin configuring advanced payment gateways and automated subscriptions to scale your membership platform. Continue with [Stripe Setup (Pro)](/docs/settings/payment-settings/stripe-setup) or the [Quick Start](/docs/getting-started/quick-start) guide.
+Stripe and PayPal do nothing until you connect them. Follow [Set up Stripe](/docs/settings/payment-settings/stripe-setup) or [Set up PayPal](/docs/settings/payment-settings/paypal-setup), or connect a gateway during the [guided setup](/docs/getting-started/quick-start) if you have not run it yet.
