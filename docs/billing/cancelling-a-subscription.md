@@ -33,7 +33,7 @@ The two modes differ in when access ends:
 | Subscription status | Stays as it is until the period ends | **Canceled** now |
 | Next Billing | Stays until the period ends | Cleared |
 
-Neither mode refunds anything. To return money, issue a [refund](/docs/billing/refunds). A full refund also cancels the subscription immediately, so you don't need to cancel it separately.
+Neither mode refunds anything. To return money, issue a [refund](/docs/billing/refunds). A full refund of any one payment, even a single renewal, also cancels the subscription immediately. To return money and keep the subscription running, refund a lower amount.
 
 ## How each gateway handles it
 
