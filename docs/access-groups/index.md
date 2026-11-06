@@ -37,7 +37,7 @@ Each row shows a summary of the group:
 | **Excluded** | How many items the rules leave out. |
 | **Drip** | The state of [Content Drip](/docs/access-groups/content-drip), for example `2 items · After`. `Off · 1 rule unused` means rules exist but the toggle is off. |
 | **Used By** | How many levels unlock the group. Hover to see their names. |
-| **Status** | **Active** or **Inactive**. An inactive group protects nothing. |
+| **Status** | **Active** or **Inactive**. An inactive group protects nothing, but it can still grant access to content an active group protects. To remove access, [detach the level](/docs/levels/attaching-access-groups). |
 
 ## Create an access group
 
