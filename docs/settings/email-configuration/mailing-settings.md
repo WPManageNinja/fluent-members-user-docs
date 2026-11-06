@@ -1,37 +1,48 @@
+---
+title: "Mailing Settings"
+description: "Set the sender name and address, footer, logo and branding used by the emails Fluent Members sends."
+---
+
 # Mailing Settings
 
-Mailing Settings controls the global sender identity and footer branding applied to every email Fluent Members sends. Set these once and all your transactional notifications (welcome emails, expiry reminders, suspension alerts) will carry your brand name and address instead of WordPress's defaults.
+**Mailing Settings** holds the sender details and branding for every email Fluent Members sends to members. Set them before you turn on any [email notification](/docs/settings/email-configuration/email-notifications), so emails carry your name and address.
 
-## Access Mailing Settings
+Go to **Fluent Members → Settings → Email Configuration → Mailing Settings**.
 
-Click the **Settings** gear icon in the top-right corner of any Fluent Members screen, then select **Email Configuration → Mailing Settings** from the left-hand menu.
+![Screenshot of the Mailing Settings page with the sender fields, Email Footer Text editor, logo upload and Powered by checkbox](/images/settings/email-configuration/mailing-settings-1.webp)
 
-## Configuring Mailing Settings
+## Sender details
 
-- **From Name**: The sender display name shown in the recipient's inbox (e.g. your site or brand name). Defaults to your WordPress site title.
+Use names and addresses that match your domain and SMTP setup, as the **Default From Settings** notice at the top of the page advises.
 
-- **From Email Address**: The sender email address. WordPress's default (`wordpress@yoursite.com`) is often flagged as spam. Replace it with a real mailbox on your own domain `hello@yoursite.com`, `support@yoursite.com`, etc.
+| Field | Default | Notes |
+|---|---|---|
+| **From Name** | Your site title | The sender name members see in their inbox. |
+| **From Email Address** | Your WordPress admin email | The address emails come from. |
+| **Reply to Name** | Empty | Used only when **Reply to Email** is filled in. |
+| **Reply to Email** | Empty | Where replies go. When empty, emails carry no Reply-To address, so replies go to the From address. |
 
-- **Reply to Name**: The display name shown when a recipient clicks Reply. If left empty, the From Name is used.
+## Email Footer Text
 
-- **Reply to Email**: The address that receives replies. If left empty, replies go to the From Email Address. Use this when you send from a `noreply@` address but want replies routed to a monitored inbox.
+**Email Footer Text** appears at the bottom of every email. It is a rich text editor with these smartcodes:
 
-- **Email Footer**: A rich-text editor for the footer block that appears at the bottom of every email. Supports basic HTML. The following smartcodes are available in the footer:
+| Smartcode | Replaced with |
+|---|---|
+| <span v-pre>`{{site_name_with_url}}`</span> | Your site name, linked to your site |
+| <span v-pre>`{{site_name}}`</span> | Your site name |
+| <span v-pre>`{{site_url}}`</span> | Your site URL |
 
-  | Smartcode | Replaced with |
-  |---|---|
-  | <span v-pre>`{{site_name_with_url}}`</span> | Your site name linked to the home URL |
-  | <span v-pre>`{{site_name}}`</span> | Your site name (text only) |
-  | <span v-pre>`{{site_url}}`</span> | The home URL (text only) |
+## Logo for Email Header
 
-![Mailing Settings page](/images/settings/email-configuration/mailing-settings-1.webp)
+Click **Upload** to choose a PNG or JPEG. The recommended size is 400×100px. Once a logo is set, use **Change** to replace it or the trash button to remove it.
 
-- **Logo for Email Header**: An image displayed at the top of every email above the body content. Upload a PNG or JPEG via the **Upload** button. Recommended width: 600px or less. Keep the file under 100 KB to avoid slow loading in email clients.
+The logo appears at the top of emails that use the **Default Body**. It does not appear on emails written in the [Custom Email Editor](/docs/settings/email-configuration/custom-email-editor) (Pro), so add an image block there if you want one.
 
-- **Enable "Powered by FluentMembers" in the email footer**: When checked, a small "Powered by FluentMembers" line is added to the bottom of every email. Uncheck to remove it there is no licensing requirement.
+## Powered by line
 
-Once you have set your fields, click the **Save Settings** button in the top-right corner.
+**Show "Powered by FluentMembers" in the email footer** adds a small branding line below your footer. It is on by default. With Pro active you can turn it off. On the free version it stays on, and the checkbox is locked.
 
-::: warning Set up SPF and DKIM for your From Email Address
-The email address you use as the From address must be authorised to send from your domain. Without SPF and DKIM records, your emails are likely to land in spam or be rejected by major providers (Gmail, Outlook). An SMTP plugin such as FluentSMTP will guide you through this setup.
-:::
+Click **Save Settings** to keep your changes.
+
+> [!Note]
+> Fluent Members sends email through WordPress. To reach inboxes reliably, send from an address on your own domain and set up SPF and DKIM with your email provider. An SMTP plugin such as FluentSMTP helps with this.
