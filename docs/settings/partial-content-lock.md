@@ -54,7 +54,7 @@ The blurred part is a copy of the preview, not the rest of your article, so the 
 Protected content falls back to something else in these cases:
 
 - **Redirect groups:** A group set to **Redirect to a specific URL** still redirects.
-- **Logged-out visitors with the login popup on:** With [Login Popup](/docs/settings/login-popup) turned on, logged-out visitors see its login notice on protected posts and pages. Restricted blocks still show the preview.
+- **Logged-out visitors with the login popup on:** With [Login Popup](/docs/settings/login-popup) and **Auto Open Popup** turned on, the login form opens over the preview on protected posts and pages.
 - **Short content:** Content no longer than **Preview Length** shows the normal restriction message instead.
 - **Media only:** Content with no text shows a blurred placeholder with the overlay.
 - **Dripped content:** A member waiting for [Content Drip](/docs/access-groups/content-drip) sees the countdown notice.
