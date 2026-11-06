@@ -1,110 +1,156 @@
-# Stripe Setup (Pro)
+---
+title: "Set Up Stripe (Pro)"
+description: "Connect your Stripe account, add the webhook, pass the webhook check and turn on Stripe payments."
+---
 
-Stripe Setup is where you connect your Stripe account, choose Test or Live mode, enter your API keys, and register the webhook endpoint that syncs payments, renewals, and refunds back into Fluent Members. You only need to complete this setup once.
+# Set Up Stripe (Pro)
 
->[!Note]
-> Native Stripe integration is available in **Fluent Members Pro** only. Without Pro you can still accept Stripe payments through FluentCart, Fluent Forms, or Paymattic via [Paywalls](/docs/levels/pricing-paywalls).
+**Stripe** (Pro) takes card payments for [native payment](/docs/levels/pricing-native) plans, both one-time and recurring. To take payments, connect your account and add a webhook, then pass the webhook check. Do this once for test mode and once for live mode.
 
-## Access Stripe Setup
+You need **Fluent Members Pro** and a Stripe account. Without Pro, you can take Stripe payments through [paywalls](/docs/levels/pricing-paywalls) instead.
 
-Go to **Fluent Members → Settings → Payment Settings**, then click **Manage** on the Stripe card.
+## Open the settings
 
-![Stripe Setup page](/images/settings/payment/stripe/payment-settings-1.webp)
+Go to **Fluent Members → Settings → Payment Settings** and click **Manage** on the Stripe card.
 
-## Enabling Stripe Payments
+<!-- TODO(screenshot): stripe-setup-1
+  screen: Settings > Payment Settings > Stripe
+  state: Stripe Payment Settings toggle on, Test Mode selected, connected account card reading "Your Stripe account is connected. Check the webhook to finish setup."
+  data: Connected test account
+  highlight: Payment Mode
+  view: admin
+  alt: Screenshot of Stripe Settings with the toggle, Payment Mode and the connected account card
+  reason: needs the develop build on the local site
+-->
 
-At the top of the page is the **Stripe Payment Settings** master toggle. Switch it on to activate Stripe as a payment method for your [Native Payment](/docs/levels/pricing-native) pricing plans.
+## Step 1: Turn on Stripe Payment Settings
 
-![Enable Stripe Payments](/images/settings/payment/stripe/enable-stripe-settings-2.webp)
+Turn on **Stripe Payment Settings** to show the setup fields. Until Stripe is ready, the page shows "Payments turn on once Stripe is connected and the webhook check passes." Payments stay off for now.
 
-## Payment Mode
+## Step 2: Choose a Payment Mode
 
-Below the toggle, select your **Payment Mode**:
+Choose the mode you are setting up:
 
-| Mode | Use it for |
+- **Test Mode** (default): For testing with Stripe's test cards. No real money moves.
+- **Live Mode:** For real payments.
+
+Each mode has its own connected account, signing secret and webhook check.
+
+## Step 3: Connect your account
+
+Under **Connect with Stripe**, click **Connect Test Mode** or **Connect Live Mode**. Stripe opens so you can authorize the connection, then returns you to this page.
+
+The card now shows your account and reads "Your Stripe account is connected. Check the webhook to finish setup."
+
+## Step 4: Add the webhook in Stripe
+
+The webhook keeps payments, renewals, cancellations and refunds in sync. Stripe sends each event to your site, and Fluent Members checks it against your signing secret.
+
+1. Under **Stripe Webhook**, click the **Webhook URL** to copy it. It looks like this:
+
+    ```
+    https://your-site.com/?fluent_members_payment_listener=1&payment_method=stripe
+    ```
+
+2. Under **How to configure?**, click **Add the endpoint in Stripe**. Stripe opens with the events already selected.
+3. Paste the URL as the endpoint URL.
+4. Check that the events match the **Events to send** list, including `customer.created`, and save the endpoint.
+5. Copy the endpoint's signing secret from Stripe. It starts with `whsec_`.
+
+<!-- TODO(screenshot): stripe-setup-2
+  screen: Stripe dashboard, the new webhook endpoint
+  state: Endpoint details with the signing secret area visible
+  data: Blur the account name and secret
+  highlight: Signing secret
+  view: admin
+  alt: Screenshot of a webhook endpoint in the Stripe dashboard with the signing secret area highlighted
+  reason: needs a signed-in Stripe account, not reachable locally
+-->
+
+Stripe must send these events:
+
+| Event | Used for |
 |---|---|
-| **Test Mode** | Development and staging. Use Stripe's test cards; no real money moves. |
-| **Live Mode** | Production. Real cards are charged for real money. |
+| `payment_intent.succeeded` | A one-time payment succeeded. |
+| `payment_intent.payment_failed` | A one-time payment failed. |
+| `charge.refunded` | A charge was refunded. |
+| `charge.refund.updated` | A refund changed. |
+| `invoice.paid` | A subscription payment succeeded. |
+| `invoice.payment_failed` | A subscription payment failed. |
+| `customer.subscription.updated` | A subscription changed. |
+| `customer.subscription.paused` | A subscription was paused. |
+| `customer.subscription.resumed` | A subscription was resumed. |
+| `customer.subscription.deleted` | A subscription ended. |
+| `customer.created` | Only for the webhook check. |
 
-Each mode stores its own API keys independently. You can have both test and live keys saved and switch between them with this radio button.
+## Step 5: Save the signing secret and check the webhook
 
->[!Note]
-> If you switch from Live to Test while subscriptions are running, renewal webhooks will arrive on the wrong-mode endpoint and fail to sync. Only switch modes when no live transactions are in flight.
+1. Paste the secret into **Signing Secret**. The eye button shows or hides it.
+2. Click **Check webhook**. This saves a secret you just pasted, then creates and deletes a temporary customer in your Stripe account and waits for Stripe to send the signed event to your site.
 
-## Connecting With Stripe
+<!-- TODO(screenshot): stripe-setup-3
+  screen: Settings > Payment Settings > Stripe
+  state: Stripe Webhook block with Webhook URL, Signing Secret, How to configure?, Events to send and the Webhook status card with the Check webhook button
+  data: Test mode, status Not verified
+  highlight: Check webhook
+  view: admin
+  alt: Screenshot of the Stripe Webhook block with the signing secret field and the Check webhook button
+  reason: needs the develop build on the local site
+-->
 
-Below the mode selector, click the **Connect with Stripe** button to start the OAuth flow. You will be redirected to Stripe to authorise the connection. When authorisation is complete, the page confirms your account is connected, showing your business name and a **Disconnect Stripe** button.
+**Webhook status** shows the result:
 
-Alternatively, you can enter your **Publishable Key** and **Secret Key** manually if the OAuth flow is not available for your account.
-
-## Configuring the Stripe Webhook
-
-The webhook lets Stripe notify Fluent Members when a payment succeeds, a subscription renews, or a refund is processed. Without it, member access will not update automatically.
-
-**Step 1: Copy the webhook URL from Fluent Members**
-
-On the Stripe settings page, locate the **Webhook URL** field and copy the endpoint shown. It looks like:
-
-```
-https://your-site.com/wp-json/fluent-members/v2/stripe-webhook
-```
-
-![Stripe settings with webhook URL](/images/settings/payment/stripe/stripe-settings-3.webp)
-
-**Step 2: Open Webhooks in your Stripe Dashboard**
-
-Log in to your Stripe account. Click **Developers** from the bottom-left corner, then select **Webhooks**.
-
-![Stripe Developers: Webhooks](/images/settings/payment/stripe/stripe-developer-4.webp)
-
-**Step 3: Add a new destination**
-
-Click the **+ Add destination** button.
-
-![Add destination button](/images/settings/payment/stripe/add-destination-5.webp)
-
-**Step 4: Select the required events**
-
-Search for and select the following events that Fluent Members needs:
-
-- **`payment_intent.succeeded`**: Confirms a one-time payment and activates the membership.
-- **`invoice.payment_succeeded`**: Records a renewal and extends the membership expiry date.
-- **`invoice.payment_failed`**: Marks a subscription as past-due and triggers a failure notification.
-- **`customer.subscription.updated`**: Syncs subscription status changes (active, past_due, cancelled).
-- **`customer.subscription.deleted`**: Cancels the local subscription; cascades to child seats for corporate memberships.
-
-Once you have selected all five events, click **Continue**.
-
-![Select webhook events](/images/settings/payment/stripe/select-a-event-6.webp)
-
-**Step 5: Set the endpoint URL and create**
-
-Select **Webhook endpoint**, click **Continue**, then paste the webhook URL you copied from Fluent Members into the **Endpoint URL** field. Click **Create destination** to save.
-
-![Paste webhook endpoint URL](/images/settings/payment/stripe/webhook-endpoint-7.webp)
-
-**Step 6: Paste the signing secret back into Fluent Members**
-
-After the endpoint is created, Stripe displays a **Signing secret** (starts with `whsec_`). Copy it and paste it into the **Webhook Signing Secret** field in Fluent Members, then click **Save Settings**.
-
-::: warning Match the signing secret to the active mode
-Test-mode endpoints have a test signing secret; live-mode endpoints have a live signing secret. Make sure you paste the secret that corresponds to the Payment Mode currently selected.
-:::
-
-## Webhook Events Reference
-
-| Stripe Event | What Fluent Members Does |
+| Status | Meaning |
 |---|---|
-| `payment_intent.succeeded` | Confirms a one-time payment and activates the membership. |
-| `invoice.payment_succeeded` | Records a renewal transaction and extends the membership expiry date. |
-| `invoice.payment_failed` | Marks the subscription as past-due and triggers a failure notification. |
-| `customer.subscription.updated` | Syncs subscription status changes (active, past_due, cancelled). |
-| `customer.subscription.deleted` | Cancels the local subscription; cascades to child seats for corporate memberships. |
+| **Not verified** | The check has not run for this mode. |
+| **Checking** | Waiting for the test event to reach your site. |
+| **Verified** | The event arrived, signed correctly. |
+| **Failed** | The event did not arrive, or the setup is incomplete. The message says what to fix. |
 
-## Disconnecting Stripe
+When the check passes, the card reads "Your Stripe Account is Up & Running". If **Stripe Payment Settings** is off at this point, turn it on, since connecting to Stripe reloads the page. The Payment Settings page then shows **Test Mode** or **Live Mode** with **Webhook verified**.
 
-To remove the Stripe connection, click **Disconnect Stripe** in the connected state panel. This severs the OAuth link and removes stored API keys from Fluent Members. Existing subscriptions in Stripe will continue to charge, but Fluent Members will no longer be able to sync events or manage them.
+> [!Note]
+> The check proves that the webhook reaches your site, not that every event is selected. Make sure all the events above are selected in Stripe, or renewals will not sync.
 
-::: warning Cancel subscriptions before disconnecting
-Disconnecting with live subscriptions running means Stripe will keep charging your members, but Fluent Members cannot process the webhook events. Cancel or migrate all active subscriptions before disconnecting.
-:::
+## If the check fails
+
+The message under **Webhook status** tells you what happened:
+
+- **"The test event didn't arrive":** Check the endpoint URL, the `customer.created` event and the signing secret.
+- **The event reached the site but the signature did not match:** Copy the signing secret from this endpoint in Stripe and save it again.
+- **Stripe sent the event but the site did not accept it:** Check that the endpoint URL matches the **Webhook URL**, and that a firewall or security plugin is not blocking Stripe.
+- **No webhook endpoint received it:** Add the endpoint with the link on this page, or select `customer.created` on your existing endpoint.
+- **"Stripe webhook cannot be checked yet":** The message lists what is missing, a connected account or a signing secret.
+
+If the temporary customer could not be deleted, a message gives its ID so you can remove it in Stripe.
+
+## Going live
+
+When you are ready for real payments:
+
+1. Select **Live Mode**.
+2. Repeat steps 3 to 5 with a live endpoint and its live signing secret. Saving a mode that has not passed its check turns Stripe payments off until it does.
+
+Stripe uses one **Webhook URL** for both modes. The signing secret tells them apart, and test events are ignored while the site is in live mode.
+
+> [!Note]
+> Changing the connected account or signing secret, or moving the site to another address, cancels a passed check. Stripe payments cannot run on a public site until you click **Check webhook** again.
+
+## Testing on a local site
+
+A local site cannot receive webhooks from Stripe without the Stripe CLI. In test mode, Stripe can still be turned on without passing the check, so you can try checkout, but test renewals will not extend memberships there. Live mode needs a public site.
+
+## Set the signing secret in wp-config.php
+
+To keep secrets out of the database, define them in `wp-config.php`. These take priority over the field:
+
+```php
+define('FMEM_STRIPE_TEST_WEBHOOK_SECRET', 'whsec_...');
+define('FMEM_STRIPE_LIVE_WEBHOOK_SECRET', 'whsec_...');
+```
+
+## Disconnect Stripe
+
+Click **Disconnect Stripe** on the account card and confirm with **Yes, Disconnect**. This applies to the selected mode only. It removes that mode's account keys and signing secret, and clears its webhook check. If the other mode has a connected account, Stripe switches to it. Otherwise Stripe payments turn off.
+
+Disconnecting does not cancel any subscription in Stripe. Those subscriptions stop syncing with Fluent Members for that mode, so cancel or move them first.
