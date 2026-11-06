@@ -25,7 +25,7 @@ Four cards sit under the greeting:
 | **Member churn** | Members who cancelled this month, as a percentage of current active members plus those cancellations. |
 
 > [!Note]
-> **Revenue**, **Recurring revenue**, and the money figures further down count only Stripe and PayPal payments taken through Fluent Members (Pro), including migrated subscriptions. Sales through FluentCart, WooCommerce, Fluent Forms, or Paymattic are not included. Test mode payments are left out of every figure except **Recurring revenue**.
+> **Revenue**, **Recurring revenue**, and the money figures further down count only Stripe and PayPal payments taken through Fluent Members (Pro), including migrated subscriptions. Sales through FluentCart, WooCommerce, Fluent Forms, or Paymattic are not included. Test payments are left out of every figure, unless all your connected gateways are in test mode. Then every figure includes them.
 
 ## Business trends
 
