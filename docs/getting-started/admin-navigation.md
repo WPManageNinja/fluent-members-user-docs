@@ -9,7 +9,7 @@ Fluent Members runs as one app inside your WordPress admin, with its own top bar
 
 ## Open the plugin
 
-Click **FluentMembers** in your WordPress sidebar (**FluentMembers Pro** when Pro is active). Its sub-items jump straight to the main screens. They match the top bar, except that **Levels** in the sidebar opens the screen called **Membership Levels**.
+Click **FluentMembers** in your WordPress sidebar (it shows a small **P** badge when Pro is active). Its sub-items jump straight to the main screens. They match the top bar, except that **Levels** in the sidebar opens the screen called **Membership Levels**.
 
 ## The top bar
 
