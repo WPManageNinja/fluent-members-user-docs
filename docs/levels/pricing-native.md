@@ -1,109 +1,75 @@
+---
+title: "Pricing: Native Payment"
+description: "Add recurring or one-time plans to a Native Payment level and manage them on the Pricing tab."
+---
+
 # Pricing: Native Payment
 
-**Native Payment** is the built-in checkout in **Fluent Members Pro**. Visitors pay through Stripe directly on your site: no FluentCart, Fluent Forms, or other payment plugin required.
+**Native Payment** (Pro) sells a level through a checkout built into your site, using Stripe or PayPal. Use it when you don't want a separate store or payment form plugin.
 
-> [!Note]
-> Native Payment needs **Fluent Members Pro** and a connected Stripe account. Without Pro, the **Native Payment** option may appear in the Pricing Type dropdown, but no payment methods will be available. Use [Pricing: Paywalls](/docs/levels/pricing-paywalls) instead, or complete [Stripe Setup (Pro)](/docs/settings/payment-settings/stripe-setup) first.
+You need:
 
+- **Fluent Members Pro** active.
+- A level created with the **Native Payment** pricing type. See [Creating a Level](/docs/levels/creating).
+- A connected gateway. See [Stripe Setup](/docs/settings/payment-settings/stripe-setup) or [PayPal Setup](/docs/settings/payment-settings/paypal-setup).
 
-## Access the Pricing Tab
+## Add a plan
 
-Log in to your WordPress admin, go to **Fluent Members → Levels**, open the level you want to sell, then click the **Pricing** tab. If no plan exists yet, you will see *"No pricing plan has been added yet"* and an **+ Add Pricing** button in the top right.
+1. Go to **Fluent Members → Membership Levels**, open the level and click the **Pricing** tab.
+2. Click **Add Pricing**.
 
-![Pricing tab, empty state](/images/levels/pricing-native/level-pricing-empty.webp)
+    ![Screenshot of the Pricing tab with no plans and an arrow pointing to Add Pricing](/images/levels/pricing-native/pricing-native-empty.webp)
 
-## Step 1: Choose Native Payment
+3. Fill in the plan under **Pricing Packages**.
 
-Click **+ Add Pricing**. In the **Add Pricing** modal, open the **Pricing Type** dropdown and select **Native Payment**.
+    ![Screenshot of the Add Pricing modal with a plan form under Pricing Packages](/images/levels/pricing-native/pricing-native-add-dialog.webp)
 
-- **Native Payment:** Built-in Stripe checkout (this guide).
-- **Paywalls:** Sell through FluentCart, Fluent Forms, Paymattic, or WooCommerce (Pro).
+4. Click **Add another plan** to offer another option, such as monthly and yearly, on the same level.
+5. Click **Add**.
 
-![Pricing Type dropdown](/images/levels/pricing-native/add-pricing-2.webp)
-
-## Step 2: Select Stripe
-
-A **Payment Methods** card appears. Check the checkbox of **Stripe**.
-
-If Stripe is not listed, connect it first under **Fluent Members → Settings → Payment Settings → Stripe**. Fluent Members Pro currently supports Stripe as the native payment gateway.
-
-![Native Payment with Stripe selected](/images/levels/pricing-native/payment-3.webp)
-
-## Step 3: Create a Pricing Plan
-
-Under **Pricing Packages**, click **+ Create Pricing Plan** and fill in the form:
+Each plan has these fields:
 
 | Field | Notes |
 |-------|-------|
-| **Title** | What buyers see on the pricing card (for example, `Monthly` or `Annual`). Required. |
-| **Price Type** | How this plan charges. See the table below. Required. |
-| **Interval** | For recurring or trial plans: Daily, Weekly, Monthly, or Yearly. |
-| **Amount** | Price in your site currency (set in **Settings → General**). Required. |
-| **Setup Fee** | Optional one-time fee added to the first payment. |
-| **Trial Days** | Optional free-trial length before recurring billing starts. |
+| **Title** | The plan's name. Required. |
+| **Price Type** | **Recurring** (default) bills on a schedule. **One-time** charges once. Required. |
+| **Amount** | The price, which must be above zero. Required. |
+| **Setup Fee** | Optional one-time fee charged at sign-up. |
+| **Interval** | **Daily**, **Weekly**, **Monthly** or **Yearly** (default). Recurring plans only. |
+| **Trial Days** | Optional free trial length. Recurring plans only. |
 
-Click **Save** on the plan, then **Add** on the modal. You can add multiple plans to one level (for example, monthly and annual options).
+A **Payment Methods** section also appears when two or more gateways are connected. Choose the ones this plan accepts.
 
-![Create Pricing Plan form](/images/levels/pricing-native/level-pricing-native-create-plan-4.webp)
+If you see **No Payment Method is configured.**, click **Configure** and connect a gateway first.
 
-## Edit or Remove Pricing
+## Manage your plans
 
-Once a Native Payment plan exists, you can change or delete it from the **Pricing** tab using the **three-dot** menus.
+Each plan appears on the **Pricing** tab with its price and payment method icons.
 
-### For Entire Native Payment Setup
+![Screenshot of the Pricing tab listing the Pro Monthly and Pro Yearly plans](/images/levels/pricing-native/pricing-native-plan-rows.webp)
 
-Next to the **Native Payment** section header, click the **three-dot icon** on the right. A menu opens with two options:
+To change the display order, drag a plan by its handle and click **Save**. Or use **Move up** and **Move down** in the plan's menu, which also holds these options:
 
-- **Edit Pricing:** Opens the pricing setup so you can change payment methods or manage the overall Native Payment configuration.
-- **Remove Pricing:** Deletes the entire Native Payment setup from this level, including all packages under it.
+![Screenshot of a plan's menu open with Edit, Move down, Copy Checkout Link, Duplicate and Delete](/images/levels/pricing-native/pricing-native-row-menu.webp)
 
-![Edit or remove Native Payment](/images/levels/pricing-native/edit-remove-native-payment-5.webp)
+- **Edit:** Opens the **Edit Pricing Package** modal, where you can also choose the plan's **Payment Methods**.
+- **Copy Checkout Link:** Copies a direct link to this plan's checkout.
+- **Duplicate:** Creates a copy named `<title> - Duplicated(<id>)`.
+- **Delete:** Removes the plan after you confirm.
 
-### For Single Pricing Package
+![Screenshot of the Edit Pricing Package modal with the plan's fields and Payment Methods](/images/levels/pricing-native/pricing-native-edit-modal.webp)
 
-In the pricing table, each package row has its own **three-dot icon** in the **Action** column. Click it to open:
+> [!Note]
+> You cannot delete a plan that members or subscriptions use.
 
-- **Edit:** Opens that package's form so you can update the title, price, price type, interval, setup fee, or trial days.
-- **Delete:** Removes only that package from the level. Other packages on the same level are not affected.
+Plans imported from another membership plugin show a **Migrated from** badge, such as **Migrated from MemberPress**. If your site's currency changes, older plans keep their currency and new plans use the new one. A notice on the tab tells you when this applies.
 
-::: warning Before you Delete
-Removing a pricing package or the full Native Payment setup does not cancel existing member subscriptions automatically. Review active members on this level before deleting a plan they are currently using.
-:::
+## What visitors see at checkout
 
+When a visitor chooses a plan on your pricing page or opens its checkout link:
 
-![Edit or delete a pricing package](/images/levels/pricing-native/edit-remove-pricing-package-6.webp)
+1. The built-in checkout opens with the plan's price.
+2. The visitor pays through the connected gateway.
+3. The membership starts, and the member appears on the level's [Members tab](/docs/levels/members-on-a-level) and under **Fluent Members → Billing**.
 
-
-## Price Types
-
-| Type | What it does | Example |
-|------|----------------|---------|
-| **Free** | No charge. The member joins after confirming. | Newsletter signup |
-| **One-time** | Single payment, then access. | $99 course |
-| **Subscription** | Recurring charge on the chosen interval until cancelled. | $19/month |
-| **Lifetime** | Single payment with no expiry. | $499 lifetime VIP |
-| **Trial** | Trial period, then converts to recurring billing. | 7 days free, then $19/month |
-
-::: tip Subscription vs Lifetime
-**Subscription** keeps charging on each billing cycle until the member cancels. **Lifetime** charges once and never bills again.
-:::
-
-## What Happens at Checkout
-
-When a visitor clicks the buy button on your `[fluent_membership_level]` pricing card:
-
-1. They are taken to the built-in checkout page (and prompted to log in or register if needed).
-2. Stripe Elements collects card details on your site.
-3. After payment confirms, the membership is activated and recorded in **Fluent Members → Transactions** (Pro).
-4. The member appears in **Members** and on the level's **Members** tab.
-
-## Important Notes
-
-::: warning Before you go Live
-- **Stripe must be connected** before the Stripe checkbox appears on the Pricing tab.
-- **Webhook signing secret** must be saved in Stripe settings, or checkout can fail after payment.
-- For trial behaviour, set **Price Type** to **Trial**; trial days on a **Subscription** plan alone may not behave as expected.
-- A level still needs **Access Groups** attached, or members can pay but will not unlock protected content.
-:::
-
-Native Payment is set up. Next, [attach Access Groups](/docs/levels/attaching-access-groups) to the level so buyers can access your protected content.
+Next, [attach Access Groups](/docs/levels/attaching-access-groups) so buyers unlock your protected content.
