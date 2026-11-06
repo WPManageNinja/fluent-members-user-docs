@@ -150,3 +150,21 @@
   filter: none;
   opacity: 0.7;
 }
+
+/* ── Home footer ────────────────────────────────────────────────────────── */
+.home-footer {
+  max-width: 1200px;
+  margin: 1rem auto 3rem;
+  padding: 1.5rem 1.5rem 0;
+  border-top: 1px solid var(--vp-c-divider);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-3);
+}
+
+/* ── Tablet nav: tighten link padding so the menu stays on screen ───────── */
+@media (min-width: 768px) and (max-width: 959px) {
+  .VPNavBarMenu .VPNavBarMenuLink { padding: 0 8px !important; }
+  .VPNavBarSearch .VPNavBarSearchButton, .VPNavBarSearch .DocSearch-Button { padding: 0 8px; }
+  .VPNavBarSearch { margin-left: 0; }
+}

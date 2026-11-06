@@ -51,7 +51,7 @@ Yes, use the **Partial Content Preview** restriction action. It shows the first 
 
 ### Can I Drip-Feed Content Over Time?
 
-Yes. Set drip rules on the Membership Level: each rule specifies how many days after joining a member gains access to specific content. See [Content Dripping](/docs/levels/content-drip).
+Yes. Set drip rules on the Membership Level: each rule specifies how many days after joining a member gains access to specific content. See [Content Dripping](/docs/access-groups/content-drip).
 
 ### Does Protection Apply to the REST API?
 
@@ -61,11 +61,11 @@ Yes. Any post type covered by an Access Group has its REST API response scrubbed
 
 ### What Membership Statuses Are Available?
 
-Six: `active`, `trial`, `pending`, `cancelled`, `expired`, `suspended`. See [Status Reference](/docs/members/statuses) for what each means and what triggers it.
+Six: `active`, `trial`, `pending`, `cancelled`, `expired`, `suspended`. See [Status Reference](/reference/membership-statuses) for what each means and what triggers it.
 
 ### How Does a Member Cancel Their Own Membership?
 
-From the Member Portal, they click **Cancel Membership** on their membership card. For recurring Stripe or PayPal subscriptions (Pro), the plugin cancels at the provider according to your configured [cancellation mode](/docs/transactions/cancellation-modes).
+From the Member Portal, they click **Cancel Membership** on their membership card. For recurring Stripe or PayPal subscriptions (Pro), the plugin cancels at the provider according to your configured [cancellation mode](/docs/billing/cancelling-a-subscription).
 
 ### Does Fluent Members Support Recurring Subscriptions?
 
@@ -112,7 +112,7 @@ Go to **Settings → Payment Settings**, click **Manage** on the Stripe card. Co
 
 ### Can I Issue a Refund From Fluent Members?
 
-Yes (Pro). Open **Orders**, find the record under **Subscriptions** or **One-Time Purchases**, and refund the charge from its Transaction History panel. Full and partial refunds are supported. Refunding does not automatically cancel the membership; do that separately if needed. See [Refunds](/docs/transactions/refunds).
+Yes (Pro). Open **Orders**, find the record under **Subscriptions** or **One-Time Purchases**, and refund the charge from its Transaction History panel. Full and partial refunds are supported. Refunding does not automatically cancel the membership; do that separately if needed. See [Refunds](/docs/billing/refunds).
 
 ### What if I Refund Through the Stripe Dashboard Instead?
 

@@ -22,14 +22,14 @@ Go to **Fluent Members → Orders → One-Time Purchases**.
 - **Member**: The buyer's avatar, display name, and email address.
 - **Level**: The Membership Level the purchase was for.
 - **Amount**: The amount paid. Blank for manually added memberships with no payment.
-- **Status**: The membership's status, `active`, `expired`, `cancelled`, `suspended`, `pending`, or `trial`. See [Status Reference](/docs/members/statuses).
+- **Status**: The membership's status, `active`, `expired`, `cancelled`, `suspended`, `pending`, or `trial`. See [Status Reference](/reference/membership-statuses).
 - **Purchased**: The date the membership was created.
 
 Click any row to open its detail page.
 
 ## Filtering and Sorting
 
-Filter by **Status** or by **Provider** (Stripe, PayPal, FluentCart, WooCommerce, Fluent Forms, Paymattic, PMPro, MemberPress, Kadence Memberships, or Manual), and sort by purchase date, amount, or status. Search matches the member's name or email address. See [Filters & Search](/docs/transactions/filters-and-search).
+Filter by **Status** or by **Provider** (Stripe, PayPal, FluentCart, WooCommerce, Fluent Forms, Paymattic, PMPro, MemberPress, Kadence Memberships, or Manual), and sort by purchase date, amount, or status. Search matches the member's name or email address. See [Filters & Search](/docs/billing/filters-and-search).
 
 ## The Detail Page
 
@@ -43,7 +43,7 @@ Opening a one-time purchase shows:
 
 ## Refunding a One-Time Purchase
 
-One-time purchases have no cancel or renew action, there's no subscription to act on. To return the member's money, open the transaction in the Transaction History panel and use its refund action. See [Refunds](/docs/transactions/refunds).
+One-time purchases have no cancel or renew action, there's no subscription to act on. To return the member's money, open the transaction in the Transaction History panel and use its refund action. See [Refunds](/docs/billing/refunds).
 
 ::: warning A refund does not revoke access
 Refunding a one-time purchase does not automatically change the membership's status. If you want to end their access, update the status manually. See [Suspending & Cancelling](/docs/members/suspending-and-cancelling).

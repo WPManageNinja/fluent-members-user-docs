@@ -3,7 +3,7 @@
 When a member or admin cancels a native Stripe or PayPal subscription, Fluent Members decides when the cancellation takes effect. Two modes are available: **Immediate** and **End of Period**. Choose the one that matches your refund policy.
 
 > [!Note]
-> Cancellation modes apply only to native Stripe and native PayPal subscriptions. Subscriptions carried over from a PMPro, MemberPress, or Kadence Memberships migration aren't connected to a live gateway from this screen and can't be cancelled here at all, see [Subscriptions](/docs/transactions/subscriptions). Memberships driven by FluentCart, WooCommerce, or other paywall integrations follow the host plugin's own cancellation behaviour.
+> Cancellation modes apply only to native Stripe and native PayPal subscriptions. Subscriptions carried over from a PMPro, MemberPress, or Kadence Memberships migration aren't connected to a live gateway from this screen and can't be cancelled here at all, see [Subscriptions](/docs/billing/subscriptions). Memberships driven by FluentCart, WooCommerce, or other paywall integrations follow the host plugin's own cancellation behaviour.
 
 ## The Two Modes
 

@@ -23,8 +23,8 @@ technical accuracy.
    for the topic → chunk lookup) to verify technical accuracy before writing.
 3. **DO** preserve all conventions: correct `/docs/` or `/reference/` links, `**term**`
    bold (no inner spaces), no support boilerplate, "(Pro)" markers for Pro features.
-4. **DO** keep the H1 as line 1; if the H1 display title changes, update the matching
-   `text` in the sidebar (`.vitepress/config.mjs`); the `link` stays the same.
+4. **DO** keep the frontmatter `title` and the H1 identical; if they change, review the sidebar
+   `text` in `.vitepress/config.mjs`, a shorter task-first label; the `link` stays the same.
 5. **DO** put any new/replacement images in the doc's existing image folder
    `public/images/<category>/<slug>/`.
 6. **DO** end on a green `npm run docs:build`.
@@ -35,6 +35,15 @@ technical accuracy.
 10. **DO NOT** touch unrelated docs.
 11. **DO** before starting, map exactly where in the doc and which section needs to change,
     matching the user journey through that page.
+12. **DO** load `fluent-members-doc-writer` before writing and follow its voice (opening, tone,
+    no em dashes, exact UI labels, page shape).
+13. **DO** treat the existing text as a draft: prove every label, step, default and Free/Pro
+    claim you keep against the plugin code or the live site
+    (`verify-fluent-members-doc-against-code`). `member/chunks/` is a map, not proof.
+14. **DO** strip screenshots that no longer match the UI and leave a `TODO(screenshot)`
+    placeholder (format: `fluent-members-docs-overhaul` §5). Never leave a stale image.
+15. For a whole-site pass after a UI/feature change use `fluent-members-docs-overhaul`,
+    not repeated single edits.
 
 ---
 
@@ -59,6 +68,8 @@ Record as `CHANGE`.
 Load the relevant knowledge-base chunk:
 - Check `member/chunks/00-index.md` → find the chunk number for this topic
 - Read that chunk file before writing any technical content
+- Then confirm the claims you will state or keep against the plugin source / live site
+  (`fluent-members-code-to-docs` §0 for the source checkout). The chunk can be stale.
 
 ### 1.4 Images & title
 > **Does this change involve images?** and **Does the page title (H1) change?**
@@ -85,7 +96,7 @@ Wait for confirmation.
 1. Read `TARGET_PATH` fully.
 2. Load relevant chunk from `member/chunks/` (identified in 1.3).
 3. If `TITLE_CHANGES`: open `.vitepress/config.mjs` and find the sidebar entry whose
-   `link` matches the page's path — update its `text` to match the new H1.
+   `link` matches the page's path — update its `text` if the short label no longer fits the new H1.
 4. Read 1 neighbor doc in the same category if matching house style for new content.
 
 ---

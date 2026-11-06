@@ -1,3 +1,8 @@
+---
+title: "<Doc Title>"
+description: "<One sentence describing the page.>"
+---
+
 # <Doc Title>
 
 <One to three sentences: what this feature is and who it is for. Bold the **feature name** on first use.>
@@ -22,7 +27,7 @@ See [Descriptive Text](/docs/<category>/<slug>) for more.
 
 <!--
 SCAFFOLD NOTES — delete before saving:
-- Line 1 must be the bare H1 (no frontmatter). It must match the sidebar "text".
+- Start with frontmatter (`title`, one-sentence `description`), then an H1 that matches `title`. The sidebar "text" is a shorter, task-first label.
 - Guide links: /docs/<category>/<slug>  (category IS part of the URL)
 - Reference links: /reference/<slug>
 - NEVER use relative links (./slug or ../slug)

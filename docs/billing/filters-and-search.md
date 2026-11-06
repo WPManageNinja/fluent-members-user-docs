@@ -1,6 +1,6 @@
 # Filters & Search
 
-Once your site has been running for a while, [Subscriptions](/docs/transactions/subscriptions) and [One-Time Purchases](/docs/transactions/one-time) can each grow to hundreds or thousands of rows. Both views share the same filter-and-search pattern, so once you know one, you know both.
+Once your site has been running for a while, [Subscriptions](/docs/billing/subscriptions) and [One-Time Purchases](/docs/billing/one-time) can each grow to hundreds or thousands of rows. Both views share the same filter-and-search pattern, so once you know one, you know both.
 
 > [!Note]
 > Both views are only available with Fluent Members Pro.

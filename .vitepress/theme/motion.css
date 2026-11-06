@@ -1,0 +1,109 @@
+/* Motion layer: small, calm transitions so navigation and interaction feel smooth.
+   Everything is progressive (older browsers just snap) and switched off for reduced motion and print. */
+
+:root {
+  --fm-ease: cubic-bezier(.22, .61, .36, 1);
+  --fm-fast: .18s;
+  --fm-med: .3s;
+  interpolate-size: allow-keywords; /* lets height animate to/from auto where supported */
+}
+
+html { scroll-behavior: smooth; }
+
+/* Page enter: the content eases in on first load and on every page change (class toggled in Layout.vue). */
+@keyframes fm-rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes fm-fade { from { opacity: 0; } to { opacity: 1; } }
+.VPContent.fm-enter .VPDoc .container,
+.VPContent.fm-enter .VPHome { animation: fm-rise .38s var(--fm-ease) backwards; }
+
+/* Sidebar: groups slide open and shut, labels nudge on hover, chevron already rotates. */
+.VPSidebarItem .items {
+  display: block !important;
+  overflow: hidden;
+  height: auto;
+  opacity: 1;
+  transition: height var(--fm-med) var(--fm-ease), opacity var(--fm-med) var(--fm-ease), visibility 0s;
+}
+.VPSidebarItem.collapsed .items {
+  display: block !important; /* theme sets display:none (scoped, higher specificity), which cannot animate */
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: height var(--fm-med) var(--fm-ease), opacity .2s var(--fm-ease), visibility 0s var(--fm-med);
+}
+.VPSidebarItem .link-text, .VPSidebarItem .text { transition: color var(--fm-fast), transform var(--fm-fast) var(--fm-ease); }
+.VPSidebarItem.is-link .item:hover .link-text { transform: translateX(3px); }
+.VPSidebarItem .indicator { transition: background-color var(--fm-med), height var(--fm-med); }
+
+/* Home cards, buttons, nav and outline links */
+.VPFeature { transition: transform var(--fm-med) var(--fm-ease), box-shadow var(--fm-med) var(--fm-ease), border-color var(--fm-fast); }
+.VPFeature:hover { transform: translateY(-3px); box-shadow: 0 10px 24px -14px rgb(0 0 0 / .3); }
+.VPButton { transition: transform var(--fm-fast) var(--fm-ease), background-color var(--fm-fast), border-color var(--fm-fast), color var(--fm-fast), box-shadow var(--fm-fast); }
+.VPButton:hover { transform: translateY(-1px); }
+.VPButton:active { transform: translateY(0); }
+.VPNavBarMenuLink, .VPDocAsideOutline .outline-link, .VPDocFooter .pager-link, .VPLocalSearchBox { transition: color var(--fm-fast), border-color var(--fm-fast), background-color var(--fm-fast); }
+.VPDocFooter .pager-link:hover { transform: translateY(-1px); }
+.VPDocFooter .pager-link { transition: transform var(--fm-fast) var(--fm-ease), border-color var(--fm-fast); }
+
+/* Doc content: links, images, code and tables respond softly */
+.vp-doc a { transition: color var(--fm-fast), border-color var(--fm-fast), background-color var(--fm-fast); }
+.vp-doc img { transition: box-shadow var(--fm-med) var(--fm-ease), transform var(--fm-med) var(--fm-ease); }
+.vp-doc tr { transition: background-color var(--fm-fast); }
+.vp-doc .custom-block { animation: fm-fade .35s var(--fm-ease) backwards; }
+.vp-doc kbd { transition: transform var(--fm-fast); }
+
+/* Tabs: the active panel fades in; the tab underline eases */
+.vp-doc .dt-tablist label { transition: color var(--fm-fast), border-color var(--fm-fast), background-color var(--fm-fast); }
+.vp-doc .dt-tabs .dt-panel { animation: fm-fade .28s var(--fm-ease) backwards; }
+
+/* Code groups (the changelog's New Features / Improvements / Security / Bug fixes tabs): the active bar
+   grows out from the middle, the panel slides in, and the first lines follow one after another. */
+.vp-code-group .tabs label { transition: color var(--fm-fast), background-color var(--fm-fast); }
+.vp-code-group .tabs label:hover { background-color: var(--vp-c-default-soft); }
+.vp-code-group .tabs label::after {
+  background-color: var(--vp-code-tab-active-bar-color);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--fm-med) var(--fm-ease);
+}
+.vp-code-group input:checked + label::after { transform: scaleX(1); }
+@keyframes fm-tab-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes fm-line-in { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: none; } }
+.vp-code-group div[class*='language-'].active { animation: fm-tab-in .32s var(--fm-ease) backwards; }
+.vp-code-group div[class*='language-'].active .line { animation: fm-line-in .35s var(--fm-ease) backwards; }
+.vp-code-group div[class*='language-'].active .line:nth-child(2) { animation-delay: .05s; }
+.vp-code-group div[class*='language-'].active .line:nth-child(3) { animation-delay: .1s; }
+.vp-code-group div[class*='language-'].active .line:nth-child(4) { animation-delay: .15s; }
+.vp-code-group div[class*='language-'].active .line:nth-child(5) { animation-delay: .2s; }
+.vp-code-group div[class*='language-'].active .line:nth-child(6) { animation-delay: .25s; }
+.vp-code-group div[class*='language-'].active .line:nth-child(n+7) { animation-delay: .3s; }
+
+/* FAQ and accordion rows: the answer slides open (Chromium/Safari with ::details-content; others snap) */
+@supports selector(::details-content) {
+  .vp-doc details::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition: block-size var(--fm-med) var(--fm-ease), content-visibility var(--fm-med) allow-discrete;
+  }
+  .vp-doc details[open]::details-content { block-size: auto; }
+}
+
+/* Landing blocks: tiles, journey steps and map cards rise in one after another */
+.vp-doc .dt-grid > .dt-task, .vp-doc .dt-journey > li, .vp-doc .dt-map-card { animation: fm-rise .45s var(--fm-ease) backwards; }
+.vp-doc .dt-grid > .dt-task:nth-child(1), .vp-doc .dt-journey > li:nth-child(1) { animation-delay: .04s; }
+.vp-doc .dt-grid > .dt-task:nth-child(2), .vp-doc .dt-journey > li:nth-child(2) { animation-delay: .08s; }
+.vp-doc .dt-grid > .dt-task:nth-child(3), .vp-doc .dt-journey > li:nth-child(3) { animation-delay: .12s; }
+.vp-doc .dt-grid > .dt-task:nth-child(4), .vp-doc .dt-journey > li:nth-child(4) { animation-delay: .16s; }
+.vp-doc .dt-grid > .dt-task:nth-child(5) { animation-delay: .2s; }
+.vp-doc .dt-grid > .dt-task:nth-child(6) { animation-delay: .24s; }
+.vp-doc .dt-grid > .dt-task:nth-child(n+7) { animation-delay: .28s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; transition-duration: .01ms !important; transition-delay: 0s !important; scroll-behavior: auto !important; }
+}
+
+@media print {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .VPSidebarItem .items, .vp-doc details::details-content { height: auto !important; block-size: auto !important; opacity: 1 !important; visibility: visible !important; content-visibility: visible !important; }
+}

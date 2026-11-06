@@ -22,7 +22,7 @@ image folder, wire it into `.vitepress/config.mjs`, and verify with a clean buil
 2. **DO** load the relevant knowledge-base chunk from `member/chunks/` before writing —
    check `member/chunks/00-index.md` for the topic → chunk mapping.
 3. **DO** place the file at `docs/<category>/<slug>.md` or `reference/<slug>.md`.
-4. **DO** make line 1 a bare `# H1` (no frontmatter) that matches the sidebar `text`.
+4. **DO** start with frontmatter (`title`, one-sentence `description`), then a `# H1` that matches `title`. Keep the sidebar `text` short and task-first.
 5. **DO** use the correct link format for the zone (see Quick Reference).
 6. **DO** add the page to `.vitepress/config.mjs` in the correct sidebar zone and group.
 7. **DO** end on a green `npm run docs:build`.
@@ -31,17 +31,12 @@ image folder, wire it into `.vitepress/config.mjs`, and verify with a clean buil
 10. **DO NOT** add closing support boilerplate.
 11. **DO NOT** invent a new category folder or a new sidebar group without asking the user.
 12. **DO NOT** write `** term **` (inner-whitespace bold) — use `**term**`.
-13. **DO** mark Pro-only features with `(Pro)` — both in body text and sidebar `text`.
-14. **DO** link naturally, inline. Weave the link's anchor text into the sentence where the
-    concept is discussed (e.g. "attach it to an [Access Group](...)"). One link per claim, on
-    its single most relevant page — no link-stuffing, and no generic "See [Page](/path)."
-    tacked onto the end of a sentence.
-15. **DO** keep image alt text short: a few words naming the screen or field shown, not a
-    full sentence describing everything visible in the screenshot.
-16. **DO** write every informational aside as a GitHub-style alert: `> [!Note]` on its own
-    line, content on `> `-prefixed line(s) below it, no bold title/lead-in inside. Reserve
-    `::: tip` (actionable suggestion) and `::: warning` (caution/risk) VitePress containers
-    for those specific cases — never use `::: info`.
+13. **DO** mark Pro-only features with `(Pro)` in body text and the `<span class="fm-pro">Pro</span>` badge in the sidebar `text`.
+14. **DO** load `fluent-members-doc-writer` before writing and follow its voice and page shape.
+15. **DO** confirm every label, default and Free/Pro claim against the plugin code or live site
+    (`fluent-members-code-to-docs`), not only the knowledge-base chunk.
+16. **DO** place `TODO(screenshot)` placeholders (format: `fluent-members-docs-overhaul` §5)
+    where a screen needs an image; fill them with `fluent-members-doc-screenshots`.
 
 ---
 
@@ -208,49 +203,7 @@ Image ref:       ![Alt](/images/<category>/<slug>/<name>.ext)
 
 Bold:            **term**                  (no inner spaces)
 Pro marker:      Feature Name (Pro)
-Note:            > [!Note]
-                 > content on `> `-prefixed lines, no bold title/lead-in
 Build:           npm run docs:build
-```
-
-### Link style
-```
-Bad  (generic, repeated tail):
-  Attach one or more Membership Levels to an Access Group. See [Access Groups](/guide/access-groups/).
-
-Good (inline, natural, varied):
-  Attach one or more Membership Levels to an [Access Group](/guide/access-groups/), the key that unlocks it.
-
-- One link per claim, on its single most relevant page — don't link-stuff a sentence.
-- Anchor text is the words already in the sentence, not a bolted-on "See X" clause.
-- Vary the surrounding phrasing per term/section instead of one repeated template.
-```
-
-### Image alt text
-```
-Bad  (long descriptive caption):
-  ![Step 2 of 4: Protect Your Content, showing the Apply Restriction To dropdown and the
-   Unauthorized Access message, button text, and button URL fields](...)
-
-Good (short, a few words):
-  ![Step 2: Restriction and Unauthorized Access fields](...)
-```
-
-### Note format
-```
-Bad  (VitePress container, or a bolded title/lead-in line):
-  ::: info Not sure which you need?
-  The free plugin is fully functional for content protection...
-  :::
-
-Good (GitHub-style alert, content stated directly):
-  > [!Note]
-  > The free plugin is fully functional for content protection and member management.
-
-- `> [!Note]` sits on its own line; every content line below it is prefixed `> `.
-- No bold title/question folded into the note — say the point plainly.
-- `::: tip` (actionable suggestion) and `::: warning` (caution) keep their own VitePress
-  container — this rule only replaces `::: info` / plain informational asides.
 ```
 
 ### Locate / check
@@ -279,7 +232,4 @@ Settings          → docs/settings/ (incl. payment-settings/, migration/, email
 3. **Sidebar is in config.mjs** — not a separate JSON file; keep valid JS syntax.
 4. **Sidebar is mandatory** — a doc not wired in is invisible in the site nav.
 5. **Never invent a category** — confirm with user if none fits.
-6. **Link inline, not with a bolted-on "See [...]" tail.**
-7. **Alt text is short** — a few words, not a full sentence.
-8. **Notes are `> [!Note]` alerts** — not `::: info`, and no bold title/lead-in inside.
-9. **Green build or it's not done.**
+6. **Green build or it's not done.**
