@@ -5,7 +5,7 @@ description: "Turn on the emails Fluent Members sends to members, see when each 
 
 # Email Notifications
 
-**Email Notifications** are the automatic emails Fluent Members sends to members about their membership and payments. There are seven, and all of them are off until you turn them on.
+**Email Notifications** are the automatic emails Fluent Members sends to members about their membership and payments. There are nine. **Team Invitation** and **Guest Account** are on by default, and the other seven are off until you turn them on.
 
 Set up [Mailing Settings](/docs/settings/email-configuration/mailing-settings) first, so emails carry your sender name and address.
 
@@ -18,11 +18,11 @@ The switch saves right away. Every email goes to the member, as the **Receiver**
 
 <!-- TODO(screenshot): email-notifications-1
   screen: Settings > Email Configuration > Email Notifications
-  state: Notification Settings table with all seven rows
-  data: Default rows, all switches off
+  state: Notification Settings table with all nine rows
+  data: Default rows, Team Invitation and Guest Account on, the rest off
   highlight: Enable column
   view: admin
-  alt: Screenshot of the Notification Settings table listing all seven email notifications
+  alt: Screenshot of the Notification Settings table listing all nine email notifications
   reason: needs the develop build on the local site
 -->
 
@@ -39,6 +39,8 @@ The notifications cover these events:
 | **Payment Failed** (Pro) | A native charge is declined. | <span v-pre>`Your payment for {{membership_level}} failed`</span> |
 | **Subscription Cancelled** | A subscription or membership is cancelled, by the member, an admin or a gateway. | <span v-pre>`Your {{membership_level}} subscription has been cancelled`</span> |
 | **Refund Issued** (Pro) | A native refund is confirmed, in full or in part. | <span v-pre>`Your refund for {{membership_level}}`</span> |
+| **Team Invitation** (Pro) | A team owner invites someone to join. | <span v-pre>`You're invited to join {{membership_level}} on {{site_name}}`</span> |
+| **Guest Account** | A guest checkout creates an account. The email holds the username and a set-password link. | <span v-pre>`Your account on {{site_name}}`</span> |
 
 A few details affect who gets what:
 
@@ -47,6 +49,8 @@ A few details affect who gets what:
 - **Payment Receipt:** Sent only when the amount is above zero, so a free trial start sends no receipt. It covers native payments only, not payments taken by FluentCart, Fluent Forms, Paymattic or WooCommerce.
 - **Payment Failed:** Sent for Stripe declines, and for PayPal subscriptions migrated from another plugin. The PayPal events Fluent Members listens for do not include a declined payment, so native PayPal subscriptions do not send it. The default body asks the member to update their payment method.
 - **Subscription Cancelled:** Sent at the moment of cancelling, once per cancellation. For a cancellation at the end of the billing period, the member hears about it right away, and the email shows the date access ends. It also goes out when a membership without a subscription is cancelled, or when the plugin that sold a paywall plan cancels it.
+- **Team Invitation:** This email holds the only copy of the join link. If you turn it off, owners cannot invite anyone and see "Invitation emails are turned off on this site. Please contact the site administrator."
+- **Guest Account:** If you turn it off, no set-password email goes out, and the guest must use the lost password link to get in.
 - **Refund Issued:** A full refund also cancels the membership, so the member receives both this email and **Subscription Cancelled**. A partial refund sends only this email. See [Refunds](/docs/billing/refunds).
 - **Corporate seats:** Seat holders do not receive **Membership Expired** or **Subscription Cancelled**. The owner of the corporate membership does.
 
