@@ -33,6 +33,8 @@ This **glossary** explains the terms used across the Fluent Members docs. Use it
 
 **Checkout:** The page where a visitor pays. It belongs to the plugin that sells the level, or to Fluent Members itself when you use Native Payment (Pro). See [Checkout & guest checkout](/docs/selling/checkout).
 
+**Corporate Child (Pro):** The label on a member who holds a seat on someone else's corporate membership. Their seat ends when the owner's membership ends. See [Corporate members](/docs/members/corporate-members).
+
 **Corporate membership (Pro):** A level type for teams. One owner holds the membership and invites people to its seats. See [Corporate memberships](/docs/levels/corporate-memberships).
 
 **Currency:** The default currency for new prices, set under **Settings → General Settings**. Existing prices, subscriptions and payments keep their own currency. See [General settings](/docs/settings/general).
@@ -45,7 +47,7 @@ This **glossary** explains the terms used across the Fluent Members docs. Use it
 
 ## E
 
-**Email notification:** An automatic email for a membership or payment event: **Welcome Email**, **Membership Expiring**, **Membership Expired**, **Payment Receipt**, **Payment Failed**, **Subscription Cancelled** and **Refund Issued**. See [Email notifications](/docs/settings/email-configuration/email-notifications).
+**Email notification:** An automatic email for a membership event: **Welcome Email**, **Membership Expiring** and **Membership Expired**. See [Email notifications](/docs/settings/email-configuration/email-notifications).
 
 **Entire Website:** A restriction type that protects every page on your site. See [Restriction types](/docs/access-groups/protected-content).
 
@@ -68,6 +70,8 @@ This **glossary** explains the terms used across the Fluent Members docs. Use it
 **Fluent Support:** A helpdesk plugin. Agents see a customer's memberships inside their ticket. See [Fluent Support](/docs/integrations/fluent-support).
 
 ## G
+
+**Guest checkout (Pro):** Buying a native plan without being logged in. The visitor enters an email address at checkout and the account is created for them. See [Checkout & guest checkout](/docs/selling/checkout).
 
 **Guided setup:** The four steps that open the first time you open the plugin on a new install. See [Guided setup & quick start](/docs/getting-started/quick-start).
 
@@ -115,11 +119,15 @@ This **glossary** explains the terms used across the Fluent Members docs. Use it
 
 **Partial Content Lock:** Shows visitors the start of a protected post, followed by a message and a button. See [Partial content lock](/docs/settings/partial-content-lock).
 
+**Permissions:** A setting that decides who can add, change or remove access restrictions on content. It has two roles, **Restriction Manager** and **Restriction Author**. See [Permissions](/docs/settings/permissions).
+
 **Paymattic:** A payment form plugin. Sell a level through a Paymattic form. See [Paymattic](/docs/integrations/paymattic).
 
 **Payment method (Pro):** The saved card on a Stripe subscription. Members can replace it from the portal. PayPal subscriptions do not offer this. See [Update payment method](/docs/members/portal/updating-payment-method).
 
 **Paywall:** A link between a level and a product or form in another plugin. When the purchase completes, the member gets the level. See [Price with paywalls](/docs/levels/pricing-paywalls).
+
+**Prorate (Pro):** An option on an upgrade path that credits what a member has already paid toward the new plan. See [Upgrade paths](/docs/levels/upgrade-paths).
 
 **Pricing plan (Pro):** One way to pay for a level with Native Payment, such as monthly or yearly. See [Price with native payments](/docs/levels/pricing-native).
 
@@ -131,11 +139,15 @@ This **glossary** explains the terms used across the Fluent Members docs. Use it
 
 **Recurring billing:** Charging a member automatically on a schedule. Use FluentCart subscriptions, or Stripe, PayPal or WooCommerce Subscriptions with Pro. See [Subscriptions](/docs/billing/subscriptions).
 
+**Recent Activity:** A panel on the dashboard that lists the latest membership events, filtered by **All**, **Members** or **Admin**. See [Read your dashboard](/docs/dashboard/dashboard).
+
 **Redirect:** An unauthorized access action that sends blocked visitors to another URL on your site. See [What blocked visitors see](/docs/access-groups/unauthorized-access).
 
 **Restriction type:** The kind of content a rule in an Access Group protects, such as **Entire Website**, **All Posts** or specific content. See [Restriction types](/docs/access-groups/protected-content).
 
 ## S
+
+**Restriction Author / Restriction Manager:** The two permission roles. An author can add restrictions but cannot change or remove saved ones. A manager can add, change and remove them. See [Permissions](/docs/settings/permissions).
 
 **Seat (Pro):** One place on a corporate membership. **Maximum Members** sets how many there are, and the owner counts as one. See [Corporate memberships](/docs/levels/corporate-memberships).
 
