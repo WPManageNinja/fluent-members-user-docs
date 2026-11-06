@@ -62,7 +62,7 @@ Click a row to open the level, or click the three-dot menu at the end of the row
 ![Screenshot of a level's row menu open with Edit, Duplicate and Delete options](/images/levels/membership-levels-overview/index-level-row-menu.webp)
 
 - **Edit:** Opens the level.
-- **Duplicate:** Creates a copy named `<title> - Duplicated(<id>)`, with the same settings and Access Groups. Native Payment plans are copied too. Paywalls are not.
+- **Duplicate:** Creates a copy named `<title> - Duplicated(<id>)`, with the same settings and Access Groups. Native Payment plans are copied as inactive, so the copy cannot be sold until you add a new plan. Paywalls, upgrade paths and integration feeds are not copied.
 - **Delete:** Removes the level after you confirm. You can also find **Delete** under **More Actions** inside a level.
 
 > [!Note]
