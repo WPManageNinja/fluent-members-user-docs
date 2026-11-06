@@ -1,138 +1,83 @@
-# Inserting the Access Groups Block
+---
+title: "Access Groups Block"
+description: "Keep a post public and restrict only part of it, by locking a single block or wrapping several blocks in the Access Groups block."
+---
 
-You do not always need to restrict an entire page or post. Fluent Members lets you hide specific sections, like a premium video or a download link, inside a public post using the Gutenberg block editor. You can restrict a single block, or use the dedicated **Access Groups** container block to protect several blocks at once.
+# Access Groups Block
 
+The **Access Groups** block protects part of a post while the rest stays public, such as a premium video or a download link inside a free article. Restrict one block from its own settings, or wrap several blocks in the container block. You need at least one active Access Group.
 
-## Restrict Content in the Block Editor
+## Restrict a single block
 
-### Method 1: Restrict a Single Block
+Every block in the editor has its own **Access Groups** panel.
 
-If you only need to protect one specific piece of content, you don't need a special block.
+1. Click the block in the WordPress editor.
+2. In the sidebar, open the **Block** tab and expand the **Access Groups** panel.
+3. Tick the groups that can see this block.
+4. Click **Save** or **Update**.
 
-1. Click on any standard block (Paragraph, Image, Heading, etc.) inside your WordPress editor.
-2. Look at the right sidebar and make sure you're on the **Block** tab.
-3. Scroll down to find the **Access Groups** panel.
-4. Check the box next to the Group(s) that should be allowed to see this block.
+![Screenshot of the block editor with a paragraph selected and the Access Groups panel open in the Block tab](/images/access-groups/gutenberg-block/inserting/inserting-single-block-panel.webp)
 
-### Method 2: Use the Access Groups Container (for Multiple Blocks)
+## Restrict several blocks together
 
-If you want to protect several blocks together, use the dedicated container block.
+The container block protects everything you put inside it.
 
-1. Click the **+** button in the post editor to add a new block.
-2. Type **fluent member** in the search box.
-3. Click the **Access Groups** block from the results, it has a padlock icon.
+1. Click the **+** button in the editor and search for **Access Groups**.
+2. Click the **Access Groups** block, which has a padlock icon.
 
-![Block inserter ](/images/access-groups/inserting/gutenberg-access-group-1.webp)
+    ![Screenshot of the block inserter with the Access Groups block in the search results](/images/access-groups/gutenberg-block/inserting/gutenberg-access-group-1.webp)
 
-4. Click inside the new container block and start adding your protected content, text, images, video embeds, or any other block.
-5. Select the main **Access Groups** container block, go to the right sidebar, and check the desired Group(s) in the **Access Groups** panel to lock everything inside.
+3. Add your content inside the block.
+4. Select the container. In the **Block** tab, tick the groups under **Restrict inner content**.
+5. Click **Save** or **Update**.
 
-::: warning Some inner blocks have caveats
-A few core blocks (Query Loop, certain pattern blocks) re-fetch their content from REST endpoints. Those won't automatically respect the wrapping container's protection, see [Nesting & Limits](/docs/access-groups/gutenberg-block/nesting-and-limits) for the full list.
-:::
+    ![Screenshot of the Access Groups block selected, with Restrict inner content and a group ticked in the sidebar](/images/access-groups/gutenberg-block/inserting/inserting-container-block-panel.webp)
 
-## Block vs. Protected Content Rule
+## Who can see the block
 
-| Use case | Use this block | Use an Access Group rule |
-|---|:--:|:--:|
-| Whole post is members-only | ❌ | ✅ |
-| Only a footer section of a post is members-only | ✅ | ❌ |
-| A landing page mixes public + member-only blocks | ✅ | ❌ |
-| Every post in a CPT is members-only | ❌ | ✅ |
-| One specific post is members-only | ❌ | ✅ (Specific picker) |
+- A member with a level attached to any ticked group sees the content.
+- With no group ticked, everyone sees it. The same applies when every ticked group is inactive.
+- Administrators always see it, so log out or use a private window to test.
 
-::: tip Cleanest pattern
-For "whole post" cases use a [Protected Content rule](/docs/access-groups/protected-content). Restricting a block, either directly or via the container, is for *intra-post* mixes: public intro + member-only middle + public CTA.
-:::
+Blocks run their own check, so the block's groups don't need rules that cover the post. **Exclude Content from Restriction** in [General Settings](/docs/settings/general) doesn't apply to blocks either.
 
-## Things That Trip People Up
+## What everyone else sees
 
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| Search doesn't find "Access Groups" | Fluent Members isn't activated, or the editor is in a heavily-customised state. | Confirm activation; refresh the editor. |
-| No Access Groups panel on a block | The Inspector is on the **Post** tab, not the **Block** tab. | Click the block first, then the **Block** tab in the Inspector. |
-| Content renders to non-members anyway | No Group was ticked in the panel. | Tick at least one Group, then check [Configuring](/docs/access-groups/gutenberg-block/inserting) for the fallback action. |
+Blocks don't use a group's [When Unauthorized](/docs/access-groups/unauthorized-access) setting. A visitor without access sees a fixed notice in the block's place, with no redirect, custom message or button:
 
+![Screenshot of a post on the site with a public paragraph, the Access Restricted notice and another public paragraph](/images/access-groups/gutenberg-block/inserting/inserting-frontend-restricted.webp)
 
+Two things change that notice:
 
-## Configuring the Access Groups Block
+- **Partial Content Lock:** When [Partial Content Lock](/docs/settings/partial-content-lock) is on and the block's text is longer than the preview, visitors see a blurred preview instead. A block with only images or other media shows a blurred placeholder.
+- **Content Drip:** A member waiting for [dripped content](/docs/access-groups/content-drip) sees the countdown notice.
 
-You've inserted the block ([Inserting](./inserting)) and added some inner content. Now tell Fluent Members **which** members can see it and **what** non-members should get instead.
+## Change the preview for one block
 
-**Here's what you'll learn:**
-- Where the block's settings panel lives.
-- How to attach one or more Access Groups to a single block instance.
-- How the per-block fallback action works alongside the global one.
-- The override behaviour for Partial Content Preview.
+When Partial Content Lock is on and a group is ticked, a single block's **Access Groups** panel gains more controls. The container block doesn't have them and always uses the global settings.
 
-**Before you start:** The Access Groups block is inserted in your post and you've added at least one inner block.
+![Screenshot of a block's Access Groups panel with Enable Partial Content Lock, Preview Word Count, Overlay Message, Button Text and Button URL](/images/access-groups/gutenberg-block/inserting/inserting-partial-controls.webp)
 
-### Step 1: Open the Block's Inspector
+Turn off **Enable Partial Content Lock** to show the fixed notice for this block. Set **Preview Word Count** from 10 to 500 words. Leave **Overlay Message**, **Button Text** or **Button URL** blank to use the global value.
 
-1. Click anywhere inside the Access Groups block to select it.
-2. On the right side of the editor, the **Settings** panel opens. If it's collapsed, click the gear icon at the top-right of the editor to expand it.
+## Block, panel or rule?
 
-An **Access Groups** panel appears in the Inspector with the block's controls.
+Use the option that matches how much you want to protect:
 
-### Step 2: Pick Access Groups
-
-The first control is a multi-select labelled **Access Groups**. Tick one or more Groups that should grant access to *this specific block's content*.
-
-| Behaviour | When you tick… |
+| You want to protect | Use |
 |---|---|
-| Show inner content to *any* matching member | One or more Groups |
-| Hide inner content from everyone (preview only) | No Groups |
-| Show to members of multiple tiers | All applicable Groups (OR-style match) |
+| All posts, all pages or everything in a category | A [restriction rule](/docs/access-groups/protected-content) |
+| One whole post, page or custom post type item | The [Access Groups panel](/docs/access-groups/per-post-restrictions) |
+| Part of a post or landing page | A restricted block or the container block |
 
-::: tip This is in addition to the Group's own rules
-The Group still has its own [Protected Content](../protected-content) rule that gates *whole posts*. This block adds the same Group's protection to one specific block inside one specific post. The two don't conflict; they're independent rule sets that the engine checks.
-:::
+## If it doesn't work
 
-### Step 3: Pick the Per-Block Fallback Action
+Check these first:
 
-The next control is **Action for Unauthorized Users**, the same options as on the [Unauthorized Access card](../unauthorized-access), minus Redirect.
-
-| Action | What a non-member sees inside this block's slot |
-|---|---|
-| **Display a custom message** | A short HTML message you type below. |
-| **Display partial preview** | Inner content blurred with the global overlay. |
-| **Show a login prompt** | The Login Popup appears. |
-| **Hide entirely** | The block slot collapses; the post continues. |
-
-::: warning No "redirect" inside a block
-*Redirect to a specific URL* doesn't exist here. Redirecting from a single block would send the visitor away from the whole post, which is rarely what you want. Use a custom message with a link instead.
-:::
-
-### Step 4: Partial Content Override (Optional)
-
-If you picked **Display partial preview**, the Inspector exposes a small set of overrides: Preview Length, Overlay Message, Button Text, Button URL. These let you set a different teaser for *this block* than your global [Partial Content Lock](/docs/settings/partial-content-lock) defaults.
-
-Leave them empty to inherit the global settings.
-
-### How Per-Block Fallback Interacts With the Group's Fallback
-
-The block's settings *override* the parent Group's Unauthorized Access action **for this block only**. Everything else on the post (other blocks, the whole-post Protected Content rules) still uses the Group's setting.
-
-| Scenario | Block fallback | Group fallback (Unauthorized Access) |
+| What you see | Likely cause | Fix |
 |---|---|---|
-| Whole post protected | n/a | This applies |
-| Single block protected via this block | This applies | n/a (block sits outside Group's whole-post rule) |
-| Both (block inside a protected post) | Block wins for the block; Group wins for the rest | Both apply, each in its scope |
+| Search doesn't find the block | Fluent Members isn't active. | Activate the plugin and reload the editor. |
+| No **Access Groups** panel | The sidebar is on the **Post** tab, or the panel is collapsed. | Click the block, open the **Block** tab and expand the panel. |
+| Everyone can see the content | No active group is ticked, or you're logged in as an administrator. | Tick a group and test while logged out. |
 
-### An Example Setup
-
-A blog post is free to read, but one embedded video is for paying members only. The Access Groups block wraps just the video embed, configured like this:
-
-- **Access Groups:** *Pro Lessons* and *Annual Yoga* (either level can unlock the video).
-- **Action for Unauthorized Users:** Display a custom message, for example *"This video is for Pro members. Visit our pricing page to join."*
-
-Non-members keep reading the surrounding free content. Where the video would be, they see the custom message and CTA instead. The rest of the site's Access Group rules (the whole *Pro Lessons* content library, for instance) keep working as configured, independent of this block.
-
-### Things That Trip People Up
-
-| What you're seeing | What's probably going on | Quickest fix |
-|---|---|---|
-| Inspector panel doesn't show an Access Groups section | The block isn't selected, or the sidebar is collapsed. | Click the block; expand the sidebar. |
-| Inner content shows to non-members anyway | No Access Groups ticked. | Pick at least one Group. |
-| Partial preview overrides don't apply | Action set to a non-partial mode. | Pick *Display partial preview*. |
-| Block fallback ignored on the published page | A caching plugin is caching the logged-out HTML. | Clear the cache for that URL. |
+[Nesting & limits](/docs/access-groups/gutenberg-block/nesting-and-limits) covers restricted blocks inside each other.
