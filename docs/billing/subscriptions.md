@@ -36,6 +36,8 @@ Click a row to open the subscription. The three-dot menu on each row holds **Vie
 
 To change the columns, sort or search, see [Filter & Search](/docs/billing/filters-and-search).
 
+A **Test** badge beside the **Billing Cycle** marks a test payment, where no real money moved. The same badge appears in the subscription's panels and beside **Amount** in **Transaction History**.
+
 ## Statuses
 
 A subscription shows one of these statuses:
