@@ -89,7 +89,7 @@ Yes, for levels that support [guest checkout](/docs/selling/checkout). The accou
 
 ::: faq
 == Which email notifications are included?
-Seven: **Welcome Email**, **Membership Expiring**, **Membership Expired**, **Payment Receipt**, **Payment Failed**, **Subscription Cancelled** and **Refund Issued**. All are off by default. See [Email notifications](/docs/settings/email-configuration/email-notifications).
+Nine: **Welcome Email**, **Membership Expiring**, **Membership Expired**, **Payment Receipt**, **Payment Failed**, **Subscription Cancelled**, **Refund Issued**, **Team Invitation** and **Guest Account**. **Team Invitation** and **Guest Account** are on by default, and the rest are off. See [Email notifications](/docs/settings/email-configuration/email-notifications).
 
 == Is there a suspension email?
 No. To email members on suspension, use the **Membership Suspended** trigger in [FluentCRM](/docs/integrations/fluentcrm) or the `fluent_members/membership_suspended` hook in [Developer Hooks](/reference/developer-hooks).
