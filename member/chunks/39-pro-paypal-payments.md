@@ -4,7 +4,7 @@ category: Pro Features
 subcategory: PayPal Payments
 query-triggers: [PayPal, PayPal checkout, PayPal subscription, PayPal webhook, PayPal settings, PayPalCheckoutController, PayPalSettings, PayPalLock, BILLING.SUBSCRIPTION, paypal_era, REST PPCP, PayPal import, fmem_renew_token, paypal disconnect, seller auth token, create-order, capture-order, paypal_lock_ttl]
 related-chunks: [30, 31, 36, 26, 27, 28]
-source-files: [fluent-members-pro/app/Services/Payments/PayPal/PayPal.php, fluent-members-pro/app/Services/Payments/PayPal/PayPalSettings.php, fluent-members-pro/app/Http/Controllers/PayPalCheckoutController.php, fluent-members-pro/app/Http/Controllers/PayPalSettingsController.php, fluent-members-pro/app/Services/Payments/PayPal/PayPalLock.php, fluent-members-pro/app/Services/Payments/PayPal/Webhook/Webhook.php, fluent-members-pro/app/Services/Payments/PayPal/Webhook/WebhookListener.php, fluent-members-pro/app/Services/Payments/PayPal/Webhook/WebhookSubscriptionHandler.php, fluent-members-pro/app/Services/Payments/PayPal/CheckoutService.php, fluent-members-pro/app/Hooks/Handlers/MigrationHooksHandler.php]
+source-files: [fluent-members-pro/app/Services/Payments/PayPal/PayPal.php, fluent-members-pro/app/Services/Payments/PayPal/PayPalSettings.php, fluent-members-pro/app/Services/Payments/PayPal/PayPalConnect.php, fluent-members-pro/app/Services/Payments/PayPal/PayPalHelper.php, fluent-members-pro/app/Services/Payments/PayPal/API/API.php, fluent-members-pro/app/Services/Payments/PayPal/API/PayPalPartner.php, fluent-members-pro/app/Http/Controllers/PayPalCheckoutController.php, fluent-members-pro/app/Http/Controllers/PayPalSettingsController.php, fluent-members-pro/app/Services/Payments/PayPal/PayPalLock.php, fluent-members-pro/app/Services/Payments/PayPal/Webhook/Webhook.php, fluent-members-pro/app/Services/Payments/PayPal/Webhook/WebhookListener.php, fluent-members-pro/app/Services/Payments/PayPal/Webhook/WebhookSubscriptionHandler.php, fluent-members-pro/app/Services/Payments/PayPal/CheckoutService.php, fluent-members-pro/app/Services/Payments/PayPal/Ipn/LegacyIpnContinuationHandler.php, fluent-members-pro/app/Hooks/Handlers/MigrationHooksHandler.php]
 doc-files: [guide/settings/payment-settings/paypal-setup.md]
 added-in: v1.1.0
 ---
@@ -96,6 +96,10 @@ Constants take precedence over DB values.
 | `getClientSecret($mode)` | string (decrypted) |
 | `getWebhookId($mode)` | string |
 | `getAccountId($mode)` | string |
+
+### PayPalConnect — Partner onboarding (separate from pasting keys)
+
+`PayPalConnect` handles PayPal's Partner Referral (Connect) onboarding flow, mirroring `StripeConnectService` (chunk 29): `getOnboardingUrl($mode, $returnUrl)`, `exchangeAndStore($sharedId, $authCode, $mode)`, `getAccount($mode)`, `getConnectConfig()`, `landingUrl($mode)`. This is an alternative to manually pasting client ID/secret — either path ends up populating the same `PayPalSettings` fields.
 
 ---
 
@@ -196,7 +200,13 @@ Handle format: `{option_key}|{random_value}.{expiry_timestamp}`
 
 ## Webhook events
 
-Endpoint: `POST /wp-json/fluent-members/v2/paypal-webhook`
+The PayPal webhook is **not** a `/wp-json/` REST route — same mechanism as Stripe (chunk 29). `PayPal::getWebhookUrl()` builds:
+
+```
+{site_url}/?fluent_members_payment_listener=1&payment_method=paypal
+```
+
+caught by a `template_redirect`-style listener that hands the raw request to PayPal's `WebhookListener`. `/paypal/webhook/setup` (`PayPalSettingsController::setupWebhook`) is a different thing — it *registers* this URL with PayPal's API as the account's webhook target, it does not receive events itself.
 
 Dedup: each event ID stored in meta (`WEBHOOK_META_OBJECT_TYPE = 'paypal_webhook_event'`) — duplicate event IDs are rejected.
 

@@ -4,7 +4,7 @@ category: Integrations
 subcategory: Fluent Forms
 query-triggers: [Fluent Forms, FLUENTFORM_VERSION, ff_form_ids, fluent forms paywall, form checkout, parseFormPlans, getCheckoutUrl, ff provider]
 related-chunks: [03, 12]
-source-files: [app/Modules/Integrations/FluentForms/Paywalls.php, app/Modules/Integrations/FluentForms/Http/ff_api.php, app/Modules/Integrations/FluentForms/Http/Controllers/PaywallController.php]
+source-files: [app/Modules/Integrations/FluentForms/Paywalls.php, app/Modules/Integrations/FluentForms/Http/ff_api.php, app/Modules/Integrations/FluentForms/Http/Controllers/PaywallController.php, app/Services/MembershipLevelsRenderer.php]
 doc-files: [guide/levels/pricing-paywalls.md]
 ---
 
@@ -34,9 +34,11 @@ Fluent Forms payment forms act as the checkout for a Membership Level. A member 
 
 ---
 
-## Variant resolution (from `ShortcodeHandler::getFluentFormVariants()`)
+## Variant resolution (from `MembershipLevelsRenderer::getFluentFormVariants($level, $prefetchedForms = null, $limit = 0)`)
 
-Source model: `\FluentForm\App\Models\Form::whereIn('id', $formIds)->get()`
+A prior revision of this chunk pointed at `ShortcodeHandler::getFluentFormVariants()` — that method no longer exists; the logic now lives on `MembershipLevelsRenderer` (`app/Services/MembershipLevelsRenderer.php`), alongside the equivalent methods for every other paywall provider.
+
+Source model: `\FluentForm\App\Models\Form::whereIn('id', $formIds)->get()` (or a prefetched/bulk-loaded collection when rendering multiple levels at once, see chunk 19's prefetch note).
 
 For each form:
 1. `Paywalls::getCheckoutUrl($form->id)` — direct URL to the form page
@@ -57,9 +59,11 @@ For each form:
     'item_price'      => float,
     'formatted_total' => string,
     'other_info'      => ['payment_type' => 'one_time'],
-    // provider NOT set (Fluent Forms uses form title as label)
+    'provider'        => 'fluentform',   // tagged onto every variant AFTER the loop
 ]
 ```
+
+Correction: a prior revision of this chunk said "provider NOT set" for Fluent Forms variants. That is wrong — `getFluentFormVariants()` tags every returned variant with `'provider' => 'fluentform'` in a pass after they're built (used by `PricingOrderService::orderKey()` to classify display order), regardless of whether it came from a parsed plan or the one-time/bare-variant fallback.
 
 ---
 

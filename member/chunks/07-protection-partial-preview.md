@@ -31,6 +31,11 @@ Instead of a hard block, non-members see the first N words of protected content 
 | `getPartialContentHtml($content, $settings, $groupConfig)` | Returns HTML: visible portion + overlay |
 | `getMediaPlaceholderHtml($settings, $groupConfig)` | Returns HTML: placeholder for media-only content |
 | `getBlockPartialContentHtml($blockContent, $settings)` | Returns HTML for a block-level partial restriction |
+| `truncateHtml($content, $wordCount)` | Tag-aware truncation: counts only text-node words toward the limit, keeps HTML tag structure intact, and closes any tags left open at the cut point |
+
+`getPartialContentHtml()`/`getBlockPartialContentHtml()` render the truncated preview twice
+(once plain, once blurred via `filter: blur(8px)`) inside a shared preview wrapper, then layer a
+gradient overlay (`buildOverlayHtml()`) with the message and CTA button on top.
 
 ---
 

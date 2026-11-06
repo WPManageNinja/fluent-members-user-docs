@@ -4,7 +4,7 @@ category: Pro Features
 subcategory: Block Email Editor
 query-triggers: [block email editor, email block editor, Gutenberg email, email template, block editor email, FluentBlockParser, FluentMembersBlockEditorHandler]
 related-chunks: [16]
-source-files: [fluent-members-pro/app/Modules/BlockEmailEditor/FluentMembersBlockEditorHandler.php, fluent-members-pro/app/Modules/BlockEmailEditor/FluentBlockParser.php, fluent-members-pro/app/Http/Controllers/EmailNotificationProController.php]
+source-files: [fluent-members-pro/app/Hooks/Handlers/FluentMembersBlockEditorHandler.php, fluent-members-pro/app/Services/Email/FluentBlockParser.php, fluent-members-pro/app/Services/Email/Blocks/, fluent-members-pro/app/Http/Controllers/EmailNotificationProController.php, fluent-members/app/Http/Controllers/EmailNotificationController.php]
 doc-files: [guide/settings/email-configuration/email-notifications.md]
 ---
 
@@ -12,79 +12,58 @@ doc-files: [guide/settings/email-configuration/email-notifications.md]
 
 ## What it is
 
-Fluent Members Pro replaces the plain HTML textarea email editor with a Gutenberg-style block editor for creating email notification templates. Members can visually design emails with blocks (text, image, button, divider, etc.) and see a real-time preview.
+Fluent Members Pro replaces the plain HTML textarea email editor with a full Gutenberg block editor (loaded in an iframe against a dummy draft post) for creating email notification templates. Admins design emails with real WordPress blocks and get a live HTML preview rendered through the same parser used to send the email.
 
 ---
 
-## Components
+## Components (corrected paths)
 
 | File | Role |
 |---|---|
-| `FluentMembersBlockEditorHandler.php` | Registers Gutenberg blocks for email editing, enqueues assets |
-| `FluentBlockParser.php` | Converts block editor output (JSON/blocks) to email-safe HTML |
-| `EmailNotificationProController.php` | Handles preview endpoint (`POST /email-notification/preview`) |
+| `app/Hooks/Handlers/FluentMembersBlockEditorHandler.php` | Boots the custom block-editor page: creates/reuses a dummy post to hold the notification's block content, registers a REST autosave endpoint, enqueues editor assets, restricts the block inserter to allowed block types |
+| `app/Services/Email/FluentBlockParser.php` | Converts saved Gutenberg block markup into email-safe (table-based) HTML |
+| `app/Services/Email/Blocks/*` | One renderer class per supported block type (see list below) |
+| `app/Http/Controllers/EmailNotificationProController.php` | Handles the preview endpoint |
+
+(Not under `app/Modules/BlockEmailEditor/` — that path no longer exists in this version.)
 
 ---
 
 ## How it works
 
-1. Admin opens **Settings → Email Notifications → [notification name]**
-2. Pro: the body editor is replaced by the Gutenberg block editor
-3. Admin adds blocks (paragraph, image, button, divider, columns, etc.)
-4. Block content saved as Gutenberg block markup (serialized HTML + comments)
-5. On send: `FluentBlockParser::parse($blockContent)` converts to email-safe HTML
-6. Merge tags (`{{user_name}}`, etc.) still work in block content — `ShortcodeTemplateBuilder` runs after parsing
+1. Admin opens **Settings → Email Notifications → [notification name]**.
+2. Pro swaps in the block editor; `FluentMembersBlockEditorHandler` resolves/creates a dummy post whose content mirrors the notification's stored `settings.email_body`, and boots a scoped Gutenberg instance against it (custom asset loading, autosave via a dedicated REST route, block inserter limited by `fluent_members/editor_allowed_block_types`).
+3. Admin adds blocks and saves; content is stored back into the notification's `settings.email_body` as Gutenberg block markup.
+4. On preview or send, `FluentBlockParser::parse($content)` renders the block tree to email-safe HTML via the `fluent_members/parse_email_block_content` filter, then `fluent_members/render_block_email_template` wraps it with the mailing header/footer.
+5. Merge tags (`{{user_name}}`, etc.) survive parsing unevaluated — `ShortcodeTemplateBuilder` replaces them afterward, both for preview and for the real send.
 
 ---
 
 ## Preview endpoint (Pro only)
 
-`POST /email-notification/preview`
-Request: `{ notification: string, block_content: string }`
+`POST /email-notification/preview` → `EmailNotificationProController@preview`
 
-- Parses block content with `FluentBlockParser`
-- Replaces merge tags with sample values
-- Returns rendered HTML for the preview panel
+Request body: `{ notification_name: string, block_content?: string }` (falls back to the notification's saved `settings.email_body` if `block_content` is omitted).
 
-**Free plugin preview endpoint**: `POST /email-notification/preview-default-template` (shows default template with real data for a specific member)
+Response: `{ html: string }`.
 
----
-
-## Block types supported in email editor
-
-| Block type | Rendered as |
-|---|---|
-| `core/paragraph` | `<p>` tag |
-| `core/heading` | `<h1>`–`<h6>` |
-| `core/image` | Inline `<img>` (email-safe) |
-| `core/button` | Table-based button (email-safe) |
-| `core/separator` | `<hr>` |
-| `core/columns` | Multi-column email layout (table-based) |
-| `core/list` | `<ul>/<ol>` |
-| Custom merge tag picker | Inserts `{{tag}}` text in current block |
+**Free plugin's separate preview endpoint**: `POST /email-notification/preview-default-template` — shows the default (non-block) template rendered with a real member's data, not the block editor's live-typing preview.
 
 ---
 
-## FluentBlockParser
+## Block types supported (`app/Services/Email/Blocks/`)
 
-`FluentBlockParser::parse($content)` — takes Gutenberg serialized content, returns email-safe HTML string.
-
-Key transformations:
-- Gutenberg block divs → table-based layouts (email clients don't reliably render CSS flexbox/grid)
-- All images given inline `style="max-width: 100%"`
-- Links kept with `href` but `target="_blank"` added
-- Merge tags preserved through parsing (not evaluated here — evaluated by `ShortcodeTemplateBuilder` later)
+One renderer class per Gutenberg block: Paragraph, Heading, Image, Button, Buttons, Separator, Columns, Column, Cover, Group, List, ListItem, MediaText, Preformatted, Pullquote, Quote, SocialLinks, Spacer, Table, Verse, Code, plus a Fluent-Members-specific `EmailRowBlock`. Each converts its block to email-client-safe markup (tables instead of flexbox/grid, inline styles, `max-width:100%` images).
 
 ---
 
 ## Settings storage for block email
 
-When Pro is active and the block editor saves content:
+When Pro is active, the free `EmailNotificationController`'s save path calls:
 ```php
 apply_filters('fluent_members/prepare_email_template_data', $settingsWithoutTemplate, $settings)
 ```
-
-Pro's listener on this filter restores the `email_body` (block content) that the free controller strips. This means the block content is saved under the same `email_body` key, but its value is Gutenberg block markup instead of plain HTML.
+Pro listens on this filter (`fluent-members-pro/app/Hooks/actions.php`) to restore the block-editor `email_body` that the free controller would otherwise strip as an unrecognized field — so block content is saved under the same `email_body` key the free plugin uses, just holding Gutenberg markup instead of plain HTML.
 
 ---
 
