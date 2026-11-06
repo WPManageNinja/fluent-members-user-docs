@@ -46,7 +46,7 @@ Click **Save** in the top-right corner of the page. Your Unauthorized Access set
 ## Important Notes
 
 > [!Note]
-> **Content Drip overrides this card**: if the content hasn't unlocked yet, the member sees a countdown notice instead of your configured action, and is never redirected. See [Content Drip](/docs/levels/content-drip).
+> **Content Drip overrides this card**: if the content hasn't unlocked yet, the member sees a countdown notice instead of your configured action, and is never redirected. See [Content Drip](/docs/access-groups/content-drip).
 
 
 
