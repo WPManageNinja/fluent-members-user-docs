@@ -58,7 +58,7 @@ When the form is valid and they click **Update**, Fluent Members:
 The modal closes. The portal shows a success toast: *"Payment method updated."*
 
 ::: warning No retry on the failed invoice
-Updating the card *does not* automatically retry a failed invoice. If the previous month's charge failed and the subscription is now `past_due`, the member also needs to click **Renew**, see [Renewing a Failed Subscription](./renewing-a-failed-subscription).
+Updating the card *does not* automatically retry a failed invoice. If the previous month's charge failed and the subscription is now `past_due`, the member also needs to click **Renew**, see [Renewing a Failed Subscription](/docs/members/portal/renewing-a-membership).
 :::
 
 ---
@@ -77,7 +77,7 @@ Mike's bank issued him a new card. He visits the portal and:
 2. Clicks **Update Payment Method**.
 3. Enters his new card; Stripe accepts it.
 4. Clicks **Update** → toast confirms.
-5. Now also clicks **Renew** to retry his missed renewal payment (separate flow, see [Renewing a Failed Subscription](./renewing-a-failed-subscription)).
+5. Now also clicks **Renew** to retry his missed renewal payment (separate flow, see [Renewing a Failed Subscription](/docs/members/portal/renewing-a-membership)).
 
 His Pro Yoga is fully reactivated in under a minute.
 
@@ -103,9 +103,9 @@ Nothing, this flow is member-only. Admins can't update a member's card on their 
 
 ## What's Next?
 
-- **→ [🔒 Pro · Renewing a Failed Subscription](./renewing-a-failed-subscription)**: what to do after the card is updated.
+- **→ [🔒 Pro · Renewing a Failed Subscription](/docs/members/portal/renewing-a-membership)**: what to do after the card is updated.
 - **→ [Cancelling](./cancelling)**: the alternative flow.
 
 **Recommended reading:**
 - [Stripe Setup](/docs/settings/payment-settings/stripe-setup): make sure Stripe is connected first.
-- [Status Reference](/docs/members/statuses): understand `past_due` and `expired`.
+- [Status Reference](/reference/membership-statuses): understand `past_due` and `expired`.

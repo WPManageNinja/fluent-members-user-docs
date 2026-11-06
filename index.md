@@ -3,55 +3,80 @@ layout: home
 
 hero:
   name: "Fluent Members"
-  text: "Memberships for WordPress"
-  tagline: "Build, protect, and grow your membership site with step-by-step guides written against the live plugin UI."
+  text: "Complete Documentation"
+  tagline: "Create membership levels, protect your content, sell access and manage your members on WordPress."
   actions:
     - theme: brand
       text: Get Started
       link: /docs/getting-started/introduction
     - theme: alt
-      text: Dev Docs
-      link: https://developers.fluentmembers.com/
+      text: Create a Level
+      link: /docs/levels/creating
 
 features:
   - icon: "🚀"
-    title: Getting Started
-    details: Install, configure, and ship your first Level in under 10 minutes, the Quick Start walks Sara through a real example.
+    title: Get Started
+    details: Install the plugin, activate Pro and finish the guided setup.
     link: /docs/getting-started/introduction
-    linkText: Start here
-  - icon: "📊"
-    title: Dashboard
-    details: Read the four headline stats, the activity charts, and the side cards at a glance.
-    link: /docs/dashboard/dashboard
-    linkText: Tour the dashboard
+    linkText: Get Started
   - icon: "🎟️"
-    title: Levels
-    details: Membership Levels, Pricing Plans (Native Payment and Paywalls), and Corporate seats.
+    title: Create Membership Levels
+    details: Build levels, set their prices and choose what each one unlocks.
     link: /docs/levels/
-    linkText: Build a Level
+    linkText: Create a Level
   - icon: "🔒"
-    title: Access Groups
-    details: Protected Content rules, the five Unauthorized Access actions, Content Drip, and the Gutenberg block.
+    title: Protect Your Content
+    details: Use access groups, drip content and blocks to control who sees what.
     link: /docs/access-groups/
-    linkText: Lock content
+    linkText: Protect Content
+  - icon: "🛒"
+    title: Sell Memberships
+    details: Publish a pricing page, set up checkout and connect Stripe or PayPal.
+    link: /docs/selling/pricing-page
+    linkText: Start Selling
   - icon: "👥"
-    title: Members & Portal
-    details: List, detail, status reference, manual grants, and the self-service Member Portal, including Pro flows for payment updates and corporate invites.
+    title: Manage Members
+    details: Read your dashboard, find members, add memberships and handle cancellations.
     link: /docs/members/
-    linkText: Manage members
+    linkText: Manage Members
+  - icon: "🪪"
+    title: Member Portal
+    details: Give members one place to see their memberships, renew and cancel.
+    link: /docs/members/portal/setup
+    linkText: Set Up the Portal
   - icon: "💳"
-    title: Orders (Pro)
-    details: Subscriptions and One-Time Purchases, each with its own transaction history and timeline. Refunds and subscription cancellation modes.
-    link: /docs/transactions/
-    linkText: See your orders
+    title: Billing (Pro)
+    details: Review subscriptions and one-time memberships, issue refunds and cancel subscriptions.
+    link: /docs/billing/
+    linkText: Open Billing
+  - icon: "✉️"
+    title: Emails
+    details: Set your sender details, choose which notifications go out and edit their content.
+    link: /docs/settings/email-configuration/mailing-settings
+    linkText: Set Up Emails
+  - icon: "🔌"
+    title: Connect Other Plugins
+    details: Use Fluent Members with FluentCart, Fluent Forms, Paymattic, WooCommerce, FluentCRM and more.
+    link: /docs/integrations/
+    linkText: See Integrations
+  - icon: "📦"
+    title: Migrate to Fluent Members
+    details: Bring your data over from Paid Memberships Pro, MemberPress, Kadence Memberships or Restrict Content Pro.
+    link: /docs/settings/migration/
+    linkText: Start a Migration
   - icon: "⚙️"
     title: Settings
-    details: General, Partial Content Lock, Login Popup, Payment Settings (Stripe), Migration from PMPro / MemberPress / Content Restriction Pro, and Email Configuration.
+    details: Configure general options, default access behavior, permissions and privacy.
     link: /docs/settings/general
-    linkText: Configure the site
-  - icon: "📘"
-    title: Reference
-    details: Glossary, statuses, shortcodes, merge tags, FAQ, troubleshooting, and developer hooks.
-    link: /docs/getting-started/glossary
-    linkText: Look it up
+    linkText: Open Settings
+  - icon: "🧑‍💻"
+    title: For Developers
+    details: Look up shortcodes, email smartcodes, hooks and filters.
+    link: /reference/shortcodes
+    linkText: Open Reference
+  - icon: "🛟"
+    title: Help & Updates
+    details: Check membership statuses, troubleshooting steps, the FAQ and the changelog.
+    link: /docs/help-support/faq
+    linkText: Get Help
 ---

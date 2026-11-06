@@ -29,7 +29,7 @@ If the membership is tied to a Stripe or FluentCart subscription, recurring char
 2. On the membership row, click the action menu and select **Cancel**.
 3. The row status changes to `Cancelled` and access is revoked immediately.
 4. The plugin notifies the payment provider to stop recurring charges:
-   - **Stripe or PayPal (Pro):** subscription is cancelled immediately or at the end of the billing period, depending on your [Cancellation Modes](/docs/transactions/cancellation-modes) setting. Subscriptions carried over from a migration aren't connected to a live gateway here and must be cancelled at the source or handled manually.
+   - **Stripe or PayPal (Pro):** subscription is cancelled immediately or at the end of the billing period, depending on your [Cancellation Modes](/docs/billing/cancelling-a-subscription) setting. Subscriptions carried over from a migration aren't connected to a live gateway here and must be cancelled at the source or handled manually.
    - **FluentCart:** the linked subscription is cancelled.
    - **Fluent Forms / Paymattic / others:** the integration's cancel hook fires.
 
@@ -59,7 +59,7 @@ To restore access for the entire team, change the parent's status back to Active
 
 ::: warning Things to keep in mind
 - **Suspend does not stop billing.** Always check with your payment provider if you need to pause charges, or use Cancel instead.
-- **Cancel may take effect immediately or at period end.** This depends on your Cancellation Modes setting. See [Cancellation Modes](/docs/transactions/cancellation-modes) to configure this behavior.
+- **Cancel may take effect immediately or at period end.** This depends on your Cancellation Modes setting. See [Cancellation Modes](/docs/billing/cancelling-a-subscription) to configure this behavior.
 - **Cancelled rows are kept for your records.** The old row is not deleted; it remains in the member's history with a `Cancelled` status. A fresh membership row is created if they re-join.
 - **Corporate cascades are parent-driven.** If child accounts were individually suspended for other reasons, un-suspending the parent will not automatically restore those children. Each child would need to be updated individually.
 :::
