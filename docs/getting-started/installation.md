@@ -1,61 +1,46 @@
-# Installing Fluent Members (Free Version)
+---
+title: "Install and Activate Fluent Members"
+description: "Install the free Fluent Members plugin from your WordPress dashboard, a ZIP file or FTP, then activate it."
+---
 
-Install and activate **Fluent Members** on your WordPress site in just a few minutes. You need administrator access to your WordPress dashboard to follow these steps.
+# Install and Activate Fluent Members
 
-## Install From the WordPress Directory (Recommended)
+**Fluent Members** is a free WordPress plugin. Install it from your WordPress dashboard in a few minutes. You need an administrator account on a site running WordPress 6.3 or newer and PHP 7.4 or newer.
 
-This is the easiest method. WordPress finds and downloads the plugin for you automatically.
+## Install from the WordPress dashboard
 
-1. Go to **Plugins → Add New Plugin** in your WordPress dashboard.
-2. Search for **Fluent Members** in the search box at the top right.
-3. Find the **Fluent Members** card by WPManageNinja and click **Install Now**.
-4. Click **Activate** once the installation finishes.
+This is the easiest way. WordPress downloads the plugin for you.
 
-A **Fluent Members** menu item will appear in your sidebar, meaning the plugin is ready to use.
+1. Go to **Plugins → Add Plugin** in your WordPress dashboard (**Add New** on older versions of WordPress).
+2. Search for **Fluent Members**.
+3. Click **Install Now** on the **Fluent Members** card.
+4. Click **Activate**.
 
-![Fluent Members sidebar menu](/images/getting-started/installation-free/sidebar-menu-1.webp)
+## Install from a ZIP file
 
-## Install by Uploading a ZIP File
+Use this when you already have the plugin's ZIP file.
 
-Use this method if you downloaded the plugin ZIP from WordPress.org, or if your server does not have outbound internet access.
+1. Go to **Plugins → Add Plugin** and click **Upload Plugin**.
+2. Click **Choose File** and select the ZIP file.
+3. Click **Install Now**.
 
-1. Download the `fluent-members.zip` file to your computer.
-2. Go to **Plugins → Add New Plugin** in your WordPress dashboard.
+    ![Screenshot of the WordPress Add Plugins screen with the upload form and the Install Now button](/images/getting-started/installation/installation-upload-plugin.webp)
 
-![Add New Plugin](/images/getting-started/installation-free/add--plugin-2.webp)
+4. Click **Activate Plugin**.
 
-3. Click **Upload Plugin** at the top of the page.
-4. Click **Choose File**, select the ZIP file, then click **Install Now**.
-5. Click **Activate Plugin** on the confirmation screen.
+## Install over FTP
 
-![Upload plugin ZIP file](/images/getting-started/installation-free/upload-plugin-3.webp)
+Use this when uploading from the dashboard fails.
 
-## Install via FTP
+1. Unzip the plugin's ZIP file on your computer.
+2. Connect to your server with an FTP client and open `/wp-content/plugins/`.
+3. Upload the extracted folder there.
+4. Go to **Plugins → Installed Plugins** and click **Activate** under **Fluent Members**.
 
-Use this method if you prefer direct server access or if the WordPress dashboard upload fails.
+## Open the plugin
 
-1. Download and unzip the `fluent-members.zip` file on your computer. You will get a folder called `fluent-members`.
-2. Connect to your server using an FTP client (such as FileZilla).
-3. Navigate to the `/wp-content/plugins/` directory on your server.
-4. Upload the entire `fluent-members` folder into that directory.
-5. Go to **Plugins → Installed Plugins** in your WordPress dashboard.
-6. Find **Fluent Members** in the list and click **Activate**.
+Activating adds a **FluentMembers** item to your WordPress sidebar, and creates the plugin's own database tables (their names start with `fmem_`). Your posts, pages and theme are not changed.
 
-## Confirm the Installation
+On a new install, the first click on **FluentMembers** opens the guided setup instead of the dashboard. On a site that has run the plugin before, the guided setup does not appear.
 
-**Fluent Members** sets up everything automatically upon activation. To verify it works:
-
-1. Click **Fluent Members** in your WordPress sidebar to view the [Dashboard](/docs/dashboard/dashboard).
-2. Check that the sidebar shows these core items: **Dashboard**, **Levels**, **Access Groups**, **Members**, and **Settings**.
-3. Click **Settings** and confirm the screen loads without any errors.
-
-## Important Notes
-
-::: warning Before you troubleshoot
-- **Database setup:** Upon activation, the plugin automatically creates six database tables (prefixed with `fmem_`) to store your membership data. Your existing posts, pages, and theme are not affected.
-- **Plugin conflicts:** If the Fluent Members admin screen looks broken after activation (blank panels or missing menus), temporarily disable your caching or security plugin, clear your browser cache, and reload the page. If problems continue, see [Get Support](/docs/help-support/get-support).
-:::
-
-Once installed and verified, you are ready to start creating membership levels and protecting your WordPress content. Continue with the [Quick Start](/docs/getting-started/quick-start) guide to build your first site in about 10 minutes.
-
-To unlock Stripe checkout, subscriptions, and other premium features, see [Install & Activate Fluent Members Pro](/docs/getting-started/installation-pro).
+Before you run it on the free plugin, install FluentCart, Fluent Forms or Paymattic, because a level needs one of them to take payment. Continue with [Guided setup & quick start](/docs/getting-started/quick-start). To add Stripe, PayPal or team memberships first, see [Activate Pro](/docs/getting-started/installation-pro).
