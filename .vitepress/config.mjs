@@ -13,114 +13,114 @@ const docsSidebar = [
     items: [
       { text: "Introduction", link: '/docs/getting-started/introduction' },
       { text: "Free vs Pro", link: '/docs/getting-started/free-vs-pro' },
-      { text: "Install & activate", link: '/docs/getting-started/installation' },
+      { text: "Install", link: '/docs/getting-started/installation' },
       { text: "Activate Pro", link: '/docs/getting-started/installation-pro' },
-      { text: "Guided setup & quick start", link: '/docs/getting-started/quick-start' },
-      { text: "Find your way around", link: '/docs/getting-started/admin-navigation' },
+      { text: "Quick start", link: '/docs/getting-started/quick-start' },
+      { text: "Admin tour", link: '/docs/getting-started/admin-navigation' },
       { text: "Glossary", link: '/docs/getting-started/glossary' }
     ]
   },
   {
-    text: "Create Membership Levels",
+    text: "Levels",
     collapsed: true,
     items: [
-      { text: "Levels overview", link: '/docs/levels/' },
+      { text: "Overview", link: '/docs/levels/' },
       { text: "Create a level", link: '/docs/levels/creating' },
-      { text: "Price with native payments <span class=\"fm-pro\">Pro</span>", link: '/docs/levels/pricing-native' },
-      { text: "Price with paywalls", link: '/docs/levels/pricing-paywalls' },
-      { text: "Attach access groups", link: '/docs/levels/attaching-access-groups' },
+      { text: "Native payments <span class=\"fm-pro\">Pro</span>", link: '/docs/levels/pricing-native' },
+      { text: "Paywalls", link: '/docs/levels/pricing-paywalls' },
+      { text: "Access groups", link: '/docs/levels/attaching-access-groups' },
       { text: "Upgrade paths <span class=\"fm-pro\">Pro</span>", link: '/docs/levels/upgrade-paths' },
-      { text: "Corporate memberships <span class=\"fm-pro\">Pro</span>", link: '/docs/levels/corporate-memberships' }
+      { text: "Corporate <span class=\"fm-pro\">Pro</span>", link: '/docs/levels/corporate-memberships' }
     ]
   },
   {
-    text: "Protect Your Content",
+    text: "Protect Content",
     collapsed: true,
     items: [
-      { text: "Access groups overview", link: '/docs/access-groups/' },
+      { text: "Overview", link: '/docs/access-groups/' },
       { text: "How protection works", link: '/docs/access-groups/how-protection-works' },
       { text: "Restriction types", link: '/docs/access-groups/protected-content' },
-      { text: "What blocked visitors see", link: '/docs/access-groups/unauthorized-access' },
+      { text: "Blocked visitors", link: '/docs/access-groups/unauthorized-access' },
       { text: "Drip content", link: '/docs/access-groups/content-drip' },
-      { text: "Protect a single post", link: '/docs/access-groups/per-post-restrictions' },
-      { text: "Partial content lock", link: '/docs/settings/partial-content-lock' },
+      { text: "Single post", link: '/docs/access-groups/per-post-restrictions' },
+      { text: "Partial lock", link: '/docs/settings/partial-content-lock' },
       {
         text: 'Blocks',
         collapsed: true,
         items: [
           { text: 'Access Groups block', link: '/docs/access-groups/gutenberg-block/inserting' },
-          { text: 'Nesting & limits', link: '/docs/access-groups/gutenberg-block/nesting-and-limits' },
-          { text: 'Membership Levels block', link: '/docs/access-groups/gutenberg-block/membership-levels-block' }
+          { text: 'Nesting', link: '/docs/access-groups/gutenberg-block/nesting-and-limits' },
+          { text: 'Levels block', link: '/docs/access-groups/gutenberg-block/membership-levels-block' }
         ]
       }
     ]
   },
   {
-    text: "Sell Memberships",
+    text: "Sell",
     collapsed: true,
     items: [
       { text: "Pricing page", link: '/docs/selling/pricing-page' },
-      { text: "Checkout & guest checkout", link: '/docs/selling/checkout' },
-      { text: "Payment settings", link: '/docs/settings/payment-settings/' },
+      { text: "Checkout", link: '/docs/selling/checkout' },
+      { text: "Payments", link: '/docs/settings/payment-settings/' },
       { text: "Set up Stripe <span class=\"fm-pro\">Pro</span>", link: '/docs/settings/payment-settings/stripe-setup' },
       { text: "Set up PayPal <span class=\"fm-pro\">Pro</span>", link: '/docs/settings/payment-settings/paypal-setup' },
       { text: "Login popup", link: '/docs/settings/login-popup' }
     ]
   },
   {
-    text: "Manage Members",
+    text: "Members",
     collapsed: true,
     items: [
-      { text: "Read your dashboard", link: '/docs/dashboard/dashboard' },
+      { text: "Dashboard", link: '/docs/dashboard/dashboard' },
       { text: "Members list", link: '/docs/members/' },
       { text: "Member details", link: '/docs/members/detail' },
-      { text: "Add a membership manually", link: '/docs/members/adding-manually' },
+      { text: "Add manually", link: '/docs/members/adding-manually' },
       { text: "Members on a level", link: '/docs/levels/members-on-a-level' },
-      { text: "Suspend or cancel a member", link: '/docs/members/suspending-and-cancelling' },
-      { text: "Corporate members <span class=\"fm-pro\">Pro</span>", link: '/docs/members/corporate-members' }
+      { text: "Suspend or cancel", link: '/docs/members/suspending-and-cancelling' },
+      { text: "Corporate <span class=\"fm-pro\">Pro</span>", link: '/docs/members/corporate-members' }
     ]
   },
   {
     text: "Member Portal",
     collapsed: true,
     items: [
-      { text: "Set up the portal", link: '/docs/members/portal/setup' },
+      { text: "Portal setup", link: '/docs/members/portal/setup' },
       { text: "What members see", link: '/docs/members/portal/what-members-see' },
       { text: "Membership details", link: '/docs/members/portal/membership-details' },
-      { text: "Cancel a membership", link: '/docs/members/portal/cancelling' },
-      { text: "Update payment method <span class=\"fm-pro\">Pro</span>", link: '/docs/members/portal/updating-payment-method' },
-      { text: "Renew a membership <span class=\"fm-pro\">Pro</span>", link: '/docs/members/portal/renewing-a-membership' },
-      { text: "Corporate seat invites <span class=\"fm-pro\">Pro</span>", link: '/docs/members/portal/corporate-seat-invites' }
+      { text: "Cancel", link: '/docs/members/portal/cancelling' },
+      { text: "Payment method <span class=\"fm-pro\">Pro</span>", link: '/docs/members/portal/updating-payment-method' },
+      { text: "Renewals <span class=\"fm-pro\">Pro</span>", link: '/docs/members/portal/renewing-a-membership' },
+      { text: "Seat invites <span class=\"fm-pro\">Pro</span>", link: '/docs/members/portal/corporate-seat-invites' }
     ]
   },
   {
     text: "Billing <span class=\"fm-pro\">Pro</span>",
     collapsed: true,
     items: [
-      { text: "Billing overview", link: '/docs/billing/' },
+      { text: "Overview", link: '/docs/billing/' },
       { text: "Subscriptions", link: '/docs/billing/subscriptions' },
-      { text: "Subscriptions from other plugins", link: '/docs/billing/provider-subscriptions' },
-      { text: "One-time memberships", link: '/docs/billing/one-time' },
+      { text: "Other plugins", link: '/docs/billing/provider-subscriptions' },
+      { text: "One-time", link: '/docs/billing/one-time' },
       { text: "Filter & search", link: '/docs/billing/filters-and-search' },
       { text: "Refunds", link: '/docs/billing/refunds' },
-      { text: "Cancel a subscription", link: '/docs/billing/cancelling-a-subscription' }
+      { text: "Cancel", link: '/docs/billing/cancelling-a-subscription' }
     ]
   },
   {
     text: "Emails",
     collapsed: true,
     items: [
-      { text: "Mailing settings", link: '/docs/settings/email-configuration/mailing-settings' },
-      { text: "Email notifications", link: '/docs/settings/email-configuration/email-notifications' },
-      { text: "Custom email editor <span class=\"fm-pro\">Pro</span>", link: '/docs/settings/email-configuration/custom-email-editor' }
+      { text: "Mailing", link: '/docs/settings/email-configuration/mailing-settings' },
+      { text: "Notifications", link: '/docs/settings/email-configuration/email-notifications' },
+      { text: "Email editor <span class=\"fm-pro\">Pro</span>", link: '/docs/settings/email-configuration/custom-email-editor' }
     ]
   },
   {
-    text: "Connect Other Plugins",
+    text: "Integrations",
     collapsed: true,
     items: [
-      { text: "Integrations overview", link: '/docs/integrations/' },
-      { text: "Level integrations", link: '/docs/levels/integrations' },
+      { text: "Overview", link: '/docs/integrations/' },
+      { text: "Per level", link: '/docs/levels/integrations' },
       { text: "FluentCart", link: '/docs/integrations/fluentcart' },
       { text: "Fluent Forms", link: '/docs/integrations/fluent-forms' },
       { text: "Paymattic", link: '/docs/integrations/paymattic' },
@@ -131,40 +131,40 @@ const docsSidebar = [
     ]
   },
   {
-    text: "Migrate to Fluent Members",
+    text: "Migration",
     collapsed: true,
     items: [
-      { text: "Migration overview", link: '/docs/settings/migration/' },
-      { text: "From Paid Memberships Pro", link: '/docs/settings/migration/from-paid-memberships-pro' },
+      { text: "Overview", link: '/docs/settings/migration/' },
+      { text: "From PMPro", link: '/docs/settings/migration/from-paid-memberships-pro' },
       { text: "From MemberPress", link: '/docs/settings/migration/from-memberpress' },
-      { text: "From Kadence or Restrict Content Pro", link: '/docs/settings/migration/from-kadence-memberships' }
+      { text: "From Kadence / RCP", link: '/docs/settings/migration/from-kadence-memberships' }
     ]
   },
   {
     text: "Settings",
     collapsed: true,
     items: [
-      { text: "General settings", link: '/docs/settings/general' },
-      { text: "Default unauthorized access", link: '/docs/settings/unauthorized-access' },
+      { text: "General", link: '/docs/settings/general' },
+      { text: "Default blocked view", link: '/docs/settings/unauthorized-access' },
       { text: "Permissions", link: '/docs/settings/permissions' },
-      { text: "Privacy & personal data", link: '/docs/settings/privacy' }
+      { text: "Privacy", link: '/docs/settings/privacy' }
     ]
   },
   {
-    text: "For Developers",
+    text: "Developers",
     collapsed: true,
     items: [
       { text: "Shortcodes", link: '/reference/shortcodes' },
       { text: "Email smartcodes", link: '/reference/email-smartcodes' },
-      { text: "Hooks & filters", link: '/reference/developer-hooks' },
+      { text: "Hooks", link: '/reference/developer-hooks' },
       { text: "Chain map", link: '/reference/chain-map' }
     ]
   },
   {
-    text: "Help & Updates",
+    text: "Help",
     collapsed: true,
     items: [
-      { text: "Membership statuses", link: '/reference/membership-statuses' },
+      { text: "Statuses", link: '/reference/membership-statuses' },
       { text: "Troubleshooting", link: '/reference/troubleshooting' },
       { text: "FAQ", link: '/docs/help-support/faq' },
       { text: "Get help", link: '/docs/help-support/get-support' },
