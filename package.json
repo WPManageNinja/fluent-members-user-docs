@@ -6,10 +6,9 @@
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview",
-    "docs:screenshots:plan": "node scripts/generate-screenshot-plan.mjs",
-    "docs:screenshots": "node scripts/capture-doc-screenshots.mjs",
     "featured:generate": "node scripts/generate-featured-images.mjs",
-    "featured:regenerate": "node scripts/generate-featured-images.mjs --force"
+    "featured:regenerate": "node scripts/generate-featured-images.mjs --force",
+    "shots": "node scripts/screenshots/shoot.cjs"
   },
   "keywords": [],
   "author": "",

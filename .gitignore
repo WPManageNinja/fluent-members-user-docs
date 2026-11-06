@@ -2,3 +2,6 @@
 node_modules
 /.vitepress/cache
 /.vitepress/dist
+
+# Screenshot pipeline raw captures
+scripts/screenshots/raw/
