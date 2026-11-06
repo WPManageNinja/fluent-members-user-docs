@@ -1,37 +1,49 @@
+---
+title: Members List
+description: Find members and other WordPress users, filter them by membership status, and open a member's details.
+---
+
 # Members List
 
-The **Members** page allows you to manage all WordPress users from one place. Here, you can view member details, check their membership levels, roles, and registration dates, and easily search or filter users. You can also open any member's profile to manage their account and membership settings.
+The **Members** screen lists everyone who holds a membership on your site. Use it to find a person, filter by status, and open their details.
 
-## Understanding the Members List
+Go to **Fluent Members → Members**.
 
-The Members screen displays all WordPress users in a paginated table with the following columns:
+![Screenshot of the Members screen with the status tabs, search icon, and a table of members](/images/members/index/members-list-overview.webp)
 
-- **ID:** A sortable numeric ID for the user record.
-- **User:** The member's avatar, display name, and email address.
-- **Membership Level:** Shows the member's current membership level. If the user doesn't have a membership, No Membership is displayed.
-- **Role:** The WordPress role assigned to the user (e.g. Subscriber, Administrator).
-- **Registered:** The date the WordPress user account was created.
+## Columns
 
-Click any row to open that member's [detail page](./detail) where you can view and manage their full membership history.
+The table has these columns:
 
-![Member List](/images/members/members-list/all-member-list-1.webp)
+| Column | What it shows |
+|--------|---------------|
+| **ID** | The WordPress user ID. Click the header to sort the rows on the current page. |
+| **User** | Avatar, display name, and email address. |
+| **Membership Level** | Up to two level tags. When there are more, a `+N` tag opens the rest in a dropdown. |
+| **Role** | The WordPress role, such as Subscriber or Administrator. |
+| **Registered** | The date the WordPress account was created. |
 
-### Filter Tabs
+Click any row to open that member's [details](/docs/members/detail).
 
-Use the tabs at the top of the table to filter the list by membership status. The list opens on **Members**, every WordPress user who holds at least one membership record, of any status.
+## Status tabs
 
-- **Members**: Shows every user with a membership record (active, trial, pending, expired, suspended, cancelled, or upgraded).
-- **Active**: Shows only users with an `active` or `trial` membership.
-- **Expired**: Shows only users whose membership has expired.
-- **No Membership**: Shows WordPress users who have never held a membership, useful for finding who to target with a promotion.
-- **More views ▾**: Opens a dropdown with additional filters: Pending, Cancelled, Suspended, and Upgraded.
+The tabs filter the list, and the **Membership Level** column then shows only memberships with that status. The screen opens on **Members**.
 
-### Search
+- **Members:** Everyone holding a membership of any status.
+- **Active:** People with a membership in Active status. Trial members are not included, so check **Trial** too.
+- **No Membership:** WordPress users who hold no membership. Use this tab to find someone before you [add a membership manually](/docs/members/adding-manually).
+- **More:** A dropdown with **Expired**, **Trial**, **Cancelled**, **Upgraded**, and **Suspended**.
 
-Use the **Search by name or email** field in the top-right corner of the table to find a specific member. The search applies to the currently selected tab. If you are on the **Active** tab, results will only include active members. Switch to **Members** if you are not sure which status the member is in, or to **No Membership** if you're not sure they have a membership at all.
+See [Membership statuses](/reference/membership-statuses) for what each status means.
 
-### Pagination
+## Search
 
-The bottom of the table shows the **Total** member count and a **per-page** dropdown (default 10). Use the page number buttons on the right to navigate between pages. Increase the per-page count to 25 or 50 for larger member lists.
+Click the search icon on the right to open the search field, then type in **Search members by name or email**. Search also matches the WordPress username. Click **Cancel** to close it.
 
+![Screenshot of the Members screen with the search field open](/images/members/index/members-list-search.webp)
 
+Search runs inside the tab you have open. If a person doesn't appear on **Members**, they hold no membership, so try **No Membership**.
+
+## Pagination
+
+The list shows 10 people per page. When there are more than that, the footer shows the total, a page size dropdown, and page numbers.
