@@ -1,248 +1,163 @@
+---
+title: "Developer Hooks"
+description: "A curated list of the Fluent Members actions and filters site owners use most, with their arguments."
+---
+
 # Developer Hooks
 
-The action and filter hooks Fluent Members emits. Use them to integrate with FluentCRM, build custom email notifications, sync membership events to your CRM, or react to changes in your own code.
+**Developer hooks** let your own code react to membership events and change how Fluent Members behaves. Use them to notify another system when someone joins, or to adjust a limit. This page lists the hooks most useful to site owners. For the full list, see the [Dev Docs](https://developers.fluentmembers.com/).
 
-**Here's what you'll learn:**
+All hooks on this page start with `fluent_members/`. Hooks marked (Pro) only fire when Fluent Members Pro is active. Put your code in a small custom plugin or your child theme's `functions.php`.
 
-- The membership lifecycle actions (the most-used set).
-- Subscription, order, and transaction events (Pro).
-- Portal-side and admin-side filters.
-- The integration registry filters.
-- Email pipeline filters.
-- Naming conventions.
+## Membership Actions
 
-**Before you start:** basic PHP and WordPress action/filter knowledge. All hooks are namespaced `fluent_members/...` (forward slash, current) or `fluent-members/...` (hyphen, legacy).
-
-## Membership Lifecycle Actions
-
-These are the stable event surface for integrations. CRM tools (FluentCRM), analytics, and audit logs subscribe to these.
-
-| Hook | Fires when | Args |
+| Action | Fires when | Arguments |
 |---|---|---|
-| `fluent_members/membership_level_assigned` | A membership record is created or a level is (re)assigned, paywall purchase, manual add, native Stripe or PayPal checkout, corporate join, or migration import. | `$membership, $userId` |
-| `fluent_members/membership_status_updated` | A membership's status changes for any reason, including cancellation. | `$membership, $userId, $newStatus, $oldStatus` |
-| `fluent_members/membership_upgraded` | An admin or member changes an existing membership to a different level. | `$oldMembership, $userId, $newMembership` |
-| `fluent_members/membership_suspended` | An admin suspends a membership. | `$membership, $userId` |
-| `fluent_members/membership_expired` | The hourly cron (free), or a Pro payment-sync pass, flips an `active`/`trial` row to `expired`. | `$membership, $userId` |
-| `fluent_members/membership_level_removed` | A membership record is fully removed (not just status-changed). | `$membership, $userId` |
+| `fluent_members/membership_level_assigned` | A member gets a membership, or regains access they already had | `$membership, $userId, $context` |
+| `fluent_members/membership_renewed` | A renewal payment succeeds | `$membership, $userId` |
+| `fluent_members/membership_status_updated` | A membership status changes | `$membership, $userId, $newStatus, $oldStatus` |
+| `fluent_members/membership_suspended` | A membership is suspended, by an admin or after a failed payment | `$membership, $userId` |
+| `fluent_members/membership_expiring` | The daily check finds a membership close to its expiry date | `$membership, $userId, $days` |
+| `fluent_members/membership_expired` | A membership expires | `$membership, $userId` |
+| `fluent_members/membership_cancelled` | A cancellation is announced, including one scheduled for later | `$membership, $userId, $oldStatus` |
+| `fluent_members/membership_cancellation_scheduled` | A cancellation is set to take effect at the expiry date | `$membership, $userId` |
+| `fluent_members/membership_cancellation_withdrawn` | A scheduled cancellation is undone | `$membership, $userId` |
+| `fluent_members/membership_level_removed` | A membership is cancelled and the member loses the level | `$membership, $userId` |
+| `fluent_members/membership_upgraded` | A member moves to another level and the old membership becomes `upgraded` | `$oldMembership, $userId, $newMembership` |
+| `fluent_members/membership_plan_changed` | A plan change finishes, including any seats moved | `$oldMembership, $newMembership, $movedSeatIds` |
+| `fluent_members/membership_upgrade_completed` (Pro) | A native Stripe or PayPal upgrade completes | `$membership, $oldMembership, $subscription` |
 
-There's no dedicated "cancelled" action. Cancellation goes through `membership_status_updated` with `$newStatus === 'cancelled'`.
+`$context` is not always passed. It is `restored` when a member regains access, for example after **Reactivate**, and `plan_changed` when a seat moves during a plan change. Accept two arguments if you do not need it, as the example below does.
 
-### Example: Log Every New Membership to a Custom Audit Table
+> [!Note]
+> `fluent_members/membership_status_updated` does not fire on every path. When a Stripe or PayPal subscription ends and expires its membership, only `fluent_members/membership_expired` is guaranteed. Listen to both if you need every expiry.
+
+### Example: Post New Members to Slack
 
 ```php
 add_action('fluent_members/membership_level_assigned', function ($membership, $userId) {
-    error_log(sprintf(
-        '[FM] User #%d granted membership #%d (Level %s) at %s',
-        $userId,
-        $membership->id,
-        $membership->membership_level_id,
-        $membership->created_at
-    ));
-}, 10, 2);
-```
+    $level = \FluentMembers\App\Models\MembershipLevel::find($membership->membership_level_id);
+    $user  = get_user_by('ID', $userId);
 
-::: tip Catching every transition in one place
-If you want a single hook that fires on any status change (cancel, expire, suspend, upgrade, or anything else), use `fluent_members/membership_status_updated` and branch on `$newStatus`.
-:::
-
-## Subscription, Order & Transaction Events (Pro)
-
-These fire from the Pro plugin's billing lifecycle, regardless of gateway (Stripe or PayPal).
-
-| Hook | Fires when | Args |
-|---|---|---|
-| `fluent_members/membership_renewed` | A recurring or WooCommerce-subscription renewal payment succeeds. | `$membership, $userId` |
-| `fluent_members/native_membership_created` | A native Stripe or PayPal checkout creates a new membership. | `$membership, ...` |
-| `fluent_members/after_order_created` | A new order record is written. | `$order, ...` |
-| `fluent_members/after_transaction_processed` | A transaction (charge, renewal, or refund) finishes processing. | `$transaction, ...` |
-| `fluent_members/after_subscription_processed` | A subscription record is created or updated from a checkout or webhook. | `$subscription, ...` |
-
----
-
-## Refund Dispatch
-
-| Hook | Purpose |
-|---|---|
-| `fluent_members/refund_payment_{gateway_key}` | Per-gateway refund dispatcher, for example `fluent_members/refund_payment_stripe` or `fluent_members/refund_payment_paypal`. The gateway's refund method binds here. |
-
-### Example: Notify Slack When a Refund Is Dispatched
-
-```php
-add_action('fluent_members/refund_payment_stripe', function ($transaction, $refundData) {
-    wp_remote_post('https://hooks.slack.com/services/...', [
-        'body' => json_encode([
-            'text' => sprintf('Refunding $%s for member #%d', $refundData['amount'] ?? 0, $transaction->user_id)
-        ])
+    wp_remote_post('https://hooks.slack.com/services/T00/B00/XXX', [
+        'headers' => ['Content-Type' => 'application/json'],
+        'body'    => wp_json_encode([
+            'text' => sprintf('New member: %s joined %s', $user->display_name, $level->title),
+        ]),
     ]);
 }, 10, 2);
 ```
 
-::: warning No global refund event
-There is no single "refund completed" action that fires for every gateway. To react to any refund regardless of gateway, watch for Transaction rows whose `status` flips to `refunded` (via `fluent_members/after_transaction_processed`), or subscribe to `fluent_members/membership_status_updated` if the admin also changes the membership status while refunding.
-:::
+## Native Payment Actions (Pro)
 
-## Form-Paywall Events
+These fire for native Stripe and PayPal payments.
 
-FluentCart, Fluent Forms, WooCommerce, and Paymattic each emit a set of `fluent_members/{src}_*` actions covering payment status changes and subscription lifecycle events. Replace `{src}` with `fc` for FluentCart, `ff` for Fluent Forms, `woocommerce` for WooCommerce, or `paymattic` for Paymattic. Each integration emits its own granular set (skipped, started, processed, refunded, activated, canceled, renewed); the common ones are:
+| Action | Fires when | Arguments |
+|---|---|---|
+| `fluent_members/native_membership_created` | A native checkout creates a membership | `$membership, $order, $subscription` |
+| `fluent_members/native_subscription_synced` | A native subscription is synced to an existing membership | `$membership, $order, $subscription` |
+| `fluent_members/after_order_created` | An order is saved | `$order, $pricing, $orderData` |
+| `fluent_members/after_transaction_processed` | A transaction is saved | `$transaction, $order, $subscription, $transactionData` |
+| `fluent_members/after_subscription_processed` | A subscription is created or updated | `$subscription, $order, $pricing, $subscriptionData` |
+| `fluent_members/native_payment_refunded` | A refund is confirmed | `$membership, $refundTransaction, $amount, $currency` |
 
-| Hook | Fires on |
-|---|---|
-| `fluent_members/{src}_payment_processed` | A successful payment was processed. |
-| `fluent_members/{src}_payment_refunded` | A refund landed via the host plugin. |
-| `fluent_members/{src}_subscription_activated` | A recurring subscription was activated. |
-| `fluent_members/{src}_subscription_canceled` | A subscription was cancelled. |
-| `fluent_members/{src}_subscription_renewed` | A renewal payment succeeded. |
+`$subscription` is `null` for one-time payments on `fluent_members/native_membership_created`.
 
+## Paywall Actions
 
-## Portal and Member-Side Filters
+Use these to watch purchases made through a connected plugin, or to log why a purchase did not grant access.
 
-| Filter | Lets you |
-|---|---|
-| `fluent_members/portal_memberships` | Rewrite the list returned to the Member Portal. |
-| `fluent_members/portal_membership_detail` | Rewrite a single membership's detail in the portal. |
-| `fluent_members/portal_cancel_membership` | Intercept a self-cancel request (free, local path). |
-| `fluent_members/portal_provider_cancel_membership` | Intercept a self-cancel request at the provider level (Pro). |
-| `fluent_members/portal_app_data` | Inject feature flags or data into the portal's front-end app. |
-| `fluent_members/admin_cancel_membership` | Intercept an admin-triggered cancellation before Fluent Members' default handling runs. |
+| Action | Fires when | Arguments |
+|---|---|---|
+| `fluent_members/paywall_added` | A paywall is attached to a level | `$level, $paywall` |
+| `fluent_members/paywall_removed` | A paywall is removed from a level | `$level, $paywallId, $requestData` |
+| `fluent_members/membership_not_stored` | A paid purchase could not create a membership | `$provider, $sourceId, $levelId, $reason` |
+| `fluent_members/paywall_event_failed` | A paywall event failed to process | `$provider, $sourceId, $event, $message` |
+| `fluent_members/ff_payment_processed` | A Fluent Forms payment grants access | `$submission, $levelIds` |
+| `fluent_members/ff_payment_refunded` | A Fluent Forms payment is refunded | `$refund, $transaction, $submission` |
+| `fluent_members/ff_subscription_renewed` | A Fluent Forms subscription renews | `$membership, $subscription` |
+| `fluent_members/ff_subscription_canceled` | A Fluent Forms subscription is cancelled | `$subscription, $submission` |
+| `fluent_members/paymattic_payment_processed` | A Paymattic payment grants access | `$submission, $levelIds` |
+| `fluent_members/paymattic_payment_refunded` | A Paymattic payment is refunded | `$refund, $formId, $charge` |
+| `fluent_members/paymattic_subscription_renewed` | A Paymattic subscription renews | `$membership, $subscription` |
+| `fluent_members/paymattic_subscription_canceled` | A Paymattic subscription is cancelled | `$subscription, $submission` |
+| `fluent_members/fluentcart_payment_skipped` | A FluentCart order did not grant access | `$reason, $data` |
+| `fluent_members/woocommerce_payment_skipped` (Pro) | A WooCommerce order did not grant access | `$reason, $order` |
 
-### Example: Add a Custom Panel to the Member Portal
+`$reason` on `fluent_members/membership_not_stored` is one of `not_prepared`, `source_already_granted` or `storage_failed`.
+
+## Member Portal Filters
+
+| Filter | Changes | Arguments |
+|---|---|---|
+| `fluent_members/portal_memberships` | The list of memberships shown in the portal | `$memberships, $user` |
+| `fluent_members/portal_membership_detail` | The data for one membership | `$membershipData, $membership, $user` |
+| `fluent_members/portal_stat_cards` | The stat cards at the top of the portal | `$cards, $user` |
+| `fluent_members/portal_app_data` | The data passed to the portal app | `$portalAppData, $handle` |
+| `fluent_members/portal_cancel_membership` | How a member's cancel request is handled | `null, $membership, $request` |
+| `fluent_members/admin_cancel_membership` | How an admin's cancel request is handled | `null, $membership, $request` |
+
+The two cancel filters start with `null`. Return `true` to mark the cancellation as handled, or a `WP_Error` to refuse it with a message. Leave `null` to let Fluent Members handle it.
+
+## Access Filters
+
+| Filter | Changes | Arguments |
+|---|---|---|
+| `fluent_members/shortcode_user_can_access` | Who can see `[fluent_members]` content. Return `true` or `false` to decide, or `null` to keep the normal check. | `null, $userId, $levelIds` |
+| `fluent_members/shortcode_restricted_html` | The HTML shown to people without access | `$html, $config` |
+| `fluent_members/rest_forbidden_message` | The message in a blocked REST API response | `$message, $post, $request` |
+| `fluent_members/hide_from_lists_post_types` | The post types that can be hidden from listings | `$types` |
+| `fluent_members/woocommerce_bypass_restriction` (Pro) | Whether a WooCommerce product skips restriction | `false, $productId, $context` |
+
+## Limit and Schedule Filters
+
+| Filter | Default | Notes |
+|---|---|---|
+| `fluent_members/expiry_batch_size` | `100` | Memberships expired per hourly run, from 1 to 1000 |
+| `fluent_members/expiring_batch_size` | `100` | Memberships checked per daily run for the expiring notice, from 1 to 1000 |
+| `fluent_members/expiring_notice_days` | Your **Membership Expiring** setting | Days before expiry, from 1 to 90 |
+| `fluent_members/membership_levels_render_limit` | `20` | The most levels `[fluent_membership_levels]` shows |
+
+### Example: Expire More Memberships per Run
 
 ```php
-add_filter('fluent_members/portal_app_data', function ($data) {
-    $data['custom_panel'] = [
-        'title'   => 'My Bonus Content',
-        'enabled' => true,
-        'url'     => '/bonus',
-    ];
-    return $data;
+add_filter('fluent_members/expiry_batch_size', function () {
+    return 500;
 });
 ```
 
-## Admin UI Filters
+## Admin and Email Filters
 
-| Filter | Lets you |
-|---|---|
-| `fluent_members/top_menu_items` | Add, remove, or reorder items in the Fluent Members top navigation bar (Dashboard, Levels, Access Groups, Members, Orders, Settings). |
-| `fluent_members/admin_vars` | Modify the data localized to the admin app's JavaScript, including the current user, feature-detection flags (`has_stripe`, `has_paypal`, `has_fluentcart`, and so on), and onboarding state. |
+| Filter | Changes | Arguments |
+|---|---|---|
+| `fluent_members/top_menu_items` | The items in the top navigation of the Fluent Members app | `$menuItems` |
+| `fluent_members/admin_vars` | The data passed to the admin app | `$defaultVars` |
+| `fluent_members/email_notification_shortcode_groups` | The groups in the email smartcode picker | `$groups` |
+| `fluent_members/email_editor_smartcode_groups` (Pro) | The groups in the custom email editor picker | `$groups` |
 
-### Example: Add a Custom Item to the Top Navigation
+> [!Note]
+> The two picker filters only change what the picker lists. They do not fill in a new code, so a code you add yourself appears in the email exactly as typed. See [Email Smartcodes](/reference/email-smartcodes) for the codes that work.
+
+### Example: Add an Item to the Top Navigation
 
 ```php
 add_filter('fluent_members/top_menu_items', function ($items) {
     $items[] = [
         'key'       => 'my_reports',
         'label'     => __('Reports', 'my-plugin'),
-        'permalink' => admin_url('admin.php?page=fluent-members#/reports'),
+        'permalink' => admin_url('admin.php?page=my-reports'),
     ];
+
     return $items;
 });
 ```
 
-## Access and Restriction Filters
+## Scheduled Tasks
 
-| Filter | Lets you |
-|---|---|
-| `fluent_members/rest_forbidden_message` | Customize the message returned when REST content is hidden. |
-| `fluent_members/expiry_batch_size` | Tune the hourly expiry cron's batch size (default 100). |
-| `fluent_members/woocommerce_bypass_restriction` | Bypass WooCommerce restrictions for specific products (Pro). |
+Fluent Members uses three WordPress cron events:
 
-### Example: Raise the Expiry Batch Size for a High-Volume Site
-
-```php
-add_filter('fluent_members/expiry_batch_size', fn () => 500);
-```
-
----
-
-## Integration Registry
-
-| Filter | Purpose |
-|---|---|
-| `fluent_members/get_integrations` | Register an integration with the Access Group picker. |
-| `fluent_members/search_integration_content_{key}` | Run content search for an integration, for example `fluent_members/search_integration_content_woocommerce`. |
-| `fluent_members/build_integration_selected_options_{key}` | Render selected options for an integration. |
-| `fluent_members/payment_methods` | Register a payment method with the checkout system. |
-
-## Email Pipeline Filters
-
-| Filter | Purpose |
-|---|---|
-| `fluent_members/email_notification_shortcode_groups` | Extend the merge-tag picker shown in the email editor. |
-| `fluent_members/prepare_email_template_data` | Manipulate the template data before an email renders (Pro block editor restores the body here). |
-| `fluent_members/parse_email_block_content` | Custom block-content parsing for the Pro block editor. |
-| `fluent_members/render_block_email_template` | Override how a Pro block email template renders to HTML. |
-
-### Example: Register a Custom Merge Tag Group
-
-```php
-add_filter('fluent_members/email_notification_shortcode_groups', function ($groups) {
-    $groups[] = [
-        'title'      => 'Order Data',
-        'shortcodes' => [
-            ['key' => '{{order_total}}', 'title' => 'Last Order Total'],
-        ],
-    ];
-    return $groups;
-});
-```
-
-See **Email Merge Tags** for the full built-in tag list.
-
-## Stripe-Specific Filters (Pro)
-
-| Filter | Purpose |
-|---|---|
-| `fluent_members/process_subscription` | Intercept the subscription create/update payload before it's saved. |
-| `fluent_members/stripe_request_args` | Modify the full request array before any Stripe API call. |
-| `fluent_members/stripe_request_headers` | Modify the headers sent on a Stripe API call. |
-| `fluent_members/stripe_request_body` | Modify the request body sent on a Stripe API call. |
-| `fluent_members/stripe_webhook_secret` | Override the webhook signing secret Fluent Members verifies incoming webhooks against. |
-
-## Migration Filters and Actions
-
-For PMPro, MemberPress, and Kadence Memberships migrations. Replace `{source}` with `pmpro`, `memberpress`, or `kadence`.
-
-| Hook | Purpose |
-|---|---|
-| `fluent_members/migration/{source}/import_order` | Intercepts the order-import step for a migration source. |
-| `fluent_members/migration/{source}/import_subscription` | Intercepts the subscription-import step, including transferring a live PayPal REST PPCP subscription (Pro, v1.1.0). |
-| `fluent_members/migration/{source}/import_transaction` | Intercepts the transaction-import step for a migration source. |
-| `fluent_members/migration/{source}/check_paypal_configured` | Bool filter the migration UI uses to show or hide the PayPal import option. |
-| `fluent_members/migration/kadence/check_stripe_configured` | Bool filter used by the Kadence migration UI to show Stripe-related options. |
-| `fluent_members/migration/kadence/import_payment` | Intercepts the payment-import step specific to the Kadence migration. |
-| `fluent_members/migration/{source}/reset_state` | Fires when a migration's state is reset. Available for PMPro, MemberPress, and Kadence; WP-CLI / debug-mode only. |
-| `fluent_members/paypal_ipn_continuation_sources` | Registers a migration source so Fluent Members takes over legacy PayPal IPN routing once the source plugin is deactivated. |
-
-See [Migration: Overview](/docs/settings/migration/) for the wizard flow these hooks plug into.
-
-## Naming Conventions
-
-- **New code uses `fluent_members/`**: forward slash. This is the stable contract.
-- **Legacy code uses `fluent-members/`**: hyphen. Kept for backwards compatibility.
-- **Per-integration sub-namespaces use `fluent_members/{integration}_*`**.
-
-If you're writing new hook listeners, target the forward-slash form; it's what we recommend going forward.
-
-## A Full Example: Slack Notification on Signup
-
-```php
-// In your theme's functions.php or a small custom plugin
-add_action('fluent_members/membership_level_assigned', function ($membership, $userId) {
-    $level = FluentMembers\App\Models\MembershipLevel::find($membership->membership_level_id);
-    $user  = get_user_by('ID', $userId);
-
-    wp_remote_post('https://hooks.slack.com/services/T00/B00/XXX', [
-        'body' => json_encode([
-            'text' => sprintf(
-                ':tada: New member: %s joined %s',
-                $user->display_name,
-                $level->title
-            )
-        ]),
-        'headers' => ['Content-Type' => 'application/json'],
-    ]);
-}, 10, 2);
-```
-
-From now on, every new member announces themselves in your Slack channel.
+| Event | Runs | Does |
+|---|---|---|
+| `fluent_members_check_expired_memberships` | Hourly | Expires memberships past their expiry date |
+| `fluent_members_check_expiring_memberships` | Daily | Finds memberships close to expiry and sends the notice |
+| `fluent_members_daily_cleanup` | Daily | Removes old email notice records, then fires `fluent_members/daily_cleanup` |
