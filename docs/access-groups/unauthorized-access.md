@@ -45,7 +45,7 @@ The content is replaced by your message, with an optional button under it.
 | **Button Text** | The button label, such as `View Plans`. |
 | **Button URL** | Where the button goes. Type `/` and part of a page title to search your pages, or paste a URL. |
 
-The button shows only when you fill in both **Button Text** and **Button URL**. A logged-out visitor who clicks it gets a login popup first, then goes to the button's URL after logging in.
+The button shows only when you fill in both **Button Text** and **Button URL**. It is a plain link to that URL. Logged-out visitors also get a separate login link, **Already a member? Log in** by default, which opens the login form.
 
 Here's what a logged-in visitor without access sees on a protected post:
 
@@ -55,7 +55,7 @@ Here's what a logged-in visitor without access sees on a protected post:
 
 The action covers posts and pages protected by the group's rules or the [Access Groups panel](/docs/access-groups/per-post-restrictions). A few cases work differently:
 
-- **Login Popup:** When [Login Popup](/docs/settings/login-popup) is on, logged-out visitors see its login notice instead of your message. A group using a redirect still redirects them.
+- **Login Popup:** When [Login Popup](/docs/settings/login-popup) is on with **Auto Open Popup**, the login form opens over your message for logged-out visitors. A group using a redirect still redirects them.
 - **Partial Content Lock:** When [Partial Content Lock](/docs/settings/partial-content-lock) is on, a group using a message shows a blurred preview instead, if the content is longer than the preview. A group using a redirect still redirects.
 - **Content Drip:** A member waiting for [dripped content](/docs/access-groups/content-drip) stays on the page and sees a notice, never a redirect or your message.
 - **Restricted blocks:** A block uses fixed text instead of this card. See [Access Groups block](/docs/access-groups/gutenberg-block/inserting).
