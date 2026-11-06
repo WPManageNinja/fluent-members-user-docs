@@ -1,184 +1,123 @@
+---
+title: "Membership Statuses"
+description: "What each Fluent Members membership status means, what changes it, and what members and admins can do at each one."
+---
+
 # Membership Statuses
 
-Every row in the Members list has a **status**. Status decides whether a person can see protected content, whether their email reminders fire, and what an admin can do next.
-
-There are seven statuses. This page is the one-stop summary.
+Every membership has a **status**. It decides whether the member can see protected content, what they see in the Member Portal, and which actions you have on that membership.
 
 ## The Statuses
 
-| Status      | Has access? | What it means                                                                 |
-|-------------|-------------|--------------------------------------------------------------------------------|
-| `active`    | Yes         | The membership is live. This is the normal state for paying members.          |
-| `trial`     | Yes         | Live, but inside a free-trial window. Behaves exactly like `active` for content access, the difference is only for billing systems. |
-| `pending`   | No          | Created but waiting for payment / confirmation. Used by some integrations between order placed and order paid. |
-| `cancelled` | No          | The member (or admin) cancelled. Access is revoked. Billing has stopped.       |
-| `expired`   | No          | The membership reached its `expires_at` date and the hourly cron flipped it. Access is revoked. |
-| `suspended` | No          | An admin paused this member. Access is revoked but billing is not necessarily stopped. Use for policy violations / payment disputes. |
-| `upgraded`  | No          | The member's old row after an admin moved them to a different level. A new row on the new level takes over access; this row stays for history. |
+Fluent Members uses six statuses. Only **Active** and **Trial** give access.
 
-## What Moves a Membership Between Statuses
+| Status | Access | What it means |
+|---|---|---|
+| **Active** | Yes | The membership is live. |
+| **Trial** | Yes | The membership is live and inside a trial period. |
+| **Suspended** | No | Access is paused, by an admin or after a failed payment. |
+| **Cancelled** | No | The membership has ended and the record stays in the member's history. |
+| **Expired** | No | The membership passed its expiry date. |
+| **Upgraded** | No | The member moved to another level. This old record stays for history, and a new membership holds the access. |
 
-### Becomes `active`
-- Admin manually adds a member from **Members → Add Membership**.
-- A paywall integration (FluentCart, WooCommerce, Fluent Forms, Paymattic) reports a successful payment.
-- A native Stripe or PayPal checkout completes (Pro).
-- The corporate join page is accepted by an invitee (Pro).
-- Status change from `suspended` back to `active` via the admin UI.
+> [!Note]
+> **Suspended** does not stop billing on its own. If the member pays by subscription, the subscription keeps running until it is cancelled.
 
-### Becomes `trial`
-- Pricing plan has `trial_period_days > 0` and the member is inside that window.
+## What Changes a Status
 
-### Becomes `pending`
-- Order placed but payment not yet confirmed (provider-dependent).
+### Becomes Active or Trial
 
-### Becomes `cancelled`
-- Member clicks **Cancel** in the Member Portal.
-- Admin cancels from the Members detail screen.
-- A provider webhook reports the subscription ended: Stripe sends `customer.subscription.deleted`, PayPal sends **Billing subscription cancelled** (Pro).
-- A refund triggers cancellation (when "cancel on refund" is enabled, Pro).
-- Cascade: the corporate parent was cancelled, so children cascade to `cancelled`.
+- You assign a plan to the member with [Add Membership](/docs/members/adding-manually).
+- A payment succeeds through native Stripe or PayPal (Pro), or through FluentCart, Fluent Forms, Paymattic or WooCommerce (Pro).
+- An invited member accepts a [seat on a corporate level](/docs/members/portal/corporate-seat-invites) (Pro).
+- You click **Reactivate** on a suspended membership. It returns to the status it had before, so a trial stays a trial.
 
-### Becomes `expired`
-- The hourly cron `fluent_members_check_expired_memberships` picks up any `active|trial` row whose `expires_at <= NOW()` and flips it.
-- Cascade: the corporate parent expired, so children cascade.
+A subscription in its trial period gives **Trial**. It changes to **Active** when the trial ends and billing starts.
 
-### Becomes `suspended`
-- Admin clicks **Suspend** on the member detail.
-- Cascade from a suspended corporate parent.
+### Becomes Suspended
 
-### Becomes `upgraded`
-- An admin moves a member from their current level to a different one. The old row flips to `upgraded`, a new row is created on the new level, and `fluent_members/membership_upgraded` fires alongside `fluent_members/membership_status_updated`.
-- Cascade: the corporate parent's old row is upgraded, so children cascade to `upgraded` too.
+- You choose **Suspend** on the [member's details](/docs/members/detail). The action is called **Suspend Access** on memberships with a native subscription.
+- A failed payment moves a native subscription to past due, unpaid, incomplete, failed or paused (Pro).
+- The owner of a corporate membership is suspended, so their seats are suspended too.
 
-## What Members See at Each Status
+### Becomes Cancelled
 
-| Status      | Member Portal shows                                  | Restricted content shows                              |
-|-------------|------------------------------------------------------|--------------------------------------------------------|
-| `active`    | "Active" badge, expiry/lifetime date, Cancel button  | The protected content, normally                       |
-| `trial`     | "Trial" badge + trial-end date                        | The protected content, normally                       |
-| `pending`   | "Pending" badge, no Cancel button                     | The fallback action you set on the Access Group       |
-| `cancelled` | "Cancelled" badge, no actions; can re-purchase        | The fallback action                                   |
-| `expired`   | "Expired" badge, **Renew** button if subscription is renewable (Pro) | The fallback action                       |
-| `suspended` | "Suspended" badge, no actions                         | The fallback action                                   |
-| `upgraded`  | Not shown; the member's new row on their current level shows instead | The fallback action, if this old row is somehow the only one checked |
+- A member cancels in the [Member Portal](/docs/members/portal/cancelling).
+- You choose **Cancel** or **Cancel Subscription** on the member's details.
+- Stripe or PayPal reports that the subscription has ended (Pro).
+- You fully refund a charge or renewal (Pro). This does not apply to payments carried over by a migration.
+- The owner of a corporate membership is cancelled, so their seats are cancelled too.
 
-## What Admin Actions Are Available at Each Status
+If the member or admin chooses to cancel at the end of the billing period, the status stays **Active** until the period ends.
 
-| Status      | Cancel | Suspend | Renew (Pro) | Refund (Pro) | Change Level |
-|-------------|--------|---------|-------------|--------------|---------------|
-| `active`    | ✅     | ✅      |             | ✅ (on a charge) | ✅        |
-| `trial`     | ✅     | ✅      |             | ✅           | ✅            |
-| `pending`   | ✅     |         |             |              |               |
-| `cancelled` |        |         | ✅ (if subscription) | ✅ (on past charges) |    |
-| `expired`   |        |         | ✅          | ✅           |               |
-| `suspended` | ✅     |         |             | ✅           | ✅            |
-| `upgraded`  |        |         |             | ✅ (on past charges) |       |
+### Becomes Expired
 
-## Cascade Behaviour
+- The expiry date passes. An hourly background job checks **Active** and **Trial** memberships in batches, so the change can take up to an hour or longer on a large site.
+- A native subscription expires (Pro).
+- The owner of a corporate membership expires, so their seats expire too.
 
-Corporate parent rows propagate their status to every child row in one shot:
+### Becomes Upgraded
 
-- Parent → `cancelled` → all children → `cancelled`.
-- Parent → `expired` → all children → `expired`.
-- Parent → `suspended` → all children → `suspended`.
-- Parent → `upgraded` → all children → `upgraded`.
+- A member buys or moves to another level through a paywall purchase or an [upgrade path](/docs/levels/upgrade-paths) (Pro). The old membership becomes **Upgraded** and a new membership is created.
 
-Children cannot cancel themselves, but their access lifts and falls with the parent.
+## What Members See
+
+Each membership in the portal has a status badge and a **Manage** button, at every status. The **Manage** page holds the actions. See [Membership details](/docs/members/portal/membership-details) for the full page.
+
+| Status | Actions on the Manage page | Protected content |
+|---|---|---|
+| **Active**, **Trial** | **Cancel Membership** or **Cancel Subscription**. **Upgrade Plan**, **Update Payment Method**, **Renew Membership** and **Undo Cancellation** when they apply (Pro for all but **Undo Cancellation**). | Visible |
+| **Suspended** | **Update Payment Method** and **Cancel Subscription** when a native subscription allows them (Pro). Otherwise none. | Blocked |
+| **Cancelled**, **Expired** | None. **Renew Membership** appears when the native subscription can be renewed (Pro). | Blocked |
+| **Upgraded** | None. The member's new membership is listed separately. | Blocked for this record |
+
+When someone without access opens protected content, the Access Group's [unauthorized access](/docs/access-groups/unauthorized-access) setting decides what they see.
+
+## What Admins Can Do
+
+These actions are in the three-dot menu on each row of the **Memberships** table on the member's details page.
+
+| Action | Available when |
+|---|---|
+| **Refund** (Pro) | The membership has a refundable transaction, at any status |
+| **Cancel Subscription** (Pro) | The membership has a native subscription that can be cancelled |
+| **Suspend** or **Suspend Access** | The status is **Active** or **Trial** |
+| **Reactivate** or **Reactivate Access** | The status is **Suspended**. For a seat, the owner's membership must be **Active** or **Trial**. |
+| **Undo Cancellation** | A cancellation is scheduled |
+| **Cancel** | The status is **Active** or **Trial**, and the membership has no native subscription, or its billing is managed in PayPal |
+
+To bring back a cancelled or expired member, assign a plan again with [Add Membership](/docs/members/adding-manually).
+
+## Corporate Seats (Pro)
+
+Status changes on a [corporate membership](/docs/levels/corporate-memberships) flow down to its seats:
+
+| Owner becomes | Seats become |
+|---|---|
+| **Cancelled** | **Cancelled** |
+| **Expired** | **Expired** |
+| **Suspended** | **Suspended** |
+| **Active** or **Trial** again | Restored, up to the free seats on the level |
+| **Upgraded**, new level is corporate | Moved to the new corporate membership |
+| **Upgraded**, new level is not corporate | **Cancelled** |
 
 ## Provider Values
 
-Alongside `status`, every membership row also stores a `provider`, recording which system created or manages it:
+Each membership also stores a `provider`, which records where it came from. You see this value in the database and in [developer hooks](/reference/developer-hooks).
 
 | Value | Source |
 |---|---|
-| `fluent_cart` | FluentCart checkout |
-| `woocommerce` | WooCommerce checkout (Pro) |
-| `fluent_forms` | Fluent Forms payment form |
-| `paymattic` | Paymattic payment form |
-| `native` | Fluent Members Pro native Stripe or PayPal checkout |
+| `manual` | Assigned by an admin |
+| `stripe` | Native Stripe checkout (Pro) |
+| `paypal` | Native PayPal checkout (Pro) |
+| `fluent_cart` | FluentCart |
+| `fluentform` | Fluent Forms |
+| `paymattic` | Paymattic |
+| `woocommerce` | WooCommerce (Pro) |
+| `corporate` | A seat on a corporate membership (Pro) |
 | `pmpro` | Imported from Paid Memberships Pro |
 | `memberpress` | Imported from MemberPress |
-| `rcp` | Imported from Kadence Memberships (retained from the plugin's earlier name, Restrict Content Pro) |
-| `manual` | Added manually by an admin |
+| `rcp` | Imported from Kadence Memberships, formerly Restrict Content Pro |
+| `native_payment` | Older admin grants on native plans, shown as **Manual** |
 
-## Where Status Is Stored
-
-The single source of truth is `fmem_membership_users.status` on each membership row. Even Stripe- and PayPal-driven memberships use this column, the webhook just keeps it in sync.
-
-
-
-
-## Status Reference
-
-Every membership row in Fluent Members carries a single status value. The status controls whether a member can access protected content, what they see in the Member Portal, and which admin actions are available on that row.
-
-### The Statuses
-
-| Status | Has Access? | What it means |
-|---|:---:|---|
-| `active` | ✅ | Normal operating state: full access granted |
-| `trial` | ✅ | Inside the trial period: same access as active |
-| `pending` | ❌ | Payment initiated but not yet confirmed by the provider |
-| `expired` | ❌ | Past the expiry date, set automatically by an hourly background job |
-| `suspended` | ❌ | Admin has paused access; billing may still be running |
-| `cancelled` | ❌ | Explicitly ended; record kept in history |
-| `upgraded` | ❌ | The member's old membership row after they were moved to a different level; the old row is kept for history and a new row carries the new level |
-
-::: tip
-**Active** and **Trial** both grant full access; the difference is billing stage only. Every other status blocks access immediately.
-:::
-
-### Admin Actions by Status
-
-The actions available on a membership row depend on its current status:
-
-| Status | Cancel | Suspend | Refund (Pro) | Re-grant |
-|---|:---:|:---:|:---:|:---:|
-| `active` | ✅ | ✅ | ✅ | — |
-| `trial` | ✅ | ✅ | ✅ | — |
-| `pending` | ✅ | — | — | — |
-| `cancelled` | — | — | ✅ | ✅ |
-| `expired` | — | — | ✅ | ✅ |
-| `suspended` | ✅ | — | ✅ | — |
-| `upgraded` | — | — | ✅ | — |
-
-To re-grant access to a cancelled or expired member, use [Adding a Membership Manually](/docs/members/adding-manually).
-
-### What Members See in the Portal
-
-When a member visits the Member Portal, the content shown depends on their status:
-
-| Status | Portal shows |
-|---|---|
-| `active` | Active badge, expiry date or lifetime label, Cancel button |
-| `trial` | Trial badge and the trial end date |
-| `pending` | Pending badge; no actions available |
-| `cancelled` | Cancelled badge; member can re-purchase from your pricing page |
-| `expired` | Expired badge; Pro: Renew button if the subscription is renewable |
-| `suspended` | Suspended badge; no actions available |
-| `upgraded` | Not shown; the member instead sees their new, active membership row |
-
-When a member with a non-active status tries to view protected content, the [Unauthorized Access](/docs/access-groups/unauthorized-access) setting on the Access Group controls what they see.
-
-### Corporate Memberships
-
-Status changes on a corporate parent account automatically cascade to all child (seat) accounts:
-
-| Parent status changes to | Children also become |
-|---|---|
-| `cancelled` | `cancelled` |
-| `expired` | `expired` |
-| `suspended` | `suspended` |
-| `upgraded` | `upgraded` |
-
-See [Corporate Memberships](/docs/levels/corporate-memberships) for details.
-
-### Important Notes
-
-::: warning Things to keep in mind
-- **Suspended does not stop billing.** Suspension only removes content access. If the member has a subscription, billing continues unless you also cancel it through your payment provider.
-- **Expired is set automatically.** An hourly background job checks for rows whose expiry date has passed and flips them to `expired`. You do not need to do this manually.
-- **A Pending row that stays Pending** usually means an integration webhook did not fire. Check the payment provider logs, then use [Adding a Membership Manually](/docs/members/adding-manually) to grant access if needed.
-- **Cancelled rows are not deleted.** The record stays in the member's history. A new `Active` row is created if they re-join.
-- **Upgraded rows are not deleted either.** Moving a member to a different level marks the old row `upgraded` and creates a fresh row on the new level, keeping full history of what they held before.
-:::
+The status is stored in the `status` column of the `fmem_membership_users` table, on each membership row.
