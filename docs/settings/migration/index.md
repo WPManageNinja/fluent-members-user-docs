@@ -1,69 +1,89 @@
+---
+title: "Migration"
+description: "Import levels, access rules, members and billing records into Fluent Members from Paid Memberships Pro, MemberPress or Kadence Memberships."
+---
+
 # Migration
 
-The Migration tool lets you move membership data from another plugin into Fluent Members. The wizard supports three source plugins **Paid Memberships Pro**, **MemberPress**, and **Kadence Memberships** and runs each import in chunked steps to avoid PHP timeouts on large datasets.
+The **Migration** tool imports your membership data from **Paid Memberships Pro**, **MemberPress** or **Kadence Memberships** into Fluent Members. Use it when you are moving an existing membership site, so you don't have to rebuild levels and members by hand.
 
-## Access Migration
+## Open Migration
 
-Click the **Settings** gear icon in the top-right corner of any Fluent Members screen, then select **Migration** from the left-hand menu.
+Click the **Settings** gear in the top-right corner of any Fluent Members screen, then click **Migration**.
 
-![Access Migration](/images/settings/migration/migration-1.webp)
+![Screenshot of the Migration settings screen with three source cards. Paid Memberships Pro and MemberPress show Not Detected, and Kadence Memberships is available](/images/settings/migration/migration-index-sources.webp)
 
-## Supported Sources
+The screen shows one card per source plugin. A card you can click means the plugin is active on this site. A greyed-out card shows **Not Detected**, so activate that plugin first.
 
-The Migration page shows one card per supported source plugin. Each card displays a **Detected** or **Not Detected** badge:
+## What each source imports
 
-- **Detected**: The source plugin is currently active on this site. Click the card to open its import wizard.
-- **Not Detected**: The source plugin is not active. Activate it before running the migration.
-
-| Source Plugin | Notes |
-|---|---|
-| **Paid Memberships Pro** | Full support: levels, members, subscriptions, orders, and PayPal import (Pro). |
-| **MemberPress** | Full support: levels, members, subscriptions, orders, Stripe live-transfer, and PayPal import (Pro). |
-| **Kadence Memberships** | Full support: levels, members, subscriptions, payments, and PayPal import (Pro). Previously named Restrict Content Pro. |
-
-## What Gets Migrated
+The steps differ slightly per source. The wizard shows the exact records it found on your site before anything is written.
 
 | Data | Paid Memberships Pro | MemberPress | Kadence Memberships |
 |---|---|---|---|
-| Membership levels → Fluent Members Levels | Yes | Yes | Yes |
-| Member assignments | Yes | Yes | Yes |
-| Member status (active, expired, cancelled) | Yes | Yes | Yes |
-| Subscription records | Yes (Pro) | Yes (Pro) | Yes (Pro) |
-| Transaction / order records | Yes (Pro) | Yes (Pro) | Yes (Pro) |
-| Stripe subscription live-transfer | No | Yes (Pro) | No |
-| PayPal PPCP subscription import | Yes (Pro) | Yes (Pro) | Yes (Pro) |
+| Membership levels | Yes | Yes | Yes |
+| Access rules, as **Access Groups** | Yes | Yes | Yes |
+| Members and their memberships | Yes | Yes | Yes |
+| Corporate or group members | Yes | Yes | Yes |
+| Content drip | Yes | No | Yes |
+| Orders and transactions (Pro) | Yes | Yes | Yes, from the **Payments** step |
+| Subscriptions (Pro) | Yes | Yes | Yes |
+| Stripe subscriptions keep renewing (Pro) | Yes | Yes | Yes |
+| PayPal subscriptions keep renewing (Pro) | Yes | Yes | Legacy PayPal only |
+
+Steps that need Pro show **Requires Pro** when Fluent Members Pro is not active.
 
 > [!Note]
-> Only member data and membership level assignments are imported during the migration. Protected pages, posts, and access rules are **not** migrated. After the import is complete, you'll need to create and configure your **[Access Groups](/docs/access-groups/)** in Fluent Members to protect your content.
-## Before You Start
+> Each source has its own list of settings that are not migrated, such as coupon or discount codes, email templates and some redirects. See the page for your source.
 
-Complete these steps before opening any migration wizard:
+## Before you start
 
-1. **Back up your database.** Take a full snapshot before touching anything.
-2. **Install Fluent Members** (and Pro if you need subscriptions, transactions, or Stripe transfer).
-3. **Keep the source plugin active** throughout the migration. Do not deactivate it until the cleanup step is complete.
-4. **Configure Stripe** in [Stripe Setup](/docs/settings/payment-settings/stripe-setup) if the source plugin used Stripe and you want to keep existing subscriptions running (MemberPress + Pro only).
-5. **Configure PayPal** in [PayPal Setup](/docs/settings/payment-settings/paypal-setup) if the source plugin used PayPal REST PPCP subscriptions and you want them to continue without members re-entering payment details (Pro only).
+1. Back up your database. Outside debug mode, a migration cannot be undone from this screen.
+2. Install **Fluent Members**. Add **Fluent Members Pro** if you want subscriptions, orders and transactions.
+3. Keep the source plugin active while the migration runs.
+4. If members pay through Stripe, connect the same Stripe account in [Stripe Setup](/docs/settings/payment-settings/stripe-setup) and add the Fluent Members webhook in Stripe.
+5. If members pay through PayPal, connect the same PayPal account in [PayPal Setup](/docs/settings/payment-settings/paypal-setup).
 
-## Running the Migration
+## How the wizard works
 
-1. Open **Settings → Migration** and click the card for your source plugin.
-2. Walk the wizard steps in order each step must complete before the next begins.
-3. Follow the per-source walkthrough for your plugin:
-   - [From Paid Memberships Pro](/docs/settings/migration/from-paid-memberships-pro)
-   - [From MemberPress](/docs/settings/migration/from-memberpress)
-   - [From Kadence Memberships](/docs/settings/migration/from-kadence-memberships)
+Click a source card to open its wizard. The wizard has three screens, and nothing is written until you run a step on the second one. Your data in the source plugin is never changed or deleted.
 
-::: tip Steps are safe to re-run
-If the migration is interrupted, you can run it again without creating duplicate members. However, we strongly recommend creating a backup of your database before starting the migration.
-:::
+1. **Data Map:** Shows **What will be imported**, with a record count per row, and a **Before You Migrate** panel built from what the wizard found on your site. Read this panel carefully. It names the subscriptions, content and level terms that need your attention. Click **Next**.
+2. **Migration:** Lists the **Migration Steps**. Click **Migrate All** to run them in order, or **Run** on a single step.
+3. **Review Data:** Click **View Summary** when the steps finish. It shows the record total and a **What was imported** table. Click **Download Migration Log** to keep a record, then **View Members**.
 
+### While the steps run
 
-## After Migration
+Keep the browser tab open. Progress is saved, so if the tab closes, reopen the same migration and click **Resume Migration**.
 
-Once the migration is complete, follow these steps:
+- **Pause** stops the run so you can continue later.
+- A hint such as **Run Membership Levels first** means that step depends on another one. Some steps are independent of each other, so the order is not strictly linear.
+- **Retry** appears on a step that failed or needs another pass.
+- **Completed**, **Skipped** and **Not Found** show how a step ended. **Not Found** means the source had no records for it.
 
-* **Check your members:** Make sure all members and membership levels have been imported correctly.
-* **Create Access Groups:** Set up **Access Groups** and assign the appropriate **Membership Levels** to protect your content.
-* **Test member access:** Log in with a test member account to confirm that protected content is accessible only to the correct members.
-* **Disable the old plugin:** After verifying everything is working correctly, deactivate the source plugin. It's a good idea to keep it installed for a while in case you need to review or recover any data later.
+Each step runs once, and completed steps are skipped.
+
+### Optional steps
+
+Two optional steps can appear after **Cleanup & Verify**:
+
+- **Convert FluentCRM Automations:** Copies FluentCRM automations that start on the source plugin's triggers into Fluent Members automations for the migrated levels. A published automation stays published and a draft stays a draft. One that checks the old plugin's membership condition stays a draft so you can edit that condition first. The originals are not changed. This step appears when FluentCRM is active and has such automations, and **Migrate All** runs it.
+- **Sync Integrations:** Announces every migrated member with an active or trial membership as a new level assignment, so integration feeds and FluentCRM automations that start on **Membership Level Assigned** run for them. Those automations can send their own emails, but Fluent Members sends none. **Migrate All** does not run this step, so click it yourself when you're ready.
+
+### Reset Migration
+
+**Reset Migration** appears on the **Review Data** screen only when `WP_DEBUG` is on. It permanently deletes the members, payments and subscriptions imported from that source, plus the imported levels and Access Groups nothing else uses. Automations already converted stay in FluentCRM.
+
+## Walkthrough for your source
+
+- [From Paid Memberships Pro](/docs/settings/migration/from-paid-memberships-pro)
+- [From MemberPress](/docs/settings/migration/from-memberpress)
+- [From Kadence Memberships](/docs/settings/migration/from-kadence-memberships)
+
+## After the migration
+
+- **Check your members:** Compare totals in **Fluent Members → Members** with the source plugin.
+- **Check your Access Groups:** Confirm that imported groups protect what you expect. Restrictions the wizard could not import become public once the source plugin is off, so restrict them by hand.
+- **Test access:** Log in as a sample member and open protected content.
+- **Check emails:** Members with an upcoming end date get the **Membership Expiring** email if it is enabled. See [Email Notifications](/docs/settings/email-configuration/email-notifications).
+- **Deactivate the source plugin:** Do this as soon as the migration and its optional steps are done. Changes the source plugin records afterwards aren't imported.
