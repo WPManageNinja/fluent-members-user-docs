@@ -101,7 +101,7 @@
           "link": "/docs/access-groups/how-protection-works",
           "ux": "See the checks that decide who gets in.",
           "facts": [
-            "One active group the member holds a level for is enough",
+            "One group the member holds a level for is enough",
             "Membership must be Active or Trial and not expired",
             "Administrators skip all protection on your site",
             "Comments, feeds and REST responses are protected too"
@@ -124,6 +124,8 @@
           "ux": "Choose what the group protects, one rule at a time.",
           "facts": [
             "Core: Entire Website, All Posts, All Pages, All Categories Archive, All Tags Archive, Specific Post/Page/CPT/Taxonomy etc.",
+            "Custom taxonomy terms save but protect nothing",
+            "A parent category does not cover posts only in a child category",
             "FluentCart Products: needs FluentCart",
             "WooCommerce Products (Pro): needs WooCommerce",
             "Excluded: exceptions for one rule"

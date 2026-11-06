@@ -271,7 +271,6 @@ export default defineConfig({
     nav: [
       { text: 'User Docs', link: '/' },
       { text: 'Changelog', link: '/changelog' },
-      { text: 'Dev Docs', link: 'https://developers.fluentmembers.com/' },
       { text: 'Website', link: 'https://fluentmembers.com' }
     ],
 

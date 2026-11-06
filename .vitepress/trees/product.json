@@ -25,7 +25,7 @@
     { "text": "Move from another plugin", "sub": "Paid Memberships Pro, MemberPress, Kadence", "to": "migration" }
   ],
   "journey": [
-    { "text": "Install Fluent Members", "sub": "From Plugins › Add Plugin, free", "to": "install" },
+    { "text": "Install Fluent Members", "sub": "Upload the free ZIP under Plugins › Add Plugin", "to": "install" },
     { "text": "Run the guided setup", "sub": "Level, payment, protected content and pages in four steps", "to": "quick-start" },
     { "text": "Check what blocked visitors see", "sub": "Open a protected page in a private window", "to": "blocked" },
     { "text": "Publish your pricing page", "sub": "Link visitors to it so they can join", "to": "pricing-page" }
