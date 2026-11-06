@@ -22,9 +22,9 @@ Before you start, you need:
 
 ## Check that Pro is active
 
-The WordPress sidebar item changes to **FluentMembers Pro**, and a **Billing** item appears under it.
+The **FluentMembers** item in your WordPress sidebar gains a small **P** badge, and a **Billing** item appears under it.
 
-![Screenshot of the WordPress sidebar showing FluentMembers Pro with Dashboard, Levels, Access Groups, Members, Billing and Settings](/images/getting-started/installation-pro/installation-pro-wp-menu.webp)
+![Screenshot of the WordPress sidebar showing FluentMembers with Dashboard, Levels, Access Groups, Members, Billing and Settings](/images/getting-started/installation-pro/installation-pro-wp-menu.webp)
 
 Inside the plugin, you also get:
 
