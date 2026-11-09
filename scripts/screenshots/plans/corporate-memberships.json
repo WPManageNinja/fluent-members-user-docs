@@ -1,0 +1,45 @@
+{
+  "site": "http://member.local",
+  "outDir": "public/images/levels/corporate-memberships",
+  "viewport": {
+    "width": 1500,
+    "height": 900
+  },
+  "steps": [
+    {
+      "admin": "/levels/5/members"
+    },
+    {
+      "wait": 2500
+    },
+    {
+      "click": {
+        "text": "Assign Members"
+      }
+    },
+    {
+      "wait": 1500
+    },
+    {
+      "fill": {
+        "selector": "input[placeholder='Search by name, email or username']",
+        "value": "demo1"
+      }
+    },
+    {
+      "wait": 2000
+    },
+    {
+      "shot": {
+        "name": "corporate-memberships-assign-warning",
+        "clip": "viewport",
+        "crop": {
+          "top": 260,
+          "height": 1000,
+          "left": 790,
+          "width": 1420
+        }
+      }
+    }
+  ]
+}
