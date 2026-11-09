@@ -1,0 +1,53 @@
+{
+  "site": "http://member.local",
+  "outDir": "public/images/levels/upgrade-paths",
+  "viewport": {
+    "width": 1300,
+    "height": 900
+  },
+  "steps": [
+    {
+      "front": "/member-portal/",
+      "hideThemeHeader": true
+    },
+    {
+      "wait": 2500
+    },
+    {
+      "click": {
+        "text": "Manage"
+      }
+    },
+    {
+      "wait": 2500
+    },
+    {
+      "click": {
+        "text": "More Action"
+      }
+    },
+    {
+      "wait": 800
+    },
+    {
+      "click": {
+        "text": "Upgrade Plan"
+      }
+    },
+    {
+      "wait": 2500
+    },
+    {
+      "shot": {
+        "name": "upgrade-paths-member-dialog",
+        "clip": "viewport",
+        "crop": {
+          "top": 440,
+          "height": 920,
+          "left": 640,
+          "width": 1320
+        }
+      }
+    }
+  ]
+}

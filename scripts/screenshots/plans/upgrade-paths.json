@@ -1,0 +1,115 @@
+{
+  "site": "http://member.local",
+  "outDir": "public/images/levels/upgrade-paths",
+  "viewport": {
+    "width": 1500,
+    "height": 900
+  },
+  "steps": [
+    {
+      "admin": "/levels/3/upgrade-paths"
+    },
+    {
+      "wait": 2500
+    },
+    {
+      "shot": {
+        "name": "upgrade-paths-empty",
+        "clip": "app",
+        "crop": {
+          "height": 760
+        },
+        "arrows": [
+          {
+            "target": {
+              "text": "Add Upgrade Path"
+            },
+            "from": "right",
+            "len": 120
+          }
+        ]
+      }
+    },
+    {
+      "click": {
+        "text": "Add Upgrade Path"
+      }
+    },
+    {
+      "wait": 1500
+    },
+    {
+      "click": ".el-dialog .el-select__wrapper"
+    },
+    {
+      "wait": 700
+    },
+    {
+      "eval": "(function(){var it=[...document.querySelectorAll('.el-select-dropdown__item')].filter(function(x){return x.offsetParent&&x.textContent.indexOf('Gold Monthly')>-1});if(it.length){it[0].click();return 'ok'}return 'none:'+[...document.querySelectorAll('.el-select-dropdown__item')].map(function(x){return x.textContent.trim()}).join('|')})()"
+    },
+    {
+      "wait": 600
+    },
+    {
+      "eval": "document.querySelectorAll('.el-dialog .el-select__wrapper')[1].click()"
+    },
+    {
+      "wait": 700
+    },
+    {
+      "eval": "(function(){var it=[...document.querySelectorAll('.el-select-dropdown__item')].filter(function(x){return x.offsetParent&&x.textContent.indexOf('Gold Yearly')>-1});if(it.length){it[0].click();return 'ok'}return 'none:'+[...document.querySelectorAll('.el-select-dropdown__item')].map(function(x){return x.textContent.trim()}).join('|')})()"
+    },
+    {
+      "wait": 400
+    },
+    {
+      "click": {
+        "text": "Prorate"
+      }
+    },
+    {
+      "click": {
+        "text": "Prorate"
+      }
+    },
+    {
+      "wait": 400
+    },
+    {
+      "shot": {
+        "name": "upgrade-paths-dialog",
+        "clip": "viewport",
+        "crop": {
+          "top": 260,
+          "height": 860,
+          "left": 920,
+          "width": 1160
+        }
+      }
+    },
+    {
+      "click": {
+        "role": "button",
+        "name": "^Save$"
+      }
+    },
+    {
+      "wait": 2500
+    },
+    {
+      "hideCss": ".el-notification, .el-message"
+    },
+    {
+      "wait": 300
+    },
+    {
+      "shot": {
+        "name": "upgrade-paths-table",
+        "clip": "app",
+        "crop": {
+          "height": 760
+        }
+      }
+    }
+  ]
+}
