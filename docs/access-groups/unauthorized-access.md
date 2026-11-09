@@ -18,10 +18,15 @@ A new group shows **Using global defaults** on this card, with a read-only summa
 1. Go to **Fluent Members → Access Groups** and open a group.
 2. On the **When Unauthorized** card, click **Customize for this rule**. The setting applies to the whole group, and the form starts with your global values.
 3. Choose an option under **Action for Unauthorized Users**, then fill in its fields as described below.
-4. Click **Done**.
-5. Click **Save** in the bar at the top of the page.
 
-The card now shows **Customized for this rule**. Click **Edit** to change it, or **Revert to defaults** to go back to the global default.
+    ![Screenshot of the When Unauthorized card in edit mode with Action for Unauthorized Users, Custom Message, Button Text and Button URL](/images/access-groups/unauthorized-access/unauthorized-access-customize-form.webp)
+
+4. Click **Done**.
+5. Click **Save** in the **Unsaved Changes** bar at the top of the page. The bar appears as soon as you click **Customize for this rule**.
+
+The card now shows **Customized for this rule**, with the **Action** and its message or URL. Click **Edit** to change it, or **Revert to defaults** to go back to the global default.
+
+![Screenshot of the When Unauthorized card showing Customized for this rule with Revert to defaults and Edit](/images/access-groups/unauthorized-access/unauthorized-access-customized.webp)
 
 ### Redirect to a specific URL
 
