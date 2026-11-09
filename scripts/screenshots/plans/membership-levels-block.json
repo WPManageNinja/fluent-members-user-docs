@@ -1,0 +1,96 @@
+{
+  "site": "http://member.local",
+  "outDir": "public/images/access-groups/gutenberg-block/membership-levels-block",
+  "viewport": {
+    "width": 1500,
+    "height": 1500
+  },
+  "steps": [
+    {
+      "front": "/wp-admin/post.php?post=315&action=edit",
+      "waitUntil": "load"
+    },
+    {
+      "wait": 6000
+    },
+    {
+      "press": "Escape"
+    },
+    {
+      "wait": 1000
+    },
+    {
+      "eval": "(function(){var b=wp.data.select('core/block-editor').getBlocks();wp.data.dispatch('core/block-editor').selectBlock(b[0].clientId);return b.length})()"
+    },
+    {
+      "wait": 1500
+    },
+    {
+      "click": {
+        "role": "tab",
+        "name": "Block"
+      }
+    },
+    {
+      "click": {
+        "text": "Layout"
+      }
+    },
+    {
+      "wait": 500
+    },
+    {
+      "click": {
+        "text": "Button Text"
+      }
+    },
+    {
+      "wait": 500
+    },
+    {
+      "click": {
+        "text": "Display"
+      }
+    },
+    {
+      "wait": 900
+    },
+    {
+      "shot": {
+        "name": "membership-levels-block-settings",
+        "clip": "viewport",
+        "crop": {
+          "top": 280,
+          "height": 1800,
+          "left": 2420,
+          "width": 580
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 1400,
+        "height": 1700
+      }
+    },
+    {
+      "front": "/levels-block-demo/",
+      "hideThemeHeader": true
+    },
+    {
+      "wait": 2500
+    },
+    {
+      "shot": {
+        "name": "membership-levels-block-frontend",
+        "clip": "viewport",
+        "crop": {
+          "top": 400,
+          "height": 1730,
+          "left": 330,
+          "width": 2200
+        }
+      }
+    }
+  ]
+}
