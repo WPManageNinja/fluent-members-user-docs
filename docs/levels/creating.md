@@ -5,17 +5,15 @@ description: "Create a Membership Level by setting its title, type and pricing t
 
 # Creating a Level
 
-Create a **Membership Level** for each kind of access you want to sell or offer. You set its name, type and pricing type first, then finish its details on the level's own screen.
+A **Membership Level** is the actual plan or product that a visitor buys (or joins for free). You can easily build any plan structure your business needs by creating a level and assigning it the right access and pricing.
 
-## Step 1: Open the Add Membership Level modal
+## Step 1: Create the Level
 
 Go to **Fluent Members → Membership Levels** and click **Create Membership Level**.
 
 ![Screenshot of the Membership Levels list with an arrow pointing to the Create Membership Level button](/images/levels/creating/creating-create-button.webp)
 
 Fill in the fields in the **Add Membership Level** modal:
-
-![Screenshot of the Add Membership Level modal with Title, Type and Pricing Type fields](/images/levels/creating/creating-add-level-modal.webp)
 
 | Field | Notes |
 |-------|-------|
@@ -24,10 +22,11 @@ Fill in the fields in the **Add Membership Level** modal:
 | **Maximum Member** (Pro) | Appears when you choose **Corporate**. It's the seat limit, with a minimum of 2. |
 | **Pricing Type** | How the level is sold. Required. |
 
+![Screenshot of the Add Membership Level modal with Title, Type and Pricing Type fields](/images/levels/creating/creating-add-level-modal.webp)
+
+
+
 Choose the **Pricing Type** from this list:
-
-![Screenshot of the Pricing Type list showing FluentCart, FluentForms, Paymattic, WooCommerce and Native Payment](/images/levels/creating/creating-pricing-type-list.webp)
-
 - **FluentCart**, **FluentForms** or **Paymattic:** Sell through that plugin. See [Pricing: Paywalls](/docs/levels/pricing-paywalls). The row must say **Installed** before you can select it.
 - **WooCommerce** (Pro): Sell through WooCommerce products.
 - **Native Payment** (Pro): Sell through your own Stripe or PayPal checkout. See [Pricing: Native Payment](/docs/levels/pricing-native). If no gateway is connected, click **Configure** on this row to open **Payment Settings**.
@@ -37,11 +36,13 @@ Choose the **Pricing Type** from this list:
 
 Click **Create Level**. The new level opens on its **Level Details** tab.
 
+![Screenshot of the Pricing Type list showing FluentCart, FluentForms, Paymattic, WooCommerce and Native Payment](/images/levels/creating/creating-pricing-type-list.webp)
+
+
+
 ## Step 2: Complete the Level Details
 
 The **Level Details** tab shows summary cards for **Access Groups**, **Pricing** and **Members**, with the **Level Information** form below them.
-
-![Screenshot of the Level Details tab with the Unsaved Changes bar and an arrow pointing to Save](/images/levels/creating/creating-level-details.webp)
 
 | Field | Notes |
 |-------|-------|
@@ -57,12 +58,34 @@ The level's shortcode sits next to the page title. Click it to copy.
 > [!Note]
 > If a level was created before pricing types existed, this form also asks for a **Pricing Type**. Choose one and save.
 
+![Screenshot of the Level Details tab with the Unsaved Changes bar and an arrow pointing to Save](/images/levels/creating/creating-level-details.webp)
+
+
 ## Step 3: Finish the setup
 
-Your new level can't be sold or unlock content yet. To finish it:
+Your level is created, but it can't be sold or unlock content until you finish its pricing and show it on your site.
 
-1. Add a price on the **Pricing** tab, with [Native Payment](/docs/levels/pricing-native) (Pro) or a [paywall](/docs/levels/pricing-paywalls).
-2. [Attach an active Access Group](/docs/levels/attaching-access-groups) on the **Access Groups** tab.
-3. Add the level to your pricing page with a [shortcode](/reference/shortcodes).
+### Add pricing
+
+Fluent Members takes payment through the plugin or gateway you chose as the **Pricing Type**, not inside the level form. Open your new level and click the **Pricing** tab.
+
+- **FluentCart, FluentForms, Paymattic or WooCommerce** (Pro): Link the level to a product or form from that plugin. See [Price with paywalls](/docs/levels/pricing-paywalls).
+- **Native Payment** (Pro): Click **Add Pricing** and set up a plan with Stripe or PayPal. See [Price with native payments](/docs/levels/pricing-native).
+
+![Screenshot of the Pricing tab of a level with two plans and an arrow pointing to Add Pricing](/images/levels/creating/creating-pricing-tab.webp)
+
+
+### Display the level on your site
+
+1. Find the level's ID in the **ID** column of the levels list, or read it from the shortcode beside the page title on the level's screen.
+2. Paste the shortcode `[fluent_membership_level id="X"]` into your pricing page, replacing `X` with the ID. Visitors then see the level's pricing card and subscribe button.
+
+![Screenshot of a level's screen with an arrow pointing to the copyable shortcode beside the title](/images/levels/creating/creating-level-shortcode.webp)
+
+To show several levels in one grid, use `[fluent_membership_levels]`. See [Shortcodes](/reference/shortcodes).
+
+### Attach an Access Group
+
+[Attach an active Access Group](/docs/levels/attaching-access-groups) on the **Access Groups** tab, so members of the level can open your protected content.
 
 A warning icon stays beside the level's **Status** in the list until it has both a price visitors can buy and an active Access Group.

@@ -1,0 +1,17 @@
+{
+  "site": "http://member.local",
+  "outDir": "public/images/levels/creating",
+  "viewport": {"width": 1500, "height": 900},
+  "steps": [
+    {"admin": "/levels/3"},
+    {"wait": 1200},
+    {"click": {"text": "Pricing"}},
+    {"wait": 1500},
+    {"shot": {"name": "creating-pricing-tab", "clip": "app", "crop": {"height": 900},
+      "arrows": [{"target": {"text": "Add Pricing"}, "from": "right", "len": 120}]}},
+    {"admin": "/levels/3"},
+    {"wait": 1200},
+    {"shot": {"name": "creating-level-shortcode", "clip": "app", "crop": {"height": 520},
+      "arrows": [{"target": {"text": "[fluent_membership_level id=\"3\"]"}, "from": "right", "len": 140}]}}
+  ]
+}
