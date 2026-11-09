@@ -1,0 +1,43 @@
+{
+  "site": "http://member.local",
+  "outDir": "public/images/levels/corporate-memberships",
+  "viewport": {
+    "width": 1700,
+    "height": 1500
+  },
+  "steps": [
+    {
+      "front": "/member-portal/",
+      "hideThemeHeader": true
+    },
+    {
+      "wait": 2500
+    },
+    {
+      "click": {
+        "text": "Manage"
+      }
+    },
+    {
+      "wait": 3000
+    },
+    {
+      "eval": "(function(){var b=[...document.querySelectorAll('[aria-haspopup]')].filter(function(x){return x.offsetParent});var t=b[b.length-1];t.scrollIntoView({block:'center'});t.click();return b.length})()"
+    },
+    {
+      "wait": 900
+    },
+    {
+      "shot": {
+        "name": "corporate-memberships-team-panel",
+        "clip": "viewport",
+        "crop": {
+          "top": 1170,
+          "height": 920,
+          "left": 1010,
+          "width": 1500
+        }
+      }
+    }
+  ]
+}

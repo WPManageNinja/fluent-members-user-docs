@@ -1,0 +1,62 @@
+{
+  "site": "http://member.local",
+  "outDir": "public/images/levels/attaching-access-groups",
+  "viewport": {
+    "width": 1500,
+    "height": 900
+  },
+  "steps": [
+    {
+      "admin": "/levels/6/access-groups"
+    },
+    {
+      "wait": 2500
+    },
+    {
+      "click": {
+        "text": "Add New"
+      }
+    },
+    {
+      "wait": 1500
+    },
+    {
+      "shot": {
+        "name": "attaching-access-groups-create-modal",
+        "clip": "viewport",
+        "crop": {
+          "top": 260,
+          "height": 460,
+          "left": 810,
+          "width": 1380
+        }
+      }
+    },
+    {
+      "press": "Escape"
+    },
+    {
+      "wait": 800
+    },
+    {
+      "click": {
+        "text": "Link Existing Group"
+      }
+    },
+    {
+      "wait": 1500
+    },
+    {
+      "shot": {
+        "name": "attaching-access-groups-link-modal",
+        "clip": "viewport",
+        "crop": {
+          "top": 260,
+          "height": 990,
+          "left": 790,
+          "width": 1420
+        }
+      }
+    }
+  ]
+}

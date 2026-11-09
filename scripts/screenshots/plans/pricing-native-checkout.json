@@ -1,0 +1,15 @@
+{
+  "site": "http://member.local",
+  "outDir": "public/images/levels/pricing-native",
+  "viewport": {"width": 1300, "height": 760},
+  "steps": [
+    {"front": "/membership-pricing/", "hideThemeHeader": true},
+    {"wait": 500},
+    {"click": "a[href*='price_id=4']"},
+    {"wait": 3500},
+    {"hideCss": "#wpadminbar"},
+    {"css": "html{margin-top:0 !important}"},
+    {"wait": 300},
+    {"shot": {"name": "pricing-native-checkout", "clip": "viewport", "crop": {"top": 80, "height": 1340}}}
+  ]
+}

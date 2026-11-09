@@ -12,7 +12,7 @@ description: "Choose what an access group protects: posts, pages, specific items
 1. Go to **Fluent Members → Access Groups** and open a group.
 2. Under **Content Protection Rules**, open the **Select Restriction Type** list in the **1st Rule** card and choose a type.
 3. To protect something else with the same group, click **Add Another Rule** and choose its type.
-4. Click **Save** in the bar at the top of the page.
+4. Click **Save** in the **Unsaved Changes** bar at the top of the page. The bar appears as soon as you change a rule.
 
 The word **Also** between two rules means *Access is granted if any rule matches*: the group protects everything any of its rules covers, and members of its levels can open all of it. The trash icon on a card removes that rule.
 
@@ -69,7 +69,9 @@ These appear under **WooCommerce Products** when Fluent Members Pro and WooComme
 The **Specific** types show a **Protected Content** field in the rule card.
 
 1. Click **Add Content** and type part of a title.
-2. Click a result to add it. Results are grouped by type, such as **Posts**, **Pages** and **Categories**.
+2. Click a result to add it. Results are grouped by type, such as **Posts**, **Pages**, **Categories** and **Tags**. A tick marks an item you already added.
+
+![Screenshot of the Protected Content field with a search open and matching pages listed under Pages](/images/access-groups/protected-content/protected-content-pick-specific.webp)
 
 Picking a category or tag protects every post assigned directly to it, including posts you add later. A post that is only in a child category is not covered when you pick the parent, so it stays public. Pick each child category too. A single post or page stays the only one protected until you add more.
 

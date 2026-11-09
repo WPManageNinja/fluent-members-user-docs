@@ -1,0 +1,60 @@
+{
+  "site": "http://member.local",
+  "outDir": "public/images/levels/pricing-paywalls",
+  "viewport": {
+    "width": 1500,
+    "height": 900
+  },
+  "steps": [
+    {
+      "admin": "/levels/6"
+    },
+    {
+      "wait": 1200
+    },
+    {
+      "click": {
+        "text": "Pricing"
+      }
+    },
+    {
+      "wait": 2500
+    },
+    {
+      "hideCss": ".el-notification, .el-message"
+    },
+    {
+      "shot": {
+        "name": "pricing-paywalls-plan-rows",
+        "clip": "app",
+        "crop": {
+          "height": 760
+        }
+      }
+    },
+    {
+      "click": ".fmem_pricing_row_action"
+    },
+    {
+      "wait": 800
+    },
+    {
+      "shot": {
+        "name": "pricing-paywalls-rows",
+        "clip": "app",
+        "crop": {
+          "height": 900
+        },
+        "arrows": [
+          {
+            "target": {
+              "text": "Copy Checkout Link"
+            },
+            "from": "right",
+            "len": 140
+          }
+        ]
+      }
+    }
+  ]
+}

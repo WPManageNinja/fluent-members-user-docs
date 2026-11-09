@@ -14,7 +14,7 @@ A level unlocks nothing on its own. Attach **Access Groups** to decide which pro
 
     ![Screenshot of the Access Groups tab with no groups linked and an arrow pointing to Link Existing Group](/images/levels/attaching-access-groups/attaching-access-groups-empty.webp)
 
-3. Select each group this level should unlock. Each card shows the group's title, ID, status and the levels already using it.
+3. Select each group this level should unlock. Each card shows the group's title, ID, status and the levels already using it. Groups already linked to this level are ticked.
 
     ![Screenshot of the Select Access Group modal with a card for each group](/images/levels/attaching-access-groups/attaching-access-groups-link-modal.webp)
 
@@ -38,7 +38,7 @@ Each linked group appears as a card with its status and number of protected item
 ![Screenshot of the Access Groups tab with linked group cards and an arrow pointing to Unlink](/images/levels/attaching-access-groups/attaching-access-groups-cards.webp)
 
 - **Edit:** Opens the group's settings.
-- **Unlink:** Removes the group from this level after you confirm. The group itself stays on your site.
+- **Unlink:** Removes the group from this level after you confirm **Remove this access group from the level?** The group itself stays on your site.
 
 > [!Note]
 > Unlinking a group takes away its content from members of this level, unless another of their levels also includes it. An inactive group grants no access at all, and a level needs at least one active group to finish its setup.

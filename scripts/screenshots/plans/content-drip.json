@@ -1,0 +1,68 @@
+{
+  "site": "http://member.local",
+  "outDir": "public/images/access-groups/content-drip",
+  "viewport": {
+    "width": 1500,
+    "height": 2200
+  },
+  "steps": [
+    {
+      "admin": "/access-groups/1/edit"
+    },
+    {
+      "wait": 3000
+    },
+    {
+      "eval": "(function(){var t=[...document.querySelectorAll('.el-switch')].filter(function(x){return x.offsetParent});if(!t.length)return 'none';t[t.length-1].click();return t.length})()"
+    },
+    {
+      "wait": 1500
+    },
+    {
+      "eval": "(function(){var i=document.querySelectorAll('.el-select__input')[3];i.focus();var s=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set;s.call(i,'Sample');i.dispatchEvent(new Event('input',{bubbles:true}));return 'ok'})()"
+    },
+    {
+      "wait": 2500
+    },
+    {
+      "shot": {
+        "name": "content-drip-search",
+        "clip": "app",
+        "crop": {
+          "top": 2300,
+          "height": 1000,
+          "left": 300,
+          "width": 2100
+        }
+      }
+    },
+    {
+      "eval": "(function(){var it=[...document.querySelectorAll('.el-select-dropdown__item')].filter(function(x){return x.offsetParent&&/Resource Library/.test(x.textContent)});if(!it.length)return 'none';it[0].click();return 'ok'})()"
+    },
+    {
+      "wait": 900
+    },
+    {
+      "eval": "document.activeElement&&document.activeElement.blur()"
+    },
+    {
+      "fill": {
+        "selector": "input[placeholder='Enter days']",
+        "value": "7"
+      }
+    },
+    {
+      "wait": 800
+    },
+    {
+      "shot": {
+        "name": "add-content-drip-1",
+        "clip": "app",
+        "crop": {
+          "top": 0,
+          "height": 3130
+        }
+      }
+    }
+  ]
+}

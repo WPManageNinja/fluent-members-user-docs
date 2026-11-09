@@ -38,7 +38,7 @@ You can also make someone a Team owner yourself with [Assign Members](/docs/leve
 
 ## How the owner manages the team
 
-After buying the level, the owner opens the **Member Portal** and finds the **Team Members** panel on their membership. The panel's seat count includes the owner and shows any pending invitations.
+After buying the level, the owner opens the **Member Portal** and finds the **Team Members** panel on their membership. The panel's seat count includes the owner and shows any pending invitations, such as **1 / 10 seats · 1 pending**.
 
 ![Screenshot of the Team Members panel in the Member Portal with the seat count, invite field and team table](/images/levels/corporate-memberships/corporate-memberships-team-panel.webp)
 

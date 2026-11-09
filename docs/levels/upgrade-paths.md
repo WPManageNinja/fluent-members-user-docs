@@ -5,7 +5,7 @@ description: "Let members move from one Native Payment plan to another, with an 
 
 # Upgrade Paths (Pro)
 
-An **Upgrade Path** (Pro) lets a member switch from one plan to another from their portal, with an optional credit toward the new plan. Use it to move members from a lower plan to a higher one, such as monthly to yearly.
+An **Upgrade Path** (Pro) allows a member to switch from one plan to another from their portal, with an optional credit toward the new plan. Use it to move members from a lower plan to a higher one, such as monthly to yearly.
 
 You need **Fluent Members Pro** and a [Native Payment](/docs/levels/pricing-native) level with at least two plans. The **Upgrade Paths** tab appears on Native Payment levels only.
 
@@ -20,7 +20,7 @@ You need **Fluent Members Pro** and a [Native Payment](/docs/levels/pricing-nati
 
     ![Screenshot of the Add Upgrade Path modal with From Plan, To Plan(s), Discount Amount and Prorate](/images/levels/upgrade-paths/upgrade-paths-dialog.webp)
 
-4. Click **Save**.
+4. After that, click the **Save** button.
 
 | Field | Notes |
 |-------|-------|
@@ -33,21 +33,16 @@ You need **Fluent Members Pro** and a [Native Payment](/docs/levels/pricing-nati
 
 The tab lists each path with its **From Plan**, **To Plan**, **Discount Amount** and **Is Prorate** value. Use the three-dot menu on a row to **Edit** or **Delete** it.
 
-![Screenshot of the Upgrade Paths table with one path from DOCTEST Monthly to DOCTEST Yearly](/images/levels/upgrade-paths/upgrade-paths-table.webp)
+![Screenshot of the Upgrade Paths table with one path](/images/levels/upgrade-paths/upgrade-paths-table.webp)
 
 ## What members see
 
-A member with an active subscription on the **From Plan** sees **Upgrade Plan** on their membership in the [Member Portal](/docs/members/portal/membership-details). The dialog shows **Your current plan** and **Choose a plan to upgrade to**, with any credit for each target plan. The member selects a plan and clicks **Upgrade**.
+A member with an active subscription on the **From Plan** sees **Upgrade Plan** in the **More Action** menu of their membership in the [Member Portal](/docs/members/portal/membership-details). The subscription must be billed through Stripe or PayPal.update pathces
+ 
 
-<!-- TODO(screenshot): upgrade-paths-member-dialog
-  screen: Member Portal > membership > Upgrade Plan
-  state: Upgrade Plan dialog open with one target plan and a credit
-  data: jane.docs on Pro Monthly, with a saved path from Pro Monthly to Pro Yearly
-  highlight: -
-  view: frontend
-  alt: Screenshot of the Upgrade Plan dialog in the Member Portal with a target plan and its credit
-  reason: the dialog needs an active subscription on a plan with a saved path. Level #11 has the path but no member; jane.docs's subscription is on sample plan #3 and sam.docs has none. Needs a test member with a subscription on plan #9
--->
+The dialog shows **Your current plan** and **Choose a plan to upgrade to**, with the price now and the credit for each target plan. The member selects a plan and clicks **Upgrade**.
+
+![Screenshot of the Upgrade Plan dialog](/images/levels/upgrade-paths/upgrade-paths-member-dialog.webp)
 
 The member's first charge is the new plan's price minus the proration credit and the **Discount Amount**. The total credit can't exceed the new plan's price. Later charges use the new plan's full price.
 
