@@ -18,7 +18,7 @@ You set drip rules on the [Access Group](/docs/access-groups/) that protects the
 
 3. Fill in the rule's fields, as described below.
 4. To add another rule, click **Add New**.
-5. Click **Save** in the bar at the top of the page.
+5. Click **Save** in the **Unsaved Changes** bar at the top of the page.
 
 Each rule has these fields:
 
@@ -30,9 +30,15 @@ Each rule has these fields:
 | **Hours** | Part of the delay, up to 23. |
 | **Minutes** | Part of the delay, up to 59. |
 
+When a group has more than one rule, each rule shows a trash icon that removes it. Turning the toggle off stops all the rules but keeps them, and the group's **Drip** column on the list reads `Off · 1 rule unused`.
+
+
 ![Screenshot of a Content Drip rule with Show This Content, Timeline, Days, Hours and Minutes](/images/access-groups/content-drip/add-content-drip-1.webp)
 
-When a group has more than one rule, each rule shows a trash icon that removes it. Turning the toggle off stops all the rules but keeps them, and the group's **Drip** column on the list reads `Off · 1 rule unused`.
+In **Show This Content**, type part of a title. Matching items appear in a list grouped by type, such as **Posts**. Click one to add it.
+
+![Screenshot of the Show This Content field with a search open and matching posts listed under Posts](/images/access-groups/content-drip/content-drip-search.webp)
+
 
 ## Choose a timeline
 
@@ -59,9 +65,11 @@ Lesson 1 needs no rule because the member can open it straight away.
 
 A member who has to wait stays on the page and sees **Content Not Yet Available**, a line such as *This content will be available in 6 days, 4 hours.*, and a live countdown. The page reloads when the countdown ends. [When Unauthorized](/docs/access-groups/unauthorized-access) doesn't apply here, so the member is never redirected.
 
-![Screenshot of a post on the site showing Content Not Yet Available and a countdown](/images/access-groups/content-drip/content-drip-frontend-countdown.webp)
-
 After a **Within duration** rule has run out, the member sees **Content No Longer Available** and *This content is no longer available.*
 
 > [!Note]
 > Drip rules only hold back members of the group's levels. If another group the member can access covers the same content with no waiting rule, the content opens right away. Visitors without a level still get the normal [blocked result](/docs/access-groups/unauthorized-access).
+
+![site showing Content Not Yet Available and a countdown](/images/access-groups/content-drip/content-drip-frontend-countdown.webp)
+
+
