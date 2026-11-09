@@ -1,0 +1,38 @@
+{
+  "site": "http://member.local",
+  "outDir": "public/images/access-groups/protected-content",
+  "viewport": {
+    "width": 1500,
+    "height": 1300
+  },
+  "steps": [
+    {
+      "admin": "/access-groups/2/edit"
+    },
+    {
+      "wait": 3000
+    },
+    {
+      "click": ".fmem_restriction_adder_select"
+    },
+    {
+      "fill": {
+        "selector": ".fmem_restriction_adder_select input",
+        "value": "a"
+      }
+    },
+    {
+      "wait": 2000
+    },
+    {
+      "shot": {
+        "name": "protected-content-pick-specific",
+        "clip": "app",
+        "crop": {
+          "top": 900,
+          "height": 1300
+        }
+      }
+    }
+  ]
+}
