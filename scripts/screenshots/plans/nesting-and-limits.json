@@ -1,0 +1,53 @@
+{
+  "site": "http://member.local",
+  "outDir": "public/images/access-groups/gutenberg-block/nesting-and-limits",
+  "viewport": {
+    "width": 1500,
+    "height": 1000
+  },
+  "steps": [
+    {
+      "front": "/wp-admin/post.php?post=321&action=edit",
+      "waitUntil": "load"
+    },
+    {
+      "wait": 6000
+    },
+    {
+      "press": "Escape"
+    },
+    {
+      "wait": 1000
+    },
+    {
+      "eval": "(function(){var b=wp.data.select('core/block-editor').getBlocks();var outer=b.filter(function(x){return x.name==='fluent-members/access-groups'})[0];var inner=outer.innerBlocks.filter(function(x){return x.name==='fluent-members/access-groups'})[0];wp.data.dispatch('core/block-editor').selectBlock(inner.clientId);return b.length})()"
+    },
+    {
+      "wait": 1500
+    },
+    {
+      "click": {
+        "role": "tab",
+        "name": "Block"
+      }
+    },
+    {
+      "wait": 1200
+    },
+    {
+      "click": {
+        "role": "button",
+        "name": "Document Overview"
+      }
+    },
+    {
+      "wait": 1500
+    },
+    {
+      "shot": {
+        "name": "nesting-and-limits-nested-blocks",
+        "clip": "viewport"
+      }
+    }
+  ]
+}

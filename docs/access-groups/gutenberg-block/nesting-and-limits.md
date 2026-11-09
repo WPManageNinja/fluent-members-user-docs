@@ -23,6 +23,10 @@ You can put a restricted block or a container inside another container. Each lay
 | Premium Content | Private Community | They can access both groups. |
 | Premium Content | No group ticked | They can access Premium Content. |
 
+In the editor, the List View shows how the layers sit. Here an **Access Groups** block for Premium Articles holds a second **Access Groups** block that has only Team Resources ticked:
+
+![Screenshot of the block editor with the List View showing an Access Groups block nested inside another, and Team Resources ticked for the inner block](/images/access-groups/gutenberg-block/nesting-and-limits/nesting-and-limits-nested-blocks.webp)
+
 A member who passes the outer layer but not the inner one sees the outer content, with the fixed notice where the inner block would be. A visitor who fails the outer layer sees one notice for the whole container.
 
 > [!Note]
