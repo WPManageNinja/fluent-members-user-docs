@@ -43,12 +43,14 @@ Use the two icons beside the date range to switch between a bar chart and a line
 
 **Membership lifecycle** shows four figures for the current calendar month:
 
-![Screenshot of the Membership lifecycle card with Renewals, Cancellations, Refunds, and Trial conversion](/images/dashboard/dashboard/dashboard-lifecycle.webp)
-
 - **Renewals:** Successful renewal payments. The line below shows how many active subscriptions bill in the next 30 days.
 - **Cancellations:** Members who cancelled. The line below repeats the member churn percentage.
 - **Refunds:** Refunds issued, with the total amount below.
 - **Trial conversion:** The share of subscriptions started this month with a trial that are now active. The line below counts trials ending in the next 7 days.
+
+![Screenshot of the Membership lifecycle card with Renewals, Cancellations, Refunds, and Trial conversion](/images/dashboard/dashboard/dashboard-lifecycle.webp)
+
+
 
 ## Membership Activity
 
