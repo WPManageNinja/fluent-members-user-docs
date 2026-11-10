@@ -15,9 +15,9 @@ Both start from the row menu on [Member Details](/docs/members/detail): go to **
 
 | | Suspend | Cancel |
 |---|---------|--------|
-| **Access** | Ends immediately | Ends immediately or at the expiry date, depending on the membership |
+| **Access** | Ends immediately | Ends immediately, or at the end of the billing period for a subscription |
 | **Billing** | Continues | Depends on the membership, as shown below |
-| **Undo** | **Reactivate** | Add a new membership, unless the cancellation is only scheduled |
+| **Undo** | **Reactivate** | Add a new membership |
 
 ## Suspend a membership
 
@@ -48,47 +48,18 @@ What you see after clicking the action depends on the membership:
 
 | Membership | Action | What happens |
 |------------|--------|--------------|
-| Manual or migrated, Active or Trial, with a future expiry date and no live subscription | **Cancel** | The **Cancel Membership** dialog offers **Keep Until Expiry** or **Cancel Immediately**. |
 | Stripe or PayPal subscription through Fluent Members (Pro) | **Cancel Subscription** | The **Cancel Subscription** dialog offers **End of Billing Period** or **Cancel Immediately**. The plain **Cancel** action is not offered. |
 | Migrated subscription still billed by PayPal (Pro) | **Cancel** | A confirmation warns that PayPal keeps charging until the subscription is cancelled in PayPal, by the member or from your PayPal business account. |
-| Everything else, such as a lifetime membership, a team seat, or a FluentCart, WooCommerce, Fluent Forms, or Paymattic membership | **Cancel** | A confirmation asks you to click **Yes, Cancel**. Access ends immediately. |
+| Everything else, such as a manual membership, a lifetime membership, a team seat, or a FluentCart, WooCommerce, Fluent Forms, or Paymattic membership | **Cancel** | A confirmation asks you to click **Yes, Cancel**. Access ends immediately. |
 
 ![Screenshot of the Cancel Membership confirmation with No and Yes, Cancel](/images/members/suspending-and-cancelling/suspending-and-cancelling-cancel-confirm.webp)
 
 > [!Note]
 > **Cancel** on a FluentCart, WooCommerce, Fluent Forms, or Paymattic membership changes the membership in Fluent Members only. If the member has a subscription in that plugin, stop it there as well.
 
-### Keep Until Expiry
-
-**Keep Until Expiry** is selected by default in the **Cancel Membership** dialog. The member keeps access until the date shown, and the status stays as it is. **Scheduled to end** appears under the date in the **Expires** column. Once the date passes, the status changes to **Expired**.
-
-<!-- TODO(screenshot): suspending-and-cancelling-1
-  screen: Fluent Members → Members → a member → row menu → Cancel
-  state: Cancel Membership dialog open, Keep Until Expiry selected, not submitted
-  data: Sample member with a manual subscription-plan membership and a future expiry date
-  highlight: -
-  view: admin
-  alt: Screenshot of the Cancel Membership dialog with Keep Until Expiry and Cancel Immediately
-  reason: needs the develop build on the local site
--->
-
-To take it back, open the row menu and click **Undo Cancellation**. To end access sooner, click **Cancel** and confirm.
-
-**Cancel Immediately** sets the status to **Cancelled** and ends access now.
-
 ### Cancel a subscription (Pro)
 
-**End of Billing Period** is selected by default in the **Cancel Subscription** dialog. It stops future renewals and keeps access until the current period ends, so the status stays as it is until then. **Cancel Immediately** cancels the subscription now and ends access. See [Subscription Cancellation Modes](/docs/billing/cancelling-a-subscription) for more detail.
-
-<!-- TODO(screenshot): suspending-and-cancelling-2
-  screen: Fluent Members → Members → a member → row menu → Cancel Subscription
-  state: Cancel Subscription dialog open, End of Billing Period selected, not submitted
-  data: Sample member with a live Stripe subscription
-  highlight: -
-  view: admin
-  alt: Screenshot of the Cancel Subscription dialog with End of Billing Period and Cancel Immediately
-  reason: needs a gateway-linked subscription, the local sample subscriptions do not show this action
--->
+The **Cancel Subscription** dialog asks for a **Cancellation Mode**. **End of Billing Period** stops future renewals and keeps access until the current billing period ends, so the status stays as it is until then. **Cancel Immediately** cancels the subscription now and ends access. See [Subscription Cancellation Modes](/docs/billing/cancelling-a-subscription) for more detail.
 
 ## After a cancellation
 
