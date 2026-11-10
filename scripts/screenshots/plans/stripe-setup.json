@@ -1,0 +1,42 @@
+{
+  "site": "http://member.local",
+  "outDir": "public/images/settings/payment-settings",
+  "viewport": {
+    "width": 1500,
+    "height": 2000
+  },
+  "steps": [
+    {
+      "admin": "/settings"
+    },
+    {
+      "wait": 2500
+    },
+    {
+      "click": {
+        "text": "Payment Settings"
+      }
+    },
+    {
+      "wait": 3000
+    },
+    {
+      "click": {
+        "text": "Manage"
+      }
+    },
+    {
+      "wait": 3500
+    },
+    {
+      "shot": {
+        "name": "stripe-setup-settings",
+        "clip": "app",
+        "crop": {
+          "top": 0,
+          "height": 2620
+        }
+      }
+    }
+  ]
+}
