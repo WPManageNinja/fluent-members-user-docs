@@ -1,0 +1,40 @@
+{
+  "site": "http://member.local",
+  "outDir": "public/images/settings/payment-settings",
+  "viewport": {
+    "width": 1500,
+    "height": 1100
+  },
+  "steps": [
+    {
+      "admin": "/settings"
+    },
+    {
+      "wait": 2500
+    },
+    {
+      "click": {
+        "text": "Payment Settings"
+      }
+    },
+    {
+      "wait": 3500
+    },
+    {
+      "shot": {
+        "name": "payment-settings-cards",
+        "clip": "app",
+        "crop": {
+          "top": 130,
+          "height": 760
+        },
+        "underlines": [
+          {
+            "text": "Payment Settings",
+            "tight": true
+          }
+        ]
+      }
+    }
+  ]
+}

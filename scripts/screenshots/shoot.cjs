@@ -31,6 +31,7 @@
 //       "clip": "app" | "viewport" | {"element": <sel>, "pad": 24} | {"rows": ["Date & Time Format","Timezone"], "pad": 24} | {"x":0,"y":0,"width":800,"height":600},
 //       "arrows": [{"target": <sel> | {"row":"Timezone","part":"control"}, "from": "left|right|top|bottom", "len": 150}],
 //       "highlights": [<sel>],
+//       "underlines": [<sel>],                           (straight line under a label, no arrow or box)
 //       "crop": {"height": 1500},                        (image px, after clip; left/top/width optional)
 //       "export": false                                  (keep the raw PNG only, e.g. an input for "stack")
 //   }}
@@ -98,8 +99,10 @@ async function main() {
           for (const a of v.arrows || []) arrows.push({ target: await h.resolveTarget(a.target, clip), from: a.from || 'left', len: a.len || 160 });
           const highlights = [];
           for (const t of v.highlights || []) highlights.push(await h.resolveTarget(t, clip));
+          const underlines = [];
+          for (const t of v.underlines || []) underlines.push(await h.resolveTarget(t, clip));
           const out = path.join(outDir, `${v.name}.webp`);
-          await annotate(file, out, { arrows, highlights, crop: v.crop || null, scale: h.o.scale });
+          await annotate(file, out, { arrows, highlights, underlines, crop: v.crop || null, scale: h.o.scale });
           const meta = await require('sharp')(out).metadata();
           console.log(`     -> ${path.relative(REPO, out)}  ${meta.width}x${meta.height}`);
           break;
