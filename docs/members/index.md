@@ -21,7 +21,7 @@ The table has these columns:
 | **User** | Avatar, display name, and email address. |
 | **Membership Level** | Up to two level tags. When there are more, a `+N` tag opens the rest in a dropdown. |
 | **Role** | The WordPress role, such as Subscriber or Administrator. |
-| **Registered** | The date the WordPress account was created. |
+| **Registered** | The date the WordPress account was created, such as November 6, 2026. |
 
 Click any row to open that member's [details](/docs/members/detail).
 
@@ -29,10 +29,12 @@ Click any row to open that member's [details](/docs/members/detail).
 
 The tabs filter the list, and the **Membership Level** column then shows only memberships with that status. The screen opens on **Members**.
 
-- **Members:** Everyone holding a membership of any status.
+- **Members:** Everyone holding a membership of any status. A membership whose level was deleted does not count.
 - **Active:** People with a membership in Active status. Trial members are not included, so check **Trial** too.
-- **No Membership:** WordPress users who hold no membership. Use this tab to find someone before you [add a membership manually](/docs/members/adding-manually).
+- **No Membership:** WordPress users who hold no membership, including those whose only membership belonged to a deleted level. Use this tab to find someone before you [add a membership manually](/docs/members/adding-manually).
 - **More:** A dropdown with **Expired**, **Trial**, **Cancelled**, **Upgraded**, and **Suspended**.
+
+![Screenshot of the Members screen with the More dropdown open, showing Expired, Trial, Cancelled, Upgraded and Suspended](/images/members/index/members-list-more-statuses.webp)
 
 See [Membership statuses](/reference/membership-statuses) for what each status means.
 
