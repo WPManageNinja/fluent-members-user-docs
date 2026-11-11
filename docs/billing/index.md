@@ -3,7 +3,7 @@ title: "Billing (Pro)"
 description: "Find every subscription and one-time membership on your site, with the payments, refunds and activity behind each one."
 ---
 
-# Billing 
+# Billing (Pro)
 
 The **Billing** (Pro) section is your central hub for tracking member payments. It organizes your financial records into recurring subscriptions and one-time memberships, with each record holding its own payment history, refunds, and activity logs. You can use this area to check on a payment, issue a refund, or cancel a subscription.
 

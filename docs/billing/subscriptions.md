@@ -13,7 +13,9 @@ It includes subscriptions billed through Stripe or PayPal, subscriptions importe
 
 Go to **Fluent Members → Billing → Subscriptions**.
 
-![Screenshot of the Subscriptions list with status tabs, member rows and pagination](/images/billing/subscriptions/subscriptions-list.webp)
+Above the table, the status tabs are **All**, **Active**, **Trial** and **Payment failed**, with **More** holding **Paused**, **Cancelled** and **Expired**. The **All payments** menu limits the list to **Live payments** or **Test payments**. The search and column icons sit beside it.
+
+![Screenshot of the Subscriptions list with status tabs, the All payments menu, member rows and pagination](/images/billing/subscriptions/subscriptions-list.webp)
 
 ## Columns
 
@@ -26,13 +28,13 @@ The table scrolls sideways when it does not fit your screen:
 | **Level** | The Membership Level the subscription is for. |
 | **Billing Cycle** | The recurring amount and interval. |
 | **Status** | The current status. See [Statuses](#statuses). |
-| **Gateway** | Where the billing runs or came from, such as Stripe, PayPal, MemberPress or FluentCart. |
+| **Gateway** | Where the billing runs or came from, such as Stripe, PayPal, Paid Memberships Pro, MemberPress or FluentCart. |
 | **Next Billing** | The date of the next charge, or `--` when none is scheduled. |
 | **Total Paid** | The total collected on this subscription. |
 | **Started** | The date the subscription was created. |
 | **Last Payment** | The date of the most recent payment. |
 
-Click a row to open the subscription. The three-dot menu on each row holds **View**, plus **Cancel Subscription** when the subscription can be cancelled here.
+Dates follow the date format set in **Settings → General** in WordPress. Click a row to open the subscription. The three-dot menu on each row holds **View**, plus **Cancel Subscription** when the subscription can be cancelled here.
 
 To change the columns, sort or search, see [Filter & Search](/docs/billing/filters-and-search).
 
@@ -42,20 +44,17 @@ A subscription shows one of these statuses:
 
 | Status | Meaning |
 |---|---|
-| **Pending** | Waiting on the gateway to confirm the subscription. |
-| **Incomplete** | The gateway reports the first payment as incomplete. |
-| **Trialing** | Inside a trial. |
+| **Awaiting payment** | Waiting on the gateway to confirm the subscription or its first payment. |
+| **Trial** | Inside a trial. |
 | **Active** | Billing normally. |
-| **Past Due** | A payment failed and is outstanding. |
+| **Payment Failed** | A payment failed and is outstanding, or the subscription is unpaid or failed. The member can update their payment method to restore access. |
 | **Paused** | Billing is paused at the gateway. The member can update their payment method to resume it. |
-| **Unpaid** | The gateway reports the subscription as unpaid. The member can update their payment method to restore access. |
-| **Canceled** | The subscription was cancelled. |
+| **Cancelled** | The subscription was cancelled. |
 | **Expired** | The subscription has ended. |
-| **Failed** | The subscription failed and has ended. |
 
 ## The subscription page
 
-Click a row to open it. The heading shows the record number and status, with **More Actions** on the right.
+The heading shows the record number and status, with **More Actions** on the right.
 
 ![Screenshot of a subscription page with Subscription Details, Transaction History, Activity, Member Information and Membership Information](/images/billing/subscriptions/subscriptions-detail.webp)
 
@@ -67,14 +66,15 @@ This panel holds the billing facts:
 - **Gateway Subscription ID:** the ID at Stripe or PayPal, or `--` if there is none.
 - **Membership Level**, **Billing Cycle**, **Payment Gateway**, **Next Billing Date** and **Start Date.**
 - **Card:** the card brand and last four digits, when a card is on file.
-- **Trial Ends**, **Canceled At** and **Ends At:** shown only when they apply.
+- **Trial Ends**, **Cancelled At** and **Ends At:** shown only when they apply.
 
 ### Transaction History
 
 This table lists the latest 100 transactions with their **Date**, **Type**, **Amount**, **Payment Method** and **Status**. The panel is hidden when there are none.
 
-- **Type** is **Charge**, **Renewal**, **Refund** or **Partial Refund**.
-- **Status** is **Succeeded**, **Pending**, **Failed**, **Refunded** or **Partially Refunded**.
+- **Type** is **Payment**, **Renewal**, **Refund** or **Partial refund**.
+- **Status** is **Paid**, **Pending**, **Failed**, **Refunded** or **Partially refunded**.
+- A **TEST** tag beside the amount marks a test-mode payment.
 
 A **Refund** column appears when a payment has to be refunded at the gateway instead of here. See [Refunds](/docs/billing/refunds).
 
@@ -84,7 +84,7 @@ This timeline lists events newest first: **Subscription created**, **Trial ended
 
 ### Member Information
 
-This panel shows the member's name and email, a **Wp User** link to their member page, and **Member Since**.
+This panel shows the member's name and email, a **WP User #** link to their member page, and **Member Since**.
 
 ### Membership Information
 
@@ -92,7 +92,7 @@ This panel shows the **Level**, its **Access Group** list, **Trial Ends** when i
 
 ## Actions
 
-Click **More Actions** to see what you can do with the subscription:
+Click **More Actions** to see what you can do with the subscription. The menu on this Stripe subscription holds both actions:
 
 ![Screenshot of the More Actions menu open on a subscription page](/images/billing/subscriptions/subscriptions-more-actions.webp)
 
