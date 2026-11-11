@@ -36,20 +36,21 @@ Memberships with a subscription billed through Fluent Members Stripe or PayPal a
 
 ## Transaction Details (Pro)
 
-**Transaction Details** lists the member's payments for this membership, newest first, up to the last 50. The columns are **Date Paid**, **Payment Method**, **Plan**, **Type**, **Amount** and **Status**. The section is hidden when there are no payments.
+**Transaction Details** lists the member's payments for this membership, newest first, up to the last 50. The columns are **Date Paid**, **Payment Method**, **Plan**, **Type**, **Amount** and **Status**. The section is hidden when there are no payments. On a narrow screen the table turns into a list of cards, each with the amount, status, date and payment method.
 
 ## Status notices
 
-A notice appears above the details when something needs the member's attention:
+A notice appears above the details when something needs the member's attention. Only one shows at a time, in the order below:
 
 | Notice | When |
 |---|---|
-| **Your last payment did not go through. Update your payment method to restore access.** | The subscription is past due or unpaid and the card can be updated. |
 | **Your subscription is paused. Update your payment method to resume it.** | The subscription is paused and the card can be updated. |
+| **Your last payment did not go through. Update your payment method to restore access.** | The subscription is past due or unpaid and the card can be updated. |
 | **Your membership has been suspended. Please contact the site administrator for more information.** | The membership is suspended. |
-| **Your subscription is scheduled to cancel on** a date | The member chose **End of Billing Period** when cancelling. |
+| **Your subscription is scheduled to cancel on** a date | The member chose **End of Billing Period** when cancelling. Without a date it reads **Your subscription is scheduled to cancel at the end of the current billing period.** |
 | **Your membership is scheduled to end on** a date**. You keep access until then.** | The member chose **Keep Until Expiry** when cancelling. |
 | **Billing for this membership is managed in your PayPal account. To stop payments, cancel the subscription there.** | The subscription was migrated from an older PayPal setup. An **Open PayPal** link sits beside the notice. |
+| **Your membership is cancelled, but PayPal keeps charging until you cancel the subscription in your PayPal account.** | The same migrated PayPal subscription after the membership was cancelled. |
 
 ## Actions
 
@@ -63,4 +64,4 @@ Actions sit at the top right. **Renew Membership** is a button of its own when i
 
 ## Team Members (Pro)
 
-Owners of a corporate membership get a **Team Members** panel below the details, for managing seats. See [Corporate Seat Invites](/docs/members/portal/corporate-seat-invites). Without Pro, the panel is replaced by the text **Corporate membership management requires Fluent Members Pro.**
+Owners of a corporate membership get a **Team Members** panel below the details, for managing seats. See [Corporate Seat Invites](/docs/members/portal/corporate-seat-invites). Without Pro, the panel is replaced by the text **Corporate membership management requires FluentMembers Pro.**
