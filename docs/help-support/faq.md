@@ -70,7 +70,7 @@ Administrators always bypass restrictions. Test in a private browser window, log
 Six: **Active**, **Trial**, **Suspended**, **Cancelled**, **Expired** and **Upgraded**. Only **Active** and **Trial** give access. See [Membership Statuses](/reference/membership-statuses).
 
 == How do members cancel?
-In the Member Portal they click **Manage** on a membership, open **More Action** and choose **Cancel Membership** or **Cancel Subscription**. See [Cancel a membership](/docs/members/portal/cancelling).
+In the Member Portal they click **Manage** on a membership, open **More Actions** and choose **Cancel Membership** or **Cancel Subscription**. See [Cancel a membership](/docs/members/portal/cancelling).
 
 == Does Fluent Members support recurring subscriptions?
 Yes. Native recurring plans use Stripe or PayPal and need Pro. FluentCart, Fluent Forms and Paymattic subscriptions also work, and so do WooCommerce subscriptions (Pro).
