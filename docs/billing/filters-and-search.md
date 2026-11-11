@@ -13,16 +13,20 @@ The tabs above the table filter by status. The last tabs sit under **More**:
 
 | List | Tabs |
 |---|---|
-| **Subscriptions** | **All**, **Active**, **Trialing**, **Past due**, then **Paused**, **Canceled** and **Expired** under **More** |
+| **Subscriptions** | **All**, **Active**, **Trial**, **Payment failed**, then **Paused**, **Cancelled** and **Expired** under **More** |
 | **One-time** | **All**, **Active**, **Trial**, **Cancelled**, then **Suspended** under **More** |
 
-Records with any other status, such as a **Pending** subscription or an **Expired** one-time membership, appear under **All** only.
+Records with any other status, such as a subscription that is **Awaiting payment** or an **Expired** one-time membership, appear under **All** only.
+
+## Payment mode
+
+When a payment gateway is in test mode, an **All payments** menu appears beside the search icon. Choose **Live payments** or **Test payments** to hide the other kind. It works with the status tab you have selected.
 
 ## Search
 
 Click the magnifier icon to open the search box, then type. Results update as you type, and **Cancel** closes the box and clears the search.
 
-![Screenshot of the Subscriptions list with the search box open and a name entered](/images/billing/filters-and-search/filters-and-search-search.webp)
+![Screenshot of the Subscriptions list with the search box open, Liam entered and one matching row](/images/billing/filters-and-search/filters-and-search-search.webp)
 
 What search matches depends on the list:
 
@@ -65,6 +69,6 @@ The footer is hidden when all the records fit on one page.
 ## Common lookups
 
 - **All billing for one member:** search their name or email in **Subscriptions**, then in **One-time**.
-- **Failed renewals:** open **Subscriptions** and click **Past due**. Open a row and check **Transaction History** for the **Failed** payment.
-- **A refund went through:** open the record and look in **Transaction History** for a **Refund** or **Partial Refund** row.
+- **Failed renewals:** open **Subscriptions** and click **Payment failed**. Open a row and check **Transaction History** for the **Failed** payment.
+- **A refund went through:** open the record and look in **Transaction History** for a **Refund** or **Partial refund** row.
 - **A subscription you saw in Stripe or PayPal:** paste its full subscription ID from the gateway into the **Subscriptions** search.

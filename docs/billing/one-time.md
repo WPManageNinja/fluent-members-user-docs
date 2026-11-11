@@ -1,11 +1,11 @@
 ---
 title: "One-time Memberships (Pro)"
-description: "Read the One-time Memberships list and detail page, and refund or revoke a membership with no recurring billing behind it."
+description: "Read the One-time Memberships list and detail page, and refund or cancel a membership with no recurring billing behind it."
 ---
 
 # One-time Memberships (Pro)
 
-The **One-time Memberships** (Pro) list shows memberships with no recurring billing behind them. Use it to check single payments and manually added memberships, and to refund or revoke one.
+The **One-time Memberships** (Pro) list shows memberships with no recurring billing behind them. Use it to check single payments and manually added memberships, and to refund or cancel one.
 
 ## What appears here
 
@@ -47,22 +47,22 @@ A record with no payment opens with a **Membership Details** panel showing **Mem
 
 The other panels are the same on both:
 
-- **Transaction History:** each payment and refund, when there are any.
+- **Transaction History:** each payment and refund, when there are any. A **TEST** tag beside the amount marks a test-mode payment.
 - **Activity:** **Membership created**, **Order placed**, **Payment succeeded**, **Payment failed**, **Refund issued** and **Membership cancelled**, newest first.
-- **Member Information:** the member's name and email, a **Wp User** link to their member page, and **Member Since**.
-- **Membership Information:** the **Level**, its **Access Group** list, and any **Other Membership** the member holds.
+- **Member Information:** the member's name and email, a **WP User #** link to their member page, and **Member Since**.
+- **Membership Information:** the **Level**, its **Access Group** list, the **Expiration** (**Lifetime** for these memberships), and any **Other Membership** the member holds.
 
 ## Refund a payment
 
 Click **More Actions → Refund**. The option is greyed out when nothing is refundable. A full refund also cancels the membership. See [Refunds](/docs/billing/refunds).
 
-## Revoke a membership
+## Cancel a membership
 
-Revoking cancels the membership without refunding anything. Use it to remove access while keeping the payment.
+Cancelling ends the membership without refunding anything. Use it to remove access while keeping the payment.
 
-1. Open the record and click **More Actions → Revoke Membership**.
-2. Click **Revoke** in the confirmation box.
+1. Open the record and click **More Actions → Cancel Membership**.
+2. Click **Cancel Membership** in the confirmation box. **Go Back** closes it without changes.
 
-![Screenshot of the Revoke Membership confirmation asking to continue, with Cancel and Revoke buttons](/images/billing/one-time/one-time-revoke-confirm.webp)
+![Screenshot of the Cancel Membership confirmation saying the member loses access immediately and no payment is refunded, with Go Back and Cancel Membership buttons](/images/billing/one-time/one-time-revoke-confirm.webp)
 
-The status changes to **Cancelled**, and **Revoke Membership** is greyed out from then on.
+The confirmation reads "Cancel this membership now? The member loses access immediately. This does not refund any payment." The status changes to **Cancelled**, and **Cancel Membership** is greyed out from then on.
