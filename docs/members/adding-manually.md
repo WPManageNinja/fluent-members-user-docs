@@ -25,8 +25,8 @@ To add several people to one level at once, use [Members on a level](/docs/level
 
     ![Screenshot of Member Details with an arrow pointing to the Add Membership button](/images/members/adding-manually/adding-manually-add-button.webp)
 
-4. In the **Membership Level** dialog, click a level to expand it and see its plans. Each plan shows its name, ID, level, trial or setup fee if it has one, price, and type.
-5. Click **Assign** on the plan you want.
+4. In the **Membership Level** dialog, click a level to expand it and see its plans. The header counts the levels and plans available, such as "7 levels · 14 plans available", and each level shows its plan count. Each plan shows its name, ID, level, trial or setup fee if it has one, price, and type.
+5. Click **Assign** on the plan you want. **Cancel** closes the dialog without adding anything.
 
     ![Screenshot of the Membership Level dialog with the Business level expanded and an arrow pointing to Assign](/images/members/adding-manually/adding-manually-assign-plan.webp)
 
@@ -35,7 +35,7 @@ The dialog closes and the new row appears in the **Memberships** table with the 
 ## What the dialog shows
 
 - **Already Assigned:** The person holds this plan with the status Active or Trial.
-- **Assign** greyed out: The person is Active or on Trial on another plan of the same level. One person can hold only one live membership per level.
+- **Assign** greyed out: The person is Active or on Trial on another plan of the same level. One person can hold only one live membership per level, so if you try anyway, the admin shows "User already has a membership for this level."
 - **No pricing plans yet:** The level has no plans. Click **Add pricing plan** to create one.
 - **There are no active membership levels:** Click **Manage Membership Levels** to create or activate a level.
 
@@ -48,7 +48,7 @@ The expiry date comes from the plan you pick:
 | Plan | Expiry on the new membership |
 |------|------------------------------|
 | **One-time** | None. The row shows **Lifetime**. |
-| **Subscription** with no trial | One billing interval from today. |
+| **Subscription** with no trial | One billing period from today, using the plan's interval and count. A plan that bills every 3 months gets 3 months. |
 | **Subscription** with trial days | The number of trial days from today, and the status is still **Active**. |
 
 > [!Note]

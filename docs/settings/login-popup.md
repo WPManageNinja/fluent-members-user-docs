@@ -13,7 +13,11 @@ The **Login Popup** opens a login form over a protected page, on top of the page
 2. Turn on **Login Popup Settings**. The other fields appear.
 3. Change the fields you want, then click **Save Settings**.
 
-The popup is off by default. While it is off, no field is visible.
+The popup is off by default. While it is off, only the **Login Popup Settings** toggle is visible.
+
+![Screenshot of the Login Popup settings page with Login Popup underlined in the Settings menu and an arrow pointing to the switched-off Login Popup Settings toggle](/images/settings/login-popup/login-popup-open-settings.webp)
+
+Once it is on, the toggle and the first fields look like this:
 
 ![Screenshot of the Login Popup settings page with the Login Popup Settings toggle highlighted](/images/settings/login-popup/login-popup-1.webp)
 
@@ -53,7 +57,7 @@ A logged-out visitor who opens a single post or page they cannot access sees the
 - **On:** The popup opens right away, over that result.
 - **Off:** Nothing changes until the visitor clicks the login link in the restriction message. If you turned off **Show login link** in [Default unauthorized access](/docs/settings/unauthorized-access), nothing opens the popup.
 
-The popup holds **Username or Email**, **Password** with a show or hide control, **Remember me**, the login button, and your two links.
+The popup holds your title and message, **Username or Email**, **Password** with a show or hide control, **Remember me**, the login button, and the lost password and register links. A close button at the top right dismisses it.
 
 <!-- TODO(screenshot): login-popup-3
   screen: A protected post on the site, logged out
@@ -68,6 +72,6 @@ The popup holds **Username or Email**, **Password** with a show or hide control,
 After a correct login, the page reloads and shows the content the member can access. A wrong login shows "Invalid username or password." inside the popup. After 5 attempts from one IP address in 5 minutes, the popup shows "Too many login attempts. Please try again later."
 
 > [!Note]
-> Auto open applies to every singular page a logged-out visitor cannot access. Archives and feeds are not affected. If an Access Group's [Unauthorized Access](/docs/access-groups/unauthorized-access) action is set to redirect, the redirect wins and the visitor never sees the popup.
+> Auto open applies to every singular page a logged-out visitor cannot access. Archives and feeds are not affected, and neither is content that is only waiting on a [content drip](/docs/access-groups/content-drip) schedule. If an Access Group's [Unauthorized Access](/docs/access-groups/unauthorized-access) action is set to redirect, the redirect wins and the visitor never sees the popup.
 
 The login form also opens, even with **Login Popup Settings** off, when a logged-out visitor clicks the login link on a restriction message or on a [partial content lock](/docs/settings/partial-content-lock). After logging in there, the page reloads.

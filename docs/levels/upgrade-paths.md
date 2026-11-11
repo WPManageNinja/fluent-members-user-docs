@@ -37,7 +37,7 @@ The tab lists each path with its **From Plan**, **To Plan**, **Discount Amount**
 
 ## What members see
 
-A member with an active subscription on the **From Plan** sees **Upgrade Plan** in the **More Action** menu of their membership in the [Member Portal](/docs/members/portal/membership-details). The subscription must be billed through Stripe or PayPal.update pathces
+A member with an active subscription on the **From Plan** sees **Upgrade Plan** in the **More Actions** menu of their membership in the [Member Portal](/docs/members/portal/membership-details). The subscription must be billed through Stripe or PayPal.update pathces
  
 
 The dialog shows **Your current plan** and **Choose a plan to upgrade to**, with the price now and the credit for each target plan. The member selects a plan and clicks **Upgrade**.

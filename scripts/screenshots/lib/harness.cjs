@@ -264,6 +264,11 @@ class Harness {
       const sel = spec.selector ? spec.selector : spec;
       b = await this.loc(sel).boundingBox();
       if (!b) throw new Error('arrow target not found: ' + JSON.stringify(spec));
+      if (spec.tight) {
+        // shrink the box to the rendered text itself (labels in flex rows are often wider than their text)
+        const t = await this.loc(sel).evaluate((el) => { const r = document.createRange(); r.selectNodeContents(el); const c = r.getBoundingClientRect(); return { x: c.x, y: c.y, width: c.width, height: c.height }; });
+        if (t && t.width) b = t;
+      }
     }
     const s = this.o.scale;
     return { x: (b.x - clip.x) * s, y: (b.y - clip.y) * s, width: b.width * s, height: b.height * s };

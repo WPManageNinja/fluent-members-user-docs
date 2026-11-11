@@ -58,12 +58,20 @@ function highlightSvg(target, scale = 2) {
   return `<rect x="${target.x - pad}" y="${target.y - pad}" width="${target.width + pad * 2}" height="${target.height + pad * 2}" rx="${8 * scale}" ry="${8 * scale}" fill="none" stroke="${BRAND}" stroke-width="${3 * scale}"/>`;
 }
 
-// annotate(inputPng, outFile, { arrows, highlights, crop, scale })
+// Straight brand-coloured line under a target, for pointing at a label without an arrow or a box.
+function underlineSvg(target, scale = 2) {
+  const y = target.y + target.height + 6 * scale;
+  const pad = 2 * scale;
+  return `<line x1="${target.x - pad}" y1="${y}" x2="${target.x + target.width + pad}" y2="${y}" stroke="${BRAND}" stroke-width="${4 * scale}" stroke-linecap="round"/>`;
+}
+
+// annotate(inputPng, outFile, { arrows, highlights, underlines, crop, scale })
 //   arrows:     [{ target: {x,y,width,height}, from, len }]
 //   highlights: [{x,y,width,height}]
+//   underlines: [{x,y,width,height}]
 //   crop:       { left, top, width, height } in image px (applied BEFORE drawing; targets are shifted)
 // Writes .webp when outFile ends with .webp, otherwise .png.
-async function annotate(inputPng, outFile, { arrows = [], highlights = [], scale = 2, quality = QUALITY, crop = null } = {}) {
+async function annotate(inputPng, outFile, { arrows = [], highlights = [], underlines = [], scale = 2, quality = QUALITY, crop = null } = {}) {
   let img = sharp(inputPng);
   const meta = await img.metadata();
   let width = meta.width, height = meta.height, offX = 0, offY = 0;
@@ -77,6 +85,7 @@ async function annotate(inputPng, outFile, { arrows = [], highlights = [], scale
   const shift = (t) => ({ ...t, x: t.x - offX, y: t.y - offY });
   const parts = [
     ...highlights.map(t => highlightSvg(shift(t), scale)),
+    ...underlines.map(t => underlineSvg(shift(t), scale)),
     ...arrows.map(a => arrowSvg(shift(a.target), a.from, a.len || 220, scale)),
   ];
   if (parts.length) {

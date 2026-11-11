@@ -21,13 +21,21 @@ Fluent Members publishes the page with the `[fluent_membership_levels]` shortcod
 
 ![Screenshot of the Generate Pricing Page row with a page selected, the shortcode, and the Edit and View links](/images/selling/pricing-page/pricing-page-generate-row.webp)
 
-To use a page you already have, choose it in the field and click **Save Settings**, then add the shortcode or the block to that page yourself. Selecting a page does not add anything to it. Use **Edit** and **View** under the field to open the selected page.
+
+If you have already built a sales page, select it from the dropdown field in **General Settings** and click **Save Settings**. You will then need to manually add the shortcode or block to that page. Use the **Edit** or **View** links below the field to quickly open it.
 
 ## What visitors see
 
-Each level appears as a section with its title and description, followed by one card per plan. A card shows the plan name, the price, a billing summary such as "$9.00 Monthly, until you cancel", any setup fee or free trial, and a button.
+The page displays each level as a dedicated section containing its title and description, followed by individual pricing cards for each plan.
 
-![Screenshot of a pricing page with Starter and Pro sections, each with a monthly and a yearly plan card](/images/selling/pricing-page/pricing-page-cards.webp)
+Each plan card displays:
+
+- The plan name and the level title (if different).
+- The price and billing interval (e.g., "$9.00 Monthly").   
+- Any setup fees or free trial periods.
+- A purchase button that routes the visitor to your connected provider's checkout.
+
+![Screenshot of a pricing page with Starter and Pro sections](/images/selling/pricing-page/pricing-page-cards.webp)
 
 The level name also appears on a card when the plan name differs from it and the level title is not already shown above the card.
 
@@ -39,11 +47,14 @@ The button depends on the level and the visitor:
 Plans appear in the order you set on the level's **Pricing** tab.
 
 > [!Note]
-> A level with no plan that can be bought stays off the page. Administrators see a note on the page saying the level is hidden because it has no plan customers can buy yet. Visitors see nothing. A native plan needs a payment gateway that is ready to take payments, so check [Payment Settings](/docs/settings/payment-settings/) if a level goes missing.
+> A level without an active, purchasable plan will be hidden from the page automatically. Administrators will see a placeholder note explaining why it is hidden, while standard visitors will see nothing. If a native plan is missing, check your [Payment Settings](/docs/settings/payment-settings/) to ensure your gateway is properly connected.
 
-## Choose what the page shows
 
-Add options to the `[fluent_membership_levels]` shortcode to change the output:
+## Customizing the Display (Shortcode Attributes)
+
+You can modify the `[fluent_membership_levels]` shortcode to change the layout and text.
+
+Example: `[fluent_membership_levels ids="2,3" columns="2" button_text="Join now"]`
 
 | Attribute | Default | What it does |
 |---|---|---|

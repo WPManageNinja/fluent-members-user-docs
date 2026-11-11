@@ -9,7 +9,7 @@ description: "How members restart a subscription from the Member Portal with the
 
 ## When the button appears
 
-Members see **Renew Membership** beside **More Action** in either of these cases:
+Members see **Renew Membership** at the top right of the **Membership Details** page, in either of these cases:
 
 - **Scheduled to cancel:** The member chose **End of Billing Period** when [cancelling](/docs/members/portal/cancelling), and the subscription hasn't ended yet.
 - **Expired:** The subscription has expired, and its pricing plan is still active on the level.
@@ -23,15 +23,7 @@ Memberships sold through FluentCart, WooCommerce, Fluent Forms or Paymattic don'
 1. Open the Member Portal and click **Manage** on the membership.
 2. Click **Renew Membership**.
 
-    <!-- TODO(screenshot): renewing-a-membership-1
-      screen: Member Portal, Membership Details page
-      state: Renew Membership button beside More Action, Billing Status Scheduled for Cancellation
-      data: a membership with a real Stripe subscription scheduled to cancel
-      highlight: Renew Membership button
-      view: frontend
-      alt: Screenshot of the Membership Details page with an arrow on the Renew Membership button
-      reason: needs a live Stripe subscription; the test subscription returns no billing data
-    -->
+    ![Screenshot of the Membership Details page with a scheduled cancellation notice, Billing Status Scheduled for Cancellation and an arrow pointing to the Renew Membership button](/images/members/portal/renewing-a-membership/renewing-a-membership-button.webp)
 
 There is no confirmation dialog. The click starts the renewal straight away, and what follows depends on the case:
 

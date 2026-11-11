@@ -7,7 +7,7 @@ description: "How corporate membership owners invite team members and manage sea
 
 **Corporate Seat Invites** (Pro) let the owner of a corporate membership fill their own seats. The owner invites people by email from the **Member Portal**, and each person who accepts gets access under the owner's membership.
 
-## The Team Members panel
+## Open the Team Members panel
 
 The owner opens the Member Portal and clicks **Manage** on the corporate membership. The **Team Members** panel is below the membership details.
 
@@ -22,14 +22,16 @@ Seat holders don't get this panel. They see a normal membership card with the pr
 
 Without Pro, the owner sees **Corporate membership management requires Fluent Members Pro.** in place of the panel.
 
-## Invite a team member
+## Send an invitation
 
 1. Type the person's email address under **Invite Member**.
 2. Click **Send Invitation**.
 
-The owner sees **Invitation sent to** the address, and a **Pending** row appears in the table. The person gets an email with an **Accept Invitation** button. The invitation expires after 3 days.
+The owner sees **Invitation sent to** the address, and a **Pending** row appears in the table. The person gets an email with an **Accept Invitation** button. The invitation expires after 3 days unless a developer changes it with the `fluent_members/corporate_invitation_expiry_days` filter.
 
-The invitation is refused in these cases:
+### If the invitation is refused
+
+The owner sees one of these messages and nothing is sent:
 
 | Message | Why |
 |---|---|
@@ -39,7 +41,7 @@ The invitation is refused in these cases:
 | **All seats are taken or reserved by pending invitations. Cancel an invitation or remove a member first.** | The free seats are all held by pending invitations. |
 | **This corporate membership is no longer active.** | The owner's membership has ended or is suspended. |
 
-## Accept an invitation
+## Accept an invitation as the invitee
 
 The link in the email opens a **Join Corporate Membership** page on your site.
 
@@ -59,17 +61,22 @@ The page confirms **You have successfully joined the corporate membership!** and
   reason: needs a real invitation; sending one was out of scope for this pass
 -->
 
-The page shows an error instead in these cases:
+### If the invitation cannot be accepted
+
+The page shows an error instead:
 
 | Message | Why |
 |---|---|
 | **This invitation was sent to a different email address.** | The person is logged in with another account. They log out and use the invited address. |
-| **This invitation has expired.** | More than 3 days have passed. The owner sends a new one. |
+| **This invitation has expired.** | The invitation is past its expiry time, 3 days by default. The owner sends a new one. |
 | **This invitation link is invalid or has expired.** | The link is no longer valid, for example because it was cancelled or already used. |
 | **You cannot join your own corporate membership as a sub-account.** | The owner opened their own invitation. |
 | **You already have an active membership at this level.** | The person already holds this level. |
+| **You already have an active sub-account under this corporate membership.** | The person already holds a seat on this team. |
+| **All 10 seats are occupied. No more members can join.** | The team filled up after the invitation was sent. |
+| **This corporate membership is no longer active.** | The owner's membership ended or was suspended after the invitation was sent. |
 
-## Manage invitations
+## Resend or cancel a pending invitation
 
 Open the three-dot menu on a **Pending** row:
 
@@ -87,7 +94,7 @@ Open the three-dot menu on a **Pending** row:
 
 The member's seat is cancelled and freed for someone else. Their WordPress account and any other memberships they hold aren't affected.
 
-## When the owner's membership changes
+## What happens when the owner's membership changes
 
 Seats follow the owner's membership. If it's cancelled, expires or is suspended, every seat changes with it. If the team is larger than the plan allows, the panel shows a warning with how many members to remove before inviting again.
 
