@@ -21,24 +21,28 @@ Forms with custom payment inputs, donation fields or several pricing options are
 
 Follow these steps to sell a level through a form:
 
-1. Go to **Fluent Members → Membership Levels** and click **Create Membership Level**.
-2. In **Pricing Type**, choose **FluentForms**, then finish creating the level.
+1. Go to **Fluent Members → Settings → Payment Settings** and, under **How you sell memberships**, choose **Fluent Forms**, then click **Save Settings**. You can instead choose the provider when you create a level.
+2. Open the level in **Fluent Members → Membership Levels** and go to its **Pricing** tab.
+3. Click **Add Pricing**.
+4. In the drawer, search under **Pick a payment form** and choose the form. Each form sells one membership.
+5. Click **Link form**.
 
-    ![Screenshot of the Pricing Type list with FluentForms as an option](/images/integrations/fluent-forms/fluent-forms-pricing-type.webp)
+If you have no suitable form yet, create one in Fluent Forms first. A form can belong to one level only. If it already sells another level, you see **Sells** followed by that level's name, and **Already added** marks a form that is already on this level. Only payment forms with a single fixed-price or recurring item are listed.
 
-3. Open the level's **Pricing** tab and click **Add Pricing**.
-
-    ![Screenshot of the Add Pricing window listing Fluent Forms payment forms](/images/integrations/fluent-forms/fluent-forms-add-pricing.webp)
-
-4. Choose the form in **Select Pricing**, then click **Add**.
-
-If you have no suitable form yet, click **Create a form in Fluent Forms**. A form can belong to one level only. If it already sells another level, you see "This form already sells" followed by that level's name.
+<!-- TODO(screenshot): fluent-forms-1
+  screen: Fluent Members → Membership Levels → a Fluent Forms level → Pricing → Add Pricing
+  state: the drawer open with Pick a payment form listing eligible forms
+  data: a saved payment form with one fixed price item
+  highlight: Link form
+  view: admin
+  alt: Screenshot of the Add Pricing drawer listing Fluent Forms forms
+-->
 
 ## Share the checkout link
 
 Fluent Members gives each form its own checkout page. Open the three-dot menu on the form's row in the **Pricing** tab and click **Copy Checkout Link**. Your pricing shortcodes link to this page too.
 
-A logged-out visitor can use the page if the form accepts guests. If you turned on the login requirement in the form's settings, they see **Login Required** with a link to log in.
+A logged-out visitor can use the page if the form accepts guests. If you turned on the login requirement in the form's settings, they see "Please log in to access this form." with a **Log In** link.
 
 ## What happens after a payment
 
@@ -51,9 +55,9 @@ The membership follows the payment and its subscription:
 | Subscription payment is received | Access is extended. |
 | Subscription is cancelled | The member keeps access until the date already paid for. If no paid time remains, the membership is cancelled. |
 | Subscription completes | The membership stays active with no expiry date if everything was paid. Otherwise the member keeps access until the date already paid for. |
-| Payment is refunded | The membership is cancelled. |
+| Payment is refunded, or a one-time payment fails or is cancelled | The membership is cancelled. If the payment is later marked paid, the membership is restored. |
 
-Logged-out buyers and repeat purchases follow the [rules for every paywall](/docs/integrations/).
+Logged-out buyers and repeat purchases follow the [rules for every selling provider](/docs/integrations/).
 
 > [!Note]
 > Keep the form's payment setup unchanged after you connect it. If the form no longer has exactly one supported payment item, or its payment type changes, new payments do not create a membership. No warning appears, and the form keeps taking payments, so test a payment after any change.
