@@ -1,15 +1,22 @@
 ---
 title: "Mailing Settings"
-description: "Set the sender name and address, footer, logo and branding used by the emails Fluent Members sends."
+description: "Set the sender name and address, reply-to details, footer, logo and branding used by the emails Fluent Members sends."
 ---
 
 # Mailing Settings
 
-**Mailing Settings** holds the sender details and branding for every email Fluent Members sends to members. Set them before you turn on any [email notification](/docs/settings/email-configuration/email-notifications), so emails carry your name and address.
+**Mailing Settings** holds the sender details and branding for every email Fluent Members sends to members. Set them before you rely on any [email notification](/docs/settings/email-configuration/email-notifications), so emails carry your name and address.
 
 Go to **Fluent Members → Settings → Email Configuration → Mailing Settings**.
 
-![Screenshot of the Mailing Settings page with the sender fields, Email Footer Text editor, logo upload and Powered by checkbox](/images/settings/email-configuration/mailing-settings-1.webp)
+<!-- TODO(screenshot): mailing-settings-1
+  screen: Fluent Members -> Settings -> Email Configuration -> Mailing Settings
+  state: Default From Settings notice, the four sender fields, Email Footer Text editor, logo upload and the Powered by checkbox
+  data: default values
+  highlight: Save Settings button
+  view: admin
+  alt: Screenshot of Mailing Settings with the sender fields, footer editor, logo upload and Powered by checkbox
+-->
 
 ## Sender details
 
@@ -18,19 +25,24 @@ Use names and addresses that match your domain and SMTP setup, as the **Default 
 | Field | Default | Notes |
 |---|---|---|
 | **From Name** | Your site title | The sender name members see in their inbox. |
-| **From Email Address** | Your WordPress admin email | The address emails come from. |
+| **From Email Address** | Your WordPress admin email | The address emails come from. Must be a valid email address. |
 | **Reply to Name** | Empty | Used only when **Reply to Email** is filled in. |
-| **Reply to Email** | Empty | Where replies go. When empty, emails carry no Reply-To address, so replies go to the From address. |
+| **Reply to Email** | Empty | Where replies go. Leave it empty if you do not need one. Must be a valid email address when filled in. |
+
+Click **Save Settings** to check the addresses. A bad address stops the save and shows an error under the field: "Enter a valid From email address." or "Enter a valid Reply to email address, or leave it empty."
+
+When **Reply to Email** is empty, emails carry no Reply-To address, so replies go to the From address.
 
 ## Email Footer Text
 
-**Email Footer Text** appears at the bottom of every email. It is a rich text editor with these smartcodes:
+**Email Footer Text** appears at the bottom of every email. It is a rich text editor, and the default is your site name and domain. You can insert these smartcodes:
 
 | Smartcode | Replaced with |
 |---|---|
 | <span v-pre>`{{site_name_with_url}}`</span> | Your site name, linked to your site |
 | <span v-pre>`{{site_name}}`</span> | Your site name |
 | <span v-pre>`{{site_url}}`</span> | Your site URL |
+| <span v-pre>`{{site_domain_with_url}}`</span> | Your site address, linked to your site |
 
 ## Logo for Email Header
 
@@ -42,7 +54,7 @@ The logo appears at the top of emails that use the **Default Body**. It does not
 
 **Show "Powered by FluentMembers" in the email footer** adds a small branding line below your footer. It is on by default. With Pro active you can turn it off. On the free version it stays on, and the checkbox is locked.
 
-Click **Save Settings** to keep your changes.
-
 > [!Note]
 > Fluent Members sends email through WordPress. To reach inboxes reliably, send from an address on your own domain and set up SPF and DKIM with your email provider. An SMTP plugin such as FluentSMTP helps with this.
+
+Click **Save Settings** in the top-right corner to keep your changes.
