@@ -1,36 +1,56 @@
 ---
 title: "Checkout and Guest Checkout"
-description: "What members and guests see at checkout for native payment plans, how accounts are created, and what happens after payment."
+description: "What members and guests see at checkout and when they join a free level, how accounts are created, and what happens after payment."
 ---
 
 # Checkout and Guest Checkout
 
-**Checkout** is the page where a visitor pays for a plan. Native payment plans (Pro) use the checkout built into Fluent Members, and visitors do not need an account first. There is nothing to configure: the page works once a gateway is ready.
+**Checkout** is the page where a visitor pays for a plan. Native payment plans (Pro) use the checkout built into Fluent Members, and visitors do not need an account first. Free levels use a short join page instead, and plans sold through FluentCart, WooCommerce, Fluent Forms or Paymattic use that plugin's own checkout.
 
 **Requirements**
 
 - A [native payment](/docs/levels/pricing-native) plan on an active level.
 - A gateway set up in [Payment Settings](/docs/settings/payment-settings/).
 
-Paywall plans use the checkout of the plugin that sells them. See [Paywall plans](/docs/selling/checkout#paywall-plans-external-checkout).
-
 Visitors reach checkout from a **Choose plan** button on your [pricing page](/docs/selling/pricing-page), or from a checkout link. To get a link for a plan, open its row menu on the level's **Pricing** tab and click **Copy Checkout Link**. Use the copied link as it is, because it carries a security token. A link without it shows "Checkout session could not be found."
+
+## Choose the checkout page
+
+Checkout, payment confirmation and free sign-up open on a page of your site, inside your theme. Without one, they open on a standalone page.
+
+1. Go to **Fluent Members → Settings → General Settings** and find **Checkout Page**.
+2. Select a page, or click the **+** button to create one. The page must hold the `[fluent_members_checkout]` shortcode.
+3. Click **Save Settings**.
+
+<!-- TODO(screenshot): checkout-1
+  screen: Fluent Members → Settings → General Settings
+  state: the Checkout Page row with a page selected and the shortcode badge visible
+  data: a page named DOCTEST Checkout
+  highlight: Checkout Page
+  view: admin
+  alt: Screenshot of the Checkout Page setting in General Settings
+-->
 
 ## The checkout interface
 
-The page is split into two sections.
+The page is split into two sections. A **Back to plans** link returns the visitor to the plans.
 
-![Screenshot of the checkout page for Pro Monthly with the trial order summary, Your Details fields, the Stripe payment form and Start Free Trial](/images/selling/checkout/checkout-guest-details.webp)
-
-**Order summary (left)** shows the plan name, its billing interval and the **Due today** amount. A line under **Checkout** says what the visitor will be charged, such as "You'll be charged $29.00". It adds rows when they apply:
+**Order summary (left)** shows the plan name, its billing interval and the **Due today** amount. A line under **Checkout** says what the visitor will be charged, such as "You'll be charged $29.00", or **No charge today**. It adds rows when they apply:
 
 - **Free Trial: N days**, with what is charged after the trial.
 - **Setup Fee**.
 - **Account credit applied**, on an upgrade, with a line such as "$27.07 account credit applied, then $290.00 per year until cancel". A free trial does not apply to upgrades, and the summary says so.
 
-![Screenshot of the checkout page for an upgrade to Gold Yearly with an Account credit applied row and Due today of $262.93](/images/selling/checkout/checkout-upgrade-credit.webp)
-
 **Payment details (right)** shows the gateway's payment form under **Payment method**. If the plan accepts both Stripe and PayPal, visitors can switch between them here.
+
+<!-- TODO(screenshot): checkout-2
+  screen: a native checkout page on the frontend
+  state: logged-out visitor, a monthly plan with a setup fee, Stripe and PayPal tabs visible
+  data: DOCTEST Plus plan with a $5 setup fee
+  highlight: Due today and Payment method
+  view: frontend
+  alt: Screenshot of the checkout page with the order summary and payment method
+-->
 
 The submit button changes with what the visitor is buying:
 
@@ -40,25 +60,44 @@ The submit button changes with what the visitor is buying:
 | **Start Free Trial** | A recurring plan with a free trial and no setup fee. |
 | **Confirm Upgrade** | An upgrade that existing account credit pays for in full. |
 
-> [!Note]
-> While a gateway is in test or sandbox mode, administrators see a **Test Mode** or **Sandbox Mode** notice above the payment form, such as "Stripe is in test mode, so no real payment will be taken." Members and visitors do not see it. A developer can change who sees it with the `fluent_members/checkout_show_test_mode_notice` filter.
+If a card payment fails, Stripe shows the error above the form. The error clears as soon as the buyer edits their payment details, so an old "card declined" message does not stay on screen.
 
-![Screenshot of the checkout page for a logged-in administrator with the Test Mode notice above the payment form](/images/selling/checkout/checkout-logged-in-test-mode.webp)
+> [!Note]
+> While a gateway is in test or sandbox mode, administrators see a **Test Mode** or **Sandbox Mode** notice above the payment form, such as "Stripe is in test mode, so no real payment will be taken." Members and visitors do not see it. See [test and live mode](/docs/getting-started/test-and-live-mode).
 
 ## Guest checkout experience
 
 Guest checkout is on by default and has no setting. A logged-out visitor sees **Your Details** with **Name** and **Email**, and the message "We'll create your account and email you a link to set your password."
 
-- **New email:** After payment, Fluent Members creates a WordPress account with the Subscriber role, logs the buyer in, and emails them a link to set a password.
-- **Email with an account:** The visitor sees "An account already exists for this email address. Please sign in to continue." and must log in to finish the purchase.
+- **New email:** After payment, Fluent Members creates a WordPress account with the Subscriber role and emails the buyer a link to set a password.
+- **Email with an account:** The visitor is told "An account already exists for this email address. Please log in to continue." and must log in to finish the purchase.
 - **Logged-in members:** They skip **Your Details** and pay with their own account.
 
 > [!Note]
-> To sell only to logged-in visitors, turn guest checkout off with the `fluent_members/guest_checkout_enabled` filter. Visitors then see **Login to Purchase** on the pricing page and **Sign In to Continue** at checkout.
+> To sell only to logged-in visitors, turn guest checkout off with the `fluent_members/guest_checkout_enabled` filter. Visitors then see **Log In to Purchase** on the pricing page and **Log In to Continue** at checkout.
+
+## Joining a free level
+
+A free plan skips payment. On the pricing page its button reads **Join for free**, or **Log In to Join** when guests cannot join. It opens a **Join** page marked **Free membership**, with **No payment needed**.
+
+- **Logged-out visitors:** They enter a **Name** and **Email**, and Fluent Members creates their account and emails a link to set a password.
+- **Logged-in members:** They see **Your Account**, with a **Log Out** link if it is the wrong account, and one button to join.
+- **Already a member:** The page says "You already have this membership." with a **Go to Portal** button. A suspended member is told to contact the site administrator.
+
+A free level can be joined only once per account. When the visitor joins, a **Welcome!** page says "You've joined" followed by the level name, with **Membership Level**, **Started** and **Access Until** (or **No expiry**) and a **Go to Portal** button. See [free levels](/docs/levels/free-levels) for how to set one up.
+
+<!-- TODO(screenshot): checkout-3
+  screen: the free join page on the frontend
+  state: logged-out visitor, Your Details form with the Join for free button
+  data: a free level named DOCTEST Free
+  highlight: Join for free
+  view: frontend
+  alt: Screenshot of the free membership join page
+-->
 
 ## After payment is complete
 
-**Success:** When the payment is confirmed, the member sees a **Congratulations!** page that says "You're now a [plan] member". It shows these details:
+**Success:** When the payment is confirmed, the member sees a **Congratulations!** page that says "You've joined" followed by the plan name. It shows these details:
 
 - **Membership Level**
 - **Started**
@@ -67,20 +106,29 @@ Guest checkout is on by default and has no setting. A logged-out visitor sees **
 - **Payment Method**, such as Card **** 4242
 - **Next Billing Date**, or **Trial Ends** while a free trial runs
 
-A **Go to Portal** button opens the [Member Portal](/docs/members/portal/setup).
+A **Go to Portal** button opens the [Member Portal](/docs/members/portal/setup). Rows with nothing to show are left out.
 
-![Screenshot of the Congratulations! page after checkout with the membership details and the Go to Portal button](/images/selling/checkout/checkout-success.webp)
+<!-- TODO(screenshot): checkout-4
+  screen: the checkout confirmation page on the frontend
+  state: Congratulations page after a paid monthly plan
+  data: a test payment for DOCTEST Plus
+  highlight: You've joined
+  view: frontend
+  alt: Screenshot of the checkout confirmation page with the membership details
+-->
 
-**Pending:** If the gateway has not confirmed the payment yet, the member sees **We're confirming your checkout** and the message "This usually takes a moment. Your membership will appear in your portal as soon as it is confirmed." The membership shows in the portal as soon as it clears.
+**Pending:** If the gateway has not confirmed the payment yet, the member sees **We're confirming your checkout** and the message "This usually takes a moment. Your membership will appear in your portal as soon as it is confirmed." The page updates by itself, and **Check again** tries once more. If the membership does not appear within a few minutes, the page tells the member to contact the site owner.
 
-![Screenshot of the We're confirming your checkout page with the Go to Portal button](/images/selling/checkout/checkout-processing.webp)
+**Not completed:** If the payment failed or was refunded, the page says so ("This payment did not go through, so no membership was added.") and invites the member to choose a plan and try again.
 
-## Troubleshooting unavailable checkouts
+## When checkout is unavailable
 
-If the button reads **Checkout Unavailable**, confirm that:
+A visitor who cannot buy a plan sees a short page instead of the payment form:
 
-- Fluent Members Pro is active.
-- Your payment gateway is fully set up and not marked **Disabled** in [Payment Settings](/docs/settings/payment-settings/).
+- **Already owns the level for life:** "You already have this membership, so there is nothing to buy again." with a **Go to Portal** button.
+- **The plan cannot be sold:** Visitors see "This plan cannot be purchased right now. Please contact the site owner." Administrators see the real reason with a link to fix it, such as **Open payment settings**, **Open Plugins** or **Get FluentMembers Pro**.
+
+The reasons administrators can see include "No active payment method is set up for this plan." and "This plan's payment methods need FluentMembers Pro, which is not active." Fix them in [Payment Settings](/docs/settings/payment-settings/) or activate Pro.
 
 If a direct link shows a short message instead of the checkout page, use this table:
 
@@ -89,9 +137,10 @@ If a direct link shows a short message instead of the checkout page, use this ta
 | Selected pricing plan could not be found. | Make sure both the level and the plan are active. |
 | Selected payment method could not be found for this pricing plan. | Connect a gateway the plan accepts. Check the plan's **Payment Methods** on the level's **Pricing** tab. |
 | Checkout session could not be found. | Copy the link again with **Copy Checkout Link**. |
+| Checkout confirmation could not be found. | Open the confirmation link from the original checkout again. |
 
-## Paywall plans (external checkout)
+## Plans sold through another plugin
 
-If a plan uses a paywall instead of native payment, **Choose plan** sends the visitor to that plugin's own checkout. This covers FluentCart, WooCommerce, Fluent Forms and Paymattic. The plugin takes the payment, and Fluent Members grants the membership when the order completes.
+If a plan is sold through FluentCart, WooCommerce, Fluent Forms or Paymattic, **Choose plan** sends the visitor to that plugin's own checkout. The plugin takes the payment, and Fluent Members grants the membership when the order completes.
 
-FluentCart, Fluent Forms and Paymattic also support guest purchases. Fluent Members creates the WordPress user from the order's billing email once the order is paid. See each plugin's page under [Connect other plugins](/docs/integrations/).
+FluentCart, Fluent Forms and Paymattic also support guest purchases, and WooCommerce does when your shop allows guest checkout. Fluent Members creates the WordPress user from the order's billing email once the order is paid. See each plugin's page under [Integrations](/docs/integrations/).

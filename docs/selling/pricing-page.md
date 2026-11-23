@@ -7,7 +7,7 @@ description: "Create a page that lists your membership levels and their plans, s
 
 A **pricing page** lists your membership levels and their plans, with a button on each plan that starts the purchase. Create one when your levels and pricing are ready, so visitors have a place to choose a plan.
 
-You need at least one active level with a plan on its **Pricing** tab. See [Price with native payments](/docs/levels/pricing-native) or [Price with paywalls](/docs/levels/pricing-paywalls).
+You need at least one active level that visitors can join: a level with a price on its **Pricing** tab, or a [free level](/docs/levels/free-levels). See [Price with native payments](/docs/levels/pricing-native) or [Price with paywalls](/docs/levels/pricing-paywalls).
 
 ## Create the page
 
@@ -19,10 +19,20 @@ The quickest way is from General Settings:
 
 Fluent Members publishes the page with the `[fluent_membership_levels]` shortcode and selects it in the field. If a pricing page is already set, it refuses with "Pricing page already exists."
 
-![Screenshot of the Generate Pricing Page row with a page selected, the shortcode, and the Edit and View links](/images/selling/pricing-page/pricing-page-generate-row.webp)
+<!-- TODO(screenshot): pricing-page-2
+  screen: Fluent Members → Settings → General Settings
+  state: Generate Pricing Page row with the Create Pricing Page dialog open
+  data: Page Name filled with DOCTEST Pricing
+  highlight: Create Page
+  view: admin
+  alt: Screenshot of the Create Pricing Page dialog in General Settings
+-->
+
 
 
 If you have already built a sales page, select it from the dropdown field in **General Settings** and click **Save Settings**. You will then need to manually add the shortcode or block to that page. Use the **Edit** or **View** links below the field to quickly open it.
+
+Your [restricted content](/docs/content-access/restricted-content) message can send its button to this page by choosing **Pricing page** as the button target.
 
 ## What visitors see
 
@@ -31,11 +41,9 @@ The page displays each level as a dedicated section containing its title and des
 Each plan card displays:
 
 - The plan name and the level title (if different).
-- The price and billing interval (e.g., "$9.00 Monthly").   
+- The price and billing interval (e.g., "$9.00 Monthly"), or **Free**.
 - Any setup fees or free trial periods.
 - A purchase button that routes the visitor to your connected provider's checkout.
-
-![Screenshot of a pricing page with Starter and Pro sections](/images/selling/pricing-page/pricing-page-cards.webp)
 
 The level name also appears on a card when the plan name differs from it and the level title is not already shown above the card.
 
@@ -43,11 +51,13 @@ The button depends on the level and the visitor:
 
 - **Choose plan:** Shown to logged-in members, and to visitors when the level can be bought as a guest. It opens the [checkout](/docs/selling/checkout) for native plans, or the purchase page of the plugin that sells a paywall plan.
 - **Login to Purchase:** Shown to logged-out visitors when the level cannot be bought as a guest. It sends them to the login page and back.
+- **Join for free:** Shown on a free plan. It opens the free join page, where the visitor joins without paying. Logged-out visitors who cannot join as a guest see **Log In to Join** instead. The shortcode's `button_text` and `login_text` attributes do not change these two labels.
+- **Current plan:** Shown instead of a button on the plan the logged-in member already holds, so they cannot buy it again.
 
 Plans appear in the order you set on the level's **Pricing** tab.
 
 > [!Note]
-> A level without an active, purchasable plan will be hidden from the page automatically. Administrators will see a placeholder note explaining why it is hidden, while standard visitors will see nothing. If a native plan is missing, check your [Payment Settings](/docs/settings/payment-settings/) to ensure your gateway is properly connected.
+> A level without an active, purchasable plan will be hidden from the page automatically. Administrators will see a note such as "Starter is hidden — it has no plan customers can buy yet.", while standard visitors will see nothing. If a native plan is missing, check your [Payment Settings](/docs/settings/payment-settings/) to ensure your gateway is properly connected.
 
 
 ## Customizing the Display (Shortcode Attributes)
@@ -81,7 +91,7 @@ Use `[fluent_membership_level id="10"]` to show the plans of one level anywhere 
 
 ## Use the block instead
 
-The **Membership Levels** block adds the same cards in the block editor, with the same choices in the block settings. See the [Membership Levels block](/docs/access-groups/gutenberg-block/membership-levels-block) for each option.
+The **Membership Levels** block adds the same cards in the block editor, with the same choices in the block settings. See the [Membership Levels block](/docs/content-access/gutenberg-block/membership-levels-block) for each option.
 
 <!-- TODO(screenshot): pricing-page-1
   screen: Block editor on a page with the Membership Levels block selected
