@@ -2,7 +2,7 @@
 // Drift guard for the doc trees in .vitepress/trees/*.json.
 // Fails (exit 1) when a tree disagrees with the docs. Warnings print but do not fail.
 // Run: node scripts/qa/check-trees.mjs
-import { readFileSync, readdirSync } from 'node:fs'
+import { readFileSync, readdirSync, existsSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -24,7 +24,7 @@ function walk(dir, base) {
   }
 }
 walk(docsDir, '/docs')
-walk(join(root, 'reference'), '/reference')
+if (existsSync(join(root, 'reference'))) walk(join(root, 'reference'), '/reference')
 
 const errors = []
 const warnings = []
