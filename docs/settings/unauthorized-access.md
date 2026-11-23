@@ -1,65 +1,66 @@
 ---
 title: "Default Unauthorized Access"
-description: "Set what visitors without access see by default on protected content, in post excerpts and on listing pages."
+description: "Set what visitors without access see by default on protected content, and how restricted posts appear in lists, from Restricted content settings."
 ---
 
 # Default Unauthorized Access
 
-**Default Unauthorized Access** sets what happens when a visitor without access reaches protected content. It also controls how restricted posts appear in excerpts and on listing pages. Use it to set one site-wide behaviour, then override it only on the Access Groups that need something different.
+**Restricted content** in Settings sets what happens when a visitor without access reaches protected content. It also controls how restricted posts appear in excerpts and lists. It replaces the old **Unauthorized Access** settings tab. Set one site-wide behaviour here, then override it only on the levels or Bundles that need something different.
 
 ## Open the settings
 
-Click the **Settings** gear in the top-right corner of any Fluent Members screen, then click **Unauthorized Access**.
+Go to **Fluent Members → Settings → Restricted content**. A live preview on the right shows what visitors see as you change the fields.
 
-![Screenshot of the Unauthorized Access settings with Display a custom message selected, showing Custom Message, Button Text, Button URL, Excerpts of Restricted Posts and Show restricted posts on listing pages](/images/settings/unauthorized-access/unauthorized-access-message.webp)
+<!-- TODO(screenshot): unauthorized-access-1
+  screen: Fluent Members → Settings → Restricted content
+  state: Non-members see set to A message, all rows visible, live preview on the right
+  data: Default values
+  highlight: Non-members see options
+  view: admin
+  alt: Screenshot of Restricted content settings with A message selected and the live preview beside it
+-->
 
-## Which Access Groups use these settings
+## Who uses these settings
 
-An Access Group uses these settings until you click **Customize for this rule** on its **When Unauthorized** card. A change here reaches every group that has not been customized, including existing ones. A customized group keeps its own settings. See [What blocked visitors see](/docs/access-groups/unauthorized-access).
+Every level and Bundle uses these settings unless it sets its own. A change here reaches all of them, including existing ones. At the bottom of the screen, a note lists any levels or Bundles that use their own settings, with links to them. See [What blocked visitors see](/docs/content-access/unauthorized-access).
 
-## Action for Unauthorized Users
+## Non-members see
 
-Choose what happens on protected content. The fields below change with your choice.
+Choose what happens when someone opens protected content.
 
-### Display a custom message
+| Option | What happens |
+|---|---|
+| **A message** | The visitor stays on the page and sees your message. |
+| **A teaser** | The visitor sees the first words, then your message. See [Partial Content Lock](/docs/settings/partial-content-lock). |
+| **Redirect** | The visitor goes straight to another page. |
 
-This is the default. The visitor stays on the page and sees your message.
+### Message and button
+
+Shown with **A message** and **A teaser**.
 
 | Field | Notes |
-|-------|-------|
-| **Custom Message** | Required. The default is "This content is for members only. Please join to get access." |
-| **Button Text** | Optional button below the message. Leave it blank to hide the button. |
-| **Button URL** | Where the button links, such as your pricing or registration page. Type `/` to search your content, or paste a URL. |
+|---|---|
+| **Message** | A headline and a sentence. Leave them blank to use the defaults: **Members only** and "This content is for members only. Please join to get access." |
+| **Button** | The label (**Join now** by default) and a destination: **Pricing page** or **Another page or URL**. Type `/` to search your content, or paste a URL. |
+| **Show "Already a member? Log in"** | Adds a login link for logged-out visitors. See [Login Popup](/docs/settings/login-popup). |
 
-### Redirect to a specific URL
+### Redirect
 
-The visitor goes straight to another page.
+**Send them to** is required and must be on this site, such as your pricing or login page. Other domains need the `allowed_redirect_hosts` filter.
 
-![Screenshot of the Unauthorized Access settings with Redirect to a specific URL selected and the Redirect URL field filled with /pricing/](/images/settings/unauthorized-access/unauthorized-access-redirect.webp)
+## Archives and feeds
 
-**Redirect URL** is required and must be on this site, such as `/pricing/` or your login page.
+Choose how protected posts show in blog pages, archives and feeds:
 
-## Excerpts of Restricted Posts
+| Option | What visitors see |
+|---|---|
+| **Title and a members-only note** | The title with the members-only note in place of the excerpt. This is the default. |
+| **Title and the written excerpt** | The excerpt you typed on the post. A post with no hand-written excerpt shows the members-only note. |
+| **Title only** | No excerpt. |
+| **Hide them from lists** | Posts visitors can't access are left out of lists. |
 
-Choose what visitors without access see in place of a restricted post's excerpt:
-
-- **Show the restriction message** (default): Shows the restriction message.
-- **Show the hand-written excerpt:** Shows the excerpt you typed on the post. A post with no hand-written excerpt shows the restriction message.
-- **Hide the excerpt:** Shows nothing.
-
-RSS feeds always show the restriction message, whichever option you choose.
-
-## Show restricted posts on listing pages
-
-This is checked by default. Uncheck it to hide posts visitors can't access from blog pages, archives, search, feeds and widgets. Previous and next post links and REST API lists skip those posts too.
-
-Some posts stay listed even when this is unchecked:
-
-- Posts the visitor can't open yet because of [Content Drip](/docs/access-groups/content-drip).
-- Posts that show a preview through [Partial Content Lock](/docs/settings/partial-content-lock).
-
-Administrators always see every post.
+Feeds always show the members-only note, and search never lists protected posts. Administrators always see every post. Posts with a free preview or a scheduled release stay listed even with **Hide them from lists**.
 
 ## Save your changes
 
-Click **Save Settings** in the top-right corner to apply your changes.
+Click **Save Settings** to apply your changes.

@@ -16,18 +16,18 @@ hero:
 features:
   - icon: "🚀"
     title: Get Started
-    details: Install the plugin, activate Pro and finish the guided setup.
+    details: Install the plugin, activate Pro and finish the five-step guided setup.
     link: /docs/getting-started/introduction
     linkText: Get Started
   - icon: "🎟️"
     title: Create Membership Levels
-    details: Build levels, set their prices and choose what each one unlocks.
+    details: Build levels, set their prices and choose what each one unlocks on its Content Access tab.
     link: /docs/levels/
     linkText: Create a Level
   - icon: "🔒"
     title: Protect Your Content
-    details: Use access groups, drip content and blocks to control who sees what.
-    link: /docs/access-groups/
+    details: Choose what each level unlocks, share content with Bundles, and use release schedules and blocks to control who sees what.
+    link: /docs/content-access/
     linkText: Protect Content
   - icon: "🛒"
     title: Sell Memberships
@@ -66,17 +66,12 @@ features:
     linkText: Start a Migration
   - icon: "⚙️"
     title: Settings
-    details: Configure general options, default access behavior, permissions and privacy.
+    details: Set test or live mode, public and restricted content, permissions and privacy.
     link: /docs/settings/general
     linkText: Open Settings
-  - icon: "🧑‍💻"
-    title: For Developers
-    details: Look up shortcodes, email smartcodes, hooks and filters.
-    link: /reference/shortcodes
-    linkText: Open Reference
   - icon: "🛟"
     title: Help & Updates
-    details: Check membership statuses, troubleshooting steps, the FAQ and the changelog.
+    details: Find quick answers in the FAQ, get support and read the changelog.
     link: /docs/help-support/faq
     linkText: Get Help
 ---
