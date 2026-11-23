@@ -5,13 +5,13 @@ description: "Quick answers about Fluent Members plans, requirements, content pr
 
 # Frequently Asked Questions
 
-Quick answers to common questions about **Fluent Members**. For step-by-step fixes, see [Troubleshooting](/reference/troubleshooting).
+Quick answers to common questions about **Fluent Members**.
 
 ## General
 
 ::: faq
 == Is Fluent Members free?
-Yes. The free plugin includes Membership Levels, Access Groups, content protection, the Member Portal, email notifications and integrations with FluentCart, Fluent Forms, Paymattic, FluentCRM, Fluent Support and FluentCommunity.
+Yes. The free plugin includes Membership Levels, free levels, Bundles, content protection, the Member Portal, email notifications and integrations with FluentCart, Fluent Forms, Paymattic, FluentCRM, Fluent Support, FluentCommunity and the LMS plugins.
 
 **Fluent Members Pro** adds native Stripe and PayPal checkout, the **Billing** screens, refunds, corporate memberships, upgrade paths, the custom email editor and the WooCommerce integration.
 
@@ -28,33 +28,39 @@ The plugin sets no limit on Membership Levels, in Free or Pro.
 == Do I need a separate payment plugin?
 It depends on how you sell:
 
-- **Admin-assigned memberships:** no payment plugin.
+- **Free or admin-assigned memberships:** no payment plugin.
 - **With Pro:** native Stripe and PayPal are built in, with no extra plugin.
-- **Without Pro:** connect a paywall to FluentCart, Fluent Forms or Paymattic.
+- **Without Pro:** connect a paywall to FluentCart, Fluent Forms or Paymattic. The [guided setup](/docs/getting-started/quick-start) can install FluentCart for you.
 - **WooCommerce:** needs Pro.
 
 See [Payment settings](/docs/settings/payment-settings/).
 
 == Where do I find a level ID?
-Go to **Fluent Members → Membership Levels**. The ID is in the **ID** column. See [Shortcodes](/reference/shortcodes) for where to use it.
+Go to **Fluent Members → Membership Levels**, open the **Row actions** menu on a level and click **Copy shortcode**. The pasted shortcode holds the ID, for example `[fluent_membership_level id='10']`. The ID is also in the address when you open the level.
 
 == How do I create the Member Portal page?
-Go to **Fluent Members → Settings → General Settings** and click the **+** button beside **Generate Portal Page**. It creates a page with the `[fluent_member_portal]` shortcode. See [Set up the portal](/docs/members/portal/setup).
+The [guided setup](/docs/getting-started/quick-start) creates it for you. You can also go to **Fluent Members → Settings → General Settings** and use the create button beside **Generate Portal Page**. It makes a page with the `[fluent_member_portal]` shortcode. See [Set up the portal](/docs/members/portal/setup).
+
+== How do I test payments before going live?
+With Pro, keep **Site Mode** on **Test** under **Settings → General Settings**, buy a plan yourself, then switch to **Live**. See [Test mode and live mode](/docs/getting-started/test-and-live-mode).
+
+== Can I run the guided setup again?
+Yes. Go to **Settings → General Settings** and click **Run setup again**. Your memberships, prices and content stay as they are.
 :::
 
 ## Content Protection
 
 ::: faq
 == What can I protect?
-Pages, posts, categories, tags, FluentCart products and WooCommerce products (Pro) through Access Group rules. You can also protect a single post, or a block inside a post. See [Restriction types](/docs/access-groups/protected-content).
+Pages, posts, categories, tags, FluentCart products and WooCommerce products (Pro), set on a level's **Content Access** tab. You can also protect a single post, or a block inside a post. See [Protect content by type](/docs/content-access/protected-content).
 
-FluentCommunity access works differently: a [level integration](/docs/levels/integrations) adds members to spaces and courses.
+FluentCommunity spaces and courses, and LMS courses, are added to a level on the same tab. See [Content access](/docs/levels/content-access).
 
 == Can I show a preview to visitors instead of blocking them?
-Yes. Turn on [Partial content lock](/docs/settings/partial-content-lock). It shows the first words of the content, with a blurred overlay and a message.
+Yes. Set **Non-members see** to **A teaser** in [Restricted content settings](/docs/content-access/restricted-content). It shows the first words of the content, then a message and a button.
 
 == Can I release content over time?
-Yes. Set [drip content](/docs/access-groups/content-drip) in the Access Group. Each rule sets how long after joining a member gets the content.
+Yes. Set a [release schedule](/docs/content-access/content-drip) on a rule in the level's **Content Access** tab. A rule can open immediately, after a set time since the member joined, or on a date.
 
 == Does protection cover the REST API?
 Yes, for protected posts and comments on the standard WordPress REST routes. Custom endpoints aren't covered.
@@ -67,7 +73,7 @@ Administrators always bypass restrictions. Test in a private browser window, log
 
 ::: faq
 == Which membership statuses exist?
-Six: **Active**, **Trial**, **Suspended**, **Cancelled**, **Expired** and **Upgraded**. Only **Active** and **Trial** give access. See [Membership Statuses](/reference/membership-statuses).
+Six: **Active**, **Trial**, **Suspended**, **Cancelled**, **Expired** and **Upgraded**. Only **Active** and **Trial** give access.
 
 == How do members cancel?
 In the Member Portal they click **Manage** on a membership, open **More Actions** and choose **Cancel Membership** or **Cancel Subscription**. See [Cancel a membership](/docs/members/portal/cancelling).
@@ -81,6 +87,9 @@ Every member can view their memberships and cancel an active one. With Pro, memb
 == What is a corporate membership?
 A Pro feature where one member owns a set number of seats and invites a team through the portal. If the owner's membership is cancelled, suspended or expires, the seats follow. See [Corporate memberships](/docs/levels/corporate-memberships).
 
+== Can members join a free level without paying?
+Yes. A free level lets visitors join at no cost from your pricing page. See [Free levels](/docs/levels/free-levels).
+
 == Can visitors buy without an account?
 Yes, for levels that support [guest checkout](/docs/selling/checkout). The account is created from their purchase details.
 :::
@@ -89,16 +98,16 @@ Yes, for levels that support [guest checkout](/docs/selling/checkout). The accou
 
 ::: faq
 == Which email notifications are included?
-Nine: **Welcome Email**, **Membership Expiring**, **Membership Expired**, **Payment Receipt**, **Payment Failed**, **Subscription Cancelled**, **Refund Issued**, **Team Invitation** and **Guest Account**. **Team Invitation** and **Guest Account** are on by default, and the rest are off. See [Email notifications](/docs/settings/email-configuration/email-notifications).
+Nine: **Welcome Email**, **Membership Expiring**, **Membership Expired**, **Payment Receipt**, **Payment Failed**, **Subscription Cancelled**, **Refund Issued**, **Team Invitation** and **Guest Account**. All nine are on by default. See [Email notifications](/docs/settings/email-configuration/email-notifications).
 
 == Is there a suspension email?
-No. To email members on suspension, use the **Membership Suspended** trigger in [FluentCRM](/docs/integrations/fluentcrm) or the `fluent_members/membership_suspended` hook in [Developer Hooks](/reference/developer-hooks).
+No. To email members on suspension, use the **Membership Suspended** trigger in [FluentCRM](/docs/integrations/fluentcrm) or the `fluent_members/membership_suspended` hook in Developer Hooks.
 
 == Can I customize the templates?
-Yes. Edit the subject and body of each notification under **Fluent Members → Settings → Email Configuration → Email Notifications**, and use [smartcodes](/reference/email-smartcodes) for member details. Pro adds the [custom email editor](/docs/settings/email-configuration/custom-email-editor).
+Yes. Edit the subject and body of each notification under **Fluent Members → Settings → Email Configuration → Email Notifications**, and use smartcodes for member and payment details. Pro adds the [custom email editor](/docs/settings/email-configuration/custom-email-editor).
 
 == My emails aren't arriving. What do I check?
-First check the notification is on, then your sender address in **Mailing Settings**. See [Troubleshooting](/reference/troubleshooting) for the full list.
+First check the notification is on, then your sender address in **Mailing Settings**.
 :::
 
 ## Payments
@@ -130,5 +139,5 @@ With Pro, Stripe subscriptions can stay linked after migration, and recurring bi
 Yes, with Pro. You can restrict WooCommerce products, sell a level through a product, and use WooCommerce Subscriptions. See [WooCommerce](/docs/integrations/woocommerce).
 
 == Does it work with FluentCRM?
-Yes. Fluent Members adds seven automation triggers to FluentCRM, including **Membership Level Assigned**, **Membership Expiring** and **Membership Renewed**. See [FluentCRM](/docs/integrations/fluentcrm).
+Yes. Fluent Members adds automation triggers to FluentCRM, such as **Membership Level Assigned**, **Membership Expiring**, **Membership Renewed** and **Membership Payment Failed**, and can sync levels with tags. See [FluentCRM](/docs/integrations/fluentcrm).
 :::
