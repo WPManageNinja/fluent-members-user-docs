@@ -159,21 +159,9 @@ const docsSidebar = [
     ]
   },
   {
-    text: "Developers",
-    collapsed: true,
-    items: [
-      { text: "Shortcodes", link: '/reference/shortcodes' },
-      { text: "Email smartcodes", link: '/reference/email-smartcodes' },
-      { text: "Hooks", link: '/reference/developer-hooks' },
-      { text: "Chain map", link: '/reference/chain-map' }
-    ]
-  },
-  {
     text: "Help",
     collapsed: true,
     items: [
-      { text: "Statuses", link: '/reference/membership-statuses' },
-      { text: "Troubleshooting", link: '/reference/troubleshooting' },
       { text: "FAQ", link: '/docs/help-support/faq' },
       { text: "Get help", link: '/docs/help-support/get-support' },
       { text: "Changelog", link: '/changelog' }
@@ -284,7 +272,6 @@ export default defineConfig({
 
     sidebar: {
       '/docs/': docsSidebar,
-      '/reference/': docsSidebar,
       '/changelog': docsSidebar
     },
 
