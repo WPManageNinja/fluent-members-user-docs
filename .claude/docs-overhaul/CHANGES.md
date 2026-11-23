@@ -1,5 +1,13 @@
 # Overhaul changes log
 
+## 2026-11-23: Delta sync to develop (Journey v2)
+
+- Plugin: free 4998e8d0, Pro 7f76c4b (local site matches). Baseline was free 9afdb75b, Pro 59d8187. See `DELTA-2026-11-23.md`, `JOURNEY-v2-PROPOSAL.md`.
+- Folder `docs/access-groups` -> `docs/content-access`; `levels/attaching-access-groups` -> `levels/content-access` (REDIRECTS.md).
+- Rewrote content access, levels, getting started, settings, integrations, selling, billing, members, portal and reference pages against develop. New pages: bundles, public-content, restricted-content, free-levels, automations, test-and-live-mode, lms-courses, gateway-follow-ups.
+- Doc trees and home page updated; sidebar rewired; all image lines removed, 142 TODO(screenshot) placeholders left.
+- To do: screenshot plans and shots; live-site check of claims the agents could not verify; decide whether to fold settings/unauthorized-access, partial-content-lock and login-popup into Restricted content.
+
 Newest first: date, plugin shas, pages touched, skipped items.
 
 ## 2026-11-06: Phases A and B

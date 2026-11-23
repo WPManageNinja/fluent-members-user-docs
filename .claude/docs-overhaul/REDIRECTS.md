@@ -14,3 +14,7 @@ One line per approved rename or merge, for host-level 301s later. The site is no
 /docs/members/portal/renewing-a-failed-subscription -> /docs/members/portal/renewing-a-membership
 /docs/access-groups/gutenberg-block/configuring -> /docs/access-groups/gutenberg-block/inserting
 ```
+
+## 2026-11-23 (Journey v2)
+/docs/access-groups/* -> /docs/content-access/*
+/docs/levels/attaching-access-groups -> /docs/levels/content-access
