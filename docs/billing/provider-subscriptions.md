@@ -7,15 +7,15 @@ description: "See recurring memberships billed by FluentCart, WooCommerce, Fluen
 
 When a recurring purchase in **FluentCart**, **WooCommerce**, **Fluent Forms** or **Paymattic** grants a membership, it appears in the [Subscriptions](/docs/billing/subscriptions) list (Pro) next to your Stripe and PayPal subscriptions. You get one list of everyone on a recurring plan, while the other plugin keeps handling the billing.
 
-These rows are read-only here. You refund and cancel them in the plugin that bills them.
+These rows are read-only here. You refund them in the plugin that bills them, and you cancel them there or from the member's page.
 
 ## Find these rows
 
-Go to **Fluent Members → Billing → Subscriptions**. The **Gateway** column names the plugin: **FluentCart**, **WooCommerce**, **FluentForms** or **Paymattic**.
+Go to **Fluent Members → Billing → Subscriptions**. Turn on the **Gateway** column from the **Columns** icon if it is hidden. It names the plugin: **FluentCart**, **WooCommerce**, **FluentForms** or **Paymattic**.
 
 <!-- TODO(screenshot): provider-subscriptions-1
   screen: Billing → Subscriptions
-  state: list including rows whose Gateway is FluentCart or WooCommerce
+  state: list with the Gateway column on, including rows whose Gateway is FluentCart or WooCommerce
   data: a recurring FluentCart or WooCommerce purchase that granted a membership
   highlight: Gateway column
   view: admin
@@ -34,15 +34,7 @@ To find one by search, enter the member's name or email, or the subscription's n
 
 ## Status
 
-The status comes from the membership, so it uses the same names as other subscriptions:
-
-| Membership status | Shown as |
-|---|---|
-| Active | **Active** |
-| Trial | **Trialing** |
-| Suspended | **Past Due** |
-| Cancelled | **Canceled** |
-| Expired | **Expired** |
+These rows show the membership's status, not a billing status: **Active**, **Trial**, **Suspended**, **Cancelled** or **Expired**. When the member has set the subscription to end at a later date, **Status** reads **Cancels** with that date.
 
 ## The subscription page
 
@@ -58,7 +50,7 @@ Click a row to open it. The page has the same layout as other subscriptions, wit
   reason: the local site has no recurring purchases from other plugins
 -->
 
-- **Open in [plugin name]:** replaces **More Actions** and opens the record in that plugin in a new tab. It only appears when the plugin is active and Fluent Members has a reference to the record.
+- **Open in [plugin name]:** replaces **More actions** and opens the record in that plugin in a new tab. It only appears when the plugin is active and Fluent Members has a reference to the record.
 - **Gateway Subscription ID:** the subscription's ID in the other plugin, or `--`.
 - **Order ID** (FluentCart and WooCommerce) or **Submission ID** (Fluent Forms and Paymattic): shown when known.
 - **Renews / Ends:** the membership's end date, in place of **Ends At**.
@@ -67,7 +59,12 @@ Click a row to open it. The page has the same layout as other subscriptions, wit
 
 ## Refund or cancel
 
-Do both in the plugin that bills the member. Use **Open in [plugin name]** to get there. When that plugin reports the change, Fluent Members updates the membership. See the [integration guides](/docs/integrations/) for what each plugin sends.
+Refund in the plugin that bills the member. Use **Open in [plugin name]** to get there.
+
+To cancel, you have two routes:
+
+- **In the other plugin:** cancel there, and Fluent Members updates the membership when that plugin reports the change. See the [integration guides](/docs/integrations/) for what each plugin sends.
+- **From the member's page** (FluentCart and WooCommerce): a **Store billing** section under the **Memberships** table shows the store's subscription, with its next charge, payment method and links to the order and subscription. Its **Cancel Subscription** button, or **Cancel** in the row menu, cancels the subscription in the store and ends or schedules the membership. The button is missing when the store cannot cancel that subscription with its payment method, and a note says why. See [Suspending & Cancelling](/docs/members/suspending-and-cancelling).
 
 > [!Note]
-> Cancelling this membership from the [Members](/docs/members/suspending-and-cancelling) screen ends it in Fluent Members only. It does not stop billing in the other plugin, so cancel it there too.
+> Cancelling a Fluent Forms or Paymattic membership from the [member's page](/docs/members/suspending-and-cancelling) ends it in Fluent Members only. It does not stop billing in the other plugin, so cancel it there too.
