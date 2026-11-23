@@ -800,58 +800,11 @@
       ]
     },
     {
-      "id": "developers",
-      "label": "For developers",
-      "where": "Shortcodes, smartcodes and hooks",
-      "goal": "Look up the codes and hooks Fluent Members provides.",
-      "nodes": [
-        {
-          "id": "shortcodes",
-          "label": "Shortcodes",
-          "link": "/reference/shortcodes",
-          "ux": "Every shortcode and what it does.",
-          "facts": [
-            "[fluent_membership_level], [fluent_membership_levels], [fluent_members], [fluent_member_portal]"
-          ]
-        },
-        {
-          "id": "smartcodes",
-          "label": "Email smartcodes",
-          "link": "/reference/email-smartcodes",
-          "ux": "Every placeholder you can use in an email."
-        },
-        {
-          "id": "hooks",
-          "label": "Hooks & filters",
-          "link": "/reference/developer-hooks",
-          "ux": "Extend Fluent Members with your own code."
-        },
-        {
-          "id": "chain-map",
-          "label": "Chain map",
-          "link": "/reference/chain-map",
-          "ux": "Trace how levels, Bundles and content connect."
-        }
-      ]
-    },
-    {
       "id": "help",
       "label": "Help & updates",
       "where": "These docs",
       "goal": "Fix a problem, or see what changed.",
       "nodes": [
-        {
-          "id": "statuses",
-          "label": "Membership statuses",
-          "link": "/reference/membership-statuses",
-          "ux": "See what each status means for access."
-        },
-        {
-          "id": "troubleshooting",
-          "label": "Troubleshooting",
-          "link": "/reference/troubleshooting",
-          "ux": "Fix the most common problems."
-        },
         {
           "id": "faq",
           "label": "FAQ",
