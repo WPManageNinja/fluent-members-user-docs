@@ -15,24 +15,24 @@ Pick the one closest to your goal. Each card opens the guide for it.
 
 ## Set up your first membership
 
-The guided setup opens by itself the first time you open the plugin, and does most of this for you.
+The guided setup opens by itself the first time you open the plugin, and does most of this for you. It takes about two minutes and walks through five steps: welcome, get paid, your first membership, content and go live.
 
 ::: doc-tree product journey
 
-Have Pro? [Activate it](/docs/getting-started/installation-pro) before you start, so the guided setup offers Stripe, PayPal and corporate levels.
+Have Pro? [Activate it](/docs/getting-started/installation-pro) before you start, so the setup offers the built-in checkout (Stripe and PayPal) and WooCommerce.
 
 > [!Note]
-> A level needs a way to be paid for. On the free plugin, install FluentCart, Fluent Forms or Paymattic before you run the guided setup. Without one of them, or Pro, you cannot create a level yet.
+> A paid membership needs a way to get paid: FluentCart, WooCommerce (Pro), or the built-in checkout (Pro). The setup can install FluentCart for you. If you only want free memberships, choose **Free memberships only** and add payments later.
 
 ## How the pieces fit together
 
 Fluent Members rests on three ideas. Everything else in the plugin supports them.
 
 - **Membership Level:** the plan you offer, such as Gold or Team. A level says how it is paid for and what it unlocks.
-- **Access Group:** the content you want to protect, and what everyone else sees instead. Attach a group to a level, and members on that level can open that content.
+- **Content Access:** the content a level unlocks, set on the level's **Content Access** tab. You pick pages, posts, categories and more. Content you use on several levels can be saved as a **Bundle**.
 - **Member:** a WordPress user who holds a membership. A member can hold several memberships at once.
 
-Think of the Access Group as the room and the Membership Level as the key.
+Think of the content as the room and the Membership Level as the key.
 
 ## Where things live in the plugin
 
@@ -42,19 +42,17 @@ Every Fluent Members screen shares one top bar.
   screen: Fluent Members dashboard, top bar only
   state: Pro active, so the Pro tag and Billing show
   data: -
-  highlight: numbered badges on Dashboard, Membership Levels, Access Groups, Members, Billing, theme icon, gear icon
+  highlight: numbered badges on Dashboard, Membership Levels, Members, Billing, theme icon, gear icon
   view: admin
-  alt: Screenshot of the Fluent Members top bar with Dashboard, Membership Levels, Access Groups, Members, Billing, the theme icon and the gear icon
-  reason: needs the develop build on the local site
+  alt: Screenshot of the Fluent Members top bar with Dashboard, Membership Levels, Members, Billing, the theme icon and the gear icon
 -->
 
-1. **Dashboard:** your [numbers and recent activity](/docs/dashboard/dashboard).
-2. **Membership Levels:** the [plans you offer](/docs/levels/), with their pricing.
-3. **Access Groups:** the [content you protect](/docs/access-groups/).
-4. **Members:** [everyone who holds a membership](/docs/members/).
-5. **Billing** (Pro): [subscriptions and one-time memberships](/docs/billing/).
-6. **The theme icon:** switch the admin between **Light**, **Dark** and **System**.
-7. **The gear icon:** [Settings](/docs/getting-started/admin-navigation#settings), for options that apply to your whole site.
+1. **Dashboard:** your [numbers, Launch checklist and recent activity](/docs/dashboard/dashboard).
+2. **Membership Levels:** the [plans you offer](/docs/levels/), with their pricing and the content each one unlocks.
+3. **Members:** [everyone who holds a membership](/docs/members/).
+4. **Billing** (Pro): [subscriptions and one-time memberships](/docs/billing/).
+5. **The theme icon:** switch the admin between **Light**, **Dark** and **System**.
+6. **The gear icon:** [Settings](/docs/getting-started/admin-navigation#settings), for options that apply to your whole site.
 
 [Find your way around](/docs/getting-started/admin-navigation) has the full tour.
 
@@ -66,14 +64,14 @@ Each card is one area of the plugin. Pro features carry a badge. Click any item 
 
 ## Free or Pro?
 
-The free plugin protects your content, sells through other plugins and manages your members. Pro adds its own checkout and billing, teams, and WooCommerce.
+The free plugin protects your content, sells through FluentCart, and manages your members. Pro adds its own checkout and billing, teams, and WooCommerce.
 
 | Free | Pro adds |
 |---|---|
-| Membership Levels, Access Groups, drip content, partial content lock, blocks and shortcodes | Corporate levels with seats, upgrade paths |
+| Membership Levels, free levels, Bundles, drip release, public content, restricted content settings, blocks and shortcodes | Corporate levels with seats, upgrade paths |
 | Sell through FluentCart, Fluent Forms or Paymattic | Built-in Stripe and PayPal checkout, sell through WooCommerce |
 | Members list, manual assignment, Member Portal with cancel | **Billing** screens, refunds, update payment method and renew in the portal |
-| Email notifications, FluentCRM, Fluent Support, FluentCommunity, migration of levels and members | Block email editor, migration of subscriptions and payments |
+| Email notifications, FluentCRM, Fluent Support, FluentCommunity, LMS courses, migration of levels and members | Block email editor, migration of subscriptions and payments |
 
 Full list: [Free vs Pro](/docs/getting-started/free-vs-pro).
 
@@ -92,24 +90,23 @@ Short answers, each with the guide to read next.
 
 ::: faq
 == Do I need Pro?
-Not to sell memberships. The free plugin grants levels when someone pays through FluentCart, Fluent Forms or Paymattic. You need Pro for the built-in Stripe and PayPal checkout, WooCommerce and team memberships. See [Free vs Pro](/docs/getting-started/free-vs-pro).
+Not to sell memberships. The free plugin grants levels when someone pays through FluentCart, Fluent Forms or Paymattic, and it also offers free levels. You need Pro for the built-in Stripe and PayPal checkout, WooCommerce and team memberships. See [Free vs Pro](/docs/getting-started/free-vs-pro).
 == Can I sell recurring memberships?
 Yes. Use FluentCart subscriptions on the free plugin, or Stripe, PayPal or WooCommerce Subscriptions with Pro. See [Price with paywalls](/docs/levels/pricing-paywalls).
 == Why can I still see a protected page?
-Administrators skip all protection, so your own account always sees everything. Test from a private window while logged out. See [How protection works](/docs/access-groups/how-protection-works).
+Administrators skip all protection, so your own account always sees everything. Test from a private window while logged out. See [How protection works](/docs/content-access/how-protection-works).
 == Can I protect only part of a page?
-Yes. Use the [Access Groups block](/docs/access-groups/gutenberg-block/inserting) for a section, or [Partial content lock](/docs/settings/partial-content-lock) to show a preview of a post.
+Yes. Use the [Restricted Content block](/docs/content-access/gutenberg-block/inserting) for a section, or set **Non-members see** to a teaser in [Restricted content settings](/docs/content-access/restricted-content) to show a preview of a post.
 == Can I move from another membership plugin?
-Yes. **Settings → Migration** imports from Paid Memberships Pro, MemberPress, Kadence Memberships and Restrict Content Pro. See [Migration overview](/docs/settings/migration/).
+Yes. **Settings → Migration** imports from Paid Memberships Pro, MemberPress and Kadence Memberships. See [Migration overview](/docs/settings/migration/).
 == Can I skip the guided setup?
-Yes. **Skip All** jumps to the last step, and everything it sets up is available later from the plugin's own screens. See [Guided setup & quick start](/docs/getting-started/quick-start).
+Yes. Skip any step, or click **I'll do this later**. Everything it sets up is available later from the plugin's own screens, and the **Launch checklist** on the Dashboard tracks what is left. See [Guided setup & quick start](/docs/getting-started/quick-start).
 :::
 
 ## Need more?
 
-Reference pages and help.
+Help and updates.
 
 - [Glossary](/docs/getting-started/glossary)
-- [Shortcodes](/reference/shortcodes)
 - [Changelog](/changelog)
 - [Get help](/docs/help-support/get-support)

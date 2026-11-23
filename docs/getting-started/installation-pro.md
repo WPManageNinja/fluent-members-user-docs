@@ -11,7 +11,7 @@ Before you start, you need:
 
 - The free **Fluent Members** plugin [installed and active](/docs/getting-started/installation). Pro only runs on top of it, so keep both active.
 - The **Fluent Members Pro** ZIP file.
-- WordPress 6.3 or newer and PHP 7.4 or newer.
+- WordPress 6.5 or newer and PHP 7.4 or newer.
 
 ## Install Pro
 
@@ -22,16 +22,23 @@ Before you start, you need:
 
 ## Check that Pro is active
 
-The **FluentMembers** item in your WordPress sidebar gains a small **P** badge, and a **Billing** item appears under it.
+Inside the plugin you get:
 
-![Screenshot of the WordPress sidebar showing FluentMembers with Dashboard, Levels, Access Groups, Members, Billing and Settings](/images/getting-started/installation-pro/installation-pro-wp-menu.webp)
+- A **Pro** tag beside the logo in the top bar.
+- **Billing** in the top bar, with **Subscriptions** and **One-time**, and a **Billing** item under **FluentMembers** in the WordPress sidebar.
+- **Team** (corporate memberships with seats) available when you add a level, without the Pro badge.
+- **Native Payment** (the built-in Stripe and PayPal checkout) and **WooCommerce** as pricing types, without the Pro badge.
+- A **Site Mode** switch under **Settings → General Settings**, and a **Test Mode** or **Live Mode** badge in the admin bar. See [Test mode and live mode](/docs/getting-started/test-and-live-mode).
 
-Inside the plugin, you also get:
-
-- A **Pro** tag beside the logo, and **Billing** in the top bar.
-- **Corporate** as a level type, without the Pro badge.
-- **Native Payment** and **WooCommerce** as pricing types, without the Pro badge.
+<!-- TODO(screenshot): installation-pro-1
+  screen: Fluent Members top bar
+  state: Pro active
+  data: -
+  highlight: the Pro tag beside the logo and the Billing menu
+  view: admin
+  alt: Screenshot of the Fluent Members top bar with the Pro tag and the Billing menu
+-->
 
 ## What to do next
 
-Stripe and PayPal do nothing until you connect them. Follow [Set up Stripe](/docs/settings/payment-settings/stripe-setup) or [Set up PayPal](/docs/settings/payment-settings/paypal-setup), or connect a gateway during the [guided setup](/docs/getting-started/quick-start) if you have not run it yet.
+Stripe and PayPal do nothing until you connect them. Follow [Set up Stripe](/docs/settings/payment-settings/stripe-setup) or [Set up PayPal](/docs/settings/payment-settings/paypal-setup), and keep **Site Mode** on **Test** until you are ready to sell. If you have not run the [guided setup](/docs/getting-started/quick-start) yet, run it first so it offers **Built-in checkout**.

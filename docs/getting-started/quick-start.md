@@ -1,117 +1,154 @@
 ---
 title: "Guided Setup and Quick Start"
-description: "Follow the four steps of the Fluent Members guided setup to create your first level, connect payment, protect content and set up your pages."
+description: "Follow the five steps of the Fluent Members guided setup, then finish the rest from the Launch checklist on your Dashboard."
 ---
 
 # Guided Setup and Quick Start
 
-The **guided setup** creates your first membership in four steps: a level, how it is paid for, what it protects, and the pages your members use. It opens by itself the first time you open **FluentMembers** on a new install.
+The **guided setup** gets your first membership selling in about two minutes: it picks how you get paid, creates a membership, protects content and builds your pricing and account pages. It opens by itself the first time you open **FluentMembers** on a new install. Nothing you pick is permanent, and you can skip any step.
 
-Before you start on the free plugin, install FluentCart, Fluent Forms or Paymattic. A level needs one of them, or Pro, to take payment.
+The header shows **Step 1 of 5** and a progress bar. Steps 2 to 4 have **Back** and a skip link at the bottom, and the header has an **I'll do this later** button that closes the setup. If you leave and come back, the setup resumes at the step you stopped on.
 
-You move through the steps with the buttons at the bottom of the screen:
+## Step 1: Welcome
 
-- **Next Step** saves the step and moves on.
-- **Go Back** returns to the previous step.
-- **Skip All** jumps to the last step, **Set Up Pages**.
+The first screen reads **Let's get your first membership selling**.
 
-If you leave and come back in the same browser, the setup picks up where you stopped.
-
-## Step 1: Create a membership
-
-The first screen is **Welcome to FluentMembers**. Fill in **Create a Membership**:
-
-- **Membership Title** (required): the name members see, such as `Premium Membership`. You can rename it later.
-- **Type:** **Individual** (default) is for one person. **Corporate** (Pro) is a multi-seat plan for teams.
-- **Maximum Members** (Pro): appears for **Corporate**. It includes the account owner, so it must be at least 2. Leave it empty for unlimited seats.
-- **Pricing Type** (required): how the level is paid for.
-
-![Screenshot of step 1 of the guided setup with the Membership Title, Type and Pricing Type fields](/images/getting-started/quick-start/quick-start-step-1.webp)
-
-Open **Pricing Type** to see your choices. Each plugin shows **Installed** or **Not Installed**.
-
-![Screenshot of the Pricing Type list with FluentCart, FluentForms, Paymattic, WooCommerce and Native Payment](/images/getting-started/quick-start/quick-start-pricing-type.webp)
-
-- **FluentCart**, **FluentForms** and **Paymattic:** sell through that plugin.
-- **WooCommerce** (Pro): sell through a WooCommerce product.
-- **Native Payment** (Pro): sell with the built-in Stripe or PayPal checkout.
-
-> [!Note]
-> **Type** and **Pricing Type** cannot be changed after you create the level. Choose carefully.
-
-If **Native Payment** has no gateway ready yet, click **Configure** on its row to open **Connect a Payment Gateway**. Pick a mode, connect your account and click the **Enable Payments** button. You return to this step when the connection is done.
+- **Found on your site:** lists what the setup detected. FluentCart shows **Will use** (or **Needs an update**), FluentCommunity shows **Ready**, and any membership plugin with data to move, such as Paid Memberships Pro, MemberPress or Kadence Memberships, shows its counts and an **Import** button. **Import** closes the setup and opens [Migration](/docs/settings/migration/).
+- **What are you building?** Pick one of **Online courses**, **Community**, **Premium articles**, **Paid newsletter**, **Coaching** or **Downloads**. The setup uses it to suggest a name, a price and content to protect. You can pick none.
 
 <!-- TODO(screenshot): quick-start-1
-  screen: Guided setup step 1, Pricing Type, Native Payment, Configure
-  state: Connect a Payment Gateway dialog open
-  data: Stripe and PayPal not connected
-  highlight: -
+  screen: Guided setup, step 1 Welcome
+  state: new install with FluentCart active and one site type selected
+  data: FluentCart detected
+  highlight: the Found on your site list, the site type tiles and the Start button
   view: admin
-  alt: Screenshot of the Connect a Payment Gateway dialog with Stripe and PayPal cards
-  reason: needs the develop build on the local site
+  alt: Screenshot of the Welcome step with the Found on your site list and the six site type tiles
 -->
 
-If nothing is available, a warning explains why and **Skip this step for now** appears at the bottom. You can create the level later from **Membership Levels**.
+Click **Start**.
 
-Click **Next Step**. This creates the level.
+## Step 2: Get paid
 
-## Step 2: Set up payments
+**How will people pay you?** shows your options:
 
-**Set Up Payments** shows the pricing type you chose, so what you fill in depends on it.
+- **FluentCart** (recommended): free, built for selling memberships, courses and downloads. If FluentCart is not installed or active, the button reads **Install FluentCart and continue** or **Activate FluentCart and continue**, and the setup does it for you. If FluentCart needs an update, update it from the Plugins screen first.
+- **WooCommerce** (Pro): sell through your WooCommerce store. It only shows when WooCommerce is active.
+- **Built-in checkout** (Pro): Stripe and PayPal without a store. You connect them later in **Settings → Payment Settings**.
+- **Free memberships only:** no payments for now. You can add paid prices later.
 
-![Screenshot of step 2 of the guided setup with FluentCart selected, a product search and Create Pricing](/images/getting-started/quick-start/quick-start-step-2.webp)
+You do not need to connect Stripe or PayPal here. The Launch checklist reminds you, and test purchases work before that. Choose an option and click **Continue**, or click **Skip**.
 
-- **FluentCart:** search for a product under **Search FluentCart Products**, or click **Create Pricing** to enter a **Title** and **Price**. That creates a one-time payment product. You can set up subscriptions later from the level's pricing page.
-- **Fluent Forms** and **Paymattic:** search for a form. Only payment forms with a single fixed-price or recurring item are listed.
-- **WooCommerce** (Pro): search for a product under **Search WooCommerce Products**.
-- **Native Payment** (Pro): fill in **Create a Pricing Plan**. You can create one plan here, and add more later from the level's **Pricing** tab.
+<!-- TODO(screenshot): quick-start-2
+  screen: Guided setup, step 2 How will people pay you
+  state: FluentCart selected
+  data: -
+  highlight: the four payment options and the Continue button
+  view: admin
+  alt: Screenshot of the Get paid step with FluentCart, Built-in checkout and Free memberships only
+-->
 
-Click **Next Step**.
+> [!Note]
+> Options marked **Pro** are locked until Fluent Members Pro is active. See [Activate Pro](/docs/getting-started/installation-pro).
 
-## Step 3: Protect your content
+## Step 3: Your first membership
 
-**Protect Your Content** creates an Access Group for your level. Under **1st Rule**, pick what to protect from **Select Restriction Type**. Click **Add Another Rule** to add a second one. The guided setup stops at two, and you can add more later.
+**Your first membership** is a form with a live preview of your pricing page beside it.
 
-![Screenshot of step 3 of the guided setup with the rule picker and the Unauthorized Access fields](/images/getting-started/quick-start/quick-start-step-3.webp)
+- **Membership name:** the name members see. The setup fills in a suggestion for your site type, and you can change it.
+- **How do members pay?** Choose **Free**, **One-time**, **Monthly** or **Yearly**. With WooCommerce you choose **Free** or **Paid**, and the price comes from the WooCommerce product.
+- **Price:** the amount, in your store's currency. It shows for paid memberships without an existing product.
+- **Also add a free tier:** creates a second membership called **Free** that people can join at no cost. It is not needed when the membership is already free.
+- **Pick an existing product:** with FluentCart or WooCommerce, sell the membership through a product you already have instead of creating one. A product that already sells another membership cannot be picked.
 
-Under **Unauthorized Access**, choose what blocked visitors get from **Action for Unauthorized Users**:
+With FluentCart, the setup creates a FluentCart product for the membership. Descriptions and feature lists can be edited later on the level.
 
-- **Display a custom message** (default): shows your **Custom Message** with a button. **Button Text** and **Button URL** are required here.
-- **Redirect to a specific URL:** sends them to your **Redirect URL**.
+<!-- TODO(screenshot): quick-start-3
+  screen: Guided setup, step 3 Your first membership
+  state: Monthly selected, a suggested name filled in
+  data: site type Online courses
+  highlight: Membership name, the price type tiles, the Price field and the Pricing page preview
+  view: admin
+  alt: Screenshot of the Your first membership step with the form on the left and the pricing page preview on the right
+-->
 
-Leave the rule empty to skip this step. When you add a rule, Fluent Members names the group after your level, such as `Premium Membership Access`, and attaches it to the level.
+Click **Create membership** (it reads **Save membership** if you come back to edit it), or click **Skip**.
 
-Click **Next Step**.
+## Step 4: Content
 
-## Step 4: Set up pages
+**What do your members get?** asks what only members can see. Everything else stays public.
 
-**Set Up Pages** connects the pages your members use, and your currency. Each page saves as soon as you pick it.
+- Under **Members only**, click a suggestion to turn it on, for example **All posts**, **All pages**, a category, or **All digital products** (FluentCart). With FluentCommunity active, **Spaces & courses** lets you pick spaces and courses.
+- Under **Protected content**, add more content yourself, and under **Exceptions** leave items out.
 
-![Screenshot of step 4 of the guided setup with the Member Portal Page, Pricing Page and Select Currency fields](/images/getting-started/quick-start/quick-start-step-4.webp)
+A note on the screen explains what visitors see: visitors who aren't members see your default message with a join button and a login link. You can drip lessons, share content across memberships or change the message later on the membership's **Content Access** tab.
 
-- **Member Portal Page:** where members manage their memberships. Select a page or click **+** to create one. The page needs the `[fluent_member_portal]` shortcode.
-- **Pricing Page:** where visitors see your levels. Select a page or click **+** to create one. The page needs the `[fluent_membership_levels]` shortcode.
-- **Select Currency:** the currency for new prices. The default is **United States Dollar (USD)**.
+Click **Protect N items**, or **Skip, I'll protect content later**. If you skipped the membership step, this screen asks you to add a membership first.
 
-Click **Complete Setup**.
+<!-- TODO(screenshot): quick-start-4
+  screen: Guided setup, step 4 Content
+  state: one suggestion turned on
+  data: membership named after the site type suggestion
+  highlight: the Members only suggestions and the Protect items button
+  view: admin
+  alt: Screenshot of the Content step with the Members only suggestions
+-->
 
-## Check the summary
+## Step 5: You are live
 
-A dialog lists what you set up, with **Completed** or **Skipped** beside each row. It reads **You're All Set!** when everything is done, and **Almost There!** when something is left.
+The last screen reads **Your membership is ready to sell** (or **Setup is done**). It shows the pages the setup made for you, each with **Copy link** and **View**:
 
-![Screenshot of the Almost There dialog listing Membership Level, Content Protection, Payment, Member Portal Page and Pricing Page](/images/getting-started/quick-start/quick-start-completion.webp)
+- **Pricing page**
+- **Member account**, your Member Portal
+- **Checkout Page**, only for the built-in checkout
+- **Direct checkout link**, when the membership has one
 
-Click **Go To Dashboard**. The guided setup does not run again.
+A **Test mode · no real charges yet** badge appears while payments are still in test mode. Under **Try it before your members do**, click **Preview** to open a protected page and see what a visitor sees. Use a private window.
 
-## Finish what you skipped
+The Launch checklist sits beside these links. Click **See the membership details** to open the level, or **Go to dashboard**.
 
-Until every item is done, the **Dashboard** shows a **Getting Started** card with **Setup Pages**, **Add Access Group**, **Add Membership Level** and **Setup Payment**. Click an item to go to its screen. You can also go straight to each guide:
+<!-- TODO(screenshot): quick-start-5
+  screen: Guided setup, step 5 live screen
+  state: setup finished with FluentCart
+  data: pricing page and member account created
+  highlight: the Made for you links and the Launch checklist panel
+  view: admin
+  alt: Screenshot of the final setup step with the page links and the Launch checklist
+-->
 
-- [Create a level](/docs/levels/creating)
-- [Price with paywalls](/docs/levels/pricing-paywalls) or [Price with native payments](/docs/levels/pricing-native) (Pro)
-- [Access groups overview](/docs/access-groups/)
-- [Set up the portal](/docs/members/portal/setup) and [Pricing page](/docs/selling/pricing-page)
+## Finish with the Launch checklist
+
+After the setup, the **Launch checklist** stays on your **Dashboard** until every item is done. It shows a count such as `3 of 7 done`. Each item checks your real data, so it ticks itself when you finish it.
+
+| Item | Ticks when | What the button does |
+|---|---|---|
+| **Create a membership** | A level exists | **Open** shows your levels |
+| **Protect content** | Any content is protected | **Open** shows the level's **Content Access** tab |
+| **Publish a pricing page** | A pricing page is set | **View** opens it, or opens **Settings** if there is none |
+| **Make a test purchase** | A test payment or test order exists | **Start** opens the checkout link |
+| **Connect Stripe or PayPal** | A gateway is connected and live | **Connect** opens the payments settings in FluentCart, or [Payment Settings](/docs/settings/payment-settings/) for the built-in checkout |
+| **Switch FluentCart to live mode** or **Switch payments to live mode** | Payments are live | **Go live** opens the mode setting |
+| **Check your welcome email** | You open it from the checklist | **Edit** opens the **Welcome Email** |
+| **Get your first member** | A real (non-test) member joins | None. It ticks itself. |
+
+The payments row changes with how you sell. With WooCommerce it reads **Set up WooCommerce payments**, and with free memberships only it reads **Payments** and counts as done.
+
+Click **Skip** on an item to set it aside. A skipped item stays in the list without its buttons. Click the **×** to hide the whole checklist.
+
+<!-- TODO(screenshot): quick-start-6
+  screen: Dashboard, right column
+  state: Launch checklist card with some items done
+  data: -
+  highlight: the Launch checklist card, its count, and the Skip links
+  view: admin
+  alt: Screenshot of the Dashboard Launch checklist card with its items
+-->
+
+To test the payment path, read [Test mode and live mode](/docs/getting-started/test-and-live-mode).
+
+## Run the setup again
+
+Go to **Fluent Members → Settings → General Settings**, find **Setup wizard** and click **Run setup again**. Confirm **Run setup**. Your memberships, prices and content stay as they are.
 
 ## Test as a visitor
 
-Administrators skip all protection, so your own account always sees everything. Open a protected page in a private window while logged out. You should see your message or be redirected, and your pricing page should show your level.
+Administrators skip all protection, so your own account always sees everything. Open a protected page in a private window while logged out. You should see your message and a join button, and your pricing page should show your membership.

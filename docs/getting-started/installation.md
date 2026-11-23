@@ -15,7 +15,14 @@ This is the easiest way.
 2. Click **Choose File** and select the ZIP file.
 3. Click **Install Now**.
 
-    ![Screenshot of the WordPress Add Plugins screen with the upload form and the Install Now button](/images/getting-started/installation/installation-upload-plugin.webp)
+    <!-- TODO(screenshot): installation-1
+      screen: WordPress Plugins, Add Plugin, upload form
+      state: ZIP file chosen
+      data: -
+      highlight: Choose File and Install Now
+      view: admin
+      alt: Screenshot of the WordPress Add Plugins screen with the upload form and the Install Now button
+    -->
 
 4. Click **Activate Plugin**.
 
@@ -30,8 +37,6 @@ Use this when uploading from the dashboard fails.
 
 ## Open the plugin
 
-Activating adds a **FluentMembers** item to your WordPress sidebar, and creates the plugin's own database tables (their names start with `fmem_`). Your posts, pages and theme are not changed.
+Activating adds a **FluentMembers** item to your WordPress sidebar, with **Dashboard**, **Levels**, **Members** and **Settings** under it, and creates the plugin's own database tables (their names start with `fmem_`). Your posts, pages and theme are not changed.
 
-On a new install, the first click on **FluentMembers** opens the guided setup instead of the dashboard. On a site that has run the plugin before, the guided setup does not appear.
-
-Before you run it on the free plugin, install FluentCart, Fluent Forms or Paymattic, because a level needs one of them to take payment. Continue with [Guided setup & quick start](/docs/getting-started/quick-start). To add Stripe, PayPal or team memberships first, see [Activate Pro](/docs/getting-started/installation-pro).
+On a new install, the first click on **FluentMembers** opens the [guided setup](/docs/getting-started/quick-start) instead of the dashboard. It can install FluentCart for you, so you do not need a payment plugin first. On a site that already has the plugin's tables, the guided setup does not appear. To add Stripe, PayPal or team memberships, see [Activate Pro](/docs/getting-started/installation-pro).
