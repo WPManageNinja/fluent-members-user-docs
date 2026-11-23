@@ -5,7 +5,7 @@ description: "Find a record in the Subscriptions and One-time lists with status 
 
 # Filter & Search (Pro)
 
-The [Subscriptions](/docs/billing/subscriptions) and [One-time](/docs/billing/one-time) lists (Pro) share the same tools for finding a record: status tabs, search, column sorting and pagination, plus a test payments filter while you are testing. Each tool works on one list at a time, so a record in the other list won't show up.
+The [Subscriptions](/docs/billing/subscriptions) and [One-time](/docs/billing/one-time) lists (Pro) share the same tools for finding a record: status tabs, search, column sorting, column visibility and pagination. Each tool works on one list at a time, so a record in the other list won't show up.
 
 ## Status tabs
 
@@ -18,15 +18,18 @@ The tabs above the table filter by status. The last tabs sit under **More**:
 
 Records with any other status, such as a subscription that is **Awaiting payment** or an **Expired** one-time membership, appear under **All** only.
 
-## Payment mode
-
-When a payment gateway is in test mode, an **All payments** menu appears beside the search icon. Choose **Live payments** or **Test payments** to hide the other kind. It works with the status tab you have selected.
-
 ## Search
 
-Click the magnifier icon to open the search box, then type. Results update as you type, and **Cancel** closes the box and clears the search.
+Click the magnifier icon to open the search box, then type. Results update as you type, and **Cancel** closes the box and clears the search. When nothing matches, the list says **No subscriptions match** or **No one-time memberships match** your text, with a **Clear filter** button.
 
-![Screenshot of the Subscriptions list with the search box open, Liam entered and one matching row](/images/billing/filters-and-search/filters-and-search-search.webp)
+<!-- TODO(screenshot): filters-and-search-1
+  screen: Billing → Subscriptions
+  state: search box open with a member name typed and one matching row
+  data: a member named Liam with one subscription
+  highlight: search box
+  view: admin
+  alt: Screenshot of the Subscriptions list with the search box open and one matching row
+-->
 
 What search matches depends on the list:
 
@@ -51,24 +54,27 @@ Click a column header with arrows to sort by it. Click again to reverse the orde
 
 Click the **Columns** icon beside the magnifier and tick the columns you want to see:
 
-![Screenshot of the Columns menu open with its list of column checkboxes](/images/billing/filters-and-search/filters-and-search-columns.webp)
+<!-- TODO(screenshot): filters-and-search-2
+  screen: Billing → Subscriptions
+  state: Columns menu open with its list of checkboxes
+  data: any
+  highlight: Columns icon and the checkbox list
+  view: admin
+  alt: Screenshot of the Columns menu open with its list of column checkboxes
+-->
 
 - **Subscriptions:** **Level**, **Status**, **Gateway**, **Next Billing**, **Total Paid**, **Started** and **Last Payment**.
 - **One-time:** **Level**, **Status**, **Gateway**, **Amount** and **Purchased**.
 
-The other columns are always on. Your choice is saved in your browser, separately for each list.
+**ID** and **Member** are always on, and so is **Billing Cycle** on **Subscriptions**. A browser that has never changed the columns shows only **Status** and **Next Billing** among the optional ones on **Subscriptions**, and every optional column on **One-time**. Your choice is saved in your browser, separately for each list.
 
 ## Test and live payments
 
-A **Payment mode** select appears on both lists while any connected gateway is in test or sandbox mode. Choose **All payments**, **Live payments** or **Test payments**. **Test payments** hides rows billed by other plugins, and one-time records with no order count as live.
-
-Once every connected gateway is live, the select goes away and the lists show live records only. Test records disappear from them, and no control brings them back.
+Both lists show live and test records together. A **Test** badge marks the test ones, in the **Billing Cycle** or **Amount** column and in the record's panels. There is no filter for payment mode, so scan for the badge when you need to tell them apart.
 
 ## Pagination
 
 The footer shows the total count, a per-page selector and page numbers. Each list shows 10 rows per page by default, and you can choose 10, 20, 50, 80, 100, 120 or 150.
-
-![Screenshot of the table footer with the total count, per-page selector and page numbers](/images/billing/filters-and-search/filters-and-search-footer.webp)
 
 The footer is hidden when all the records fit on one page.
 
