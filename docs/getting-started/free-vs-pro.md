@@ -18,19 +18,22 @@ Pro does not replace the free plugin. You keep both installed and active. See [A
 | Built-in Stripe and PayPal checkout (**Native Payment**) | No | Yes |
 | Native pricing plans: one-time or recurring, setup fee, trial days | No | Yes |
 | Upgrade paths between plans | No | Yes |
+| Free levels that anyone can join | Yes | Yes |
 | Pricing pages with `[fluent_membership_levels]` | Yes | Yes |
+| **Site Mode** (test and live payments) and the admin bar badge | No | Yes |
 
 > [!Note]
-> A level must have a **Pricing Type**, and it cannot be changed later. On the free plugin, install FluentCart, Fluent Forms or Paymattic first. Without one of them, or Pro, you cannot create a level.
+> To charge for a level on the free plugin, you need FluentCart, Fluent Forms or Paymattic. The [guided setup](/docs/getting-started/quick-start) can install FluentCart for you. Free levels need no payment plugin.
 
 ## Membership levels
 
 | Feature | Free | Pro |
 |---|---|---|
 | Individual levels | Yes | Yes |
-| Corporate levels, with seats and a team owner | No | Yes |
+| Team (corporate) levels, with seats and a team owner | No | Yes |
 | Assign members to a level yourself | Yes | Yes |
 | Level integrations, such as FluentCommunity | Yes | Yes |
+| Level automations (FluentCRM) | Yes | Yes |
 
 ## Content protection
 
@@ -38,26 +41,27 @@ Everything here works on the free plugin. Pro adds the WooCommerce restriction t
 
 | Feature | Free | Pro |
 |---|---|---|
-| Access Groups: posts, pages, categories, tags or the entire website | Yes | Yes |
-| Redirect blocked visitors, or show them a custom message | Yes | Yes |
-| Drip content | Yes | Yes |
-| Partial content lock | Yes | Yes |
+| Content Access on each level: posts, pages, categories, tags, a post type, FluentCart products or the entire website | Yes | Yes |
+| Bundles, shared by several levels | Yes | Yes |
+| [Public content](/docs/content-access/public-content) that everyone can see | Yes | Yes |
+| [Restricted content](/docs/content-access/restricted-content) settings: a teaser, a message or a redirect | Yes | Yes |
+| Release schedule (drip) on a rule | Yes | Yes |
 | Protect a single post from the editor | Yes | Yes |
-| Access Groups and Membership Levels blocks | Yes | Yes |
-| Login popup | Yes | Yes |
+| Restricted Content and Membership Levels blocks | Yes | Yes |
+| Login form on restricted pages | Yes | Yes |
 | Restrict WooCommerce products, and hide them from your shop | No | Yes |
 
 ## Managing members
 
 | Feature | Free | Pro |
 |---|---|---|
-| Dashboard | Yes | Yes |
+| Dashboard and Launch checklist | Yes | Yes |
 | Members list, member details, suspend and cancel | Yes | Yes |
 | **Billing** screens: subscriptions and one-time memberships | No | Yes |
 | Refunds, and cancelling a subscription from the admin | No | Yes |
 | Team owner's seats and invitations | No | Yes |
 
-The **Dashboard** is on both plugins, but **Revenue by Membership** only counts native payments.
+The **Dashboard** is on both plugins, but its revenue figures only count native Stripe and PayPal payments.
 
 ## Member Portal
 
@@ -81,8 +85,9 @@ The **Dashboard** is on both plugins, but **Revenue by Membership** only counts 
 
 | Feature | Free | Pro |
 |---|---|---|
-| FluentCRM, Fluent Support, FluentCommunity | Yes | Yes |
-| Migrate levels, access groups and members from another plugin | Yes | Yes |
+| FluentCRM (triggers, tag sync, automations), Fluent Support, FluentCommunity | Yes | Yes |
+| LMS courses: LearnDash, LifterLMS, Tutor, LearnPress, Sensei, MasterStudy | Yes | Yes |
+| Migrate levels, content rules and members from another plugin | Yes | Yes |
 | Migrate subscriptions, orders, transactions and payments | No | Yes |
 
 Ready to add Pro? Continue with [Activate Pro](/docs/getting-started/installation-pro).
