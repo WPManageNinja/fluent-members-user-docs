@@ -3,5 +3,8 @@ node_modules
 /.vitepress/cache
 /.vitepress/dist
 
-# Screenshot pipeline raw captures
-scripts/screenshots/raw/
+# Screenshot pipeline (runner, plans, raw captures)
+/scripts/screenshots/
+
+# Claude Code skills, working state and plugin memory
+/.claude/
