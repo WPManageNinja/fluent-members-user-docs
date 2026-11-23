@@ -1,91 +1,101 @@
 ---
 title: "Creating a Level"
-description: "Create a Membership Level by setting its title, type and pricing type, then complete its details."
+description: "Create a Membership Level by choosing how people get it, adding a first price, then finishing its setup."
 ---
 
 # Creating a Level
 
-A **Membership Level** is the actual plan or product that a visitor buys (or joins for free). You can easily build any plan structure your business needs by creating a level and assigning it the right access and pricing.
+A **Membership Level** is the plan or product that a visitor buys, joins for free, or that you assign by hand. Create a level, give it a price if it's paid, and attach the content it unlocks.
 
-## Step 1: Create the Level
+## Step 1: Create the level
 
-Go to **Fluent Members → Membership Levels** and click **Create Membership Level**.
+Go to **Fluent Members → Membership Levels** and click **New membership**.
 
-![Screenshot of the Membership Levels list with an arrow pointing to the Create Membership Level button](/images/levels/creating/creating-create-button.webp)
+<!-- TODO(screenshot): creating-1
+  screen: Fluent Members → Membership Levels
+  state: list view with the New membership button visible
+  data: a few existing levels
+  highlight: the New membership button
+  view: admin
+  alt: Screenshot of the Membership Levels list with an arrow pointing to New membership
+-->
 
-Fill in the fields in the **Add Membership Level** modal:
+Fill in the **New membership** dialog:
 
 | Field | Notes |
 |-------|-------|
-| **Title** | The level's name. Required. |
-| **Type** | **Individual** (default) is a single user membership plan. **Corporate** (Pro) is a group membership for organizations. See [Corporate Memberships](/docs/levels/corporate-memberships). |
-| **Maximum Member** (Pro) | Appears when you choose **Corporate**. It's the seat limit, with a minimum of 2. |
-| **Pricing Type** | How the level is sold. Required. |
+| **Name** | The level's name. Required. |
+| **How do people get it?** | Choose one card: **Free signup** (anyone can join, a free tier or lead magnet), **Paid** (once or on repeat), **Team** (Pro: one buyer, many seats, email invites) or **Assigned by you** (no public signup, you add members). |
+| **Seats per team** (Team only) | The seat limit. The account owner counts as one seat, so the minimum is 2. Leave it empty for unlimited seats. |
+| **Sold through** | Appears when your site has no selling provider set. Choose FluentCart, FluentForms, Paymattic, WooCommerce (Pro) or Native Payment (Pro). |
+| **First price** or **Pricing** | Depends on how the level is sold. See below. |
 
-![Screenshot of the Add Membership Level modal with Title, Type and Pricing Type fields](/images/levels/creating/creating-add-level-modal.webp)
-
-
-
-Choose the **Pricing Type** from this list:
-- **FluentCart**, **FluentForms** or **Paymattic:** Sell through that plugin. See [Pricing: Paywalls](/docs/levels/pricing-paywalls). The row must say **Installed** before you can select it.
-- **WooCommerce** (Pro): Sell through WooCommerce products.
-- **Native Payment** (Pro): Sell through your own Stripe or PayPal checkout. See [Pricing: Native Payment](/docs/levels/pricing-native). If no gateway is connected, click **Configure** on this row to open **Payment Settings**.
+<!-- TODO(screenshot): creating-2
+  screen: New membership dialog
+  state: Paid card selected, Name filled in, First price section showing a FluentCart product amount with Once, Monthly and Yearly buttons
+  data: Name "Pro", amount 29, Monthly
+  highlight: the four How do people get it? cards and the First price field
+  view: admin
+  alt: Screenshot of the New membership dialog with the four access cards and a first price
+-->
 
 > [!Note]
-> The **Pricing Type** cannot be changed after you create the level, so choose carefully. Without Pro or a supported payment plugin on your site, the modal shows **No pricing type available yet** and you can't create a level.
+> **Team** shows a **Pro** badge and can't be selected without Fluent Members Pro. See [Corporate Memberships](/docs/levels/corporate-memberships).
 
-Click **Create Level**. The new level opens on its **Level Details** tab.
+### Choose how the level is sold
 
-![Screenshot of the Pricing Type list showing FluentCart, FluentForms, Paymattic, WooCommerce and Native Payment](/images/levels/creating/creating-pricing-type-list.webp)
+If you set one selling provider for the whole site in **Settings → Payment Settings**, every new paid level uses it and the dialog skips **Sold through**. The card then reads "Sold through" followed by that provider. See [Payment Settings](/docs/settings/payment-settings/).
 
+Without a site-wide provider, pick one under **Sold through**. A provider row shows **Installed** or **Not Installed**. On the **Native Payment** row, click **Configure** to connect a gateway first. When you return from **Payment Settings**, your dialog is restored.
 
+The pricing type cannot be changed after the level is created, so choose with care. A free level can be [converted to paid](/docs/levels/free-levels#convert-a-free-level-to-paid) once.
 
-## Step 2: Complete the Level Details
+### Add the first price
 
-The **Level Details** tab shows summary cards for **Access Groups**, **Pricing** and **Members**, with the **Level Information** form below them.
+What you see under **First price** depends on the provider:
+
+- **FluentCart:** Enter an **Amount** and choose **Once**, **Monthly** or **Yearly**. Fluent Members creates a FluentCart product with the level's name and price, and links it. To use a product you already have, click **Use an existing product** and pick a variation that no other membership sells. Leave the amount empty to add prices later.
+- **Native Payment** (Pro): Enter an **Amount** and choose **Once**, **Monthly** or **Yearly**. It is charged with Stripe or PayPal. Leave the amount empty to add prices later.
+- **WooCommerce**, **FluentForms** or **Paymattic:** The dialog shows **Pricing · the next step**. After you create the level, its **Pricing** tab opens so you can link a product or payment form.
+- **Free signup** and **Assigned by you** show no price section.
+
+Click **Create membership**. The new level opens on its **Setup** tab, or on its **Pricing** tab when you still need to link a product or form.
+
+## Step 2: Set up the level
+
+The **Setup** tab shows summary cards for **Content Access**, **Pricing** and **Members**, with the **Level Information** form below them.
+
+<!-- TODO(screenshot): creating-3
+  screen: A level's Setup tab
+  state: summary cards above the Level Information form, Unsaved changes bar visible with Save
+  data: a paid level with a changed Description
+  highlight: the Save button in the bar
+  view: admin
+  alt: Screenshot of the Setup tab with the unsaved changes bar and an arrow pointing to Save
+-->
 
 | Field | Notes |
 |-------|-------|
 | **Title** | Change it at any time. Required. |
 | **Description** | Pricing shortcodes can show this to visitors. |
-| **Maximum Member** (Pro) | Corporate levels only. The account owner counts as one seat, so the minimum is 2. Leave it empty for unlimited seats. |
+| **Maximum Members** (Pro) | Team levels only. The account owner counts as one seat, so the minimum is 2. Leave it empty for unlimited seats. |
 | **Status** | **Active** (default) or **Inactive**. Pricing shortcodes skip inactive levels, and you can't assign members to them. |
 
-When you change a field, an **Unsaved Changes** bar appears at the top of the screen. Click **Save** to keep your changes.
+When you change a field, a bar appears with **Cancel** and **Save**. Click **Save** to keep your changes.
 
-The level's shortcode sits next to the page title. Click it to copy.
+If FluentCRM tag sync is on for the level, a **FluentCRM tag** line shows the synced tag and its state, with a **Manage in Settings** link.
 
 > [!Note]
-> If a level was created before pricing types existed, this form also asks for a **Pricing Type**. Choose one and save.
-
-![Screenshot of the Level Details tab with the Unsaved Changes bar and an arrow pointing to Save](/images/levels/creating/creating-level-details.webp)
-
+> If an older level has no pricing type yet, this form also asks for a **Pricing Type**. Choose one and save.
 
 ## Step 3: Finish the setup
 
-Your level is created, but it can't be sold or unlock content until you finish its pricing and show it on your site.
+A level can't be sold or unlock content until you finish these parts. A warning icon on the **Pricing** or **Content Access** tab shows what is missing.
 
-### Add pricing
+1. **Add pricing.** Open the **Pricing** tab. For [Native Payment](/docs/levels/pricing-native) (Pro), click **Add Pricing** and set up plans. For a [paywall](/docs/levels/pricing-paywalls), link a product or form. A [free level](/docs/levels/free-levels) only needs an access length.
+2. **Choose what it unlocks.** Use the [Content Access](/docs/levels/content-access) tab.
+3. **Show it on your site.** Copy the shortcode from **More actions → Copy shortcode**, or from the row's three-dot menu in the list. Paste `[fluent_membership_level id="X"]` into your pricing page, replacing `X` with the level's ID. Visitors then see the level's pricing card. To show several levels in one grid, use `[fluent_membership_levels]`.
 
-Fluent Members takes payment through the plugin or gateway you chose as the **Pricing Type**, not inside the level form. Open your new level and click the **Pricing** tab.
+For a level you assign by hand, open the **Members** tab and use [Assign Members](/docs/levels/members-on-a-level). The dialog needs the level to have a plan.
 
-- **FluentCart, FluentForms, Paymattic or WooCommerce** (Pro): Link the level to a product or form from that plugin. See [Price with paywalls](/docs/levels/pricing-paywalls).
-- **Native Payment** (Pro): Click **Add Pricing** and set up a plan with Stripe or PayPal. See [Price with native payments](/docs/levels/pricing-native).
-
-![Screenshot of the Pricing tab of a level with two plans and an arrow pointing to Add Pricing](/images/levels/creating/creating-pricing-tab.webp)
-
-
-### Display the level on your site
-
-1. Find the level's ID in the **ID** column of the levels list, or read it from the shortcode beside the page title on the level's screen.
-2. Paste the shortcode `[fluent_membership_level id="X"]` into your pricing page, replacing `X` with the ID. Visitors then see the level's pricing card and subscribe button.
-
-![Screenshot of a level's screen with an arrow pointing to the copyable shortcode beside the title](/images/levels/creating/creating-level-shortcode.webp)
-
-To show several levels in one grid, use `[fluent_membership_levels]`. See [Shortcodes](/reference/shortcodes).
-
-### Attach an Access Group
-
-[Attach an active Access Group](/docs/levels/attaching-access-groups) on the **Access Groups** tab, so members of the level can open your protected content.
-
-A warning icon stays beside the level's **Status** in the list until it has both a price visitors can buy and an active Access Group.
+Until a level has content and something to sell, its status badge in the list reads **No content yet** or **Not selling**.

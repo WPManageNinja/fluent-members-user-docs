@@ -1,75 +1,92 @@
 ---
 title: "Pricing: Paywalls"
-description: "Link a Membership Level to a product or payment form in FluentCart, FluentForms, Paymattic or WooCommerce."
+description: "Link a Membership Level to a product or payment form in FluentCart, WooCommerce, FluentForms or Paymattic."
 ---
 
 # Pricing: Paywalls
 
-A **Paywall** allows you to sell a membership level through a product or payment form you already have in another plugin. The visitor pays at that plugin's checkout, and Fluent Members grants the level once the payment completes.
+A **Paywall** sells a membership level through a product or payment form you already have in another plugin. The visitor pays at that plugin's checkout, and Fluent Members grants the level once the payment completes.
 
-**Requirements**
+You need:
 
-- A membership level must be created with a **FluentCart**, **FluentForms**, **Paymattic** or **WooCommerce** (Pro) pricing type. See [Creating a Level](/docs/levels/creating).
-- The matching plugin must be active on your site.
+- A level created with a **FluentCart**, **WooCommerce** (Pro), **FluentForms** or **Paymattic** pricing type. See [Creating a Level](/docs/levels/creating).
+- The matching plugin active on your site.
 
-Each level uses one provider, shown beside **Pricing Plan** on the **Pricing** tab.
+A level uses one provider, shown beside **Pricing Plan** on the **Pricing** tab as **Sold through**. Click **Change in Settings: Payments** there to change the site-wide selling provider for new levels.
 
-## Adding a paywall
+## Link a FluentCart or WooCommerce product
+
+On these levels, each price is one variation of a product. The product's price, trial and renewals come from the other plugin, and the level's **Pricing** tab lists them.
 
 1. Go to **Fluent Members → Membership Levels**, open the level and click the **Pricing** tab.
-2. Click **Add Pricing**.
+2. Click **Add Pricing**. The **Add a price to** drawer opens.
+3. Search under **Pick a variation** and select one. A variation that another level already sells shows **Sells** and the level's name, and your own shows **Already added**. Neither can be chosen.
+4. Set **Access**. A recurring price shows **Follows billing**, so access lasts while payments continue. A one-time price lets you choose **Lifetime**, **A set time after purchase** or **Until a fixed date**.
+5. Click **Link variation**.
 
-    ![Screenshot of the Pricing tab of a FluentCart level with no plans and an arrow pointing to Add Pricing](/images/levels/pricing-paywalls/pricing-paywalls-empty.webp)
+<!-- TODO(screenshot): pricing-paywalls-1
+  screen: A FluentCart level's Pricing tab with the Add a price drawer open
+  state: variation list with one selected, Access field visible
+  data: FluentCart product "Pro Plan" with a monthly and a yearly variation
+  highlight: the selected variation and the Link variation button
+  view: admin
+  alt: Screenshot of the Add a price drawer with a FluentCart variation selected
+-->
 
-3. Under **Select Pricing**, search for and choose a product or form. Items already linked to this level can't be chosen again.
+To make a new product, click **Create a new product in FluentCart** at the bottom of the drawer. It opens in a new tab. Publish the product, then come back and pick it.
 
-    ![Screenshot of the Add Pricing modal with the Select Pricing list open, showing FluentCart products](/images/levels/pricing-paywalls/pricing-paywalls-product-list.webp)
+Each linked price is a row on the **Pricing** tab:
 
-4. Click **Add**.
+| Part of the row | What it shows |
+|-----------------|---------------|
+| Up and down arrows | Change the display order. |
+| **Name** and product | The price's name, and the product it belongs to. A trial shows as a "free trial" note. |
+| Price and access | The amount from the other plugin and how long access lasts. **Expired** appears when a fixed end date has passed. |
+| Members | How many members hold the price. |
+| **On sale** switch | Turns sales of this price on or off. |
+| Three-dot menu | **Edit**, **Open in FluentCart** (or WooCommerce) and **Remove**. |
 
-The product appears on the **Pricing** tab, one row for each variation.
+Choose **Edit** to open **Edit price**. You can change **Name shown to members** and, for non-recurring prices, **Access**. Changes to access apply to new purchases. Current members keep their end dates. To change the amount or billing, use **Open in FluentCart** and edit the product there.
 
-![Screenshot of the Pricing tab with the linked FluentCart product rows](/images/levels/pricing-paywalls/pricing-paywalls-plan-rows.webp)
+**Remove** unlinks the price from the level. The product stays in its own plugin. You cannot remove a price that members still hold. Turn **On sale** off instead, so new sales stop and current members keep access.
 
-Repeat these steps to link more products to the same level.
+The tab warns you when:
+
+- The plugin has become inactive: "WooCommerce is not active, so these prices cannot be sold. Activate WooCommerce to sell this membership." (with your provider's name)
+- A linked variation was deleted or unpublished: "Some linked products or variations no longer exist or are not published."
+
+## Link a FluentForms or Paymattic form
+
+1. Open the level's **Pricing** tab and click **Add Pricing**.
+2. Under **Pick a payment form**, search for a form and select it. A form another level sells shows **Sells** and that level's name.
+3. Click **Link form**.
+
+<!-- TODO(screenshot): pricing-paywalls-2
+  screen: A FluentForms level's Pricing tab with the Add a price drawer open
+  state: Pick a payment form list with one form selected
+  data: a payment form with a single fixed price
+  highlight: the selected form and the Link form button
+  view: admin
+  alt: Screenshot of the Add a price drawer listing payment forms
+-->
 
 > [!Note]
-> FluentForms and Paymattic list only forms with a single fixed-price or recurring item. Forms with custom payment inputs, donation fields or multiple pricing options are not supported.
+> Only payment forms with a single fixed-price or recurring item are listed. Forms with custom payment inputs, donation fields or multiple pricing options are not supported.
 
-### Creating a FluentCart product from the modal
+Each linked form is a row with its name, price type and price. Use the arrows to change the order, and click **Save** in the bar that appears. The row's three-dot menu holds:
 
-On a FluentCart level, you can create the product without leaving the modal:
-
-1. Click **Create Pricing**.
-2. Enter a **Title** and **Price**.
-3. Click **Add**.
-
-This creates a one-time payment product. To go back to the list, click **Select an existing product**.
-
-![Screenshot of the Add Pricing modal with the Title and Price fields for a new FluentCart product](/images/levels/pricing-paywalls/pricing-paywalls-create-form.webp)
-
-On a FluentForms, Paymattic or WooCommerce level, the modal links to that plugin so you can create a form or product there.
-
-## Manage your products
-
-Each product or variation appears as its own row on the **Pricing** tab with its price. Click **View** to open the product's public page.
-
-To change the display order, drag a row by its handle and click **Save**. The row's menu holds these options:
-
-![Screenshot of linked FluentCart product rows on the Pricing tab with a row menu open and an arrow pointing to Copy Checkout Link](/images/levels/pricing-paywalls/pricing-paywalls-rows.webp)
-
-- **Edit:** Opens the product or form in its own plugin, in a new tab.
-- **Move up** and **Move down:** Change the display order without dragging.
-- **Copy Checkout Link:** Copies a direct link to the checkout.
-- **Delete:** Removes the link from this level. The product stays in its own plugin. If a product has several variations, this removes all of them from the level.
+- **Edit:** Opens the form in its own plugin, in a new tab.
+- **View:** Opens the form's public page.
+- **Copy Checkout Link:** Copies a direct link to the checkout, when one exists.
+- **Delete:** Removes the link from this level. The form stays in its own plugin.
 
 ## When the provider isn't available
 
 The **Pricing** tab tells you when a level can't be sold:
 
-- **FluentCart isn't active:** The tab offers **Install FluentCart**, and **Open plugin browser** for other options.
-- **Another provider's plugin isn't active:** The tab shows **The [plugin] plugin is not active.** with a **Go to Plugins** button.
-- **A WooCommerce level without Pro:** The tab shows **WooCommerce pricing requires Fluent Members Pro.**
+- **FluentCart isn't active:** The tab offers **Install FluentCart**, a free install that Fluent Members runs for you.
+- **Fluent Forms, Paymattic or WooCommerce isn't active:** The tab shows "The Fluent Forms plugin is not active." (with that plugin's name) and a **Go to Plugins** button.
+- **A WooCommerce level without Pro:** The tab shows "WooCommerce pricing requires FluentMembers Pro."
 
 ## Paywalls or Native Payment
 
@@ -79,4 +96,4 @@ The **Pricing** tab tells you when a level can't be sold:
 | Where visitors pay | The other plugin's checkout | Built into Fluent Members |
 | Best for | Sites already selling through that plugin | Sites that want one tool for membership and checkout |
 
-Next, [attach Access Groups](/docs/levels/attaching-access-groups) so buyers unlock your protected content.
+Next, choose what buyers unlock on the level's [Content Access](/docs/levels/content-access) tab.

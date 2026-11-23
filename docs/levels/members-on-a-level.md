@@ -11,7 +11,14 @@ The **Members** tab lists everyone with a membership record on a level, whatever
 
 Go to **Fluent Members → Membership Levels**, open the level and click the **Members** tab.
 
-![Screenshot of the Members tab with the member table and an arrow pointing to Assign Members](/images/levels/members-on-a-level/members-on-a-level-table.webp)
+<!-- TODO(screenshot): members-on-a-level-1
+  screen: A level's Members tab
+  state: member table with a few members and the Assign Members button visible
+  data: three members with Active, Trial and Expired statuses
+  highlight: the Assign Members button and the Status column
+  view: admin
+  alt: Screenshot of the Members tab with the member table and an arrow pointing to Assign Members
+-->
 
 The table has these columns:
 
@@ -21,7 +28,7 @@ The table has these columns:
 | **User** | Their name and email. |
 | **Role** | Their WordPress role. |
 | **Registered** | When their WordPress account was created, not when they joined this level. |
-| **Status** | Their latest membership status on this level. See [Membership Statuses](/reference/membership-statuses). |
+| **Status** | Their latest membership status on this level. |
 
 Use **Search by name or email** to find someone. Click a row to open that member's page.
 
@@ -29,14 +36,21 @@ Use **Search by name or email** to find someone. Click a row to open that member
 
 **Assign Members** gives users this level without taking payment. Use it for comps, staff or members you've moved from elsewhere.
 
-You need an active level with at least one plan. The button is unavailable on an inactive level, and a level with no plans shows **No pricing plans yet** with an **Add pricing plan** button.
+You need an active level with at least one plan. On an inactive level the button is unavailable, and hovering over it explains why. A level with no plans shows **No pricing plans yet** with an **Add pricing plan** button. On a team level, the button needs Fluent Members Pro.
 
 1. On the **Members** tab, click **Assign Members**.
-2. Under **Plan**, choose the plan to assign. The modal reminds you that no payment is taken and that access ends on the plan's expiry.
+2. Under **Plan**, choose the plan to assign. The dialog reminds you that no payment is taken and that access ends on the plan's expiry.
 3. Select the users. Search by name, email or username, or click **Load more** to see more.
-4. Click **Assign Members** at the bottom of the modal.
+4. Click **Assign Members** at the bottom of the dialog.
 
-![Screenshot of the Assign Members modal with a plan selected and two users ticked](/images/levels/members-on-a-level/members-on-a-level-assign-dialog.webp)
+<!-- TODO(screenshot): members-on-a-level-2
+  screen: Assign Members dialog
+  state: a plan selected and two users ticked, Current Levels column visible
+  data: two users, one already on another level
+  highlight: the Plan field and the Assign Members button
+  view: admin
+  alt: Screenshot of the Assign Members dialog with a plan selected and two users ticked
+-->
 
 The user list helps you choose:
 
@@ -44,9 +58,7 @@ The user list helps you choose:
 - A status tag beside a name shows their previous status on this level.
 - Users who are already active, on trial or suspended on this level aren't listed.
 
-You can assign up to 100 users at a time. If some can't be assigned, the modal lists each one with the reason, and the others are still assigned.
-
-Assigned members count as **Membership Assigned** for any [Level Integrations](/docs/levels/integrations) on the level.
+You can assign up to 100 users at a time. If some can't be assigned, the dialog lists each one with the reason, and the others are still assigned.
 
 > [!Note]
 > On a corporate level, each user you select becomes a separate Team owner with their own seats. See [Corporate Memberships](/docs/levels/corporate-memberships).
