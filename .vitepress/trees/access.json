@@ -3,57 +3,74 @@
   "kind": "hub",
   "title": "Protect Your Content",
   "mapRoot": "Fluent Members Content Protection",
-  "overview": "/docs/access-groups/",
-  "sidebarOverviewText": "Access groups overview",
+  "overview": "/docs/content-access/",
+  "sidebarOverviewText": "Content access overview",
   "hero": {
-    "eyebrow": "Access Groups",
+    "eyebrow": "Content Access",
     "title": "Decide who sees what on your site",
-    "lead": "An Access Group links your content to your Membership Levels. Pick what to protect, choose who gets in, and decide what everyone else sees. Protect a whole site, one post or a single block.",
+    "lead": "Each Membership Level has a Content Access tab that says what it unlocks. Share content between levels with Bundles, keep chosen pages public, and decide what everyone else sees. Protect a whole site, one post or a single block.",
     "actions": [
       {
-        "text": "Create an access group",
-        "link": "#create-an-access-group",
+        "text": "Protect content for a level",
+        "link": "#protect-content-for-a-level",
         "primary": true
       },
       {
         "text": "How protection works",
-        "link": "/docs/access-groups/how-protection-works"
+        "link": "/docs/content-access/how-protection-works"
       }
     ],
     "path": [
       "Fluent Members",
-      "Access Groups"
+      "Membership Levels",
+      "Open a level",
+      "Content Access"
     ]
   },
   "tasks": [
     {
+      "text": "Choose what a level unlocks",
+      "sub": "Content Access tab",
+      "to": "level-tab"
+    },
+    {
       "text": "Lock all my posts or pages",
-      "sub": "Restriction types",
+      "sub": "What you can protect",
       "to": "restriction-types"
     },
     {
+      "text": "Share content between levels",
+      "sub": "Bundles",
+      "to": "bundles"
+    },
+    {
+      "text": "Keep some pages open to everyone",
+      "sub": "Public content",
+      "to": "public"
+    },
+    {
       "text": "Lock one post or page",
-      "sub": "Access Groups panel in the editor",
+      "sub": "Membership access panel in the editor",
       "to": "per-post"
     },
     {
       "text": "Hide part of a post",
-      "sub": "Access Groups block",
+      "sub": "Restricted Content block",
       "to": "block"
     },
     {
       "text": "Send visitors to my pricing page",
-      "sub": "When Unauthorized",
-      "to": "unauthorized"
+      "sub": "Restricted content settings",
+      "to": "restricted"
     },
     {
       "text": "Tease the start of an article",
-      "sub": "Partial Content Lock",
+      "sub": "Teaser",
       "to": "partial"
     },
     {
       "text": "Release lessons over time",
-      "sub": "Content Drip",
+      "sub": "Release schedule",
       "to": "drip"
     },
     {
@@ -73,6 +90,9 @@
       "nodes": [
         "how-it-works",
         "restriction-types",
+        "bundles",
+        "public",
+        "restricted",
         "unauthorized",
         "drip",
         "per-post",
@@ -92,16 +112,16 @@
     {
       "id": "basics",
       "label": "How it fits together",
-      "where": "Fluent Members › Access Groups",
+      "where": "Fluent Members › Membership Levels › open a level › Content Access",
       "goal": "Understand which check decides whether someone gets in.",
       "nodes": [
         {
           "id": "how-it-works",
           "label": "How protection works",
-          "link": "/docs/access-groups/how-protection-works",
+          "link": "/docs/content-access/how-protection-works",
           "ux": "See the checks that decide who gets in.",
           "facts": [
-            "One group the member holds a level for is enough",
+            "One path is enough: own content, an included membership or a Bundle",
             "Membership must be Active or Trial and not expired",
             "Administrators skip all protection on your site",
             "Comments, feeds and REST responses are protected too"
@@ -110,48 +130,68 @@
       ]
     },
     {
-      "id": "group",
-      "label": "Inside an access group",
-      "where": "Fluent Members › Access Groups › open a group",
-      "goal": "Set what the group protects and what blocked visitors see.",
+      "id": "level",
+      "label": "On a level",
+      "where": "Fluent Members › Membership Levels › open a level › Content Access",
+      "goal": "Set what a level protects, share it with Bundles and schedule its release.",
       "nodes": [
         {
-          "id": "restriction-types",
-          "label": "Restriction types",
-          "link": "/docs/access-groups/protected-content",
-          "pro": "partial",
-          "proNote": "WooCommerce types need Pro",
-          "ux": "Choose what the group protects, one rule at a time.",
+          "id": "level-tab",
+          "label": "Content Access tab",
+          "link": "/docs/levels/content-access",
+          "inGroup": false,
+          "ux": "Connect the level to the content it unlocks.",
           "facts": [
-            "Core: Entire Website, All Posts, All Pages, All Categories Archive, All Tags Archive, Specific Post/Page/CPT/Taxonomy etc.",
-            "Custom taxonomy terms save but protect nothing",
-            "A parent category does not cover posts only in a child category",
-            "FluentCart Products: needs FluentCart",
-            "WooCommerce Products (Pro): needs WooCommerce",
-            "Excluded: exceptions for one rule"
+            "Add content, Leave out content, Release schedule",
+            "Include other memberships and add Bundles",
+            "FluentCommunity spaces and LMS courses"
+          ]
+        },
+        {
+          "id": "restriction-types",
+          "label": "What you can protect",
+          "link": "/docs/content-access/protected-content",
+          "pro": "partial",
+          "proNote": "WooCommerce products need Pro",
+          "ux": "Choose what a level protects, one rule at a time.",
+          "facts": [
+            "Whole groups: Entire website, All posts, All pages and more",
+            "Single items and categories",
+            "FluentCart products: needs FluentCart",
+            "WooCommerce products (Pro): needs WooCommerce",
+            "Leave out content for exceptions"
+          ]
+        },
+        {
+          "id": "bundles",
+          "label": "Bundles",
+          "link": "/docs/content-access/bundles",
+          "ux": "Share one set of content between several levels.",
+          "facts": [
+            "Create from a level, or Save as a bundle",
+            "Edited in a drawer from any level that uses it",
+            "Removing a Bundle from a level keeps it for other levels"
           ]
         },
         {
           "id": "unauthorized",
           "label": "What blocked visitors see",
-          "link": "/docs/access-groups/unauthorized-access",
-          "ux": "Redirect blocked visitors or show them a message.",
+          "link": "/docs/content-access/unauthorized-access",
+          "ux": "Give one level or Bundle its own message or redirect.",
           "facts": [
-            "Actions: Redirect to a specific URL, Display a custom message",
-            "Uses your global default until you click Customize for this rule",
-            "Revert to defaults removes the group's own settings"
+            "Uses the site default until you set its own",
+            "Redirect or message, per level or Bundle"
           ]
         },
         {
           "id": "drip",
-          "label": "Drip content",
-          "link": "/docs/access-groups/content-drip",
+          "label": "Release content over time",
+          "link": "/docs/content-access/content-drip",
           "ux": "Unlock content step by step after a member joins.",
-          "state": "off",
           "facts": [
-            "Timeline: After duration, Within duration",
-            "Delay in Days, Hours and Minutes",
-            "Leave Show This Content blank to cover the whole group"
+            "Release schedule: Immediately, After the member joins, On a date",
+            "Delay in days or weeks, up to 3650",
+            "Set on each content row"
           ]
         }
       ]
@@ -165,47 +205,44 @@
         {
           "id": "per-post",
           "label": "Protect a single post",
-          "link": "/docs/access-groups/per-post-restrictions",
+          "link": "/docs/content-access/per-post-restrictions",
           "ux": "Lock one post or page from its own sidebar.",
           "facts": [
-            "Access Groups panel on the Post or Page tab",
-            "Replaces the rules of your groups for that post",
-            "Works on any public post type"
+            "Membership access panel on the Post or Page tab",
+            "Lock an item or let extra memberships in",
+            "Works on custom post types"
           ]
         },
         {
           "id": "block",
-          "label": "Access Groups block",
-          "link": "/docs/access-groups/gutenberg-block/inserting",
-          "sidebar": "Access Groups block",
+          "label": "Restricted Content block",
+          "link": "/docs/content-access/gutenberg-block/inserting",
           "ux": "Keep a post public and hide only part of it.",
           "facts": [
-            "Any block: Access Groups panel on the Block tab",
-            "Several blocks: wrap them in the Access Groups block",
-            "No group ticked means visible to everyone"
+            "Any block: Membership access panel on the Block tab",
+            "Several blocks: wrap them in the Restricted Content block",
+            "Visible to Members of these memberships"
           ]
         },
         {
           "id": "nesting",
           "label": "Nesting & limits",
-          "link": "/docs/access-groups/gutenberg-block/nesting-and-limits",
+          "link": "/docs/content-access/gutenberg-block/nesting-and-limits",
           "ux": "Know what happens when restricted blocks sit inside each other.",
           "facts": [
             "Every layer must pass",
-            "Blocked blocks show fixed text or a partial preview",
-            "Exclude Content from Restriction does not apply to blocks"
+            "Where block restrictions stop"
           ]
         },
         {
           "id": "levels-block",
           "label": "Membership Levels block",
-          "link": "/docs/access-groups/gutenberg-block/membership-levels-block",
+          "link": "/docs/content-access/gutenberg-block/membership-levels-block",
           "ux": "Show your levels and plans on any page.",
           "facts": [
             "Levels to display",
-            "Plans per row: 1 to 4",
-            "Logged-in button and Logged-out button text",
-            "Display toggles for title, description and level name"
+            "Plans per row: 1 to 4, default 3",
+            "Logged-in button and Logged-out button text"
           ]
         }
       ]
@@ -213,20 +250,40 @@
     {
       "id": "site-wide",
       "label": "Site-wide settings",
-      "where": "Settings gear › Partial Content Lock",
-      "goal": "Show the start of protected content to win visitors over.",
+      "where": "Fluent Members › Settings › Public content and Restricted content",
+      "goal": "Keep chosen pages open and set what everyone else sees.",
       "nodes": [
         {
-          "id": "partial",
-          "label": "Partial content lock",
-          "link": "/docs/settings/partial-content-lock",
-          "ux": "Show a readable preview, then blur the rest.",
-          "state": "off",
+          "id": "public",
+          "label": "Public content",
+          "link": "/docs/content-access/public-content",
+          "ux": "Keep chosen pages, posts and categories open to everyone.",
           "facts": [
-            "Preview Length: 10 to 500 words, 50 by default",
-            "Overlay color, opacity and message",
-            "Button text, URL, colors and size",
-            "Turn it off per post or per block"
+            "Beats an Entire website rule",
+            "Saves as soon as you add an item",
+            "System pages stay public"
+          ]
+        },
+        {
+          "id": "restricted",
+          "label": "Restricted content settings",
+          "link": "/docs/content-access/restricted-content",
+          "ux": "Set the site-wide default for visitors without access.",
+          "facts": [
+            "Non-members see: A teaser, A message, Redirect",
+            "Archives and feeds: how protected posts appear in lists",
+            "Live preview as a visitor"
+          ]
+        },
+        {
+          "id": "partial",
+          "label": "Teaser (partial content lock)",
+          "link": "/docs/settings/partial-content-lock",
+          "ux": "Show a readable preview, then fade or blur the rest.",
+          "facts": [
+            "Teaser length: 10 to 500 words, 50 by default",
+            "Teaser style: Fade out or Blur, Blur by default",
+            "Set in Restricted content settings"
           ]
         }
       ]

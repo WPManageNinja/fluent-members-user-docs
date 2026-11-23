@@ -16,6 +16,7 @@ const docsSidebar = [
       { text: "Install", link: '/docs/getting-started/installation' },
       { text: "Activate Pro", link: '/docs/getting-started/installation-pro' },
       { text: "Quick start", link: '/docs/getting-started/quick-start' },
+      { text: "Test and live mode <span class=\"fm-pro\">Pro</span>", link: '/docs/getting-started/test-and-live-mode' },
       { text: "Admin tour", link: '/docs/getting-started/admin-navigation' },
       { text: "Glossary", link: '/docs/getting-started/glossary' }
     ]
@@ -26,31 +27,36 @@ const docsSidebar = [
     items: [
       { text: "Overview", link: '/docs/levels/' },
       { text: "Create a level", link: '/docs/levels/creating' },
+      { text: "Free levels", link: '/docs/levels/free-levels' },
       { text: "Native payments <span class=\"fm-pro\">Pro</span>", link: '/docs/levels/pricing-native' },
       { text: "Paywalls", link: '/docs/levels/pricing-paywalls' },
-      { text: "Access groups", link: '/docs/levels/attaching-access-groups' },
+      { text: "Content access tab", link: '/docs/levels/content-access' },
       { text: "Upgrade paths <span class=\"fm-pro\">Pro</span>", link: '/docs/levels/upgrade-paths' },
-      { text: "Corporate <span class=\"fm-pro\">Pro</span>", link: '/docs/levels/corporate-memberships' }
+      { text: "Corporate <span class=\"fm-pro\">Pro</span>", link: '/docs/levels/corporate-memberships' },
+      { text: "Automations", link: '/docs/levels/automations' }
     ]
   },
   {
     text: "Protect Content",
     collapsed: true,
     items: [
-      { text: "Overview", link: '/docs/access-groups/' },
-      { text: "How protection works", link: '/docs/access-groups/how-protection-works' },
-      { text: "Restriction types", link: '/docs/access-groups/protected-content' },
-      { text: "Blocked visitors", link: '/docs/access-groups/unauthorized-access' },
-      { text: "Drip content", link: '/docs/access-groups/content-drip' },
-      { text: "Single post", link: '/docs/access-groups/per-post-restrictions' },
+      { text: "Overview", link: '/docs/content-access/' },
+      { text: "How protection works", link: '/docs/content-access/how-protection-works' },
+      { text: "What you can protect", link: '/docs/content-access/protected-content' },
+      { text: "Bundles", link: '/docs/content-access/bundles' },
+      { text: "Public content", link: '/docs/content-access/public-content' },
+      { text: "Restricted content", link: '/docs/content-access/restricted-content' },
+      { text: "Blocked visitors", link: '/docs/content-access/unauthorized-access' },
+      { text: "Release schedule", link: '/docs/content-access/content-drip' },
+      { text: "Single post", link: '/docs/content-access/per-post-restrictions' },
       { text: "Partial lock", link: '/docs/settings/partial-content-lock' },
       {
         text: 'Blocks',
         collapsed: true,
         items: [
-          { text: 'Access Groups block', link: '/docs/access-groups/gutenberg-block/inserting' },
-          { text: 'Nesting', link: '/docs/access-groups/gutenberg-block/nesting-and-limits' },
-          { text: 'Levels block', link: '/docs/access-groups/gutenberg-block/membership-levels-block' }
+          { text: 'Restricted Content block', link: '/docs/content-access/gutenberg-block/inserting' },
+          { text: 'Nesting', link: '/docs/content-access/gutenberg-block/nesting-and-limits' },
+          { text: 'Levels block', link: '/docs/content-access/gutenberg-block/membership-levels-block' }
         ]
       }
     ]
@@ -103,7 +109,8 @@ const docsSidebar = [
       { text: "One-time", link: '/docs/billing/one-time' },
       { text: "Filter & search", link: '/docs/billing/filters-and-search' },
       { text: "Refunds", link: '/docs/billing/refunds' },
-      { text: "Cancel", link: '/docs/billing/cancelling-a-subscription' }
+      { text: "Cancel", link: '/docs/billing/cancelling-a-subscription' },
+      { text: "Gateway follow-ups", link: '/docs/billing/gateway-follow-ups' }
     ]
   },
   {
@@ -127,7 +134,8 @@ const docsSidebar = [
       { text: "WooCommerce <span class=\"fm-pro\">Pro</span>", link: '/docs/integrations/woocommerce' },
       { text: "FluentCRM", link: '/docs/integrations/fluentcrm' },
       { text: "Fluent Support", link: '/docs/integrations/fluent-support' },
-      { text: "FluentCommunity", link: '/docs/integrations/fluent-community' }
+      { text: "FluentCommunity", link: '/docs/integrations/fluent-community' },
+      { text: "LMS courses", link: '/docs/integrations/lms-courses' }
     ]
   },
   {

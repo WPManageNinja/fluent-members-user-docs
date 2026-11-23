@@ -8,22 +8,69 @@
   "hero": {
     "eyebrow": "Membership Levels",
     "title": "Decide what members pay and what they unlock",
-    "lead": "Each level combines a price, the content it opens and the people who hold it. Create one, price it, attach its Access Groups, then publish it on your pricing page.",
-    "path": ["Fluent Members", "Membership Levels"],
+    "lead": "Each level combines a price, the content it opens and the people who hold it. Create one, price it, choose what it unlocks on its Content Access tab, then publish it on your pricing page.",
+    "path": [
+      "Fluent Members",
+      "Membership Levels"
+    ],
     "actions": [
-      { "text": "Create a level", "link": "/docs/levels/creating", "primary": true },
-      { "text": "Set up in order", "link": "#set-up-a-level-in-order" }
+      {
+        "text": "Create a level",
+        "link": "/docs/levels/creating",
+        "primary": true
+      },
+      {
+        "text": "Set up in order",
+        "link": "#set-up-a-level-in-order"
+      }
     ]
   },
   "tasks": [
-    { "text": "Create my first level", "sub": "Title, type, pricing type", "to": "creating" },
-    { "text": "Take payments with Stripe or PayPal", "sub": "Native Payment plans", "to": "pricing-native" },
-    { "text": "Sell through another plugin", "sub": "FluentCart, FluentForms, Paymattic, WooCommerce", "to": "pricing-paywalls" },
-    { "text": "Choose what a level unlocks", "sub": "Access Groups", "to": "attaching-access-groups" },
-    { "text": "Give someone access without payment", "sub": "Assign Members", "to": "members-on-a-level" },
-    { "text": "Let members move to a better plan", "sub": "Upgrade paths", "to": "upgrade-paths" },
-    { "text": "Sell one membership to a whole team", "sub": "Corporate level and seats", "to": "corporate-memberships" },
-    { "text": "Add members to a community", "sub": "Spaces and courses in FluentCommunity", "to": "integrations" }
+    {
+      "text": "Create my first level",
+      "sub": "Name and how people get it",
+      "to": "creating"
+    },
+    {
+      "text": "Offer a free tier",
+      "sub": "Free signup and access length",
+      "to": "free-levels"
+    },
+    {
+      "text": "Take payments with Stripe or PayPal",
+      "sub": "Native Payment plans",
+      "to": "pricing-native"
+    },
+    {
+      "text": "Sell through another plugin",
+      "sub": "FluentCart, FluentForms, Paymattic, WooCommerce",
+      "to": "pricing-paywalls"
+    },
+    {
+      "text": "Choose what a level unlocks",
+      "sub": "Content Access tab",
+      "to": "content-access"
+    },
+    {
+      "text": "Give someone access without payment",
+      "sub": "Assign Members",
+      "to": "members-on-a-level"
+    },
+    {
+      "text": "Let members move to a better plan",
+      "sub": "Upgrade paths",
+      "to": "upgrade-paths"
+    },
+    {
+      "text": "Sell one membership to a whole team",
+      "sub": "Team level and seats",
+      "to": "corporate-memberships"
+    },
+    {
+      "text": "Start a FluentCRM automation for a level",
+      "sub": "Automations tab",
+      "to": "automations"
+    }
   ],
   "branches": [
     {
@@ -36,15 +83,49 @@
           "id": "manage",
           "label": "Levels list",
           "link": "/docs/levels/#the-membership-levels-list",
-          "ux": "See every level, its setup state and its shortcode.",
-          "facts": ["Row menu: Edit, Duplicate, Delete", "Search by ID or title"]
+          "ux": "See every level, its price, what it unlocks and its status.",
+          "facts": [
+            "Columns: Membership, Prices, Unlocks, Members, Status",
+            "Row menu: Edit, Duplicate, Copy shortcode, Delete",
+            "Search by ID or title"
+          ]
         },
         {
           "id": "creating",
           "label": "Create a level",
           "link": "/docs/levels/creating",
-          "ux": "Name the level, pick its type and choose how it is sold.",
-          "facts": ["Type: Individual or Corporate", "Pricing Type cannot change later"]
+          "ux": "Name the level and choose how people get it.",
+          "facts": [
+            "Free signup, Paid, Team (Pro), Assigned by you",
+            "Three steps: create, set up, finish"
+          ]
+        },
+        {
+          "id": "free-levels",
+          "label": "Free levels",
+          "link": "/docs/levels/free-levels",
+          "ux": "Let anyone join without paying, then convert to paid later.",
+          "facts": [
+            "Access length: Lifetime or Fixed length",
+            "No pricing plans needed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "setup",
+      "label": "Setup tab",
+      "where": "Open a level › Setup",
+      "goal": "Name the level and see at a glance what still needs attention.",
+      "nodes": [
+        {
+          "id": "setup-tab",
+          "label": "Set up the level",
+          "link": "/docs/levels/creating#step-2-set-up-the-level",
+          "ux": "Edit the name, description and status, with summary cards above.",
+          "facts": [
+            "Warning icon on Pricing or Content Access means not set up yet"
+          ]
         }
       ]
     },
@@ -60,7 +141,10 @@
           "link": "/docs/levels/pricing-native",
           "pro": true,
           "ux": "Sell plans through your own Stripe or PayPal checkout.",
-          "facts": ["Price Type: Recurring or One-time", "Add several plans to one level"]
+          "facts": [
+            "Recurring or one-time plans",
+            "Add several plans to one level"
+          ]
         },
         {
           "id": "pricing-paywalls",
@@ -69,22 +153,29 @@
           "pro": "partial",
           "proNote": "WooCommerce paywalls need Pro.",
           "ux": "Grant a level when someone buys in another plugin.",
-          "facts": ["FluentCart, FluentForms, Paymattic, WooCommerce", "Each level uses one provider"]
+          "facts": [
+            "FluentCart, WooCommerce, FluentForms, Paymattic"
+          ]
         }
       ]
     },
     {
       "id": "access",
-      "label": "Access Groups tab",
-      "where": "Open a level › Access Groups",
-      "goal": "Decide which protected content this level opens.",
+      "label": "Content Access tab",
+      "where": "Open a level › Content Access",
+      "goal": "Decide which content this level opens.",
       "nodes": [
         {
-          "id": "attaching-access-groups",
-          "label": "Attach Access Groups",
-          "link": "/docs/levels/attaching-access-groups",
+          "id": "content-access",
+          "label": "Content Access tab",
+          "link": "/docs/levels/content-access",
           "ux": "Connect the level to the content it unlocks.",
-          "facts": ["Link Existing Group or Add New", "Edit or Unlink each group"]
+          "facts": [
+            "Add content and Leave out content",
+            "Release schedule per row",
+            "Include other memberships and add Bundles",
+            "FluentCommunity spaces and LMS courses"
+          ]
         }
       ]
     },
@@ -99,7 +190,9 @@
           "label": "Members on a level",
           "link": "/docs/levels/members-on-a-level",
           "ux": "Review everyone on the level and assign more people without payment.",
-          "facts": ["Lists every membership status", "Assign up to 100 users at a time"]
+          "facts": [
+            "Assign Members"
+          ]
         },
         {
           "id": "corporate-memberships",
@@ -107,14 +200,17 @@
           "link": "/docs/levels/corporate-memberships",
           "pro": true,
           "ux": "Let one Team owner invite colleagues into shared seats.",
-          "facts": ["Maximum Member sets the seat limit", "The owner counts as one seat"]
+          "facts": [
+            "Seats per team sets the limit",
+            "The owner counts as one seat"
+          ]
         }
       ]
     },
     {
       "id": "more",
       "label": "More tabs",
-      "where": "Open a level › Upgrade Paths or Integrations",
+      "where": "Open a level › Upgrade Paths, Automations or Integrations",
       "goal": "Connect plans to each other and the level to other plugins.",
       "nodes": [
         {
@@ -123,14 +219,31 @@
           "link": "/docs/levels/upgrade-paths",
           "pro": true,
           "ux": "Offer members a route from one plan to another, with a credit.",
-          "facts": ["Native Payment levels only", "Discount Amount and Prorate"]
+          "facts": [
+            "Native Payment levels only",
+            "Discount and proration"
+          ]
+        },
+        {
+          "id": "automations",
+          "label": "Automations",
+          "link": "/docs/levels/automations",
+          "ux": "See the FluentCRM automations that use this level, and publish or pause them.",
+          "facts": [
+            "Shown only when FluentCRM is active",
+            "Stats per automation",
+            "Publish, pause or open in FluentCRM"
+          ]
         },
         {
           "id": "integrations",
           "label": "Level integrations",
           "link": "/docs/levels/integrations",
-          "ux": "Add members to FluentCommunity spaces and courses automatically.",
-          "facts": ["Needs FluentCommunity active", "Triggers: Membership Assigned, Membership Renewed"]
+          "ux": "Run an action in another plugin when someone joins, renews or loses the level.",
+          "facts": [
+            "Shown only when a plugin has registered an integration",
+            "Each action is a feed"
+          ]
         }
       ]
     }
