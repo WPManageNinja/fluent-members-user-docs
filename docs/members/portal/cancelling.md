@@ -5,37 +5,36 @@ description: "How members cancel a membership or subscription from the Member Po
 
 # Cancel a Membership
 
-Members can cancel their own membership from the **Member Portal** without contacting you. Depending on the membership, they end it right away or keep access until it expires.
+Members can cancel their own membership from the **Member Portal** without contacting you. Depending on the membership, they end it right away, keep access until it expires, or stop a subscription at the end of the billing period.
 
 ## Cancel from the portal
 
 1. Open the Member Portal and click **Manage** on the membership.
-
-    ![Screenshot of the Member Portal with an arrow on the Manage button of a membership card](/images/members/cancel-memberships/manage-1.webp)
-
-2. Click **More Actions**, then **Cancel Membership**. For a subscription billed through Fluent Members Stripe or PayPal, the item is **Cancel Subscription**.
-
-    ![Screenshot of the Membership Details page with the More Actions menu open and an arrow on Cancel Membership](/images/members/cancel-memberships/cancelling-more-action.webp)
-
-3. Answer the dialog that opens. See the next section for which one the member gets.
+2. Click **More Actions**, then **Cancel Membership**. For a subscription billed through Fluent Members Stripe or PayPal, or a live FluentCart or WooCommerce subscription, the item is **Cancel Subscription**.
+3. Answer the dialog that opens. The next section shows which one the member gets.
 
 The item is only there for an **Active** or **Trial** membership. For a subscription billed through Fluent Members (Pro), it shows only while the subscription can still be cancelled.
 
-If the member already chose to keep access until the end date, **More Actions** also holds **Undo Cancellation**. See [Cancel Membership, with a choice](#cancel-membership-with-a-choice).
+<!-- TODO(screenshot): cancelling-1
+  screen: Member Portal → Manage → More Actions
+  state: menu open with Cancel Subscription highlighted
+  data: a member with a Stripe subscription
+  highlight: Cancel Subscription item
+  view: frontend
+  alt: Screenshot of the Membership Details page with the More Actions menu open and an arrow on Cancel Subscription
+-->
 
 ## Which dialog appears
 
 ### Plain confirmation
 
-A membership that does not meet the conditions above gets a simple question, "Are you sure you want to cancel this membership?". Clicking **Yes, Cancel** ends the membership now, and **No** closes the dialog.
-
-![Screenshot of the dialog asking Are you sure you want to cancel this membership, with No and Yes, Cancel buttons](/images/members/cancel-memberships/cancel-memberships-2.webp)
+A membership that does not meet the conditions below gets a simple question, "Are you sure you want to cancel this membership?". **Yes, Cancel** ends the membership now, and **No** closes the dialog.
 
 ### Cancel Membership, with a choice
 
 A manually added or migrated membership gets a **Cancel Membership** dialog with a **Cancellation Mode** when it still has time left. The membership must:
 
-- Come from **Manual**, or from a migration from PMPro, MemberPress or Restrict Content Pro.
+- Come from **Manual**, or from a migration from Paid Memberships Pro, MemberPress or Kadence Memberships.
 - Have an end date in the future.
 - Have no live subscription, and not be a corporate team seat.
 
@@ -46,18 +45,21 @@ The dialog offers two options:
 
 The confirm button takes the name of the selected option, and **Go Back** closes the dialog.
 
-![Screenshot of the Cancel Membership dialog with Keep Until Expiry selected, Cancel Immediately beside it and an arrow pointing to the Keep Until Expiry button](/images/members/cancel-memberships/cancelling-keep-until-expiry-dialog.webp)
+<!-- TODO(screenshot): cancelling-2
+  screen: Member Portal → Cancel Membership dialog
+  state: Keep Until Expiry selected, Cancel Immediately beside it
+  data: a member with a manual membership that has an end date in the future
+  highlight: Keep Until Expiry button
+  view: frontend
+  alt: Screenshot of the Cancel Membership dialog with Keep Until Expiry selected and Cancel Immediately beside it
+-->
 
 With **Keep Until Expiry**, the member sees "Cancellation scheduled. You keep access until" the date. The page then reads **Your membership is scheduled to end on** the date, and the membership stays active until then.
 
-![Screenshot of the Membership Details page with a notice reading Your membership is scheduled to end on January 10, 2027 and the status still Active](/images/members/cancel-memberships/cancelling-scheduled.webp)
-
-While a cancellation is scheduled, the member has two choices in **More Actions**:
+While a cancellation is scheduled, **More Actions** holds two choices:
 
 - **Undo Cancellation:** Puts the membership back as it was. The page confirms "Cancellation undone. Your membership stays active until" the date.
 - **Cancel Membership:** Opens a plain confirmation that says "Your membership is already scheduled to end on" the date and "Cancelling now revokes your access immediately."
-
-![Screenshot of the More Actions menu open with Cancel Membership and an arrow pointing to Undo Cancellation](/images/members/cancel-memberships/cancelling-undo-cancellation.webp)
 
 ### Cancel Subscription (Pro)
 
@@ -68,14 +70,17 @@ A subscription billed through Fluent Members Stripe or PayPal gets a **Cancel Su
 
 The confirm button takes the name of the selected mode, and **Go Back** closes the dialog.
 
-With **End of Billing Period**, the membership stays **Active** until that date. **Billing Status** shows **Scheduled for Cancellation**, and the member can take it back with [Renew Membership](/docs/members/portal/renewing-a-membership).
+With **End of Billing Period**, the membership stays **Active** until that date. **Billing Status** shows **Scheduled for Cancellation** with a **Cancellation Date**, and the member can take it back with [Renew Membership](/docs/members/portal/renewing-a-membership).
 
-![Screenshot of the Cancel Subscription dialog with End of Billing Period selected, Cancel Immediately beside it and an arrow pointing to the End of Billing Period button](/images/members/cancel-memberships/cancelling-subscription-dialog.webp)
+If Fluent Members has no gateway ID for the subscription, the dialog opens with a note. A Stripe record reads "We could not confirm your Stripe subscription. If you are charged again after cancelling, please contact us." A PayPal record asks the member to also cancel in their PayPal account. See [Gateway Follow-ups](/docs/billing/gateway-follow-ups).
 
+### FluentCart and WooCommerce subscriptions (Pro)
+
+A live FluentCart or WooCommerce subscription gets a plain confirmation: "Cancel your subscription? No further payments will be taken, and you keep access until" the date. Cancelling stops the store subscription and the member keeps access until the date. A payment plan (installments) in FluentCart cannot be cancelled by the member, and the page says to contact the store.
 
 ### Migrated PayPal subscriptions
 
-A subscription migrated from an older PayPal setup gets the plain confirmation with a warning: "Billing is managed in your PayPal account. Cancelling here ends your membership, but PayPal keeps charging until you cancel the subscription in PayPal." Cancelling ends the membership, but the member must also cancel the subscription in their PayPal account. The page links there with **Open PayPal**, which opens in a new tab.
+A subscription migrated from an older PayPal setup gets the plain confirmation with a warning: "Billing is managed in your PayPal account. Cancelling here ends your membership, but PayPal keeps charging until you cancel the subscription in PayPal." The member must also cancel in their PayPal account. The page links there with **Open PayPal**, which opens in a new tab.
 
 ## What happens after cancelling
 
@@ -83,8 +88,9 @@ A subscription migrated from an older PayPal setup gets the plain confirmation w
 - **Stripe and PayPal billing** (Pro): Fluent Members tells the gateway to stop the subscription.
 - **Corporate memberships** (Pro): If the owner's membership is cancelled, the team's seats are cancelled too.
 - **Access:** Protected content stops being available when the membership ends.
+- **Email:** The **Subscription Cancelled** [email notification](/docs/settings/email-configuration/email-notifications) is on by default.
 
 > [!Note]
-> Cancelling in the portal only stops billing for subscriptions Fluent Members bills itself. It doesn't cancel a subscription in a connected plugin such as FluentCart, so cancel those in that plugin as well.
+> Cancelling in the portal does not cancel a subscription in Fluent Forms or Paymattic, so cancel those in that plugin as well.
 
-To cancel a member from your side, see [Suspend or Cancel a Member](/docs/members/suspending-and-cancelling).
+To cancel a member from your side, see [Suspending & Cancelling](/docs/members/suspending-and-cancelling).

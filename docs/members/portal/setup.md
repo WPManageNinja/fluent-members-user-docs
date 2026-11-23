@@ -14,16 +14,21 @@ Use this when you don't have a portal page yet. Fluent Members builds it for you
 1. Go to **Fluent Members → Settings → General Settings**.
 2. Find **Generate Portal Page** and click the **+** button next to the page selector.
 
-    ![Screenshot of General Settings with an arrow on the plus button beside the Generate Portal Page selector](/images/members/portal-setup/generate-portal-page-1.webp)
+    <!-- TODO(screenshot): portal-setup-1
+      screen: Settings → General Settings
+      state: Generate Portal Page row with the plus button highlighted
+      data: no portal page selected
+      highlight: plus button beside the page selector
+      view: admin
+      alt: Screenshot of General Settings with an arrow on the plus button beside the Generate Portal Page selector
+    -->
 
-3. In the **Create Portal Page** modal, type a **Page Name**. It is required, and the field suggests "Member Portal".
+3. In the **Create Portal Page** modal, type a **Page Name**. It is required.
 4. Click **Create Page**.
-
-    ![Screenshot of the Create Portal Page modal with a page name typed and an arrow pointing to the Create Page button](/images/members/portal-setup/create-portal-page-modal.webp)
 
 Fluent Members publishes a new page with the shortcode already in it and selects it as your portal page. If a published portal page already exists, you get the message **Portal page already exists.** and no second page is created.
 
-Below the selector, **Edit** opens the page in the WordPress editor and **View** opens it on your site.
+Below the selector, **Edit** opens the page in the WordPress editor and **View** opens it on your site. The shortcode badge copies `[fluent_member_portal]` when you click it.
 
 ## Use an existing page
 
@@ -37,16 +42,11 @@ Use this when the portal should live on a page you already have.
 
 2. Publish the page.
 3. Go to **Fluent Members → Settings → General Settings**.
-4. Under **Generate Portal Page**, click the page selector, then search for your page or pick it from the list. Each page shows its ID, such as **Member Portal (288)**.
-
+4. Under **Generate Portal Page**, click the page selector, then search for your page or pick it from the list.
 5. Click **Save Settings**.
 
 > [!Note]
 > Add the shortcode to one page only. It renders on every page you place it on, but plugin links such as the `{{portal_url}}` email smartcode go to the page selected in settings. If none is selected, they go to a published page that holds the shortcode, and to your home page when there is none.
-
- ![Screenshot of the Generate Portal Page selector open with the Member Portal page highlighted in the list](/images/members/portal-setup/select-existing-portal-page.webp)
-
-
 
 ## Link members to the portal
 
@@ -57,6 +57,10 @@ Give members a way to reach the page:
 
 Fluent Members also uses this address on the checkout success page (**Go to Portal**) and on the corporate invitation join page.
 
+## Set a pricing page
+
+The portal sends members to your pricing page in two places: **Browse memberships** when they hold no memberships, and **View plans** on a membership that has lapsed. Both appear only when a published pricing page is selected under **Generate Pricing Page** in **General Settings**. See [Pricing Page](/docs/selling/pricing-page).
+
 ## Show the portal in a customer account
 
 You don't need a separate page if members already use a store account. The same portal appears as a **Membership** item in these accounts:
@@ -64,12 +68,8 @@ You don't need a separate page if members already use a store account. The same 
 - **FluentCart:** In the customer dashboard, when FluentCart is active.
 - **WooCommerce** (Pro): In **My Account**, when WooCommerce is active.
 
-The profile header and its **Logout** menu are hidden there, because the store account has its own.
+The profile header and its **Log Out** menu are hidden there, because the store account has its own.
 
 ## What members get
 
-Members see their profile, stats and a card for each membership:
-
-![Screenshot of the Member Portal with the member profile, Stats Overview cards and two membership cards](/images/members/portal-setup/memeber-dashboard-2.webp)
-
-Read [What Members See](/docs/members/portal/what-members-see) for each part of this screen.
+Members see their profile, stats and a card for each membership. Read [What Members See](/docs/members/portal/what-members-see) for each part of this screen.

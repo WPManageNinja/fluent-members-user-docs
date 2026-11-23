@@ -15,8 +15,9 @@ description: "How members replace the card on a Stripe subscription from the Mem
 - The membership has a subscription billed through Fluent Members Stripe.
 - The subscription is active, trialing, past due, unpaid or paused.
 - The subscription isn't scheduled to cancel.
+- The subscription has a Stripe subscription ID, and its payment mode matches your site's [test or live mode](/docs/getting-started/test-and-live-mode).
 
-PayPal subscriptions don't have this action. Memberships sold through FluentCart, WooCommerce, Fluent Forms or Paymattic are also excluded, because those plugins hold the payment details.
+PayPal subscriptions don't have this action. Memberships sold through FluentCart or WooCommerce use an **Update Payment Method** link in their **Billing** section that opens the store, and Fluent Forms and Paymattic memberships have none, because those plugins hold the payment details.
 
 A member whose membership was suspended after a failed payment can still use it, as long as the subscription meets these rules.
 
@@ -27,9 +28,16 @@ When a payment has failed, the details page also tells the member to act. A past
 1. Open the Member Portal and click **Manage** on the membership.
 2. Click **More Actions**, then **Update Payment Method**.
 
-    ![Screenshot of the More Actions menu open with Cancel Subscription, Upgrade Plan and an arrow pointing to Update Payment Method](/images/members/portal/updating-payment-method/updating-payment-method-menu.webp)
+    <!-- TODO(screenshot): updating-payment-method-1
+      screen: Member Portal → Manage → More Actions
+      state: menu open with Cancel Subscription, Upgrade Plan and Update Payment Method
+      data: a member with a Stripe subscription and an upgrade path
+      highlight: Update Payment Method item
+      view: frontend
+      alt: Screenshot of the More Actions menu open with an arrow pointing to Update Payment Method
+    -->
 
-3. Enter the new card details in the **Update Payment Method** dialog.
+3. Enter the new card details in the **Update Payment Method** dialog, which says "Use a new card for future subscription renewals."
 
     <!-- TODO(screenshot): updating-payment-method-2
       screen: Member Portal, Update Payment Method dialog

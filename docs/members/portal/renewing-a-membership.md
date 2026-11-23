@@ -14,16 +14,23 @@ Members see **Renew Membership** at the top right of the **Membership Details** 
 - **Scheduled to cancel:** The member chose **End of Billing Period** when [cancelling](/docs/members/portal/cancelling), and the subscription hasn't ended yet.
 - **Expired:** The subscription has expired, and its pricing plan is still active on the level.
 
-The payment gateway must also be active and configured on your site. If the plan was removed or turned off, an expired subscription shows no button, and the member has to buy again from your pricing page.
+The payment gateway must also be active and configured on your site, and the subscription's payment mode must match your site's [test or live mode](/docs/getting-started/test-and-live-mode). If the plan was removed or turned off, an expired subscription shows no button, and the member has to buy again from your pricing page.
 
-Memberships sold through FluentCart, WooCommerce, Fluent Forms or Paymattic don't have this button.
+Memberships sold through FluentCart or WooCommerce show a **Renew Subscription** link in their **Billing** section instead, which opens the store. Fluent Forms and Paymattic memberships have neither.
 
 ## Renew the membership
 
 1. Open the Member Portal and click **Manage** on the membership.
 2. Click **Renew Membership**.
 
-    ![Screenshot of the Membership Details page with a scheduled cancellation notice, Billing Status Scheduled for Cancellation and an arrow pointing to the Renew Membership button](/images/members/portal/renewing-a-membership/renewing-a-membership-button.webp)
+    <!-- TODO(screenshot): renewing-a-membership-1
+      screen: Member Portal → Manage on a subscription scheduled to cancel
+      state: scheduled cancellation notice, Billing Status Scheduled for Cancellation and the Renew Membership button
+      data: a Stripe subscription cancelled with End of Billing Period
+      highlight: Renew Membership button
+      view: frontend
+      alt: Screenshot of the Membership Details page with a scheduled cancellation notice and the Renew Membership button
+    -->
 
 There is no confirmation dialog. The click starts the renewal straight away, and what follows depends on the case:
 
@@ -33,7 +40,7 @@ There is no confirmation dialog. The click starts the renewal straight away, and
 | PayPal, scheduled to cancel | The member goes to checkout to subscribe again through PayPal. |
 | Expired, Stripe or PayPal | The member goes to checkout to pay for the same plan. |
 
-If the renewal fails, the error shows at the top of the page.
+If the renewal fails, the error shows at the top of the page. When a renewal payment goes through but the membership cannot be renewed, Fluent Members starts a refund where it can and tells the member to contact you before trying again.
 
 ## Failed payments
 
