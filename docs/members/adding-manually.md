@@ -17,29 +17,28 @@ To add several people to one level at once, use [Members on a level](/docs/level
 ## Add the membership
 
 1. Go to **Fluent Members → Members**. If the person holds no membership yet, click the **No Membership** tab, because the default tab lists only people who hold one.
-
-    ![Screenshot of the Members screen on the No Membership tab](/images/members/adding-manually/adding-manually-no-membership-tab.webp)
-
 2. Click the person's row to open [Member Details](/docs/members/detail).
 3. Click **Add Membership**.
-
-    ![Screenshot of Member Details with an arrow pointing to the Add Membership button](/images/members/adding-manually/adding-manually-add-button.webp)
-
-4. In the **Membership Level** dialog, click a level to expand it and see its plans. The header counts the levels and plans available, such as "7 levels · 14 plans available", and each level shows its plan count. Each plan shows its name, ID, level, trial or setup fee if it has one, price, and type.
+4. In the **Membership Level** dialog, click a level to expand it and see its plans. Each level shows its plan count. Each plan shows its name, ID, level, a trial or setup fee if it has one, its price, and whether it is a **Subscription** or **One-time**.
 5. Click **Assign** on the plan you want. **Cancel** closes the dialog without adding anything.
 
-    ![Screenshot of the Membership Level dialog with the Business level expanded and an arrow pointing to Assign](/images/members/adding-manually/adding-manually-assign-plan.webp)
+<!-- TODO(screenshot): adding-manually-1
+  screen: Members → a member → Add Membership
+  state: Membership Level dialog with one level expanded and its plans listed
+  data: a level with a one-time plan and a subscription plan
+  highlight: Assign button
+  view: admin
+  alt: Screenshot of the Membership Level dialog with a level expanded and an arrow pointing to Assign
+-->
 
-The dialog closes and the new row appears in the **Memberships** table with the status **Active** and the provider **Manual**. No payment is taken, even if the plan has a price or setup fee.
+The dialog closes and the new row appears in the **Memberships** table with the status **Active** and the provider **Manual**. No payment is taken, even if the plan has a price or setup fee, and the **Amount** column shows `--`.
 
 ## What the dialog shows
 
 - **Already Assigned:** The person holds this plan with the status Active or Trial.
 - **Assign** greyed out: The person is Active or on Trial on another plan of the same level. One person can hold only one live membership per level, so if you try anyway, the admin shows "User already has a membership for this level."
 - **No pricing plans yet:** The level has no plans. Click **Add pricing plan** to create one.
-- **There are no active membership levels:** Click **Manage Membership Levels** to create or activate a level.
-
-![Screenshot of the Membership Level dialog with a plan marked Already Assigned](/images/members/adding-manually/adding-manually-already-assigned.webp)
+- **No active membership levels:** Click **Manage Membership Levels** to create or activate a level.
 
 ## How the expiry date is set
 
@@ -50,6 +49,7 @@ The expiry date comes from the plan you pick:
 | **One-time** | None. The row shows **Lifetime**. |
 | **Subscription** with no trial | One billing period from today, using the plan's interval and count. A plan that bills every 3 months gets 3 months. |
 | **Subscription** with trial days | The number of trial days from today, and the status is still **Active**. |
+| Plan on a [free level](/docs/levels/free-levels) | Set by the level's access length: lifetime, a set length of time from today, or a fixed end date. |
 
 > [!Note]
-> Nothing renews a manual membership. When the expiry date passes, the status changes to **Expired** and access ends. To give ongoing access, pick a one-time plan.
+> Nothing renews a manual membership. When the expiry date passes, access ends. To give ongoing access, pick a one-time plan. To end access early but let the member keep it until the expiry date, see [Suspending & Cancelling](/docs/members/suspending-and-cancelling).

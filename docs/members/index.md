@@ -9,11 +9,16 @@ The **Members** screen lists everyone who holds a membership on your site. Use i
 
 Go to **Fluent Members → Members**.
 
-![Screenshot of the Members screen with the status tabs, search icon, and a table of members](/images/members/index/members-list-overview.webp)
+<!-- TODO(screenshot): members-index-1
+  screen: Members
+  state: list with status tabs, search icon and several member rows
+  data: members with different levels and roles
+  highlight: status tabs
+  view: admin
+  alt: Screenshot of the Members screen with the status tabs, search icon and a table of members
+-->
 
 ## Columns
-
-The table has these columns:
 
 | Column | What it shows |
 |--------|---------------|
@@ -21,7 +26,7 @@ The table has these columns:
 | **User** | Avatar, display name, and email address. |
 | **Membership Level** | Up to two level tags. When there are more, a `+N` tag opens the rest in a dropdown. |
 | **Role** | The WordPress role, such as Subscriber or Administrator. |
-| **Registered** | The date the WordPress account was created, such as November 6, 2026. |
+| **Registered** | The date the WordPress account was created. |
 
 Click any row to open that member's [details](/docs/members/detail).
 
@@ -31,20 +36,16 @@ The tabs filter the list, and the **Membership Level** column then shows only me
 
 - **Members:** Everyone holding a membership of any status. A membership whose level was deleted does not count.
 - **Active:** People with a membership in Active status. Trial members are not included, so check **Trial** too.
-- **No Membership:** WordPress users who hold no membership, including those whose only membership belonged to a deleted level. Use this tab to find someone before you [add a membership manually](/docs/members/adding-manually).
+- **No Membership:** WordPress users who hold no membership. Use this tab to find someone before you [add a membership manually](/docs/members/adding-manually).
 - **More:** A dropdown with **Expired**, **Trial**, **Cancelled**, **Upgraded**, and **Suspended**.
 
-![Screenshot of the Members screen with the More dropdown open, showing Expired, Trial, Cancelled, Upgraded and Suspended](/images/members/index/members-list-more-statuses.webp)
 
-See [Membership statuses](/reference/membership-statuses) for what each status means.
 
 ## Search
 
-Click the search icon on the right to open the search field, then type in **Search members by name or email**. Search also matches the WordPress username. Click **Cancel** to close it.
+Click the search icon to open the search field, then type in **Search members by name or email**. Search also matches the WordPress username. Click **Cancel** to close it.
 
-![Screenshot of the Members screen with the search field open](/images/members/index/members-list-search.webp)
-
-Search runs inside the tab you have open. If a person doesn't appear on **Members**, they hold no membership, so try **No Membership**.
+Search runs inside the tab you have open. If a person doesn't appear on **Members**, they hold no membership, so try **No Membership**. When nothing matches, **Clear filter** resets the list. On a site with no members yet, **Manage Membership Levels** takes you to your levels.
 
 ## Pagination
 
