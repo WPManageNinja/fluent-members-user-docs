@@ -15,14 +15,7 @@ The **Membership access** panel in the editor protects one post or page on its o
 4. In **Memberships and content bundles**, pick the memberships and [Bundles](/docs/content-access/bundles) that should unlock the post.
 5. Click **Save** or **Update**.
 
-<!-- TODO(screenshot): per-post-restrictions-1
-  screen: block editor, Membership access panel in the Post sidebar
-  state: Only these memberships selected, one membership picked
-  data: membership Gold picked
-  highlight: Who can see this, Add to memberships and Memberships and content bundles
-  view: admin
-  alt: Screenshot of the Membership access panel with Only these memberships selected and one membership picked
--->
+![Screenshot of the Membership access panel with Only these memberships selected and one membership picked](/images/content-access/per-post-restrictions/per-post-restrictions-1.webp)
 
 Picking a membership adds this post to that membership's content. The panel's **Who can see this?** line updates after you save, for example **Members of Gold**. Visitors without access get the message set for the membership. See [What blocked visitors see](/docs/content-access/unauthorized-access).
 

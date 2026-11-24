@@ -13,15 +13,7 @@ These rows are read-only here. You refund them in the plugin that bills them, an
 
 Go to **Fluent Members → Billing → Subscriptions**. Turn on the **Gateway** column from the **Columns** icon if it is hidden. It names the plugin: **FluentCart**, **WooCommerce**, **FluentForms** or **Paymattic**.
 
-<!-- TODO(screenshot): provider-subscriptions-1
-  screen: Billing → Subscriptions
-  state: list with the Gateway column on, including rows whose Gateway is FluentCart or WooCommerce
-  data: a recurring FluentCart or WooCommerce purchase that granted a membership
-  highlight: Gateway column
-  view: admin
-  alt: Screenshot of the Subscriptions list with a row billed by another plugin
-  reason: the local site has no recurring purchases from other plugins
--->
+![Screenshot of the Subscriptions list with a row billed by another plugin](/images/billing/provider-subscriptions/gateway-column.webp)
 
 These rows differ from Stripe and PayPal rows in a few ways:
 
@@ -40,15 +32,7 @@ These rows show the membership's status, not a billing status: **Active**, **Tri
 
 Click a row to open it. The page has the same layout as other subscriptions, with these differences:
 
-<!-- TODO(screenshot): provider-subscriptions-2
-  screen: Billing → Subscriptions → a row billed by another plugin
-  state: subscription page with the Open in button visible
-  data: a recurring FluentCart or WooCommerce purchase that granted a membership
-  highlight: Open in button
-  view: admin
-  alt: Screenshot of a subscription billed by another plugin, with the Open in button at the top
-  reason: the local site has no recurring purchases from other plugins
--->
+![Screenshot of a subscription billed by another plugin, with the Open in button at the top](/images/billing/provider-subscriptions/open-in-button.webp)
 
 - **Open in [plugin name]:** replaces **More actions** and opens the record in that plugin in a new tab. It only appears when the plugin is active and Fluent Members has a reference to the record.
 - **Gateway Subscription ID:** the subscription's ID in the other plugin, or `--`.

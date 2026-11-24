@@ -63,14 +63,7 @@ Use the two icons beside the date range to switch between a bar chart and a line
 
 **Revenue by Membership** ranks your top three levels by this week's revenue so far. Each row shows the level, its active member count, and the amount. Refunds are not subtracted here. The figure beside **Performance** compares this week with the same part of last week. The week starts on the day set under **Settings → General** in WordPress.
 
-<!-- TODO(screenshot): dashboard-4
-  screen: Dashboard, Revenue by Membership card
-  state: two levels with revenue this week
-  data: a few members and some payments
-  highlight: the ranked levels and the Performance figure
-  view: admin
-  alt: Screenshot of the Revenue by Membership card with two levels ranked by revenue
--->
+![Screenshot of the Revenue by Membership card with two levels ranked by revenue](/images/dashboard/dashboard/dashboard-4.webp)
 
 
 When there is no revenue this week, the card says so instead.

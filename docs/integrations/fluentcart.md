@@ -29,14 +29,7 @@ When you create a paid level that sells through FluentCart, the creation dialog 
 
 Leave the amount empty to add prices later.
 
-<!-- TODO(screenshot): fluentcart-2
-  screen: Fluent Members → Membership Levels → New membership dialog
-  state: Paid selected with FluentCart as the provider, first price section visible
-  data: a level named DOCTEST Plus
-  highlight: Create a new product and Amount
-  view: admin
-  alt: Screenshot of the New membership dialog with the FluentCart first price fields
--->
+![Screenshot of the New membership dialog with the FluentCart first price fields](/images/integrations/fluentcart/new-membership-dialog.webp)
 
 ### Add more prices
 
@@ -72,14 +65,7 @@ The **Edit price** window has these fields:
 
 Changes to access apply to new purchases. Current members keep their end dates.
 
-<!-- TODO(screenshot): fluentcart-4
-  screen: Fluent Members → Membership Levels → a FluentCart level → Pricing → row menu → Edit
-  state: Edit price window with the Access options visible
-  data: a linked subscription variation
-  highlight: Access
-  view: admin
-  alt: Screenshot of the Edit price window with the Access options
--->
+![Screenshot of the Edit price window with the Access options](/images/integrations/fluentcart/edit-price-window.webp)
 
 ## Manage prices from the product
 
@@ -94,14 +80,7 @@ The FluentCart product editor has a **Membership** tab, shown to administrators.
 
 A price that members already hold is locked to its level, so turn **Selling** off to stop new sales instead. A product must be published before it can sell a membership. The tab lists only levels that sell through FluentCart, and **Create a level** takes you to make one. **Open Memberships in FluentMembers** opens the level list.
 
-<!-- TODO(screenshot): fluentcart-5
-  screen: FluentCart → Products → a product → Membership tab
-  state: Membership access card with two variations, one giving a level
-  data: a product with a monthly and a yearly variation linked to DOCTEST Plus
-  highlight: Selling toggle
-  view: admin
-  alt: Screenshot of the Membership tab on a FluentCart product
--->
+![Screenshot of the Membership tab on a FluentCart product](/images/integrations/fluentcart/product-membership-tab.webp)
 
 ## What happens after a purchase
 
@@ -136,14 +115,7 @@ Customers see their memberships in several places:
 
 In the FluentCart admin, an order shows **Memberships from this order**, a customer shows **Memberships**, and a subscription shows **Memberships billed by this subscription**. Each row links to the member in Fluent Members. FluentCart's order log records when a membership is granted, changed or renewed.
 
-<!-- TODO(screenshot): fluentcart-6
-  screen: FluentCart → Orders → an order that granted a membership
-  state: the Memberships from this order widget in the order sidebar
-  data: a paid order for a linked variation
-  highlight: Open member
-  view: admin
-  alt: Screenshot of the Memberships from this order widget on a FluentCart order
--->
+![Screenshot of the Memberships from this order widget on a FluentCart order](/images/integrations/fluentcart/order-memberships-widget.webp)
 
 ## Remove levels with a product feed
 

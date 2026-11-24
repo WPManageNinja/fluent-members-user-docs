@@ -19,14 +19,7 @@ Point at **Billing** in the top navigation and choose a list:
 
 Each list has its own status tabs, search and columns. See [Filter & Search](/docs/billing/filters-and-search).
 
-<!-- TODO(screenshot): billing-index-1
-  screen: Fluent Members top navigation
-  state: Billing menu open showing Subscriptions and One-time
-  data: any
-  highlight: Billing menu items
-  view: admin
-  alt: Screenshot of the Billing menu open in the top navigation, showing Subscriptions and One-time
--->
+![Screenshot of the Billing menu open in the top navigation, showing Subscriptions and One-time](/images/billing/index/billing-menu.webp)
 
 ## View a record's history
 

@@ -23,14 +23,7 @@ You can put a restricted block or a **Restricted Content** container inside anot
 | Premium Content | Private Community | They can access both. |
 | Premium Content | Nothing picked | They can access Premium Content. |
 
-<!-- TODO(screenshot): nesting-and-limits-1
-  screen: Block editor with the List View open
-  state: A Restricted Content block nested inside another, the inner one selected with one membership picked
-  data: Two levels, for example Premium Articles outside and Team Resources inside
-  highlight: The nested block in the List View and its Membership access panel
-  view: admin
-  alt: Screenshot of the block editor with the List View showing a Restricted Content block nested inside another
--->
+![Screenshot of the block editor with the List View showing a Restricted Content block nested inside another](/images/content-access/gutenberg-block/nesting-and-limits/nesting-and-limits-1.webp)
 
 A member who passes the outer layer but not the inner one sees the outer content, with the restriction notice where the inner block would be. A visitor who fails the outer layer sees one notice for the whole container.
 

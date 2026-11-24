@@ -14,14 +14,7 @@ description: "Cancel a Stripe or PayPal subscription at the end of the billing p
 3. Under **Cancellation Mode**, choose **End of Billing Period** or **Cancel Immediately**.
 4. Click the button at the bottom right. It repeats the mode you chose. **Go Back** closes the dialog without changing anything.
 
-<!-- TODO(screenshot): cancelling-a-subscription-1
-  screen: Billing → Subscriptions → a Stripe subscription → Cancel Subscription
-  state: Cancel Subscription dialog with End of Billing Period selected
-  data: a Stripe subscription linked to a real Stripe subscription ID
-  highlight: Cancellation Mode cards
-  view: admin
-  alt: Screenshot of the Cancel Subscription dialog with End of Billing Period and Cancel Immediately
--->
+![Screenshot of the Cancel Subscription dialog with End of Billing Period and Cancel Immediately](/images/billing/cancelling-a-subscription/cancelling-a-subscription-1.webp)
 
 ## Choose a mode
 

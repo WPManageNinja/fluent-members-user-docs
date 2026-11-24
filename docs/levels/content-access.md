@@ -12,14 +12,7 @@ The **Content Access** tab decides what members of a level can open. A level unl
 1. Go to **Fluent Members → Membership Levels** and open the level.
 2. Click the **Content Access** tab.
 
-<!-- TODO(screenshot): levels-content-access-1
-  screen: Membership Levels, a level open on the Content Access tab
-  state: a level with a few content rows, one included membership and one bundle
-  data: level titled "Gold" with two rules, one release pill, one bundle chip
-  highlight: the Content card, the Also gets access from card and the What Gold members get panel
-  view: admin
-  alt: Screenshot of the Content Access tab with the Content card, the Also gets access from card and the summary panel
--->
+![Screenshot of the Content Access tab with the Content card, the Also gets access from card and the summary panel](/images/levels/content-access/levels-content-access-1.webp)
 
 The tab has three cards and a summary panel:
 
@@ -42,14 +35,7 @@ Use the **Content** card for posts, pages, categories, products and other conten
 4. Click **Add (n) items**.
 5. Click **Save** in the save bar.
 
-<!-- TODO(screenshot): levels-content-access-2
-  screen: Add content to (level) dialog
-  state: Pages tab selected, two pages ticked
-  data: pages such as Lessons and Course Library
-  highlight: the type tabs, the Whole groups heading, and the Add 2 items button
-  view: admin
-  alt: Screenshot of the Add content dialog with type tabs and two pages ticked
--->
+![Screenshot of the Add content dialog with type tabs and two pages ticked](/images/levels/content-access/levels-content-access-2.webp)
 
 Some rows carry a badge that helps you decide:
 
@@ -87,14 +73,7 @@ Each content row has a release control. Items are available **Immediately** by d
 
 The popover explains the clock: it counts from when the member first got this level, and upgrades and renewals don't reset it. If a row holds several items, **Applies to** lets you tick which ones get the schedule. The ticked items move to their own row. Click **Apply**, then **Save**.
 
-<!-- TODO(screenshot): levels-content-access-3
-  screen: Release schedule popover on a content row
-  state: After the member joins selected, 7 days
-  data: row titled Lesson 2
-  highlight: the three options and the Apply button
-  view: admin
-  alt: Screenshot of the Release schedule popover with After the member joins set to 7 days
--->
+![Screenshot of the Release schedule popover with After the member joins set to 7 days](/images/levels/content-access/levels-content-access-3.webp)
 
 Members see upcoming releases under **Unlocking soon** on their membership page in the member portal, and a visitor who opens an item early sees a countdown. See [Release content over time](/docs/content-access/content-drip).
 

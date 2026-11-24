@@ -107,14 +107,7 @@ Membership data is available across FluentCRM under **FluentMembers**:
 
 On a contact's profile, the **FluentMembers Memberships** widget lists up to 10 memberships with their level, source, start date and expiry, or **Lifetime access**. **View the member in FluentMembers** opens the member.
 
-<!-- TODO(screenshot): fluentcrm-3
-  screen: FluentCRM → Contacts → a contact who is a member
-  state: the FluentMembers Memberships widget in the contact sidebar
-  data: a contact linked to a user with one active membership
-  highlight: View the member in FluentMembers
-  view: admin
-  alt: Screenshot of the FluentMembers Memberships widget on a FluentCRM contact
--->
+![Screenshot of the FluentMembers Memberships widget on a FluentCRM contact](/images/integrations/fluentcrm/fluentcrm-3.webp)
 
 ## Sync levels with FluentCRM tags
 

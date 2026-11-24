@@ -29,14 +29,7 @@ Each row shows the item's name and type, such as **Page**, **Post**, **Category*
 
 An orange tag such as **Also in (level)** on a row means a membership would lock that item. It stays public, because public content wins. Remove the item here to hand it back to the membership.
 
-<!-- TODO(screenshot): public-content-2
-  screen: Settings, Public content list
-  state: one row with the orange Also in tag
-  data: a page also unlocked by a level named Gold
-  highlight: the orange tag on the row
-  view: admin
-  alt: Screenshot of a public content row with an orange tag showing a membership would lock it
--->
+![Screenshot of a public content row with an orange tag showing a membership would lock it](/images/content-access/public-content/public-content-2.webp)
 
 ## System pages
 

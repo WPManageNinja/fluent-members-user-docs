@@ -13,14 +13,7 @@ The tab appears only when FluentCRM is active on your site. To build the automat
 
 Go to **Fluent Members → Membership Levels**, open the level and click **Automations**.
 
-<!-- TODO(screenshot): levels-automations-1
-  screen: A level's Automations tab
-  state: Only this level section with two automations, Shared with other levels section with one
-  data: Published and Draft automations, one using Assigns this level
-  highlight: the Stats, Pause/Run and Open in FluentCRM columns
-  view: admin
-  alt: Screenshot of the Automations tab of a level
--->
+![Screenshot of the Automations tab of a level](/images/levels/automations/levels-automations-1.webp)
 
 ## Which automations appear
 

@@ -17,14 +17,7 @@ Every block in the editor has a **Membership access** panel.
 4. In **Memberships and content bundles**, pick the levels or Bundles that can see this block.
 5. Click **Save** or **Update**.
 
-<!-- TODO(screenshot): inserting-1
-  screen: Block editor, a paragraph block selected
-  state: Block tab open, Membership access panel expanded, Visible to set to Members of these memberships with one level picked
-  data: Sample post with a paragraph; a level named Premium Content
-  highlight: Visible to options and the Memberships and content bundles field
-  view: admin
-  alt: Screenshot of the block editor with a paragraph selected and the Membership access panel open in the Block tab
--->
+![Screenshot of the block editor with a paragraph selected and the Membership access panel open in the Block tab](/images/content-access/gutenberg-block/inserting/inserting-1.webp)
 
 Choose **Everyone** under **Visible to** to remove the restriction again.
 
@@ -38,14 +31,7 @@ The container block protects everything you put inside it.
 4. Select the container. In the **Block** tab, open **Membership access** and pick the levels or Bundles in **Memberships and content bundles**.
 5. Click **Save** or **Update**.
 
-<!-- TODO(screenshot): inserting-2
-  screen: Block editor with the Restricted Content block selected
-  state: Block tab open, Membership access panel showing Who can see the content inside this block with one level picked
-  data: Sample post; container holding a paragraph
-  highlight: Memberships and content bundles field
-  view: admin
-  alt: Screenshot of the Restricted Content block selected, with its Membership access panel and a membership picked
--->
+![Screenshot of the Restricted Content block selected, with its Membership access panel and a membership picked](/images/content-access/gutenberg-block/inserting/inserting-2.webp)
 
 On the editor canvas the container shows **Members only** and the names of the picked memberships. With nothing picked it shows **No membership picked, so everyone can see this**.
 
@@ -68,14 +54,7 @@ A visitor without access sees a restriction notice in the block's place. Blocks 
 
 The wording comes from the level or Bundle that has its own [restricted content settings](/docs/content-access/unauthorized-access). Without one, it comes from [Restricted content](/docs/content-access/restricted-content) in Settings.
 
-<!-- TODO(screenshot): inserting-3
-  screen: A post on the site, logged out
-  state: Public paragraph, the restriction notice from a Restricted Content block, another public paragraph
-  data: Default restricted content settings
-  highlight: -
-  view: frontend
-  alt: Screenshot of a post on the site with a public paragraph, the Members only notice and another public paragraph
--->
+![Screenshot of a post on the site with a public paragraph, the Members only notice and another public paragraph](/images/content-access/gutenberg-block/inserting/inserting-3.webp)
 
 Two things change that notice:
 
