@@ -15,14 +15,7 @@ To put the portal on your site, see [Set up the Member Portal](/docs/members/por
 
 Visitors stay on the page and see "Please log in to view your memberships." with a **Log In** button. The button opens your login popup on the page, and its link goes to the WordPress login page and back to the portal.
 
-<!-- TODO(screenshot): what-members-see-1
-  screen: Member Portal page while logged out
-  state: prompt with the Log In button
-  data: any
-  highlight: Log In button
-  view: frontend
-  alt: Screenshot of the portal prompt reading Please log in to view your memberships, with a Log In button
--->
+![Screenshot of the portal prompt reading Please log in to view your memberships, with a Log In button](/images/members/portal/what-members-see/what-members-see-1.webp)
 
 ## Logged-in members
 
@@ -56,14 +49,7 @@ Up to four cards sum up the member's account. A card with nothing to report is l
 
 The list shows 5 cards per page. Below it, the member can move between pages and choose **3 / page**, **5 / page**, **10 / page**, **20 / page** or **50 / page**.
 
-<!-- TODO(screenshot): what-members-see-2
-  screen: Member Portal while logged in
-  state: profile, Stats Overview and two membership cards
-  data: a member with an active Stripe subscription and a lifetime manual membership
-  highlight: membership cards
-  view: frontend
-  alt: Screenshot of the Member Portal with the profile, Stats Overview cards and two membership cards
--->
+![Screenshot of the Member Portal with the profile, Stats Overview cards and two membership cards](/images/members/portal/what-members-see/what-members-see-2.webp)
 
 Each card shows:
 

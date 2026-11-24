@@ -26,14 +26,7 @@ If the body is empty and the notification has a starter template, the editor fil
 
 Selecting a template replaces what is in the editor.
 
-<!-- TODO(screenshot): custom-email-editor-2
-  screen: Email editor -> Choose a Starter Template window
-  state: Window listing the starter templates for the notification
-  data: Welcome Email
-  highlight: Start Blank option
-  view: admin
-  alt: Screenshot of the Choose a Starter Template window with Membership Welcome and Start Blank
--->
+![Screenshot of the Choose a Starter Template window with Membership Welcome and Start Blank](/images/settings/email-configuration/custom-email-editor/custom-email-editor-starter-templates.webp)
 
 Every notification has its own starter template and a **Start Blank** option:
 
@@ -59,14 +52,7 @@ The toolbar also has undo and redo, list view, and a fullscreen button.
 
 Smartcodes fill in details such as the member's name when the email is sent. Click the <span v-pre>`{{:}}`</span> button in the toolbar and pick one from the groups, such as **Member**, **Payment** or **General**. The list is on [Email Notifications](/docs/settings/email-configuration/email-notifications#smartcodes).
 
-<!-- TODO(screenshot): custom-email-editor-3
-  screen: Settings > Email Notifications > Payment Receipt > Customized Body
-  state: Smartcode picker open in the editor toolbar with the Payment group visible
-  data: Payment Receipt starter template
-  highlight: The {{:}} button
-  view: admin
-  alt: Screenshot of the smartcode picker in the email editor showing the Payment smartcodes
--->
+![Screenshot of the smartcode picker in the email editor showing the Payment smartcodes](/images/settings/email-configuration/custom-email-editor/smartcode-picker.webp)
 
 Click a smartcode in the email to open its **Default value** box, type a fallback and click **Apply**. The value you enter prints when the smartcode has nothing to show.
 
@@ -74,14 +60,7 @@ Click a smartcode in the email to open its **Default value** box, type a fallbac
 
 Click the preview button in the toolbar to open **Email Preview**. Switch between **Desktop**, **Tablet** and **Mobile**. The preview uses sample data, such as the member John Doe, and shows what is in the editor even if it is not saved yet.
 
-<!-- TODO(screenshot): custom-email-editor-4
-  screen: Email editor -> Email Preview
-  state: Email Preview panel with Desktop, Tablet and Mobile buttons
-  data: Welcome Email with sample data
-  highlight: Desktop, Tablet and Mobile buttons
-  view: admin
-  alt: Screenshot of the Email Preview panel with the Desktop, Tablet and Mobile buttons
--->
+![Screenshot of the Email Preview panel with the Desktop, Tablet and Mobile buttons](/images/settings/email-configuration/custom-email-editor/custom-email-editor-preview.webp)
 
 ## Save
 

@@ -48,14 +48,7 @@ What you see after clicking the action depends on the membership:
 | Migrated subscription still billed by PayPal (Pro) | **Cancel** | A confirmation warns that PayPal keeps charging until the subscription is cancelled in PayPal, by the member or from your PayPal business account. |
 | Everything else, such as a lifetime membership, a team seat, or a Fluent Forms or Paymattic membership | **Cancel** | A confirmation asks you to click **Yes, Cancel**. Access ends immediately. |
 
-<!-- TODO(screenshot): suspending-and-cancelling-1
-  screen: Members → a member → Cancel on a hand-added membership
-  state: Cancel Membership dialog with Keep Until Expiry selected
-  data: a manual membership with an expiry date in the future
-  highlight: Keep Until Expiry and Cancel Immediately cards
-  view: admin
-  alt: Screenshot of the Cancel Membership dialog with Keep Until Expiry selected and Cancel Immediately beside it
--->
+![Screenshot of the Cancel Membership dialog with Keep Until Expiry selected and Cancel Immediately beside it](/images/members/suspending-and-cancelling/suspending-and-cancelling-1.webp)
 
 ### Keep access until the end date
 

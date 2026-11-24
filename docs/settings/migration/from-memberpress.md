@@ -19,14 +19,7 @@ Before you begin, read the [Migration overview](/docs/settings/migration/).
 
 Go to **Fluent Members → Settings → Migration** and click the **MemberPress** card. The wizard opens on the **Data Map** screen, which lists **What will be imported** with the records found on your site.
 
-<!-- TODO(screenshot): from-memberpress-1
-  screen: Settings → Migration → MemberPress card → Data Map
-  state: What will be imported table and the Before You Migrate panel
-  data: a site with MemberPress active and sample memberships and members
-  highlight: Next button
-  view: admin
-  alt: Screenshot of the Import from MemberPress wizard on the Data Map screen
--->
+![Screenshot of the Import from MemberPress wizard on the Data Map screen](/images/settings/migration/from-memberpress/from-memberpress-1.webp)
 
 These rows can appear. Rows with no records are hidden, except **Membership Levels** and **Rules**.
 
@@ -54,14 +47,7 @@ Tick **Email migrated members** if you want them to get the **Welcome Email** on
 
 Click **Migrate All** to run every step in order, or click **Run** on one step.
 
-<!-- TODO(screenshot): from-memberpress-2
-  screen: Import from MemberPress → Migration
-  state: Migration Steps list before running
-  data: a site with MemberPress active
-  highlight: Migrate All button
-  view: admin
-  alt: Screenshot of the Migration Steps list for MemberPress with the Migrate All button
--->
+![Screenshot of the Migration Steps list for MemberPress with the Migrate All button](/images/settings/migration/from-memberpress/from-memberpress-2.webp)
 
 | Step | What it does | Needs first |
 |---|---|---|

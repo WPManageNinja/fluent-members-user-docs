@@ -51,14 +51,7 @@ Click **Create membership**. The new level opens on its **Setup** tab, or on its
 
 The **Setup** tab shows summary cards for **Content Access**, **Pricing** and **Members**, with the **Level Information** form below them.
 
-<!-- TODO(screenshot): creating-3
-  screen: A level's Setup tab
-  state: summary cards above the Level Information form, Unsaved changes bar visible with Save
-  data: a paid level with a changed Description
-  highlight: the Save button in the bar
-  view: admin
-  alt: Screenshot of the Setup tab with the unsaved changes bar and an arrow pointing to Save
--->
+![Screenshot of the Setup tab with the unsaved changes bar and an arrow pointing to Save](/images/levels/creating/creating-3.webp)
 
 | Field | Notes |
 |-------|-------|

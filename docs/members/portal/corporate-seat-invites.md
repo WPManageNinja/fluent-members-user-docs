@@ -11,14 +11,7 @@ description: "How corporate membership owners invite team members and manage sea
 
 The owner opens the Member Portal and clicks **Manage** on the corporate membership. The **Team Members** panel is below the membership details.
 
-<!-- TODO(screenshot): corporate-seat-invites-1
-  screen: Member Portal → Manage on a corporate membership
-  state: Team Members panel with an email typed in the Invite Member field
-  data: a corporate owner with one pending invitation and one seat holder
-  highlight: Send Invitation button
-  view: frontend
-  alt: Screenshot of the Team Members panel with an email typed in the Invite Member field and an arrow on Send Invitation
--->
+![Screenshot of the Team Members panel with an email typed in the Invite Member field and an arrow on Send Invitation](/images/members/portal/corporate-seat-invites/corporate-seat-invites-1.webp)
 
 - **Seat count:** For example **2 / 10 seats · 1 pending**. The owner takes one seat, and pending invitations show separately. A level with no seat limit shows the member count instead, such as **3 members**.
 - **Invite Member:** The **Enter email address** field and **Send Invitation** button. They're hidden once the corporate membership has ended or its subscription is scheduled to cancel.
@@ -67,15 +60,7 @@ The link in the email opens a **Join Corporate Membership** page on your site. W
 2. The **Email** field shows the invited address and cannot be changed. They enter **Your name** and a **Password** of at least 8 characters.
 3. They click **Create Account and Join**. The account is created, they are logged in, and the seat is claimed.
 
-<!-- TODO(screenshot): corporate-seat-invites-2
-  screen: Join Corporate Membership page opened from an invitation link, logged out
-  state: account creation form with Email, Your name, Password and Create Account and Join
-  data: a pending invitation for an email with no account
-  highlight: Create Account and Join button
-  view: frontend
-  alt: Screenshot of the Join Corporate Membership page with the account creation form
-  reason: needs a real invitation for an address with no account
--->
+![Screenshot of the Join Corporate Membership page with the account creation form](/images/members/portal/corporate-seat-invites/corporate-seat-invites-2.webp)
 
 Either way the page ends with **Welcome!**, **You have successfully joined the corporate membership!** and a **Go to Portal** button. Access starts right away.
 

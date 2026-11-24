@@ -86,14 +86,6 @@ Use `[fluent_membership_level id="10"]` to show the plans of one level anywhere 
 
 The **Membership Levels** block adds the same cards in the block editor, with the same choices in the block settings. See the [Membership Levels block](/docs/content-access/gutenberg-block/membership-levels-block) for each option.
 
-<!-- TODO(screenshot): pricing-page-1
-  screen: Block editor on a page with the Membership Levels block selected
-  state: Block settings sidebar with the Display panel open, showing Show level title, Show level description and Show level name in plan cards
-  data: Starter and Pro levels selected
-  highlight: Show level name in plan cards
-  view: admin
-  alt: Screenshot of the Membership Levels block settings with the Display panel open
-  reason: needs the develop build on the local site
--->
+![Screenshot of the Membership Levels block settings with the Display panel open](/images/content-access/gutenberg-block/membership-levels-block/pricing-page-1.webp)
 
 Next, set up the [checkout](/docs/selling/checkout) your **Choose plan** buttons lead to.

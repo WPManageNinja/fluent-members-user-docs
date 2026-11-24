@@ -36,14 +36,7 @@ When visitors buy, join or you [assign members](/docs/levels/members-on-a-level)
 
 Go to **Fluent Members → Membership Levels** to see every level on your site. The page heading reads **Memberships**.
 
-<!-- TODO(screenshot): levels-index-1
-  screen: Fluent Members → Membership Levels
-  state: list with a paid level, a free level, a team level and an inactive level
-  data: levels showing price chips, Unlocks text, member counts and status badges
-  highlight: the Prices, Unlocks, Members and Status columns
-  view: admin
-  alt: Screenshot of the Membership Levels list with Prices, Unlocks, Members and Status columns
--->
+![Screenshot of the Membership Levels list with Prices, Unlocks, Members and Status columns](/images/levels/index/levels-index-1.webp)
 
 The list has these columns:
 
@@ -85,14 +78,7 @@ Click **New membership** to [create a level](/docs/levels/creating). Click a row
 
 Opening a level shows its name and status badge, a **More actions** menu with **Copy shortcode** and **Delete**, and a row of tabs. A warning icon on **Pricing** or **Content Access** means that tab still needs attention.
 
-<!-- TODO(screenshot): levels-index-2
-  screen: A level's Setup tab
-  state: Content Access, Pricing and Members summary cards above the Level Information form, all tabs visible
-  data: a paid level with FluentCRM active
-  highlight: the tab row
-  view: admin
-  alt: Screenshot of a level's Setup tab with the summary cards and the tab row
--->
+![Screenshot of a level's Setup tab with the summary cards and the tab row](/images/levels/index/levels-index-2.webp)
 
 | Tab | What it's for |
 |-----|---------------|

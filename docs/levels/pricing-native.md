@@ -24,14 +24,7 @@ A level can have several plans, such as monthly and yearly. If you entered a pri
 5. Click **Add another plan** for each extra plan, such as a yearly option. The bin icon removes a draft plan.
 6. Click **Add 1 plan**. The button counts your drafts, for example **Add 2 plans**.
 
-<!-- TODO(screenshot): pricing-native-1
-  screen: A Native Payment level's Pricing tab with the Add a price drawer open
-  state: Payment Methods ticked, Plan 1 filled in, Add another plan button visible
-  data: Plan "Pro Monthly", Recurring, 29, Monthly
-  highlight: the Pricing Plans cards and the Add 1 plan button
-  view: admin
-  alt: Screenshot of the Add a price drawer with a plan form under Pricing Plans
--->
+![Screenshot of the Add a price drawer with a plan form under Pricing Plans](/images/levels/pricing-native/pricing-native-1.webp)
 
 Each plan has these fields:
 
@@ -51,14 +44,7 @@ If no gateway is connected, the drawer shows "No payment method is configured." 
 
 Each plan is a row on the **Pricing** tab. A row shows the plan's name, any setup fee or trial, its price such as `$29 / month`, and the Stripe or PayPal icons it accepts. An inactive plan looks dimmed.
 
-<!-- TODO(screenshot): pricing-native-2
-  screen: A Native Payment level's Pricing tab
-  state: two plans listed, one row's three-dot menu open
-  data: Pro Monthly and Pro Yearly, plan menu showing Edit, Copy Checkout Link, Duplicate, Delete
-  highlight: the three-dot menu
-  view: admin
-  alt: Screenshot of the Pricing tab listing two plans with a row menu open
--->
+![Screenshot of the Pricing tab listing two plans with a row menu open](/images/levels/pricing-native/pricing-native-2.webp)
 
 To change the display order, click the up and down arrows beside a plan, then click **Save** in the bar that appears (or **Cancel**). The row's three-dot menu holds these options:
 

@@ -24,14 +24,7 @@ On these levels, each price is one variation of a product. The product's price, 
 4. Set **Access**. A recurring price shows **Follows billing**, so access lasts while payments continue. A one-time price lets you choose **Lifetime**, **A set time after purchase** or **Until a fixed date**.
 5. Click **Link variation**.
 
-<!-- TODO(screenshot): pricing-paywalls-1
-  screen: A FluentCart level's Pricing tab with the Add a price drawer open
-  state: variation list with one selected, Access field visible
-  data: FluentCart product "Pro Plan" with a monthly and a yearly variation
-  highlight: the selected variation and the Link variation button
-  view: admin
-  alt: Screenshot of the Add a price drawer with a FluentCart variation selected
--->
+![Screenshot of the Add a price drawer with a FluentCart variation selected](/images/levels/pricing-paywalls/pricing-paywalls-1.webp)
 
 To make a new product, click **Create a new product in FluentCart** at the bottom of the drawer. It opens in a new tab. Publish the product, then come back and pick it.
 
@@ -61,14 +54,7 @@ The tab warns you when:
 2. Under **Pick a payment form**, search for a form and select it. A form another level sells shows **Sells** and that level's name.
 3. Click **Link form**.
 
-<!-- TODO(screenshot): pricing-paywalls-2
-  screen: A FluentForms level's Pricing tab with the Add a price drawer open
-  state: Pick a payment form list with one form selected
-  data: a payment form with a single fixed price
-  highlight: the selected form and the Link form button
-  view: admin
-  alt: Screenshot of the Add a price drawer listing payment forms
--->
+![Screenshot of the Add a price drawer listing payment forms](/images/levels/pricing-paywalls/pricing-paywalls-2.webp)
 
 > [!Note]
 > Only payment forms with a single fixed-price or recurring item are listed. Forms with custom payment inputs, donation fields or multiple pricing options are not supported.

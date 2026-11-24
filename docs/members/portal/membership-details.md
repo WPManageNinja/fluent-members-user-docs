@@ -7,14 +7,7 @@ description: "What members see and can do on the Membership Details page of the 
 
 The **Membership Details** page is where a member reads everything about one membership and acts on it. Members open it by clicking **Manage** on a card in the Member Portal. The breadcrumb at the top leads back to the list through **My Profile**.
 
-<!-- TODO(screenshot): membership-details-1
-  screen: Member Portal → Manage on a Stripe subscription
-  state: details page with the More Actions button, billing fields and Transaction Details table
-  data: a member with a Stripe subscription and two payments
-  highlight: More Actions button
-  view: frontend
-  alt: Screenshot of the Membership Details page for a Stripe subscription with More Actions, the billing fields and the Transaction Details table
--->
+![Screenshot of the Membership Details page for a Stripe subscription with More Actions, the billing fields and the Transaction Details table](/images/members/portal/membership-details/membership-details-1.webp)
 
 ## Membership Details fields
 

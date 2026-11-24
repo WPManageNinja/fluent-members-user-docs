@@ -22,14 +22,7 @@ Checkout, payment confirmation and free sign-up open on a page of your site, ins
 2. Select a page, or click the **+** button to create one. The page must hold the `[fluent_members_checkout]` shortcode.
 3. Click **Save Settings**.
 
-<!-- TODO(screenshot): checkout-1
-  screen: Fluent Members → Settings → General Settings
-  state: the Checkout Page row with a page selected and the shortcode badge visible
-  data: a page named DOCTEST Checkout
-  highlight: Checkout Page
-  view: admin
-  alt: Screenshot of the Checkout Page setting in General Settings
--->
+![Screenshot of the Checkout Page setting in General Settings](/images/selling/checkout/checkout-1.webp)
 
 ## The checkout interface
 
@@ -43,14 +36,7 @@ The page is split into two sections. A **Back to plans** link returns the visito
 
 **Payment details (right)** shows the gateway's payment form under **Payment method**. If the plan accepts both Stripe and PayPal, visitors can switch between them here.
 
-<!-- TODO(screenshot): checkout-2
-  screen: a native checkout page on the frontend
-  state: logged-out visitor, a monthly plan with a setup fee, Stripe and PayPal tabs visible
-  data: DOCTEST Plus plan with a $5 setup fee
-  highlight: Due today and Payment method
-  view: frontend
-  alt: Screenshot of the checkout page with the order summary and payment method
--->
+![Screenshot of the checkout page with the plan, setup fee, Due today total and the Stripe payment method](/images/selling/checkout/checkout-2.webp)
 
 The submit button changes with what the visitor is buying:
 
@@ -86,14 +72,7 @@ A free plan skips payment. On the pricing page its button reads **Join for free*
 
 A free level can be joined only once per account. When the visitor joins, a **Welcome!** page says "You've joined" followed by the level name, with **Membership Level**, **Started** and **Access Until** (or **No expiry**) and a **Go to Portal** button. See [free levels](/docs/levels/free-levels) for how to set one up.
 
-<!-- TODO(screenshot): checkout-3
-  screen: the free join page on the frontend
-  state: logged-out visitor, Your Details form with the Join for free button
-  data: a free level named DOCTEST Free
-  highlight: Join for free
-  view: frontend
-  alt: Screenshot of the free membership join page
--->
+![Screenshot of the free membership join page](/images/selling/checkout/checkout-3.webp)
 
 ## After payment is complete
 

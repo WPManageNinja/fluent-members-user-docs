@@ -16,14 +16,7 @@ You need **Fluent Members Pro** and a [Native Payment](/docs/levels/pricing-nati
 3. Fill in the fields.
 4. Click **Save**.
 
-<!-- TODO(screenshot): upgrade-paths-1
-  screen: Add Upgrade Path dialog on a Native Payment level
-  state: From Plan chosen, two To Plans chosen from This level and another level, discount entered, Prorate ticked
-  data: From Pro Monthly, to Pro Yearly and Team: Team Monthly
-  highlight: the To Plans field and the Prorate checkbox
-  view: admin
-  alt: Screenshot of the Add Upgrade Path dialog with From Plan, To Plans, Discount Amount and Prorate
--->
+![Screenshot of the Add Upgrade Path dialog with From Plan, To Plans, Discount Amount and Prorate](/images/levels/upgrade-paths/upgrade-paths-1.webp)
 
 | Field | Notes |
 |-------|-------|
@@ -41,14 +34,7 @@ In **To Plans**, a plan is greyed out when it:
 
 The tab lists each path with its **From Plan**, **To Plan**, **Discount Amount** and **Prorate** (**Yes** or **No**). A **To Plan** from another level shows the level's name before the plan, such as `Team: Team Monthly`. Use the three-dot menu on a row to **Edit** or **Delete** it.
 
-<!-- TODO(screenshot): upgrade-paths-2
-  screen: Upgrade Paths tab of a Native Payment level
-  state: one path listed with a discount and Prorate Yes, row menu open
-  data: From Pro Monthly to Pro Yearly
-  highlight: the From Plan, To Plan, Discount Amount and Prorate columns
-  view: admin
-  alt: Screenshot of the Upgrade Paths table with one path
--->
+![Screenshot of the Upgrade Paths table with one path](/images/levels/upgrade-paths/upgrade-paths-2.webp)
 
 ## What members see
 

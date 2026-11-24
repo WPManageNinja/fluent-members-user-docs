@@ -9,14 +9,7 @@ description: See one member's account information and every membership they hold
 
 Go to **Fluent Members → Members** and click the member's row. A breadcrumb at the top, **Members > Member Details**, leads back to the list.
 
-<!-- TODO(screenshot): members-detail-1
-  screen: Members → a member
-  state: profile card and a Memberships table with two rows
-  data: a member with one subscription membership and one hand-added membership
-  highlight: Memberships table
-  view: admin
-  alt: Screenshot of Member Details with the profile card and a Memberships table of two rows
--->
+![Screenshot of Member Details with the profile card and a Memberships table of two rows](/images/members/detail/members-detail-1.webp)
 
 ## Profile
 
@@ -52,14 +45,7 @@ When a membership was bought through FluentCart or WooCommerce, a **Store billin
 
 Click the three-dot icon at the end of a row. The menu shows only what applies to that membership, and rows with nothing to do have no icon.
 
-<!-- TODO(screenshot): members-detail-2
-  screen: Members → a member → row menu
-  state: three-dot menu open on an active hand-added membership
-  data: a member with an active manual membership
-  highlight: menu items
-  view: admin
-  alt: Screenshot of a membership row menu open with Suspend and Cancel
--->
+![Screenshot of a membership row menu open with Suspend and Cancel](/images/members/detail/members-detail-2.webp)
 
 | Action | When it appears |
 |--------|-----------------|

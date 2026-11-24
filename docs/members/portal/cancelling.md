@@ -15,14 +15,7 @@ Members can cancel their own membership from the **Member Portal** without conta
 
 The item is only there for an **Active** or **Trial** membership. For a subscription billed through Fluent Members (Pro), it shows only while the subscription can still be cancelled.
 
-<!-- TODO(screenshot): cancelling-1
-  screen: Member Portal → Manage → More Actions
-  state: menu open with Cancel Subscription highlighted
-  data: a member with a Stripe subscription
-  highlight: Cancel Subscription item
-  view: frontend
-  alt: Screenshot of the Membership Details page with the More Actions menu open and an arrow on Cancel Subscription
--->
+![Screenshot of the Membership Details page with the More Actions menu open and an arrow on Cancel Subscription](/images/members/portal/cancelling/cancelling-1.webp)
 
 ## Which dialog appears
 
@@ -45,14 +38,7 @@ The dialog offers two options:
 
 The confirm button takes the name of the selected option, and **Go Back** closes the dialog.
 
-<!-- TODO(screenshot): cancelling-2
-  screen: Member Portal → Cancel Membership dialog
-  state: Keep Until Expiry selected, Cancel Immediately beside it
-  data: a member with a manual membership that has an end date in the future
-  highlight: Keep Until Expiry button
-  view: frontend
-  alt: Screenshot of the Cancel Membership dialog with Keep Until Expiry selected and Cancel Immediately beside it
--->
+![Screenshot of the Cancel Membership dialog with Keep Until Expiry selected and Cancel Immediately beside it](/images/members/portal/cancelling/cancelling-2.webp)
 
 With **Keep Until Expiry**, the member sees "Cancellation scheduled. You keep access until" the date. The page then reads **Your membership is scheduled to end on** the date, and the membership stays active until then.
 

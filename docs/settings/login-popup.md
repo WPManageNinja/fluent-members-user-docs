@@ -28,14 +28,7 @@ A logged-out visitor who opens a single post or page they can't access sees your
 
 The popup holds the title **Login Required**, the line *Please log in to access this content.*, **Username or Email**, **Password** with a show or hide control, **Remember me**, the **Log In** button, and the register and lost password links. A close button dismisses it.
 
-<!-- TODO(screenshot): login-popup-2
-  screen: A protected post on the site, logged out
-  state: Login popup open over the restriction message
-  data: Sample protected post
-  highlight: -
-  view: frontend
-  alt: Screenshot of the login popup open over a protected page with username, password and the Log In button
--->
+![Screenshot of the login popup open over a protected page with username, password and the Log In button](/images/settings/login-popup/login-popup-2.webp)
 
 After a correct login, the page reloads and shows the content the member can access. A wrong login shows "Invalid username or password." inside the popup. After 5 attempts from one IP address in 5 minutes, the popup shows "Too many login attempts. Please try again later."
 

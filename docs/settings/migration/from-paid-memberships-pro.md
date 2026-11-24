@@ -19,14 +19,7 @@ Before you begin, read the [Migration overview](/docs/settings/migration/).
 
 Go to **Fluent Members → Settings → Migration** and click the **Paid Memberships Pro** card. The wizard opens on the **Data Map** screen, which lists **What will be imported** with the records found on your site.
 
-<!-- TODO(screenshot): from-paid-memberships-pro-1
-  screen: Settings → Migration → Paid Memberships Pro card → Data Map
-  state: What will be imported table and the Before You Migrate panel
-  data: a site with PMPro active and sample levels and members
-  highlight: Next button
-  view: admin
-  alt: Screenshot of the Import from Paid Memberships Pro wizard on the Data Map screen
--->
+![Screenshot of the Import from Paid Memberships Pro wizard on the Data Map screen](/images/settings/migration/from-paid-memberships-pro/from-paid-memberships-pro-1.webp)
 
 These rows can appear. Rows with no records are hidden, except **Membership Levels** and **Page + Category Restrictions**.
 
@@ -57,14 +50,7 @@ Tick **Email migrated members** if you want them to get the **Welcome Email** on
 
 Click **Migrate All** to run every step in order, or click **Run** on one step.
 
-<!-- TODO(screenshot): from-paid-memberships-pro-2
-  screen: Import from Paid Memberships Pro → Migration
-  state: Migration Steps list before running
-  data: a site with PMPro active
-  highlight: Migrate All button
-  view: admin
-  alt: Screenshot of the Migration Steps list for Paid Memberships Pro with the Migrate All button
--->
+![Screenshot of the Migration Steps list for Paid Memberships Pro with the Migrate All button](/images/settings/migration/from-paid-memberships-pro/from-paid-memberships-pro-2.webp)
 
 | Step | What it does | Needs first |
 |---|---|---|

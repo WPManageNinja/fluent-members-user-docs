@@ -14,27 +14,13 @@ Team owners invite people from the Member Portal. See [Corporate seat invites](/
 1. Go to **Fluent Members → Members** and click the team owner's row.
 2. In the **Memberships** table, click the seat link under the plan name, such as `2 / 10 seats used`. Clicking elsewhere on the row works too.
 
-    <!-- TODO(screenshot): corporate-members-1
-      screen: Members → a team owner
-      state: Memberships table with the seat link under the plan name
-      data: a corporate level owner with two seats used
-      highlight: seat link
-      view: admin
-      alt: Screenshot of a team owner's membership row with an arrow pointing to the seat link
-    -->
+    ![Screenshot of a team owner's membership row with an arrow pointing to the seat link](/images/members/corporate-members/corporate-members-1.webp)
 
 ## What the screen shows
 
 The top of the screen shows the owner's name, the level, and the seat count. Click the owner's name to go back to their details.
 
-<!-- TODO(screenshot): corporate-members-2
-  screen: Members → a team owner → seat link
-  state: Corporate Members screen with owner, level, seat count, status tabs and one seat
-  data: a corporate level owner with one seat holder
-  highlight: seat count
-  view: admin
-  alt: Screenshot of the Corporate Members screen with the owner, level, seat count, status tabs, and one seat
--->
+![Screenshot of the Corporate Members screen with the owner, level, seat count, status tabs, and one seat](/images/members/corporate-members/corporate-members-2.webp)
 
 The table lists seats only, not the owner:
 

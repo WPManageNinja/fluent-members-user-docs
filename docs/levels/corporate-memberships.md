@@ -18,14 +18,7 @@ In the admin, a corporate level is called a **Team** level when you create it.
 5. Choose how the level is sold and add a first price, as for any [paid level](/docs/levels/creating).
 6. Click **Create membership**.
 
-<!-- TODO(screenshot): corporate-memberships-1
-  screen: New membership dialog
-  state: Team card selected, Seats per team set to 10, Name filled in
-  data: Name "Agency Plan", 10 seats
-  highlight: the Team card and the Seats per team field
-  view: admin
-  alt: Screenshot of the New membership dialog with Team selected and Seats per team set to 10
--->
+![Screenshot of the New membership dialog with Team selected and Seats per team set to 10](/images/levels/corporate-memberships/corporate-memberships-1.webp)
 
 > [!Note]
 > The **Team** card shows a **Pro** badge and can't be selected without Fluent Members Pro. A team level can't be a free level.

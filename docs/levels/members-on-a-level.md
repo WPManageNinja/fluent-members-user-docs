@@ -11,14 +11,7 @@ The **Members** tab lists everyone with a membership record on a level, whatever
 
 Go to **Fluent Members → Membership Levels**, open the level and click the **Members** tab.
 
-<!-- TODO(screenshot): members-on-a-level-1
-  screen: A level's Members tab
-  state: member table with a few members and the Assign Members button visible
-  data: three members with Active, Trial and Expired statuses
-  highlight: the Assign Members button and the Status column
-  view: admin
-  alt: Screenshot of the Members tab with the member table and an arrow pointing to Assign Members
--->
+![Screenshot of the Members tab with the member table and the Assign Members button](/images/levels/members-on-a-level/members-on-a-level-1.webp)
 
 The table has these columns:
 
@@ -43,14 +36,7 @@ You need an active level with at least one plan. On an inactive level the button
 3. Select the users. Search by name, email or username, or click **Load more** to see more.
 4. Click **Assign Members** at the bottom of the dialog.
 
-<!-- TODO(screenshot): members-on-a-level-2
-  screen: Assign Members dialog
-  state: a plan selected and two users ticked, Current Levels column visible
-  data: two users, one already on another level
-  highlight: the Plan field and the Assign Members button
-  view: admin
-  alt: Screenshot of the Assign Members dialog with a plan selected and two users ticked
--->
+![Screenshot of the Assign Members dialog with a plan selected and two users ticked](/images/levels/members-on-a-level/members-on-a-level-2.webp)
 
 The user list helps you choose:
 

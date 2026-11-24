@@ -16,14 +16,7 @@ A free level has no pricing plans and no payment plugin. It still unlocks whatev
 3. Under **How do people get it?**, choose **Free signup**. Its description reads "Anyone can join. A free tier or lead magnet."
 4. Click **Create membership**.
 
-<!-- TODO(screenshot): free-levels-1
-  screen: Fluent Members → Membership Levels, New membership dialog
-  state: Free signup card selected under How do people get it?, Name filled in
-  data: Name "Free"
-  highlight: the Free signup card and the Create membership button
-  view: admin
-  alt: Screenshot of the New membership dialog with Free signup selected
--->
+![Screenshot of the New membership dialog with Free signup selected](/images/levels/free-levels/free-levels-1.webp)
 
 > [!Note]
 > **Team** levels cannot be free. A free level is for one person, so the pricing type of a corporate level can't be set to **Free**.
@@ -42,14 +35,7 @@ Open the level and click its **Pricing** tab. A free level shows **Anyone can jo
 
 Click **Save** in the bar that appears. Changes apply to new joins only. Current members keep their end dates.
 
-<!-- TODO(screenshot): free-levels-2
-  screen: A free level's Pricing tab
-  state: Access length cards visible with Fixed length selected and a length entered, unsaved-changes bar showing
-  data: 30 days
-  highlight: the Access length cards and the Save button
-  view: admin
-  alt: Screenshot of the Pricing tab of a free level with the Access length options
--->
+![Screenshot of the Pricing tab of a free level with the Access length options](/images/levels/free-levels/free-levels-2.webp)
 
 A fixed-length or fixed-date free level can be joined once per account. A returning member sees "This free membership can only be joined once per account."
 
@@ -73,14 +59,7 @@ Convert a level when you want to start charging for it.
 3. Choose a **Pricing Type** in the dialog. Only types you can use now are listed. If none is available, install FluentCart, FluentForms or Paymattic, or use Fluent Members Pro with a connected payment gateway.
 4. Click **Convert to paid**.
 
-<!-- TODO(screenshot): free-levels-3
-  screen: Convert to paid dialog
-  state: dialog open with one Pricing Type selected and the notice about the effects visible
-  data: a free level with a few members
-  highlight: the Pricing Type list and the Convert to paid button
-  view: admin
-  alt: Screenshot of the Convert to paid dialog
--->
+![Screenshot of the Convert to paid dialog](/images/levels/free-levels/free-levels-3.webp)
 
 The dialog tells you what happens:
 
