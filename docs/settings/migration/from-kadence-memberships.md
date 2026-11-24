@@ -21,25 +21,11 @@ Before you begin, read the [Migration overview](/docs/settings/migration/).
 
 Go to **Fluent Members → Settings → Migration** and click the **Kadence Memberships** card, which carries the subtitle **Formerly Restrict Content Pro**.
 
-<!-- TODO(screenshot): from-kadence-memberships-1
-  screen: Fluent Members -> Settings -> Migration
-  state: Source cards with Kadence Memberships available
-  data: a site with Kadence Memberships or Restrict Content Pro active
-  highlight: Kadence Memberships card
-  view: admin
-  alt: Screenshot of the Migration screen with an arrow pointing to the Kadence Memberships card
--->
+![Screenshot of the Migration screen with an arrow pointing to the Kadence Memberships card](/images/settings/migration/migration-index-1.webp)
 
 The wizard opens on the **Data Map** screen, which lists **What will be imported** with the records found on your site.
 
-<!-- TODO(screenshot): from-kadence-memberships-3
-  screen: Migration -> Kadence Memberships card -> Data Map
-  state: What will be imported table and the Before You Migrate panel
-  data: a site with sample levels and members
-  highlight: Next button
-  view: admin
-  alt: Screenshot of the Import from Kadence Memberships wizard on the Data Map screen
--->
+![Screenshot of the Import from Kadence Memberships wizard on the Data Map screen](/images/settings/from-kadence-memberships/from-kadence-memberships-3.webp)
 
 These rows can appear. Rows with no records are hidden, except **Membership Levels**, **Restricted Posts and Terms** and **Total Memberships**.
 
@@ -73,14 +59,7 @@ Tick **Email migrated members** if you want them to get the **Welcome Email** on
 
 Click **Migrate All** to run every step in order, or click **Run** on one step.
 
-<!-- TODO(screenshot): from-kadence-memberships-4
-  screen: Import from Kadence Memberships -> Migration
-  state: Migration Steps list before running
-  data: a site with Kadence Memberships active
-  highlight: Migrate All button
-  view: admin
-  alt: Screenshot of the Migration Steps list for Kadence Memberships with the Migrate All button
--->
+![Screenshot of the Migration Steps list for Kadence Memberships with the Migrate All button](/images/settings/from-kadence-memberships/from-kadence-memberships-4.webp)
 
 | Step | What it does | Needs first |
 |---|---|---|

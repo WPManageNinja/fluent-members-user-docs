@@ -14,14 +14,7 @@ Every level and [Bundle](/docs/content-access/bundles) protects content through 
 3. Pick a type tab, tick what to protect, and click **Add (n) items**.
 4. Click **Save** in the save bar.
 
-<!-- TODO(screenshot): protected-content-1
-  screen: Add content to (level) dialog
-  state: Everything tab, showing the Whole groups list and Single items list
-  data: a level named Gold on a site with FluentCart active
-  highlight: the type tabs and the two list headings
-  view: admin
-  alt: Screenshot of the Add content dialog with the Whole groups and Single items lists
--->
+![Screenshot of the Add content dialog on the Everything tab with the type tabs and the Whole groups list](/images/content-access/protected-content/add-content-dialog-everything.webp)
 
 The tabs along the top filter the list: **Everything**, **Pages**, **Posts**, **Categories & tags**, then **FluentCart** and **WooCommerce** products, and your custom post types. A search box finds single items by title.
 
@@ -69,14 +62,7 @@ These need Fluent Members Pro and WooCommerce. Without Pro, the **WooCommerce** 
 
 Under **Single items**, search and tick the pages, posts, categories, tags, products or custom post type items you want. Picking a category or tag protects the posts assigned to it, including posts you add later. Terms from custom taxonomies can be picked too.
 
-<!-- TODO(screenshot): protected-content-2
-  screen: Add content dialog, Single items list
-  state: search typed, results grouped, one page ticked
-  data: search term "course"
-  highlight: the search box and the ticked result
-  view: admin
-  alt: Screenshot of the Add content dialog with a search open and one page ticked
--->
+![Screenshot of the Add content dialog with a search open and one result ticked](/images/content-access/protected-content/add-content-dialog-search.webp)
 
 A badge on a result tells you more:
 

@@ -9,14 +9,7 @@ description: "Switch the site between test and live mode, set your member portal
 
 Go to **Fluent Members → Settings**. **General Settings** opens first. Click **Save Settings** in the top-right corner to apply your changes. If you leave with unsaved changes, **Unsaved Changes** shows at the top of the settings sidebar.
 
-<!-- TODO(screenshot): general-settings-1
-  screen: Fluent Members -> Settings -> General Settings
-  state: Site Mode, Generate Portal Page, Generate Pricing Page, Checkout Page, Select Currency and Setup wizard rows, Save Settings in the top-right corner
-  data: Pro active, portal and pricing pages selected, currency USD
-  highlight: Save Settings button
-  view: admin
-  alt: Screenshot of General Settings with the Site Mode, page and currency rows
--->
+![Screenshot of General Settings with the Site Mode, page and currency rows](/images/settings/general/general-settings-1.webp)
 
 ## Site Mode (Pro)
 

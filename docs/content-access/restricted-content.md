@@ -15,14 +15,7 @@ It replaces the separate Unauthorized Access, Partial Content Lock and Login Pop
 2. Change the options below.
 3. Click **Save Settings** at the top.
 
-<!-- TODO(screenshot): restricted-content-1
-  screen: Settings, Restricted content
-  state: Non-members see set to A teaser, live preview on Desktop
-  data: default values
-  highlight: the Non-members see buttons and the Live preview panel
-  view: admin
-  alt: Screenshot of the Restricted content settings with the form on the left and the live preview on the right
--->
+![Screenshot of the Restricted content settings with the form on the left and the live preview on the right](/images/content-access/restricted-content/restricted-content-settings.webp)
 
 ## Choose what visitors see
 

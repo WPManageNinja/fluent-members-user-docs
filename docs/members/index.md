@@ -9,14 +9,7 @@ The **Members** screen lists everyone who holds a membership on your site. Use i
 
 Go to **Fluent Members → Members**.
 
-<!-- TODO(screenshot): members-index-1
-  screen: Members
-  state: list with status tabs, search icon and several member rows
-  data: members with different levels and roles
-  highlight: status tabs
-  view: admin
-  alt: Screenshot of the Members screen with the status tabs, search icon and a table of members
--->
+![Screenshot of the Members screen with the status tabs, search icon and a table of members](/images/members/index/members-list.webp)
 
 ## Columns
 

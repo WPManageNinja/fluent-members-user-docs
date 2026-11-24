@@ -11,14 +11,7 @@ description: "Set what visitors without access see by default on protected conte
 
 Go to **Fluent Members → Settings → Restricted content**. A live preview on the right shows what visitors see as you change the fields.
 
-<!-- TODO(screenshot): unauthorized-access-1
-  screen: Fluent Members → Settings → Restricted content
-  state: Non-members see set to A message, all rows visible, live preview on the right
-  data: Default values
-  highlight: Non-members see options
-  view: admin
-  alt: Screenshot of Restricted content settings with A message selected and the live preview beside it
--->
+![Screenshot of Restricted content settings with A message selected and the live preview beside it](/images/settings/unauthorized-access/unauthorized-access-1.webp)
 
 ## Who uses these settings
 

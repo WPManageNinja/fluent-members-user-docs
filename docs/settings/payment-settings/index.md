@@ -9,14 +9,7 @@ description: "Choose how you sell memberships, see which payment gateways are re
 
 Go to **Fluent Members → Settings → Payment Settings**.
 
-<!-- TODO(screenshot): payment-settings-1
-  screen: Fluent Members -> Settings -> Payment Settings
-  state: Test Mode Enabled alert, the How you sell memberships option cards, and the Payment gateways list with Stripe and PayPal
-  data: Pro active, site in test mode, native selling selected
-  highlight: How you sell memberships cards
-  view: admin
-  alt: Screenshot of Payment Settings with the test mode alert, the selling option cards and the gateway list
--->
+![Screenshot of Payment Settings with the test mode alert, the selling option cards and the gateway list](/images/settings/payment-settings/payment-settings-1.webp)
 
 ## Test mode alert
 

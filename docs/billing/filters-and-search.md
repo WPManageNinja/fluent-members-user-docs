@@ -22,14 +22,7 @@ Records with any other status, such as a subscription that is **Awaiting payment
 
 Click the magnifier icon to open the search box, then type. Results update as you type, and **Cancel** closes the box and clears the search. When nothing matches, the list says **No subscriptions match** or **No one-time memberships match** your text, with a **Clear filter** button.
 
-<!-- TODO(screenshot): filters-and-search-1
-  screen: Billing → Subscriptions
-  state: search box open with a member name typed and one matching row
-  data: a member named Liam with one subscription
-  highlight: search box
-  view: admin
-  alt: Screenshot of the Subscriptions list with the search box open and one matching row
--->
+![Screenshot of the Subscriptions list with the search box open and matching rows](/images/billing/filters-and-search/subscriptions-search.webp)
 
 What search matches depends on the list:
 
@@ -54,14 +47,7 @@ Click a column header with arrows to sort by it. Click again to reverse the orde
 
 Click the **Columns** icon beside the magnifier and tick the columns you want to see:
 
-<!-- TODO(screenshot): filters-and-search-2
-  screen: Billing → Subscriptions
-  state: Columns menu open with its list of checkboxes
-  data: any
-  highlight: Columns icon and the checkbox list
-  view: admin
-  alt: Screenshot of the Columns menu open with its list of column checkboxes
--->
+![Screenshot of the Columns menu open with its list of column checkboxes](/images/billing/filters-and-search/columns-menu.webp)
 
 - **Subscriptions:** **Level**, **Status**, **Gateway**, **Next Billing**, **Total Paid**, **Started** and **Last Payment**.
 - **One-time:** **Level**, **Status**, **Gateway**, **Amount** and **Purchased**.

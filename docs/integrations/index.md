@@ -28,14 +28,7 @@ FluentCart, Fluent Forms, Paymattic and WooCommerce are **selling providers**. T
 
 Pick the provider for your whole site on **Fluent Members → Settings → Payment Settings**, under **How you sell memberships**. New memberships use it, and the level's **Pricing** tab then shows only that provider. Choose **No selling, assign only** if you only hand out free levels and add members by hand. Switching later is safe: existing memberships keep their current provider and keep renewing.
 
-<!-- TODO(screenshot): integrations-1
-  screen: Fluent Members → Settings → Payment Settings
-  state: the How you sell memberships card with FluentCart selected and the other providers visible
-  data: FluentCart and WooCommerce active, Fluent Forms and Paymattic not installed
-  highlight: the selected provider card
-  view: admin
-  alt: Screenshot of the How you sell memberships card with FluentCart selected
--->
+![Screenshot of the How you sell memberships card with FluentCart selected](/images/integrations/index/payment-settings-fluentcart.webp)
 
 [Pricing through a paywall](/docs/levels/pricing-paywalls) covers the steps the selling providers share.
 

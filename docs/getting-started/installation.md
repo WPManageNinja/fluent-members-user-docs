@@ -15,14 +15,7 @@ This is the easiest way.
 2. Click **Choose File** and select the ZIP file.
 3. Click **Install Now**.
 
-    <!-- TODO(screenshot): installation-1
-      screen: WordPress Plugins, Add Plugin, upload form
-      state: ZIP file chosen
-      data: -
-      highlight: Choose File and Install Now
-      view: admin
-      alt: Screenshot of the WordPress Add Plugins screen with the upload form and the Install Now button
-    -->
+    ![Screenshot of the WordPress Add Plugins screen with the upload form and the Install Now button](/images/getting-started/installation/upload-plugin.webp)
 
 4. Click **Activate Plugin**.
 

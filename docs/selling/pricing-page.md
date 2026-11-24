@@ -19,14 +19,7 @@ The quickest way is from General Settings:
 
 Fluent Members publishes the page with the `[fluent_membership_levels]` shortcode and selects it in the field. If a pricing page is already set, it refuses with "Pricing page already exists."
 
-<!-- TODO(screenshot): pricing-page-2
-  screen: Fluent Members → Settings → General Settings
-  state: Generate Pricing Page row with the Create Pricing Page dialog open
-  data: Page Name filled with DOCTEST Pricing
-  highlight: Create Page
-  view: admin
-  alt: Screenshot of the Create Pricing Page dialog in General Settings
--->
+![Screenshot of the Create Pricing Page dialog in General Settings](/images/selling/pricing-page/pricing-page-create-dialog.webp)
 
 
 

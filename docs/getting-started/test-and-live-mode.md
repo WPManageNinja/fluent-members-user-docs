@@ -20,14 +20,7 @@ Fluent Members starts in **Test** mode until you change it.
 
 The **Site Mode** row only shows when Fluent Members Pro is active.
 
-<!-- TODO(screenshot): test-and-live-mode-1
-  screen: Settings, General Settings, top of the page
-  state: Pro active, Site Mode set to Test
-  data: -
-  highlight: Site Mode row with the Live and Test options and the Save Settings button
-  view: admin
-  alt: Screenshot of General Settings with the Site Mode row set to Test
--->
+![Screenshot of General Settings with the Site Mode row set to Test](/images/getting-started/test-and-live-mode/site-mode-test.webp)
 
 ## What the mode changes
 
@@ -46,27 +39,13 @@ Two places tell you, so you do not take a test payment by mistake or miss the sw
 
 With Pro active, administrators see a badge in the WordPress admin bar, on your site and in the admin. It reads **Test Mode** in orange or **Live Mode** in green. In test mode, hovering it shows "Payments are in test mode for Stripe and PayPal. No real money is charged." Open it for shortcuts to **Dashboard**, **Members**, **Site Mode** and **Payment Settings**.
 
-<!-- TODO(screenshot): test-and-live-mode-2
-  screen: WordPress admin bar on the front end of the site
-  state: Pro active, Site Mode set to Test, menu open
-  data: -
-  highlight: the Test Mode badge and its menu items
-  view: frontend
-  alt: Screenshot of the admin bar with the Test Mode badge and its menu open
--->
+![Screenshot of the admin bar with the Test Mode badge and its menu open](/images/getting-started/test-and-live-mode/admin-bar-test-mode.webp)
 
 ### The Payment Settings alert
 
 When Stripe or PayPal is turned on and the site is in test mode, **Fluent Members → Settings → Payment Settings** opens with a **Test Mode Enabled** alert: "No real payments will be processed." Click **Switch to Live** to jump to **General Settings**. On a local site it adds that subscription renewals won't sync, because Stripe and PayPal cannot send webhooks to a local address.
 
-<!-- TODO(screenshot): test-and-live-mode-3
-  screen: Settings, Payment Settings
-  state: Site Mode set to Test, Stripe turned on
-  data: -
-  highlight: the Test Mode Enabled alert and the Switch to Live button
-  view: admin
-  alt: Screenshot of Payment Settings with the Test Mode Enabled alert
--->
+![Screenshot of Payment Settings with the Test Mode Enabled alert](/images/getting-started/test-and-live-mode/payment-test-alert.webp)
 
 ## Test a purchase, then go live
 

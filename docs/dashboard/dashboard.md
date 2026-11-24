@@ -9,14 +9,7 @@ The **Dashboard** is the first screen you see when you open Fluent Members. Use 
 
 Go to **Fluent Members → Dashboard**, or click **Dashboard** in the top navigation from any Fluent Members screen. On a new install, the [guided setup](/docs/getting-started/quick-start) opens first.
 
-<!-- TODO(screenshot): dashboard-1
-  screen: Dashboard, full page
-  state: Pro active, Launch checklist visible
-  data: a few members and some payments
-  highlight: the four stat cards, Business Trends and the Launch checklist
-  view: admin
-  alt: Screenshot of the Fluent Members dashboard with the greeting, four stat cards, Business Trends, the Launch checklist and Recent Activity
--->
+![Screenshot of the Fluent Members dashboard with the greeting, four stat cards, Business Trends, the Launch checklist and Recent Activity](/images/dashboard/dashboard/dashboard-full-page.webp)
 
 
 The screen opens with a greeting and your site title. If you have payments in a currency other than your site currency, a notice above the greeting lists the currencies left out of the totals. Click its close icon to dismiss it.
@@ -56,28 +49,14 @@ Use the two icons beside the date range to switch between a bar chart and a line
 - **Refunds:** Refunds issued, with the total amount below.
 - **Trial conversion:** The share of subscriptions started this month with a trial that are now active. The line below counts trials ending in the next 7 days.
 
-<!-- TODO(screenshot): dashboard-2
-  screen: Dashboard, Membership Lifecycle card
-  state: current month with renewals and a cancellation
-  data: a few members and some payments
-  highlight: the four lifecycle figures
-  view: admin
-  alt: Screenshot of the Membership Lifecycle card with Renewals, Cancellations, Refunds and Trial conversion
--->
+![Screenshot of the Membership Lifecycle card with Renewals, Cancellations, Refunds and Trial conversion](/images/dashboard/dashboard/dashboard-lifecycle-card.webp)
 
 
 ## Membership Activity
 
 **Membership Activity** stacks **Signups** and **Cancellations** for each period, with a line for their combined total. It has its own date range, separate from **Business Trends**, and works the same way.
 
-<!-- TODO(screenshot): dashboard-3
-  screen: Dashboard, Membership Activity chart
-  state: default date range
-  data: a few members and some payments
-  highlight: stacked Signups and Cancellations bars
-  view: admin
-  alt: Screenshot of the Membership Activity chart with stacked Signups and Cancellations bars
--->
+![Screenshot of the Membership Activity chart with stacked Signups and Cancellations bars](/images/dashboard/dashboard/dashboard-activity-chart.webp)
 
 
 ## Revenue by Membership
@@ -110,14 +89,7 @@ The **Launch checklist** card sits at the top of the right column until every it
 
 Click **Skip** on an item to set it aside, or the **×** to hide the card. See [Guided setup & quick start](/docs/getting-started/quick-start) for the table of buttons and tick rules.
 
-<!-- TODO(screenshot): dashboard-5
-  screen: Dashboard, right column
-  state: Launch checklist with two items done and one skipped
-  data: -
-  highlight: the Launch checklist card, its count and the Skip links
-  view: admin
-  alt: Screenshot of the Launch checklist card on the Dashboard
--->
+![Screenshot of the Launch checklist card on the Dashboard](/images/dashboard/dashboard/dashboard-launch-checklist.webp)
 
 ## Recent Activity
 

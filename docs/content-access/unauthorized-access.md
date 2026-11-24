@@ -19,14 +19,7 @@ A new level or bundle shows **Site default**, with **Using the site default** an
 4. Choose an option under **Action for Unauthorized Users** and fill in its fields.
 5. Click **Done**, then **Save** in the save bar (or **Save bundle** in a bundle's drawer).
 
-<!-- TODO(screenshot): unauthorized-access-2
-  screen: Content Access tab, Message for visitors without access card open
-  state: Customize for this membership clicked, Display a custom message selected
-  data: message "This lesson is for Gold members.", button View Plans
-  highlight: Action for Unauthorized Users, Custom Message, Button Text and Button URL
-  view: admin
-  alt: Screenshot of the Message for visitors without access card in edit mode with a custom message and button
--->
+![Screenshot of the Message for visitors without access card in edit mode with a custom message and button](/images/content-access/unauthorized-access/unauthorized-access-custom-message-edit.webp)
 
 The card then reads **Customized for this membership**, and the heading shows **Redirect** or **Custom Message**. Click **Edit** to change it, or **Use the site default** to go back.
 

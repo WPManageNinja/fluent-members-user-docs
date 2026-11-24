@@ -11,14 +11,7 @@ A **Membership Level** is the plan or product that a visitor buys, joins for fre
 
 Go to **Fluent Members → Membership Levels** and click **New membership**.
 
-<!-- TODO(screenshot): creating-1
-  screen: Fluent Members → Membership Levels
-  state: list view with the New membership button visible
-  data: a few existing levels
-  highlight: the New membership button
-  view: admin
-  alt: Screenshot of the Membership Levels list with an arrow pointing to New membership
--->
+![Screenshot of the Membership Levels list with an arrow pointing to New membership](/images/levels/creating/levels-list-new-button.webp)
 
 Fill in the **New membership** dialog:
 
@@ -30,14 +23,7 @@ Fill in the **New membership** dialog:
 | **Sold through** | Appears when your site has no selling provider set. Choose FluentCart, FluentForms, Paymattic, WooCommerce (Pro) or Native Payment (Pro). |
 | **First price** or **Pricing** | Depends on how the level is sold. See below. |
 
-<!-- TODO(screenshot): creating-2
-  screen: New membership dialog
-  state: Paid card selected, Name filled in, First price section showing a FluentCart product amount with Once, Monthly and Yearly buttons
-  data: Name "Pro", amount 29, Monthly
-  highlight: the four How do people get it? cards and the First price field
-  view: admin
-  alt: Screenshot of the New membership dialog with the four access cards and a first price
--->
+![Screenshot of the New membership dialog with the four access cards and the Sold through field](/images/levels/creating/creating-new-membership-dialog.webp)
 
 > [!Note]
 > **Team** shows a **Pro** badge and can't be selected without Fluent Members Pro. See [Corporate Memberships](/docs/levels/corporate-memberships).

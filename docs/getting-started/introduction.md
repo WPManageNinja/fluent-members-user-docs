@@ -38,14 +38,7 @@ Think of the content as the room and the Membership Level as the key.
 
 Every Fluent Members screen shares one top bar.
 
-<!-- TODO(screenshot): introduction-1
-  screen: Fluent Members dashboard, top bar only
-  state: Pro active, so the Pro tag and Billing show
-  data: -
-  highlight: numbered badges on Dashboard, Membership Levels, Members, Billing, theme icon, gear icon
-  view: admin
-  alt: Screenshot of the Fluent Members top bar with Dashboard, Membership Levels, Members, Billing, the theme icon and the gear icon
--->
+![Screenshot of the Fluent Members top bar with Dashboard, Membership Levels, Members, Billing, the theme icon and the gear icon](/images/getting-started/introduction/top-bar.webp)
 
 1. **Dashboard:** your [numbers, Launch checklist and recent activity](/docs/dashboard/dashboard).
 2. **Membership Levels:** the [plans you offer](/docs/levels/), with their pricing and the content each one unlocks.

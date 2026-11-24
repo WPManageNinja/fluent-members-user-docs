@@ -16,14 +16,7 @@ Set up [Mailing Settings](/docs/settings/email-configuration/mailing-settings) f
 
 The switch saves right away. The **Event** column names the email, and the **Receiver** column shows who gets it.
 
-<!-- TODO(screenshot): email-notifications-1
-  screen: Fluent Members -> Settings -> Email Configuration -> Email Notifications
-  state: Notification Settings table with the Event, Receiver and Enable columns and all nine rows on
-  data: default rows, all switches on
-  highlight: Enable column
-  view: admin
-  alt: Screenshot of the Notification Settings table listing all nine email notifications with their switches on
--->
+![Screenshot of the Notification Settings table listing all nine email notifications with their switches on](/images/settings/email-notifications/email-notifications-1.webp)
 
 ## When each email is sent
 
@@ -64,14 +57,7 @@ Click the edit icon on a row to open it. The page holds these settings:
 - **Email Subject:** The subject line. It is required. Click the <span v-pre>`{{:}}`</span> button to pick a smartcode.
 - **Email Body Type:** **Default Body** sends the built-in message, shown below as a preview with sample data. **Customized Body** (Pro) opens the [Custom Email Editor](/docs/settings/email-configuration/custom-email-editor), where every notification has a starter template to begin from.
 
-<!-- TODO(screenshot): email-notifications-2
-  screen: Email Notifications -> Membership Expiring -> edit
-  state: Enable switch, Reminder lead time set to 7, Email Subject, Email Body Type and the Default Body preview
-  data: Membership Expiring with the default lead time
-  highlight: Reminder lead time field
-  view: admin
-  alt: Screenshot of the Membership Expiring notification with the Reminder lead time set to 7 days
--->
+![Screenshot of the Membership Expiring notification with the Reminder lead time set to 7 days](/images/settings/email-notifications/email-notifications-2.webp)
 
 Click **Save Settings** in the top-right corner to save. The built-in message cannot be edited directly. On the free version, **Email Subject** and the switches are what you can change. Clicking **Customized Body** shows a notice that the feature requires Pro.
 

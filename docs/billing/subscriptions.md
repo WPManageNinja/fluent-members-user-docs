@@ -15,14 +15,7 @@ Go to **Fluent Members → Billing → Subscriptions**.
 
 Above the table, the status tabs are **All**, **Active**, **Trial** and **Payment failed**, with **More** holding **Paused**, **Cancelled** and **Expired**. The search and column icons sit on the right.
 
-<!-- TODO(screenshot): subscriptions-1
-  screen: Billing → Subscriptions
-  state: list with status tabs, search and column icons, several member rows and pagination
-  data: a mix of active, cancelled and one scheduled-to-cancel subscription
-  highlight: status tabs and the Status column
-  view: admin
-  alt: Screenshot of the Subscriptions list with status tabs, member rows and pagination
--->
+![Screenshot of the Subscriptions list with status tabs, member rows and pagination](/images/billing/subscriptions/subscriptions-list.webp)
 
 ## Columns
 
@@ -67,14 +60,7 @@ A subscription shows one of these statuses:
 
 The heading shows the record number and status, with **More actions** on the right.
 
-<!-- TODO(screenshot): subscriptions-2
-  screen: Billing → Subscriptions → a Stripe subscription
-  state: subscription page showing Subscription Details, Transaction History, Activity, Member Information and Membership Information
-  data: a Stripe subscription with at least two payments
-  highlight: -
-  view: admin
-  alt: Screenshot of a subscription page with Subscription Details, Transaction History, Activity, Member Information and Membership Information
--->
+![Screenshot of a subscription page with Subscription Details, Transaction History, Activity, Member Information and Membership Information](/images/billing/subscriptions/subscription-detail.webp)
 
 ### Subscription Details
 

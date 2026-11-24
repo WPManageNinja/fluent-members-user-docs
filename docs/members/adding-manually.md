@@ -22,14 +22,7 @@ To add several people to one level at once, use [Members on a level](/docs/level
 4. In the **Membership Level** dialog, click a level to expand it and see its plans. Each level shows its plan count. Each plan shows its name, ID, level, a trial or setup fee if it has one, its price, and whether it is a **Subscription** or **One-time**.
 5. Click **Assign** on the plan you want. **Cancel** closes the dialog without adding anything.
 
-<!-- TODO(screenshot): adding-manually-1
-  screen: Members → a member → Add Membership
-  state: Membership Level dialog with one level expanded and its plans listed
-  data: a level with a one-time plan and a subscription plan
-  highlight: Assign button
-  view: admin
-  alt: Screenshot of the Membership Level dialog with a level expanded and an arrow pointing to Assign
--->
+![Screenshot of the Membership Level dialog with a level expanded and an arrow pointing to Assign](/images/members/adding-manually/add-membership-expanded.webp)
 
 The dialog closes and the new row appears in the **Memberships** table with the status **Active** and the provider **Manual**. No payment is taken, even if the plan has a price or setup fee, and the **Amount** column shows `--`.
 

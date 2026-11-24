@@ -41,13 +41,6 @@ There is no separate Access Groups screen any more. Protection is set in these p
 3. Pick what to protect. [What you can protect](/docs/content-access/protected-content) lists every option.
 4. Click **Add (n) items**, then **Save** in the save bar.
 
-<!-- TODO(screenshot): content-access-index-1
-  screen: Membership Levels, a level on the Content Access tab
-  state: Add content button visible on an empty Content card
-  data: a new level with no content yet
-  highlight: the Add content button
-  view: admin
-  alt: Screenshot of the Content Access tab with the Add content button
--->
+![Screenshot of the Content Access tab with the Add content button](/images/content-access/index/content-access-tab-empty.webp)
 
 The content is protected as soon as you save. [How protection works](/docs/content-access/how-protection-works) explains which check decides who gets in.

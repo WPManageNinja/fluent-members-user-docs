@@ -17,14 +17,7 @@ Bundles have no screen of their own. You create, add and edit them from a level'
 4. Click **Add content**, pick what the bundle should open, and confirm. [Add content](/docs/levels/content-access) works the same way as on a level.
 5. Click **Create bundle**.
 
-<!-- TODO(screenshot): bundles-1
-  screen: New content bundle drawer
-  state: drawer open on a level, name filled, two content rows added
-  data: bundle name Bonus Library, rows for two pages
-  highlight: Bundle name, Content in this bundle and the Create bundle button
-  view: admin
-  alt: Screenshot of the New content bundle drawer with a name and two content rows
--->
+![Screenshot of the New content bundle drawer with a name and two content rows](/images/content-access/bundles/bundles-new-drawer.webp)
 
 The new bundle is added to the level you started from. The footer of the drawer says so: **The new bundle is added to (level).**
 

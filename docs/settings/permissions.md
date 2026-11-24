@@ -11,14 +11,7 @@ description: "Control which WordPress users can add, change or remove access res
 
 Go to **Fluent Members → Settings → Permissions**.
 
-<!-- TODO(screenshot): permissions-1
-  screen: Fluent Members -> Settings -> Permissions
-  state: Content Restrictions default selector and the Managers table with the Add Manager button
-  data: one manager with the Restriction Manager role
-  highlight: Add Manager button
-  view: admin
-  alt: Screenshot of the Permissions settings with the default restriction permission and the Managers table
--->
+![Screenshot of the Permissions settings with the default restriction permission and the Managers table](/images/settings/permissions/permissions-1.webp)
 
 Administrators can always manage every restriction, so these settings don't apply to them.
 
@@ -43,14 +36,7 @@ A manager is a user with a specific role here, which replaces the default above.
 3. Under **Select Role**, pick a role.
 4. Click **Attach Role**.
 
-<!-- TODO(screenshot): permissions-2
-  screen: Permissions -> Add Manager dialog
-  state: Add Role dialog with Select User and Select Role filled in
-  data: a non-administrator user and the Restriction Author role
-  highlight: Attach Role button
-  view: admin
-  alt: Screenshot of the Add Role dialog with the Select User and Select Role fields and the Attach Role button
--->
+![Screenshot of the Add Manager dialog with the Select User and Select Role fields](/images/settings/permissions/permissions-2.webp)
 
 Two roles are available:
 

@@ -14,14 +14,7 @@ description: "Show visitors the first words of protected content, faded or blurr
 3. Set the fields below.
 4. Click **Save Settings**.
 
-<!-- TODO(screenshot): partial-content-lock-1
-  screen: Fluent Members → Settings → Restricted content
-  state: Non-members see set to A teaser, with Teaser length, Teaser style, Message and Button visible
-  data: Default values
-  highlight: Non-members see options and the Teaser length and Teaser style rows
-  view: admin
-  alt: Screenshot of Restricted content settings with A teaser selected and the teaser fields showing
--->
+![Screenshot of Restricted content settings with A teaser selected and the teaser fields showing](/images/settings/partial-content-lock/partial-content-lock-1.webp)
 
 The setting applies across your site to protected posts, pages and restricted blocks. The screen shows a live preview as you change it.
 

@@ -15,14 +15,7 @@ You need **Fluent Members Pro**. On the free version, each notification sends it
 2. Click the edit icon on a notification.
 3. Under **Email Body Type**, click **Customized Body**.
 
-<!-- TODO(screenshot): custom-email-editor-1
-  screen: Email Notifications -> Welcome Email -> Customized Body
-  state: Block editor with the toolbar and the Membership Welcome starter template
-  data: Welcome Email, Pro active
-  highlight: Toolbar buttons
-  view: admin
-  alt: Screenshot of the block email editor under Customized Body with the toolbar and the Membership Welcome starter template
--->
+![Screenshot of the block email editor under Customized Body with the toolbar and the Membership Welcome starter template](/images/settings/custom-email-editor/custom-email-editor-1.webp)
 
 ## Start from a template
 

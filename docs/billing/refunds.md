@@ -15,14 +15,7 @@ Refunds here work on Stripe and PayPal payments only. Payments made through Flue
 2. Click **More actions → Refund**. The **Refund Payment** dialog opens.
 3. Fill in the fields and click the refund button.
 
-<!-- TODO(screenshot): refunds-1
-  screen: Billing → Subscriptions → a Stripe subscription → More actions → Refund
-  state: Refund Payment dialog with an amount entered and the full refund notice showing
-  data: a Stripe subscription with a paid renewal
-  highlight: Refund Amount field and the refund button
-  view: admin
-  alt: Screenshot of the Refund Payment dialog with Refund Amount, Refund Reason, Refund Note and the full refund notice
--->
+![Screenshot of the Refund Payment dialog with Refund Amount, Refund Reason, Refund Note and the full refund notice](/images/billing/refunds/refund-dialog.webp)
 
 You can also open the same dialog from the three-dot menu on a membership in the [member's page](/docs/members/detail).
 

@@ -14,14 +14,7 @@ Use this when you don't have a portal page yet. Fluent Members builds it for you
 1. Go to **Fluent Members → Settings → General Settings**.
 2. Find **Generate Portal Page** and click the **+** button next to the page selector.
 
-    <!-- TODO(screenshot): portal-setup-1
-      screen: Settings → General Settings
-      state: Generate Portal Page row with the plus button highlighted
-      data: no portal page selected
-      highlight: plus button beside the page selector
-      view: admin
-      alt: Screenshot of General Settings with an arrow on the plus button beside the Generate Portal Page selector
-    -->
+    ![Screenshot of General Settings with an arrow on the plus button beside the Generate Portal Page selector](/images/members/portal/setup/settings-portal.webp)
 
 3. In the **Create Portal Page** modal, type a **Page Name**. It is required.
 4. Click **Create Page**.

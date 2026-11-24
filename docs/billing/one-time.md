@@ -20,14 +20,7 @@ A membership is listed here when all of these are true:
 
 Go to **Fluent Members → Billing → One-time**. The status tabs are **All**, **Active**, **Trial** and **Cancelled**, with **Suspended** under **More**.
 
-<!-- TODO(screenshot): one-time-1
-  screen: Billing → One-time
-  state: list with member rows, amounts, gateways and purchase dates
-  data: a Stripe one-time purchase, a manually added membership and an upgrade purchase
-  highlight: Amount column
-  view: admin
-  alt: Screenshot of the One-time Memberships list with member rows, amounts and gateways
--->
+![Screenshot of the One-time Memberships list with member rows, amounts and gateways](/images/billing/one-time/one-time-list.webp)
 
 The table has these columns:
 
@@ -51,14 +44,7 @@ A **Test** badge beside the **Amount** marks a test payment, where no real money
 
 A record with a payment opens with an **Order Information** panel showing **Order ID**, **Membership Level**, **Amount**, **Payment Gateway** and **Purchased**.
 
-<!-- TODO(screenshot): one-time-2
-  screen: Billing → One-time → a paid record
-  state: record page with Order Information, Transaction History and Activity
-  data: a Stripe one-time purchase
-  highlight: Order Information panel
-  view: admin
-  alt: Screenshot of a paid one-time membership page with Order Information, Transaction History and Activity
--->
+![Screenshot of a paid one-time membership page with Order Information, Transaction History and Activity](/images/billing/one-time/one-time-detail.webp)
 
 A record with no payment opens with a **Membership Details** panel showing **Membership Level**, **Amount** and **Purchased**.
 

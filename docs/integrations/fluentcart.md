@@ -18,14 +18,7 @@ Follow these steps to sell through FluentCart:
 
 FluentCart handles checkout, coupons, tax and invoices. The level's **Pricing** tab now shows **Sold through** FluentCart. If you leave the provider unset, you choose how a level is sold each time you create one.
 
-<!-- TODO(screenshot): fluentcart-1
-  screen: Fluent Members → Settings → Payment Settings
-  state: How you sell memberships card with FluentCart selected
-  data: FluentCart active
-  highlight: FluentCart card
-  view: admin
-  alt: Screenshot of the How you sell memberships card with FluentCart selected
--->
+![Screenshot of the How you sell memberships card with FluentCart selected](/images/integrations/fluentcart/payment-settings-fluentcart.webp)
 
 ## Sell a level with a product
 
@@ -58,14 +51,7 @@ A variation that already sells another level shows **Sells** followed by that le
 
 The price, trial and renewals come from FluentCart. Change them on the product and the list updates.
 
-<!-- TODO(screenshot): fluentcart-3
-  screen: Fluent Members → Membership Levels → a FluentCart level → Pricing → Add Pricing
-  state: the Add a price drawer open with the variation list
-  data: two FluentCart products, one already linked to another level
-  highlight: Link variation
-  view: admin
-  alt: Screenshot of the Add a price drawer listing FluentCart variations
--->
+![Screenshot of the Add a price drawer listing FluentCart variations](/images/integrations/fluentcart/add-price-drawer.webp)
 
 ### Edit or remove a price
 

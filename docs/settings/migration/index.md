@@ -11,14 +11,7 @@ The **Migration** tool imports your membership data from **Paid Memberships Pro*
 
 Go to **Fluent Members → Settings → Migration**. The screen reads **Select a source to import your membership data**.
 
-<!-- TODO(screenshot): migration-index-1
-  screen: Fluent Members -> Settings -> Migration
-  state: Three source cards: Paid Memberships Pro, MemberPress and Kadence Memberships (Formerly Restrict Content Pro), with the FluentMembers Migration notice below
-  data: one source plugin active, the other two showing Not Detected
-  highlight: the active source card
-  view: admin
-  alt: Screenshot of the Migration screen with three source cards, one of them available and two showing Not Detected
--->
+![Screenshot of the Migration screen with three source cards, one of them available and two showing Not Detected](/images/settings/migration/migration-index-1.webp)
 
 The screen shows one card per source plugin. A card you can click means the plugin is active on this site. A greyed-out card shows **Not Detected**, and its tooltip says "Plugin not detected on this site", so activate that plugin first. The **Kadence Memberships** card carries the subtitle **Formerly Restrict Content Pro**.
 

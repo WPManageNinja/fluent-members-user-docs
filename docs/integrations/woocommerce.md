@@ -18,14 +18,7 @@ Follow these steps to sell through WooCommerce:
 
 WooCommerce handles checkout, coupons, tax and invoices. The level's **Pricing** tab now shows **Sold through** WooCommerce.
 
-<!-- TODO(screenshot): woocommerce-1
-  screen: Fluent Members → Settings → Payment Settings
-  state: How you sell memberships card with WooCommerce selected
-  data: WooCommerce and Fluent Members Pro active
-  highlight: WooCommerce card
-  view: admin
-  alt: Screenshot of the How you sell memberships card with WooCommerce selected
--->
+![Screenshot of the How you sell memberships card with WooCommerce selected](/images/integrations/woocommerce/payment-settings-woocommerce.webp)
 
 ## Add a price from a product
 
@@ -40,14 +33,7 @@ Simple products, subscription products and single variations can all be linked. 
 
 The price, trial and renewals come from WooCommerce. Change them on the product and the list updates. If a linked product is unpublished or deleted, the **Pricing** tab warns you, and the price cannot be sold until you publish the product or remove the row.
 
-<!-- TODO(screenshot): woocommerce-2
-  screen: Fluent Members → Membership Levels → a WooCommerce level → Pricing → Add Pricing
-  state: the Add a price drawer open with the WooCommerce product list
-  data: a simple product and a subscription product, one already linked to another level
-  highlight: Link variation
-  view: admin
-  alt: Screenshot of the Add a price drawer listing WooCommerce products
--->
+![Screenshot of the Add a price drawer listing WooCommerce products](/images/integrations/woocommerce/add-price-drawer.webp)
 
 ### Edit or remove a price
 

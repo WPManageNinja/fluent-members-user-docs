@@ -15,14 +15,7 @@ The **Login Popup** opens a login form over a protected page, on top of the page
 4. To open the form as soon as a protected page loads, check **Open the login form right away**.
 5. Click **Save Settings**.
 
-<!-- TODO(screenshot): login-popup-1
-  screen: Fluent Members → Settings → Restricted content
-  state: A message selected, Show "Already a member? Log in" and Open the login form right away both checked
-  data: Default values
-  highlight: The two login checkboxes
-  view: admin
-  alt: Screenshot of Restricted content settings with the two login checkboxes turned on
--->
+![Screenshot of Restricted content settings with the two login checkboxes turned on](/images/settings/login-popup/login-popup-1.webp)
 
 **Open the login form right away** only appears while the login link is on. Without it, the form opens only when a visitor clicks **Log in**.
 

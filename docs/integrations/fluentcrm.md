@@ -18,14 +18,7 @@ Follow these steps to start an automation:
 3. Give the automation a name and continue.
 4. Set the trigger options described below, then add your actions.
 
-<!-- TODO(screenshot): fluentcrm-1
-  screen: FluentCRM → Automations → New Automation → FluentMembers
-  state: trigger list cropped to the FluentMembers triggers
-  data: -
-  highlight: -
-  view: admin
-  alt: Screenshot of the FluentMembers triggers in the Create an Automation window
--->
+![Screenshot of the FluentMembers triggers in the Create an Automation window](/images/integrations/fluentcrm/fluentcrm-triggers.webp)
 
 ### Triggers
 

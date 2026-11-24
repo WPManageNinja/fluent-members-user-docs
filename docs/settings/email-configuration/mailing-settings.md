@@ -9,14 +9,7 @@ description: "Set the sender name and address, reply-to details, footer, logo an
 
 Go to **Fluent Members → Settings → Email Configuration → Mailing Settings**.
 
-<!-- TODO(screenshot): mailing-settings-1
-  screen: Fluent Members -> Settings -> Email Configuration -> Mailing Settings
-  state: Default From Settings notice, the four sender fields, Email Footer Text editor, logo upload and the Powered by checkbox
-  data: default values
-  highlight: Save Settings button
-  view: admin
-  alt: Screenshot of Mailing Settings with the sender fields, footer editor, logo upload and Powered by checkbox
--->
+![Screenshot of Mailing Settings with the sender fields, footer editor, logo upload and Powered by checkbox](/images/settings/mailing-settings/mailing-settings-1.webp)
 
 ## Sender details
 

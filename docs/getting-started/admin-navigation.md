@@ -17,14 +17,7 @@ On a new install, the first click opens the [guided setup](/docs/getting-started
 
 Every screen shares the same bar. On small screens, its links move into a menu button.
 
-<!-- TODO(screenshot): admin-navigation-1
-  screen: Fluent Members dashboard, top bar only
-  state: Pro active, so the Pro tag and Billing show
-  data: -
-  highlight: the links, the theme icon and the gear icon
-  view: admin
-  alt: Screenshot of the Fluent Members top bar with its links, the theme icon and the gear icon
--->
+![Screenshot of the Fluent Members top bar with its links, the theme icon and the gear icon](/images/getting-started/admin-navigation/top-bar.webp)
 
 | Item | What it opens |
 |---|---|
@@ -41,14 +34,7 @@ With Pro active, a **Pro** tag also shows beside the logo. There is no separate 
 
 Click a level in **Membership Levels** to open it. The tabs across the top hold everything about that level.
 
-<!-- TODO(screenshot): admin-navigation-2
-  screen: an open level
-  state: FluentCRM active, so the Automations tab shows
-  data: a paid level with a native pricing plan
-  highlight: the tab row
-  view: admin
-  alt: Screenshot of an open level showing the Setup, Pricing, Content Access, Members, Upgrade Paths, Automations and Integrations tabs
--->
+![Screenshot of an open level showing the Setup, Pricing, Content Access, Members, Upgrade Paths, Automations and Integrations tabs](/images/getting-started/admin-navigation/level-tabs.webp)
 
 - **Setup:** title, description and status.
 - **Pricing:** the [plans](/docs/levels/pricing-native) or [paywalls](/docs/levels/pricing-paywalls) visitors pay through.
@@ -64,14 +50,7 @@ A small mark on **Pricing** or **Content Access** means that tab is not set up y
 
 Click the gear icon to open **Settings**. Its sections run down the left side.
 
-<!-- TODO(screenshot): admin-navigation-3
-  screen: Settings
-  state: General Settings open, FluentCRM active, Pro active
-  data: -
-  highlight: the section list on the left
-  view: admin
-  alt: Screenshot of Settings with the section list on the left and General Settings open
--->
+![Screenshot of Settings with the section list on the left and General Settings open](/images/getting-started/admin-navigation/settings-sections.webp)
 
 - [General Settings](/docs/settings/general): **Site Mode** (Pro), your portal, pricing and checkout pages, your currency, and **Run setup again**.
 - [Public content](/docs/content-access/public-content): pages and posts everyone can see, whatever a membership covers.
@@ -86,11 +65,4 @@ Click the gear icon to open **Settings**. Its sections run down the left side.
 
 Click the theme icon in the top bar and choose **Light**, **Dark** or **System**. **System** follows your device's setting.
 
-<!-- TODO(screenshot): admin-navigation-4
-  screen: Fluent Members top bar
-  state: theme menu open
-  data: -
-  highlight: Light, Dark and System
-  view: admin
-  alt: Screenshot of the theme menu with Light, Dark and System
--->
+![Screenshot of the theme menu with Light, Dark and System](/images/getting-started/admin-navigation/theme-menu.webp)

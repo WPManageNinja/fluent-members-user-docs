@@ -30,14 +30,7 @@ Inside the plugin you get:
 - **Native Payment** (the built-in Stripe and PayPal checkout) and **WooCommerce** as pricing types, without the Pro badge.
 - A **Site Mode** switch under **Settings → General Settings**, and a **Test Mode** or **Live Mode** badge in the admin bar. See [Test mode and live mode](/docs/getting-started/test-and-live-mode).
 
-<!-- TODO(screenshot): installation-pro-1
-  screen: Fluent Members top bar
-  state: Pro active
-  data: -
-  highlight: the Pro tag beside the logo and the Billing menu
-  view: admin
-  alt: Screenshot of the Fluent Members top bar with the Pro tag and the Billing menu
--->
+![Screenshot of the Fluent Members top bar with the Pro tag and the Billing menu](/images/getting-started/installation-pro/pro-top-bar.webp)
 
 ## What to do next
 

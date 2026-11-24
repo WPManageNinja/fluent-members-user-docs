@@ -16,14 +16,7 @@ This screen was called **Always open** in earlier versions.
 3. Pick a type tab if you need one, then tick the items. Search to find single items.
 4. Click **Add (n) items**.
 
-<!-- TODO(screenshot): public-content-1
-  screen: Settings, Public content
-  state: the Add to public content dialog open on the Pages tab with two pages ticked
-  data: pages named About and Contact
-  highlight: the Pages tab and the Add 2 items button
-  view: admin
-  alt: Screenshot of the Add to public content dialog with two pages ticked
--->
+![Screenshot of the Add to public content dialog with two pages ticked](/images/content-access/public-content/public-content-add-dialog.webp)
 
 The items save as soon as you add them. There is no **Save** button on this screen.
 

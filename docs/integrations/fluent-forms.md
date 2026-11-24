@@ -29,14 +29,7 @@ Follow these steps to sell a level through a form:
 
 If you have no suitable form yet, create one in Fluent Forms first. A form can belong to one level only. If it already sells another level, you see **Sells** followed by that level's name, and **Already added** marks a form that is already on this level. Only payment forms with a single fixed-price or recurring item are listed.
 
-<!-- TODO(screenshot): fluent-forms-1
-  screen: Fluent Members → Membership Levels → a Fluent Forms level → Pricing → Add Pricing
-  state: the drawer open with Pick a payment form listing eligible forms
-  data: a saved payment form with one fixed price item
-  highlight: Link form
-  view: admin
-  alt: Screenshot of the Add Pricing drawer listing Fluent Forms forms
--->
+![Screenshot of the Add Pricing drawer listing Fluent Forms forms](/images/integrations/fluent-forms/add-pricing-drawer.webp)
 
 ## Share the checkout link
 

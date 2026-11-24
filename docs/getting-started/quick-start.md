@@ -16,14 +16,7 @@ The first screen reads **Let's get your first membership selling**.
 - **Found on your site:** lists what the setup detected. FluentCart shows **Will use** (or **Needs an update**), FluentCommunity shows **Ready**, and any membership plugin with data to move, such as Paid Memberships Pro, MemberPress or Kadence Memberships, shows its counts and an **Import** button. **Import** closes the setup and opens [Migration](/docs/settings/migration/).
 - **What are you building?** Pick one of **Online courses**, **Community**, **Premium articles**, **Paid newsletter**, **Coaching** or **Downloads**. The setup uses it to suggest a name, a price and content to protect. You can pick none.
 
-<!-- TODO(screenshot): quick-start-1
-  screen: Guided setup, step 1 Welcome
-  state: new install with FluentCart active and one site type selected
-  data: FluentCart detected
-  highlight: the Found on your site list, the site type tiles and the Start button
-  view: admin
-  alt: Screenshot of the Welcome step with the Found on your site list and the six site type tiles
--->
+![Screenshot of the Welcome step with the Found on your site list and the six site type tiles](/images/getting-started/quick-start/guided-welcome.webp)
 
 Click **Start**.
 
@@ -38,14 +31,7 @@ Click **Start**.
 
 You do not need to connect Stripe or PayPal here. The Launch checklist reminds you, and test purchases work before that. Choose an option and click **Continue**, or click **Skip**.
 
-<!-- TODO(screenshot): quick-start-2
-  screen: Guided setup, step 2 How will people pay you
-  state: FluentCart selected
-  data: -
-  highlight: the four payment options and the Continue button
-  view: admin
-  alt: Screenshot of the Get paid step with FluentCart, Built-in checkout and Free memberships only
--->
+![Screenshot of the Get paid step with FluentCart, Built-in checkout and Free memberships only](/images/getting-started/quick-start/guided-get-paid.webp)
 
 > [!Note]
 > Options marked **Pro** are locked until Fluent Members Pro is active. See [Activate Pro](/docs/getting-started/installation-pro).
@@ -62,14 +48,7 @@ You do not need to connect Stripe or PayPal here. The Launch checklist reminds y
 
 With FluentCart, the setup creates a FluentCart product for the membership. Descriptions and feature lists can be edited later on the level.
 
-<!-- TODO(screenshot): quick-start-3
-  screen: Guided setup, step 3 Your first membership
-  state: Monthly selected, a suggested name filled in
-  data: site type Online courses
-  highlight: Membership name, the price type tiles, the Price field and the Pricing page preview
-  view: admin
-  alt: Screenshot of the Your first membership step with the form on the left and the pricing page preview on the right
--->
+![Screenshot of the Your first membership step with the form on the left and the pricing page preview on the right](/images/getting-started/quick-start/guided-first-membership.webp)
 
 Click **Create membership** (it reads **Save membership** if you come back to edit it), or click **Skip**.
 
@@ -134,14 +113,7 @@ The payments row changes with how you sell. With WooCommerce it reads **Set up W
 
 Click **Skip** on an item to set it aside. A skipped item stays in the list without its buttons. Click the **×** to hide the whole checklist.
 
-<!-- TODO(screenshot): quick-start-6
-  screen: Dashboard, right column
-  state: Launch checklist card with some items done
-  data: -
-  highlight: the Launch checklist card, its count, and the Skip links
-  view: admin
-  alt: Screenshot of the Dashboard Launch checklist card with its items
--->
+![Screenshot of the Dashboard Launch checklist card with its items](/images/getting-started/quick-start/launch-checklist.webp)
 
 To test the payment path, read [Test mode and live mode](/docs/getting-started/test-and-live-mode).
 

@@ -20,14 +20,7 @@ You set the schedule on the content row, on a level's **Content Access** tab or 
 4. If the row holds several items, tick the ones to schedule under **Applies to**. They move to their own row with this schedule.
 5. Click **Apply**, then **Save** in the save bar.
 
-<!-- TODO(screenshot): content-drip-1
-  screen: Release schedule popover on a content row
-  state: After the member joins selected with 2 weeks after joining
-  data: row for Lesson 3
-  highlight: the three options, the number field and the Apply button
-  view: admin
-  alt: Screenshot of the Release schedule popover set to 2 weeks after joining
--->
+![Screenshot of the Release schedule popover set to 2 weeks after joining](/images/content-access/content-drip/release-schedule-popover.webp)
 
 A row with a schedule shows a pill instead of the calendar icon: **Day 7**, **Week 2**, or the date.
 
